@@ -1,3 +1,4 @@
+import GuidePage from 'pages/GuidePage';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Test from 'Test';
 
@@ -9,6 +10,7 @@ function App() {
           <Route path="/" element={<Navigate to="/test/" />} />
 
           <Route path="/test/" element={<Test />} />
+          <Route path="/guide/" element={<GuidePage />} />
         </Routes>
       </div>
     </>
