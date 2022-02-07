@@ -5,7 +5,6 @@ function App() {
   return (
     <>
       <div className="app">
-        <TopNav />
         <Routes>
           <Route path="/" element={<Navigate to="/test/" />} />
 
