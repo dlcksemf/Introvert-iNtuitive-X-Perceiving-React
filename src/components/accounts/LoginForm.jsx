@@ -26,7 +26,7 @@ function LoginForm() {
       console.log('email :', email);
 
       // 인증 후, 이동할 주소를 지정합니다.
-      Navigate('/');
+      Navigate('/test/');
     });
   };
 
