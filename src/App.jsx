@@ -1,3 +1,5 @@
+import BookDetailPage from 'pages/BookDetailPage';
+import BookListPage from 'pages/BookListPage';
 import GuidePage from 'pages/GuidePage';
 import LoginPage from 'pages/LoginPage';
 import SignupPage from 'pages/SignupPage';
@@ -14,6 +16,8 @@ function App() {
           <Route path="/test/" element={<Test />} />
           <Route path="/accounts/login/" element={<LoginPage />} />
           <Route path="/accounts/signup/" element={<SignupPage />} />
+          <Route path="/books/booklist" element={<BookListPage />} />
+          <Route path="/books/:book_num/" element={<BookDetailPage />} />
           <Route path="/guide/" element={<GuidePage />} />
         </Routes>
       </div>
