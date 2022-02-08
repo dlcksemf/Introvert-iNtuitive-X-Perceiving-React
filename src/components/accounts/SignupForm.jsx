@@ -1,8 +1,8 @@
 import { useApiAxios } from 'base/api/base';
 import DebugStates from 'base/DebugStates';
 import useFieldValues from 'base/hooks/useFieldValues';
-import useLocalStorage from 'base/hooks/useLocalStorages';
-import { useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const INIT_FILED_VALUES = {
   username: '',
@@ -13,6 +13,8 @@ const INIT_FILED_VALUES = {
 };
 
 function SignupForm() {
+  const Navigate = useNavigate();
+
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_FILED_VALUES);
 
   const [{ loading, error, errorMessages }, signup] = useApiAxios(
@@ -30,6 +32,7 @@ function SignupForm() {
       const { username, email, phone_num, password, password2 } = response.data;
 
       console.log('가입이 완료되었습니다.');
+      Navigate('/accounts/login/');
     });
   };
 
@@ -110,8 +113,14 @@ function SignupForm() {
             </p>
           ))}
         </div>
+        <Link
+          to={`/test/`}
+          className="ml-30 border border-yellow-500 w-fit hover:bg-yellow-300 mb-5"
+        >
+          뒤로가기
+        </Link>
         <button
-          className="ml-80 border border-lime-500 w-fit hover:bg-emerald-300 mb-5"
+          className="ml-40 border border-lime-500 w-fit hover:bg-emerald-300 mb-5"
           onClick={handleSubmit}
         >
           회원가입
