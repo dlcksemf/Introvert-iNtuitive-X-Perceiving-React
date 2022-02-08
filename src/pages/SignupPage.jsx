@@ -1,6 +1,6 @@
 import SignupForm from '../components/accounts/SignupForm';
 
-function PageSignup() {
+function SignupPage() {
   return (
     <div>
       <h2>회원가입 페이지</h2>
@@ -9,4 +9,4 @@ function PageSignup() {
   );
 }
 
-export default PageSignup;
+export default SignupPage;
