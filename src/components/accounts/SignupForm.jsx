@@ -1,4 +1,5 @@
 import { useApiAxios } from 'base/api/base';
+import DebugStates from 'base/DebugStates';
 import useFieldValues from 'base/hooks/useFieldValues';
 import useLocalStorage from 'base/hooks/useLocalStorages';
 import { useCallback } from 'react';
@@ -8,15 +9,11 @@ const INIT_FILED_VALUES = {
   email: '',
   phone_num: '',
   password: '',
-  password1: '',
+  password2: '',
 };
-
-const INITIAL_AUTH = { isLoggedIn: false };
 
 function SignupForm() {
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_FILED_VALUES);
-
-  const [auth, setAuth] = useLocalStorage('auth', INITIAL_AUTH);
 
   const [{ loading, error, errorMessages }, signup] = useApiAxios(
     {
@@ -26,32 +23,12 @@ function SignupForm() {
     { manual: true },
   );
 
-  const login = useCallback(
-    ({ access, refresh, username, first_name, last_name }) => {
-      setAuth({
-        isLoggedIn: true,
-        access,
-        refresh,
-        username,
-        first_name,
-        last_name,
-      });
-    },
-    [setAuth],
-  );
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     signup({ data: fieldValues }).then((response) => {
-      const { username, email, phone_num, password, password1 } = response.data;
-      login({
-        username,
-        email,
-        phone_num,
-        password,
-        password1,
-      });
+      const { username, email, phone_num, password, password2 } = response.data;
+
       console.log('가입이 완료되었습니다.');
     });
   };
@@ -78,18 +55,30 @@ function SignupForm() {
         <div>
           <input
             className="mt-5 bg-red-200 w-80 h-10 text-center"
+            name="email"
             value={fieldValues.email}
             onChange={handleFieldChange}
             placeholder="이메일을 입력해주세요."
           />
+          {errorMessages.email?.map((message, index) => (
+            <p key={index} className="text-xs text-red-400">
+              {message}
+            </p>
+          ))}
         </div>
         <div>
           <input
             className="mt-5 bg-red-200 w-80 h-10 text-center"
+            name="phone_num"
             value={fieldValues.phone_num}
             onChange={handleFieldChange}
             placeholder="핸드폰 번호를 입력해주세요."
           />
+          {errorMessages.phone_num?.map((message, index) => (
+            <p key={index} className="text-xs text-red-400">
+              {message}
+            </p>
+          ))}
         </div>
         <div>
           <input
@@ -109,8 +98,8 @@ function SignupForm() {
         <div>
           <input
             className="mt-5 mb-5 bg-blue-200 w-80 h-10 text-center"
-            name="password1"
-            value={fieldValues.password1}
+            name="password2"
+            value={fieldValues.password2}
             onChange={handleFieldChange}
             type="password"
             placeholder="비밀번호를 한 번 더 입력해주세요."
@@ -128,6 +117,7 @@ function SignupForm() {
           회원가입
         </button>
       </form>
+      <DebugStates fieldValues={fieldValues} />
     </div>
   );
 }
