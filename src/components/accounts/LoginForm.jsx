@@ -1,5 +1,6 @@
 import { useApiAxios } from 'base/api/base';
 import DebugStates from 'base/DebugStates';
+import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,6 +8,7 @@ const INITIAL_STATE = { email: '', password: '' };
 
 function LoginForm() {
   const Navigate = useNavigate();
+  const [auth, , login] = useAuth();
   const { handleFieldChange, fieldValues } = useFieldValues(INITIAL_STATE);
   const [{ loading, error }, refetch] = useApiAxios(
     {
@@ -20,10 +22,17 @@ function LoginForm() {
     e.preventDefault();
 
     refetch({ data: fieldValues }).then((response) => {
-      const { access, refresh, email } = response.data;
+      const { access, refresh, email, is_staff } = response.data;
+      login({
+        access,
+        refresh,
+        email,
+        is_staff,
+      });
       console.log('access :', access);
       console.log('refresh :', refresh);
       console.log('email :', email);
+      console.log('is_staff :', is_staff);
 
       // 인증 후, 이동할 주소를 지정합니다.
       Navigate('/test/');
@@ -58,7 +67,12 @@ function LoginForm() {
         <button>로그인</button>
       </form>
 
-      <DebugStates fieldValues={fieldValues} loading={loading} error={error} />
+      <DebugStates
+        auth={auth}
+        fieldValues={fieldValues}
+        loading={loading}
+        error={error}
+      />
     </div>
   );
 }
