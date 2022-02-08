@@ -1,7 +1,8 @@
 import { useApiAxios } from 'base/api/base';
 import DebugStates from 'base/DebugStates';
 import useFieldValues from 'base/hooks/useFieldValues';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const INIT_FILED_VALUES = {
   username: '',
@@ -12,6 +13,8 @@ const INIT_FILED_VALUES = {
 };
 
 function SignupForm() {
+  const Navigate = useNavigate();
+
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_FILED_VALUES);
 
   const [{ loading, error, errorMessages }, signup] = useApiAxios(
