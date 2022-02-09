@@ -8,13 +8,13 @@ import { AuthProvider } from 'base/hooks/Authcontext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <ErrorBoundary>
-        <BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <AuthProvider>
           <App />
-        </BrowserRouter>
-      </ErrorBoundary>
-    </AuthProvider>
+        </AuthProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root'),
 );
