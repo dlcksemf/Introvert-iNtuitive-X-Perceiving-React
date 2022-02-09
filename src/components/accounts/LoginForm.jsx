@@ -22,12 +22,13 @@ function LoginForm() {
     e.preventDefault();
 
     refetch({ data: fieldValues }).then((response) => {
-      const { access, refresh, email, is_staff } = response.data;
+      const { access, refresh, email, is_staff, username } = response.data;
       login({
         access,
         refresh,
         email,
         is_staff,
+        username,
       });
       console.log('access :', access);
       console.log('refresh :', refresh);
