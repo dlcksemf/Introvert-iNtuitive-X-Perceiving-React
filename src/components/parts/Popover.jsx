@@ -73,7 +73,7 @@ function PopOver() {
                         <div
                           key={item.name}
                           onClick={() => {
-                            if (item.name == 'Logout') {
+                            if (item.name === 'Logout') {
                               handleLogout();
                               return;
                             }
