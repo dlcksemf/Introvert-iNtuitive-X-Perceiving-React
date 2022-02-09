@@ -1,4 +1,5 @@
 import BookList from 'components/books/BookList';
+import Search from 'components/parts/Search';
 import { useNavigate } from 'react-router-dom';
 
 function BookListPage() {
