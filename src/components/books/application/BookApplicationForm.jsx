@@ -7,7 +7,7 @@ const INIT_VALUE = {};
 
 function BookApplicationForm() {
   const [auth] = useAuth();
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_VALUE);
 
   const [{ loading, error }, saveApplication] = useApiAxios(
@@ -28,7 +28,7 @@ function BookApplicationForm() {
       data: { ...fieldValues, state: 'P', email: auth.email },
     })
       .then(() => {
-        Navigate('/test/');
+        navigate('/books/application/');
       })
       .catch((error) => {
         console.log(error);
