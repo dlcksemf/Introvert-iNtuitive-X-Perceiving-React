@@ -1,3 +1,5 @@
+import TopNav from 'components/parts/TopNav';
+import BookApplicationFormPage from 'pages/BookApplicationFormPage';
 import BookDetailPage from 'pages/BookDetailPage';
 import BookListPage from 'pages/BookListPage';
 import GuidePage from 'pages/GuidePage';
@@ -9,6 +11,7 @@ import Test from 'Test';
 function App() {
   return (
     <>
+      <TopNav />
       <div className="app">
         <Routes>
           <Route path="/" element={<Navigate to="/test/" />} />
@@ -18,6 +21,10 @@ function App() {
           <Route path="/accounts/signup/" element={<SignupPage />} />
           <Route path="/books/booklist" element={<BookListPage />} />
           <Route path="/books/:book_num/" element={<BookDetailPage />} />
+          <Route
+            path="/books/application/"
+            element={<BookApplicationFormPage />}
+          />
           <Route path="/guide/" element={<GuidePage />} />
         </Routes>
       </div>
