@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import BookApplicationComponent from './BookApplicationComponent';
 import { useApiAxios } from 'base/api/base';
-import Pagination from 'design materials/Pagination';
+import Pagination from 'designMaterials/Pagination';
 import { useEffect, useState } from 'react';
 import { useRender } from 'base/hooks/RenderContext';
 

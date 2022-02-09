@@ -1,5 +1,5 @@
 import { useApiAxios } from 'base/api/base';
-import Pagination from 'design materials/Pagination';
+import Pagination from 'designMaterials/Pagination';
 import { createContext, useEffect, useState } from 'react';
 import AdminApplication from './AdminApplication';
 
