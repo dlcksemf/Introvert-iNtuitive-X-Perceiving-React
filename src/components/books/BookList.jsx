@@ -2,7 +2,7 @@ import { useApiAxios } from 'base/api/base';
 import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import { useEffect, useState } from 'react';
-import BookSummary from './BookSummary';
+import { BookSummary } from './BookSummary';
 
 function BookList() {
   const [query, setQuery] = useState();
@@ -43,7 +43,9 @@ function BookList() {
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
       {bookList &&
-        bookList.map((book) => <BookSummary book={book} key={book.book_num} />)}
+        bookList?.map((book) => (
+          <BookSummary book={book} key={book.book_num} />
+        ))}
       <DebugStates bookList={bookList} loading={loading} error={error} />
     </div>
   );

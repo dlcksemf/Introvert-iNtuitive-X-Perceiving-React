@@ -41,8 +41,12 @@ function BookDetail({ book_num }) {
     refetch();
   }, []);
 
+  const buyLink = () => {
+    window.open('https://www.aladin.co.kr/home/welcome.aspx', '_blank');
+  };
+
   return (
-    <div>
+    <div className="text-center">
       {loading && <LoadingIndicator />}
       {deleteLoading && <LoadingIndicator>삭제 중 ...</LoadingIndicator>}
       {error &&
@@ -51,22 +55,23 @@ function BookDetail({ book_num }) {
         `삭제 요청 중 에러가 발생했습니다. (${deleteError.response?.status} ${deleteError.response?.statusText})`}
       {book && (
         <>
-          <h3 className="text-center">{book.title}</h3>
-          <p className="text-center">저자 {book.writer}</p>
-          <p className="text-center">역자 {book.translator}</p>
-          <p className="text-center">출판사 {book.publisher}</p>
-          <p className="text-center">출판일 {book.published_date}</p>
-          <p className="text-center">ISBN {book.ISBN}</p>
-          <p className="text-center">상태 {book.state}</p>
+          <h3>{book.title}</h3>
+          <p>{book.category_id}</p>
+          <p>{book.return_due_date}</p>
+          <p>저자 {book.writer}</p>
+          <p>역자 {book.translator}</p>
+          <p>출판사 {book.publisher}</p>
+          <p>출판일 {book.published_date}</p>
+          <p>ISBN {book.ISBN}</p>
+          <button onClick={buyLink}>알라딘에서 구매하기</button>
 
           {book.photo && (
             <img src={book.cover_photo} alt={book.title} className="rounded" />
           )}
           <div className="text-center">
-            줄거리
             {book.story.split(/[\r\n]+/).map((line, index) => (
               <p className="my-3" key={index}>
-                {line}
+                줄거리 :: {line}
               </p>
             ))}
           </div>
