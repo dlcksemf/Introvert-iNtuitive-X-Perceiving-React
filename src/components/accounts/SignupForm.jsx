@@ -13,7 +13,6 @@ const INIT_FILED_VALUES = {
   phone_num: '',
   position: '',
   gender: '',
-  birthdate: '',
   password: '',
   password2: '',
 };
