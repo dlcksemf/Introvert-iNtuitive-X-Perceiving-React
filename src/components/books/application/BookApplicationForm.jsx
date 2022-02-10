@@ -1,16 +1,19 @@
 import { useApiAxios } from 'base/api/base';
+import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
 import { useNavigate } from 'react-router-dom';
 
 const INIT_VALUE = {};
 
+const DATA_FIELDS = ['title', 'writer', 'publisher', 'ISBN'];
+
 function BookApplicationForm() {
   const [auth] = useAuth();
   const navigate = useNavigate();
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_VALUE);
 
-  const [{ loading, error }, saveApplication] = useApiAxios(
+  const [{ loading, error, errorMessages }, saveApplication] = useApiAxios(
     {
       url: '/books/api/applications/',
       method: 'POST',
@@ -41,13 +44,14 @@ function BookApplicationForm() {
       <div className="w-full lg:w-1/2 xl:w-5/12 px-4">
         <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
           <form onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <input
-                type="text"
-                name="title"
-                onChange={handleFieldChange}
-                placeholder="Title"
-                className="
+            {DATA_FIELDS.map((dataType) => (
+              <div className="mb-6">
+                <input
+                  type="text"
+                  name={dataType}
+                  onChange={handleFieldChange}
+                  placeholder={dataType}
+                  className="
                         w-full
                         rounded
                         py-3
@@ -58,9 +62,18 @@ function BookApplicationForm() {
                         focus-visible:shadow-none
                         focus:border-primary
                         "
-              />
-            </div>
-            <div className="mb-6">
+                />
+                {errorMessages[dataType] &&
+                  errorMessages[dataType].map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+              </div>
+            ))}
+
+            <DebugStates fieldValues={fieldValues} />
+            {/* <div className="mb-6">
               <input
                 type="text"
                 placeholder="Writer"
@@ -116,7 +129,7 @@ function BookApplicationForm() {
                         focus:border-primary
                         "
               />
-            </div>
+            </div> */}
 
             <div>
               <button
