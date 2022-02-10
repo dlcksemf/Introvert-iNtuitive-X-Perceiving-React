@@ -1,4 +1,5 @@
 import BookList from 'components/books/BookList';
+import Toggle from 'components/parts/Toggle';
 import { useNavigate } from 'react-router-dom';
 
 function BookListPage() {
@@ -6,6 +7,7 @@ function BookListPage() {
 
   return (
     <div>
+      <Toggle />
       <h2>도서 목록</h2>
       <BookList />
 
