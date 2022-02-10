@@ -10,6 +10,8 @@ import LoginPage from 'pages/LoginPage';
 import SignupPage from 'pages/SignupPage';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Test from 'Test';
+import BookApplicationPage from 'pages/BookApplicationPage';
+import AdminBookApplicationPage from 'pages/Admin/AdminBookApplicationPage';
 
 function App() {
   return (
@@ -24,17 +26,24 @@ function App() {
           <Route path="/accounts/signup/" element={<SignupPage />} />
           <Route path="/books/booklist" element={<BookListPage />} />
           <Route path="/books/:book_num/" element={<BookDetailPage />} />
+          <Route path="/books/application/" element={<BookApplicationPage />} />
           <Route
-            path="/books/application/"
+            path="/books/application/new/"
             element={<BookApplicationFormPage />}
           />
+
           <Route path="/manager/booklist/" element={<PageAdminBookList />} />
           <Route path="/manager/:postId/" element={<PageAdminBookDetail />} />
           <Route path="/newbookform/" element={<PageAdminBookForm />} />
           <Route
-            path="/bookform/:postId/edit"
+            path="/bookform/:postId/edit/"
             element={<PageAdminBookForm />}
           />
+          <Route
+            path="/admin/application/"
+            element={<AdminBookApplicationPage />}
+          />
+
           <Route path="/guide/" element={<GuidePage />} />
         </Routes>
       </div>

@@ -1,16 +1,18 @@
 import { useApiAxios } from 'base/api/base';
-import Pagination from 'designMaterials/Pagination';
 import { createContext, useEffect, useState } from 'react';
 import AdminApplication from './AdminApplication';
+import ReactPaginate from 'react-paginate';
+import 'css/Paging.css';
 
 const RenderContext = createContext();
 
-function AdminApplicationList() {
-  const [page, setPage] = useState('1');
-
+function AdminApplicationList({ itemsPerPage = 2 }) {
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [page, setPage] = useState(0);
   const [{ data, loading, error }, getApplications] = useApiAxios(
     {
-      url: `/books/api/applications/?page=${page ? page : '1'}`,
+      url: `/books/api/applications/?page=${page ? page + 1 : '1'}`,
       method: 'GET',
     },
     { manual: true },
@@ -22,12 +24,21 @@ function AdminApplicationList() {
   }, []);
 
   useEffect(() => {
-    getApplications();
-  }, [reload]);
+    setPageCount(Math.ceil(data?.count / itemsPerPage));
+    setCurrentItems(data?.results);
+  }, [data]);
 
   useEffect(() => {
     getApplications();
   }, [page]);
+
+  const handlePageClick = (event) => {
+    setPage(event.selected);
+  };
+
+  useEffect(() => {
+    getApplications();
+  }, [reload]);
 
   return (
     <div>
@@ -42,9 +53,18 @@ function AdminApplicationList() {
             />
           );
         })}
-
-        <Pagination setPage={setPage} dataNum={data?.count ? data.count : 2} />
       </RenderContext.Provider>
+
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
+        pageCount={pageCount}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
+        className="pagination"
+      />
     </div>
   );
 }
