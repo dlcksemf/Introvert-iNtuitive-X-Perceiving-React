@@ -2,7 +2,9 @@ import { useApiAxios } from 'base/api/base';
 import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
+import ConfirmationModal from 'designMaterials/ConfirmationModal';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const INIT_VALUE = {};
 
@@ -12,6 +14,8 @@ function BookApplicationForm() {
   const [auth] = useAuth();
   const navigate = useNavigate();
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_VALUE);
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [showCancleModal, setShowCancleModal] = useState(false);
 
   const [{ loading, error, errorMessages }, saveApplication] = useApiAxios(
     {
@@ -24,9 +28,7 @@ function BookApplicationForm() {
     { manual: true },
   );
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handleSubmit = () => {
     saveApplication({
       data: { ...fieldValues, state: 'P', email: auth.email },
     })
@@ -38,47 +40,44 @@ function BookApplicationForm() {
       });
   };
 
+  const handleClickSubmitButton = (e) => {
+    e.preventDefault();
+    setShowSubmitModal(true);
+  };
+
+  const handleClickCancleButton = (e) => {
+    e.preventDefault();
+    setShowCancleModal(true);
+  };
+
+  const handleOkButton = () => {
+    if (showSubmitModal) {
+      handleSubmit();
+    } else if (showCancleModal) {
+      navigate('/books/application/');
+    }
+  };
+
+  const handleCancleButton = () => {
+    if (showSubmitModal) {
+      setShowSubmitModal(false);
+    } else if (showCancleModal) {
+      setShowCancleModal(false);
+    }
+  };
+
   return (
     <div>
       <h2>Book Application Form</h2>
       <div className="w-full lg:w-1/2 xl:w-5/12 px-4">
         <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
-          <form onSubmit={handleSubmit}>
-            {DATA_FIELDS.map((dataType) => (
-              <div className="mb-6">
-                <input
-                  type="text"
-                  name={dataType}
-                  onChange={handleFieldChange}
-                  placeholder={dataType}
-                  className="
-                        w-full
-                        rounded
-                        py-3
-                        px-[14px]
-                        text-body-color text-base
-                        border border-[f0f0f0]
-                        outline-none
-                        focus-visible:shadow-none
-                        focus:border-primary
-                        "
-                />
-                {errorMessages[dataType] &&
-                  errorMessages[dataType].map((message, index) => (
-                    <p key={index} className="text-xs text-red-400">
-                      {message}
-                    </p>
-                  ))}
-              </div>
-            ))}
-
-            <DebugStates fieldValues={fieldValues} />
-            {/* <div className="mb-6">
+          {DATA_FIELDS.map((dataType, index) => (
+            <div key={index} className="mb-6">
               <input
                 type="text"
-                placeholder="Writer"
-                name="writer"
+                name={dataType}
                 onChange={handleFieldChange}
+                placeholder={dataType}
                 className="
                         w-full
                         rounded
@@ -91,50 +90,21 @@ function BookApplicationForm() {
                         focus:border-primary
                         "
               />
+              {errorMessages[dataType] &&
+                errorMessages[dataType].map((message, index) => (
+                  <p key={index} className="text-xs text-red-400">
+                    {message}
+                  </p>
+                ))}
             </div>
-            <div className="mb-6">
-              <input
-                type="text"
-                name="publisher"
-                onChange={handleFieldChange}
-                placeholder="Publisher"
-                className="
-                        w-full
-                        rounded
-                        py-3
-                        px-[14px]
-                        text-body-color text-base
-                        border border-[f0f0f0]
-                        outline-none
-                        focus-visible:shadow-none
-                        focus:border-primary
-                        "
-              />
-            </div>
-            <div className="mb-6">
-              <input
-                type="text"
-                name="ISBN"
-                onChange={handleFieldChange}
-                placeholder="ISBN"
-                className="
-                        w-full
-                        rounded
-                        py-3
-                        px-[14px]
-                        text-body-color text-base
-                        border border-[f0f0f0]
-                        outline-none
-                        focus-visible:shadow-none
-                        focus:border-primary
-                        "
-              />
-            </div> */}
+          ))}
 
-            <div>
-              <button
-                type="submit"
-                className="
+          <DebugStates fieldValues={fieldValues} />
+
+          <div>
+            <button
+              onClick={handleClickSubmitButton}
+              className="
                         w-full
                         text-black
                         bg-primary
@@ -144,13 +114,37 @@ function BookApplicationForm() {
                         transition
                         hover:bg-opacity-90
                         "
-              >
-                Send Message
-              </button>
-            </div>
-          </form>
+            >
+              Send Message
+            </button>
+
+            <button
+              onClick={handleClickCancleButton}
+              className="
+                        w-full
+                        text-black
+                        bg-primary
+                        rounded
+                        border border-primary
+                        p-3
+                        transition
+                        hover:bg-opacity-90
+                        "
+            >
+              Cancle
+            </button>
+          </div>
         </div>
       </div>
+
+      {(showSubmitModal || showCancleModal) && (
+        <ConfirmationModal
+          handleOkButton={handleOkButton}
+          handleCancleButton={handleCancleButton}
+        >
+          {showSubmitModal ? 'Save?' : 'Cancle?'}
+        </ConfirmationModal>
+      )}
     </div>
   );
 }
