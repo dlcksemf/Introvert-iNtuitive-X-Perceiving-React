@@ -1,4 +1,4 @@
-function SearchBar({ handleSubmit, handleChange }) {
+function SearchBar({ handleSubmit, handleChange, value }) {
   const handleSubmitButtonClicked = (e) => {
     e.preventDefault();
 
@@ -11,9 +11,10 @@ function SearchBar({ handleSubmit, handleChange }) {
     <div className="pt-2 relative mx-auto text-gray-600">
       <form onSubmit={handleSubmitButtonClicked}>
         <input
-          class="w-[200px] border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+          className="w-[200px] border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
           type="search"
           name="search"
+          value={value}
           placeholder="Search"
           onChange={(e) => {
             handleChange(e.target.value);

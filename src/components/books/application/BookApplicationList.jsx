@@ -5,20 +5,26 @@ import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import 'css/Paging.css';
 import SearchBar from 'components/parts/SearchBar';
+import StateCategory from 'components/parts/StateCategory';
+
+const STATELIST = ['All', 'Pending', 'Order', 'Denied'];
 
 function BookApplicationList({ itemsPerPage = 2 }) {
   const navigate = useNavigate();
   const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
+  const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(0);
+  const [abc, setAbc] = useState(STATELIST[0]);
 
   const [query, setQuery] = useState();
 
   const [{ data, loading, error }, getApplications] = useApiAxios(
     {
-      url: !query
-        ? `/books/api/applications${page ? '/?page=' + (page + 1) : '/?page=1'}`
-        : `/books/api/applications/?query=${query}`,
+      url: page
+        ? `/books/api/applications${page ? '/?page=' + (page + 1) : '/'}`
+        : `/books/api/applications/?query=${query ? query : ''}&state=${
+            abc === 'All' ? '' : abc.slice(0, 1)
+          }`,
       method: 'GET',
     },
     { manual: true },
@@ -29,7 +35,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   }, []);
 
   useEffect(() => {
-    setPageCount(Math.ceil(data?.count / itemsPerPage));
+    setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
     setCurrentItems(data?.results);
   }, [data]);
 
@@ -37,13 +43,18 @@ function BookApplicationList({ itemsPerPage = 2 }) {
     getApplications();
   }, [page]);
 
+  useEffect(() => {
+    getApplications();
+  }, [abc]);
+
   const handlePageClick = (event) => {
     setPage(event.selected);
-    console.log(event.selected);
   };
 
   const handleSubmit = () => {
-    getApplications();
+    getApplications().then(() => {
+      setQuery('');
+    });
   };
 
   return (
@@ -53,12 +64,22 @@ function BookApplicationList({ itemsPerPage = 2 }) {
           onClick={() => {
             navigate('/books/application/new/');
           }}
-          className="my-5 mx-3"
+          className="my-5 ml-3 mr-10"
         >
           신청하기!
         </button>
 
-        <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
+        <StateCategory
+          stateList={STATELIST}
+          selected={abc}
+          setSelected={setAbc}
+        />
+
+        <SearchBar
+          handleChange={setQuery}
+          handleSubmit={handleSubmit}
+          value={query}
+        />
       </div>
 
       <div className="h-64 mx-3">
