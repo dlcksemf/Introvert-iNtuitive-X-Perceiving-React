@@ -68,42 +68,41 @@ function PopOver() {
               <Popover.Panel className="absolute z-10 w-48 max-w-sm px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div className="relative grid gap-8 bg-white p-7">
-                    {auth.isLoggedIn &&
-                      LOGGED_IN.map((item) => (
-                        <div
-                          key={item.name}
-                          onClick={() => {
-                            if (item.name === 'Logout') {
-                              handleLogout();
-                              return;
-                            }
-                            navigate(`${item.url}`);
-                          }}
-                          className="cursor-pointer flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                        >
-                          <div className="ml-4">
-                            <p className="text-sm font-medium text-gray-900">
-                              {item.name}
-                            </p>
+                    {auth.isLoggedIn
+                      ? LOGGED_IN.map((item) => (
+                          <div
+                            key={item.name}
+                            onClick={() => {
+                              if (item.name === 'Logout') {
+                                handleLogout();
+                                return;
+                              }
+                              navigate(`${item.url}`);
+                            }}
+                            className="cursor-pointer flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                          >
+                            <div className="ml-4">
+                              <p className="text-sm font-medium text-gray-900">
+                                {item.name}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                    {!auth.isLoggedIn &&
-                      LOGGED_OUT.map((item) => (
-                        <div
-                          key={item.name}
-                          onClick={() => {
-                            navigate(`${item.url}`);
-                          }}
-                          className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                        >
-                          <div className="ml-4">
-                            <p className="text-sm font-medium text-gray-900">
-                              {item.name}
-                            </p>
+                        ))
+                      : LOGGED_OUT.map((item) => (
+                          <div
+                            key={item.name}
+                            onClick={() => {
+                              navigate(`${item.url}`);
+                            }}
+                            className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                          >
+                            <div className="ml-4">
+                              <p className="text-sm font-medium text-gray-900">
+                                {item.name}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
                   </div>
                 </div>
               </Popover.Panel>
