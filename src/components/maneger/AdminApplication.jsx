@@ -1,12 +1,33 @@
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { RenderContext } from './AdminApplicationList';
+import Badge from 'designMaterials/Badge';
 
 function AdminApplication({ application }) {
   const [auth] = useAuth();
   const { fieldValues, handleFieldChange } = useFieldValues(application);
+  const [color, setColor] = useState(() => {
+    if (application.state === 'P') {
+      return 'yellow';
+    } else if (application.state === 'D') {
+      return 'red';
+    } else {
+      return 'green';
+    }
+  });
+
+  useEffect(() => {
+    if (application.state === 'P') {
+      setColor('yellow');
+    } else if (application.state === 'D') {
+      setColor('red');
+    } else {
+      setColor('green');
+    }
+  }, [application]);
+
   const { setReload } = useContext(RenderContext);
 
   const [{ loading, error }, saveApplication] = useApiAxios(
@@ -41,13 +62,13 @@ function AdminApplication({ application }) {
       <div className="mx-4 inline-block">{application.publisher}</div>
       <div className="mx-4 inline-block">{application.ISBN}</div>
 
-      <div className="mx-4 inline-block">{application.state}</div>
+      <Badge color={color}>{application.state}</Badge>
 
-      <div className="w-20 flex flex-col mb-3">
+      <div className="w-72 flex mb-3">
         <select
-          className="block w-full bg-grey-lighter text-xs text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+          className="block bg-grey-lighter text-xs text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
           name="state"
-          value={fieldValues}
+          value={fieldValues.state}
           onChange={handleFieldChange}
         >
           <option value="" className="hidden">
@@ -58,9 +79,7 @@ function AdminApplication({ application }) {
           <option value="D">반려</option>
         </select>
 
-        <button className="inline-block" onClick={handleSubmit}>
-          저장하기
-        </button>
+        <button onClick={handleSubmit}>저장하기</button>
       </div>
     </div>
   );
