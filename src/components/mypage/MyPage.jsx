@@ -40,24 +40,30 @@ function MyPage() {
   }, [reload]);
 
   return (
-    <>
-      <UserInfo info={data} />
-
+    <div className="flex flex-row justify-around">
       <div>
-        <h2>Applications List</h2>
-        <ApplicationsList applicationList={data?.applications_set} />
+        <div className="my-5">
+          <h2>Loaned Book List</h2>
+          <LoanedBooksList loanedBookList={data?.loanedbooks_set} />
+        </div>
+
+        <div>
+          <h2>Wish Book List</h2>
+          <WishBooksList wishBookList={data?.wishes_set} />
+        </div>
       </div>
 
-      <div>
-        <h2>Loaned Book List</h2>
-        <LoanedBooksList loanedBookList={data?.loanedbooks_set} />
-      </div>
+      <div className="flex flex-col">
+        <div className="my-5">
+          <UserInfo info={data} />
+        </div>
 
-      <div>
-        <h2>Wish Book List</h2>
-        <WishBooksList wishBookList={data?.wishes_set} />
+        <div>
+          <h2>Applications List</h2>
+          <ApplicationsList applicationList={data?.applications_set} />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 

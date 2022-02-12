@@ -2,13 +2,15 @@ import ApplicationsBooks from './ApplicationsBooks';
 
 function ApplicationsList({ applicationList }) {
   return (
-    <div className="flex">
+    <div>
       {applicationList?.map((application) => {
         return (
-          <ApplicationsBooks
-            key={application?.application_num}
-            application={application}
-          />
+          <div>
+            <ApplicationsBooks
+              key={application?.application_num}
+              application={application}
+            />
+          </div>
         );
       })}
     </div>
