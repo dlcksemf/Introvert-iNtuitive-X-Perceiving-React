@@ -1,9 +1,9 @@
 import DebugStates from 'base/DebugStates';
 import Badge from 'designMaterials/Badge';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function ApplicationsBooks({ application }) {
-  const [color, setColor] = useState(() => {
+  const [color] = useState(() => {
     if (application.state === 'P') {
       return 'yellow';
     } else if (application.state === 'D') {
@@ -12,16 +12,6 @@ function ApplicationsBooks({ application }) {
       return 'green';
     }
   });
-
-  useEffect(() => {
-    if (application.state === 'P') {
-      setColor('yellow');
-    } else if (application.state === 'D') {
-      setColor('red');
-    } else {
-      setColor('green');
-    }
-  }, [application]);
 
   return (
     <div>
