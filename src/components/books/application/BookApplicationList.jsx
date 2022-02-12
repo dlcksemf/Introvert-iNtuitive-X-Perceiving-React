@@ -6,6 +6,7 @@ import ReactPaginate from 'react-paginate';
 import 'css/Paging.css';
 import SearchBar from 'components/parts/SearchBar';
 import StateCategory from 'components/parts/StateCategory';
+import { useAuth } from 'base/hooks/Authcontext';
 
 const STATELIST = ['All', 'Pending', 'Order', 'Denied'];
 
@@ -15,16 +16,20 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(0);
   const [abc, setAbc] = useState(STATELIST[0]);
+  const [checked, setChecked] = useState(false);
+  const [auth] = useAuth();
 
   const [query, setQuery] = useState();
 
   const [{ data, loading, error }, getApplications] = useApiAxios(
     {
       url: page
-        ? `/books/api/applications${page ? '/?page=' + (page + 1) : '/'}`
+        ? `/books/api/applications/${page ? '?page=' + (page + 1) : ''}&email=${
+            checked ? auth.email : ''
+          }`
         : `/books/api/applications/?query=${query ? query : ''}&state=${
             abc === 'All' ? '' : abc.slice(0, 1)
-          }`,
+          }&email=${checked ? auth.email : ''}`,
       method: 'GET',
     },
     { manual: true },
@@ -38,6 +43,11 @@ function BookApplicationList({ itemsPerPage = 2 }) {
     setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
     setCurrentItems(data?.results);
   }, [data]);
+
+  useEffect(() => {
+    setPage(0);
+    getApplications();
+  }, [checked]);
 
   useEffect(() => {
     getApplications();
@@ -60,6 +70,17 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   return (
     <>
       <div className="flex">
+        <div className="flex">
+          <div className="text-xs">본인 신청 도서</div>
+          <input
+            type="checkbox"
+            value={checked}
+            onChange={(e) => {
+              setChecked(e.target.checked);
+            }}
+          />
+        </div>
+
         <button
           onClick={() => {
             navigate('/books/application/new/');
