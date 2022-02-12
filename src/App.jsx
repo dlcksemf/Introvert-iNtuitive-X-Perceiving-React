@@ -12,6 +12,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Test from 'Test';
 import BookApplicationPage from 'pages/BookApplicationPage';
 import AdminBookApplicationPage from 'pages/Admin/AdminBookApplicationPage';
+import MyPage from 'components/mypage/MyPage';
 
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
           <Route path="/test/" element={<Test />} />
           <Route path="/accounts/login/" element={<LoginPage />} />
           <Route path="/accounts/signup/" element={<SignupPage />} />
-          <Route path="/books/booklist" element={<BookListPage />} />
+          <Route path="/accounts/mypage/" element={<MyPage />} />
+
+          <Route path="/books/booklist/" element={<BookListPage />} />
           <Route path="/books/:book_num/" element={<BookDetailPage />} />
           <Route path="/books/application/" element={<BookApplicationPage />} />
           <Route
@@ -39,10 +42,13 @@ function App() {
             path="/bookform/:postId/edit/"
             element={<PageAdminBookForm />}
           />
-          <Route
-            path="/admin/application/"
-            element={<AdminBookApplicationPage />}
-          />
+
+          {true && (
+            <Route
+              path="/admin/application/"
+              element={<AdminBookApplicationPage />}
+            />
+          )}
 
           <Route path="/guide/" element={<GuidePage />} />
         </Routes>

@@ -12,8 +12,8 @@ const LOGGED_IN = [
     url: '/books/application/',
   },
   {
-    name: 'OO',
-    url: '##',
+    name: 'My Page',
+    url: '/accounts/mypage/',
   },
 ];
 
