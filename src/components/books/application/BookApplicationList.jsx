@@ -4,6 +4,7 @@ import { useApiAxios } from 'base/api/base';
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import 'css/Paging.css';
+import SearchBar from 'components/parts/SearchBar';
 
 function BookApplicationList({ itemsPerPage = 2 }) {
   const navigate = useNavigate();
@@ -11,9 +12,13 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
 
+  const [query, setQuery] = useState();
+
   const [{ data, loading, error }, getApplications] = useApiAxios(
     {
-      url: `/books/api/applications/?page=${page ? page + 1 : '1'}`,
+      url: !query
+        ? `/books/api/applications${page ? '/?page=' + (page + 1) : '/?page=1'}`
+        : `/books/api/applications/?query=${query}`,
       method: 'GET',
     },
     { manual: true },
@@ -34,18 +39,27 @@ function BookApplicationList({ itemsPerPage = 2 }) {
 
   const handlePageClick = (event) => {
     setPage(event.selected);
+    console.log(event.selected);
+  };
+
+  const handleSubmit = () => {
+    getApplications();
   };
 
   return (
     <>
-      <button
-        onClick={() => {
-          navigate('/books/application/new/');
-        }}
-        className="my-5 mx-3"
-      >
-        신청하기!
-      </button>
+      <div className="flex">
+        <button
+          onClick={() => {
+            navigate('/books/application/new/');
+          }}
+          className="my-5 mx-3"
+        >
+          신청하기!
+        </button>
+
+        <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
+      </div>
 
       <div className="h-64 mx-3">
         {currentItems?.map((application) => {
