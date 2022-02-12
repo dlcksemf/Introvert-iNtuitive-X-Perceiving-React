@@ -5,24 +5,39 @@ import ApplicationsList from './applications/ApplicationsList';
 import LoanedBooksList from './loanedBooks/LoanedBooksList';
 import WishBooksList from './wishes/WishBooksList';
 import UserInfo from './UserInfo';
+import { useReload } from 'base/hooks/ReloadContext';
 
 function MyPage() {
   const [auth] = useAuth();
-  const [{ data, loading, error, errorMessages }, saveApplication] =
-    useApiAxios(
-      {
-        url: `/accounts/api/users/${auth.email}`,
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${auth.access}`,
-        },
+  const [reload, setReload] = useReload();
+  const [{ data, loading, error, errorMessages }, getUserInfo] = useApiAxios(
+    {
+      url: `/accounts/api/users/${auth.email}`,
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
       },
-      { manual: true },
-    );
+    },
+    { manual: true },
+  );
 
   useEffect(() => {
-    saveApplication();
+    getUserInfo()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
+
+  useEffect(() => {
+    getUserInfo()
+      .then(() => {
+        setReload(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [reload]);
 
   return (
     <>
