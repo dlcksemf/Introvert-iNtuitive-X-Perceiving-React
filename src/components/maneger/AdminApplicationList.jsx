@@ -3,16 +3,24 @@ import { createContext, useEffect, useState } from 'react';
 import AdminApplication from './AdminApplication';
 import ReactPaginate from 'react-paginate';
 import 'css/Paging.css';
+import StateCategory from 'components/parts/StateCategory';
 
 const RenderContext = createContext();
+const STATELIST = ['All', 'Pending', 'Order', 'Denied'];
 
 function AdminApplicationList({ itemsPerPage = 2 }) {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
+  const [abc, setAbc] = useState(STATELIST[0]);
+
   const [{ data, loading, error }, getApplications] = useApiAxios(
     {
-      url: `/books/api/applications/?page=${page ? page + 1 : '1'}`,
+      url: page
+        ? `/books/api/applications${page ? '/?page=' + (page + 1) : '/'}`
+        : `/books/api/applications/?state=${
+            abc === 'All' ? '' : abc.slice(0, 1)
+          }`,
       method: 'GET',
     },
     { manual: true },
@@ -20,29 +28,47 @@ function AdminApplicationList({ itemsPerPage = 2 }) {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    getApplications();
-  }, []);
-
-  useEffect(() => {
-    setPageCount(Math.ceil(data?.count / itemsPerPage));
+    setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
     setCurrentItems(data?.results);
   }, [data]);
 
   useEffect(() => {
-    getApplications();
+    getApplications().catch((error) => {
+      console.log('page');
+
+      console.log(error);
+    });
   }, [page]);
+
+  useEffect(() => {
+    getApplications().catch((error) => {
+      console.log('state');
+
+      console.log(error);
+    });
+  }, [abc]);
 
   const handlePageClick = (event) => {
     setPage(event.selected);
   };
 
   useEffect(() => {
-    getApplications();
+    getApplications().catch((error) => {
+      console.log('reload');
+      console.log(error);
+    });
   }, [reload]);
 
   return (
     <div>
-      <h2>Admin Book Application</h2>
+      <div className="flex">
+        <h2 className="mx-3">Admin Book Application</h2>
+        <StateCategory
+          stateList={STATELIST}
+          selected={abc}
+          setSelected={setAbc}
+        />
+      </div>
 
       <RenderContext.Provider value={{ setReload, reload }}>
         {data?.results?.map((application) => {
