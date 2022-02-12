@@ -23,38 +23,59 @@ function BookApplicationList({ itemsPerPage = 2 }) {
 
   const [{ data, loading, error }, getApplications] = useApiAxios(
     {
-      url: page
-        ? `/books/api/applications/${page ? '?page=' + (page + 1) : ''}&email=${
-            checked ? auth.email : ''
-          }`
-        : `/books/api/applications/?query=${query ? query : ''}&state=${
-            abc === 'All' ? '' : abc.slice(0, 1)
-          }&email=${checked ? auth.email : ''}`,
+      url: `/books/api/applications/?${page ? 'page=' + (page + 1) : ''}${
+        query ? '&query=' + query : ''
+      }${abc === 'All' ? '' : '&state=' + abc.slice(0, 1)}${
+        checked ? '&email=' + auth.email : ''
+      }`,
       method: 'GET',
     },
     { manual: true },
   );
 
   useEffect(() => {
-    getApplications();
+    getApplications()
+      .then(({ data }) => {
+        setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
+        setCurrentItems(data?.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   useEffect(() => {
-    setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
-    setCurrentItems(data?.results);
-  }, [data]);
-
-  useEffect(() => {
-    setPage(0);
-    getApplications();
+    getApplications()
+      .then((data) => {
+        setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
+        setCurrentItems(data?.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [checked]);
 
   useEffect(() => {
-    getApplications();
+    getApplications()
+      .then(({ data }) => {
+        setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
+        setCurrentItems(data?.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [page]);
 
   useEffect(() => {
-    getApplications();
+    setPage(0);
+    getApplications()
+      .then(({ data }) => {
+        setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
+        setCurrentItems(data?.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [abc]);
 
   const handlePageClick = (event) => {
