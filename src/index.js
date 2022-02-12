@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ErrorBoundary from 'base/ErrorBoundary';
 import { AuthProvider } from 'base/hooks/Authcontext';
 import { RenderProvider } from 'base/hooks/RenderContext';
+import { ReloadProvider } from 'base/hooks/ReloadContext';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.render(
       <BrowserRouter>
         <AuthProvider>
           <RenderProvider>
-            <App />
+            <ReloadProvider>
+              <App />
+            </ReloadProvider>
           </RenderProvider>
         </AuthProvider>
       </BrowserRouter>
