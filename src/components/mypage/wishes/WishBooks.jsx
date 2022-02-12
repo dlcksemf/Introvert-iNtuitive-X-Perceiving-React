@@ -1,10 +1,20 @@
-import DebugStates from 'base/DebugStates';
+import { useNavigate } from 'react-router-dom';
 
-function WishBooks({ book }) {
+function WishBooks({ book: { book_name: book } }) {
+  const navigate = useNavigate();
+
   return (
     <div>
-      {book.book_name.title}
-      <DebugStates book={book} />
+      <div
+        className="cursor-pointer hover:text-red-400"
+        onClick={() => {
+          navigate(`/books/${book.book_num}/`);
+        }}
+      >
+        {book.title}
+      </div>
+
+      {book.state}
     </div>
   );
 }
