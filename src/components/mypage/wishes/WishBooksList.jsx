@@ -4,7 +4,7 @@ function WishBooksList({ wishBookList }) {
   return (
     <div className="flex">
       {wishBookList?.map((book) => {
-        return <WishBooks key={book.book_num} book={book} />;
+        return <WishBooks key={book.book_name.book_num} book={book} />;
       })}
     </div>
   );
