@@ -88,6 +88,14 @@ function BookApplicationList({ itemsPerPage = 2 }) {
     });
   };
 
+  const handleClick = () => {
+    if (auth.isLoggedIn) {
+      navigate('/books/application/new/');
+    } else {
+      navigate('/accounts/login/');
+    }
+  };
+
   return (
     <>
       <div className="flex">
@@ -102,12 +110,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
           />
         </div>
 
-        <button
-          onClick={() => {
-            navigate('/books/application/new/');
-          }}
-          className="my-5 ml-3 mr-10"
-        >
+        <button onClick={handleClick} className="my-5 ml-3 mr-10">
           신청하기!
         </button>
 
