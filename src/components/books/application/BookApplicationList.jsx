@@ -18,7 +18,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(0);
-  const [abc, setAbc] = useState(STATELIST[0]);
+  const [category, setCategory] = useState(STATELIST[0]);
   const [checked, setChecked] = useState(false);
   const [reload, setReload] = useState(false);
   const [auth] = useAuth();
@@ -30,7 +30,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
     {
       url: `/books/api/applications/?${page ? 'page=' + (page + 1) : ''}${
         query ? '&query=' + query : ''
-      }${abc === 'All' ? '' : '&state=' + abc.slice(0, 1)}${
+      }${category === 'All' ? '' : '&state=' + category.slice(0, 1)}${
         checked ? '&email=' + auth.email : ''
       }`,
       method: 'GET',
@@ -41,7 +41,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   useEffect(() => {
     setPage(0);
     setReload((prevState) => !prevState);
-  }, [checked, abc]);
+  }, [checked, category]);
 
   useEffect(() => {
     setReload((prevState) => !prevState);
@@ -100,8 +100,8 @@ function BookApplicationList({ itemsPerPage = 2 }) {
 
         <StateCategory
           stateList={STATELIST}
-          selected={abc}
-          setSelected={setAbc}
+          selected={category}
+          setSelected={setCategory}
         />
 
         <SearchBar

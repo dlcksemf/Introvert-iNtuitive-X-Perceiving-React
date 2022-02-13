@@ -12,14 +12,14 @@ function AdminApplicationList({ itemsPerPage = 2 }) {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
-  const [abc, setAbc] = useState(STATELIST[0]);
+  const [category, setCategory] = useState(STATELIST[0]);
 
   const [{ data, loading, error }, getApplications] = useApiAxios(
     {
       url: page
         ? `/books/api/applications${page ? '/?page=' + (page + 1) : '/'}`
         : `/books/api/applications/?state=${
-            abc === 'All' ? '' : abc.slice(0, 1)
+            category === 'All' ? '' : category.slice(0, 1)
           }`,
       method: 'GET',
     },
@@ -46,7 +46,7 @@ function AdminApplicationList({ itemsPerPage = 2 }) {
 
       console.log(error);
     });
-  }, [abc]);
+  }, [category]);
 
   const handlePageClick = (event) => {
     setPage(event.selected);
@@ -65,8 +65,8 @@ function AdminApplicationList({ itemsPerPage = 2 }) {
         <h2 className="mx-3">Admin Book Application</h2>
         <StateCategory
           stateList={STATELIST}
-          selected={abc}
-          setSelected={setAbc}
+          selected={category}
+          setSelected={setCategory}
         />
       </div>
 
