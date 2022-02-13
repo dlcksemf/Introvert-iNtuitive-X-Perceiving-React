@@ -36,7 +36,7 @@ function LoginForm() {
       console.log('is_staff :', is_staff);
 
       // 인증 후, 이동할 주소를 지정합니다.
-      Navigate('/test/');
+      Navigate(-1);
     });
   };
 
