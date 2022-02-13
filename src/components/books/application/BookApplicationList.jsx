@@ -20,6 +20,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   const [page, setPage] = useState(0);
   const [abc, setAbc] = useState(STATELIST[0]);
   const [checked, setChecked] = useState(false);
+  const [reload, setReload] = useState(false);
   const [auth] = useAuth();
   const [showBackDrop, setShowBackDrop] = useState(false);
 
@@ -38,40 +39,15 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   );
 
   useEffect(() => {
-    getApplications()
-      .then(({ data }) => {
-        setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
-        setCurrentItems(data?.results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    setPage(0);
+    setReload((prevState) => !prevState);
+  }, [checked, abc]);
 
   useEffect(() => {
-    getApplications()
-      .then((data) => {
-        setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
-        setCurrentItems(data?.results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [checked]);
-
-  useEffect(() => {
-    getApplications()
-      .then(({ data }) => {
-        setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
-        setCurrentItems(data?.results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setReload((prevState) => !prevState);
   }, [page]);
 
   useEffect(() => {
-    setPage(0);
     getApplications()
       .then(({ data }) => {
         setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
@@ -80,7 +56,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
       .catch((error) => {
         console.log(error);
       });
-  }, [abc]);
+  }, [reload]);
 
   const handlePageClick = (event) => {
     setPage(event.selected);
