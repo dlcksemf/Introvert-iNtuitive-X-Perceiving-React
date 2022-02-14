@@ -63,9 +63,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   };
 
   const handleSubmit = () => {
-    setReload((prevState) => !prevState).then(() => {
-      setQuery('');
-    });
+    setReload((prevState) => !prevState);
   };
 
   const handleClick = () => {
@@ -104,11 +102,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
           setSelected={setCategory}
         />
 
-        <SearchBar
-          handleChange={setQuery}
-          handleSubmit={handleSubmit}
-          value={query}
-        />
+        <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
       </div>
 
       <div className="h-64 mx-3">
