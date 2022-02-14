@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import BookApplicationComponent from './BookApplicationComponent';
 import { useApiAxios } from 'base/api/base';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import ReactPaginate from 'react-paginate';
 import 'css/Paging.css';
 import SearchBar from 'components/parts/SearchBar';
@@ -17,10 +17,9 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   const navigate = useNavigate();
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
-  const [page, setPage] = useState(0);
+  const [, setPage] = useState(1);
   const [category, setCategory] = useState(STATELIST[0]);
   const [checked, setChecked] = useState(false);
-  const [reload, setReload] = useState(false);
   const [auth] = useAuth();
   const [showBackDrop, setShowBackDrop] = useState(false);
 
@@ -28,42 +27,40 @@ function BookApplicationList({ itemsPerPage = 2 }) {
 
   const [{ data, loading, error }, getApplications] = useApiAxios(
     {
-      url: `/books/api/applications/?${page ? 'page=' + (page + 1) : ''}${
-        query ? '&query=' + query : ''
-      }${category === 'All' ? '' : '&state=' + category.slice(0, 1)}${
-        checked ? '&email=' + auth.email : ''
-      }`,
+      url: '/books/api/applications/',
       method: 'GET',
     },
     { manual: true },
   );
 
-  useEffect(() => {
-    setPage(0);
-    setReload((prevState) => !prevState);
-  }, [checked, category]);
+  const fetchApplications = useCallback(
+    async (newPage) => {
+      const params = {
+        page: newPage,
+        query,
+        state: category === 'All' ? '' : category.slice(0, 1),
+        email: checked ? auth.email : '',
+      };
+
+      const { data } = await getApplications({ params });
+
+      setPage(newPage);
+      setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [category, checked],
+  );
 
   useEffect(() => {
-    setReload((prevState) => !prevState);
-  }, [page]);
-
-  useEffect(() => {
-    getApplications()
-      .then(({ data }) => {
-        setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
-        setCurrentItems(data?.results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [reload]);
+    fetchApplications(1);
+  }, [fetchApplications, checked, category]);
 
   const handlePageClick = (event) => {
-    setPage(event.selected);
+    fetchApplications(event.selected + 1);
   };
 
   const handleSubmit = () => {
-    setReload((prevState) => !prevState);
+    fetchApplications();
   };
 
   const handleClick = () => {

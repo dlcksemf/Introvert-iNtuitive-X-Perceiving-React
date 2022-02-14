@@ -1,11 +1,10 @@
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
-import { useContext, useEffect, useState } from 'react';
-import { RenderContext } from './AdminApplicationList';
+import { useEffect, useState } from 'react';
 import Badge from 'designMaterials/Badge';
 
-function AdminApplication({ application }) {
+function AdminApplication({ application, reload }) {
   const [auth] = useAuth();
   const { fieldValues, handleFieldChange } = useFieldValues(application);
   const [color, setColor] = useState(() => {
@@ -28,8 +27,6 @@ function AdminApplication({ application }) {
     }
   }, [application]);
 
-  const { setReload } = useContext(RenderContext);
-
   const [{ loading, error }, saveApplication] = useApiAxios(
     {
       url: `/books/api/applications/${application.application_num}/`,
@@ -48,7 +45,7 @@ function AdminApplication({ application }) {
       data: { ...fieldValues },
     })
       .then(() => {
-        setReload((prevState) => !prevState);
+        reload();
       })
       .catch((error) => {
         console.log(error);
