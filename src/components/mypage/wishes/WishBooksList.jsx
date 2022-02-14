@@ -1,11 +1,21 @@
 import WishBooks from './WishBooks';
+import { Link, useLocation } from 'react-router-dom';
 
 function WishBooksList({ wishBookList }) {
+  let location = useLocation();
+
   return (
-    <div className="flex">
-      {wishBookList?.map((book) => {
-        return <WishBooks key={book.book_name.book_num} book={book} />;
+    <div>
+      {wishBookList?.map((book, index) => {
+        return <WishBooks key={index} book={book} />;
       })}
+
+      <Link
+        to={`/accounts/modal/wishes/`}
+        state={{ backgroundLocation: location }}
+      >
+        전체 내역 보기
+      </Link>
     </div>
   );
 }

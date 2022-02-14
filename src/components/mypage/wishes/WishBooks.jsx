@@ -4,7 +4,7 @@ function WishBooks({ book: { book_name: book } }) {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="flex">
       <div
         className="cursor-pointer hover:text-red-400"
         onClick={() => {
