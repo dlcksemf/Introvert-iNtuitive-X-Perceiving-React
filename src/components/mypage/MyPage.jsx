@@ -23,14 +23,6 @@ function MyPage() {
 
   useEffect(() => {
     getUserInfo()
-      .then()
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    getUserInfo()
       .then(() => {
         setReload(false);
       })
