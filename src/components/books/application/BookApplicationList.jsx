@@ -34,10 +34,10 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   );
 
   const fetchApplications = useCallback(
-    async (newPage) => {
+    async (newPage, newQuery = query) => {
       const params = {
         page: newPage,
-        query,
+        query: newQuery,
         state: category === 'All' ? '' : category.slice(0, 1),
         email: checked ? auth.email : '',
       };
@@ -45,7 +45,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
       const { data } = await getApplications({ params });
 
       setPage(newPage);
-      setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
+      setPageCount(Math.ceil(data.count / itemsPerPage));
       setCurrentItems(data?.results);
     },
     [category, checked],
@@ -53,14 +53,16 @@ function BookApplicationList({ itemsPerPage = 2 }) {
 
   useEffect(() => {
     fetchApplications(1);
-  }, [fetchApplications, checked, category]);
+  }, [checked, category]);
 
   const handlePageClick = (event) => {
     fetchApplications(event.selected + 1);
   };
 
-  const handleSubmit = () => {
-    fetchApplications();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetchApplications(1, query);
   };
 
   const handleClick = () => {
