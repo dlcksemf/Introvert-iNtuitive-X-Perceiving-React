@@ -10,6 +10,7 @@ function ModalComponent({ titleList, bookInfo, book, type }) {
               <div className="font-medium text-gray-800">
                 {bookInfo[title]}
                 {type === 'loanedbooks' && book[title]}
+                {/* {type === 'wishes' && book[title]} */}
               </div>
             </div>
           </td>
