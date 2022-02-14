@@ -1,4 +1,4 @@
-import { AdminApplicationList } from 'components/maneger/AdminApplicationList';
+import AdminApplicationList from 'components/maneger/AdminApplicationList';
 
 function AdminBookApplicationPage() {
   return (
