@@ -36,7 +36,7 @@ function LoanedBooks({ book }) {
 
   const [{ loading, error, errorMessages }, updateState] = useApiAxios(
     {
-      url: `/books/api/newloanedbooks/${bookInfo.book_num}/`,
+      url: `/books/api/loanedbooks/${book.loan_num}/`,
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${auth.access}`,
@@ -72,8 +72,11 @@ function LoanedBooks({ book }) {
 
       <Badge color={color}>
         {book.return_state === 'L' &&
-          (book.return_due_date < date ? overdueDate : book.return_due_date)}
+          (book.return_due_date < date
+            ? overdueDate + '일 연체'
+            : book.return_due_date)}
         {book.return_state === 'A' && '반납 신청..'}
+        {book.return_state === 'R' && '반납 됨'}
       </Badge>
 
       {book.return_state === 'L' && (
