@@ -63,7 +63,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
   };
 
   const handleSubmit = () => {
-    getApplications().then(() => {
+    setReload((prevState) => !prevState).then(() => {
       setQuery('');
     });
   };
