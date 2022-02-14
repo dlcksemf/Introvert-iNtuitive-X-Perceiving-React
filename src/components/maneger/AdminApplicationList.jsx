@@ -16,11 +16,9 @@ function AdminApplicationList({ itemsPerPage = 2 }) {
 
   const [{ data, loading, error }, getApplications] = useApiAxios(
     {
-      url: page
-        ? `/books/api/applications${page ? '/?page=' + (page + 1) : '/'}`
-        : `/books/api/applications/?state=${
-            category === 'All' ? '' : category.slice(0, 1)
-          }`,
+      url: `/books/api/applications/?${page ? 'page=' + (page + 1) : ''}${
+        category !== 'All' ? '&state=' + category.slice(0, 1) : ''
+      }`,
       method: 'GET',
     },
     { manual: true },
@@ -28,36 +26,28 @@ function AdminApplicationList({ itemsPerPage = 2 }) {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
-    setCurrentItems(data?.results);
-  }, [data]);
+    setPage(0);
+    setReload((prevState) => !prevState);
+  }, [category]);
 
   useEffect(() => {
-    getApplications().catch((error) => {
-      console.log('page');
-
-      console.log(error);
-    });
+    setReload((prevState) => !prevState);
   }, [page]);
 
   useEffect(() => {
-    getApplications().catch((error) => {
-      console.log('state');
-
-      console.log(error);
-    });
-  }, [category]);
+    getApplications()
+      .then(({ data }) => {
+        setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
+        setCurrentItems(data?.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [reload]);
 
   const handlePageClick = (event) => {
     setPage(event.selected);
   };
-
-  useEffect(() => {
-    getApplications().catch((error) => {
-      console.log('reload');
-      console.log(error);
-    });
-  }, [reload]);
 
   return (
     <div>
