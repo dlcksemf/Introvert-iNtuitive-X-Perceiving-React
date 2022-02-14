@@ -3,7 +3,7 @@ function SearchBar({ handleSubmit, handleChange }) {
     e.preventDefault();
 
     if (handleSubmit) {
-      handleSubmit();
+      handleSubmit(e);
     }
   };
 
