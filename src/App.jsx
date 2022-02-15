@@ -13,6 +13,7 @@ import Test from 'Test';
 import BookApplicationPage from 'pages/BookApplicationPage';
 import AdminBookApplicationPage from 'pages/Admin/AdminBookApplicationPage';
 import MyPage from 'components/mypage/MyPage';
+import AdminLoanedBookList from 'pages/Admin/AdminLoanedBookList';
 
 function App() {
   return (
@@ -41,6 +42,11 @@ function App() {
           <Route
             path="/bookform/:postId/edit/"
             element={<PageAdminBookForm />}
+          />
+
+          <Route
+            path="/manager/loanedbook/"
+            element={<AdminLoanedBookList />}
           />
 
           {true && (
