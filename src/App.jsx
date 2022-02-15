@@ -13,8 +13,10 @@ import Test from 'Test';
 import BookApplicationPage from 'pages/BookApplicationPage';
 import AdminBookApplicationPage from 'pages/Admin/AdminBookApplicationPage';
 import MyPage from 'components/mypage/MyPage';
+import Modal from 'react-modal';
 
 function App() {
+  Modal.setAppElement('#root');
   return (
     <>
       <TopNav />

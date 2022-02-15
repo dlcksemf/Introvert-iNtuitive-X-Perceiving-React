@@ -1,12 +1,15 @@
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import LoadingIndicator from 'components/LoadingIndicator';
-import { useEffect } from 'react';
+import LoanedModal from 'components/parts/LoanedModal';
+import LoanedIcon from 'designMaterials/LoanedIcon';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function BookDetail({ book_num }) {
   const [auth] = useAuth();
   const navigate = useNavigate();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const [{ data: book, loading, error }, refetch] = useApiAxios(
     {
@@ -55,6 +58,16 @@ function BookDetail({ book_num }) {
         `삭제 요청 중 에러가 발생했습니다. (${deleteError.response?.status} ${deleteError.response?.statusText})`}
       {book && (
         <>
+          <div className="flex justify-end">
+            <button onClick={() => setModalIsOpen(true)}>
+              <LoanedIcon />
+            </button>
+            <LoanedModal
+              modalIsOpen={modalIsOpen}
+              setModalIsOpen={setModalIsOpen}
+              book_num={book?.book_num}
+            />
+          </div>
           <h3>{book.title}</h3>
           <p>{book.category_id}</p>
           <p>{book.return_due_date}</p>
