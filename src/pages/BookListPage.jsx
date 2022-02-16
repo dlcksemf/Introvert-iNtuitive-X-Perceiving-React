@@ -7,11 +7,10 @@ function BookListPage() {
 
   return (
     <div>
-      <Toggle />
-      <h2>도서 목록</h2>
+      <h2 className="flex justify-center inline-block px-6 py-2 border-2 border-blue-400 text-blue-400 font-medium text-lg leading-tight uppercase rounded ease-in-out">
+        도서 목록
+      </h2>
       <BookList />
-
-      <button onClick={() => navigate('/')}>새 포스팅 쓰기</button>
     </div>
   );
 }
