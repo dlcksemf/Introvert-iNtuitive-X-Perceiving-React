@@ -1,17 +1,20 @@
+import React, { useState, useEffect, useCallback } from 'react';
+
 import { useApiAxios } from 'base/api/base';
-import DebugStates from 'base/DebugStates';
-import { useEffect } from 'react';
-import AdminUserList from './AdminUserList';
-import React, { useState } from 'react';
-import Pagination from './common/Pagination';
 import AdminTopNav from './AdminTopNav';
+import AdminUserList from './AdminUserList';
+
 import { useNavigate } from 'react-router-dom';
-// import Pagination from 'react-js-pagination';
+import ReactPaginate from 'react-paginate';
+import SearchBar from 'components/parts/SearchBar';
 
 function AdminUser() {
   const navigate = useNavigate();
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [, setPage] = useState(1);
 
-  const [search, setSearch] = useState([]);
+  const [query, setQuery] = useState();
 
   const [{ data: userdata, loading, error }, refresh] = useApiAxios(
     {
@@ -21,8 +24,31 @@ function AdminUser() {
     { manual: true },
   );
 
+  const fetchApplications = useCallback(async (newPage, newQuery = query) => {
+    const params = {
+      page: newPage,
+      query: newQuery,
+    };
+
+    const { data } = await refresh({ params });
+
+    setPage(newPage);
+    setPageCount(Math.ceil(data?.count / 2));
+    setCurrentItems(data?.results);
+  }, []);
+
+  const handlePageClick = (event) => {
+    fetchApplications(event.selected + 1);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetchApplications(1, query);
+  };
+
   useEffect(() => {
-    refresh();
+    fetchApplications();
   }, []);
 
   // const [page, setPage] = useState({});
@@ -48,19 +74,24 @@ function AdminUser() {
           {loading && '유저 목록을 가져오는 중입니다.'}
           {error && '목록을 가져오는 중 에러가 발생했습니다.'}
           <div>
-            <input
-              className="cursor-auto bg-gray-200 border border-gray-500"
-              type="text"
-              placeholder="검색어를 입력해주세요."
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <button className="ml-2 bg-blue-300">검색</button>
-            {userdata &&
-              userdata.map((user, index) => <AdminUserList user={user} />)}
+            <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
+
+            {userdata?.results?.map((user, index) => (
+              <AdminUserList user={user} />
+            ))}
           </div>
 
           <>
-            <Pagination prevPageText={'<'} nextPageText={'>'} />
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={2}
+              pageCount={pageCount}
+              previousLabel="<"
+              renderOnZeroPageCount={null}
+              className="pagination"
+            />
           </>
         </div>
       </div>

@@ -3,22 +3,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { useAuth } from 'base/hooks/Authcontext';
-import { useEffect } from 'react';
 
 function AdminUserList({ user }) {
   const [auth] = useAuth();
   const navigate = useNavigate();
-
-  const [{ loading, error }, refetch] = useApiAxios(
-    {
-      url: `/accounts/api/users/${user.email}/`,
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${auth.access}`,
-      },
-    },
-    { manual: true },
-  );
 
   const [{ loading: deleteLoading, error: deleteError }, deleteUser] =
     useApiAxios(
@@ -38,10 +26,6 @@ function AdminUserList({ user }) {
       navigate('/admin/user/');
     });
   };
-
-  useEffect(() => {
-    refetch();
-  }, []);
 
   return (
     <div>
