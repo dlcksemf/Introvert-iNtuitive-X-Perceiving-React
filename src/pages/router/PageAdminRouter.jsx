@@ -5,10 +5,12 @@ import PageAdminBookDetail from 'pages/Admin/PageAdminBookDetail';
 import PageAdminBookForm from 'pages/Admin/PageAdminBookForm';
 import PageAdminBookList from 'pages/Admin/PageAdminBookList';
 import AdminLoanedBookList from 'pages/Admin/AdminLoanedBookList';
+import AdminUserPage from 'pages/Admin/AdminUserPage';
 
 function PageAdminRouter() {
   return (
     <Routes>
+      <Route path="/user/" element={<AdminUserPage />} />
       <Route path="/booklist/" element={<PageAdminBookList />} />
       <Route path="/:postId/" element={<PageAdminBookDetail />} />
       <Route path="/book/new/" element={<PageAdminBookForm />} />
