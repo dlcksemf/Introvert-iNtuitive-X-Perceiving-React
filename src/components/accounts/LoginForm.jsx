@@ -22,17 +22,16 @@ function LoginForm() {
     e.preventDefault();
 
     refetch({ data: fieldValues }).then((response) => {
-      const { access, refresh, email, is_staff, username } = response.data;
+      const { access, refresh, user_id, is_staff, username } = response.data;
       login({
         access,
         refresh,
-        email,
+        user_id,
         is_staff,
         username,
       });
       console.log('access :', access);
       console.log('refresh :', refresh);
-      console.log('email :', email);
       console.log('is_staff :', is_staff);
 
       // 인증 후, 이동할 주소를 지정합니다.
