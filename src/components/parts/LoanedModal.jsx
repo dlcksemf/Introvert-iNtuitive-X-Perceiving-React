@@ -4,19 +4,30 @@ import useFieldValues from 'base/hooks/useFieldValues';
 import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import Modal from 'react-modal';
-import { Navigate } from 'react-router-dom';
+import { addMonths } from 'date-fns';
+import { ko } from 'date-fns/esm/locale';
+import non_image from 'components/parts/image/non_image.jpg';
 
 function LoanedModal({ setModalIsOpen, modalIsOpen, book_num }) {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const month = ('0' + (startDate.getMonth() + 1)).slice(-2);
   const [auth] = useAuth();
+  const endDay = new Date(+new Date(endDate) + 3240 * 10000)
+    .toISOString()
+    .split('T')[0];
+
+  const isWeekday = (date) => {
+    const day = date.getDay();
+    return day !== 0 && day !== 6;
+  };
 
   const [{ data: book }, refetch] = useApiAxios({
     url: `/books/api/books/${book_num}/`,
     method: 'GET',
   });
 
-  const saveLoanedBook = useApiAxios(
+  const [{ loading, error, errorMessages }, saveLoanedBook] = useApiAxios(
     {
       url: `/books/api/loanedbooks/`,
       method: 'POST',
@@ -29,25 +40,25 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num }) {
 
   const HandleSubmit = () => {
     saveLoanedBook({
-      bookList: {
+      data: {
         ...useFieldValues,
-        title: book.title,
-        loaned_date: startDate,
-        return_due_date: endDate,
+        book_name: book.book_num,
         email: auth.email,
+        return_due_date: endDay,
+        return_state: 'L',
       },
     })
       .then(() => {
-        Navigate('/books/booklist/');
+        setModalIsOpen(false);
       })
       .catch((error) => {
         console.log(error);
       });
-
-    useEffect(() => {
-      refetch();
-    }, []);
   };
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <>
@@ -111,7 +122,13 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num }) {
                         className="rounded-full"
                       />
                     )}
-                    {!book?.cover_photo && <p>{book?.title}</p>}
+                    {!book?.cover_photo && (
+                      <img
+                        src={non_image}
+                        alt="non_image"
+                        className="rounded-full m-auto"
+                      />
+                    )}
                     <label
                       htmlFor="floatingInput"
                       className="text-gray-700 font-bold"
@@ -140,29 +157,27 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num }) {
                     <div className="datepicker relative form-floating mb-3 xl:w-96">
                       <div>
                         <label className="font-bold">대출 시작일</label>
-                        <DatePicker
-                          type="text"
-                          className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                          placeholder="대출 신청일"
-                          selected={startDate}
-                          onChange={(date) => setStartDate(date)}
-                          selectsStart
-                          startDate={startDate}
-                          endDate={endDate}
-                        />
+                        <p className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                          {startDate.getFullYear()}-{month}-
+                          {startDate.getDate()}
+                        </p>
                       </div>
                       <div>
                         <label className="font-bold">대출 종료일</label>
                         <DatePicker
-                          type="text"
+                          locale={ko}
                           className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                          placeholder="반납 예정일"
                           selected={endDate}
                           onChange={(date) => setEndDate(date)}
                           selectsEnd
                           startDate={startDate}
                           endDate={endDate}
                           minDate={startDate}
+                          maxDate={addMonths(new Date(), 1)}
+                          isClearable={true}
+                          dateFormat="yyyy-MM-dd"
+                          dateFormatCalendar="yyyy년 MM월"
+                          filterDate={isWeekday}
                         />
                       </div>
                     </div>
