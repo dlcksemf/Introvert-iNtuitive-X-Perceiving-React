@@ -35,7 +35,7 @@ function AdminBookDetail({ postId }) {
     window.confirm('도서를 삭제하시겠습니까?');
     // REST API 에서는 DELETE 요청에 대한 응답이 없다
     deletePost().then(() => {
-      navigate('/manager/booklist/');
+      navigate('/admin/booklist/');
     });
   };
 
@@ -74,10 +74,10 @@ function AdminBookDetail({ postId }) {
       )}
       <hr className="my-3" />
       <div className="flex gap-4 mt-3 mb-10">
-        <Link to="/manager/booklist/" className="hover:text-red-400">
+        <Link to="/admin/booklist/" className="hover:text-red-400">
           목록으로
         </Link>
-        <Link to={`/bookform/${postId}/edit/`} className="hover:text-red-400">
+        <Link to={`/admin/book/${postId}/edit/`} className="hover:text-red-400">
           수정하기
         </Link>
         <button

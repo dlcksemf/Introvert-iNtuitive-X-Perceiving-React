@@ -11,7 +11,7 @@ function PageAdminBookList() {
           <div className="inline-flex items-center bg-white leading-none text-black-600 rounded-full p-2 shadow text-teal text-sm">
             <span
               className="inline-flex bg-blue-600 text-white rounded-full h-6 px-3 justify-center items-center cursor-pointer"
-              onClick={() => navigate('/newbookform/')}
+              onClick={() => navigate('/admin/book/new/')}
             >
               생성
             </span>
