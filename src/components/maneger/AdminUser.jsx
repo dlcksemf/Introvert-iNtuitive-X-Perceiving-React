@@ -3,7 +3,7 @@ import DebugStates from 'base/DebugStates';
 import { useEffect } from 'react';
 import AdminUserList from './AdminUserList';
 import React, { useState } from 'react';
-// import Pagination from './common/Pagination';
+import Pagination from './common/Pagination';
 import AdminTopNav from './AdminTopNav';
 import { useNavigate } from 'react-router-dom';
 // import Pagination from 'react-js-pagination';
@@ -50,7 +50,9 @@ function AdminUser() {
               userdata.map((user, index) => <AdminUserList user={user} />)}
           </div>
 
-          <>{/* <Pagination prevPageText={'<'} nextPageText={'>'} /> */}</>
+          <>
+            <Pagination prevPageText={'<'} nextPageText={'>'} />
+          </>
         </div>
       </div>
       {/* <DebugStates userdata={userdata} loading={loading} error={error} /> */}
