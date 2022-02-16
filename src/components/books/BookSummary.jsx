@@ -29,10 +29,17 @@ function BookSummary({ book }) {
 function NewBookSummary({ book }) {
   return (
     <div>
-      {book.cover_photo && (
+      {book?.cover_photo && (
         <img
           src={book.cover_photo}
           alt={book.title}
+          className="w-5 h-5 mr-1 rounded inline"
+        />
+      )}
+      {!book?.cover_photo && (
+        <img
+          src={non_image}
+          alt="non_image"
           className="w-5 h-5 mr-1 rounded inline"
         />
       )}
@@ -46,33 +53,31 @@ function NewBookSummary({ book }) {
 function Top5Summary({ book }) {
   return (
     <div>
-      {book.cover_photo && (
+      {book?.cover_photo && (
         <img
           src={book.cover_photo}
           alt={book.title}
           className="w-5 h-5 mr-1 rounded inline"
         />
       )}
-      <Link to={`/loanedbooks/${book.book_num}/`}>
+      {!book?.cover_photo && (
+        <img
+          src={non_image}
+          alt="non_image"
+          className="w-5 h-5 mr-1 rounded inline"
+        />
+      )}
+      <Link to={`/loanedbooks/${book}/`}>
         {book.title} - {book.writer}
       </Link>
     </div>
   );
 }
 
-function HeavyReaderSummary({ loanedBook }) {
+function HeavyReaderSummary({ book }) {
   return (
     <div>
-      {/* {loanedBook.cover_photo && (
-        <img
-          src={loanedBook.cover_photo}
-          alt={loanedBook.title}
-          className="w-5 h-5 mr-1 rounded inline"
-        />
-      )} */}
-      <Link to={`/loanedbooks/${loanedBook.email}/`}>
-        {loanedBook.username}
-      </Link>
+      <Link to={`/loanedbooks/${book.email}/`}>{book.username}</Link>
     </div>
   );
 }
