@@ -7,9 +7,9 @@ function ConfirmationModal({ children, handleOkButton, handleCancleButton }) {
     }
   };
 
-  const submitButtonClicked = () => {
+  const submitButtonClicked = (e) => {
     if (handleOkButton) {
-      handleOkButton();
+      handleOkButton(e);
     } else {
       console.error('no handle delete function');
     }
