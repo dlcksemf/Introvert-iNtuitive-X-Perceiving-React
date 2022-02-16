@@ -25,7 +25,7 @@ function NewBook() {
         {bookList &&
           bookList
             ?.map((book) => <NewBookSummary book={book} key={book.book_num} />)
-            .slice(0, 5)}
+            .slice(0, 3)}
       </div>
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
