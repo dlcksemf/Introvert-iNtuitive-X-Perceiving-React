@@ -39,7 +39,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
         page: newPage,
         query: newQuery,
         state: category === 'All' ? '' : category.slice(0, 1),
-        email: checked ? auth.email : '',
+        user_id: checked ? auth.user_id : '',
       };
 
       const { data } = await getApplications({ params });

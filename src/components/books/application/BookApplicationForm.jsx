@@ -30,7 +30,7 @@ function BookApplicationForm() {
 
   const handleSubmit = () => {
     saveApplication({
-      data: { ...fieldValues, state: 'P', email: auth.email },
+      data: { ...fieldValues, state: 'P', user_id: auth.user_id },
     })
       .then(() => {
         navigate('/books/application/');

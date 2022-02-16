@@ -44,7 +44,7 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num }) {
       data: {
         ...useFieldValues,
         book_name: book.book_num,
-        email: auth.email,
+        user_id: auth.user_id,
         return_due_date: endDay,
         return_state: 'L',
       },
