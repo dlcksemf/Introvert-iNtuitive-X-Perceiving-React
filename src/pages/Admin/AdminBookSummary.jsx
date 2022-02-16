@@ -9,7 +9,7 @@ function AdminBookSummary({ post }) {
         )}
         <div className="p-8 sm:p-9 md:p-7 xl:p-9">
           <h3 className="font-semibold text-dark">
-            <Link to={`/manager/${post.book_num}/`}>{post.title}</Link>
+            <Link to={`/admin/${post.book_num}/`}>{post.title}</Link>
           </h3>
         </div>
       </div>

@@ -239,7 +239,7 @@ function ArticleForm({ postId, handleDidSave }) {
                 name="published_date"
                 value={fieldValues.published_date}
                 onChange={handleFieldChange}
-                type="text"
+                type="date"
                 className="p-1 bg-gray-100 w-full outline-none"
               />
               {saveErrorMessages.published_date?.map((message, index) => (
