@@ -4,6 +4,7 @@ import AdminBookApplicationPage from 'pages/Admin/AdminBookApplicationPage';
 import PageAdminBookDetail from 'pages/Admin/PageAdminBookDetail';
 import PageAdminBookForm from 'pages/Admin/PageAdminBookForm';
 import PageAdminBookList from 'pages/Admin/PageAdminBookList';
+import AdminLoanedBookList from 'pages/Admin/AdminLoanedBookList';
 
 function PageAdminRouter() {
   return (
@@ -13,6 +14,7 @@ function PageAdminRouter() {
       <Route path="/book/new/" element={<PageAdminBookForm />} />
       <Route path="/book/:postId/edit/" element={<PageAdminBookForm />} />
       <Route path="/application/" element={<AdminBookApplicationPage />} />
+      <Route path="/loanedbook/" element={<AdminLoanedBookList />} />
     </Routes>
   );
 }
