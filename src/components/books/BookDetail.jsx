@@ -42,6 +42,7 @@ function BookDetail({ book_num }) {
             )}
             {book?.state !== 'A' && <p>반납 예정일 :: {book.title}</p>}
             <LoanedModal
+              ariaHideApp={false}
               modalIsOpen={modalIsOpen}
               setModalIsOpen={setModalIsOpen}
               book_num={book?.book_num}
