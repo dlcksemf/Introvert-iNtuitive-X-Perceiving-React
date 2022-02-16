@@ -6,7 +6,6 @@ import ConfirmationModal from 'designMaterials/ConfirmationModal';
 import { useState } from 'react';
 
 function LoanedBooks({ book }) {
-  const { book_name: bookInfo } = book;
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [auth] = useAuth();
   const [, setReload] = useReload();
@@ -68,7 +67,7 @@ function LoanedBooks({ book }) {
 
   return (
     <div>
-      {bookInfo.title}
+      {book.title}
 
       <Badge color={color}>
         {book.return_state === 'L' &&
