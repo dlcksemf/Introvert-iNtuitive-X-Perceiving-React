@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-function WishBooks({ book: { book_name: book } }) {
+function WishBooks({ book }) {
   const navigate = useNavigate();
 
   return (

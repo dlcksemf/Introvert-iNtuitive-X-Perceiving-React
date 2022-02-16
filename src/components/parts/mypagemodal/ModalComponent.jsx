@@ -1,6 +1,8 @@
 import React from 'react';
 
-function ModalComponent({ titleList, bookInfo, book, type }) {
+function ModalComponent({ titleList, bookInfo, type }) {
+  console.log(bookInfo.return_due_date);
+
   return (
     <React.Fragment>
       {titleList.map((title, key) => {
@@ -8,9 +10,13 @@ function ModalComponent({ titleList, bookInfo, book, type }) {
           <td key={key} className="p-2 whitespace-nowrap">
             <div className="flex items-center">
               <div className="font-medium text-gray-800">
-                {bookInfo[title]}
-                {type === 'loanedbooks' && book[title]}
-                {/* {type === 'wishes' && book[title]} */}
+                {type === 'wishes' &&
+                  title === 'return_due_date' &&
+                  bookInfo['loaned_books'][0].return_due_date}
+
+                {title === 'created_at'
+                  ? bookInfo[title].slice(0, 10)
+                  : bookInfo[title]}
               </div>
             </div>
           </td>

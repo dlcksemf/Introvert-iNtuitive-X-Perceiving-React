@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import non_image from 'components/parts/image/non_image.jpg';
 
 function BookSummary({ book }) {
   return (
@@ -7,6 +8,13 @@ function BookSummary({ book }) {
         <img
           src={book.cover_photo}
           alt={book.title}
+          className="w-5 h-5 mr-1 rounded inline"
+        />
+      )}
+      {!book?.cover_photo && (
+        <img
+          src={non_image}
+          alt="non_image"
           className="w-5 h-5 mr-1 rounded inline"
         />
       )}

@@ -17,10 +17,14 @@ const TitleList = {
     'writer',
     'return_state',
   ],
-  wishes: ['title', 'writer', 'state', 'loaned_books'],
+  wishes: ['title', 'writer', 'return_state', 'return_due_date'],
 };
 
-const STATELIST = ['All', 'Pending', 'Order', 'Denied'];
+const STATELIST = {
+  applications: ['All', 'Pending', 'Order', 'Denied'],
+  loanedbooks: ['All', 'Loaned', 'Applicated', 'Returned', 'Deleted'],
+  wishes: ['All', 'Loaned', 'Applicated', 'Returned', 'Deleted'],
+};
 
 function Modal({ modalType, itemsPerPage = 2 }) {
   const navigate = useNavigate();
@@ -81,6 +85,7 @@ function Modal({ modalType, itemsPerPage = 2 }) {
           {modalType}
         </h3>
         <StateCategory
+          type={modalType}
           stateList={STATELIST}
           selected={category}
           setSelected={setCategory}
@@ -125,29 +130,16 @@ function Modal({ modalType, itemsPerPage = 2 }) {
                   </tr>
                 </thead>
                 <tbody className="text-sm divide-y divide-gray-100">
-                  {modalType === 'applications'
-                    ? data?.results?.map((book, index) => {
-                        return (
-                          <tr key={index}>
-                            <ModalComponent
-                              bookInfo={book}
-                              titleList={TitleList[modalType]}
-                            />
-                          </tr>
-                        );
-                      })
-                    : data?.map((book, index) => {
-                        return (
-                          <tr key={index}>
-                            <ModalComponent
-                              type={modalType}
-                              book={book.book_name}
-                              bookInfo={book}
-                              titleList={TitleList[modalType]}
-                            />
-                          </tr>
-                        );
-                      })}
+                  {data?.results?.map((book, index) => {
+                    return (
+                      <tr key={index}>
+                        <ModalComponent
+                          bookInfo={book}
+                          titleList={TitleList[modalType]}
+                        />
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

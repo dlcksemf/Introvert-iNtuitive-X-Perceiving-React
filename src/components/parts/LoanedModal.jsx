@@ -5,25 +5,18 @@ import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import Modal from 'react-modal';
 import { Navigate } from 'react-router-dom';
-import { addMonths } from 'date-fns';
 
 function LoanedModal({ setModalIsOpen, modalIsOpen, book_num }) {
-  const [startDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const month = ('0' + (startDate.getMonth() + 1)).slice(-2);
   const [auth] = useAuth();
-
-  const isWeekday = (date) => {
-    const day = date.getDay();
-    return day !== 0 && day !== 6;
-  };
 
   const [{ data: book }, refetch] = useApiAxios({
     url: `/books/api/books/${book_num}/`,
     method: 'GET',
   });
 
-  const [{ loading, error, errorMessages }, saveLoanedBook] = useApiAxios(
+  const saveLoanedBook = useApiAxios(
     {
       url: `/books/api/loanedbooks/`,
       method: 'POST',
@@ -33,8 +26,6 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num }) {
     },
     { manual: true },
   );
-
-  console.log(book);
 
   const HandleSubmit = () => {
     saveLoanedBook({
@@ -149,26 +140,29 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num }) {
                     <div className="datepicker relative form-floating mb-3 xl:w-96">
                       <div>
                         <label className="font-bold">대출 시작일</label>
-                        <p className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                          {startDate.getFullYear()}-{month}-
-                          {startDate.getDate()}
-                        </p>
+                        <DatePicker
+                          type="text"
+                          className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                          placeholder="대출 신청일"
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                          selectsStart
+                          startDate={startDate}
+                          endDate={endDate}
+                        />
                       </div>
                       <div>
                         <label className="font-bold">대출 종료일</label>
                         <DatePicker
                           type="text"
                           className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                          placeholder="반납 예정일"
                           selected={endDate}
                           onChange={(date) => setEndDate(date)}
                           selectsEnd
                           startDate={startDate}
                           endDate={endDate}
                           minDate={startDate}
-                          maxDate={addMonths(new Date(), 1)}
-                          dateFormat="yyyy-MM-dd"
-                          isClearable={true}
-                          filterDate={isWeekday}
                         />
                       </div>
                     </div>
