@@ -3,6 +3,7 @@ import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
 import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import Modal from 'react-modal';
 import { addMonths } from 'date-fns';
 import { ko } from 'date-fns/esm/locale';
