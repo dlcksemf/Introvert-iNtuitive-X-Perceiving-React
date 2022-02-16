@@ -3,13 +3,15 @@ import DebugStates from 'base/DebugStates';
 import { useEffect } from 'react';
 import AdminUserList from './AdminUserList';
 import React, { useState } from 'react';
-// import Pagination from './common/Pagination';
+import Pagination from './common/Pagination';
 import AdminTopNav from './AdminTopNav';
 import { useNavigate } from 'react-router-dom';
 // import Pagination from 'react-js-pagination';
 
 function AdminUser() {
   const navigate = useNavigate();
+
+  const [search, setSearch] = useState([]);
 
   const [{ data: userdata, loading, error }, refresh] = useApiAxios(
     {
@@ -46,11 +48,20 @@ function AdminUser() {
           {loading && '유저 목록을 가져오는 중입니다.'}
           {error && '목록을 가져오는 중 에러가 발생했습니다.'}
           <div>
+            <input
+              className="cursor-auto bg-gray-200 border border-gray-500"
+              type="text"
+              placeholder="검색어를 입력해주세요."
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button className="ml-2 bg-blue-300">검색</button>
             {userdata &&
               userdata.map((user, index) => <AdminUserList user={user} />)}
           </div>
 
-          <>{/* <Pagination prevPageText={'<'} nextPageText={'>'} /> */}</>
+          <>
+            <Pagination prevPageText={'<'} nextPageText={'>'} />
+          </>
         </div>
       </div>
       {/* <DebugStates userdata={userdata} loading={loading} error={error} /> */}
