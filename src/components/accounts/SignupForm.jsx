@@ -4,8 +4,9 @@ import useFieldValues from 'base/hooks/useFieldValues';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+// import 'react-datepicker/dist/react-datepicker.css';
 import { useState } from 'react';
+import ConfirmationModal from 'designMaterials/ConfirmationModal';
 
 const INIT_FILED_VALUES = {
   username: '',
@@ -19,12 +20,10 @@ const INIT_FILED_VALUES = {
 
 function SignupForm() {
   const Navigate = useNavigate();
+  const [showCancleModal, setShowCancleModal] = useState(false);
+  const [showSubmitModal, setshowSubmitModal] = useState(false);
 
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_FILED_VALUES);
-
-  const [date, setDate] = useState(new Date());
-
-  // console.log(date);
 
   const [{ loading, error, errorMessages }, signup] = useApiAxios(
     {
@@ -43,6 +42,32 @@ function SignupForm() {
       console.log('가입이 완료되었습니다.');
       Navigate('/accounts/login/');
     });
+  };
+
+  const handleClickSubmitButton = (e) => {
+    e.preventDefault();
+    setshowSubmitModal(true);
+  };
+
+  const handleClickCancleButton = (e) => {
+    e.preventDefault();
+    setShowCancleModal(true);
+  };
+
+  const handleCancleButton = () => {
+    if (showSubmitModal) {
+      setshowSubmitModal(false);
+    } else if (showCancleModal) {
+      setShowCancleModal(false);
+    }
+  };
+
+  const handleOkButton = () => {
+    if (showSubmitModal) {
+      handleSubmit();
+    } else if (showCancleModal) {
+      Navigate('/test/');
+    }
   };
 
   return (
@@ -157,6 +182,7 @@ function SignupForm() {
               className="mt-2 bg-red-200 w-80 h-10 text-center"
               type="date"
               name="birthdate"
+              max="2022-01-01"
               onChange={(event) => {
                 console.log('onChange', event);
                 handleFieldChange(event);
@@ -218,18 +244,29 @@ function SignupForm() {
             </p>
           ))}
         </div>
-        <Link
+        <button
           to={`/test/`}
+          onClick={handleClickCancleButton}
           className="ml-30 border border-yellow-500 w-fit hover:bg-yellow-300 mb-5"
         >
           뒤로가기
-        </Link>
+        </button>
+        {/* <ConfirmationModal>뒤로가기</ConfirmationModal> */}
         <button
           className="ml-40 border border-lime-500 w-fit hover:bg-emerald-300 mb-5"
-          onClick={handleSubmit}
+          onClick={handleClickSubmitButton}
         >
           회원가입
         </button>
+
+        {(showSubmitModal || showCancleModal) && (
+          <ConfirmationModal
+            handleOkButton={handleOkButton}
+            handleCancleButton={handleCancleButton}
+          >
+            {showSubmitModal ? '회원가입 하시겠습니까?' : '취소하시겠습니까?'}
+          </ConfirmationModal>
+        )}
       </form>
       <DebugStates fieldValues={fieldValues} />
     </div>
