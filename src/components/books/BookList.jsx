@@ -1,84 +1,76 @@
 import { useApiAxios } from 'base/api/base';
 // import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { BookSummary } from './BookSummary';
-import Dropdown from 'react-dropdown';
+// import Dropdown from 'react-dropdown';
+import StateCategory from 'components/parts/StateCategory';
+import SearchBar from 'components/parts/SearchBar';
+import ReactPaginate from 'react-paginate';
+import { itemsPerPage } from 'Constants';
+
+const STATELIST = ['All', 'Pending', 'Order', 'Denied'];
 
 function BookList() {
-  const [query, setQuery] = useState();
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [, setPage] = useState(1);
+  const [category, setCategory] = useState(STATELIST[0]);
   const [auth] = useAuth();
+
+  const [query, setQuery] = useState();
+
   const [{ data: bookList, loading, error }, refetch] = useApiAxios(
     {
-      url: `/books/api/books/${query ? '?query=' + query : ''}`,
+      url: '/books/api/books/',
       method: 'GET',
     },
     { manual: true },
   );
 
+  const fetchApplications = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: newQuery,
+        category: category === 'All' ? '' : category.slice(0, 1),
+      };
+
+      const { data } = await refetch({ params });
+
+      setPage(newPage);
+      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [category],
+  );
+
   useEffect(() => {
-    refetch();
-  }, [auth]);
+    fetchApplications(1);
+  }, [category]);
 
-  const getQuery = (e) => {
-    const { value } = e.target;
-    setQuery(value);
+  const handlePageClick = (event) => {
+    fetchApplications(event.selected + 1);
   };
 
-  const search = (e) => {
-    if (e.key === 'Enter') {
-      refetch();
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetchApplications(1, query);
   };
 
-  const option = [1, 2, 3];
-  // console.log(bookList.category_id);
   return (
     <div>
       <div className="flex justify-end">
         <div className="dropdown relative flex justify-between m-1 p-1">
-          <Dropdown
-            className="
-              dropdown-toggle
-              px-6
-              py-2.5
-              inline-block
-              border-2
-              border-blue-400
-              font-medium
-              text-xs
-              leading-tight
-              uppercase
-              rounded
-              shadow-md
-              hover:bg-blue-100 hover:shadow-lg
-              focus:bg-blue-100 focus:shadow-lg focus:outline-none focus:ring-0
-              active:bg-blue-100 active:shadow-lg active:text-white
-              transition
-              duration-150
-              ease-in-out
-              flex
-              items-center
-              whitespace-nowrap
-            "
-            type="button"
-            id="dropdownMenuButton8"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            options={option}
-            onChange={option._onSelect}
-            placeholder="카테고리"
+          <StateCategory
+            stateList={STATELIST}
+            selected={category}
+            setSelected={setCategory}
           />
         </div>
         <div className="pt-2 relative text-gray-600">
-          <input
-            className="w-[200px] inline-block border-2 border-blue-400 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-            type="search"
-            name="search"
-            onChange={getQuery}
-            placeholder="제목/저자 검색"
-            onKeyPress={search}
-          />
+          <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
         </div>
       </div>
       <div className="flex justify-center">
@@ -86,13 +78,22 @@ function BookList() {
           {loading && '로딩 중 ...'}
           {error && '로딩 중 에러가 발생했습니다.'}
           <li className="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">
-            {bookList &&
-              bookList?.map((book) => (
-                <BookSummary book={book} key={book.book_num} />
-              ))}
+            {bookList?.results?.map((book) => (
+              <BookSummary book={book} key={book.book_num} />
+            ))}
           </li>
         </ul>
       </div>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
+        pageCount={pageCount}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
+        className="pagination"
+      />
       {/* <DebugStates bookList={bookList} loading={loading} error={error} /> */}
     </div>
   );

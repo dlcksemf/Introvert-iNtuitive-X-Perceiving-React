@@ -1,27 +1,61 @@
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
-import { useReload } from 'base/hooks/ReloadContext';
+import SearchBar from 'components/parts/SearchBar';
+import StateCategory from 'components/parts/StateCategory';
+import { itemsPerPage } from 'Constants';
 import Badge from 'designMaterials/Badge';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
+
+const STATELIST = ['All', 'Loaned', 'Pending', 'Returned', 'Overdue'];
 
 function AdminLoanedBookList({ book, setSelectedState }) {
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [, setPage] = useState(1);
+  const [category, setCategory] = useState(STATELIST[0]);
   const [auth] = useAuth();
-  const [query, setQuery] = useState();
-  const [visivle, setVisible] = useState(false);
-  const [, setReload] = useReload();
 
-  // 지원 되는 것을 개별적으로 뽑아내기 위해 {}
-  // 첫 값은 상탯값 두 번째는 refetch
-  const [{ data: postList }, refetch] = useApiAxios(
+  const [query, setQuery] = useState();
+
+  const [{ data: postList }, getApplications] = useApiAxios(
     {
-      url: `books/api/loanedbooks/${query ? '?query=' + query : ''}`,
+      url: 'books/api/loanedbooks/',
       method: 'GET',
-      headers: {
-        Authorization: `Bearer ${auth.access}`,
-      },
     },
     { manual: true },
   );
+
+  const fetchApplications = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: newQuery,
+        state: category === 'All' ? '' : category.slice(0, 1),
+      };
+
+      const { data } = await getApplications({ params });
+
+      setPage(newPage);
+      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [category],
+  );
+
+  useEffect(() => {
+    fetchApplications(1);
+  }, [category]);
+
+  const handlePageClick = (event) => {
+    fetchApplications(event.selected + 1);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetchApplications(1, query);
+  };
 
   const [{ loading, error }, updateState] = useApiAxios(
     {
@@ -44,25 +78,6 @@ function AdminLoanedBookList({ book, setSelectedState }) {
       method: 'PATCH',
     });
     window.location.replace('/manager/loanedbook/');
-  };
-
-  useEffect(() => {
-    refetch();
-  }, []);
-
-  useEffect(() => {
-    refetch();
-  }, [auth]);
-
-  const getQuery = (e) => {
-    const { value } = e.target;
-    setQuery(value);
-  };
-
-  const searchBook_name = (e) => {
-    if (e.key === 'Enter') {
-      refetch();
-    }
   };
 
   let today = new Date();
@@ -90,7 +105,7 @@ function AdminLoanedBookList({ book, setSelectedState }) {
           </div>
 
           <div class="flex items-center justify-between">
-            <div>
+            {/* <div>
               <select
                 class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 onChange={(e) => setSelectedState(e.target.value)}
@@ -99,7 +114,7 @@ function AdminLoanedBookList({ book, setSelectedState }) {
                   <option value={field}>{field}</option>
                 ))}
               </select>
-            </div>
+            </div> */}
             <div class="flex bg-gray-50 items-center p-2 rounded-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,13 +129,13 @@ function AdminLoanedBookList({ book, setSelectedState }) {
                 />
               </svg>
 
-              <input
-                class="bg-gray-50 outline-none ml-1 block "
-                type="text"
-                onChange={getQuery}
-                placeholder="도서명을 입력해주세요."
-                onKeyPress={searchBook_name}
+              <StateCategory
+                stateList={STATELIST}
+                selected={category}
+                setSelected={setCategory}
               />
+
+              <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
             </div>
           </div>
         </div>
@@ -147,21 +162,21 @@ function AdminLoanedBookList({ book, setSelectedState }) {
                     </th>
                   </tr>
                 </thead>
-                {postList?.map((post) => (
+                {postList?.results?.map((post) => (
                   <tbody>
                     <tr>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div class="flex items-center">
                           <div class="ml-3">
                             <p class="text-gray-900 whitespace-no-wrap">
-                              {post?.email.username}
+                              {post?.user_id.username}
                             </p>
                           </div>
                         </div>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                          {post?.book_name.title}
+                          {post?.title}
                         </p>
                       </td>
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -204,6 +219,16 @@ function AdminLoanedBookList({ book, setSelectedState }) {
               </table>
             </div>
           </div>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={itemsPerPage}
+            pageCount={pageCount}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+            className="pagination"
+          />
         </div>
       </div>
     </div>
