@@ -34,7 +34,7 @@ function AdminApplicationList({ itemsPerPage = 2 }) {
       setPageCount(Math.ceil(data.count / itemsPerPage));
       setCurrentItems(data.results);
     },
-    [category, query],
+    [category],
   );
 
   useEffect(() => {
