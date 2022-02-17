@@ -17,7 +17,7 @@ const INIT_FIELD_VALUES = {
   ISBN: '',
   story: '',
   state: 'A',
-  category_id: '',
+  category: '1',
 };
 
 function ArticleForm({ postId, handleDidSave }) {
@@ -141,7 +141,7 @@ function ArticleForm({ postId, handleDidSave }) {
                 </div>
 
                 <div className="preview">
-                  {imageSrc && <img src={imageSrc} alt="preview-img" />}
+                  <img src={imageSrc || post?.cover_photo} alt="preview-img" />
                 </div>
               </div>
 
@@ -270,7 +270,7 @@ function ArticleForm({ postId, handleDidSave }) {
               <select
                 name="category"
                 onChange={handleFieldChange}
-                value={fieldValues.category_id}
+                value={fieldValues.category}
               >
                 <Category />
               </select>
