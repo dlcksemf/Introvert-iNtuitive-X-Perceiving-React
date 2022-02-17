@@ -50,7 +50,7 @@ function LoanedBooks({ book }) {
   };
 
   const handleOkButton = () => {
-    updateState({ data: { return_state: 'A' } })
+    updateState({ data: { return_state: 'P' } })
       .then(() => {
         setShowSubmitModal(false);
         setReload(true);
@@ -74,7 +74,7 @@ function LoanedBooks({ book }) {
           (book.return_due_date < date
             ? overdueDate + '일 연체'
             : book.return_due_date)}
-        {book.return_state === 'A' && '반납 신청..'}
+        {book.return_state === 'P' && '반납 신청..'}
         {book.return_state === 'R' && '반납 됨'}
       </Badge>
 
