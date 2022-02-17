@@ -41,7 +41,7 @@ function AdminLoanedBookList() {
       setPageCount(Math.ceil(data.count / itemsPerPage));
       setCurrentItems(data?.results);
     },
-    [category],
+    [category, query],
   );
 
   useEffect(() => {

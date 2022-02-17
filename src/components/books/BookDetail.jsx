@@ -39,7 +39,7 @@ function BookDetail({ book_num }) {
               </button>
             )}
             {book?.state !== 'A' && (
-              <p>반납 예정일 :: {book.loaned_books[0].return_due_date}</p>
+              <p>반납 예정일 :: {book?.loaned_books[0]?.return_due_date}</p>
             )}
             <LoanedModal
               ariaHideApp={false}

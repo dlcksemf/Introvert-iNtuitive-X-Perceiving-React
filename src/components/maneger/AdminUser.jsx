@@ -21,18 +21,21 @@ function AdminUser() {
     { manual: true },
   );
 
-  const fetchApplications = useCallback(async (newPage, newQuery = query) => {
-    const params = {
-      page: newPage,
-      query: newQuery,
-    };
+  const fetchApplications = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: newQuery,
+      };
 
-    const { data } = await refresh({ params });
+      const { data } = await refresh({ params });
 
-    setPage(newPage);
-    setPageCount(Math.ceil(data?.count / 2));
-    setCurrentItems(data?.results);
-  }, []);
+      setPage(newPage);
+      setPageCount(Math.ceil(data?.count / 2));
+      setCurrentItems(data?.results);
+    },
+    [query],
+  );
 
   const handlePageClick = (event) => {
     fetchApplications(event.selected + 1);

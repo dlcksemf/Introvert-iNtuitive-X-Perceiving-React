@@ -48,7 +48,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
       setPageCount(Math.ceil(data.count / itemsPerPage));
       setCurrentItems(data?.results);
     },
-    [category, checked],
+    [category, checked, query],
   );
 
   useEffect(() => {
