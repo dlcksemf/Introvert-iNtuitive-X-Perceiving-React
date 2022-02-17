@@ -9,10 +9,11 @@ function AdminUser() {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
-
+  // const [checkList, setCheckList] = useState([]);
+  // const [isAllChecked, setIsAllChecked] = useState(false);
   const [query, setQuery] = useState();
 
-  const [{ data: userdata, loading, error }, refresh] = useApiAxios(
+  const [{ data: userdata, loading, error }, refresh, deleteUser] = useApiAxios(
     {
       url: 'accounts/api/users/',
       methid: 'GET',
@@ -47,24 +48,11 @@ function AdminUser() {
     fetchApplications();
   }, []);
 
-  // const [page, setPage] = useState({});
-  // const [currentPage, setCureentPate] = useState(1);
-  // const [userPerPage, setUserPerPage] = useState(10);
-
-  // const { length: count } = userdata;
-  // if (count === 0) return <p>등록된 유저가 없습니다.</p>;
-
-  // const handlePageChange = (page) => {
-  //   setPage({ ...page, currentPage: page });
-  // };
-
   return (
     <div className="flex">
       <AdminTopNav />
       <div className="flex justify-center">
-        <div className="ml-20 ">유저목록</div>
-
-        {/* <p> 총 유저 : {count} 명</p> */}
+        <div className="ml-20">유저목록</div>
 
         <div className="mt-5 mb-2">
           {loading && '유저 목록을 가져오는 중입니다.'}
