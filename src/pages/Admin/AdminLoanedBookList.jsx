@@ -9,7 +9,8 @@ import ReactPaginate from 'react-paginate';
 
 const STATELIST = ['All', 'Loaned', 'Pending', 'Returned', 'Overdue'];
 
-function AdminLoanedBookList({ book, setSelectedState }) {
+function AdminLoanedBookList() {
+  const [color, setColor] = useState();
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
@@ -77,24 +78,15 @@ function AdminLoanedBookList({ book, setSelectedState }) {
       url: `/books/api/loanedbooks/${loan_num}/`,
       method: 'PATCH',
     });
-    window.location.replace('/manager/loanedbook/');
+    // .then(() => {
+    //   setColor('yellow');
+    // });
+    window.location.replace('/admin/loanedbook/');
   };
 
   let today = new Date();
   const date =
     today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
-  const [color] = useState(() => {
-    if (postList?.return_state === 'L') {
-      return 'yellow';
-    } else if (postList?.return_state === 'R') {
-      return 'red';
-    } else {
-      return 'blue';
-    }
-  });
-
-  const state = ['All', 'Loaned', 'Pending', 'Register', 'Overdue'];
 
   return (
     <div>
@@ -105,38 +97,13 @@ function AdminLoanedBookList({ book, setSelectedState }) {
           </div>
 
           <div class="flex items-center justify-between">
-            {/* <div>
-              <select
-                class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                onChange={(e) => setSelectedState(e.target.value)}
-              >
-                {state.map((field) => (
-                  <option value={field}>{field}</option>
-                ))}
-              </select>
-            </div> */}
-            <div class="flex bg-gray-50 items-center p-2 rounded-md">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 text-gray-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+            <StateCategory
+              stateList={STATELIST}
+              selected={category}
+              setSelected={setCategory}
+            />
 
-              <StateCategory
-                stateList={STATELIST}
-                selected={category}
-                setSelected={setCategory}
-              />
-
-              <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
-            </div>
+            <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
           </div>
         </div>
         <div>
@@ -169,7 +136,7 @@ function AdminLoanedBookList({ book, setSelectedState }) {
                         <div class="flex items-center">
                           <div class="ml-3">
                             <p class="text-gray-900 whitespace-no-wrap">
-                              {post?.user_id.username}
+                              {post?.username}
                             </p>
                           </div>
                         </div>
@@ -186,7 +153,22 @@ function AdminLoanedBookList({ book, setSelectedState }) {
                             class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                           ></span> */}
                           <span class="relative">
-                            <Badge color={color}>{post?.return_state}</Badge>
+                            {post?.return_state === 'L' &&
+                            new Date(post?.return_due_date) < new Date(date) ? (
+                              <Badge color="red">{post?.return_state}</Badge>
+                            ) : (
+                              post?.return_state === 'L' && (
+                                <Badge color="green">
+                                  {post?.return_state}
+                                </Badge>
+                              )
+                            )}
+                            {post?.return_state === 'P' && (
+                              <Badge color="yellow">{post?.return_state}</Badge>
+                            )}
+                            {post?.return_state === 'R' && (
+                              <Badge color="blue">{post?.return_state}</Badge>
+                            )}
                           </span>
                         </span>
                       </td>
