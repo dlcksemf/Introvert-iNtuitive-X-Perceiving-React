@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const INIT_FILED_VALUES = {
   username: '',
-  // email: '',
+  email: '',
   phone_num: '',
   position: '',
   gender: '',
@@ -28,6 +28,13 @@ function InfoEditModal() {
     },
     { manual: true },
   );
+
+  // const [endDate, setEndDate] = useState(() => {
+  //   return data?.birthdate;
+  // });
+  // const endDay = new Date(+new Date(endDate) + 3240 * 10000)
+  //   .toISOString()
+  //   .split('T')[0];
 
   const [{ loading, error, errorMessages }, edit] = useApiAxios(
     {
@@ -50,7 +57,7 @@ function InfoEditModal() {
 
     edit({
       url: `accounts/api/users/${auth.user_id}/`,
-      data: fieldValues,
+      data: { ...fieldValues },
     }).then(() => {
       Navigate('/accounts/mypage/');
     });
@@ -83,15 +90,28 @@ function InfoEditModal() {
   };
 
   return (
-    <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-      <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-        <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+    <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+      <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+        <h1 className="mb-8 text-3xl text-center">Sign up</h1>
 
         <form onSubmit={handleSubmit}>
           <div>
             <div className="w-[5] mt-3">
+              <label>이메일</label>
+            </div>
+            <input
+              type="text"
+              className="block border border-grey-light w-full p-3 rounded mb-4"
+              name="email"
+              value={fieldValues.email}
+              onChange={handleFieldChange}
+              placeholder="이메일을 입력해주세요."
+            />
+          </div>
+
+          <div>
+            <div className="w-[5] mt-3">
               <label>이름</label>
-              <lable className="ml-1 mr-3 text-red-500">*</lable>
             </div>
             <input
               type="text"
@@ -106,7 +126,6 @@ function InfoEditModal() {
           <div>
             <div className="w-[5] mt-3">
               <label>전화번호</label>
-              <lable className="ml-1 mr-3 text-red-500">*</lable>
             </div>
             <input
               type="text"
@@ -153,17 +172,13 @@ function InfoEditModal() {
               </div>
             </div>
           </div>
-
-          {/* <ReactDatePicker
+          {/* 
+          <ReactDatePicker
             className="bg-gray-300 w-fit text-center"
             selected={endDate}
             onChange={(date) => setEndDate(date)}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            maxDate={addMonths(new Date(), 1)}
-            isClearable={true}
+            maxDate={new Date()}
+            // isClearable={true}
             dateFormat="yyyy-MM-dd"
             dateFormatCalendar="yyyy년 MM월"
           /> */}
