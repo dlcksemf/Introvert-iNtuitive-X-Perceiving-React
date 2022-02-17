@@ -1,17 +1,14 @@
 import { useApiAxios } from 'base/api/base';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { useAuth } from 'base/hooks/Authcontext';
 
 function AdminUserList({ user }) {
   const [auth] = useAuth();
-  const navigate = useNavigate();
-
   const [{ loading: deleteLoading, error: deleteError }, deleteUser] =
     useApiAxios(
       {
-        url: `/accounts/api/users/${user.email}/`,
+        url: `/accounts/api/users/${user.user_id}/`,
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${auth.access}`,
@@ -23,7 +20,7 @@ function AdminUserList({ user }) {
   const handleDelete = () => {
     window.confirm('유저를 삭제하시겠습니까?');
     deleteUser().then(() => {
-      navigate('/admin/user/');
+      window.location.replace('/admin/user/');
     });
   };
 

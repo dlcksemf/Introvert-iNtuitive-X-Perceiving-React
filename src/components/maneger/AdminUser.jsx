@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-
 import { useApiAxios } from 'base/api/base';
 import AdminTopNav from './AdminTopNav';
 import AdminUserList from './AdminUserList';
-
-import { useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import SearchBar from 'components/parts/SearchBar';
 
 function AdminUser() {
-  const navigate = useNavigate();
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
