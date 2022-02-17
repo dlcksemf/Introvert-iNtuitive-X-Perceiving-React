@@ -5,9 +5,12 @@ import LoanedIcon from 'designMaterials/LoanedIcon';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import non_image from 'components/parts/image/non_image.jpg';
+import Toggle from 'components/parts/Toggle';
+import { useAuth } from 'base/hooks/Authcontext';
 
 function BookDetail({ book_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [auth] = useAuth();
 
   const [{ data: book, loading, error }, refetch] = useApiAxios(
     {
@@ -17,9 +20,21 @@ function BookDetail({ book_num }) {
     { manual: true },
   );
 
+  const [{ data: wish }, getWish] = useApiAxios(
+    {
+      url: `/books/api/wishes/?user=${auth?.user_id}&book=${book?.book_num}`,
+      method: 'GET',
+    },
+    { manual: true },
+  );
+
   useEffect(() => {
     refetch();
   }, []);
+
+  useEffect(() => {
+    getWish();
+  }, [auth, book]);
 
   const buyLink = () => {
     window.open('https://www.aladin.co.kr/home/welcome.aspx', '_blank');
@@ -33,11 +48,19 @@ function BookDetail({ book_num }) {
       {book && (
         <>
           <div className="flex justify-end">
+            <Toggle
+              book={book}
+              wish={wish?.results[0]}
+              user_id={auth.user_id}
+              getWish={getWish}
+            />
+
             {book?.state === 'A' && (
               <button onClick={() => setModalIsOpen(true)}>
                 <LoanedIcon />
               </button>
             )}
+
             {book?.state !== 'A' && (
               <p>반납 예정일 :: {book?.loaned_books[0]?.return_due_date}</p>
             )}
@@ -48,6 +71,7 @@ function BookDetail({ book_num }) {
               book_num={book?.book_num}
             />
           </div>
+
           <div className="flex justify-center">
             <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
               {book?.cover_photo && (
