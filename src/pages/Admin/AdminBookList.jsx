@@ -1,7 +1,5 @@
 import { useApiAxios } from 'base/api/base';
-import { useAuth } from 'base/hooks/Authcontext';
 import SearchBar from 'components/parts/SearchBar';
-import StateCategory from 'components/parts/StateCategory';
 import { itemsPerPage } from 'Constants';
 import { useCallback, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
@@ -14,8 +12,6 @@ function AdminBookList() {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
-  const [category, setCategory] = useState(STATELIST[0]);
-  const [auth] = useAuth();
 
   const [query, setQuery] = useState();
 
@@ -32,7 +28,6 @@ function AdminBookList() {
       const params = {
         page: newPage,
         query: newQuery,
-        state: category === 'All' ? '' : category.slice(0, 1),
       };
 
       const { data } = await refetch({ params });
@@ -41,12 +36,8 @@ function AdminBookList() {
       setPageCount(Math.ceil(data.count / itemsPerPage));
       setCurrentItems(data?.results);
     },
-    [category],
+    [query],
   );
-
-  useEffect(() => {
-    fetchApplications(1);
-  }, [category]);
 
   const handlePageClick = (event) => {
     fetchApplications(event.selected + 1);
@@ -58,17 +49,15 @@ function AdminBookList() {
     fetchApplications(1, query);
   };
 
+  useEffect(() => {
+    fetchApplications();
+  }, []);
+
   return (
     <div className="my-5">
       <ToastContainer />
       <div className="text-center mb-2">
         <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
-
-        <StateCategory
-          stateList={STATELIST}
-          selected={category}
-          setSelected={setCategory}
-        />
       </div>
 
       {loading && '로딩 중 ...'}
