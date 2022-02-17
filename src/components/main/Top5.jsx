@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 
 function Top5() {
   const [auth] = useAuth();
-  const [{ data: book, loading, error }, refetch] = useApiAxios(
+  const [{ data: bookList, loading, error }, refetch] = useApiAxios(
     {
-      url: '/books/api/loanedbooks/',
+      url: '/books/api/loanedbooks/?all',
       method: 'GET',
     },
     { manual: true },
@@ -17,22 +17,24 @@ function Top5() {
   useEffect(() => {
     refetch();
   }, [auth]);
-  console.log(book);
 
   return (
     <div>
       <h3>Top5 목록</h3>
       <div>
-        {book &&
-          book
-            ?.map((bookList) => (
-              <Top5Summary book={bookList} key={book.book_num} />
-            ))
-            .slice(0, 5)}
+        {bookList
+          ?.sort((book1, book2) => book1.book_num - book2.book_num)
+          .filter((element, index) => {
+            return bookList.indexOf(element) === index;
+          })
+          .slice(0, 5)
+          .map((book) => (
+            <Top5Summary book={book} key={book.book_num} />
+          ))}
       </div>
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
-      <DebugStates loanedbooks={book} loading={loading} error={error} />
+      <DebugStates loanedbooks={bookList} loading={loading} error={error} />
     </div>
   );
 }
