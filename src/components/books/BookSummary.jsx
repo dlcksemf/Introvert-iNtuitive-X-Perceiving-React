@@ -77,7 +77,7 @@ function Top5Summary({ book }) {
 function HeavyReaderSummary({ book }) {
   return (
     <div>
-      <Link to={`/loanedbooks/${book.email}/`}>{book.username}</Link>
+      <p>{book.user_id.username}</p>
     </div>
   );
 }

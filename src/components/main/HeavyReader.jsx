@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 
 function HeavyReader() {
   const [auth] = useAuth();
-  const [{ data: email, loading, error }, refetch] = useApiAxios(
+  const [{ data: bookList, loading, error }, refetch] = useApiAxios(
     {
-      url: 'books/api/loanedbooks/',
+      url: 'books/api/loanedbooks/?all',
       method: 'GET',
     },
     { manual: true },
@@ -22,16 +22,16 @@ function HeavyReader() {
     <div>
       <h3>♥ 다독왕 ♥</h3>
       <div>
-        {/* {email &&
-          email
-            ?.map((email) => (
-              <HeavyReaderSummary email={email} key={email.username} />
-            ))
-            .slice(1)} */}
+        {bookList
+          ?.sort((book1, book2) => book1.book_num - book2.book_num)
+          .slice(0, 1)
+          .map((book) => (
+            <HeavyReaderSummary book={book} key={book.book_num} />
+          ))}
       </div>
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
-      <DebugStates bookList={email} loading={loading} error={error} />
+      <DebugStates bookList={bookList} loading={loading} error={error} />
     </div>
   );
 }
