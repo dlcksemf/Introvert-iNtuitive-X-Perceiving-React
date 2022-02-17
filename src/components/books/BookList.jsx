@@ -8,14 +8,13 @@ import StateCategory from 'components/parts/StateCategory';
 import SearchBar from 'components/parts/SearchBar';
 import ReactPaginate from 'react-paginate';
 import { itemsPerPage } from 'Constants';
-
-const STATELIST = ['All', 'Pending', 'Order', 'Denied'];
+import Category from 'components/parts/Category';
 
 function BookList() {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
-  const [category, setCategory] = useState(STATELIST[0]);
+  const [category, setCategory] = useState();
   const [auth] = useAuth();
 
   const [query, setQuery] = useState();
@@ -33,7 +32,7 @@ function BookList() {
       const params = {
         page: newPage,
         query: newQuery,
-        category: category === 'All' ? '' : category.slice(0, 1),
+        category: category === 'All' ? '' : category,
       };
 
       const { data } = await refetch({ params });
@@ -63,11 +62,7 @@ function BookList() {
     <div>
       <div className="flex justify-end">
         <div className="dropdown relative flex justify-between m-1 p-1">
-          <StateCategory
-            stateList={STATELIST}
-            selected={category}
-            setSelected={setCategory}
-          />
+          <Category selected={category} setSelected={setCategory} />
         </div>
         <div className="pt-2 relative text-gray-600">
           <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
