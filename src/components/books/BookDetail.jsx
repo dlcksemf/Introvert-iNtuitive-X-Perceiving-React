@@ -21,8 +21,6 @@ function BookDetail({ book_num }) {
     refetch();
   }, []);
 
-  console.log(book);
-
   const buyLink = () => {
     window.open('https://www.aladin.co.kr/home/welcome.aspx', '_blank');
   };
@@ -40,7 +38,9 @@ function BookDetail({ book_num }) {
                 <LoanedIcon />
               </button>
             )}
-            {book?.state !== 'A' && <p>반납 예정일 :: {book.title}</p>}
+            {book?.state !== 'A' && (
+              <p>반납 예정일 :: {book.loaned_books[0].return_due_date}</p>
+            )}
             <LoanedModal
               ariaHideApp={false}
               modalIsOpen={modalIsOpen}
