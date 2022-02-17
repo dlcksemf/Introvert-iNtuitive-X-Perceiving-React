@@ -1,12 +1,11 @@
 import { useApiAxios } from 'base/api/base';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { useAuth } from 'base/hooks/Authcontext';
 import { useNavigate } from 'react-router-dom';
 
 function AdminUserList({ user }) {
   // const navigate = useNavigate();
-  const [checkList, setCheckList] = useState([]);
   const [auth] = useAuth();
   const [{ loading: deleteLoading, error: deleteError }, deleteUser, refresh] =
     useApiAxios(
@@ -41,7 +40,6 @@ function AdminUserList({ user }) {
 
       <div className="flex">
         <div className="flex g-gray-100 m-2 mt-3 mb-3 w-fit">
-          {/* <input type="checkbox" className="mt-2 mb-3" /> */}
           {user && (
             <>
               {
