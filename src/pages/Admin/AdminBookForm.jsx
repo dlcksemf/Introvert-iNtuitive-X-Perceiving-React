@@ -5,9 +5,8 @@ import useFieldValues from 'base/hooks/useFieldValues';
 import produce from 'immer';
 import { useEffect, useState } from 'react';
 import Button from './Button';
-// import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
 import LoadingIndicator from 'components/LoadingIndicator';
+import Category from 'components/parts/Category';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -18,24 +17,23 @@ const INIT_FIELD_VALUES = {
   ISBN: '',
   story: '',
   state: 'A',
+  category_id: '',
 };
 
 function ArticleForm({ postId, handleDidSave }) {
-  const [fileImage, setFileImage] = useState('');
+  const [imageSrc, setImageSrc] = useState('');
 
-  const saveFileImage = (e) => {
-    setFileImage(URL.createObjectURL(e.target.files[0]));
+  const encodeFileToBase64 = (e, fileData) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileData);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImageSrc(reader.result);
+        resolve();
+        handleFieldChange(e);
+      };
+    });
   };
-
-  // const MyDatePicker = styled(DatePicker)`
-  //   width: 90%;
-  //   height: 3rem;
-  //   font-size: 1.6rem;
-  //   font-weight: bold;
-  //   background-color: transparent;
-  //   color: white;
-  //   border: 1px solid;
-  // `;
 
   const [auth] = useAuth();
 
@@ -92,9 +90,6 @@ function ArticleForm({ postId, handleDidSave }) {
 
     e.preventDefault();
     console.log('성공');
-
-    // fieldValues: 객체(파일을 제외한)
-    // 파일을 업로드 하려면, FormData 인스턴스를 써야합니다
     const formData = new FormData();
     Object.entries(fieldValues).forEach(([name, value]) => {
       if (Array.isArray(value)) {
@@ -127,27 +122,26 @@ function ArticleForm({ postId, handleDidSave }) {
               </label>
 
               <div>
-                {fileImage && (
-                  <img
-                    alt="sample"
-                    src={fileImage}
-                    style={{ margin: 'auto' }}
-                  />
-                )}
                 <div style={{ alignItems: 'center', justifyContent: 'center' }}>
                   <input
+                    name="cover_photo"
                     style={{ display: 'none' }}
                     id="img"
-                    name="cover_photo"
                     type="file"
                     accept="image/*"
-                    onChange={handleFieldChange}
+                    onChange={(e) => {
+                      encodeFileToBase64(e, e.target.files[0]);
+                    }}
                   />
+                  <div className="hover:text-blue-400">
+                    <label for="img" className="cursor-pointer">
+                      도서 표지 등록하기
+                    </label>
+                  </div>
                 </div>
-                <div className="hover:text-blue-400">
-                  <label for="img" className="cursor-pointer">
-                    도서 표지 등록하기
-                  </label>
+
+                <div className="preview">
+                  {imageSrc && <img src={imageSrc} alt="preview-img" />}
                 </div>
               </div>
 
@@ -223,18 +217,6 @@ function ArticleForm({ postId, handleDidSave }) {
               <label className="font-bold mb-1 text-gray-700 block">
                 출판일
               </label>
-              {/* <div className="calender-container">
-                <div className="calender-box">
-                  <div className="date">시작날짜</div>
-                  <div>
-                    <DatePicker
-                      dateFormat="yyyy-MM-dd" // 날짜 형식
-                      value={fieldValues.published_date}
-                      onChange={handleFieldChange}
-                    />
-                  </div>
-                </div>
-              </div> */}
               <input
                 name="published_date"
                 value={fieldValues.published_date}
@@ -280,20 +262,19 @@ function ArticleForm({ postId, handleDidSave }) {
                 </p>
               ))}
             </div>
-            {/* <div className="mb-5">
+
+            <div className="mb-5">
               <label className="font-bold mb-1 text-gray-700 block">
-                도서 상태
+                카테고리
               </label>
               <select
-                name="state"
+                name="category"
                 onChange={handleFieldChange}
-                value={fieldValues.state}
+                value={fieldValues.category_id}
               >
-                <option>A</option>
-                <option>B</option>
-                <option>D</option>
+                <Category />
               </select>
-            </div> */}
+            </div>
 
             <div className="my-3">
               <Button>저장하기</Button>
@@ -301,13 +282,6 @@ function ArticleForm({ postId, handleDidSave }) {
           </div>
         </div>
       </form>
-      {/* <DebugStates
-        post={post}
-        getLoading={getLoading}
-        getError={getError}
-        saveErrorMessages={saveErrorMessages}
-        fieldValues={fieldValues}
-      /> */}
     </div>
   );
 }
