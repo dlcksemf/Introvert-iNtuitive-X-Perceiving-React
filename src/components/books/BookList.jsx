@@ -11,7 +11,7 @@ function BookList() {
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
-  const [category, setCategory] = useState();
+  const [category, setCategory] = useState('All');
 
   const [query, setQuery] = useState();
 

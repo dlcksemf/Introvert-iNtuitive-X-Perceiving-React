@@ -10,7 +10,6 @@ import ReactPaginate from 'react-paginate';
 const STATELIST = ['All', 'Loaned', 'Pending', 'Returned', 'Overdue'];
 
 function AdminLoanedBookList() {
-  const [color, setColor] = useState();
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);

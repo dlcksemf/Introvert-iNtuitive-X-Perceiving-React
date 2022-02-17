@@ -32,7 +32,7 @@ function Modal({ modalType, itemsPerPage = 2 }) {
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
-  const [category, setCategory] = useState(STATELIST[0]);
+  const [category, setCategory] = useState(STATELIST[modalType][0]);
   const [query, setQuery] = useState('');
 
   const [{ data, loading, error, errorMessages }, getUserInfo] = useApiAxios(
