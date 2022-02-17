@@ -8,7 +8,7 @@ function NewBook() {
   const [auth] = useAuth();
   const [{ data: bookList, loading, error }, refetch] = useApiAxios(
     {
-      url: '/books/api/books/',
+      url: '/books/api/books/?all',
       method: 'GET',
     },
     { manual: true },
@@ -22,10 +22,9 @@ function NewBook() {
     <div>
       <h3>신간 도서 목록</h3>
       <div>
-        {bookList &&
-          bookList
-            ?.map((book) => <NewBookSummary book={book} key={book.book_num} />)
-            .slice(0, 3)}
+        {bookList?.slice(0, 3).map((book) => (
+          <NewBookSummary book={book} key={book.book_num} />
+        ))}
       </div>
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
