@@ -67,7 +67,7 @@ function Top5Summary({ book }) {
           className="w-5 h-5 mr-1 rounded inline"
         />
       )}
-      <Link to={`/loanedbooks/${book}/`}>
+      <Link to={`/books/${book.book_num}/`}>
         {book.title} - {book.writer}
       </Link>
     </div>
@@ -77,7 +77,7 @@ function Top5Summary({ book }) {
 function HeavyReaderSummary({ book }) {
   return (
     <div>
-      <p>{book.user_id.username}</p>
+      <p>{book.username}</p>
     </div>
   );
 }
