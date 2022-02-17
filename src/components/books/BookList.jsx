@@ -1,5 +1,5 @@
 import { useApiAxios } from 'base/api/base';
-// import DebugStates from 'base/DebugStates';
+import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import { useCallback, useEffect, useState } from 'react';
 import { BookSummary } from './BookSummary';
@@ -94,7 +94,7 @@ function BookList() {
         renderOnZeroPageCount={null}
         className="pagination"
       />
-      {/* <DebugStates bookList={bookList} loading={loading} error={error} /> */}
+      <DebugStates bookList={bookList} loading={loading} error={error} />
     </div>
   );
 }
