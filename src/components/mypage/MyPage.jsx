@@ -12,7 +12,7 @@ function MyPage() {
   const [reload, setReload] = useReload();
   const [{ data, loading, error, errorMessages }, getUserInfo] = useApiAxios(
     {
-      url: `/accounts/api/users/${auth.email}`,
+      url: `/accounts/api/users/${auth.user_id}`,
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access}`,
