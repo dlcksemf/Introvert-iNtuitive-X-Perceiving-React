@@ -1,21 +1,17 @@
 import { useApiAxios } from 'base/api/base';
 import DebugStates from 'base/DebugStates';
-import { useAuth } from 'base/hooks/Authcontext';
 import { useCallback, useEffect, useState } from 'react';
 import { BookSummary } from './BookSummary';
-// import Dropdown from 'react-dropdown';
-import StateCategory from 'components/parts/StateCategory';
 import SearchBar from 'components/parts/SearchBar';
 import ReactPaginate from 'react-paginate';
 import { itemsPerPage } from 'Constants';
 import Category from 'components/parts/Category';
 
 function BookList() {
-  const [currentItems, setCurrentItems] = useState(null);
+  const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
   const [category, setCategory] = useState();
-  const [auth] = useAuth();
 
   const [query, setQuery] = useState();
 
