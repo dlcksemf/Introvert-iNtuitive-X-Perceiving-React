@@ -4,7 +4,7 @@ import { useAuth } from 'base/hooks/Authcontext';
 import { Top5Summary } from 'components/books/BookSummary';
 import { useEffect, useState } from 'react';
 
-function Top5(book1, book2) {
+function Top5() {
   const [auth] = useAuth();
   const [{ data: bookList, loading, error }, refetch] = useApiAxios(
     {
