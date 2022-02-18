@@ -11,7 +11,7 @@ function AdminTopNav() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-fit h-full bg-gray-200">
+    <div className="w-fit h-full bg-gray-200 text-center">
       <hr />
       <h2
         onClick={() => navigate('/admin/user/')}
@@ -39,7 +39,10 @@ function AdminTopNav() {
       </h2>
       <hr />
 
-      <button className="mt-10" onClick={handleLogout}>
+      <button
+        class="snap-center bg-blue-500 font-bold rounded-lg text-white px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6"
+        onClick={handleLogout}
+      >
         로그아웃
       </button>
     </div>
