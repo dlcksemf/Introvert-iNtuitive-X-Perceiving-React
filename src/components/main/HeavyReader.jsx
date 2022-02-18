@@ -8,7 +8,7 @@ function HeavyReader() {
   const [auth] = useAuth();
   const [{ data: bookList, loading, error }, refetch] = useApiAxios(
     {
-      url: 'books/api/loanedbooks/?all',
+      url: 'accounts/api/users/?all',
       method: 'GET',
     },
     { manual: true },
@@ -23,15 +23,15 @@ function HeavyReader() {
       <h3>♥ 다독왕 ♥</h3>
       <div>
         {bookList
-          ?.sort((book1, book2) => book1.book_num - book2.book_num)
+          ?.sort((book1, book2) => book1.count_loans - book2.count_loans)
           .slice(0, 1)
           .map((book) => (
-            <HeavyReaderSummary book={book} key={book.book_num} />
+            <HeavyReaderSummary book={book} key={book.count_loans} />
           ))}
       </div>
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
-      <DebugStates bookList={bookList} loading={loading} error={error} />
+      <DebugStates bookList={bookList} />
     </div>
   );
 }
