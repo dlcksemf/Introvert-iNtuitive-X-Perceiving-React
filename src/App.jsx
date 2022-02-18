@@ -16,7 +16,12 @@ function App() {
       <TopNav />
       <div className="app">
         <Routes>
-          <Route path="/" element={<Navigate to="/accounts/mypage/" />} />
+          {auth?.is_staff && (
+            <Route path="/" element={<Navigate to="/admin/" />} />
+          )}
+          {!auth?.is_staff && (
+            <Route path="/" element={<Navigate to="/accounts/mypage/" />} />
+          )}
 
           <Route path="/test/" element={<Test />} />
 

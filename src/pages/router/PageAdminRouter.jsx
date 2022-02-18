@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import AdminBookApplicationPage from 'pages/Admin/AdminBookApplicationPage';
 import PageAdminBookDetail from 'pages/Admin/PageAdminBookDetail';
@@ -10,6 +10,8 @@ import AdminUserPage from 'pages/Admin/AdminUserPage';
 function PageAdminRouter() {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/admin/user/" />} />
+
       <Route path="/user/" element={<AdminUserPage />} />
       <Route path="/booklist/" element={<PageAdminBookList />} />
       <Route path="/:postId/" element={<PageAdminBookDetail />} />
