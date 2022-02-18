@@ -6,8 +6,9 @@ import produce from 'immer';
 import { useEffect, useState } from 'react';
 import Button from './Button';
 import LoadingIndicator from 'components/LoadingIndicator';
-import Category from 'components/parts/Category';
 import { Navigate, useNavigate } from 'react-router-dom';
+import FormCategory from 'components/parts/FormCategory';
+import DebugStates from 'base/DebugStates';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -18,7 +19,7 @@ const INIT_FIELD_VALUES = {
   ISBN: '',
   story: '',
   state: 'A',
-  category: '1',
+  category: '',
 };
 
 function AdminBookForm({ postId, handleDidSave }) {
@@ -102,6 +103,8 @@ function AdminBookForm({ postId, handleDidSave }) {
           formData.append(name, value);
         }
       });
+
+      console.log(formData);
 
       saveRequest({
         data: formData,
@@ -283,9 +286,11 @@ function AdminBookForm({ postId, handleDidSave }) {
                 onChange={handleFieldChange}
                 value={fieldValues.category}
               >
-                <Category />
+                <FormCategory />
               </select>
             </div>
+
+            <DebugStates fieldValues={fieldValues} />
 
             <div className="my-3">
               <Button>저장하기</Button>
