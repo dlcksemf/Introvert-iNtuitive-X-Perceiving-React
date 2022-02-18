@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import Button from './Button';
 import LoadingIndicator from 'components/LoadingIndicator';
 import Category from 'components/parts/Category';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -20,8 +21,9 @@ const INIT_FIELD_VALUES = {
   category: '1',
 };
 
-function ArticleForm({ postId, handleDidSave }) {
+function AdminBookForm({ postId, handleDidSave }) {
   const [imageSrc, setImageSrc] = useState('');
+  const navigate = useNavigate();
 
   const encodeFileToBase64 = (e, fileData) => {
     const reader = new FileReader();
@@ -86,26 +88,30 @@ function ArticleForm({ postId, handleDidSave }) {
   }, []);
 
   const handleSubmit = (e) => {
-    window.confirm('도서의 정보를 업로드 하시겠습니까?');
-
     e.preventDefault();
-    console.log('성공');
-    const formData = new FormData();
-    Object.entries(fieldValues).forEach(([name, value]) => {
-      if (Array.isArray(value)) {
-        const fileList = value;
-        fileList.forEach((file) => formData.append(name, file));
-      } else {
-        formData.append(name, value);
-      }
-    });
 
-    saveRequest({
-      data: formData,
-    }).then((response) => {
-      const savedPost = response.data;
-      if (handleDidSave) handleDidSave(savedPost);
-    });
+    if (window.confirm('도서의 정보를 업로드 하시겠습니까?')) {
+      e.preventDefault();
+      console.log('성공');
+      const formData = new FormData();
+      Object.entries(fieldValues).forEach(([name, value]) => {
+        if (Array.isArray(value)) {
+          const fileList = value;
+          fileList.forEach((file) => formData.append(name, file));
+        } else {
+          formData.append(name, value);
+        }
+      });
+
+      saveRequest({
+        data: formData,
+      }).then((response) => {
+        const savedPost = response.data;
+        if (handleDidSave) handleDidSave(savedPost);
+      });
+    } else {
+      navigate(-1);
+    }
   };
 
   return (
@@ -140,9 +146,14 @@ function ArticleForm({ postId, handleDidSave }) {
                   </div>
                 </div>
 
-                <div className="preview">
-                  <img src={imageSrc || post?.cover_photo} alt="preview-img" />
-                </div>
+                {(imageSrc || post?.cover_photo) && (
+                  <div className="preview">
+                    <img
+                      src={imageSrc || post?.cover_photo}
+                      alt="preview-img"
+                    />
+                  </div>
+                )}
               </div>
 
               {saveErrorMessages.photo?.map((message, index) => (
@@ -285,4 +296,4 @@ function ArticleForm({ postId, handleDidSave }) {
     </div>
   );
 }
-export default ArticleForm;
+export default AdminBookForm;

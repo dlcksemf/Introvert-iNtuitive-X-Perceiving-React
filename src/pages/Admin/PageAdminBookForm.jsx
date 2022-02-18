@@ -9,7 +9,9 @@ function PageAdminBookForm() {
   return (
     <AdminBookForm
       postId={postId}
-      handleDidSave={(savedPost) => navigate(`/admin/${savedPost.book_num}/`)}
+      handleDidSave={(savedPost) => {
+        navigate(`/admin/${savedPost.book_num}/`);
+      }}
     />
   );
 }
