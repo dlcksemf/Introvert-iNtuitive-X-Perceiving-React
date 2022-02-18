@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 
 function FormCategory() {
   const [auth] = useAuth();
-  const [{ data: categoryList, loading, error }, refetch] = useApiAxios(
+  const [{ data: categoryList }, refetch] = useApiAxios(
     {
       url: `/books/api/category/`,
       method: 'GET',

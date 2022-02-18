@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
 
 function AdminTopNav() {
-  const [auth, logout] = useAuth();
+  const [, logout] = useAuth();
 
   const handleLogout = () => {
     logout();

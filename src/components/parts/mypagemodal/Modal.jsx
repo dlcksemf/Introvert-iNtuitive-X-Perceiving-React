@@ -35,7 +35,7 @@ function Modal({ modalType, itemsPerPage = 2 }) {
   const [category, setCategory] = useState(STATELIST[modalType][0]);
   const [query, setQuery] = useState('');
 
-  const [{ data, loading, error, errorMessages }, getUserInfo] = useApiAxios(
+  const [{ data }, getUserInfo] = useApiAxios(
     {
       url: `/books/api/${modalType}/`,
       method: 'GET',

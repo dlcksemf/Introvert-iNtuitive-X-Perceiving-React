@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-function LoginToast({ closeToast, toastProps }) {
+function LoginToast() {
   const navigate = useNavigate();
 
   return (

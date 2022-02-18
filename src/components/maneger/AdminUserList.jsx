@@ -2,10 +2,8 @@ import { useApiAxios } from 'base/api/base';
 import React, { useEffect } from 'react';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { useAuth } from 'base/hooks/Authcontext';
-import { useNavigate } from 'react-router-dom';
 
 function AdminUserList({ user }) {
-  // const navigate = useNavigate();
   const [auth] = useAuth();
   const [{ loading: deleteLoading, error: deleteError }, deleteUser, refresh] =
     useApiAxios(
@@ -24,7 +22,6 @@ function AdminUserList({ user }) {
 
     deleteUser().then(() => {
       window.location.replace('/admin/user/');
-      // navigate('/admin/user/');
     });
   };
 

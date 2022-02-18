@@ -6,14 +6,12 @@ import ReactPaginate from 'react-paginate';
 import SearchBar from 'components/parts/SearchBar';
 
 function AdminUser() {
-  const [currentItems, setCurrentItems] = useState(null);
+  const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
-  // const [checkList, setCheckList] = useState([]);
-  // const [isAllChecked, setIsAllChecked] = useState(false);
   const [query, setQuery] = useState();
 
-  const [{ data: userdata, loading, error }, refresh, deleteUser] = useApiAxios(
+  const [{ data: userdata, loading, error }, refresh] = useApiAxios(
     {
       url: 'accounts/api/users/',
       methid: 'GET',

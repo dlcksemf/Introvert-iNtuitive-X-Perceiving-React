@@ -3,7 +3,6 @@ import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
 import ConfirmationModal from 'designMaterials/ConfirmationModal';
 import { useEffect, useState } from 'react';
-import ReactDatePicker from 'react-datepicker';
 import { useNavigate } from 'react-router-dom';
 
 const INIT_FILED_VALUES = {
@@ -29,14 +28,7 @@ function InfoEditModal() {
     { manual: true },
   );
 
-  // const [endDate, setEndDate] = useState(() => {
-  //   return data?.birthdate;
-  // });
-  // const endDay = new Date(+new Date(endDate) + 3240 * 10000)
-  //   .toISOString()
-  //   .split('T')[0];
-
-  const [{ loading, error, errorMessages }, edit] = useApiAxios(
+  const [{}, edit] = useApiAxios(
     {
       url: `accounts/api/users/${auth.user_id}/`,
       method: 'PATCH',
@@ -92,7 +84,7 @@ function InfoEditModal() {
   return (
     <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
       <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-        <h1 className="mb-8 text-3xl text-center">Sign up</h1>
+        <h1 className="mb-8 text-3xl text-center">Change</h1>
 
         <form onSubmit={handleSubmit}>
           <div>
@@ -196,7 +188,7 @@ function InfoEditModal() {
           className="ml-40 border border-lime-500 w-fit hover:bg-emerald-300 mb-5"
           onClick={handleClickSubmitButton}
         >
-          회원가입
+          정보 수정
         </button>
 
         {(showSubmitModal || showCancleModal) && (
@@ -204,7 +196,7 @@ function InfoEditModal() {
             handleOkButton={handleOkButton}
             handleCancleButton={handleCancleButton}
           >
-            {showSubmitModal ? '회원가입 하시겠습니까?' : '취소하시겠습니까?'}
+            {showSubmitModal ? '정보 수정 하시겠습니까?' : '취소하시겠습니까?'}
           </ConfirmationModal>
         )}
       </div>

@@ -13,9 +13,9 @@ function UserInfoForm() {
   const { fieldValues, handleFieldChange } = useFieldValues(initialValues);
   const [auth] = useAuth();
 
-  const [{ loading, error, errorMessages }, saveUserInfo] = useApiAxios(
+  const [{ errorMessages }, saveUserInfo] = useApiAxios(
     {
-      url: `/accounts/api/users/${auth.email}`,
+      url: `/accounts/api/users/${auth.user_id}`,
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${auth.access}`,

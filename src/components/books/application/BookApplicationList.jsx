@@ -25,7 +25,7 @@ function BookApplicationList({ itemsPerPage = 2 }) {
 
   const [query, setQuery] = useState();
 
-  const [{ data, loading, error }, getApplications] = useApiAxios(
+  const [{}, getApplications] = useApiAxios(
     {
       url: '/books/api/applications/',
       method: 'GET',

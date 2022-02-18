@@ -35,6 +35,7 @@ function LoginForm() {
       console.log('is_staff :', is_staff);
 
       // 인증 후, 이동할 주소를 지정합니다.
+      // TODO : 회원가입 페이지에서 가면 메인 페이지로 돌아가도록
       Navigate(-1);
     });
   };

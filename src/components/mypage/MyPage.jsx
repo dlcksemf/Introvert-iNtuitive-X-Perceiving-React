@@ -10,7 +10,7 @@ import { useReload } from 'base/hooks/ReloadContext';
 function MyPage() {
   const [auth] = useAuth();
   const [reload, setReload] = useReload();
-  const [{ data, loading, error, errorMessages }, getUserInfo] = useApiAxios(
+  const [{ data }, getUserInfo] = useApiAxios(
     {
       url: `/accounts/api/users/${auth.user_id}`,
       method: 'GET',

@@ -2,7 +2,7 @@ import { useApiAxios } from 'base/api/base';
 import { EmptyHeart, FilledHeart } from 'designMaterials/WishesIcon';
 import { useEffect, useState } from 'react';
 
-function Toggle({ book, wish, user_id, getWish }) {
+function Toggle({ book, wish, user_id }) {
   const [wishes, setWishes] = useState(false);
 
   const [{}, makeWish] = useApiAxios(

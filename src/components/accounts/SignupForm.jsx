@@ -1,10 +1,7 @@
 import { useApiAxios } from 'base/api/base';
 import DebugStates from 'base/DebugStates';
 import useFieldValues from 'base/hooks/useFieldValues';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
 import { useState } from 'react';
 import ConfirmationModal from 'designMaterials/ConfirmationModal';
 
@@ -25,7 +22,7 @@ function SignupForm() {
 
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_FILED_VALUES);
 
-  const [{ loading, error, errorMessages }, signup] = useApiAxios(
+  const [{ error, errorMessages }, signup] = useApiAxios(
     {
       url: 'accounts/api/signup/',
       method: 'POST',
@@ -36,10 +33,7 @@ function SignupForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    signup({ data: fieldValues }).then((response) => {
-      const { username, email, phone_num, password, password2 } = response.data;
-
-      console.log('가입이 완료되었습니다.');
+    signup({ data: fieldValues }).then(() => {
       Navigate('/accounts/login/');
     });
   };
@@ -251,7 +245,6 @@ function SignupForm() {
         >
           뒤로가기
         </button>
-        {/* <ConfirmationModal>뒤로가기</ConfirmationModal> */}
         <button
           className="ml-40 border border-lime-500 w-fit hover:bg-emerald-300 mb-5"
           onClick={handleClickSubmitButton}
@@ -268,6 +261,7 @@ function SignupForm() {
           </ConfirmationModal>
         )}
       </form>
+
       <DebugStates fieldValues={fieldValues} />
     </div>
   );

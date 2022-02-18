@@ -18,8 +18,6 @@ function HeavyReader() {
     refetch();
   }, [auth]);
 
-  console.log(userList);
-
   return (
     <div>
       <h3>♥ 다독왕 ♥</h3>

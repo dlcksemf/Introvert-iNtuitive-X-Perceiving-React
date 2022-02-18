@@ -27,7 +27,7 @@ function AdminApplication({ application, reload }) {
     }
   }, [application]);
 
-  const [{ loading, error }, saveApplication] = useApiAxios(
+  const [{}, saveApplication] = useApiAxios(
     {
       url: `/books/api/applications/${application.application_num}/`,
       method: 'PATCH',
