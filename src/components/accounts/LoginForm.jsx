@@ -2,14 +2,24 @@ import { useApiAxios } from 'base/api/base';
 import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
 
 const INITIAL_STATE = { email: '', password: '' };
 
+function useQuery() {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
 function LoginForm() {
   const Navigate = useNavigate();
+  let query = useQuery();
+
   const [auth, , login] = useAuth();
   const { handleFieldChange, fieldValues } = useFieldValues(INITIAL_STATE);
+
   const [{ loading, error }, refetch] = useApiAxios(
     {
       url: '/accounts/api/token/',
@@ -37,7 +47,7 @@ function LoginForm() {
       // 인증 후, 이동할 주소를 지정합니다.
       // TODO : 회원가입 페이지에서 가면 메인 페이지로 돌아가도록
 
-      if (is_staff) {
+      if (is_staff || query.get('next') === '/') {
         Navigate('/');
       } else {
         Navigate(-1);

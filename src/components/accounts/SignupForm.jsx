@@ -34,7 +34,7 @@ function SignupForm() {
     e.preventDefault();
 
     signup({ data: fieldValues }).then(() => {
-      Navigate('/accounts/login/');
+      Navigate('/accounts/login/?next=/');
     });
   };
 
