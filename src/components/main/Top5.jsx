@@ -1,8 +1,8 @@
 import { useApiAxios } from 'base/api/base';
-import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import { Top5Summary } from 'components/books/BookSummary';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import Carousel from 'react-material-ui-carousel';
 
 function Top5() {
   const [auth] = useAuth();
@@ -21,17 +21,41 @@ function Top5() {
   return (
     <div>
       <h3>Top5 목록</h3>
-      <div>
+      <Carousel
+        stopAutoPlayOnHover={true}
+        fullHeightHover={true}
+        navButtonsProps={{
+          style: {
+            backgroundColor: 'cornflowerblue',
+            borderRadius: 100,
+          },
+        }}
+        // IndicatorIcon={<Home />}
+        indicatorIconButtonProps={{
+          style: {
+            padding: '10px', // 1
+            color: 'cornflowerblue', // 3
+          },
+        }}
+        activeIndicatorIconButtonProps={{
+          style: {
+            backgroundColor: '#ffffff', // 2
+          },
+        }}
+        indicatorContainerProps={{
+          style: {
+            marginTop: '50px', // 5
+            textAlign: 'center', // 4
+          },
+        }}
+      >
         {bookList
           ?.sort((book1, book2) => book2.count_loans - book1.count_loans)
           .slice(0, 5)
           .map((book) => (
             <Top5Summary book={book} key={book.book_num} />
           ))}
-      </div>
-      {loading && '로딩 중 ...'}
-      {error && '로딩 중 에러가 발생했습니다.'}
-      <DebugStates loanedbooks={bookList} loading={loading} error={error} />
+      </Carousel>
     </div>
   );
 }
