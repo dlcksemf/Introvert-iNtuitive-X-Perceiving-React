@@ -49,17 +49,13 @@ function AdminApplicationList({ itemsPerPage = 5 }) {
 
   return (
     <>
-      <div className="sm:px-6 w-full">
-        <div className="px-4 md:px-10 py-4 md:py-7">
-          <div className="flex items-center justify-between">
-            <p className="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">
+      <div className="w-full">
+        <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+          <div className="sm:flex items-end justify-between">
+            <p className="focus:outline-none text-base text-3xl font-bold leading-normal text-gray-800">
               신청 도서 관리
             </p>
-          </div>
-        </div>
 
-        <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
-          <div className="sm:flex items-center justify-between">
             <div className="flex items-center">
               {Object.values(STATELIST.application).map((state, index) => (
                 <div
@@ -83,13 +79,13 @@ function AdminApplicationList({ itemsPerPage = 5 }) {
             </div>
           </div>
 
-          <div className="mt-7 overflow-x-auto">
-            <table className="w-full whitespace-nowrap">
+          <div className="mt-7">
+            <table className="w-full">
               <tbody>
                 <tr className="focus:outline-none h-16 border border-gray-100 bg-gray-100 rounded">
                   <td>
                     <div className="ml-5">
-                      <div className="bg-gray-200 rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
+                      <div className="bg-gray-200 rounded-sm w-5 h-5 flex justify-center items-center relative">
                         <input
                           placeholder="checkbox"
                           type="checkbox"
@@ -116,8 +112,8 @@ function AdminApplicationList({ itemsPerPage = 5 }) {
                     </div>
                   </td>
                   <td className="">
-                    <div className="flex items-center pl-5 cursor-pointer">
-                      <p className="text-base font-medium leading-none text-gray-700 mr-2">
+                    <div className="flex items-center cursor-default">
+                      <p className="text-base font-medium leading-none text-gray-700">
                         제목
                       </p>
                     </div>
@@ -150,10 +146,12 @@ function AdminApplicationList({ itemsPerPage = 5 }) {
                       </p>
                     </div>
                   </td>
-                  <td className="pl-7">
-                    <p className="text-sm leading-none text-gray-600 ml-2">
-                      주문 상태
-                    </p>
+                  <td className="pl-3">
+                    <div className="flex items-center justify-center">
+                      <p className="text-sm leading-none text-gray-600 ml-2">
+                        주문 상태
+                      </p>
+                    </div>
                   </td>
                 </tr>
 

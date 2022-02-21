@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useApiAxios } from 'base/api/base';
-import AdminTopNav from './AdminTopNav';
 import AdminUserList from './AdminUserList';
 import ReactPaginate from 'react-paginate';
 import SearchBar from 'components/parts/SearchBar';
@@ -51,7 +50,6 @@ function AdminUser() {
 
   return (
     <div className="flex">
-      <AdminTopNav />
       <div className="flex justify-center">
         <div className="ml-20">유저목록</div>
 
