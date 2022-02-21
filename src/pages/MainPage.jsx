@@ -15,9 +15,15 @@ function MainPage() {
           도서 목록 가기
         </a>
       </div>
-      <Top5 />
-      <HeavyReader />
-      <NewBook />
+      <div className="w-screen h-screen">
+        <Top5 />
+      </div>
+      <div className="w-screen h-screen">
+        <HeavyReader />
+      </div>
+      <div className="w-screen h-screen">
+        <NewBook />
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import { HeavyReaderSummary } from 'components/books/BookSummary';
 import { useEffect } from 'react';
+import Carousel from 'react-material-ui-carousel';
 
 function HeavyReader() {
   const [auth] = useAuth();
@@ -21,17 +22,24 @@ function HeavyReader() {
   return (
     <div>
       <h3>♥ 다독왕 ♥</h3>
-      <div>
+      <Carousel
+        fullHeightHover={true}
+        navButtonsAlwaysInvisible={true}
+        activeIndicatorIconButtonProps={false}
+        indicatorIconButtonProps={{
+          style: {
+            padding: '10px', // 1
+            color: '#ffffff', // 3
+          },
+        }}
+      >
         {userList
           ?.sort((user1, user2) => user2.count_loans - user1.count_loans)
           .slice(0, 1)
           .map((book) => (
             <HeavyReaderSummary book={book} key={book.count_loans} />
           ))}
-      </div>
-      {loading && '로딩 중 ...'}
-      {error && '로딩 중 에러가 발생했습니다.'}
-      <DebugStates bookList={userList} />
+      </Carousel>
     </div>
   );
 }
