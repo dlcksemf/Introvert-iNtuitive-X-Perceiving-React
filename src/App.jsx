@@ -7,6 +7,7 @@ import TopNav from 'components/parts/TopNav';
 import PageBookRouter from 'pages/router/PageBookRouter';
 import PageAccountsRouter from 'pages/router/PageAccountsRouter';
 import PageAdminRouter from 'pages/router/PageAdminRouter';
+import MainPage from 'pages/MainPage';
 
 function App() {
   const [auth] = useAuth();
@@ -19,9 +20,7 @@ function App() {
           {auth?.is_staff && (
             <Route path="/" element={<Navigate to="/admin/" />} />
           )}
-          {!auth?.is_staff && (
-            <Route path="/" element={<Navigate to="/accounts/mypage/" />} />
-          )}
+          {!auth?.is_staff && <Route path="/" element={<MainPage />} />}
 
           <Route path="/test/" element={<Test />} />
 

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import non_image from 'components/parts/image/non_image.jpg';
-import heavy_reader2 from 'components/parts/image/heavy_reader2.png';
+import heavy_reader from 'components/parts/image/heavy_reader.png';
 
 function BookSummary({ book }) {
   return (
@@ -94,7 +94,7 @@ function HeavyReaderSummary({ book }) {
   return (
     <div>
       <img
-        src={heavy_reader2}
+        src={heavy_reader}
         alt="다독왕"
         className="w-screen h-screen rounded inline"
       />
