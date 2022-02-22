@@ -1,5 +1,4 @@
 import { useApiAxios } from 'base/api/base';
-import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -40,12 +39,6 @@ function LoginForm() {
         is_staff,
         username,
       });
-      console.log('access :', access);
-      console.log('refresh :', refresh);
-      console.log('is_staff :', is_staff);
-
-      // 인증 후, 이동할 주소를 지정합니다.
-      // TODO : 회원가입 페이지에서 가면 메인 페이지로 돌아가도록
 
       if (is_staff || query.get('next') === '/') {
         Navigate('/');
@@ -56,40 +49,74 @@ function LoginForm() {
   };
 
   return (
-    <div className="my-3">
-      <h2 className="my-3">로그인</h2>
+    <section className="text-gray-600 body-font">
       {error?.response?.status === 401 && (
         <div className="text-red-400">로그인에 실패했습니다.</div>
       )}
       <form onSubmit={handleSubmit}>
-        e-mail
-        <input
-          type="text"
-          name="email"
-          value={fieldValues.email}
-          onChange={handleFieldChange}
-          placeholder="e-mail를 입력해주세요."
-          className="p-1 bg-gray-100 border border-gray-400 my-3 w-full outline-none focus:border focus:border-gray-400 focus:border-dashed"
-        />
-        password
-        <input
-          type="password"
-          name="password"
-          value={fieldValues.password}
-          onChange={handleFieldChange}
-          placeholder="비밀번호를 입력해주세요."
-          className="p-1 bg-gray-100 border border-gray-400 my-3 w-full outline-none focus:border focus:border-gray-400 focus:border-dashed"
-        />
-        <button>로그인</button>
+        <div className="container px-5 py-36 mx-auto flex flex-wrap items-center">
+          <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+            <h1 className="title-font font-medium text-3xl text-gray-900 text-center">
+              📖 로그인 화면 입니다.
+            </h1>
+            <p className="leading-relaxed mt-4 text-center">
+              도서를 대출 하고 싶으신가요?
+            </p>
+            <p className="leading-relaxed mt-4 text-center">
+              도서를 신청 하고 싶으신가요?
+            </p>
+            <p className="leading-relaxed mt-4 text-center">
+              로그인 후 이용하실 수 있습니다.
+            </p>
+          </div>
+          <div className="lg:w-2/6 md:w-1/2 bg-gray-200 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
+            <h2 className="text-gray-900 text-lg font-medium title-font mb-5">
+              Log In
+            </h2>
+            <div className="relative mb-4">
+              <label
+                for="full-name"
+                className="leading-7 text-sm text-gray-600"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                value={fieldValues.email}
+                onChange={handleFieldChange}
+                placeholder="이메일 주소를 입력해주세요."
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <div className="relative mb-4">
+              <label for="email" className="leading-7 text-sm text-gray-600">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                autocomplete="password"
+                value={fieldValues.password}
+                onChange={handleFieldChange}
+                placeholder="비밀번호를 입력해주세요."
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <button
+              type="submit"
+              className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+            >
+              로그인
+            </button>
+            <p className="text-xs text-gray-500 mt-3">(주) 유클리드 소프트</p>
+          </div>
+        </div>
       </form>
-
-      <DebugStates
-        auth={auth}
-        fieldValues={fieldValues}
-        loading={loading}
-        error={error}
-      />
-    </div>
+    </section>
   );
 }
 
