@@ -15,7 +15,7 @@ function PageAdminRouter() {
 
       <div className="grow">
         <Routes>
-          <Route path="/" element={<Navigate to="/admin/user/" />} />
+          <Route path="/" element={<Navigate to="/admin/loanedbook/" />} />
 
           <Route path="/user/" element={<AdminUserPage />} />
           <Route path="/booklist/" element={<PageAdminBookList />} />
