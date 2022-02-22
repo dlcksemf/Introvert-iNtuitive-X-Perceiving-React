@@ -23,7 +23,6 @@ function HeavyReader() {
     <div>
       <h3>♥ 다독왕 ♥</h3>
       <Carousel
-        fullHeightHover={true}
         navButtonsAlwaysInvisible={true}
         activeIndicatorIconButtonProps={false}
         indicatorIconButtonProps={{
