@@ -65,7 +65,7 @@ function SignupForm() {
   };
 
   return (
-    <div className="ml-10">
+    <div className="SignupForm">
       {error &&
         `가입에 실패하였습니다. (${error.response?.status} ${error.response?.statusText})`}
       <form onSubmit={handleSubmit}>
@@ -75,7 +75,7 @@ function SignupForm() {
             <lable className="ml-1 mr-3 text-red-500">*</lable>
           </div>
           <input
-            className="mt-2 bg-red-200 w-80 h-10 text-center"
+            className="mt-2 w-80 h-10 text-center rounded-lg"
             name="username"
             value={fieldValues.username}
             onChange={handleFieldChange}
@@ -93,7 +93,7 @@ function SignupForm() {
             <lable className="mt-2 ml-1 mr-3 text-red-500">*</lable>
             <div>
               <input
-                className=" bg-red-200 w-80 h-10 text-center"
+                className="w-80 h-10 text-center rounded-lg"
                 name="email"
                 value={fieldValues.email}
                 onChange={handleFieldChange}
@@ -113,7 +113,7 @@ function SignupForm() {
             <lable className="ml-1 mr-3 text-red-500">*</lable>
             <div>
               <input
-                className="mt-2 bg-red-200 w-80 h-10 text-center"
+                className="mt-2 w-80 h-10 text-center rounded-lg"
                 name="phone_num"
                 value={fieldValues.phone_num}
                 onChange={handleFieldChange}
@@ -132,7 +132,7 @@ function SignupForm() {
             <label className="mr-3">직급</label>
             <div>
               <select
-                className="mt-2 bg-red-200 w-80 h-10 text-center"
+                className="mt-2 w-80 h-10 text-center rounded-lg"
                 name="position"
                 value={fieldValues.position}
                 onChange={handleFieldChange}
@@ -156,7 +156,7 @@ function SignupForm() {
             <label className="mr-3">성별</label>
             <div>
               <select
-                className="mt-2 bg-red-200 w-80 h-10 text-center"
+                className="mt-2 w-80 h-10 text-center rounded-lg"
                 name="gender"
                 value={fieldValues.gender}
                 onChange={handleFieldChange}
@@ -173,7 +173,7 @@ function SignupForm() {
           <label className="mt-2">생일</label>
           <div>
             <input
-              className="mt-2 bg-red-200 w-80 h-10 text-center"
+              className="mt-2 w-80 h-10 text-center rounded-lg"
               type="date"
               name="birthdate"
               max="2022-01-01"
@@ -202,7 +202,7 @@ function SignupForm() {
             <lable className="ml-1 mr-3 text-red-500">*</lable>
             <div>
               <input
-                className="mt-2 bg-blue-200 w-80 h-10 text-center"
+                className="mt-2 w-80 h-10 text-center rounded-lg"
                 name="password"
                 value={fieldValues.password}
                 onChange={handleFieldChange}
@@ -223,7 +223,7 @@ function SignupForm() {
             <lable className="ml-1 mr-3 text-red-500">*</lable>
             <div>
               <input
-                className="mt-2 mb-5 bg-blue-200 w-80 h-10 text-center"
+                className="mt-2 mb-5 w-80 h-10 text-center rounded-lg"
                 name="password2"
                 value={fieldValues.password2}
                 onChange={handleFieldChange}
@@ -241,12 +241,12 @@ function SignupForm() {
         <button
           to={`/test/`}
           onClick={handleClickCancleButton}
-          className="ml-30 border border-yellow-500 w-fit hover:bg-yellow-300 mb-5"
+          className="ml-30 border border-blue-300 w-fit rounded-lg mb-5"
         >
           뒤로가기
         </button>
         <button
-          className="ml-40 border border-lime-500 w-fit hover:bg-emerald-300 mb-5"
+          className="ml-40 border border-blue-300 w-fit rounded-lg mb-5"
           onClick={handleClickSubmitButton}
         >
           회원가입
@@ -262,7 +262,7 @@ function SignupForm() {
         )}
       </form>
 
-      <DebugStates fieldValues={fieldValues} />
+      {/* <DebugStates fieldValues={fieldValues} /> */}
     </div>
   );
 }
