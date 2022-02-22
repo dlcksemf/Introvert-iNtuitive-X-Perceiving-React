@@ -1,41 +1,16 @@
 function FilledHeart() {
   return (
     <div>
-      <button
-        type="button"
-        className="px-3
-      py-2.5
-      bg-pink-200
-      text-white
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      rounded
-      shadow-md
-      hover:bg-pink-300 hover:shadow-lg
-      focus:bg-pink-300 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-pink-400 active:shadow-lg
-      transition
-      duration-150
-      ease-in-out"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
+      <button class="rounded-full w-10 h-10 bg-pink-200 p-0 border-0 inline-flex items-center justify-center text-red-500 ml-4">
         <svg
-          aria-hidden="true"
-          focusable="false"
-          data-prefix="fas"
-          data-icon="heart"
-          className="w-5 text-red-500 mr-1"
-          role="img"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512"
+          fill="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
         >
-          <path
-            fill="currentColor"
-            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
-          ></path>
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
         </svg>
       </button>
     </div>
@@ -45,41 +20,16 @@ function FilledHeart() {
 function EmptyHeart() {
   return (
     <div>
-      <button
-        type="button"
-        className="px-3
-      py-2.5
-      bg-pink-200
-      text-white
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      rounded
-      shadow-md
-      hover:bg-pink-300 hover:shadow-lg
-      focus:bg-pink-300 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-pink-400 active:shadow-lg
-      transition
-      duration-150
-      ease-in-out"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
+      <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
         <svg
-          aria-hidden="true"
-          focusable="false"
-          data-prefix="far"
-          data-icon="heart"
-          className="w-5 text-red-500"
-          role="img"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512"
+          fill="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
         >
-          <path
-            fill="currentColor"
-            d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z"
-          ></path>
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
         </svg>
       </button>
     </div>
