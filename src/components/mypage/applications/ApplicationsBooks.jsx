@@ -13,7 +13,7 @@ function ApplicationsBooks({ application }) {
   });
 
   return (
-    <div>
+    <div className="my-3 ml-2">
       {application.title}
 
       <Badge color={color}>{application.state}</Badge>

@@ -3,7 +3,7 @@ import { useAuth } from 'base/hooks/Authcontext';
 import { useReload } from 'base/hooks/ReloadContext';
 import Badge from 'designMaterials/Badge';
 import ConfirmationModal from 'designMaterials/ConfirmationModal';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function LoanedBooks({ book }) {
   const [showSubmitModal, setShowSubmitModal] = useState(false);
@@ -66,31 +66,39 @@ function LoanedBooks({ book }) {
   };
 
   return (
-    <div>
-      {book.title}
-
-      <Badge color={color}>
-        {book.return_state === 'L' &&
-          (book.return_due_date < date
-            ? overdueDate + '일 연체'
-            : book.return_due_date)}
-        {book.return_state === 'P' && '반납 신청..'}
-        {book.return_state === 'R' && '반납 됨'}
-      </Badge>
-
-      {book.return_state === 'L' && (
-        <button onClick={handleClickSubmitButton}>반납 신청</button>
-      )}
-
-      {showSubmitModal && (
-        <ConfirmationModal
-          handleOkButton={handleOkButton}
-          handleCancleButton={handleCancleButton}
-        >
-          반납 신청 하시겠습니까?
-        </ConfirmationModal>
-      )}
-    </div>
+    <React.Fragment>
+      <tr>
+        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+          {book.title}
+        </th>
+        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+          {book.writer}
+        </td>
+        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+          <Badge color={color}>
+            {book.return_state === 'L' &&
+              (book.return_due_date < date
+                ? overdueDate + '일 연체'
+                : book.return_due_date)}
+            {book.return_state === 'P' && '반납 신청..'}
+            {book.return_state === 'R' && '반납 됨'}
+          </Badge>
+        </td>
+        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+          {book.return_state === 'L' && (
+            <button onClick={handleClickSubmitButton}>반납 신청</button>
+          )}
+          {showSubmitModal && (
+            <ConfirmationModal
+              handleOkButton={handleOkButton}
+              handleCancleButton={handleCancleButton}
+            >
+              반납 신청 하시겠습니까?
+            </ConfirmationModal>
+          )}
+        </td>
+      </tr>
+    </React.Fragment>
   );
 }
 export default LoanedBooks;
