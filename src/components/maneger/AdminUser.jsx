@@ -3,11 +3,12 @@ import { useApiAxios } from 'base/api/base';
 import AdminUserList from './AdminUserList';
 import ReactPaginate from 'react-paginate';
 import SearchBar from 'components/parts/SearchBar';
+import { itemsPerPage } from 'Constants';
 
 function AdminUser() {
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
-  const [, setPage] = useState(1);
+  const [page, setPage] = useState(1);
   const [query, setQuery] = useState();
 
   const [{ data: userdata, loading, error }, refresh] = useApiAxios(
@@ -49,37 +50,119 @@ function AdminUser() {
   }, []);
 
   return (
-    <div className="flex">
-      <div className="flex justify-center">
-        <div className="ml-20">유저목록</div>
+    <>
+      <div className="w-full">
+        <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+          <div className="flex items-end justify-between">
+            <p className="focus:outline-none text-base text-3xl font-bold leading-normal text-gray-800">
+              회원 관리
+            </p>
 
-        <div className="mt-5 mb-2">
-          {loading && '유저 목록을 가져오는 중입니다.'}
-          {error && '목록을 가져오는 중 에러가 발생했습니다.'}
-          <div>
-            <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
-
-            {userdata?.results?.map((user, index) => (
-              <AdminUserList user={user} />
-            ))}
+            <div className="flex items-center">
+              <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
+            </div>
           </div>
 
-          <>
-            <ReactPaginate
-              breakLabel="..."
-              nextLabel=">"
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={2}
-              pageCount={pageCount}
-              previousLabel="<"
-              renderOnZeroPageCount={null}
-              className="pagination"
-            />
-          </>
+          <div className="mt-7">
+            <table className="w-full">
+              <tbody>
+                <tr className="focus:outline-none h-16 border border-gray-100 bg-gray-100 rounded">
+                  <td className="">
+                    <div className="ml-5">
+                      <div className="bg-gray-200 rounded-sm w-5 h-5 flex justify-center items-center relative">
+                        <input
+                          placeholder="checkbox"
+                          type="checkbox"
+                          className="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full"
+                        />
+                        <div className="check-icon hidden bg-indigo-700 text-white rounded-sm">
+                          <svg
+                            className="icon icon-tabler icon-tabler-check"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z"></path>
+                            <path d="M5 12l5 5l10 -10"></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="">
+                    <div className="flex items-center cursor-default">
+                      <p className="text-base font-medium leading-none text-gray-700">
+                        이름
+                      </p>
+                    </div>
+                  </td>
+                  <td className="pl-7">
+                    <div className="flex items-center">
+                      <p className="text-sm leading-none text-gray-600 ml-2">
+                        이메일
+                      </p>
+                    </div>
+                  </td>
+                  <td className="pl-7">
+                    <div className="flex items-center">
+                      <p className="text-sm leading-none text-gray-600 ml-2">
+                        가입일
+                      </p>
+                    </div>
+                  </td>
+                  <td className="pl-7">
+                    <div className="flex items-center">
+                      <p className="text-sm leading-none text-gray-600 ml-2">
+                        대출 빈도
+                      </p>
+                    </div>
+                  </td>
+                  <td className="pl-7">
+                    <div className="flex items-center">
+                      <p className="text-sm leading-none text-gray-600 ml-2">
+                        삭제
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+
+                {userdata?.results?.map((user) => (
+                  <React.Fragment key={user.user_id}>
+                    <tr className="focus:outline-none h-16 border border-gray-100 rounded">
+                      <AdminUserList
+                        user={user}
+                        reload={() => {
+                          fetchApplications(page);
+                        }}
+                      />
+                    </tr>
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-      {/* <DebugStates userdata={userdata} loading={loading} error={error} /> */}
-    </div>
+
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
+        pageCount={pageCount}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
+        className="pagination"
+      />
+
+      <div className="h-10"></div>
+    </>
   );
 }
 
