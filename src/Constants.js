@@ -9,6 +9,13 @@ const STATELIST = {
     O: '주문 완료',
     D: '반려',
   },
+  loaned: {
+    A: '전체',
+    L: '대출 중',
+    P: '반납 처리',
+    R: '반납 됨',
+    O: '연체',
+  },
 };
 
 export { API_HOST, itemsPerPage, STATELIST };
