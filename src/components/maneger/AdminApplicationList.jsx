@@ -165,7 +165,6 @@ function AdminApplicationList({ itemsPerPage = 5 }) {
                         }}
                       />
                     </tr>
-                    <tr className="h-3"></tr>
                   </React.Fragment>
                 ))}
               </tbody>
