@@ -69,7 +69,7 @@ function LoginForm() {
               로그인 후 이용하실 수 있습니다.
             </p>
           </div>
-          <div className="lg:w-2/6 md:w-1/2 bg-gray-200 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
+          <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
             <h2 className="text-gray-900 text-lg font-medium title-font mb-5">
               Log In
             </h2>
