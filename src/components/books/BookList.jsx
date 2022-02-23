@@ -33,7 +33,7 @@ function BookList() {
       const { data } = await refetch({ params });
 
       setPage(newPage);
-      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setPageCount(Math.ceil(data.count / 4));
       setCurrentItems(data?.results);
     },
     [category, query],
@@ -73,7 +73,7 @@ function BookList() {
                   />
                 </div>
               </div>
-              <div>
+              <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                 <ul className="mt-28">
                   {loading && '로딩 중 ...'}
                   {error && '로딩 중 에러가 발생했습니다.'}

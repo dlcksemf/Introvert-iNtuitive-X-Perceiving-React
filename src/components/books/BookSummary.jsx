@@ -17,31 +17,44 @@ function BookSummary({ book }) {
       <div className="p-4 lg:w-1/2">
         <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
           {book?.cover_photo && (
-            <a href={`/books/${book.book_num}/`}>
-              <img
-                alt={book?.title}
-                className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                src={book?.cover_photo}
-              />
-            </a>
+            <img
+              alt={book?.title}
+              className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 cursor-pointer
+              transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+              src={book?.cover_photo}
+              onClick={() => {
+                navigate(`/books/${book.book_num}/`);
+              }}
+            />
           )}
           {!book?.cover_photo && (
-            <Link to={`/books/${book.book_num}/`}>
-              <img
-                alt="non_image"
-                className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                src={non_image}
-              />
-            </Link>
+            <img
+              alt="non_image"
+              className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 cursor-pointer
+              transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+              src={non_image}
+              onClick={() => {
+                navigate(`/books/${book.book_num}/`);
+              }}
+            />
           )}
           <div className="flex-grow sm:pl-8">
-            <h3 className="text-gray-500 mb-3 select-none">{book?.category}</h3>
-            <h2 className="title-font font-medium text-lg text-gray-900">
+            {book?.category && (
+              <h3 className="text-sm text-gray-500 mb-3 select-none">
+                [ {book?.category} ]
+              </h3>
+            )}
+            <h2
+              className="title-font font-medium text-lg text-black hover:text-blue-500
+            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
+            >
               <Link to={`/books/${book.book_num}/`}>{book?.title}</Link>
             </h2>
-            <h3 className="text-gray-500 mb-3 select-none">{book?.writer}</h3>
-            <p className="mb-4 truncate text-clip overflow-hidden select-none">
-              {book?.story}
+            <h3 className="text-sm text-gray-500 mb-3 select-none">
+              {book?.writer}
+            </h3>
+            <p className="font-medium text-base mb-4 truncate text-clip overflow-hidden select-none">
+              {truncateString(book.story)}
             </p>
             <span className="inline-flex"></span>
           </div>
