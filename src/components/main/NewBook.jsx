@@ -21,7 +21,6 @@ function NewBook() {
 
   return (
     <div>
-      <h3>신간 도서 목록</h3>
       <Carousel
         fullHeightHover={false}
         navButtonsProps={{
@@ -50,7 +49,9 @@ function NewBook() {
         }}
       >
         {bookList?.slice(0, 3).map((book) => (
-          <NewBookSummary book={book} key={book.book_num} />
+          <div className="h-[600px] w-[900px] flex justify-center items-center">
+            <NewBookSummary book={book} key={book.book_num} />
+          </div>
         ))}
       </Carousel>
     </div>

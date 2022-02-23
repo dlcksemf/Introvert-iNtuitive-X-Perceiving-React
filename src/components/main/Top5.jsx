@@ -19,43 +19,46 @@ function Top5() {
   }, [auth]);
 
   return (
-    <div>
-      <h3>Top5 목록</h3>
-      <Carousel
-        stopAutoPlayOnHover={true}
-        fullHeightHover={true}
-        navButtonsProps={{
-          style: {
-            backgroundColor: 'cornflowerblue',
-            borderRadius: 100,
-          },
-        }}
-        // IndicatorIcon={<Home />}
-        indicatorIconButtonProps={{
-          style: {
-            padding: '10px', // 1
-            color: 'cornflowerblue', // 3
-          },
-        }}
-        activeIndicatorIconButtonProps={{
-          style: {
-            backgroundColor: '#ffffff', // 2
-          },
-        }}
-        indicatorContainerProps={{
-          style: {
-            marginTop: '50px', // 5
-            textAlign: 'center', // 4
-          },
-        }}
-      >
-        {bookList
-          ?.sort((book1, book2) => book2.count_loans - book1.count_loans)
-          .slice(0, 5)
-          .map((book) => (
-            <Top5Summary book={book} key={book.book_num} />
-          ))}
-      </Carousel>
+    <div className="flex justify-center">
+      <div className="h-[600px] w-[900px]">
+        <Carousel
+          stopAutoPlayOnHover={true}
+          fullHeightHover={true}
+          navButtonsProps={{
+            style: {
+              backgroundColor: 'cornflowerblue',
+              borderRadius: 100,
+            },
+          }}
+          // IndicatorIcon={<Home />}
+          indicatorIconButtonProps={{
+            style: {
+              padding: '10px', // 1
+              color: 'cornflowerblue', // 3
+            },
+          }}
+          activeIndicatorIconButtonProps={{
+            style: {
+              backgroundColor: '#ffffff', // 2
+            },
+          }}
+          indicatorContainerProps={{
+            style: {
+              marginTop: '50px', // 5
+              textAlign: 'center', // 4
+            },
+          }}
+        >
+          {bookList
+            ?.sort((book1, book2) => book2.count_loans - book1.count_loans)
+            .slice(0, 5)
+            .map((book) => (
+              <div className="h-[600px] w-[900px] flex justify-center items-center">
+                <Top5Summary book={book} key={book.book_num} />
+              </div>
+            ))}
+        </Carousel>
+      </div>
     </div>
   );
 }
