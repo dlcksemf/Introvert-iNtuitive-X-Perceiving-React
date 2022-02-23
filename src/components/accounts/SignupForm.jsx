@@ -65,235 +65,211 @@ function SignupForm() {
   };
 
   return (
-    <div>
+    <section className="text-gray-600 body-font">
       {error &&
         `가입에 실패하였습니다. (${error.response?.status} ${error.response?.statusText})`}
       <form onSubmit={handleSubmit}>
-        <div className="text-left">
-          <div className="w-[5] mt-3">
-            <label>이름</label>
-            <lable className="ml-1 mr-3 text-red-500">*</lable>
-          </div>
-          <input
-            className="peer w-full bg-white rounded border border-gray-300 
-            focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
-            text-base outline-none text-gray-700 py-1 px-3 leading-8 
-            transition-colors duration-200 ease-in-out"
-            name="username"
-            value={fieldValues.username}
-            onChange={handleFieldChange}
-            placeholder="이름을 입력해주세요."
-          />
-          {errorMessages.username?.map((message, index) => (
-            <p key={index} className="text-xs text-red-400">
-              {message}
+        <div className="container px-5 py-36 mx-auto flex flex-wrap items-center">
+          <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+            <h1
+              className="title-font font-medium text-3xl text-gray-900 text-center select-none
+            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105"
+            >
+              🖐🏻 안녕하세요, 반가워요!
+            </h1>
+            <p className="leading-relaxed mt-4 text-center select-none">
+              회원가입을 하시면
             </p>
-          ))}
-        </div>
-        <div className="text-left">
-          <div className="w-[5] mt-3">
-            <label>이메일</label>
-            <lable className="mt-2 ml-1 mr-3 text-red-500">*</lable>
-            <div>
+            <p className="leading-relaxed mt-4 text-center select-none">
+              약 400여 권의 도서를 통해
+            </p>
+            <p className="leading-relaxed mt-4 text-center select-none">
+              폭 넓은 지식을 쌓으실 수 있습니다!
+            </p>
+          </div>
+          <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
+            <h2 className="flex text-gray-900 text-lg font-bold title-font mb-5 select-none">
+              Sign Up
+            </h2>
+            <div className="relative mb-4">
+              <label
+                for="username"
+                className="leading-7 text-sm text-gray-600 select-none
+                after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
+              >
+                Name
+              </label>
               <input
+                type="username"
+                id="username"
+                name="username"
+                autocomplete="username"
+                value={fieldValues.username}
+                onChange={handleFieldChange}
+                placeholder="이름을 입력해 주세요."
                 className="peer w-full bg-white rounded border border-gray-300 
-                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
-                text-base outline-none text-gray-700 py-1 px-3 leading-8 
-                transition-colors duration-200 ease-in-out"
+              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+              text-base outline-none text-gray-700 py-1 px-3 leading-8 
+              transition-colors duration-200 ease-in-out hover:font-bold"
+              />
+              {errorMessages.username?.map((message, index) => (
+                <p
+                  key={index}
+                  className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm"
+                >
+                  {message}
+                </p>
+              ))}
+            </div>
+            <div className="relative mb-4">
+              <label
+                for="email"
+                className="leading-7 text-sm text-gray-600 select-none
+                after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
                 name="email"
+                autocomplete="email"
                 value={fieldValues.email}
                 onChange={handleFieldChange}
                 placeholder="이메일을 입력해주세요."
+                className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {errorMessages.email?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
+                <p
+                  key={index}
+                  className="mb-2 mt-2 invisible peer-invalid:visible text-pink-600 text-sm"
+                >
                   {message}
                 </p>
               ))}
             </div>
-          </div>
-        </div>
-        <div className="text-left">
-          <div className="w-[5] mt-3">
-            <label>핸드폰 번호</label>
-            <lable className="ml-1 mr-3 text-red-500">*</lable>
-            <div>
+            <div className="relative mb-4">
+              <label
+                for="phone_num"
+                className="leading-7 text-sm text-gray-600 select-none
+                after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
+              >
+                Phone Number
+              </label>
               <input
-                className="peer w-full bg-white rounded border border-gray-300 
-                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
-                text-base outline-none text-gray-700 py-1 px-3 leading-8 
-                transition-colors duration-200 ease-in-out"
+                type="phone_num"
+                id="phone_num"
                 name="phone_num"
+                autocomplete="phone_num"
                 value={fieldValues.phone_num}
                 onChange={handleFieldChange}
-                placeholder="핸드폰 번호를 입력해주세요."
+                placeholder="휴대전화 번호를 입력해주세요."
+                className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {errorMessages.phone_num?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
+                <p
+                  key={index}
+                  className="mb-2 mt-2 invisible peer-invalid:visible text-pink-600 text-sm"
+                >
                   {message}
                 </p>
               ))}
             </div>
-          </div>
-        </div>
-        <div className="text-left">
-          <div className="w-[5] mt-3">
-            <label className="mr-3">직급</label>
-            <div>
-              <select
-                className="peer w-full bg-white rounded border border-gray-300 
-                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
-                text-base outline-none text-gray-700 py-1 px-3 leading-8 
-                transition-colors duration-200 ease-in-out"
-                name="position"
-                value={fieldValues.position}
-                onChange={handleFieldChange}
+            <div className="relative mb-4">
+              <label
+                for="password"
+                className="leading-7 text-sm text-gray-600 select-none
+                after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
               >
-                <option>직급을 선택해주세요.</option>
-                <option>사원</option>
-                <option>주임</option>
-                <option>대리</option>
-                <option>과장</option>
-                <option>차장</option>
-                <option>부장</option>
-                <option>전무</option>
-                <option>이사</option>
-                <option>대표</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div className="text-left">
-          <div className="w-[5] mt-3">
-            <label className="mr-3">성별</label>
-            <div>
-              <select
-                className="peer w-full bg-white rounded border border-gray-300 
-                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
-                text-base outline-none text-gray-700 py-1 px-3 leading-8 
-                transition-colors duration-200 ease-in-out"
-                name="gender"
-                value={fieldValues.gender}
-                onChange={handleFieldChange}
-              >
-                <option>성별을 선택해주세요.</option>
-                <option>F</option>
-                <option>M</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div className="text-left">
-          <div className="w-[5] mt-3"></div>
-          <label className="mt-2">생일</label>
-          <div>
-            <input
-              className="peer w-full bg-white rounded border border-gray-300 
-              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
-              text-base outline-none text-gray-700 py-1 px-3 leading-8 
-              transition-colors duration-200 ease-in-out"
-              type="date"
-              name="birthdate"
-              max="2022-01-01"
-              onChange={(event) => {
-                console.log('onChange', event);
-                handleFieldChange(event);
-              }}
-            />
-          </div>
-          {/* <DatePicker
-            className="bg-gray-300 w-fit text-center"
-            placeholderText="생년월일"
-            type="date"
-            maxDate={new Date()}
-            name="birthdate"
-            onChange={(event) => {
-              console.log('onChange', event);
-              this.handleFieldChange(event);
-            }}
-            value={fieldValues.birthdate}
-          /> */}
-        </div>
-        <div className="text-left">
-          <div className="w-[5] mt-3">
-            <label>비밀번호</label>
-            <lable className="ml-1 mr-3 text-red-500">*</lable>
-            <div>
+                Password
+              </label>
               <input
-                className="peer w-full bg-white rounded border border-gray-300 
-                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
-                text-base outline-none text-gray-700 py-1 px-3 leading-8 
-                transition-colors duration-200 ease-in-out"
+                type="password"
+                id="password"
                 name="password"
+                autocomplete="password"
                 value={fieldValues.password}
                 onChange={handleFieldChange}
-                type="password"
-                placeholder="비밀번호를 입력해주세요."
+                placeholder="비밀번호를 설정해주세요."
+                className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
+              {errorMessages.password?.map((message, index) => (
+                <p
+                  key={index}
+                  className="mb-2 mt-2 invisible peer-invalid:visible text-pink-600 text-sm"
+                >
+                  {message}
+                </p>
+              ))}
             </div>
-          </div>
-          {errorMessages.password?.map((message, index) => (
-            <p key={index} className="text-xs text-red-400">
-              {message}
-            </p>
-          ))}
-        </div>
-        <div className="text-left">
-          <div className="w-[5] mt-3">
-            <label>비밀번호 확인</label>
-            <lable className="ml-1 mr-3 text-red-500">*</lable>
-            <div>
+            <div className="relative mb-4">
+              <label
+                for="password2"
+                className="leading-7 text-sm text-gray-600 select-none
+                after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
+              >
+                Re-enter password
+              </label>
               <input
-                className="peer w-full bg-white rounded border border-gray-300 
-                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
-                text-base outline-none text-gray-700 py-1 px-3 leading-8 
-                transition-colors duration-200 ease-in-out"
+                type="password"
+                id="password2"
                 name="password2"
+                autocomplete="password2"
                 value={fieldValues.password2}
                 onChange={handleFieldChange}
-                type="password"
-                placeholder="비밀번호를 한 번 더 입력해주세요."
+                placeholder="비밀번호를 재확인해주세요."
+                className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
+              {errorMessages.non_field_errors?.map((message, index) => (
+                <p
+                  key={index}
+                  className="mb-2 mt-2 invisible peer-invalid:visible text-pink-600 text-sm"
+                >
+                  {message}
+                </p>
+              ))}
             </div>
-          </div>
-          {errorMessages.non_field_errors?.map((message, index) => (
-            <p key={index} className="text-xs text-red-400">
-              {message}
+            <div className="relative mb-4">
+              <button
+                to={`/test/`}
+                onClick={handleClickCancleButton}
+                className="ml-14 peer mt-6 w-1/3 bg-white rounded border border-gray-300
+              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
+              text-base outline-none text-gray-700 py-1 px-3 leading-8 mr-0
+              transition duration-500 ease-in-out hover:scale-105"
+              >
+                취소하기
+              </button>
+              <button
+                className="peer mt-6 w-1/3 bg-indigo-500 rounded border border-gray-300
+              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
+              text-base outline-none text-white py-1 px-3 leading-8 ml-10
+              transition duration-500 ease-in-out hover:scale-105"
+                onClick={() => {
+                  Navigate(`/accounts/signup/2/`);
+                }}
+              >
+                다음으로
+              </button>
+            </div>
+
+            {(showSubmitModal || showCancleModal) && (
+              <ConfirmationModal
+                handleOkButton={handleOkButton}
+                handleCancleButton={handleCancleButton}
+              >
+                {showSubmitModal
+                  ? '회원가입 하시겠습니까?'
+                  : '취소하시겠습니까?'}
+              </ConfirmationModal>
+            )}
+            <p className="text-xs text-gray-500 mt-3 select-none">
+              (주) 유클리드 소프트
             </p>
-          ))}
+          </div>
         </div>
-        <button
-          to={`/test/`}
-          onClick={handleClickCancleButton}
-          className="peer mt-6 w-1/3 bg-white rounded border border-gray-300 
-          focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
-          text-base outline-none text-gray-700 py-1 px-3 leading-8 
-          transition-colors duration-200 ease-in-out mr-0"
-        >
-          뒤로가기
-        </button>
-        <button
-          className="peer mt-6 w-1/3 bg-indigo-500 rounded border border-gray-300 
-          focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
-          text-base outline-none text-white py-1 px-3 leading-8 
-          transition-colors duration-200 ease-in-out ml-10"
-          onClick={handleClickSubmitButton}
-        >
-          회원가입
-        </button>
-
-        {(showSubmitModal || showCancleModal) && (
-          <ConfirmationModal
-            handleOkButton={handleOkButton}
-            handleCancleButton={handleCancleButton}
-          >
-            {showSubmitModal ? '회원가입 하시겠습니까?' : '취소하시겠습니까?'}
-          </ConfirmationModal>
-        )}
       </form>
-
-      {/* <DebugStates fieldValues={fieldValues} /> */}
-    </div>
+    </section>
   );
 }
 
