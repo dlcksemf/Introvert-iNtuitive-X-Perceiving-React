@@ -56,27 +56,27 @@ function LoginForm() {
       <form onSubmit={handleSubmit}>
         <div className="container px-5 py-36 mx-auto flex flex-wrap items-center">
           <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-            <h1 className="title-font font-medium text-3xl text-gray-900 text-center">
+            <h1 className="title-font font-medium text-3xl text-gray-900 text-center select-none">
               📖 로그인 화면 입니다.
             </h1>
-            <p className="leading-relaxed mt-4 text-center">
+            <p className="leading-relaxed mt-4 text-center select-none">
               도서를 대출 하고 싶으신가요?
             </p>
-            <p className="leading-relaxed mt-4 text-center">
+            <p className="leading-relaxed mt-4 text-center select-none">
               도서를 신청 하고 싶으신가요?
             </p>
-            <p className="leading-relaxed mt-4 text-center">
+            <p className="leading-relaxed mt-4 text-center select-none">
               로그인 후 이용하실 수 있습니다.
             </p>
           </div>
           <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
-            <h2 className="text-gray-900 text-lg font-medium title-font mb-5">
+            <h2 className="text-gray-900 text-lg font-medium title-font mb-5 select-none">
               Log In
             </h2>
             <div className="relative mb-4">
               <label
                 for="full-name"
-                className="leading-7 text-sm text-gray-600"
+                className="leading-7 text-sm text-gray-600 select-none"
               >
                 Email
               </label>
@@ -88,11 +88,20 @@ function LoginForm() {
                 value={fieldValues.email}
                 onChange={handleFieldChange}
                 placeholder="이메일 주소를 입력해주세요."
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="peer w-full bg-white rounded border border-gray-300 
+                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+                text-base outline-none text-gray-700 py-1 px-3 leading-8 
+                transition-colors duration-200 ease-in-out"
               />
+              <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
+                올바른 이메일 형식을 지켜주세요.
+              </p>
             </div>
             <div className="relative mb-4">
-              <label for="email" className="leading-7 text-sm text-gray-600">
+              <label
+                for="email"
+                className="leading-7 text-sm text-gray-600 select-none"
+              >
                 Password
               </label>
               <input
@@ -103,16 +112,23 @@ function LoginForm() {
                 value={fieldValues.password}
                 onChange={handleFieldChange}
                 placeholder="비밀번호를 입력해주세요."
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="peer w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
+              <p className="mb-2 mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
+                비밀번호는 8자리 이상 입력해주세요.
+              </p>
             </div>
             <button
               type="submit"
-              className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+              className="text-white bg-indigo-500 border-0 py-2 px-8 
+              focus:outline-none hover:bg-indigo-600 rounded text-lg
+              transition duration-500 ease-in-out hover:scale-105"
             >
               로그인
             </button>
-            <p className="text-xs text-gray-500 mt-3">(주) 유클리드 소프트</p>
+            <p className="text-xs text-gray-500 mt-3 select-none">
+              (주) 유클리드 소프트
+            </p>
           </div>
         </div>
       </form>
