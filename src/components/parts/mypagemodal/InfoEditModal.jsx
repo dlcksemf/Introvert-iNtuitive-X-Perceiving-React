@@ -77,7 +77,7 @@ function InfoEditModal() {
     if (showSubmitModal) {
       handleSubmit(e);
     } else if (showCancleModal) {
-      Navigate('/test/');
+      Navigate('/accounts/mypage/');
     }
   };
 
@@ -177,18 +177,18 @@ function InfoEditModal() {
         </form>
 
         <button
-          to={`/test/`}
-          onClick={handleClickCancleButton}
-          className="ml-30 border border-yellow-500 w-fit hover:bg-yellow-300 mb-5"
+          className="ml-12 mr-16 border border-lime-500 w-fit hover:bg-emerald-300 mb-5"
+          onClick={handleClickSubmitButton}
         >
-          뒤로가기
+          ⠀정보 수정⠀
         </button>
 
         <button
-          className="ml-40 border border-lime-500 w-fit hover:bg-emerald-300 mb-5"
-          onClick={handleClickSubmitButton}
+          to={`/accounts/mypage/`}
+          onClick={handleClickCancleButton}
+          className="ml-30 border border-yellow-500 w-fit hover:bg-yellow-300 mb-5"
         >
-          정보 수정
+          ⠀취소⠀
         </button>
 
         {(showSubmitModal || showCancleModal) && (
