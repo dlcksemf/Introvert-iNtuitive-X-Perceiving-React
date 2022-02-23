@@ -28,7 +28,8 @@ function SignupForm() {
   const [showCancleModal, setShowCancleModal] = useState(false);
   const [showSubmitModal, setshowSubmitModal] = useState(false);
 
-  const { fieldValues, handleFieldChange } = useFieldValues(INIT_FILED_VALUES);
+  const { fieldValues, handleFieldChange, setFieldValues } =
+    useFieldValues(INIT_FILED_VALUES);
 
   const [{ error, errorMessages }, signup] = useApiAxios(
     {
@@ -40,6 +41,7 @@ function SignupForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setshowSubmitModal(false);
 
     signup({ data: fieldValues }).then(() => {
       Navigate('/accounts/login/?next=/');
@@ -124,6 +126,7 @@ function SignupForm() {
                   fieldValues={fieldValues}
                   handleFieldChange={handleFieldChange}
                   handleSubmit={handleSubmit}
+                  setFieldValues={setFieldValues}
                 />
               }
             />

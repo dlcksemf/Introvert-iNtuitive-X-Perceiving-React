@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 function SignupFormComponent1({
   fieldValues,
   handleFieldChange,
@@ -155,7 +157,49 @@ function SignupFormComponent2({
   fieldValues,
   handleFieldChange,
   handleSubmit,
+  setFieldValues,
 }) {
+  const [date, setDate] = useState({});
+
+  const handleGenderField = (e) => {
+    const { value } = e.target;
+
+    if (value && value === '남성') {
+      setFieldValues((prevFieldValues) => {
+        return {
+          ...prevFieldValues,
+          gender: 'M',
+        };
+      });
+    } else if (value) {
+      setFieldValues((prevFieldValues) => {
+        return {
+          ...prevFieldValues,
+          gender: 'F',
+        };
+      });
+    }
+  };
+
+  const handleBirthField = (e) => {
+    const { name, value } = e.target;
+    setDate((prevFieldValues) => {
+      return {
+        ...prevFieldValues,
+        [name]: value,
+      };
+    });
+
+    if ('year' in date && 'month' in date && 'day' in date) {
+      setFieldValues((prevFieldValues) => {
+        return {
+          ...prevFieldValues,
+          birthdate: `${date.year}-${date.month}-${date.day}`,
+        };
+      });
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="relative mb-4">
@@ -185,6 +229,7 @@ function SignupFormComponent2({
           </select>
         </div>
       </div>
+
       <div className="relative mb-4">
         <label
           htmlFor="gender"
@@ -197,7 +242,7 @@ function SignupFormComponent2({
             className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             name="gender"
             value={fieldValues.gender}
-            onChange={handleFieldChange}
+            onChange={handleGenderField}
           >
             <option className="hidden">성별을 선택해주세요.</option>
             <option>여성</option>
@@ -205,6 +250,7 @@ function SignupFormComponent2({
           </select>
         </div>
       </div>
+
       <div className="relative mb-4">
         <label
           htmlFor="birthdate"
@@ -216,26 +262,26 @@ function SignupFormComponent2({
           <input
             type="birthdate"
             id="birthdate"
-            name="birthdate"
+            name="year"
             autoComplete="birthdate"
             value={fieldValues.birthdate}
-            onChange={handleFieldChange}
+            onChange={handleBirthField}
             placeholder="생년 4자리"
             className="w-32 text-center bg-white rounded border border-gray-3s00 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
           <select
             className="w-32 text-center pt-2 pb-2 bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-            name="birthdate"
+            name="month"
             value={fieldValues.position}
-            onChange={handleFieldChange}
+            onChange={handleBirthField}
           >
             <option className="hidden text-center">생월 선택</option>
-            <option>1월</option>
-            <option>2월</option>
-            <option>3월</option>
-            <option>4월</option>
-            <option>5월</option>
-            <option>6월</option>
+            <option>01</option>
+            <option>02</option>
+            <option>03</option>
+            <option>04</option>
+            <option>05</option>
+            <option>06</option>
             <option>7월</option>
             <option>8월</option>
             <option>9월</option>
@@ -246,10 +292,10 @@ function SignupFormComponent2({
           <input
             type="birthdate"
             id="birthdate"
-            name="birthdate"
+            name="day"
             autoComplete="birthdate"
             value={fieldValues.birthdate}
-            onChange={handleFieldChange}
+            onChange={handleBirthField}
             placeholder="생일 2자리"
             className="w-32 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
