@@ -3,7 +3,7 @@ function LoanedIcon() {
     <div>
       <button
         type="button"
-        className="rounded-full w-10 h-10 p-0 border-2 border-gray-200 inline-flex items-center justify-center text-gray-500 ml-4 hover:text-blue-700"
+        className="rounded-full w-10 h-10 p-0 border-2 border-gray-200 inline-flex items-center justify-center text-gray-500 ml-4 hover:text-blue-500"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
