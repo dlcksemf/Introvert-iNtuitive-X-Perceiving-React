@@ -1,29 +1,50 @@
+import { ResponsiveCalendar } from '@nivo/calendar';
+import { useApiAxios } from 'base/api/base';
+import { useEffect } from 'react';
+
 function ReadingStatus() {
+  const [{ data }, refetch] = useApiAxios('/accounts/api/users/4/');
+
+  let today = new Date();
+
+  let date =
+    today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+  useEffect(() => {
+    refetch().then((response) => {
+      console.log(response.data.loaned_dates);
+    });
+  }, []);
+
   return (
-    <ResponsiveCalendar
-      data={data}
-      from="2015-03-01"
-      to="2016-07-12"
-      emptyColor="#eeeeee"
-      colors={['#61cdbb', '#97e3d5', '#e8c1a0', '#f47560']}
-      margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
-      yearSpacing={40}
-      monthBorderColor="#ffffff"
-      dayBorderWidth={2}
-      dayBorderColor="#ffffff"
-      legends={[
-        {
-          anchor: 'bottom-right',
-          direction: 'row',
-          translateY: 36,
-          itemCount: 4,
-          itemWidth: 42,
-          itemHeight: 36,
-          itemsSpacing: 14,
-          itemDirection: 'right-to-left',
-        },
-      ]}
-    />
+    <div className="h-screen">
+      {data && (
+        <ResponsiveCalendar
+          data={data.loaned_dates}
+          from={date}
+          to={date}
+          emptyColor="#eeeeee"
+          colors={['#61cdbb', '#97e3d5', '#e8c1a0', '#f47560']}
+          margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
+          yearSpacing={40}
+          monthBorderColor="#ffffff"
+          dayBorderWidth={2}
+          dayBorderColor="#ffffff"
+          legends={[
+            {
+              anchor: 'bottom-right',
+              direction: 'row',
+              translateY: 36,
+              itemCount: 4,
+              itemWidth: 42,
+              itemHeight: 36,
+              itemsSpacing: 14,
+              itemDirection: 'right-to-left',
+            },
+          ]}
+        />
+      )}
+    </div>
   );
 }
 
