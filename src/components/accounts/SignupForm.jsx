@@ -65,17 +65,20 @@ function SignupForm() {
   };
 
   return (
-    <div className="SignupForm">
+    <div>
       {error &&
         `가입에 실패하였습니다. (${error.response?.status} ${error.response?.statusText})`}
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="text-left">
           <div className="w-[5] mt-3">
             <label>이름</label>
             <lable className="ml-1 mr-3 text-red-500">*</lable>
           </div>
           <input
-            className="mt-2 w-80 h-10 text-center rounded-lg"
+            className="peer w-full bg-white rounded border border-gray-300 
+            focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+            text-base outline-none text-gray-700 py-1 px-3 leading-8 
+            transition-colors duration-200 ease-in-out"
             name="username"
             value={fieldValues.username}
             onChange={handleFieldChange}
@@ -87,13 +90,16 @@ function SignupForm() {
             </p>
           ))}
         </div>
-        <div>
+        <div className="text-left">
           <div className="w-[5] mt-3">
             <label>이메일</label>
             <lable className="mt-2 ml-1 mr-3 text-red-500">*</lable>
             <div>
               <input
-                className="w-80 h-10 text-center rounded-lg"
+                className="peer w-full bg-white rounded border border-gray-300 
+                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+                text-base outline-none text-gray-700 py-1 px-3 leading-8 
+                transition-colors duration-200 ease-in-out"
                 name="email"
                 value={fieldValues.email}
                 onChange={handleFieldChange}
@@ -107,13 +113,16 @@ function SignupForm() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="text-left">
           <div className="w-[5] mt-3">
             <label>핸드폰 번호</label>
             <lable className="ml-1 mr-3 text-red-500">*</lable>
             <div>
               <input
-                className="mt-2 w-80 h-10 text-center rounded-lg"
+                className="peer w-full bg-white rounded border border-gray-300 
+                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+                text-base outline-none text-gray-700 py-1 px-3 leading-8 
+                transition-colors duration-200 ease-in-out"
                 name="phone_num"
                 value={fieldValues.phone_num}
                 onChange={handleFieldChange}
@@ -127,12 +136,15 @@ function SignupForm() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="text-left">
           <div className="w-[5] mt-3">
             <label className="mr-3">직급</label>
             <div>
               <select
-                className="mt-2 w-80 h-10 text-center rounded-lg"
+                className="peer w-full bg-white rounded border border-gray-300 
+                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+                text-base outline-none text-gray-700 py-1 px-3 leading-8 
+                transition-colors duration-200 ease-in-out"
                 name="position"
                 value={fieldValues.position}
                 onChange={handleFieldChange}
@@ -151,12 +163,15 @@ function SignupForm() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="text-left">
           <div className="w-[5] mt-3">
             <label className="mr-3">성별</label>
             <div>
               <select
-                className="mt-2 w-80 h-10 text-center rounded-lg"
+                className="peer w-full bg-white rounded border border-gray-300 
+                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+                text-base outline-none text-gray-700 py-1 px-3 leading-8 
+                transition-colors duration-200 ease-in-out"
                 name="gender"
                 value={fieldValues.gender}
                 onChange={handleFieldChange}
@@ -168,12 +183,15 @@ function SignupForm() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="text-left">
           <div className="w-[5] mt-3"></div>
           <label className="mt-2">생일</label>
           <div>
             <input
-              className="mt-2 w-80 h-10 text-center rounded-lg"
+              className="peer w-full bg-white rounded border border-gray-300 
+              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+              text-base outline-none text-gray-700 py-1 px-3 leading-8 
+              transition-colors duration-200 ease-in-out"
               type="date"
               name="birthdate"
               max="2022-01-01"
@@ -196,13 +214,16 @@ function SignupForm() {
             value={fieldValues.birthdate}
           /> */}
         </div>
-        <div>
+        <div className="text-left">
           <div className="w-[5] mt-3">
             <label>비밀번호</label>
             <lable className="ml-1 mr-3 text-red-500">*</lable>
             <div>
               <input
-                className="mt-2 w-80 h-10 text-center rounded-lg"
+                className="peer w-full bg-white rounded border border-gray-300 
+                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+                text-base outline-none text-gray-700 py-1 px-3 leading-8 
+                transition-colors duration-200 ease-in-out"
                 name="password"
                 value={fieldValues.password}
                 onChange={handleFieldChange}
@@ -217,13 +238,16 @@ function SignupForm() {
             </p>
           ))}
         </div>
-        <div>
+        <div className="text-left">
           <div className="w-[5] mt-3">
             <label>비밀번호 확인</label>
             <lable className="ml-1 mr-3 text-red-500">*</lable>
             <div>
               <input
-                className="mt-2 mb-5 w-80 h-10 text-center rounded-lg"
+                className="peer w-full bg-white rounded border border-gray-300 
+                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+                text-base outline-none text-gray-700 py-1 px-3 leading-8 
+                transition-colors duration-200 ease-in-out"
                 name="password2"
                 value={fieldValues.password2}
                 onChange={handleFieldChange}
@@ -241,12 +265,18 @@ function SignupForm() {
         <button
           to={`/test/`}
           onClick={handleClickCancleButton}
-          className="ml-30 border border-blue-300 w-fit rounded-lg mb-5"
+          className="peer mt-6 w-1/3 bg-white rounded border border-gray-300 
+          focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+          text-base outline-none text-gray-700 py-1 px-3 leading-8 
+          transition-colors duration-200 ease-in-out mr-0"
         >
           뒤로가기
         </button>
         <button
-          className="ml-40 border border-blue-300 w-fit rounded-lg mb-5"
+          className="peer mt-6 w-1/3 bg-indigo-500 rounded border border-gray-300 
+          focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+          text-base outline-none text-white py-1 px-3 leading-8 
+          transition-colors duration-200 ease-in-out ml-10"
           onClick={handleClickSubmitButton}
         >
           회원가입

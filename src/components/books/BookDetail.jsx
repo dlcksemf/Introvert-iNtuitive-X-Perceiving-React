@@ -54,7 +54,8 @@ function BookDetail({ book_num }) {
                   <img
                     src={book?.cover_photo}
                     alt={book?.title}
-                    className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+                    className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded
+                    transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:skew-y-6"
                   />
                 )}
                 {!book?.cover_photo && (
@@ -65,9 +66,11 @@ function BookDetail({ book_num }) {
                   />
                 )}
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                  <h2 className="text-sm title-font text-gray-500 tracking-widest select-none mt-5 mb-3">
-                    [ {book?.category} ]
-                  </h2>
+                  {book?.category && (
+                    <h2 className="text-sm title-font text-gray-500 tracking-widest select-none mt-5 mb-3">
+                      [ {book?.category} ]
+                    </h2>
+                  )}
                   <h1 className="text-gray-900 text-3xl title-font font-medium mb-5 select-none">
                     {book?.title} - {book?.writer}
                   </h1>
@@ -98,7 +101,7 @@ function BookDetail({ book_num }) {
                   <div className="flex mt-10 items-center pb-5 border-b-2 border-gray-100 mb-5">
                     <button
                       onClick={buyLink}
-                      className="text-gray-600 text-s mb-20 hover:text-blue-700 hover:font-bold
+                      className="text-gray-600 text-s mb-20 hover:text-blue-500 hover:font-bold
                       transition duration-500 ease-in-out hover:scale-105"
                     >
                       알라딘에서 구매하기
@@ -110,7 +113,7 @@ function BookDetail({ book_num }) {
                         to="/books/booklist/"
                         type="button"
                         className="flex m-auto ml-auto 
-                  text-gray-600 hover:text-blue-700 hover:font-bold 
+                  text-gray-600 hover:text-blue-500 hover:font-bold 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                   transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
                       >
@@ -145,7 +148,7 @@ function BookDetail({ book_num }) {
                         )}
 
                         {book?.state !== 'A' && (
-                          <p className="m-auto select-none">
+                          <p className="m-auto select-none hover:text-blue-500">
                             반납 예정일 ::{' '}
                             {book?.loaned_books[0]?.return_due_date}
                           </p>
