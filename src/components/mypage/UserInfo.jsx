@@ -24,6 +24,12 @@ function UserInfo({ info }) {
                   </tr>
                   <tr>
                     <td class="px-2 py-2 text-gray-500 font-semibold">
+                      생년월일
+                    </td>
+                    <td class="px-2 py-2">{info?.birthdate}</td>
+                  </tr>
+                  <tr>
+                    <td class="px-2 py-2 text-gray-500 font-semibold">
                       전화번호
                     </td>
                     <td class="px-2 py-2">{info?.phone_num}</td>

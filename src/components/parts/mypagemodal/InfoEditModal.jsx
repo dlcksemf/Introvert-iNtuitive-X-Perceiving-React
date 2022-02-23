@@ -130,6 +130,22 @@ function InfoEditModal() {
           <div>
             <label
               class="text-gray-800 font-semibold block my-3 text-md"
+              for="birthdate"
+            >
+              생년월일
+            </label>
+            <input
+              type="date"
+              className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
+              name="birthdate"
+              value={fieldValues.birthdate}
+              onChange={handleFieldChange}
+            />
+          </div>
+
+          <div>
+            <label
+              class="text-gray-800 font-semibold block my-3 text-md"
               for="password"
             >
               직급
