@@ -4,25 +4,40 @@ import heavy_reader from 'components/parts/image/heavy_reader.png';
 
 function BookSummary({ book }) {
   return (
-    <div>
-      {book.cover_photo && (
-        <img
-          src={book.cover_photo}
-          alt={book.title}
-          className="w-5 h-5 mr-1 rounded inline"
-        />
-      )}
-      {!book?.cover_photo && (
-        <img
-          src={non_image}
-          alt="non_image"
-          className="w-5 h-5 mr-1 rounded inline"
-        />
-      )}
-      <Link to={`/books/${book.book_num}/`}>
-        [ {book.category_id} ] {book.title} - {book.writer}{' '}
-        {book.return_due_date}
-      </Link>
+    <div className="flex flex-wrap -m-4">
+      <div className="p-4 lg:w-1/2">
+        <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+          {book?.cover_photo && (
+            <a href={`/books/${book.book_num}/`}>
+              <img
+                alt={book?.title}
+                className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                src={book?.cover_photo}
+              />
+            </a>
+          )}
+          {!book?.cover_photo && (
+            <Link to={`/books/${book.book_num}/`}>
+              <img
+                alt="non_image"
+                className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                src={non_image}
+              />
+            </Link>
+          )}
+          <div className="flex-grow sm:pl-8">
+            <h3 className="text-gray-500 mb-3 select-none">{book?.category}</h3>
+            <h2 className="title-font font-medium text-lg text-gray-900">
+              <Link to={`/books/${book.book_num}/`}>{book?.title}</Link>
+            </h2>
+            <h3 className="text-gray-500 mb-3 select-none">{book?.writer}</h3>
+            <p className="mb-4 truncate text-clip overflow-hidden select-none">
+              {book?.story}
+            </p>
+            <span className="inline-flex"></span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
