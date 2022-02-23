@@ -7,8 +7,6 @@ import * as React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import PageModal from 'pages/PageModal';
 import PageUserInfoModal from 'pages/PageUserInfoModal';
-import SignupForm from 'components/accounts/SignupForm';
-import SignupForm2 from 'components/accounts/SignupForm2';
 
 function PageAccountsRouter() {
   let location = useLocation();
@@ -18,8 +16,7 @@ function PageAccountsRouter() {
     <>
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/login/" element={<LoginPage />} />
-        <Route path="/signup/" element={<SignupPage />} />
-        <Route path="/signup/2/" element={<SignupForm2 />} />
+        <Route path="/signup/*" element={<SignupPage />} />
         <Route path="/mypage/" element={<MyPage />} />
         <Route path="/edit/" element={<UserInfoForm />} />
       </Routes>
