@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchBar from '../SearchBar';
 import StateCategory from '../StateCategory';
 import ModalComponent from './ModalComponent';
+import { STATELIST } from 'Constants';
 
 const TitleList = {
   applications: ['created_at', 'title', 'writer', 'state'],
@@ -17,13 +18,7 @@ const TitleList = {
     'writer',
     'return_state',
   ],
-  wishes: ['title', 'writer', 'return_state', 'return_due_date'],
-};
-
-const STATELIST = {
-  applications: ['All', 'Pending', 'Order', 'Denied'],
-  loanedbooks: ['All', 'Loaned', 'Applicated', 'Returned', 'Deleted'],
-  wishes: ['All', 'Loaned', 'Applicated', 'Returned', 'Deleted'],
+  wishes: ['title', 'writer', 'state', 'return_due_date'],
 };
 
 function Modal({ modalType, itemsPerPage = 2 }) {
@@ -32,7 +27,18 @@ function Modal({ modalType, itemsPerPage = 2 }) {
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
-  const [category, setCategory] = useState(STATELIST[modalType][0]);
+  const [category, setCategory] = useState('전체');
+  const [state, setState] = useState('ALL');
+  const [stateType] = useState(() => {
+    if (modalType === 'applications') {
+      return 'application';
+    } else if (modalType === 'loanedbooks') {
+      return 'loaned';
+    } else {
+      return 'books';
+    }
+  });
+
   const [query, setQuery] = useState('');
 
   const [{ data }, getUserInfo] = useApiAxios(
@@ -52,7 +58,7 @@ function Modal({ modalType, itemsPerPage = 2 }) {
         email: auth.email,
         page: newPage,
         query: newQuery,
-        state: category === 'All' ? '' : category.slice(0, 1),
+        state: state === 'ALL' ? '' : state,
       };
 
       const { data } = await getUserInfo({ params });
@@ -61,12 +67,12 @@ function Modal({ modalType, itemsPerPage = 2 }) {
       setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
       setCurrentItems(data?.results);
     },
-    [category],
+    [state],
   );
 
   useEffect(() => {
     fetchUserInfo(1);
-  }, [fetchUserInfo, category]);
+  }, [fetchUserInfo, state]);
 
   const handlePageClick = (event) => {
     fetchUserInfo(event.selected + 1);
@@ -78,6 +84,10 @@ function Modal({ modalType, itemsPerPage = 2 }) {
     fetchUserInfo(1, query);
   };
 
+  useEffect(() => {
+    setState();
+  }, [category]);
+
   return (
     <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
       <div className="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
@@ -85,8 +95,7 @@ function Modal({ modalType, itemsPerPage = 2 }) {
           {modalType}
         </h3>
         <StateCategory
-          type={modalType}
-          stateList={STATELIST}
+          stateList={STATELIST[stateType]}
           selected={category}
           setSelected={setCategory}
         />

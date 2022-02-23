@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
+import { STATELIST } from 'Constants';
 
 function WishBooks({ book }) {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function WishBooks({ book }) {
           {book.writer}
         </td>
         <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-          {book.state}
+          {STATELIST.books[book.state]}
         </td>
         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>

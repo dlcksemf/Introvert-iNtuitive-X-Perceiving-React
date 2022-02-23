@@ -15,7 +15,7 @@ function ApplicationsList({ applicationList }) {
               </h3>
               <table class="text-xs my-3">
                 <tbody>
-                  {applicationList?.map((application) => {
+                  {applicationList?.slice(0, 5).map((application) => {
                     return (
                       <div key={application.application_num}>
                         <ApplicationsBooks application={application} />

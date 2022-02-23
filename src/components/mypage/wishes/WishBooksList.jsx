@@ -1,5 +1,6 @@
 import WishBooks from './WishBooks';
 import { Link, useLocation } from 'react-router-dom';
+import NoList from '../NoList';
 
 function WishBooksList({ wishBookList }) {
   let location = useLocation();
@@ -32,29 +33,33 @@ function WishBooksList({ wishBookList }) {
             </div>
 
             <div class="block w-full overflow-x-auto">
-              <table class="items-center bg-transparent w-full border-collapse ">
-                <thead>
-                  <tr>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      도서명
-                    </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      저자
-                    </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      반납 상태
-                    </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      반납 예정일
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {wishBookList?.map((book, index) => {
-                    return <WishBooks key={index} book={book} />;
-                  })}
-                </tbody>
-              </table>
+              {wishBookList ? (
+                <table class="items-center bg-transparent w-full border-collapse ">
+                  <thead>
+                    <tr>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        도서명
+                      </th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        저자
+                      </th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        반납 상태
+                      </th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        반납 예정일
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {wishBookList?.slice(0, 5).map((book, index) => {
+                      return <WishBooks key={index} book={book} />;
+                    })}
+                  </tbody>
+                </table>
+              ) : (
+                <NoList>찜할 도서를 찾으러 가요!</NoList>
+              )}
             </div>
           </div>
         </div>

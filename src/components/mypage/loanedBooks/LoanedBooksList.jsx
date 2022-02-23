@@ -1,8 +1,14 @@
 import LoanedBooks from './LoanedBooks';
 import { Link, useLocation } from 'react-router-dom';
+import NoList from '../NoList';
 
 function LoanedBooksList({ loanedBookList }) {
   let location = useLocation();
+
+  const filtered_list = loanedBookList?.filter(
+    (book) => book.loaned_status === 'L',
+  );
+
   return (
     <div>
       <section class="py-1 bg-blueGray-50">
@@ -32,29 +38,33 @@ function LoanedBooksList({ loanedBookList }) {
             </div>
 
             <div class="block w-full overflow-x-auto">
-              <table class="items-center bg-transparent w-full border-collapse ">
-                <thead>
-                  <tr>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      도서명
-                    </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      저자
-                    </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      도서 상태
-                    </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      반납 신청
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {loanedBookList?.map((book) => {
-                    return <LoanedBooks key={book?.loan_num} book={book} />;
-                  })}
-                </tbody>
-              </table>
+              {filtered_list?.length === 0 ? (
+                <NoList>대출할 도서를 찾으러 가요!</NoList>
+              ) : (
+                <table class="items-center bg-transparent w-full border-collapse ">
+                  <thead>
+                    <tr>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        도서명
+                      </th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        저자
+                      </th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        도서 상태
+                      </th>
+                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        반납 신청
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filtered_list?.map((book) => {
+                      return <LoanedBooks key={book?.loan_num} book={book} />;
+                    })}
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
         </div>
