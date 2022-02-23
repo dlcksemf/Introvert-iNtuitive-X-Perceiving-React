@@ -63,7 +63,7 @@ function BookList() {
                 <h1 className="text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mr-56">
                   전체 도서 목록
                 </h1>
-                <div className="dropdown relative flex justify-between m-1 p-2.5">
+                <div className="dropdown relative flex space-y-2 justify-between m-1 p-2.5">
                   <Category selected={category} setSelected={setCategory} />
                 </div>
                 <div className="pt-2 relative text-gray-600">
@@ -73,16 +73,22 @@ function BookList() {
                   />
                 </div>
               </div>
-              <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                <ul className="mt-28">
-                  {loading && '로딩 중 ...'}
-                  {error && '로딩 중 에러가 발생했습니다.'}
-                  <li>
-                    {bookList?.results?.map((book) => (
-                      <BookSummary book={book} key={book.book_num} />
-                    ))}
-                  </li>
-                </ul>
+              <div class="flex flex-wrap -m-4">
+                <div class="p-4 lg:w-1/2">
+                  <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                    <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                      <ul className="mt-28">
+                        {loading && '로딩 중 ...'}
+                        {error && '로딩 중 에러가 발생했습니다.'}
+                        {bookList?.results?.map((book) => (
+                          <li>
+                            <BookSummary book={book} key={book.book_num} />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
               <ReactPaginate
                 breakLabel="..."
