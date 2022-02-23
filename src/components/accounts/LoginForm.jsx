@@ -81,7 +81,7 @@ function LoginForm() {
             </h2>
             <div className="relative mb-4">
               <label
-                for="email"
+                htmlFor="email"
                 className="leading-7 text-sm text-gray-600 select-none font-semibold"
               >
                 Email
@@ -90,7 +90,7 @@ function LoginForm() {
                 type="email"
                 id="email"
                 name="email"
-                autocomplete="email"
+                autoComplete="email"
                 value={fieldValues.email}
                 onChange={handleFieldChange}
                 placeholder="이메일 주소를 입력해주세요."
@@ -105,7 +105,7 @@ function LoginForm() {
             </div>
             <div className="relative mb-4">
               <label
-                for="password"
+                htmlFor="password"
                 className="leading-7 text-sm text-gray-600 select-none font-semibold"
               >
                 Password
@@ -114,7 +114,7 @@ function LoginForm() {
                 type="password"
                 id="password"
                 name="password"
-                autocomplete="password"
+                autoComplete="password"
                 value={fieldValues.password}
                 onChange={handleFieldChange}
                 placeholder="비밀번호를 입력해주세요."

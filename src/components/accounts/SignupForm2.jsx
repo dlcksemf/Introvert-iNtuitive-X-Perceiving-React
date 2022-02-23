@@ -105,7 +105,7 @@ function SignupForm2() {
             </h2>
             <div className="relative mb-4">
               <label
-                for="position"
+                htmlFor="position"
                 className="leading-7 text-sm text-gray-600 select-none font-semibold"
               >
                 Position
@@ -132,7 +132,7 @@ function SignupForm2() {
             </div>
             <div className="relative mb-4">
               <label
-                for="gender"
+                htmlFor="gender"
                 className="leading-7 text-sm text-gray-600 select-none font-semibold"
               >
                 Gender
@@ -152,7 +152,7 @@ function SignupForm2() {
             </div>
             <div className="relative mb-4">
               <label
-                for="birthdate"
+                htmlFor="birthdate"
                 className="leading-7 text-sm text-gray-600 select-none font-semibold"
               >
                 Birth Day
@@ -162,7 +162,7 @@ function SignupForm2() {
                   type="birthdate"
                   id="birthdate"
                   name="birthdate"
-                  autocomplete="birthdate"
+                  autoComplete="birthdate"
                   value={fieldValues.birthdate}
                   onChange={handleFieldChange}
                   placeholder="생년 4자리"
@@ -192,7 +192,7 @@ function SignupForm2() {
                   type="birthdate"
                   id="birthdate"
                   name="birthdate"
-                  autocomplete="birthdate"
+                  autoComplete="birthdate"
                   value={fieldValues.birthdate}
                   onChange={handleFieldChange}
                   placeholder="생일 2자리"

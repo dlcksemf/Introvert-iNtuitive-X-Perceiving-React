@@ -97,7 +97,7 @@ function SignupForm() {
             </h2>
             <div className="relative mb-4">
               <label
-                for="username"
+                htmlFor="username"
                 className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
               >
@@ -107,7 +107,7 @@ function SignupForm() {
                 type="username"
                 id="username"
                 name="username"
-                autocomplete="username"
+                autoComplete="username"
                 value={fieldValues.username}
                 onChange={handleFieldChange}
                 placeholder="이름을 입력해 주세요."
@@ -127,7 +127,7 @@ function SignupForm() {
             </div>
             <div className="relative mb-4">
               <label
-                for="email"
+                htmlFor="email"
                 className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
               >
@@ -137,7 +137,7 @@ function SignupForm() {
                 type="email"
                 id="email"
                 name="email"
-                autocomplete="email"
+                autoComplete="email"
                 value={fieldValues.email}
                 onChange={handleFieldChange}
                 placeholder="이메일을 입력해주세요."
@@ -154,7 +154,7 @@ function SignupForm() {
             </div>
             <div className="relative mb-4">
               <label
-                for="phone_num"
+                htmlFor="phone_num"
                 className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
               >
@@ -164,7 +164,7 @@ function SignupForm() {
                 type="phone_num"
                 id="phone_num"
                 name="phone_num"
-                autocomplete="phone_num"
+                autoComplete="phone_num"
                 value={fieldValues.phone_num}
                 onChange={handleFieldChange}
                 placeholder="휴대전화 번호를 입력해주세요."
@@ -181,7 +181,7 @@ function SignupForm() {
             </div>
             <div className="relative mb-4">
               <label
-                for="password"
+                htmlFor="password"
                 className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
               >
@@ -191,7 +191,7 @@ function SignupForm() {
                 type="password"
                 id="password"
                 name="password"
-                autocomplete="password"
+                autoComplete="password"
                 value={fieldValues.password}
                 onChange={handleFieldChange}
                 placeholder="비밀번호를 설정해주세요."
@@ -208,7 +208,7 @@ function SignupForm() {
             </div>
             <div className="relative mb-4">
               <label
-                for="password2"
+                htmlFor="password2"
                 className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
               >
@@ -218,7 +218,7 @@ function SignupForm() {
                 type="password"
                 id="password2"
                 name="password2"
-                autocomplete="password2"
+                autoComplete="password2"
                 value={fieldValues.password2}
                 onChange={handleFieldChange}
                 placeholder="비밀번호를 재확인해주세요."
