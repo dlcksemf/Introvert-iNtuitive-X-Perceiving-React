@@ -4,6 +4,7 @@ import useFieldValues from 'base/hooks/useFieldValues';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ConfirmationModal from 'designMaterials/ConfirmationModal';
+import CancelIcon from 'designMaterials/CancelIcon';
 
 const INIT_FILED_VALUES = {
   username: '',
@@ -88,6 +89,9 @@ function SignupForm() {
             </p>
           </div>
           <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
+            <div className="flex justify-end">
+              <CancelIcon className="flex justify-end" onClick="#" />
+            </div>
             <h2 className="flex text-gray-900 text-lg font-bold title-font mb-5 select-none">
               Sign Up
             </h2>
@@ -231,20 +235,9 @@ function SignupForm() {
             </div>
             <div className="relative mb-4">
               <button
-                to={`/test/`}
-                onClick={handleClickCancleButton}
-                className="ml-14 peer mt-6 w-1/3 bg-white rounded border border-gray-300
-              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
-              text-base outline-none text-gray-700 py-1 px-3 leading-8 mr-0
-              transition duration-500 ease-in-out hover:scale-105"
-              >
-                취소하기
-              </button>
-              <button
-                className="peer mt-6 w-1/3 bg-indigo-500 rounded border border-gray-300
-              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
-              text-base outline-none text-white py-1 px-3 leading-8 ml-10
-              transition duration-500 ease-in-out hover:scale-105"
+                className="text-white bg-indigo-500 border-0 py-2 px-8 
+                focus:outline-none hover:bg-indigo-600 rounded text-lg
+              transition duration-500 ease-in-out hover:scale-105 w-full"
                 onClick={() => {
                   Navigate(`/accounts/signup/2/`);
                 }}

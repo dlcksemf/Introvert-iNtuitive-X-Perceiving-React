@@ -5,6 +5,7 @@ import useFieldValues from 'base/hooks/useFieldValues';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ConfirmationModal from 'designMaterials/ConfirmationModal';
+import CancelIcon from 'designMaterials/CancelIcon';
 
 const INIT_FILED_VALUES = {
   username: '',
@@ -96,6 +97,9 @@ function SignupForm2() {
             </p>
           </div>
           <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
+            <div className="flex justify-end">
+              <CancelIcon className="flex justify-end" onClick="#" />
+            </div>
             <h2 className="flex text-gray-900 text-lg title-font mb-5 select-none font-bold">
               Selection information
             </h2>
