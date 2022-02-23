@@ -1,5 +1,5 @@
 import { useApiAxios } from 'base/api/base';
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { BookSummary } from './BookSummary';
 import SearchBar from 'components/parts/SearchBar';
 import ReactPaginate from 'react-paginate';
@@ -55,55 +55,39 @@ function BookList() {
 
   return (
     <>
-      <section className="text-gray-600 body-font">
-        <div className="container px-5 py-14 mx-auto">
-          <div className="flex flex-col text-center w-full">
-            <div className="flex flex-col text-center w-full">
-              <div className="flex justify-end">
-                <h1 className="text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mr-56">
-                  전체 도서 목록
-                </h1>
-                <div className="dropdown relative flex space-y-2 justify-between m-1 p-2.5">
-                  <Category selected={category} setSelected={setCategory} />
-                </div>
-                <div className="pt-2 relative text-gray-600">
-                  <SearchBar
-                    handleChange={setQuery}
-                    handleSubmit={handleSubmit}
-                  />
-                </div>
-              </div>
-              <div class="flex flex-wrap -m-4">
-                <div class="p-4 lg:w-1/2">
-                  <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                    <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                      <ul className="mt-28">
-                        {loading && '로딩 중 ...'}
-                        {error && '로딩 중 에러가 발생했습니다.'}
-                        {bookList?.results?.map((book) => (
-                          <li>
-                            <BookSummary book={book} key={book.book_num} />
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ReactPaginate
-                breakLabel="..."
-                nextLabel=">"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={itemsPerPage}
-                pageCount={pageCount}
-                previousLabel="<"
-                renderOnZeroPageCount={null}
-                className="pagination"
-              />
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">
+              전체 도서 목록
+            </h1>
+            <div class="flex justify-end items-end">
+              <Category selected={category} setSelected={setCategory} />
+              <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
+              {loading && '로딩 중 ...'}
+              {error && '로딩 중 에러가 발생했습니다.'}
             </div>
+          </div>
+          <div class="flex flex-wrap -m-4">
+            {bookList?.results?.map((book) => (
+              <React.Fragment>
+                <BookSummary book={book} key={book.book_num} />
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </section>
+
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
+        pageCount={pageCount}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
+        className="pagination"
+      />
     </>
   );
 }
