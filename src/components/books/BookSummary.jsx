@@ -36,6 +36,10 @@ function BookSummary({ book }) {
     { manual: true },
   );
 
+  const reload = () => {
+    getWish();
+  };
+
   useEffect(() => {
     refetch();
   }, []);
@@ -67,8 +71,9 @@ function BookSummary({ book }) {
                 wish={wish?.results[0]}
                 user_id={auth.user_id}
                 getWish={getWish}
+                reload={reload}
               />
-            </div>{' '}
+            </div>
             {book?.state === 'A' ? (
               <div className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
                 <LoanedIcon />

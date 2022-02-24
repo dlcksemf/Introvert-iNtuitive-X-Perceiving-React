@@ -36,6 +36,10 @@ function BookDetail({ book_num }) {
     getWish();
   }, [auth, book]);
 
+  const reload = () => {
+    getWish();
+  };
+
   const buyLink = () => {
     window.open('https://www.aladin.co.kr/home/welcome.aspx', '_blank');
   };
@@ -130,6 +134,7 @@ function BookDetail({ book_num }) {
                           wish={wish?.results[0]}
                           user_id={auth.user_id}
                           getWish={getWish}
+                          reload={reload}
                         />
                       </div>
                       <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
