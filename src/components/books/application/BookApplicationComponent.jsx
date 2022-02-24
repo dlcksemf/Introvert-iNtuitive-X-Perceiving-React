@@ -1,5 +1,5 @@
 import Badge from 'designMaterials/Badge';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function BookApplicationComponent({ application }) {
   const [color] = useState(() => {
@@ -14,16 +14,27 @@ function BookApplicationComponent({ application }) {
 
   return (
     <>
-      {application && (
-        <div className="flex">
-          <div className="inline-block">{application.title}</div>
-          <div className="mx-4 inline-block">{application.writer}</div>
-          <div className="mx-4 inline-block">{application.publisher}</div>
-          <div className="mx-4 inline-block">{application.ISBN}</div>
-
-          <Badge color={color}>{application.state}</Badge>
-        </div>
-      )}
+      <React.Fragment>
+        {application && (
+          <tr>
+            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+              {application.title}
+            </th>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+              {application.writer}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+              {application.publisher}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+              {application.ISBN}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+              <Badge color={color}>{application.state}</Badge>
+            </td>
+          </tr>
+        )}
+      </React.Fragment>
     </>
   );
 }
