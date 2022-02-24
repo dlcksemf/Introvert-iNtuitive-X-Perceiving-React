@@ -276,15 +276,15 @@ function SignupFormComponent2({
             onChange={handleBirthField}
           >
             <option className="hidden text-center">생월 선택</option>
-            <option>01</option>
-            <option>02</option>
-            <option>03</option>
-            <option>04</option>
-            <option>05</option>
-            <option>06</option>
-            <option>7월</option>
-            <option>8월</option>
-            <option>9월</option>
+            <option>01월</option>
+            <option>02월</option>
+            <option>03월</option>
+            <option>04월</option>
+            <option>05월</option>
+            <option>06월</option>
+            <option>07월</option>
+            <option>08월</option>
+            <option>09월</option>
             <option>10월</option>
             <option>11월</option>
             <option>12월</option>

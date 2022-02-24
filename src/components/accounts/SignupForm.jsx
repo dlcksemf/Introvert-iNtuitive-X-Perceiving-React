@@ -1,5 +1,4 @@
 import { useApiAxios } from 'base/api/base';
-import DebugStates from 'base/DebugStates';
 import useFieldValues from 'base/hooks/useFieldValues';
 import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
@@ -137,16 +136,17 @@ function SignupForm() {
               <>
                 <NavLink
                   to={`/accounts/signup/`}
-                  className="ml-14 peer mt-6 w-1/3 bg-white rounded border border-gray-300
-              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
-              text-base outline-none text-gray-700 py-1 px-3 leading-8 mr-0
-              transition duration-500 ease-in-out hover:scale-105"
+                  type="button"
+                  className="ml-14 mt-6 w-1/3 bg-white rounded border border-gray-300
+                  focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
+                  text-base outline-none text-gray-700 py-1 px-3 leading-8 mr-0
+                  transition duration-500 ease-in-out hover:scale-105 text-center"
                 >
                   뒤로가기
                 </NavLink>
 
                 <button
-                  className="peer mt-6 w-1/3 bg-indigo-500 rounded border border-gray-300
+                  className="mt-6 w-1/3 bg-indigo-500 rounded border border-gray-300
               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
               text-base outline-none text-white py-1 px-3 leading-8 ml-10
               transition duration-500 ease-in-out hover:scale-105"
@@ -158,8 +158,9 @@ function SignupForm() {
             ) : (
               <NavLink
                 className="text-white bg-indigo-500 border-0 py-2 px-8 
-              focus:outline-none hover:bg-indigo-600 rounded text-lg
-            transition duration-500 ease-in-out hover:scale-105 w-full"
+                focus:outline-none hover:bg-indigo-600 rounded text-lg
+              transition duration-500 ease-in-out hover:scale-105 w-full text-center"
+                type="button"
                 to="/accounts/signup/2/"
               >
                 다음으로
