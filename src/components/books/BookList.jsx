@@ -9,7 +9,7 @@ import Category from 'components/parts/Category';
 function BookList() {
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
-  const [, setPage] = useState(1);
+  const [page, setPage] = useState(1);
   const [category, setCategory] = useState('All');
 
   const [query, setQuery] = useState();
@@ -79,7 +79,12 @@ function BookList() {
             <div className="flex flex-wrap -m-4">
               {bookList?.results?.map((book) => (
                 <React.Fragment key={book.book_num}>
-                  <BookSummary book={book} />
+                  <BookSummary
+                    book={book}
+                    reloadBook={() => {
+                      fetchApplications(page);
+                    }}
+                  />
                 </React.Fragment>
               ))}
             </div>
