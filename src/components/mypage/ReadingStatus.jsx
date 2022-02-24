@@ -1,9 +1,14 @@
 import { ResponsiveCalendar } from '@nivo/calendar';
 import { useApiAxios } from 'base/api/base';
+import { useAuth } from 'base/hooks/Authcontext';
 import { useEffect } from 'react';
 
 function ReadingStatus() {
-  const [{ data }, refetch] = useApiAxios('/accounts/api/users/4/');
+  const [auth] = useAuth();
+
+  const [{ data }, refetch] = useApiAxios(
+    `/accounts/api/users/${auth.user_id}/`,
+  );
 
   let today = new Date();
 
