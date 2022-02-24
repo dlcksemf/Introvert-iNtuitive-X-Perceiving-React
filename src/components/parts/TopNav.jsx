@@ -38,6 +38,9 @@ function TopNav() {
         </div>
 
         <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0">
+          {!auth.isLoggedIn && (
+            <h1 className="font-semibold select-none mr-3">로그인 👉</h1>
+          )}
           {auth.isLoggedIn && (
             <div className="text-sm font-bold mr-3 py-2 select-none">
               {auth.is_staff
