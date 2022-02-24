@@ -68,83 +68,63 @@ function BookApplicationForm() {
 
   return (
     <div>
-      <h2>Book Application Form</h2>
-      <div className="w-full lg:w-1/2 xl:w-5/12 px-4">
-        <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
-          {DATA_FIELDS.map((dataType, index) => (
-            <div key={index} className="mb-6">
-              <input
-                type="text"
-                name={dataType}
-                onChange={handleFieldChange}
-                placeholder={dataType}
+      <div className="h-screen flex justify-center items-center ">
+        <div className="w-1/3">
+          <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
+            <h2 className="mb-10 text-center text-2xl text-gray-600 font-bold font-sans">
+              📚도서 신청 폼📖
+            </h2>
+            {DATA_FIELDS.map((dataType, index) => (
+              <div key={index} className="mb-6">
+                <input
+                  type="text"
+                  name={dataType}
+                  onChange={handleFieldChange}
+                  placeholder={dataType}
+                  className="
+                  w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none
+                        "
+                />
+                {errorMessages[dataType] &&
+                  errorMessages[dataType].map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+              </div>
+            ))}
+
+            <div>
+              <button
+                onClick={handleClickSubmitButton}
                 className="
-                        w-full
-                        rounded
-                        py-3
-                        px-[14px]
-                        text-body-color text-base
-                        border border-[f0f0f0]
-                        outline-none
-                        focus-visible:shadow-none
-                        focus:border-primary
+                w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans
                         "
-              />
-              {errorMessages[dataType] &&
-                errorMessages[dataType].map((message, index) => (
-                  <p key={index} className="text-xs text-red-400">
-                    {message}
-                  </p>
-                ))}
+              >
+                도서 신청하기
+              </button>
+
+              <button
+                onClick={handleClickCancleButton}
+                className="
+                w-full mt-6 mb-3 bg-indigo-100 rounded-lg px-4 py-2 text-lg text-gray-800 tracking-wide font-semibold font-sans
+                        "
+              >
+                취소
+              </button>
             </div>
-          ))}
-
-          <DebugStates fieldValues={fieldValues} />
-
-          <div>
-            <button
-              onClick={handleClickSubmitButton}
-              className="
-                        w-full
-                        text-black
-                        bg-primary
-                        rounded
-                        border border-primary
-                        p-3
-                        transition
-                        hover:bg-opacity-90
-                        "
-            >
-              Send Message
-            </button>
-
-            <button
-              onClick={handleClickCancleButton}
-              className="
-                        w-full
-                        text-black
-                        bg-primary
-                        rounded
-                        border border-primary
-                        p-3
-                        transition
-                        hover:bg-opacity-90
-                        "
-            >
-              Cancle
-            </button>
           </div>
         </div>
-      </div>
 
-      {(showSubmitModal || showCancleModal) && (
-        <ConfirmationModal
-          handleOkButton={handleOkButton}
-          handleCancleButton={handleCancleButton}
-        >
-          {showSubmitModal ? 'Save?' : 'Cancle?'}
-        </ConfirmationModal>
-      )}
+        {(showSubmitModal || showCancleModal) && (
+          <ConfirmationModal
+            handleOkButton={handleOkButton}
+            handleCancleButton={handleCancleButton}
+          >
+            {showSubmitModal ? 'Save?' : 'Cancle?'}
+          </ConfirmationModal>
+        )}
+      </div>
     </div>
   );
 }
