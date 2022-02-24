@@ -1,8 +1,11 @@
 import { useApiAxios } from 'base/api/base';
 import { EmptyHeart, FilledHeart } from 'designMaterials/WishesIcon';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-function Toggle({ book, wish, user_id }) {
+function Toggle({ book, wish, user_id, reload }) {
+  let location = useLocation();
+
   const [wishes, setWishes] = useState(false);
 
   const [{}, makeWish] = useApiAxios(
@@ -44,7 +47,7 @@ function Toggle({ book, wish, user_id }) {
       data: { book_name: book.book_num, user_id: user_id },
     }).then(() => {
       setWishes(true);
-      window.location.replace(`/books/${book.book_num}/`);
+      reload();
     });
   };
 
