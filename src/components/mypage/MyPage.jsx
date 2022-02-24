@@ -6,6 +6,7 @@ import LoanedBooksList from './loanedBooks/LoanedBooksList';
 import WishBooksList from './wishes/WishBooksList';
 import UserInfo from './UserInfo';
 import { useReload } from 'base/hooks/ReloadContext';
+import ReadingStatus from './ReadingStatus';
 
 function MyPage() {
   const [showWish, setShowWish] = useState(false);
@@ -96,6 +97,8 @@ function MyPage() {
                 </div>
               </div>
             </div>
+
+            <ReadingStatus />
 
             <div class="my-4"></div>
           </div>
