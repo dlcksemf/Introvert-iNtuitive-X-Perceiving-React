@@ -2,6 +2,7 @@
   position: fixed;
   width: 220px;
   z-index: 900;
+  height: 60px;
 }
 #header .closemenu {
   color: rgb(255, 230, 0);
@@ -34,7 +35,7 @@
 }
 #header .pro-sidebar-inner .pro-sidebar-layout {
   overflow-y: hidden;
-  height: 100vh;
+  height: auto;
 }
 #header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
   font-size: 20px;
