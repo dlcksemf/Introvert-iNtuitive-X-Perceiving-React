@@ -11,7 +11,8 @@ function SearchBar({ handleSubmit, handleChange }) {
     <div className="pt-2 relative mx-auto text-gray-600">
       <form onSubmit={handleSubmitButtonClicked}>
         <input
-          className="w-[200px] inline-block border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+          className="w-[200px] inline-block border-2 border-gray-300 bg-white h-10 px-5
+          pr-16 rounded-lg text-sm focus:outline-none hover:ring-2 hover:border-blue-400 hover:ring-blue-400"
           type="search"
           name="search"
           placeholder="search"
@@ -19,7 +20,11 @@ function SearchBar({ handleSubmit, handleChange }) {
             handleChange(e.target.value);
           }}
         />
-        <button type="submit" className="absolute right-0 top-0 mt-5 mr-4">
+        <button
+          type="submit"
+          className="absolute right-0 top-0 mt-5 mr-4 hover:text-blue-500
+          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90"
+        >
           <svg
             style={{ width: 24 + 'px', height: 24 + 'px' }}
             viewBox="0 0 24 24"
