@@ -8,6 +8,7 @@ import PageBookRouter from 'pages/router/PageBookRouter';
 import PageAccountsRouter from 'pages/router/PageAccountsRouter';
 import PageAdminRouter from 'pages/router/PageAdminRouter';
 import MainPage from 'pages/MainPage';
+import Footer from 'components/parts/Footer';
 
 function App() {
   const [auth] = useAuth();
@@ -33,6 +34,11 @@ function App() {
           )}
         </Routes>
       </div>
+      {!auth?.is_staff && (
+        <>
+          <hr /> <Footer />
+        </>
+      )}
     </>
   );
 }
