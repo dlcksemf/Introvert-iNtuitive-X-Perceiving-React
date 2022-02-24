@@ -11,7 +11,7 @@ function TopNav() {
 
   const handleGoToMainPage = () => {
     if (!auth.is_staff) {
-      navigate('/books/booklist');
+      navigate('/');
     }
   };
 
