@@ -1,9 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import non_image from 'components/parts/image/non_image.jpg';
 import heavy_reader from 'components/parts/image/heavy_reader.png';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LoanedIcon from 'designMaterials/LoanedIcon';
 import Toggle from 'components/parts/Toggle';
+import { useApiAxios } from 'base/api/base';
+import { useAuth } from 'base/hooks/Authcontext';
+import LoanedModal from 'components/parts/LoanedModal';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -13,7 +16,33 @@ function truncateString(str) {
   }
 }
 function BookSummary({ book }) {
+  const [auth] = useAuth();
   const navigate = useNavigate();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const [{}, refetch] = useApiAxios(
+    {
+      url: '/books/api/books/',
+      method: 'GET',
+    },
+    { manual: true },
+  );
+
+  const [{ data: wish }, getWish] = useApiAxios(
+    {
+      url: `/books/api/wishes/?user=${auth?.user_id}&book=${book?.book_num}`,
+      method: 'GET',
+    },
+    { manual: true },
+  );
+
+  useEffect(() => {
+    refetch();
+  }, []);
+
+  useEffect(() => {
+    getWish();
+  }, [auth, book]);
 
   return (
     <div className="p-4 lg:w-1/2">
@@ -32,7 +61,25 @@ function BookSummary({ book }) {
             {book.category && `[ ${book.category} ]`}
           </h3>
           <span className="absolute inline-flex m-auto pl-80">
-            <Toggle /> <LoanedIcon />
+            <Toggle
+              book={book}
+              wish={wish?.results[0]}
+              user_id={auth.user_id}
+              getWish={getWish}
+            />{' '}
+            {book?.state === 'A' ? (
+              <LoanedIcon />
+            ) : (
+              <p className="m-auto ml-5 select-none hover:text-blue-500">
+                {book?.loaned_books[0]?.return_due_date}
+              </p>
+            )}
+            <LoanedModal
+              ariaHideApp={false}
+              modalIsOpen={modalIsOpen}
+              setModalIsOpen={setModalIsOpen}
+              book_num={book?.book_num}
+            />
           </span>
           <h2
             className="absolute title-font font-medium text-lg text-black hover:text-blue-500 cursor-pointer grid
