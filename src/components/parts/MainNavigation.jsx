@@ -58,6 +58,12 @@ function MainNavigation() {
               </HashLink>
             </MenuItem>
 
+            <MenuItem icon="🤩">
+              <HashLink smooth to={'/#new-book'} className="hover:text-lg">
+                <h1 className="text-indigo-900">신간도서</h1>
+              </HashLink>
+            </MenuItem>
+
             <MenuItem icon="🔍">
               <HashLink smooth to={'/#guide'} className="hover:text-lg">
                 <h1 className="text-indigo-900">이용안내</h1>

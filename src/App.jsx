@@ -36,7 +36,8 @@ function App() {
       </div>
       {!auth?.is_staff && (
         <>
-          <hr /> <Footer />
+          <hr />
+          <Footer />
         </>
       )}
     </>
