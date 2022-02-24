@@ -59,7 +59,10 @@ function BookList() {
         <div className="container px-5  mx-auto">
           <div className="flex flex-col text-center w-full">
             <div className="flex justify-end">
-              <h1 className="text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mb-36 mt-4">
+              <h1
+                className="text-2xl font-semibold title-font text-gray-900 tracking-widest m-auto mb-36 mt-4
+              select-none"
+              >
                 전체 도서 목록
               </h1>
               <div className="absolute flex justify-end items-end mb-28">
