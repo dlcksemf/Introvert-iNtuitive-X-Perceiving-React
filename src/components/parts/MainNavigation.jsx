@@ -19,7 +19,7 @@ import 'css/Navigation.css';
 import { HashLink, NavHashLink } from 'react-router-hash-link';
 
 function MainNavigation() {
-  const [menuCollapse, setMenuCollapse] = useState(true);
+  const [menuCollapse, setMenuCollapse] = useState(false);
 
   const handleMouseEnter = () => {
     setMenuCollapse(false);

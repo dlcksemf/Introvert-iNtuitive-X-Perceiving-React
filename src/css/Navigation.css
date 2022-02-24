@@ -1,6 +1,7 @@
 #header {
   position: fixed;
   width: 220px;
+  z-index: 900;
 }
 #header .closemenu {
   color: rgb(255, 230, 0);
@@ -18,10 +19,14 @@
   width: 100%;
   min-width: 100%;
   height: 100vh;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
 }
 #header .pro-sidebar.collapsed {
   width: 80px;
   min-width: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
 }
 #header .pro-sidebar-inner {
   background-color: transparent;
