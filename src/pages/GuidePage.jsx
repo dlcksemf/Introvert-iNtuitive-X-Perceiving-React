@@ -114,10 +114,7 @@ function GuidePage() {
           </div>
         </div>
 
-        <div class="w-full px-4 mx-auto text-left">
-          <h6 class="text-2xl font-semibold ml-72 mt-4">찾아오시는 길</h6>
-        </div>
-        <div class="flex items-center p-5 w-full h-full bg-blue-200">
+        <div class="flex items-center p-5 w-full h-full bg-blue-200 mt-4">
           <div class=" grid grid-cols-2 gap-4 m-auto">
             <div class="flex flex-col justify-start">
               <div
