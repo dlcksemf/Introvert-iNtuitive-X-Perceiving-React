@@ -10,22 +10,25 @@ function MainPage() {
     <div className="">
       <MainNavigation />
 
-      <section id="main">
-        <Main />
-      </section>
+      <div className="ml-[80px] z-0">
+        <section id="main">
+          <Main />
+        </section>
 
-      <section id="rank">
-        <Top5 />
-      </section>
+        <section id="rank">
+          <Top5 />
+        </section>
 
-      <section id="top-reader">
-        <HeavyReader />
-      </section>
+        <section id="top-reader">
+          <HeavyReader />
+        </section>
 
-      <section id="new-book">
-        <NewBook />
-      </section>
-      <Footer />
+        <section id="new-book">
+          <NewBook />
+        </section>
+
+        <Footer />
+      </div>
     </div>
   );
 }
