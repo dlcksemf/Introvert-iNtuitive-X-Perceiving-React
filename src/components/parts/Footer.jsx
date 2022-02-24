@@ -4,7 +4,7 @@ function Footer() {
   return (
     <header className="text-gray-600 body-font sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-20 mt-8">
       <div className="flex">
-        <div className="inline-block text-semibold select-none mt-3 ml-3">
+        <div className="inline-block text-semibold select-none mt-3 ml-10">
           (주) EUCLID SOFT - 대전 동구 계족로 151
         </div>
 
