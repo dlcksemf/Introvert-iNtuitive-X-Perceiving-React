@@ -39,11 +39,15 @@ function MainNavigation() {
         <SidebarContent>
           <Menu iconShape="square">
             <MenuItem active={true} icon={<FiHome />}>
-              Home
+              <h1 className="text-black font-bold hover:text-gray-600 hover:text-xl">
+                Home
+              </h1>
             </MenuItem>
 
             <MenuItem icon={<FaList />}>
-              <HashLink to={'/#top'}>Top</HashLink>
+              <HashLink to={'/#top'} className="hover:text-lg">
+                <h1 className="text-indigo-900">Top</h1>
+              </HashLink>
             </MenuItem>
 
             <MenuItem icon={<FaRegHeart />}>
@@ -51,20 +55,21 @@ function MainNavigation() {
                 smooth
                 activeStyle={{ fontWeight: 'bold' }}
                 to={'/#main'}
+                className="hover:text-lg"
               >
-                Main
+                <h1 className="text-indigo-900">Main</h1>
               </NavHashLink>
             </MenuItem>
 
             <MenuItem icon={<RiPencilLine />}>
-              <HashLink smooth to={'/#rank'}>
-                Rank
+              <HashLink smooth to={'/#rank'} className="hover:text-lg">
+                <h1 className="text-indigo-900">Rank</h1>
               </HashLink>
             </MenuItem>
 
             <MenuItem icon={<BiCog />}>
-              <HashLink smooth to={'/#top-reader'}>
-                top-reader
+              <HashLink smooth to={'/#top-reader'} className="hover:text-lg">
+                <h1 className="text-indigo-900">top-reader</h1>
               </HashLink>
             </MenuItem>
           </Menu>
