@@ -61,14 +61,18 @@ function BookSummary({ book }) {
             {book.category && `[ ${book.category} ]`}
           </h3>
           <span className="absolute inline-flex m-auto pl-80">
-            <Toggle
-              book={book}
-              wish={wish?.results[0]}
-              user_id={auth.user_id}
-              getWish={getWish}
-            />{' '}
+            <div className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
+              <Toggle
+                book={book}
+                wish={wish?.results[0]}
+                user_id={auth.user_id}
+                getWish={getWish}
+              />
+            </div>{' '}
             {book?.state === 'A' ? (
-              <LoanedIcon />
+              <div className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
+                <LoanedIcon />
+              </div>
             ) : (
               <p className="m-auto ml-5 select-none hover:text-blue-500">
                 {book?.loaned_books[0]?.return_due_date}
