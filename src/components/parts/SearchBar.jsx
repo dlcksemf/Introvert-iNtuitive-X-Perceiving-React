@@ -12,7 +12,7 @@ function SearchBar({ handleSubmit, handleChange }) {
       <form onSubmit={handleSubmitButtonClicked}>
         <input
           className="w-[200px] inline-block border-2 border-gray-300 bg-white h-10 px-5
-          pr-16 rounded-lg text-sm focus:outline-none hover:ring-2 hover:border-blue-400 hover:ring-blue-400"
+          pr-16 rounded-lg text-sm focus:outline-none"
           type="search"
           name="search"
           placeholder="search"
