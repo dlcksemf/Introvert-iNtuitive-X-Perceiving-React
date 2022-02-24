@@ -24,28 +24,11 @@ function Top5() {
         <Carousel
           stopAutoPlayOnHover={true}
           fullHeightHover={true}
+          indicators={false}
           navButtonsProps={{
             style: {
               backgroundColor: 'cornflowerblue',
               borderRadius: 100,
-            },
-          }}
-          // IndicatorIcon={<Home />}
-          indicatorIconButtonProps={{
-            style: {
-              padding: '10px', // 1
-              color: 'cornflowerblue', // 3
-            },
-          }}
-          activeIndicatorIconButtonProps={{
-            style: {
-              backgroundColor: '#ffffff', // 2
-            },
-          }}
-          indicatorContainerProps={{
-            style: {
-              marginTop: '50px', // 5
-              textAlign: 'center', // 4
             },
           }}
         >
