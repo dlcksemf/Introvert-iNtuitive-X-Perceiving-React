@@ -52,7 +52,7 @@ function TopNav() {
 
         <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0">
           {auth.isLoggedIn && (
-            <div className="text-sm font-bold mr-3 py-2">
+            <div className="text-sm font-bold mr-3 py-2 select-none">
               {auth.is_staff
                 ? `관리자님 환영합니다.`
                 : `${auth.username ? auth.username : 'NoNamer'}님 환영합니다.`}
