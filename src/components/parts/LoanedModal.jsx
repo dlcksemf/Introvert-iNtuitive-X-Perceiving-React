@@ -9,7 +9,7 @@ import { addMonths } from 'date-fns';
 import { ko } from 'date-fns/esm/locale';
 import non_image from 'components/parts/image/non_image.jpg';
 
-function LoanedModal({ setModalIsOpen, modalIsOpen, book_num }) {
+function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
   const [startDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const month = ('0' + (startDate.getMonth() + 1)).slice(-2);
@@ -51,6 +51,7 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num }) {
     })
       .then(() => {
         setModalIsOpen(false);
+        reload();
       })
       .catch((error) => {
         console.log(error);

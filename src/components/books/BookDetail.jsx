@@ -36,6 +36,11 @@ function BookDetail({ book_num }) {
     getWish();
   }, [auth, book]);
 
+  const reload = () => {
+    getWish();
+    refetch();
+  };
+
   const buyLink = () => {
     window.open('https://www.aladin.co.kr/home/welcome.aspx', '_blank');
   };
@@ -130,6 +135,7 @@ function BookDetail({ book_num }) {
                           wish={wish?.results[0]}
                           user_id={auth.user_id}
                           getWish={getWish}
+                          reload={reload}
                         />
                       </div>
                       <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
@@ -149,7 +155,7 @@ function BookDetail({ book_num }) {
 
                         {book?.state !== 'A' && (
                           <p className="m-auto select-none hover:text-blue-500">
-                            반납 예정일 ::{' '}
+                            반납 예정일 ::
                             {book?.loaned_books[0]?.return_due_date}
                           </p>
                         )}
@@ -158,6 +164,7 @@ function BookDetail({ book_num }) {
                           modalIsOpen={modalIsOpen}
                           setModalIsOpen={setModalIsOpen}
                           book_num={book?.book_num}
+                          reload={reload}
                         />
                       </span>
                     </div>

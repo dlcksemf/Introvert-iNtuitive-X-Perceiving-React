@@ -15,18 +15,10 @@ function truncateString(str) {
     return str;
   }
 }
-function BookSummary({ book }) {
+function BookSummary({ book, reloadBook }) {
   const [auth] = useAuth();
   const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const [{}, refetch] = useApiAxios(
-    {
-      url: '/books/api/books/',
-      method: 'GET',
-    },
-    { manual: true },
-  );
 
   const [{ data: wish }, getWish] = useApiAxios(
     {
@@ -36,9 +28,9 @@ function BookSummary({ book }) {
     { manual: true },
   );
 
-  useEffect(() => {
-    refetch();
-  }, []);
+  const reload = () => {
+    getWish();
+  };
 
   useEffect(() => {
     getWish();
@@ -67,12 +59,16 @@ function BookSummary({ book }) {
                 wish={wish?.results[0]}
                 user_id={auth.user_id}
                 getWish={getWish}
+                reload={reload}
               />
-            </div>{' '}
+            </div>
             {book?.state === 'A' ? (
-              <div className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
+              <button
+                onClick={() => setModalIsOpen(true)}
+                className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+              >
                 <LoanedIcon />
-              </div>
+              </button>
             ) : (
               <p className="m-auto ml-5 select-none hover:text-blue-500">
                 {book?.loaned_books[0]?.return_due_date}
@@ -83,6 +79,7 @@ function BookSummary({ book }) {
               modalIsOpen={modalIsOpen}
               setModalIsOpen={setModalIsOpen}
               book_num={book?.book_num}
+              reload={reloadBook}
             />
           </span>
           <h2
