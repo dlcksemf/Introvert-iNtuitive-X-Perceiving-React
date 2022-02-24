@@ -194,16 +194,22 @@ function Top5Summary({ book }) {
 function HeavyReaderSummary({ book }) {
   return (
     <div>
-      <img
-        src={heavy_reader}
-        alt="다독왕"
-        className="w-screen h-screen rounded inline"
-      />
-      <div className="absolute top-20 left-20 px-20 py-20">
-        <h4 className="mb-3 text-xl font-semibold tracking-tight text-white">
-          <p className="leading-normal text-gray-100">{book.username}</p>
-        </h4>
-      </div>
+      <span className="flex justify-center">
+        <img
+          src={heavy_reader}
+          alt="다독왕"
+          className="w-3/5 h-3/5 rounded inline"
+        />
+        <h1 className="absolute mt-96 text-3xl select-none">
+          이달의 EUCLID 다독왕
+        </h1>
+      </span>
+      <span className="flex justify-center">
+        <h1 className="absolute text-4xl select-none">{book.username}</h1>
+        {book?.position && (
+          <h1 className="absolute text-4xl select-none">{book.position}</h1>
+        )}
+      </span>
     </div>
   );
 }
