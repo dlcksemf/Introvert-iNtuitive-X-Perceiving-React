@@ -6,7 +6,7 @@ function LoanedBooksList({ loanedBookList }) {
   let location = useLocation();
 
   const filtered_list = loanedBookList?.filter(
-    (book) => book.loaned_status === 'L',
+    (book) => book.return_state === 'L',
   );
 
   return (
@@ -51,7 +51,7 @@ function LoanedBooksList({ loanedBookList }) {
                         저자
                       </th>
                       <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        도서 상태
+                        반납 날짜
                       </th>
                       <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                         반납 신청

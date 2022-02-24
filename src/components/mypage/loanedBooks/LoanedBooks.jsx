@@ -20,7 +20,7 @@ function LoanedBooks({ book }) {
 
   const [color, setColor] = useState(() => {
     if (book.return_state === 'L') {
-      if (book.return_due_date < date) {
+      if (new Date(book.return_due_date) < new Date(date)) {
         return 'red';
       }
       return 'green';
@@ -77,8 +77,11 @@ function LoanedBooks({ book }) {
         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
           <Badge color={color}>
             {book.return_state === 'L' &&
-              (book.return_due_date < date
-                ? overdueDate + '일 연체'
+              (new Date(book.return_due_date) < new Date(date)
+                ? Math.floor(
+                    (Date.parse(date) - Date.parse(book.return_due_date)) /
+                      (1000 * 3600 * 24),
+                  ) + '일 연체'
                 : book.return_due_date)}
             {book.return_state === 'P' && '반납 신청..'}
             {book.return_state === 'R' && '반납 됨'}
