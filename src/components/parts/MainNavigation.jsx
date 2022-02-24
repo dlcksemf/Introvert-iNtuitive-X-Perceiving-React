@@ -8,10 +8,7 @@ import {
   SidebarContent,
 } from 'react-pro-sidebar';
 
-import { FaList, FaRegHeart } from 'react-icons/fa';
-import { FiHome, FiLogOut } from 'react-icons/fi';
-import { RiPencilLine } from 'react-icons/ri';
-import { BiCog } from 'react-icons/bi';
+import { FiLogOut } from 'react-icons/fi';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import 'css/Navigation.css';
@@ -19,7 +16,7 @@ import 'css/Navigation.css';
 import { HashLink, NavHashLink } from 'react-router-hash-link';
 
 function MainNavigation() {
-  const [menuCollapse, setMenuCollapse] = useState(false);
+  const [menuCollapse, setMenuCollapse] = useState(true);
 
   const handleMouseEnter = () => {
     setMenuCollapse(false);
@@ -38,38 +35,26 @@ function MainNavigation() {
       >
         <SidebarContent>
           <Menu iconShape="square">
-            <MenuItem active={true} icon={<FiHome />}>
-              <h1 className="text-black font-bold hover:text-gray-600 hover:text-xl">
-                Home
-              </h1>
-            </MenuItem>
-
-            <MenuItem icon={<FaList />}>
-              <HashLink to={'/#top'} className="hover:text-lg">
-                <h1 className="text-indigo-900">Top</h1>
-              </HashLink>
-            </MenuItem>
-
-            <MenuItem icon={<FaRegHeart />}>
+            <MenuItem icon="🏠">
               <NavHashLink
                 smooth
                 activeStyle={{ fontWeight: 'bold' }}
                 to={'/#main'}
                 className="hover:text-lg"
               >
-                <h1 className="text-indigo-900">Main</h1>
+                <h1 className="text-indigo-900">Home</h1>
               </NavHashLink>
             </MenuItem>
 
-            <MenuItem icon={<RiPencilLine />}>
+            <MenuItem icon="🏆">
               <HashLink smooth to={'/#rank'} className="hover:text-lg">
-                <h1 className="text-indigo-900">Rank</h1>
+                <h1 className="text-indigo-900">인기 도서</h1>
               </HashLink>
             </MenuItem>
 
-            <MenuItem icon={<BiCog />}>
+            <MenuItem icon="😎">
               <HashLink smooth to={'/#top-reader'} className="hover:text-lg">
-                <h1 className="text-indigo-900">top-reader</h1>
+                <h1 className="text-indigo-900">다독왕</h1>
               </HashLink>
             </MenuItem>
           </Menu>

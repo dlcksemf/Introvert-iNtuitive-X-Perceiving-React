@@ -10,10 +10,10 @@ import AdminTopNav from 'components/maneger/AdminTopNav';
 
 function PageAdminRouter() {
   return (
-    <div className="flex">
+    <div className="">
       <AdminTopNav />
 
-      <div className="grow">
+      <div className="ml-[80px] z-0">
         <Routes>
           <Route path="/" element={<Navigate to="/admin/loanedbook/" />} />
 
