@@ -34,6 +34,7 @@ function PopOver() {
 
   const handleLogout = () => {
     logout();
+    navigate('/');
   };
 
   return (
