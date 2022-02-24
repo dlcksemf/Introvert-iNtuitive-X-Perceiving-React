@@ -57,6 +57,12 @@ function MainNavigation() {
                 <h1 className="text-indigo-900">다독왕</h1>
               </HashLink>
             </MenuItem>
+
+            <MenuItem icon="🔍">
+              <HashLink smooth to={'/#guide'} className="hover:text-lg">
+                <h1 className="text-indigo-900">이용안내</h1>
+              </HashLink>
+            </MenuItem>
           </Menu>
         </SidebarContent>
 
