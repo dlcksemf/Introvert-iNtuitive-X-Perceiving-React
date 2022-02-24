@@ -44,8 +44,10 @@ function TopNav() {
           {auth.isLoggedIn && (
             <div className="text-sm font-bold mr-3 py-2 select-none">
               {auth.is_staff
-                ? `관리자님 환영합니다.`
-                : `${auth.username ? auth.username : 'NoNamer'}님 환영합니다.`}
+                ? `관리자님 환영합니다 🖐`
+                : `${
+                    auth.username ? auth.username : 'NoNamer'
+                  }님 환영합니다 🖐`}
             </div>
           )}
           <PopOver />
