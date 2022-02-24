@@ -38,38 +38,26 @@ function MainNavigation() {
       >
         <SidebarContent>
           <Menu iconShape="square">
-            <MenuItem active={true} icon={<FiHome />}>
-              <h1 className="text-black font-bold hover:text-gray-600 hover:text-xl">
-                Home
-              </h1>
-            </MenuItem>
-
-            <MenuItem icon={<FaList />}>
-              <HashLink to={'/#top'} className="hover:text-lg">
-                <h1 className="text-indigo-900">Top</h1>
-              </HashLink>
-            </MenuItem>
-
-            <MenuItem icon={<FaRegHeart />}>
+            <MenuItem icon="🏠">
               <NavHashLink
                 smooth
                 activeStyle={{ fontWeight: 'bold' }}
                 to={'/#main'}
                 className="hover:text-lg"
               >
-                <h1 className="text-indigo-900">Main</h1>
+                <h1 className="text-indigo-900">Home</h1>
               </NavHashLink>
             </MenuItem>
 
-            <MenuItem icon={<RiPencilLine />}>
+            <MenuItem icon="🏆">
               <HashLink smooth to={'/#rank'} className="hover:text-lg">
-                <h1 className="text-indigo-900">Rank</h1>
+                <h1 className="text-indigo-900">인기 도서</h1>
               </HashLink>
             </MenuItem>
 
-            <MenuItem icon={<BiCog />}>
+            <MenuItem icon="😎">
               <HashLink smooth to={'/#top-reader'} className="hover:text-lg">
-                <h1 className="text-indigo-900">top-reader</h1>
+                <h1 className="text-indigo-900">다독왕</h1>
               </HashLink>
             </MenuItem>
           </Menu>
