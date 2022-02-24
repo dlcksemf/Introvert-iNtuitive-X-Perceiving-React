@@ -72,7 +72,11 @@ function AdminTopNav() {
 
         <SidebarFooter>
           <Menu iconShape="square">
-            <MenuItem icon="🙋‍♀️">Logout</MenuItem>
+            <MenuItem icon="🙋‍♀️">
+              <div onClick={handleLogout} className="hover:text-lg">
+                Logout
+              </div>
+            </MenuItem>
           </Menu>
         </SidebarFooter>
       </ProSidebar>

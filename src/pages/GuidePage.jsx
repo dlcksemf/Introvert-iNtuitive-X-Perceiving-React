@@ -1,13 +1,23 @@
-import background from './img/book.jpg';
+import background from './img/book1.jpg';
 import map from './img/map.png';
 import ReactPlayer from 'react-player';
-import { FaBookOpen } from 'react-icons/fa';
-import { FcIdea } from 'react-icons/fc';
 
 function GuidePage() {
+  const Item = ({ text }) => {
+    return (
+      <p>
+        {text.split('\n').map((txt) => (
+          <>
+            {txt}
+            <br />
+          </>
+        ))}
+      </p>
+    );
+  };
+
   return (
-    <div>
-      <h2>이용 안내</h2>
+    <div className="mt-3">
       <div class="relative  bg-blueGray-50">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
@@ -27,7 +37,7 @@ function GuidePage() {
                     도서 이용 안내
                   </h1>
                   <ReactPlayer
-                    url="https://www.youtube.com/watch?v=7C2z4GqqS5E"
+                    url="https://www.youtube.com/watch?v=mXZZvpTvtIQ"
                     playing
                     controls
                   />
@@ -53,14 +63,16 @@ function GuidePage() {
               <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                 <div class="px-4 py-5 flex-auto">
                   <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400 ">
-                    <i class="fas fa-award">
-                      <FcIdea />
-                    </i>
+                    <p>🤴</p>
                   </div>
 
-                  <h6 class="text-xl font-semibold">이용 방법</h6>
+                  <h6 class="text-xl font-semibold">이달의 독서왕은 나야나</h6>
                   <p class="mt-2 mb-4 text-blueGray-500">
-                    이용 방법 적을거야 어떤거 적을까
+                    <Item
+                      text={
+                        '이제 수기로 작성하던 기록은 No! \n 내가 빌린 책이 데이터로 남아 \n 이달의 독서왕도 도전할 수 있어요'
+                      }
+                    />
                   </p>
                 </div>
               </div>
@@ -69,13 +81,15 @@ function GuidePage() {
               <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                 <div class="px-4 py-5 flex-auto">
                   <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400">
-                    <i class="fas fa-retweet">
-                      <FaBookOpen />
-                    </i>
+                    <p>📖</p>
                   </div>
-                  <h6 class="text-xl font-semibold">독서의 장점</h6>
+                  <h6 class="text-xl font-semibold">내가 읽고 싶은 책은..</h6>
                   <p class="mt-2 mb-4 text-blueGray-500">
-                    독서를 하면 좋은점 그냥 아무 내용 일단
+                    <Item
+                      text={
+                        '읽고 싶고 필요한 책은 많은데.. \n 이런 고민이 있었다면 이제는 도서 신청을 \n 적극 활용해봐요'
+                      }
+                    />
                   </p>
                 </div>
               </div>
@@ -84,36 +98,27 @@ function GuidePage() {
               <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                 <div class="px-4 py-5 flex-auto">
                   <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
-                    <i class="fas fa-fingerprint"></i>
+                    <p>📃</p>
                   </div>
-                  <h6 class="text-xl font-semibold">무슨 내용을 적을까</h6>
+                  <h6 class="text-xl font-semibold">나의 독서 기록</h6>
                   <p class="mt-2 mb-4 text-blueGray-500">
-                    어떤 내용을 적을지 모르겠다!
+                    <Item
+                      text={
+                        '내가 이번 달에 책을 얼마나 읽었지? \n 이제는 마이페이지를 통해 \n 빌린 내역의 통계를 볼 수 있어요'
+                      }
+                    />
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* <footer class="relative  pt-10 pb-6 mt-1">
-          <div class="container mx-auto px-4">
-            <div class="flex flex-wrap items-center md:justify-between justify-center">
-              <div class="w-full px-4 mx-auto text-left">
-                <h6 class="text-xl font-semibold">찾아오시는 길</h6>
-                <div
-                  class="absolute w-full h-full"
-                  style={{ backgroundImage: `url(${map})` }}
-                ></div>
-              </div>
-            </div>
-          </div>
-        </footer> */}
 
         <div class="w-full px-4 mx-auto text-left">
-          <h6 class="text-2xl font-semibold">찾아오시는 길</h6>
+          <h6 class="text-2xl font-semibold ml-72 mt-4">찾아오시는 길</h6>
         </div>
-        <div class="flex items-center p-10 w-full h-full bg-blue-200">
-          <div class=" grid grid-cols-2 gap-4">
+        <div class="flex items-center p-5 w-full h-full bg-blue-200">
+          <div class=" grid grid-cols-2 gap-4 m-auto">
             <div class="flex flex-col justify-start">
               <div
                 class="flex flex-col w-full object-cover h-full justify-items-start border rounded-lg overflow-hidden"
