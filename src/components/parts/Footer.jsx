@@ -1,8 +1,14 @@
 import hope_book from './image/hope_book.jpg';
+import { useLocation } from 'react-router-dom';
 
 function Footer() {
+  let location = useLocation();
+
   return (
-    <header className="text-gray-600 body-font sticky top-0 z-[900] bg-white pt-3 pb-5">
+    <header
+      className="text-gray-600 body-font sticky top-0 bg-white pt-3 pb-5"
+      style={{ zIndex: location.pathname === '/' ? 900 : 0 }}
+    >
       <div className="flex">
         <div className="inline-block text-semibold select-none mt-3 ml-10">
           (주) EUCLID SOFT - 대전 동구 계족로 151

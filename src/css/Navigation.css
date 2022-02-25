@@ -1,14 +1,13 @@
 #header {
   position: fixed;
   width: 220px;
-  z-index: 900;
+  z-index: 100;
   height: 60px;
 }
 #header .closemenu {
   color: rgb(255, 230, 0);
   position: absolute;
   right: 0;
-  z-index: 9999;
   line-height: 20px;
   border-radius: 50%;
   font-weight: bold;

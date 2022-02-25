@@ -2,6 +2,7 @@ import HeavyReader from 'components/main/HeavyReader';
 import Main from 'components/main/Main';
 import NewBook from 'components/main/NewBook';
 import Top5 from 'components/main/Top5';
+import Footer from 'components/parts/Footer';
 import MainNavigation from 'components/parts/MainNavigation';
 import GuidePage from './GuidePage';
 

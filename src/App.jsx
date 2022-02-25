@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { useLocation, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
 
 import Test from 'Test';
@@ -12,6 +12,7 @@ import Footer from 'components/parts/Footer';
 
 function App() {
   const [auth] = useAuth();
+  let location = useLocation();
 
   return (
     <>
