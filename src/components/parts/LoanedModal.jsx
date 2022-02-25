@@ -8,6 +8,7 @@ import Modal from 'react-modal';
 import { addMonths } from 'date-fns';
 import { ko } from 'date-fns/esm/locale';
 import non_image from 'components/parts/image/non_image.jpg';
+import { toast } from 'react-toastify';
 
 function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
   const [startDate] = useState(new Date());
@@ -52,6 +53,15 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
       .then(() => {
         setModalIsOpen(false);
         reload();
+        toast.success('🙆‍♀️ 대출이 완료되었습니다', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       })
       .catch((error) => {
         console.log(error);
