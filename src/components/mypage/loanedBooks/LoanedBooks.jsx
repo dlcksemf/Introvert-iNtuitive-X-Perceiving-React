@@ -6,7 +6,8 @@ import ConfirmationModal from 'designMaterials/ConfirmationModal';
 import React, { useState } from 'react';
 
 function LoanedBooks({ book }) {
-  const [showSubmitModal, setShowSubmitModal] = useState(false);
+  // const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [bookreturn, setBookReturn] = useState(false);
   const [auth] = useAuth();
   const [, setReload] = useReload();
 
@@ -46,13 +47,20 @@ function LoanedBooks({ book }) {
 
   const handleClickSubmitButton = (e) => {
     e.preventDefault();
-    setShowSubmitModal(true);
+    if (window.confirm('반납하시겠습니까?')) {
+      handleOkButton();
+      alert('반납신청 되었습니다.');
+    } else {
+      handleCancleButton();
+      alert('취소되었습니다.');
+    }
+    setBookReturn(true);
   };
 
   const handleOkButton = () => {
     updateState({ data: { return_state: 'P' } })
       .then(() => {
-        setShowSubmitModal(false);
+        setBookReturn(false);
         setReload(true);
         setColor('yellow');
       })
@@ -62,7 +70,7 @@ function LoanedBooks({ book }) {
   };
 
   const handleCancleButton = () => {
-    setShowSubmitModal(false);
+    setBookReturn(false);
   };
 
   return (
@@ -90,14 +98,6 @@ function LoanedBooks({ book }) {
         <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           {book.return_state === 'L' && (
             <button onClick={handleClickSubmitButton}>반납 신청</button>
-          )}
-          {showSubmitModal && (
-            <ConfirmationModal
-              handleOkButton={handleOkButton}
-              handleCancleButton={handleCancleButton}
-            >
-              반납 신청 하시겠습니까?
-            </ConfirmationModal>
           )}
         </td>
       </tr>
