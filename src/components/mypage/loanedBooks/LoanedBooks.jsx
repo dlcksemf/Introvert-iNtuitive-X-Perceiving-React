@@ -2,11 +2,9 @@ import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import { useReload } from 'base/hooks/ReloadContext';
 import Badge from 'designMaterials/Badge';
-import ConfirmationModal from 'designMaterials/ConfirmationModal';
 import React, { useState } from 'react';
 
 function LoanedBooks({ book }) {
-  // const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [bookreturn, setBookReturn] = useState(false);
   const [auth] = useAuth();
   const [, setReload] = useReload();
