@@ -22,7 +22,7 @@ function ReadingStatus() {
   }, []);
 
   return (
-    <div className="h-screen">
+    <div className="h-60">
       {data && (
         <ResponsiveCalendar
           data={data.loaned_dates}

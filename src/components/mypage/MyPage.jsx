@@ -35,7 +35,7 @@ function MyPage() {
   }, [reload]);
 
   return (
-    <div className="ml-24 mt-10">
+    <div className="ml-24 mt-10 mb-32">
       <div class="container mx-auto my-5 p-5">
         <div class="md:flex no-wrap md:-mx-2 ">
           <div class="w-full md:w-3/12 md:mx-2">
@@ -48,12 +48,8 @@ function MyPage() {
               <ApplicationsList applicationList={data?.applications_set} />
             </div>
 
-            <div class="my-4"></div>
-
-            <div class="bg-white p-3 hover:shadow">
-              <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8"></div>
-              <div class="grid grid-cols-3"></div>
-            </div>
+            <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8"></div>
+            <div class="grid grid-cols-3"></div>
           </div>
 
           <div class="w-full md:w-9/12 mx-2 h-64">
@@ -82,23 +78,34 @@ function MyPage() {
                           onClick={() => setShowLoaned(true)}
                           onClickCapture={() => setShowWish(false)}
                         >
-                          Loaned Book
+                          대출 도서
                         </button>
                         <button
                           class="bg-indigo-300 px-3 py-2 text-sm shadow-sm font-medium tracking-wider  text-indigo-600 rounded-full hover:shadow-2xl hover:bg-indigo-400 ml-3"
                           onClick={() => setShowWish(true)}
                           onClickCapture={() => setShowLoaned(false)}
                         >
-                          Wish Book
+                          찜 도서
                         </button>
+                      </div>
+
+                      <div class="flex items-center w-full justify-center">
+                        <div class="w-full">
+                          <div class="bg-white shadow-xl rounded-lg py-3">
+                            <div class="p-2">
+                              <h3 class="font-semibold text-base text-blueGray-700 text-center">
+                                나의 도서 통계
+                              </h3>
+                              <ReadingStatus />
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <ReadingStatus />
 
             <div class="my-4"></div>
           </div>
