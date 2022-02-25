@@ -4,9 +4,9 @@ import ReactPaginate from 'react-paginate';
 import 'css/Paging.css';
 import React from 'react';
 import AdminApplication from './AdminApplication';
-import { STATELIST } from 'Constants';
+import { STATELIST, itemsPerPage } from 'Constants';
 
-function AdminApplicationList({ itemsPerPage = 5 }) {
+function AdminApplicationList() {
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(1);

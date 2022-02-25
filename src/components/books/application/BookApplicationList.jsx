@@ -10,10 +10,11 @@ import { useAuth } from 'base/hooks/Authcontext';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoginToast from 'components/parts/LoginToast';
+import { itemsPerPage } from 'Constants';
 
 const STATELIST = ['All', 'Pending', 'Order', 'Denied'];
 
-function BookApplicationList({ itemsPerPage = 2 }) {
+function BookApplicationList() {
   const navigate = useNavigate();
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);

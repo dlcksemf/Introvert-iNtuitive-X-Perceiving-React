@@ -1,5 +1,6 @@
 import Badge from 'designMaterials/Badge';
 import React, { useState } from 'react';
+import { STATELIST } from 'Constants';
 
 function BookApplicationComponent({ application }) {
   const [color] = useState(() => {
@@ -30,7 +31,9 @@ function BookApplicationComponent({ application }) {
               {application.ISBN}
             </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-              <Badge color={color}>{application.state}</Badge>
+              <Badge color={color}>
+                {STATELIST.application[application.state]}
+              </Badge>
             </td>
           </tr>
         )}

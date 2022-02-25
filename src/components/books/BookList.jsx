@@ -17,7 +17,7 @@ function BookList() {
 
   const [{ data: bookList, loading, error }, refetch] = useApiAxios(
     {
-      url: '/books/api/books/',
+      url: '/books/api/books/?page_size=4',
       method: 'GET',
     },
     { manual: true },

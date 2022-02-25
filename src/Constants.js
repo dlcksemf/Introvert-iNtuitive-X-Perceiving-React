@@ -1,6 +1,6 @@
 const API_HOST = process.env.REACT_APP_API_HOST || 'http://localhost:8000';
 
-const itemsPerPage = 2;
+const itemsPerPage = 10;
 
 const STATELIST = {
   application: {
