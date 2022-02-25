@@ -49,7 +49,7 @@ function BookSummary({ book, reloadBook }) {
         <img
           alt={book?.title}
           className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 cursor-pointer
-          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 inline-block"
           src={book?.cover_photo ? book?.cover_photo : non_image}
           onClick={() => {
             navigate(`/books/${book.book_num}/`);
@@ -152,7 +152,7 @@ function NewBookSummary({ book }) {
             src={book?.cover_photo ? book.cover_photo : non_image}
             alt={book.title}
             className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90"
+            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block"
           />
         </div>
       </div>
@@ -182,7 +182,7 @@ function Top5Summary({ book }) {
                 {book.writer}
               </div>
             </div>
-            <p className="leading-relaxed mb-4 hover:font-semibold">
+            <p className="leading-relaxed mb-4 hover:font-semibold m-auto">
               {truncateString(book.story)}
             </p>
 
@@ -191,7 +191,8 @@ function Top5Summary({ book }) {
                 onClick={() => {
                   navigate(`/books/${book.book_num}/`);
                 }}
-                className="flex justify-center text-white bg-indigo-500 border-0 mt-1 py-2 px-12 focus:outline-none hover:bg-indigo-600 rounded-full mb-16"
+                className="flex justify-center text-white bg-indigo-500 border-0 mt-2 py-2 px-12 
+                focus:outline-none hover:bg-indigo-600 rounded-full mb-16"
               >
                 자세히보기
               </button>
@@ -202,7 +203,7 @@ function Top5Summary({ book }) {
             src={book?.cover_photo ? book.cover_photo : non_image}
             alt={book.title}
             className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90"
+            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block"
           />
         </div>
       </div>
@@ -213,47 +214,79 @@ function Top5Summary({ book }) {
 function HeavyReaderSummary({ book }) {
   return (
     <div>
-      <span className="flex justify-center">
-        <img
-          src={heavy_reader}
-          alt="다독왕"
-          className="w-3/5 h-3/5 rounded inline"
-        />
-        {book?.gender === 'F' && (
-          <p className="absolute mt-80">
-            <h1 className="mt-10 text-4xl select-none font-semibold">
-              EUCLID 다독왕 👸
+      {book?.count_loans && (
+        <span className="flex justify-center mt-10">
+          <img
+            src={heavy_reader}
+            alt="다독왕"
+            className="w-3/5 h-3/5 rounded inline"
+          />
+          {book?.gender === 'F' && (
+            <p className="absolute mt-80">
+              <h1 className="mt-10 text-4xl select-none font-semibold">
+                EUCLID 다독왕 👸
+              </h1>
+            </p>
+          )}
+          {book?.gender === 'M' && (
+            <p className="absolute mt-80">
+              <h1 className="mt-10 text-4xl select-none font-semibold">
+                EUCLID 다독왕 🤴
+              </h1>
+            </p>
+          )}
+          {!book?.gender && (
+            <p className="absolute mt-80">
+              <h1 className="mt-10 text-4xl select-none font-semibold">
+                EUCLID 다독왕 🏆
+              </h1>
+            </p>
+          )}
+          <p className="absolute mt-96 flex justify-center font-bold">
+            <h1
+              className="mt-14 justify-center text-5xl select-none cursor-pointer
+          transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500"
+            >
+              {book.username}
             </h1>
           </p>
-        )}
-        {book?.gender === 'M' && (
-          <p className="absolute mt-80">
-            <h1 className="mt-10 text-4xl select-none font-semibold">
-              EUCLID 다독왕 🤴
-            </h1>
+          <p className="absolute mt-96 font-semibold">
+            {book?.position && (
+              <h1 className="mt-36 text-3xl select-none">{book.position}</h1>
+            )}
           </p>
-        )}
-        {!book?.gender && (
+        </span>
+      )}
+      {!book?.count_loans && (
+        <span className="flex justify-center mt-10">
+          <img
+            src={heavy_reader}
+            alt="다독왕"
+            className="w-3/5 h-3/5 rounded inline"
+          />
           <p className="absolute mt-80">
             <h1 className="mt-10 text-4xl select-none font-semibold">
               EUCLID 다독왕 🏆
             </h1>
           </p>
-        )}
-        <p className="absolute mt-96 flex justify-center font-bold">
-          <h1
-            className="mt-14 justify-center text-5xl select-none cursor-pointer
-          transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500"
-          >
-            {book.username}
-          </h1>
-        </p>
-        <p className="absolute mt-96 font-semibold">
-          {book?.position && (
-            <h1 className="mt-36 text-3xl select-none">{book.position}</h1>
-          )}
-        </p>
-      </span>
+          <p className="absolute mt-96 flex justify-center font-bold">
+            <h1
+              className="mt-14 justify-center text-5xl select-none
+              transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500"
+            >
+              Unknown
+            </h1>
+          </p>
+          <p className="absolute mt-96 font-semibold">
+            <h1
+              className="mt-36 text-3xl select-none cursor-pointer
+              transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500"
+            >
+              과연 누가 될까요?
+            </h1>
+          </p>
+        </span>
+      )}
     </div>
   );
 }
