@@ -27,7 +27,7 @@ function AdminApplicationList() {
       const params = {
         page_size: 5,
         page: newPage,
-        state: category === 'A' ? '' : category,
+        state: category === 'ALL' ? '' : category,
       };
 
       const { data } = await getApplications({ params });
