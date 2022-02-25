@@ -48,7 +48,7 @@ function BookSummary({ book, reloadBook }) {
       <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
         <img
           alt={book?.title}
-          className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 cursor-pointer
+          className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
           transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 inline-block"
           src={book?.cover_photo ? book?.cover_photo : non_image}
           onClick={() => {

@@ -68,7 +68,7 @@ function BookDetail({ book_num }) {
                   <img
                     src={book?.cover_photo}
                     alt={book?.title}
-                    className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded
+                    className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10
                     transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:skew-y-6"
                   />
                 )}
