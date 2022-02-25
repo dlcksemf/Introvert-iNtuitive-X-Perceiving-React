@@ -5,9 +5,9 @@ import NoList from '../NoList';
 function LoanedBooksList({ loanedBookList }) {
   let location = useLocation();
 
-  const filtered_list = loanedBookList?.filter(
-    (book) => book.return_state === 'L',
-  );
+  const filtered_list = loanedBookList
+    ?.filter((book) => book.return_state === 'L')
+    .slice(0, 3);
 
   return (
     <div>
