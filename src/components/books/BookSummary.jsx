@@ -200,15 +200,40 @@ function HeavyReaderSummary({ book }) {
           alt="다독왕"
           className="w-3/5 h-3/5 rounded inline"
         />
-        <h1 className="absolute mt-96 text-3xl select-none">
-          이달의 EUCLID 다독왕
-        </h1>
-      </span>
-      <span className="flex justify-center">
-        <h1 className="absolute text-4xl select-none">{book.username}</h1>
-        {book?.position && (
-          <h1 className="absolute text-4xl select-none">{book.position}</h1>
+        {book?.gender === 'F' && (
+          <p className="absolute mt-80">
+            <h1 className="mt-10 text-4xl select-none font-semibold">
+              EUCLID 다독왕 👸
+            </h1>
+          </p>
         )}
+        {book?.gender === 'M' && (
+          <p className="absolute mt-80">
+            <h1 className="mt-10 text-4xl select-none font-semibold">
+              EUCLID 다독왕 🤴
+            </h1>
+          </p>
+        )}
+        {!book?.gender && (
+          <p className="absolute mt-80">
+            <h1 className="mt-10 text-4xl select-none font-semibold">
+              EUCLID 다독왕 🏆
+            </h1>
+          </p>
+        )}
+        <p className="absolute mt-96 flex justify-center font-bold">
+          <h1
+            className="mt-14 justify-center text-5xl select-none cursor-pointer
+          transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500"
+          >
+            {book.username}
+          </h1>
+        </p>
+        <p className="absolute mt-96 font-semibold">
+          {book?.position && (
+            <h1 className="mt-36 text-3xl select-none">{book.position}</h1>
+          )}
+        </p>
       </span>
     </div>
   );
