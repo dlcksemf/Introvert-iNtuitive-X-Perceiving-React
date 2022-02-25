@@ -30,7 +30,7 @@ function AdminLoanedBookList() {
       const params = {
         page: newPage,
         query: newQuery,
-        state: category === 'A' ? '' : category,
+        state: category === 'ALL' ? '' : category,
       };
 
       const { data } = await getApplications({ params });
