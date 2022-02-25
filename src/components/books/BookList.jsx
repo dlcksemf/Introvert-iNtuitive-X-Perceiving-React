@@ -17,7 +17,7 @@ function BookList() {
 
   const [{ data: bookList, loading, error }, refetch] = useApiAxios(
     {
-      url: '/books/api/books/?page_size=4',
+      url: '/books/api/books/?page_size=8',
       method: 'GET',
     },
     { manual: true },
@@ -34,7 +34,7 @@ function BookList() {
       const { data } = await refetch({ params });
 
       setPage(newPage);
-      setPageCount(Math.ceil(data.count / 4));
+      setPageCount(Math.ceil(data.count / 8));
       setCurrentItems(data?.results);
     },
     [category, query],
