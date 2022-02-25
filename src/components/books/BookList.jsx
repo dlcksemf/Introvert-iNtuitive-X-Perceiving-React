@@ -5,6 +5,7 @@ import SearchBar from 'components/parts/SearchBar';
 import ReactPaginate from 'react-paginate';
 import { itemsPerPage } from 'Constants';
 import Category from 'components/parts/Category';
+import { ToastContainer } from 'react-toastify';
 
 function BookList() {
   const [, setCurrentItems] = useState(null);
@@ -106,6 +107,8 @@ function BookList() {
           renderOnZeroPageCount={null}
           className="pagination mb-14"
         />
+
+        <ToastContainer />
       </div>
     </>
   );

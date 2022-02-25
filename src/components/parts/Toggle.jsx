@@ -1,8 +1,9 @@
 import { useApiAxios } from 'base/api/base';
 import { EmptyHeart, FilledHeart } from 'designMaterials/WishesIcon';
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Toggle({ book, wish, user_id, reload }) {
   const [auth] = useAuth();
@@ -41,6 +42,15 @@ function Toggle({ book, wish, user_id, reload }) {
       { manual: true },
     ).then(() => {
       setWishes(false);
+      toast.info('🥲 찜 해제 되었습니다', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     });
   };
 
@@ -51,6 +61,16 @@ function Toggle({ book, wish, user_id, reload }) {
         }).then(() => {
           setWishes(true);
           reload();
+
+          toast.success('🦄 찜 되었습니다', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         })
       : window.confirm('로그인 후 이용해주세요🎈') &&
         navigate('/accounts/login/');

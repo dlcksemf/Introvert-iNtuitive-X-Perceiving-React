@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import non_image from 'components/parts/image/non_image.jpg';
 import Toggle from 'components/parts/Toggle';
 import { useAuth } from 'base/hooks/Authcontext';
+import { ToastContainer } from 'react-toastify';
 
 function BookDetail({ book_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -183,6 +184,7 @@ function BookDetail({ book_num }) {
           </section>
         </>
       )}
+      <ToastContainer />
     </div>
   );
 }
