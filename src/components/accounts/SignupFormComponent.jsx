@@ -20,7 +20,7 @@ function SignupFormComponent1({
           type="username"
           id="username"
           name="username"
-          autoComplete="username"
+          autoComplete="off"
           value={fieldValues.username}
           onChange={handleFieldChange}
           placeholder="이름을 입력해 주세요."
@@ -48,7 +48,7 @@ function SignupFormComponent1({
           type="email"
           id="email"
           name="email"
-          autoComplete="email"
+          autoComplete="off"
           value={fieldValues.email}
           onChange={handleFieldChange}
           placeholder="이메일을 입력해주세요."
@@ -73,7 +73,7 @@ function SignupFormComponent1({
           type="phone_num"
           id="phone_num"
           name="phone_num"
-          autoComplete="phone_num"
+          autoComplete="off"
           value={fieldValues.phone_num}
           onChange={handleFieldChange}
           placeholder="휴대전화 번호를 입력해주세요."
@@ -98,7 +98,7 @@ function SignupFormComponent1({
           type="password"
           id="password"
           name="password"
-          autoComplete="password"
+          autoComplete="off"
           value={fieldValues.password}
           onChange={handleFieldChange}
           placeholder="비밀번호를 설정해주세요."
@@ -123,7 +123,7 @@ function SignupFormComponent1({
           type="password"
           id="password2"
           name="password2"
-          autoComplete="password2"
+          autoComplete="off"
           value={fieldValues.password2}
           onChange={handleFieldChange}
           placeholder="비밀번호를 재확인해주세요."
