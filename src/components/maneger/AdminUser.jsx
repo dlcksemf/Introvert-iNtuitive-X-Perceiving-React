@@ -29,7 +29,7 @@ function AdminUser() {
       const { data } = await refresh({ params });
 
       setPage(newPage);
-      setPageCount(Math.ceil(data?.count / 2));
+      setPageCount(Math.ceil(data?.count / itemsPerPage));
       setCurrentItems(data?.results);
     },
     [query],
