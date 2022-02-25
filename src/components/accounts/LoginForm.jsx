@@ -3,6 +3,7 @@ import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
 import { useNavigate, useLocation } from 'react-router-dom';
 import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 
 const INITIAL_STATE = { email: '', password: '' };
 
@@ -19,7 +20,7 @@ function LoginForm() {
   const [auth, , login] = useAuth();
   const { handleFieldChange, fieldValues } = useFieldValues(INITIAL_STATE);
 
-  const [{ loading, error }, refetch] = useApiAxios(
+  const [{ loading, error, errorMessages }, refetch] = useApiAxios(
     {
       url: '/accounts/api/token/',
       method: 'POST',
@@ -30,22 +31,34 @@ function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    refetch({ data: fieldValues }).then((response) => {
-      const { access, refresh, user_id, is_staff, username } = response.data;
-      login({
-        access,
-        refresh,
-        user_id,
-        is_staff,
-        username,
-      });
+    refetch({ data: fieldValues })
+      .then((response) => {
+        const { access, refresh, user_id, is_staff, username } = response.data;
+        login({
+          access,
+          refresh,
+          user_id,
+          is_staff,
+          username,
+        });
 
-      if (is_staff || query.get('next') === '/') {
-        Navigate('/');
-      } else {
-        Navigate(-1);
-      }
-    });
+        if (is_staff || query.get('next') === '/') {
+          Navigate('/');
+        } else {
+          Navigate(-1);
+        }
+      })
+      .catch(() => {
+        toast.error('😶 이메일 / 비밀번호를 확인해주세요', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   return (
@@ -138,6 +151,7 @@ function LoginForm() {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </section>
   );
 }

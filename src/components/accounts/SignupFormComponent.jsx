@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import DebugStates from 'base/DebugStates';
 
 function SignupFormComponent1({
   fieldValues,
@@ -29,10 +30,7 @@ function SignupFormComponent1({
               transition-colors duration-200 ease-in-out hover:font-bold"
         />
         {errorMessages.username?.map((message, index) => (
-          <p
-            key={index}
-            className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm"
-          >
+          <p key={index} className="mt-2 text-pink-600 text-sm">
             {message}
           </p>
         ))}
@@ -57,10 +55,7 @@ function SignupFormComponent1({
           className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
         />
         {errorMessages.email?.map((message, index) => (
-          <p
-            key={index}
-            className="mb-2 mt-2 invisible peer-invalid:visible text-pink-600 text-sm"
-          >
+          <p key={index} className="mt-2 text-pink-600 text-sm">
             {message}
           </p>
         ))}
@@ -85,10 +80,7 @@ function SignupFormComponent1({
           className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
         />
         {errorMessages.phone_num?.map((message, index) => (
-          <p
-            key={index}
-            className="mb-2 mt-2 invisible peer-invalid:visible text-pink-600 text-sm"
-          >
+          <p key={index} className="mt-2 text-pink-600 text-sm">
             {message}
           </p>
         ))}
@@ -113,10 +105,7 @@ function SignupFormComponent1({
           className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
         />
         {errorMessages.password?.map((message, index) => (
-          <p
-            key={index}
-            className="mb-2 mt-2 invisible peer-invalid:visible text-pink-600 text-sm"
-          >
+          <p key={index} className="mt-2 text-pink-600 text-sm">
             {message}
           </p>
         ))}
@@ -141,10 +130,7 @@ function SignupFormComponent1({
           className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
         />
         {errorMessages.non_field_errors?.map((message, index) => (
-          <p
-            key={index}
-            className="mb-2 mt-2 invisible peer-invalid:visible text-pink-600 text-sm"
-          >
+          <p key={index} className="mt-2 text-pink-600 text-sm">
             {message}
           </p>
         ))}
@@ -159,46 +145,37 @@ function SignupFormComponent2({
   handleSubmit,
   setFieldValues,
 }) {
-  const [date, setDate] = useState({});
+  const [year, setYear] = useState(null);
+  const [month, setMonth] = useState(null);
+  const [day, setDay] = useState(null);
 
-  const handleGenderField = (e) => {
-    const { value } = e.target;
+  const [gender, setGender] = useState(null);
 
-    if (value && value === '남성') {
+  useEffect(() => {
+    gender &&
+      (gender === '남성'
+        ? setFieldValues((prev) => {
+            return { ...prev, gender: 'M' };
+          })
+        : setFieldValues((prev) => {
+            return {
+              ...prev,
+              gender: 'F',
+            };
+          }));
+  }, [gender]);
+
+  useEffect(() => {
+    year &&
+      month &&
+      day &&
       setFieldValues((prevFieldValues) => {
         return {
           ...prevFieldValues,
-          gender: 'M',
+          birthdate: `${year}-${month.slice(0, 2)}-${day}`,
         };
       });
-    } else if (value) {
-      setFieldValues((prevFieldValues) => {
-        return {
-          ...prevFieldValues,
-          gender: 'F',
-        };
-      });
-    }
-  };
-
-  const handleBirthField = (e) => {
-    const { name, value } = e.target;
-    setDate((prevFieldValues) => {
-      return {
-        ...prevFieldValues,
-        [name]: value,
-      };
-    });
-
-    if ('year' in date && 'month' in date && 'day' in date) {
-      setFieldValues((prevFieldValues) => {
-        return {
-          ...prevFieldValues,
-          birthdate: `${date.year}-${date.month}-${date.day}`,
-        };
-      });
-    }
-  };
+  }, [year, month, day]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -241,8 +218,8 @@ function SignupFormComponent2({
           <select
             className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             name="gender"
-            value={fieldValues.gender}
-            onChange={handleGenderField}
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
           >
             <option className="hidden">성별을 선택해주세요.</option>
             <option>여성</option>
@@ -251,29 +228,26 @@ function SignupFormComponent2({
         </div>
       </div>
 
+      <DebugStates fieldValues={fieldValues} />
+
       <div className="relative mb-4">
-        <label
-          htmlFor="birthdate"
-          className="leading-7 text-sm text-gray-600 select-none font-semibold"
-        >
+        <label className="leading-7 text-sm text-gray-600 select-none font-semibold">
           Birth Day
         </label>
         <div>
           <input
-            type="birthdate"
-            id="birthdate"
+            type="text"
             name="year"
-            autoComplete="birthdate"
-            value={fieldValues.birthdate}
-            onChange={handleBirthField}
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
             placeholder="생년 4자리"
             className="w-32 text-center bg-white rounded border border-gray-3s00 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
           <select
             className="w-32 text-center pt-2 pb-2 bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             name="month"
-            value={fieldValues.position}
-            onChange={handleBirthField}
+            value={month}
+            onChange={(e) => setMonth(e.target.value)}
           >
             <option className="hidden text-center">생월 선택</option>
             <option>01월</option>
@@ -290,12 +264,9 @@ function SignupFormComponent2({
             <option>12월</option>
           </select>
           <input
-            type="birthdate"
-            id="birthdate"
-            name="day"
-            autoComplete="birthdate"
-            value={fieldValues.birthdate}
-            onChange={handleBirthField}
+            type="text"
+            value={day}
+            onChange={(e) => setDay(e.target.value)}
             placeholder="생일 2자리"
             className="w-32 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />

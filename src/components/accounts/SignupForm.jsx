@@ -9,6 +9,7 @@ import {
   SignupFormComponent2,
 } from './SignupFormComponent';
 import { NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const INIT_FILED_VALUES = {
   username: '',
@@ -24,9 +25,6 @@ function SignupForm() {
   const Navigate = useNavigate();
   let location = useLocation();
 
-  const [showCancleModal, setShowCancleModal] = useState(false);
-  const [showSubmitModal, setshowSubmitModal] = useState(false);
-
   const { fieldValues, handleFieldChange, setFieldValues } =
     useFieldValues(INIT_FILED_VALUES);
 
@@ -38,46 +36,28 @@ function SignupForm() {
     { manual: true },
   );
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setshowSubmitModal(false);
-
-    signup({ data: fieldValues }).then(() => {
-      Navigate('/accounts/login/?next=/');
-    });
-  };
-
   const handleClickSubmitButton = (e) => {
     e.preventDefault();
-    setshowSubmitModal(true);
-  };
-
-  const handleClickCancleButton = (e) => {
-    e.preventDefault();
-    setShowCancleModal(true);
-  };
-
-  const handleCancleButton = () => {
-    if (showSubmitModal) {
-      setshowSubmitModal(false);
-    } else if (showCancleModal) {
-      setShowCancleModal(false);
-    }
-  };
-
-  const handleOkButton = (e) => {
-    if (showSubmitModal) {
-      handleSubmit(e);
-    } else if (showCancleModal) {
-      Navigate('/test/');
-    }
+    window.confirm('😶‍🌫️ 회원가입 하시겠습니까?') &&
+      signup({ data: fieldValues }).then((response) => {
+        Navigate('/accounts/login/?next=/');
+        toast.success(
+          `🙋‍♀️ ${response.data.username}님 환영함다 로그인 해주세여`,
+          {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          },
+        );
+      });
   };
 
   return (
     <section className="text-gray-600 body-font">
-      {error &&
-        `가입에 실패하였습니다. (${error.response?.status} ${error.response?.statusText})`}
-
       <div className="container px-5 py-36 mx-auto flex flex-wrap items-center">
         <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
           <h1
@@ -124,7 +104,7 @@ function SignupForm() {
                 <SignupFormComponent2
                   fieldValues={fieldValues}
                   handleFieldChange={handleFieldChange}
-                  handleSubmit={handleSubmit}
+                  // handleSubmit={handleSubmit}
                   setFieldValues={setFieldValues}
                 />
               }
@@ -132,9 +112,9 @@ function SignupForm() {
           </Routes>
 
           <div className="relative mb-4">
-            {location.pathname === '/accounts/signup/2/' ? (
+            {location.pathname === '/accounts/signup/' ? (
               <>
-                <NavLink
+                {/* <NavLink
                   to={`/accounts/signup/`}
                   type="button"
                   className="ml-14 mt-6 w-1/3 bg-white rounded border border-gray-300
@@ -143,7 +123,7 @@ function SignupForm() {
                   transition duration-500 ease-in-out hover:scale-105 text-center"
                 >
                   뒤로가기
-                </NavLink>
+                </NavLink> */}
 
                 <button
                   className="mt-6 w-1/3 bg-indigo-500 rounded border border-gray-300
@@ -167,15 +147,6 @@ function SignupForm() {
               </NavLink>
             )}
           </div>
-
-          {(showSubmitModal || showCancleModal) && (
-            <ConfirmationModal
-              handleOkButton={handleOkButton}
-              handleCancleButton={handleCancleButton}
-            >
-              {showSubmitModal ? '회원가입 하시겠습니까?' : '취소하시겠습니까?'}
-            </ConfirmationModal>
-          )}
 
           <p className="text-xs text-gray-500 mt-3 select-none">
             (주) 유클리드 소프트
