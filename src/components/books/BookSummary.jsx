@@ -57,7 +57,7 @@ function BookSummary({ book, reloadBook }) {
         />
         <div className="flex-grow sm:pl-8">
           <h3 className="text-sm text-gray-500 mb-3 select-none">
-            {book.category && `[ ${book.category} ]`}
+            {book?.category && `[ ${book.category} ]`}
           </h3>
           <span className="absolute inline-flex m-auto pl-80">
             <div className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
@@ -117,11 +117,14 @@ function NewBookSummary({ book }) {
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container mx-auto">
         <div className="lg:w-2/3 mx-auto flex flex-wrap items-center">
-          <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-            <h2 className="text-sm title-font text-gray-500 tracking-widest">
-              {book.category}
+          <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 m-auto">
+            <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
+              {book.category && `[ ${book.category} ]`}
             </h2>
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-4">
+            <h1
+              className="text-gray-900 text-3xl title-font font-medium mb-4 
+            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 hover:font-bold"
+            >
               {book.title}
             </h1>
             <div className="flex mb-4">
@@ -129,16 +132,18 @@ function NewBookSummary({ book }) {
                 {book.writer}
               </div>
             </div>
-            <p className="leading-relaxed mb-4">{truncateString(book.story)}</p>
+            <p className="leading-relaxed mb-4 hover:font-semibold">
+              {truncateString(book.story)}
+            </p>
 
             <div className="flex justify-center">
               <button
                 onClick={() => {
                   navigate(`/books/${book.book_num}/`);
                 }}
-                className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                className="flex justify-center text-white bg-indigo-500 border-0 mt-1 py-2 px-12 focus:outline-none hover:bg-indigo-600 rounded-full mb-16"
               >
-                Button
+                자세히보기
               </button>
             </div>
           </div>
@@ -146,7 +151,8 @@ function NewBookSummary({ book }) {
           <img
             src={book?.cover_photo ? book.cover_photo : non_image}
             alt={book.title}
-            className="lg:w-1/2 w-full lg:h-auto h-64 object-scale-down object-center rounded"
+            className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
+            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90"
           />
         </div>
       </div>
@@ -160,12 +166,15 @@ function Top5Summary({ book }) {
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container mx-auto">
-        <div className="lg:w-2/3 mx-auto flex flex-wrap items-center">
-          <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-            <h2 className="text-sm title-font text-gray-500 tracking-widest">
-              {book.category}
+        <div className="lg:w-full mx-auto flex flex-wrap items-center">
+          <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 m-auto">
+            <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
+              {book.category && `[ ${book.category} ]`}
             </h2>
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-4">
+            <h1
+              className="text-gray-900 text-3xl title-font font-medium mb-4 
+            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 hover:font-bold"
+            >
               {book.title}
             </h1>
             <div className="flex mb-4">
@@ -173,16 +182,18 @@ function Top5Summary({ book }) {
                 {book.writer}
               </div>
             </div>
-            <p className="leading-relaxed mb-4">{truncateString(book.story)}</p>
+            <p className="leading-relaxed mb-4 hover:font-semibold">
+              {truncateString(book.story)}
+            </p>
 
             <div className="flex justify-center">
               <button
                 onClick={() => {
                   navigate(`/books/${book.book_num}/`);
                 }}
-                className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                className="flex justify-center text-white bg-indigo-500 border-0 mt-1 py-2 px-12 focus:outline-none hover:bg-indigo-600 rounded-full mb-16"
               >
-                Button
+                자세히보기
               </button>
             </div>
           </div>
@@ -190,7 +201,8 @@ function Top5Summary({ book }) {
           <img
             src={book?.cover_photo ? book.cover_photo : non_image}
             alt={book.title}
-            className="lg:w-1/2 w-full lg:h-auto h-64 object-scale-down object-center rounded"
+            className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
+            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90"
           />
         </div>
       </div>

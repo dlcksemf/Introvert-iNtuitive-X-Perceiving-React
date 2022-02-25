@@ -25,8 +25,8 @@ function Main() {
             className="mt-64 ml-16 object-contain h-48 w-96"
           />
           <div
-            className="text-white bg-indigo-400 border-0 py-4 ml-40 mr-24
-              focus:outline-none hover:bg-indigo-300 rounded-full text-lg"
+            className="text-white bg-indigo-500 border-0 py-4 ml-40 mr-24
+              focus:outline-none hover:bg-indigo-600 rounded-full text-lg"
           >
             도서 목록 보러 가기
           </div>
