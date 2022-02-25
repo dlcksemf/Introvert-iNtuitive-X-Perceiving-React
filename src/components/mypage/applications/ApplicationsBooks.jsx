@@ -14,10 +14,12 @@ function ApplicationsBooks({ application }) {
   });
 
   return (
-    <div className="my-3 ml-2">
+    <div className="flex my-5 ml-2">
       {application.title}
 
-      <Badge color={color}>{STATELIST.application[application.state]}</Badge>
+      <div className="ml-3">
+        <Badge color={color}>{STATELIST.application[application.state]}</Badge>
+      </div>
     </div>
   );
 }

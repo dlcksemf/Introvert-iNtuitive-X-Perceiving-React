@@ -72,7 +72,7 @@ function MyPage() {
                         </div>
                       )}
 
-                      <div className="ml-10">
+                      <div className="ml-10 mb-3">
                         <button
                           class="bg-yellow-300 px-3 py-2 text-sm shadow-sm font-medium tracking-wider rounded-full hover:shadow-2xl hover:bg-yellow-400"
                           onClick={() => setShowLoaned(true)}

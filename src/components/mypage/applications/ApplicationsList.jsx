@@ -13,9 +13,9 @@ function ApplicationsList({ applicationList }) {
               <h3 class="font-semibold text-base text-blueGray-700 text-center ml-24 mr-24">
                 신청 도서 목록
               </h3>
-              <table class="text-xs my-3">
+              <table class="text-xs ml-3 mt-3">
                 <tbody>
-                  {applicationList?.slice(0, 5).map((application) => {
+                  {applicationList?.slice(0, 3).map((application) => {
                     return (
                       <div key={application.application_num}>
                         <ApplicationsBooks application={application} />
@@ -25,9 +25,9 @@ function ApplicationsList({ applicationList }) {
                 </tbody>
               </table>
 
-              <div class="text-center my-3">
+              <div class="text-center mb-3">
                 <button
-                  class="bg-indigo-500 mt-10 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
+                  class="bg-indigo-500 mt-3 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
                   type="button"
                 >
                   <Link
