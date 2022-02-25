@@ -1,10 +1,12 @@
 import { useApiAxios } from 'base/api/base';
 import { EmptyHeart, FilledHeart } from 'designMaterials/WishesIcon';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from 'base/hooks/Authcontext';
 
 function Toggle({ book, wish, user_id, reload }) {
-  let location = useLocation();
+  const [auth] = useAuth();
+  const navigate = useNavigate();
 
   const [wishes, setWishes] = useState(false);
 
@@ -43,12 +45,15 @@ function Toggle({ book, wish, user_id, reload }) {
   };
 
   const handleSave = () => {
-    makeWish({
-      data: { book_name: book.book_num, user_id: user_id },
-    }).then(() => {
-      setWishes(true);
-      reload();
-    });
+    auth.isLoggedIn
+      ? makeWish({
+          data: { book_name: book.book_num, user_id: user_id },
+        }).then(() => {
+          setWishes(true);
+          reload();
+        })
+      : window.confirm('로그인 후 이용해주세요🎈') &&
+        navigate('/accounts/login/');
   };
 
   return (

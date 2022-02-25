@@ -36,6 +36,13 @@ function BookSummary({ book, reloadBook }) {
     getWish();
   }, [auth, book]);
 
+  const handleClickLoan = () => {
+    auth.isLoggedIn
+      ? setModalIsOpen(true)
+      : window.confirm('로그인 후 이용해주세요🎈') &&
+        navigate('/accounts/login/');
+  };
+
   return (
     <div className="p-4 lg:w-1/2">
       <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
@@ -64,7 +71,7 @@ function BookSummary({ book, reloadBook }) {
             </div>
             {book?.state === 'A' ? (
               <button
-                onClick={() => setModalIsOpen(true)}
+                onClick={handleClickLoan}
                 className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
               >
                 <LoanedIcon />

@@ -3,7 +3,7 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import LoanedModal from 'components/parts/LoanedModal';
 import LoanedIcon from 'designMaterials/LoanedIcon';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import non_image from 'components/parts/image/non_image.jpg';
 import Toggle from 'components/parts/Toggle';
 import { useAuth } from 'base/hooks/Authcontext';
@@ -11,6 +11,7 @@ import { useAuth } from 'base/hooks/Authcontext';
 function BookDetail({ book_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [auth] = useAuth();
+  const navigate = useNavigate();
 
   const [{ data: book, loading, error }, refetch] = useApiAxios(
     {
@@ -39,6 +40,13 @@ function BookDetail({ book_num }) {
   const reload = () => {
     getWish();
     refetch();
+  };
+
+  const handleClickLoan = () => {
+    auth.isLoggedIn
+      ? setModalIsOpen(true)
+      : window.confirm('로그인 후 이용해주세요🎈') &&
+        navigate('/accounts/login/');
   };
 
   const buyLink = () => {
@@ -145,7 +153,7 @@ function BookDetail({ book_num }) {
                               대출하기
                             </span>
                             <button
-                              onClick={() => setModalIsOpen(true)}
+                              onClick={handleClickLoan}
                               className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
                             >
                               <LoanedIcon />

@@ -1,22 +1,18 @@
 // hamburger 바 만들기 & 스타일링 (중앙정렬)
 
 import { useAuth } from 'base/hooks/Authcontext';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PopOver from './Popover';
 
 function TopNav() {
   const navigate = useNavigate();
-  let location = useLocation();
   const [auth] = useAuth();
 
   const handleGoToMainPage = () => {
     if (!auth.is_staff) {
       navigate('/');
+      window.scrollTo(0, 0);
     }
-  };
-
-  const handleOpenNavigator = () => {
-    console.log('This is mainPage');
   };
 
   return (
