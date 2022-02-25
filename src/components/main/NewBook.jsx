@@ -20,40 +20,26 @@ function NewBook() {
   }, [auth]);
 
   return (
-    <div>
-      <Carousel
-        fullHeightHover={false}
-        navButtonsProps={{
-          style: {
-            backgroundColor: 'cornflowerblue',
-            borderRadius: 0,
-          },
-        }}
-        // IndicatorIcon={<Home />}
-        indicatorIconButtonProps={{
-          style: {
-            padding: '10px', // 1
-            color: 'cornflowerblue', // 3
-          },
-        }}
-        activeIndicatorIconButtonProps={{
-          style: {
-            backgroundColor: 'black', // 2
-          },
-        }}
-        indicatorContainerProps={{
-          style: {
-            marginTop: '50px', // 5
-            textAlign: 'center', // 4
-          },
-        }}
-      >
-        {bookList?.slice(0, 3).map((book) => (
-          <div className="h-[600px] w-[900px] flex justify-center items-center">
-            <NewBookSummary book={book} key={book.book_num} />
-          </div>
-        ))}
-      </Carousel>
+    <div className="flex justify-center">
+      <div className="h-[700px] w-[1100px]">
+        <Carousel
+          stopAutoPlayOnHover={true}
+          fullHeightHover={false}
+          indicators={false}
+          navButtonsProps={{
+            style: {
+              backgroundColor: 'cornflowerblue',
+              borderRadius: 100,
+            },
+          }}
+        >
+          {bookList?.slice(0, 3).map((book) => (
+            <div className="h-[600px] w-[1000px] flex justify-center items-center">
+              <NewBookSummary book={book} key={book.book_num} />
+            </div>
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 }

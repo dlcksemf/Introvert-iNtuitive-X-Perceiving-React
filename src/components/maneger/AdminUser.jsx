@@ -134,14 +134,16 @@ function AdminUser() {
 
                 {userdata?.results?.map((user) => (
                   <React.Fragment key={user.user_id}>
-                    <tr className="focus:outline-none h-16 border border-gray-100 rounded">
-                      <AdminUserList
-                        user={user}
-                        reload={() => {
-                          fetchApplications(page);
-                        }}
-                      />
-                    </tr>
+                    {user.is_staff == 0 && (
+                      <tr className="focus:outline-none h-16 border border-gray-100 rounded">
+                        <AdminUserList
+                          user={user}
+                          reload={() => {
+                            fetchApplications(page);
+                          }}
+                        />
+                      </tr>
+                    )}
                   </React.Fragment>
                 ))}
               </tbody>

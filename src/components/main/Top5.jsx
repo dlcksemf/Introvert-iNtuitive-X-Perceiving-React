@@ -20,10 +20,10 @@ function Top5() {
 
   return (
     <div className="flex justify-center">
-      <div className="h-[600px] w-[900px]">
+      <div className="h-[500px] w-[1100px]">
         <Carousel
           stopAutoPlayOnHover={true}
-          fullHeightHover={true}
+          fullHeightHover={false}
           indicators={false}
           navButtonsProps={{
             style: {
@@ -36,7 +36,7 @@ function Top5() {
             ?.sort((book1, book2) => book2.count_loans - book1.count_loans)
             .slice(0, 5)
             .map((book) => (
-              <div className="h-[600px] w-[900px] flex justify-center items-center">
+              <div className="h-[700px] w-[1000px] flex justify-center items-center">
                 <Top5Summary book={book} key={book.book_num} />
               </div>
             ))}
