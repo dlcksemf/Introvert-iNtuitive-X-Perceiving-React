@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchBar from '../SearchBar';
 import StateCategory from '../StateCategory';
 import ModalComponent from './ModalComponent';
-import { STATELIST } from 'Constants';
+import { STATELIST, itemsPerPage } from 'Constants';
 
 const TitleList = {
   applications: ['created_at', 'title', 'writer', 'state'],
@@ -21,7 +21,7 @@ const TitleList = {
   wishes: ['title', 'writer', 'state', 'return_due_date'],
 };
 
-function Modal({ modalType, itemsPerPage = 2 }) {
+function Modal({ modalType }) {
   const navigate = useNavigate();
   const [auth] = useAuth();
   const [, setCurrentItems] = useState(null);
