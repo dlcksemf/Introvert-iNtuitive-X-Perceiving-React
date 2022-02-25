@@ -46,19 +46,19 @@ function AdminTopNav() {
           <Menu iconShape="square">
             <MenuItem icon="👩‍🏫">
               <NavLink to={'/admin/loanedbook/'} className="hover:text-lg">
-                <h1 className="text-indigo-900">대출관리</h1>
+                <h1 className="text-indigo-900">대출 관리</h1>
               </NavLink>
             </MenuItem>
 
             <MenuItem icon="🎈">
               <NavLink to={'/admin/booklist/'} className="hover:text-lg">
-                <h1 className="text-indigo-900">도서관리</h1>
+                <h1 className="text-indigo-900">도서 관리</h1>
               </NavLink>
             </MenuItem>
 
             <MenuItem icon="🌞">
               <NavLink to={'/admin/user/'} className="hover:text-lg">
-                <h1 className="text-indigo-900">회원관리</h1>
+                <h1 className="text-indigo-900">회원 관리</h1>
               </NavLink>
             </MenuItem>
 
@@ -74,7 +74,7 @@ function AdminTopNav() {
           <Menu iconShape="square">
             <MenuItem icon="🙋‍♀️">
               <div onClick={handleLogout} className="hover:text-lg">
-                Logout
+                <h1 className="text-black">Log Out</h1>
               </div>
             </MenuItem>
           </Menu>

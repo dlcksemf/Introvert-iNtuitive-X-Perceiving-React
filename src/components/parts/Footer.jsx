@@ -6,7 +6,7 @@ function Footer() {
 
   return (
     <header
-      className="text-gray-600 body-font sticky top-0 bg-white pt-3 pb-5"
+      className="text-gray-600 body-font sticky top-0 bg-white pt-3 pb-5 mt-4"
       style={{ zIndex: location.pathname === '/' ? 900 : 0 }}
     >
       <div className="flex">

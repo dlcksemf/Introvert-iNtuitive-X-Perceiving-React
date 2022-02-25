@@ -48,7 +48,7 @@ function MainNavigation() {
 
             <MenuItem icon="🏆">
               <HashLink smooth to={'/#rank'} className="hover:text-lg">
-                <h1 className="text-indigo-900">인기 도서</h1>
+                <h1 className="text-indigo-900">인기도서</h1>
               </HashLink>
             </MenuItem>
 
