@@ -103,7 +103,7 @@ function LoginForm() {
                 type="email"
                 id="email"
                 name="email"
-                autoComplete="email"
+                autoComplete="off"
                 value={fieldValues.email}
                 onChange={handleFieldChange}
                 placeholder="이메일 주소를 입력해주세요."
@@ -127,7 +127,7 @@ function LoginForm() {
                 type="password"
                 id="password"
                 name="password"
-                autoComplete="password"
+                autoComplete="off"
                 value={fieldValues.password}
                 onChange={handleFieldChange}
                 placeholder="비밀번호를 입력해주세요."
