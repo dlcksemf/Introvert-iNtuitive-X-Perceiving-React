@@ -114,49 +114,58 @@ function NewBookSummary({ book }) {
   const navigate = useNavigate();
 
   return (
-    <section className="text-gray-600 body-font overflow-hidden">
-      <div className="container mx-auto">
-        <div className="lg:w-2/3 mx-auto flex flex-wrap items-center">
-          <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 m-auto">
-            <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
-              {book.category && `[ ${book.category} ]`}
-            </h2>
-            <h1
-              className="text-gray-900 text-3xl title-font font-medium mb-4 
+    <>
+      <h1
+        className="text-5xl font-semibold mt-10 absolute left-6 top-14
+      border-b-4 border-blue-300 py-2 hover:border-blue-500"
+      >
+        신간도서
+      </h1>
+
+      <section className="text-gray-600 body-font overflow-hidden mt-28">
+        <div className="container mx-auto">
+          <div className="lg:w-full mx-auto flex flex-wrap items-center">
+            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 m-auto">
+              <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
+                {book.category && `[ ${book.category} ]`}
+              </h2>
+              <h1
+                className="text-gray-900 text-3xl title-font font-medium mb-4 
             transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 hover:font-bold"
-            >
-              {book.title}
-            </h1>
-            <div className="flex mb-4">
-              <div className="flex-grow border-b-2 border-blue-300 py-2 text-lg px-1">
-                {book.writer}
+              >
+                {book.title}
+              </h1>
+              <div className="flex mb-4">
+                <div className="flex-grow border-b-2 border-blue-300 py-2 text-lg px-1">
+                  {book.writer}
+                </div>
+              </div>
+              <p className="leading-relaxed mb-4 hover:font-semibold m-auto">
+                {truncateString(book.story)}
+              </p>
+
+              <div className="flex justify-center">
+                <button
+                  onClick={() => {
+                    navigate(`/books/${book.book_num}/`);
+                  }}
+                  className="flex justify-center text-white bg-indigo-500 border-0 mt-1 py-2 px-12 focus:outline-none hover:bg-indigo-600 rounded-full mb-16"
+                >
+                  자세히보기
+                </button>
               </div>
             </div>
-            <p className="leading-relaxed mb-4 hover:font-semibold">
-              {truncateString(book.story)}
-            </p>
 
-            <div className="flex justify-center">
-              <button
-                onClick={() => {
-                  navigate(`/books/${book.book_num}/`);
-                }}
-                className="flex justify-center text-white bg-indigo-500 border-0 mt-1 py-2 px-12 focus:outline-none hover:bg-indigo-600 rounded-full mb-16"
-              >
-                자세히보기
-              </button>
-            </div>
-          </div>
-
-          <img
-            src={book?.cover_photo ? book.cover_photo : non_image}
-            alt={book.title}
-            className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
+            <img
+              src={book?.cover_photo ? book.cover_photo : non_image}
+              alt={book.title}
+              className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
             transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block"
-          />
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
@@ -164,50 +173,59 @@ function Top5Summary({ book }) {
   const navigate = useNavigate();
 
   return (
-    <section className="text-gray-600 body-font overflow-hidden">
-      <div className="container mx-auto">
-        <div className="lg:w-full mx-auto flex flex-wrap items-center">
-          <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 m-auto">
-            <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
-              {book.category && `[ ${book.category} ]`}
-            </h2>
-            <h1
-              className="text-gray-900 text-3xl title-font font-medium mb-4 
+    <>
+      <h1
+        className="text-5xl font-semibold mt-10 absolute left-8 top-16
+      border-b-4 border-blue-300 py-2 hover:border-blue-500"
+      >
+        인기도서
+      </h1>
+
+      <section className="text-gray-600 body-font overflow-hidden mt-20">
+        <div className="container mx-auto">
+          <div className="lg:w-full mx-auto flex flex-wrap items-center">
+            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 m-auto">
+              <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
+                {book.category && `[ ${book.category} ]`}
+              </h2>
+              <h1
+                className="text-gray-900 text-3xl title-font font-medium mb-4 
             transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 hover:font-bold"
-            >
-              {book.title}
-            </h1>
-            <div className="flex mb-4">
-              <div className="flex-grow border-b-2 border-blue-300 py-2 text-lg px-1">
-                {book.writer}
+              >
+                {book.title}
+              </h1>
+              <div className="flex mb-4">
+                <div className="flex-grow border-b-2 border-blue-300 py-2 text-lg px-1">
+                  {book.writer}
+                </div>
+              </div>
+              <p className="leading-relaxed mb-4 hover:font-semibold m-auto">
+                {truncateString(book.story)}
+              </p>
+
+              <div className="flex justify-center">
+                <button
+                  onClick={() => {
+                    navigate(`/books/${book.book_num}/`);
+                  }}
+                  className="flex justify-center text-white bg-indigo-500 border-0 mt-2 py-2 px-12 
+                focus:outline-none hover:bg-indigo-600 rounded-full mb-16"
+                >
+                  자세히보기
+                </button>
               </div>
             </div>
-            <p className="leading-relaxed mb-4 hover:font-semibold m-auto">
-              {truncateString(book.story)}
-            </p>
 
-            <div className="flex justify-center">
-              <button
-                onClick={() => {
-                  navigate(`/books/${book.book_num}/`);
-                }}
-                className="flex justify-center text-white bg-indigo-500 border-0 mt-2 py-2 px-12 
-                focus:outline-none hover:bg-indigo-600 rounded-full mb-16"
-              >
-                자세히보기
-              </button>
-            </div>
-          </div>
-
-          <img
-            src={book?.cover_photo ? book.cover_photo : non_image}
-            alt={book.title}
-            className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
+            <img
+              src={book?.cover_photo ? book.cover_photo : non_image}
+              alt={book.title}
+              className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
             transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block"
-          />
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
@@ -215,7 +233,7 @@ function HeavyReaderSummary({ book }) {
   return (
     <div>
       {book?.count_loans && (
-        <span className="flex justify-center mt-10">
+        <span className="flex justify-center">
           <img
             src={heavy_reader}
             alt="다독왕"
@@ -258,7 +276,7 @@ function HeavyReaderSummary({ book }) {
         </span>
       )}
       {!book?.count_loans && (
-        <span className="flex justify-center mt-10">
+        <span className="flex justify-center">
           <img
             src={heavy_reader}
             alt="다독왕"

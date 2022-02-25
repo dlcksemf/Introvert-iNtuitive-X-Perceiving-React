@@ -20,7 +20,7 @@ function NewBook() {
 
   return (
     <div className="flex justify-center">
-      <div className="h-[700px] w-[1100px]">
+      <div className="h-[800px] w-[1100px]">
         <Carousel
           stopAutoPlayOnHover={true}
           fullHeightHover={false}
