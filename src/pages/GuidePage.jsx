@@ -33,9 +33,13 @@ function GuidePage() {
             <div class="items-center flex flex-wrap">
               <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div class="pr-12">
-                  <h1 class="text-black font-semibold text-5xl mb-10">
+                  <h1
+                    class="backdrop-blur-lg text-black font-semibold text-5xl mb-10 select-none
+                  ring-4 ring-blue-600 py-2 rounded-lg mb-14"
+                  >
                     도서 이용 안내
                   </h1>
+
                   <ReactPlayer
                     url="https://www.youtube.com/watch?v=mXZZvpTvtIQ"
                     playing
@@ -56,21 +60,29 @@ function GuidePage() {
           ></polygon>
         </div>
       </div>
-      <div class="bg-blue-200 -mt-24">
+      <div class="bg-blue-100 -mt-24">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap">
             <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg
+              transition duration-500 ease-in-out hover:-translate-y-6 hover:scale-100"
+              >
                 <div class="px-4 py-5 flex-auto">
-                  <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400 ">
-                    <p>🤴</p>
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400
+                  transition duration-500 ease-in-out hover:scale-125"
+                  >
+                    <p className="select-none">🤴</p>
                   </div>
 
-                  <h6 class="text-xl font-semibold">이달의 독서왕은 나야나</h6>
-                  <p class="mt-2 mb-4 text-blueGray-500">
+                  <h6 class="text-xl font-semibold select-none">
+                    이달의 독서왕은 나야나
+                  </h6>
+                  <p class="mt-2 mb-4 text-blueGray-500 select-none hover:font-semibold hover:text-gray-600">
                     <Item
                       text={
-                        '이제 수기로 작성하던 기록은 No! \n 내가 빌린 책이 데이터로 남아 \n 이달의 독서왕도 도전할 수 있어요'
+                        '이제 수기로 작성하던 기록은 No! \n 내가 빌린 책이 데이터로 남아 \n 이달의 독서왕도 도전할 수 있어요.'
                       }
                     />
                   </p>
@@ -78,16 +90,24 @@ function GuidePage() {
               </div>
             </div>
             <div class="w-full md:w-4/12 px-4 text-center">
-              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg
+              transition duration-500 ease-in-out hover:-translate-y-6 hover:scale-100"
+              >
                 <div class="px-4 py-5 flex-auto">
-                  <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400">
-                    <p>📖</p>
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400
+                  transition duration-500 ease-in-out hover:scale-125"
+                  >
+                    <p className="select-none">📖</p>
                   </div>
-                  <h6 class="text-xl font-semibold">내가 읽고 싶은 책은..</h6>
-                  <p class="mt-2 mb-4 text-blueGray-500">
+                  <h6 class="text-xl font-semibold select-none">
+                    내가 읽고 싶은 책은..
+                  </h6>
+                  <p class="mt-2 mb-4 text-blueGray-500 select-none hover:font-semibold hover:text-gray-600">
                     <Item
                       text={
-                        '읽고 싶고 필요한 책은 많은데.. \n 이런 고민이 있었다면 이제는 도서 신청을 \n 적극 활용해봐요'
+                        '읽고 싶고 필요한 책은 많은데.. \n 이런 고민이 있었다면 이제는 도서 신청을 \n 적극 활용해봐요!'
                       }
                     />
                   </p>
@@ -95,16 +115,24 @@ function GuidePage() {
               </div>
             </div>
             <div class="pt-6 w-full md:w-4/12 px-4 text-center">
-              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mt-4 mb-8 shadow-lg rounded-lg
+              transition duration-500 ease-in-out hover:-translate-y-6 hover:scale-100"
+              >
                 <div class="px-4 py-5 flex-auto">
-                  <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
-                    <p>📃</p>
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400
+                  transition duration-500 ease-in-out hover:scale-125"
+                  >
+                    <p className="select-none">📃</p>
                   </div>
-                  <h6 class="text-xl font-semibold">나의 독서 기록</h6>
-                  <p class="mt-2 mb-4 text-blueGray-500">
+                  <h6 class="text-xl font-semibold select-none">
+                    나의 독서 기록
+                  </h6>
+                  <p class="mt-2 mb-4 text-blueGray-500 select-none hover:font-semibold hover:text-gray-600">
                     <Item
                       text={
-                        '내가 이번 달에 책을 얼마나 읽었지? \n 이제는 마이페이지를 통해 \n 빌린 내역의 통계를 볼 수 있어요'
+                        '내가 이번 달에 책을 얼마나 읽었지? \n 이제는 마이페이지를 통해 \n 빌린 내역의 통계를 볼 수 있어요.'
                       }
                     />
                   </p>
@@ -114,7 +142,7 @@ function GuidePage() {
           </div>
         </div>
 
-        <div class="flex items-center p-5 w-full h-full bg-blue-200 mt-4">
+        <div class="flex items-center p-5 w-full h-full bg-blue-100 mt-4">
           <div class=" grid grid-cols-2 gap-4 m-auto">
             <div class="flex flex-col justify-start">
               <div
@@ -124,17 +152,37 @@ function GuidePage() {
             </div>
             <div class="flex flex-col">
               <div class="flex flex-col gap-1">
-                <h1 class="capitalize text-2xl font-extrabold">Address</h1>
-                <p class="text-lg text-black	">
+                <h1 class="capitalize text-2xl font-extrabold select-none">
+                  Address
+                </h1>
+                <p
+                  class="text-lg text-black select-none
+                transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
+                >
                   대전 동구 계족로 151 대전지식산업센터 601호 유클리드 소프트
                 </p>
-                <h1 class="capitalize text-2xl font-extrabold">Tel</h1>
-                <p class="text-lg text-black	">042-488-6589</p>
-                <h1 class="capitalize text-2xl font-extrabold">E-mail</h1>
-                <p class="text-lg text-black	">이메일</p>
-                <div class="flex items-center gap-4 my-6 cursor-pointer ">
+                <h1 class="capitalize text-2xl font-extrabold select-none">
+                  Tel
+                </h1>
+                <p
+                  class="text-lg text-black select-none
+                transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
+                >
+                  042-488-6589
+                </p>
+                <h1 class="capitalize text-2xl font-extrabold select-none">
+                  E-mail
+                </h1>
+                <p
+                  class="text-lg text-black select-none 
+                transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
+                >
+                  이메일
+                </p>
+                <div class="flex items-center gap-4 my-6 cursor-pointer">
                   <button
-                    class="bg-blue-600 px-5 py-3 text-white rounded-lg w-2/4 text-center"
+                    class="bg-blue-600 px-5 py-3 text-white rounded-lg w-2/4 text-center hover:bg-blue-700
+                    transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-100"
                     onClick={() =>
                       window.open('https://blog.naver.com/euclidsoft', '_blank')
                     }
