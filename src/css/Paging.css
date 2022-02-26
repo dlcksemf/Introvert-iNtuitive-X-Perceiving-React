@@ -28,18 +28,18 @@ ul.pagination li a {
   color: #337ab7;
   font-size: 1rem;
 }
-ul.pagination li.active a {
+ul.pagination li.selected a {
   color: white;
 }
-ul.pagination li.active {
-  background-color: #337ab7;
+ul.pagination li.selected {
+  background-color: rgb(255, 230, 0);
 }
 ul.pagination li a:hover,
-ul.pagination li a.active {
-  color: blue;
+ul.pagination li a.selected {
+  color: rgb(255, 230, 0);
 }
 .page-selection {
   width: 48px;
   height: 30px;
-  color: #337ab7;
+  color: #acd8ff;
 }

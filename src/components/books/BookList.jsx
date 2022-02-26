@@ -101,10 +101,11 @@ function BookList() {
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePageClick}
-          pageRangeDisplayed={itemsPerPage}
+          pageRangeDisplayed="2"
           pageCount={pageCount}
           previousLabel="<"
           renderOnZeroPageCount={null}
+          siblingCount="1"
           className="pagination mb-14"
         />
 
