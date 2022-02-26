@@ -43,7 +43,7 @@ function Modal({ modalType }) {
 
   const [{ data }, getUserInfo] = useApiAxios(
     {
-      url: `/books/api/${modalType}/`,
+      url: `/books/api/${modalType}/?user_id=${auth.user_id}`,
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access}`,
