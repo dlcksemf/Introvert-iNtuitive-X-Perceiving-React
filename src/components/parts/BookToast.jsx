@@ -13,6 +13,7 @@ function BookToast({ children }) {
         onClick={() => {
           navigate('/accounts/mypage/');
         }}
+        className="bg-yellow-400"
       >
         이동하기!!
       </button>
