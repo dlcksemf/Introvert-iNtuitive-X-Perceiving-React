@@ -1,8 +1,7 @@
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
-import ConfirmationModal from 'designMaterials/ConfirmationModal';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const INIT_FILED_VALUES = {
@@ -15,10 +14,8 @@ const INIT_FILED_VALUES = {
 };
 
 function InfoEditModal() {
-  const Navigate = useNavigate();
-  const [showCancleModal, setShowCancleModal] = useState(false);
-  const [showSubmitModal, setshowSubmitModal] = useState(false);
-  const [auth] = useAuth();
+  const navigate = useNavigate();
+  const [auth, , , logout] = useAuth();
 
   const [{ data }, refetch] = useApiAxios(
     {
@@ -44,42 +41,27 @@ function InfoEditModal() {
     data || INIT_FILED_VALUES,
   );
 
-  const handleSubmit = (e) => {
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  const handleClickSubmitButton = (e) => {
     e.preventDefault();
 
     edit({
       url: `accounts/api/users/${auth.user_id}/`,
       data: { ...fieldValues },
     }).then(() => {
-      Navigate('/accounts/mypage/');
+      window.confirm('재로그인 해야 합니다. 로그아웃 하시겠습니까?')
+        ? handleLogout()
+        : navigate('/accounts/mypage/');
     });
-  };
-
-  const handleClickSubmitButton = (e) => {
-    e.preventDefault();
-    setshowSubmitModal(true);
   };
 
   const handleClickCancleButton = (e) => {
     e.preventDefault();
-    setShowCancleModal(true);
-  };
-
-  const handleCancleButton = () => {
-    if (showSubmitModal) {
-      setshowSubmitModal(false);
-    } else if (showCancleModal) {
-      setShowCancleModal(false);
-    }
-  };
-
-  const handleOkButton = (e) => {
-    if (showSubmitModal) {
-      handleSubmit(e);
-      window.location.replace('/accounts/mypage');
-    } else if (showCancleModal) {
-      Navigate('/accounts/mypage/');
-    }
+    window.confirm('취소하시겠습니까?') && navigate('/accounts/mypage/');
   };
 
   return (
@@ -87,7 +69,7 @@ function InfoEditModal() {
       <div class="w-2/3">
         <form
           class="bg-white p-10 rounded-lg shadow-lg min-w-full"
-          onSubmit={handleSubmit}
+          onSubmit={handleClickSubmitButton}
         >
           <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">
             내정보
@@ -196,36 +178,15 @@ function InfoEditModal() {
             onClick={handleClickSubmitButton}
             class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans"
           >
-            ⠀정보 수정⠀
+            정보 수정
           </button>
           <button
-            to={`/accounts/mypage/`}
             onClick={handleClickCancleButton}
             class="w-full mt-6 mb-3 bg-indigo-100 rounded-lg px-4 py-2 text-lg text-gray-800 tracking-wide font-semibold font-sans"
           >
-            ⠀취소⠀
+            취소
           </button>
-
-          {/* 
-          <ReactDatePicker
-            className="bg-gray-300 w-fit text-center"
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-            maxDate={new Date()}
-            // isClearable={true}
-            dateFormat="yyyy-MM-dd"
-            dateFormatCalendar="yyyy년 MM월"
-          /> */}
         </form>
-
-        {(showSubmitModal || showCancleModal) && (
-          <ConfirmationModal
-            handleOkButton={handleOkButton}
-            handleCancleButton={handleCancleButton}
-          >
-            {showSubmitModal ? '정보 수정 하시겠습니까?' : '취소하시겠습니까?'}
-          </ConfirmationModal>
-        )}
       </div>
     </div>
   );
