@@ -43,7 +43,7 @@ function Toggle({ book, wish, user_id, reload }) {
       { manual: true },
     ).then(() => {
       setWishes(false);
-      toast.info('😹 찜 해제 되었습니다', {
+      toast.info('💫 찜 해제 되었습니다', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
