@@ -120,6 +120,7 @@ function Modal({ modalType }) {
           </svg>
         </button>
       </div>
+
       <div className="p-6 space-y-6">
         <div className="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
           <div className="p-3">
