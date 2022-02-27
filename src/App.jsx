@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
 
-import Test from 'Test';
 import TopNav from 'components/parts/TopNav';
 
 import PageBookRouter from 'pages/router/PageBookRouter';

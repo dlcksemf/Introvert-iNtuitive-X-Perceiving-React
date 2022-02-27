@@ -30,7 +30,7 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
     method: 'GET',
   });
 
-  const [{}, saveLoanedBook] = useApiAxios(
+  const [, saveLoanedBook] = useApiAxios(
     {
       url: `/books/api/loanedbooks/`,
       method: 'POST',
@@ -71,7 +71,7 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   return (
     <>

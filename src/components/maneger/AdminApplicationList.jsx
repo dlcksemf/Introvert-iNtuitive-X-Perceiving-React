@@ -38,7 +38,7 @@ function AdminApplicationList() {
       setPageCount(Math.ceil(data.count / itemsPerPage));
       setCurrentItems(data.results);
     },
-    [category],
+    [category, getApplications],
   );
 
   useEffect(() => {

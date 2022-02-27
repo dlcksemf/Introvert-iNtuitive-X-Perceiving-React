@@ -22,19 +22,17 @@ function ModalComponent({ titleList, bookInfo, modalType }) {
         setContentList((prev) => [...prev, bookInfo[title]]);
       }
     });
-  }, [titleList]);
+  }, [titleList, bookInfo, modalType]);
 
   return (
     <React.Fragment>
-      {contentList.map((content, key) => {
-        return (
-          <td key={key} className="p-2 whitespace-nowrap">
-            <div className="flex items-center">
-              <div className="font-medium text-gray-800">{content}</div>
-            </div>
-          </td>
-        );
-      })}
+      {contentList.map((content, key) => (
+        <td key={key} className="p-2 whitespace-nowrap">
+          <div className="flex items-center">
+            <div className="font-medium text-gray-800">{content}</div>
+          </div>
+        </td>
+      ))}
     </React.Fragment>
   );
 }

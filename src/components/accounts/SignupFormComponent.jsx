@@ -163,7 +163,7 @@ function SignupFormComponent2({
               gender: 'F',
             };
           }));
-  }, [gender]);
+  }, [gender, setFieldValues]);
 
   useEffect(() => {
     year &&
@@ -175,7 +175,7 @@ function SignupFormComponent2({
           birthdate: `${year}-${month.slice(0, 2)}-${day}`,
         };
       });
-  }, [year, month, day]);
+  }, [year, month, day, setFieldValues]);
 
   return (
     <form onSubmit={handleSubmit}>

@@ -5,7 +5,7 @@ import { useAuth } from 'base/hooks/Authcontext';
 function AdminUserList({ user, reload }) {
   const [, setUserDelete] = useState(false);
   const [auth] = useAuth();
-  const [{}, deleteUser, refresh] = useApiAxios(
+  const [, deleteUser, refresh] = useApiAxios(
     {
       url: `/accounts/api/users/${user.user_id}/`,
       method: 'DELETE',
@@ -30,6 +30,10 @@ function AdminUserList({ user, reload }) {
     setUserDelete(true);
   };
 
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
+
   const handleOkButton = () => {
     setUserDelete(true);
   };
@@ -37,10 +41,6 @@ function AdminUserList({ user, reload }) {
   const handleCancleButton = () => {
     setUserDelete(false);
   };
-
-  useEffect(() => {
-    refresh();
-  }, []);
 
   return (
     <React.Fragment>

@@ -17,7 +17,7 @@ function ReadingStatus() {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   return (
     <div className="h-60">

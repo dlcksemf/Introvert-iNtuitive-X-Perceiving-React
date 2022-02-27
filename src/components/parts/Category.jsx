@@ -16,7 +16,7 @@ function Category({ selected, setSelected }) {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   return (
     <div className="w-48">

@@ -11,7 +11,7 @@ function AdminUser() {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState();
 
-  const [{ data: userdata, loading, error }, refresh] = useApiAxios(
+  const [{ data: userdata }, refresh] = useApiAxios(
     {
       url: 'accounts/api/users/',
       methid: 'GET',
@@ -32,8 +32,12 @@ function AdminUser() {
       setPageCount(Math.ceil(data?.count / itemsPerPage));
       setCurrentItems(data?.results);
     },
-    [query],
+    [query, refresh],
   );
+
+  useEffect(() => {
+    fetchApplications();
+  }, [fetchApplications]);
 
   const handlePageClick = (event) => {
     fetchApplications(event.selected + 1);
@@ -44,10 +48,6 @@ function AdminUser() {
 
     fetchApplications(1, query);
   };
-
-  useEffect(() => {
-    fetchApplications();
-  }, []);
 
   return (
     <>
@@ -134,7 +134,7 @@ function AdminUser() {
 
                 {userdata?.results?.map((user) => (
                   <React.Fragment key={user.user_id}>
-                    {user.is_staff == 0 && (
+                    {user.is_staff === 0 && (
                       <tr className="focus:outline-none h-16 border border-gray-100 rounded">
                         <AdminUserList
                           user={user}

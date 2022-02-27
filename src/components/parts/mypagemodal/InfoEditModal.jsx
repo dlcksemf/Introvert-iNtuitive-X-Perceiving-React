@@ -25,7 +25,7 @@ function InfoEditModal() {
     { manual: true },
   );
 
-  const [{}, edit] = useApiAxios(
+  const [, edit] = useApiAxios(
     {
       url: `accounts/api/users/${auth.user_id}/`,
       method: 'PATCH',
@@ -35,7 +35,7 @@ function InfoEditModal() {
 
   useEffect(() => {
     refetch();
-  }, [auth]);
+  }, [auth, refetch]);
 
   const { fieldValues, handleFieldChange } = useFieldValues(
     data || INIT_FILED_VALUES,

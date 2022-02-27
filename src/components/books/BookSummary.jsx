@@ -37,7 +37,7 @@ function BookSummary({ book, reloadBook }) {
 
   useEffect(() => {
     getWish();
-  }, [auth, book]);
+  }, [auth, book, getWish]);
 
   const handleClickLoan = () => {
     auth.isLoggedIn

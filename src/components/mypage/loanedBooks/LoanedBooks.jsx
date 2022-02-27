@@ -5,17 +5,13 @@ import Badge from 'designMaterials/Badge';
 import React, { useState } from 'react';
 
 function LoanedBooks({ book }) {
-  const [bookreturn, setBookReturn] = useState(false);
+  const [, setBookReturn] = useState(false);
   const [auth] = useAuth();
   const [, setReload] = useReload();
 
   let today = new Date();
   const date =
     today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
-  const overdueDate = Math.floor(
-    (Date.parse(date) - Date.parse(book.return_due_date)) / (1000 * 3600 * 24),
-  );
 
   const [color, setColor] = useState(() => {
     if (book.return_state === 'L') {
@@ -32,7 +28,7 @@ function LoanedBooks({ book }) {
     }
   });
 
-  const [{ loading, error, errorMessages }, updateState] = useApiAxios(
+  const [, updateState] = useApiAxios(
     {
       url: `/books/api/loanedbooks/${book.loan_num}/`,
       method: 'PATCH',

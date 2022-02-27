@@ -35,11 +35,11 @@ function BookDetail({ book_num }) {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   useEffect(() => {
     book && getWish();
-  }, [auth, book]);
+  }, [auth, book, getWish]);
 
   const reload = () => {
     getWish();

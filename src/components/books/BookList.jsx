@@ -36,12 +36,12 @@ function BookList() {
       setPageCount(Math.ceil(data.count / 8));
       setCurrentItems(data?.results);
     },
-    [category, query],
+    [category, query, refetch],
   );
 
   useEffect(() => {
     fetchApplications(1);
-  }, [category]);
+  }, [category, fetchApplications]);
 
   const handlePageClick = (event) => {
     fetchApplications(event.selected + 1);

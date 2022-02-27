@@ -17,7 +17,7 @@ function FormCategory() {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   return (
     <React.Fragment>

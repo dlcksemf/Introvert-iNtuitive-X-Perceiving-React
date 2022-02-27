@@ -6,7 +6,7 @@ import Carousel from 'react-material-ui-carousel';
 
 function NewBook() {
   const [auth] = useAuth();
-  const [{ data: bookList, loading, error }, refetch] = useApiAxios(
+  const [{ data: bookList }, refetch] = useApiAxios(
     {
       url: '/books/api/books/?all',
       method: 'GET',
@@ -16,7 +16,7 @@ function NewBook() {
 
   useEffect(() => {
     refetch();
-  }, [auth]);
+  }, [auth, refetch]);
 
   return (
     <div className="flex justify-center">

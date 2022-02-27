@@ -26,7 +26,7 @@ function BookApplicationList() {
 
   const [query, setQuery] = useState();
 
-  const [{}, getApplications] = useApiAxios(
+  const [, getApplications] = useApiAxios(
     {
       url: '/books/api/applications/',
       method: 'GET',
@@ -49,12 +49,12 @@ function BookApplicationList() {
       setPageCount(Math.ceil(data.count / itemsPerPage));
       setCurrentItems(data?.results);
     },
-    [category, checked, query],
+    [category, checked, query, auth, getApplications],
   );
 
   useEffect(() => {
     fetchApplications(1);
-  }, [checked, category]);
+  }, [checked, category, fetchApplications]);
 
   const handlePageClick = (event) => {
     fetchApplications(event.selected + 1);

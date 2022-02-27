@@ -39,12 +39,12 @@ function AdminLoanedBookList() {
       setPageCount(Math.ceil(data.count / itemsPerPage));
       setCurrentItems(data?.results);
     },
-    [category, query],
+    [category, query, getApplications],
   );
 
   useEffect(() => {
     fetchApplications(1);
-  }, [category]);
+  }, [category, fetchApplications]);
 
   const handlePageClick = (event) => {
     fetchApplications(event.selected + 1);
@@ -56,7 +56,7 @@ function AdminLoanedBookList() {
     fetchApplications(1, query);
   };
 
-  const [{}, updateState] = useApiAxios(
+  const [, updateState] = useApiAxios(
     {
       url: `/books/api/loanedbooks/${postList?.loan_num}/`,
       method: 'PATCH',

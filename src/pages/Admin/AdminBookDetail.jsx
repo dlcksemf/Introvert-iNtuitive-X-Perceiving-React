@@ -42,7 +42,7 @@ function AdminBookDetail({ postId }) {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   return (
     <div>

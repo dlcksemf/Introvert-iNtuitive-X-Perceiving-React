@@ -1,11 +1,10 @@
+import { useNavigate } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+
 import { useApiAxios } from 'base/api/base';
-import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
-import ConfirmationModal from 'designMaterials/ConfirmationModal';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { toast } from 'react-toastify';
 
 const INIT_VALUE = {};
 
@@ -16,7 +15,7 @@ function BookApplicationForm() {
   const navigate = useNavigate();
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_VALUE);
 
-  const [{ loading, error, errorMessages }, saveApplication] = useApiAxios(
+  const [{ errorMessages }, saveApplication] = useApiAxios(
     {
       url: '/books/api/applications/',
       method: 'POST',

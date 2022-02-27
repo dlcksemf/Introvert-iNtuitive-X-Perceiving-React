@@ -12,7 +12,7 @@ function Toggle({ book, wish, user_id, reload }) {
 
   const [wishes, setWishes] = useState(false);
 
-  const [{}, makeWish] = useApiAxios(
+  const [, makeWish] = useApiAxios(
     {
       url: `/books/api/wishes/`,
       method: 'POST',
@@ -20,7 +20,7 @@ function Toggle({ book, wish, user_id, reload }) {
     { manual: true },
   );
 
-  const [{}, deleteWish] = useApiAxios(
+  const [, deleteWish] = useApiAxios(
     {
       url: `/books/api/wishes/${wish?.wish_num}/`,
       method: 'DELETE',
@@ -30,7 +30,7 @@ function Toggle({ book, wish, user_id, reload }) {
 
   useEffect(() => {
     auth.isLoggedIn && wish ? setWishes(true) : setWishes(false);
-  }, [wish]);
+  }, [wish, auth]);
 
   const handleDelete = () => {
     deleteWish(

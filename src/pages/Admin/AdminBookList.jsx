@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import AdminBookSummary from './AdminBookSummary';
 
 function AdminBookList() {
-  const [currentItems, setCurrentItems] = useState(null);
+  const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
 
@@ -34,7 +34,7 @@ function AdminBookList() {
       setPageCount(Math.ceil(data.count / itemsPerPage));
       setCurrentItems(data?.results);
     },
-    [query],
+    [query, refetch],
   );
 
   const handlePageClick = (event) => {
@@ -49,7 +49,7 @@ function AdminBookList() {
 
   useEffect(() => {
     fetchApplications();
-  }, []);
+  }, [fetchApplications]);
 
   return (
     <div className="my-5">

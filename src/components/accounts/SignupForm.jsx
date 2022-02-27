@@ -1,8 +1,6 @@
 import { useApiAxios } from 'base/api/base';
 import useFieldValues from 'base/hooks/useFieldValues';
 import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
-import { useState } from 'react';
-import ConfirmationModal from 'designMaterials/ConfirmationModal';
 import CancelIcon from 'designMaterials/CancelIcon';
 import {
   SignupFormComponent1,
@@ -28,7 +26,7 @@ function SignupForm() {
   const { fieldValues, handleFieldChange, setFieldValues } =
     useFieldValues(INIT_FILED_VALUES);
 
-  const [{ error, errorMessages }, signup] = useApiAxios(
+  const [{ errorMessages }, signup] = useApiAxios(
     {
       url: 'accounts/api/signup/',
       method: 'POST',

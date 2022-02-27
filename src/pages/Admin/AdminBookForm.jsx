@@ -1,12 +1,11 @@
 import { useApiAxios } from 'base/api/base';
-// import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
 import produce from 'immer';
 import { useEffect, useState } from 'react';
 import Button from './Button';
 import LoadingIndicator from 'components/LoadingIndicator';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FormCategory from 'components/parts/FormCategory';
 import DebugStates from 'base/DebugStates';
 
@@ -40,19 +39,18 @@ function AdminBookForm({ postId, handleDidSave }) {
 
   const [auth] = useAuth();
 
-  const [{ data: post, loading: getLoading, error: getError }, refetch] =
-    useApiAxios(
-      {
-        url: `books/api/books/${postId}/`,
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${auth.access}`,
-        },
+  const [{ data: post }, refetch] = useApiAxios(
+    {
+      url: `books/api/books/${postId}/`,
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
       },
-      {
-        manual: !postId,
-      },
-    );
+    },
+    {
+      manual: !postId,
+    },
+  );
 
   const [
     {
@@ -82,11 +80,11 @@ function AdminBookForm({ postId, handleDidSave }) {
         draft.cover_photo = '';
       }),
     );
-  }, [post]);
+  }, [post, setFieldValues]);
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

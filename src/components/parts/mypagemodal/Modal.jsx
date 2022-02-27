@@ -66,7 +66,7 @@ function Modal({ modalType }) {
       setPageCount(Math.ceil((data?.count ? data.count : 1) / itemsPerPage));
       setCurrentItems(data?.results);
     },
-    [state],
+    [auth, state, query, getUserInfo],
   );
 
   useEffect(() => {

@@ -12,8 +12,8 @@ function MyPage() {
   const [showWish, setShowWish] = useState(false);
   const [showLoaned, setShowLoaned] = useState(true);
   const [auth] = useAuth();
-  const [reload, setReload] = useReload();
-  const [{ data, loading, error, errorMessages }, getUserInfo] = useApiAxios(
+  const [, setReload] = useReload();
+  const [{ data }, getUserInfo] = useApiAxios(
     {
       url: `/accounts/api/users/${auth.user_id}`,
       method: 'GET',
@@ -32,7 +32,7 @@ function MyPage() {
       .catch((error) => {
         console.log(error);
       });
-  }, [reload]);
+  }, [getUserInfo, setReload]);
 
   return (
     <div className="ml-24 mt-10 mb-32">

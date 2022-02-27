@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 function HeavyReader() {
   const [auth] = useAuth();
-  const [{ data: userList, loading, error }, refetch] = useApiAxios(
+  const [{ data: userList }, refetch] = useApiAxios(
     {
       url: '/accounts/api/users/?all',
       method: 'GET',
@@ -15,7 +15,7 @@ function HeavyReader() {
 
   useEffect(() => {
     refetch();
-  }, [auth]);
+  }, [auth, refetch]);
 
   return (
     <div>
