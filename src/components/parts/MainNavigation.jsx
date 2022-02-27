@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 
-import {
-  ProSidebar,
-  Menu,
-  MenuItem,
-  SidebarFooter,
-  SidebarContent,
-} from 'react-pro-sidebar';
-
-import { FiLogOut } from 'react-icons/fi';
+import { ProSidebar, Menu, MenuItem, SidebarContent } from 'react-pro-sidebar';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import 'css/Navigation.css';
@@ -39,7 +31,7 @@ function MainNavigation() {
               <NavHashLink
                 smooth
                 activeStyle={{ fontWeight: 'bold' }}
-                to={'/#main'}
+                to={'/#top'}
                 className="hover:text-lg"
               >
                 <h1 className="text-indigo-900">Home</h1>
