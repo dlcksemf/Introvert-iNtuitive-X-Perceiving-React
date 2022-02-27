@@ -5,39 +5,38 @@ function ApplicationsList({ applicationList }) {
   let location = useLocation();
 
   return (
-    <div>
-      <div class="flex items-center w-full justify-center">
-        <div class="max-w-xs">
-          <div class="bg-white shadow-xl rounded-lg py-3">
-            <div class="p-2">
-              <h3 class="font-semibold text-base text-blueGray-700 text-center ml-24 mr-24">
-                신청 도서 목록
-              </h3>
-              <table class="text-xs ml-3 mt-3">
-                <tbody>
-                  {applicationList?.slice(0, 3).map((application) => {
-                    return (
-                      <div key={application.application_num}>
-                        <ApplicationsBooks application={application} />
-                      </div>
-                    );
-                  })}
-                </tbody>
-              </table>
+    <div className="border-t-4 border-blue-500">
+      <div className="flex items-center w-full justify-center">
+        <div className="bg-white shadow-xl rounded-lg py-14">
+          <div className="px-24">
+            <h3 className="font-semibold text-lg text-gray-800 text-center select-none px-1">
+              신청 도서 목록
+            </h3>
+            <table className="text-xs ml-3 mt-3">
+              <tbody>
+                {applicationList?.slice(0, 3).map((application) => {
+                  return (
+                    <div key={application.application_num}>
+                      <ApplicationsBooks application={application} />
+                    </div>
+                  );
+                })}
+              </tbody>
+            </table>
 
-              <div class="text-center mb-3">
-                <button
-                  class="bg-indigo-500 mt-3 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
-                  type="button"
+            <div className="text-center mb-3">
+              <button
+                className="bg-indigo-600 mt-3 text-white hover:bg-indigo-700 text-sm font-bold uppercase px-3 py-1 rounded-full
+                transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 underline-offset-4"
+                type="button"
+              >
+                <Link
+                  to={`/accounts/modal/applications/`}
+                  state={{ backgroundLocation: location }}
                 >
-                  <Link
-                    to={`/accounts/modal/applications/`}
-                    state={{ backgroundLocation: location }}
-                  >
-                    전체 내역 보기
-                  </Link>
-                </button>
-              </div>
+                  전체 내역 보기
+                </Link>
+              </button>
             </div>
           </div>
         </div>

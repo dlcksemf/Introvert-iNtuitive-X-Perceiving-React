@@ -39,7 +39,7 @@ function MyPage() {
       <div class="container mx-auto my-5 p-5">
         <div class="md:flex no-wrap md:-mx-2 ">
           <div class="w-full md:w-3/12 md:mx-2">
-            <div class="bg-white p-3 border-t-4 border-blue-400">
+            <div class="bg-white p-3 border-t-4 border-blue-400 mt-3">
               <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
                 <UserInfo info={data} />
               </h1>
@@ -74,14 +74,20 @@ function MyPage() {
 
                       <div className="ml-10 mb-3">
                         <button
-                          class="bg-yellow-300 px-3 py-2 text-sm shadow-sm font-medium tracking-wider rounded-full hover:shadow-2xl hover:bg-yellow-400"
+                          class="absolute top-48
+                          focus:bg-yellow-500 focus:text-white focus:border-none focus:px-4 focus:py-2.5 border-2 border-amber-500 px-3 py-2 
+                          text-sm text-gray-800 shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
+                          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
                           onClick={() => setShowLoaned(true)}
                           onClickCapture={() => setShowWish(false)}
                         >
                           대출 도서
                         </button>
                         <button
-                          class="bg-indigo-300 px-3 py-2 text-sm shadow-sm font-medium tracking-wider  text-indigo-600 rounded-full hover:shadow-2xl hover:bg-indigo-400 ml-3"
+                          class="absolute top-48 ml-28
+                          focus:bg-indigo-600 focus:text-white focus:border-none border-2 border-indigo-600 focus:px-5 focus:py-2.5 px-4 py-2
+                          text-sm text-gray-800 shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
+                          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
                           onClick={() => setShowWish(true)}
                           onClickCapture={() => setShowLoaned(false)}
                         >
@@ -93,7 +99,7 @@ function MyPage() {
                         <div class="w-full">
                           <div class="bg-white shadow-xl rounded-lg py-3">
                             <div class="p-2">
-                              <h3 class="font-semibold text-base text-blueGray-700 text-center">
+                              <h3 class="font-semibold text-base text-gray-700 text-center">
                                 나의 도서 통계
                               </h3>
                               <ReadingStatus />

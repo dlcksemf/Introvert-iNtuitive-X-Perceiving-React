@@ -7,7 +7,8 @@ function NoList({ children }) {
         {children}
       </div>
       <NavLink
-        className="bg-yellow-400 text-white text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+        className="bg-yellow-500 mt-3 text-white hover:bg-amber-500 text-sm font-bold uppercase px-3 py-1 rounded-full
+      transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 underline-offset-4 mb-10"
         to="/books/booklist/"
       >
         도서 목록으로!
