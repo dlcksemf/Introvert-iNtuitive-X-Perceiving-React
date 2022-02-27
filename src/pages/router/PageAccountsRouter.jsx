@@ -7,18 +7,25 @@ import * as React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import PageModal from 'pages/PageModal';
 import PageUserInfoModal from 'pages/PageUserInfoModal';
+import { useAuth } from 'base/hooks/Authcontext';
 
 function PageAccountsRouter() {
   let location = useLocation();
   let state = location.state;
+  const [auth] = useAuth();
 
   return (
     <>
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/login/" element={<LoginPage />} />
         <Route path="/signup/*" element={<SignupPage />} />
-        <Route path="/mypage/" element={<MyPage />} />
-        <Route path="/edit/" element={<UserInfoForm />} />
+
+        {auth.isLoggedIn && (
+          <>
+            <Route path="/mypage/" element={<MyPage />} />
+            <Route path="/edit/" element={<UserInfoForm />} />
+          </>
+        )}
       </Routes>
 
       {state?.backgroundLocation && (
