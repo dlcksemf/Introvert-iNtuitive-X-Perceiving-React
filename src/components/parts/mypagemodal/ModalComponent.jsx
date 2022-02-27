@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { STATELIST } from 'Constants';
 
-function ModalComponent({ titleList, bookInfo }) {
+function ModalComponent({ titleList, bookInfo, modalType }) {
+  const [contentList, setContentList] = useState([]);
+
+  useEffect(() => {
+    titleList.map((title) => {
+      if (title === 'created_at') {
+        setContentList((prev) => [...prev, bookInfo[title].slice(0, 10)]);
+      } else if (title === 'title') {
+        setContentList((prev) => [
+          ...prev,
+          bookInfo[title].slice(0, 15) + '...',
+        ]);
+      } else if (title === 'state' || title === 'return_state') {
+        setContentList((prev) => [
+          ...prev,
+          STATELIST[modalType][bookInfo[title]],
+        ]);
+      } else {
+        setContentList((prev) => [...prev, bookInfo[title]]);
+      }
+    });
+  }, [titleList]);
+
   return (
     <React.Fragment>
-      {titleList.map((title, key) => {
+      {contentList.map((content, key) => {
         return (
           <td key={key} className="p-2 whitespace-nowrap">
             <div className="flex items-center">
-              <div className="font-medium text-gray-800">
-                {/* {type === 'wishes' &&
-                  title === 'return_due_date' &&
-                  bookInfo['loaned_books'][0].return_due_date} */}
-
-                {title === 'created_at'
-                  ? bookInfo[title].slice(0, 10)
-                  : bookInfo[title]}
-              </div>
+              <div className="font-medium text-gray-800">{content}</div>
             </div>
           </td>
         );

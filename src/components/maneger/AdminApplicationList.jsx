@@ -4,7 +4,9 @@ import ReactPaginate from 'react-paginate';
 import 'css/Paging.css';
 import React from 'react';
 import AdminApplication from './AdminApplication';
-import { STATELIST, itemsPerPage } from 'Constants';
+import { itemsPerPage } from 'Constants';
+import StateCategory from 'components/parts/StateCategory';
+import { STATELIST } from 'Constants';
 
 function AdminApplicationList() {
   const [, setCurrentItems] = useState(null);
@@ -56,27 +58,11 @@ function AdminApplicationList() {
               신청 도서 관리
             </p>
 
-            <div className="flex items-center">
-              {Object.values(STATELIST.application).map((state, index) => (
-                <div
-                  key={index}
-                  className="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-2"
-                >
-                  <button
-                    onClick={(e) => {
-                      setCategory(e.target.value);
-                    }}
-                    value={Object.keys(STATELIST.application)[index]}
-                    className={`text-xs py-2 px-4 ${
-                      category === Object.keys(STATELIST.application)[index] &&
-                      'bg-indigo-100 text-indigo-700'
-                    } text-gray-600 hover:text-indigo-700 hover:bg-indigo-100 rounded-full`}
-                  >
-                    {state}
-                  </button>
-                </div>
-              ))}
-            </div>
+            <StateCategory
+              setCategory={setCategory}
+              category={category}
+              stateObject={STATELIST.application}
+            />
           </div>
 
           <div className="mt-7">
