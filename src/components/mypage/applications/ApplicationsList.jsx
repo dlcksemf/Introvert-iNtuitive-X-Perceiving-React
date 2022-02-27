@@ -16,9 +16,9 @@ function ApplicationsList({ applicationList }) {
               <tbody>
                 {applicationList?.slice(0, 3).map((application) => {
                   return (
-                    <div key={application.application_num}>
+                    <tr key={application.application_num}>
                       <ApplicationsBooks application={application} />
-                    </div>
+                    </tr>
                   );
                 })}
               </tbody>

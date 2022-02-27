@@ -78,7 +78,7 @@ function InfoEditModal() {
           <div>
             <label
               className="text-gray-800 font-semibold block my-3 text-md"
-              for="username"
+              htmlFor="username"
             >
               이름
             </label>
@@ -95,7 +95,7 @@ function InfoEditModal() {
           <div>
             <label
               className="text-gray-800 font-semibold block my-3 text-md"
-              for="email"
+              htmlFor="email"
             >
               전화번호
             </label>
@@ -112,7 +112,7 @@ function InfoEditModal() {
           <div>
             <label
               className="text-gray-800 font-semibold block my-3 text-md"
-              for="birthdate"
+              htmlFor="birthdate"
             >
               생년월일
             </label>
@@ -128,7 +128,7 @@ function InfoEditModal() {
           <div>
             <label
               className="text-gray-800 font-semibold block my-3 text-md"
-              for="password"
+              htmlFor="password"
             >
               직급
             </label>
@@ -156,7 +156,7 @@ function InfoEditModal() {
             <div className="w-[5] mt-3">
               <label
                 className="text-gray-800 font-semibold block my-3 text-md"
-                for="confirm"
+                htmlFor="confirm"
               >
                 성별
               </label>

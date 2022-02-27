@@ -3,7 +3,7 @@ import { EmptyHeart, FilledHeart } from 'designMaterials/WishesIcon';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import BookToast from './BookToast';
 
 function Toggle({ book, wish, user_id, reload }) {
@@ -29,9 +29,7 @@ function Toggle({ book, wish, user_id, reload }) {
   );
 
   useEffect(() => {
-    if (wish) {
-      setWishes(true);
-    } else setWishes(false);
+    auth.isLoggedIn && wish ? setWishes(true) : setWishes(false);
   }, [wish]);
 
   const handleDelete = () => {

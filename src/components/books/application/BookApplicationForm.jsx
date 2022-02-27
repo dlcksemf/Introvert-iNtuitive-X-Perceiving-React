@@ -5,6 +5,7 @@ import useFieldValues from 'base/hooks/useFieldValues';
 import ConfirmationModal from 'designMaterials/ConfirmationModal';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const INIT_VALUE = {};
 
@@ -14,8 +15,6 @@ function BookApplicationForm() {
   const [auth] = useAuth();
   const navigate = useNavigate();
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_VALUE);
-  const [showSubmitModal, setShowSubmitModal] = useState(false);
-  const [showCancleModal, setShowCancleModal] = useState(false);
 
   const [{ loading, error, errorMessages }, saveApplication] = useApiAxios(
     {
@@ -28,42 +27,34 @@ function BookApplicationForm() {
     { manual: true },
   );
 
-  const handleSubmit = () => {
-    saveApplication({
-      data: { ...fieldValues, state: 'P', user_id: auth.user_id },
-    })
-      .then(() => {
-        navigate('/books/application/');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const handleClickSubmitButton = (e) => {
     e.preventDefault();
-    setShowSubmitModal(true);
+
+    window.confirm('신청하시겠습니까?') &&
+      saveApplication({
+        data: { ...fieldValues, state: 'P', user_id: auth.user_id },
+      })
+        .then((response) => {
+          toast.info(`💫 ${response.data.title}(이)가 신청 되었습니다`, {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          navigate('/books/application/');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   };
 
   const handleClickCancleButton = (e) => {
     e.preventDefault();
-    setShowCancleModal(true);
-  };
 
-  const handleOkButton = () => {
-    if (showSubmitModal) {
-      handleSubmit();
-    } else if (showCancleModal) {
-      navigate('/books/application/');
-    }
-  };
-
-  const handleCancleButton = () => {
-    if (showSubmitModal) {
-      setShowSubmitModal(false);
-    } else if (showCancleModal) {
-      setShowCancleModal(false);
-    }
+    window.confirm('취소하시겠습니까?') && navigate(-1);
   };
 
   return (
@@ -115,15 +106,6 @@ function BookApplicationForm() {
             </div>
           </div>
         </div>
-
-        {(showSubmitModal || showCancleModal) && (
-          <ConfirmationModal
-            handleOkButton={handleOkButton}
-            handleCancleButton={handleCancleButton}
-          >
-            {showSubmitModal ? 'Save?' : 'Cancle?'}
-          </ConfirmationModal>
-        )}
       </div>
     </div>
   );

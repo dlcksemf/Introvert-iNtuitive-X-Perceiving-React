@@ -36,8 +36,11 @@ function Top5() {
             ?.sort((book1, book2) => book2.count_loans - book1.count_loans)
             .slice(0, 5)
             .map((book) => (
-              <div className="h-[700px] w-[1000px] flex justify-center items-center">
-                <Top5Summary book={book} key={book.book_num} />
+              <div
+                key={book.book_num}
+                className="h-[700px] w-[1000px] flex justify-center items-center"
+              >
+                <Top5Summary book={book} />
               </div>
             ))}
         </Carousel>

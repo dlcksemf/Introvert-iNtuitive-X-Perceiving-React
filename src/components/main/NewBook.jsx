@@ -33,8 +33,11 @@ function NewBook() {
           }}
         >
           {bookList?.slice(0, 3).map((book) => (
-            <div className="h-[600px] w-[1000px] flex justify-center items-center">
-              <NewBookSummary book={book} key={book.book_num} />
+            <div
+              key={book.book_num}
+              className="h-[600px] w-[1000px] flex justify-center items-center"
+            >
+              <NewBookSummary book={book} />
             </div>
           ))}
         </Carousel>

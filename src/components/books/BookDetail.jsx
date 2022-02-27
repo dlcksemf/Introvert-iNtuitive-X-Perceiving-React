@@ -1,12 +1,15 @@
-import { useApiAxios } from 'base/api/base';
-import LoadingIndicator from 'components/LoadingIndicator';
-import LoanedModal from 'components/parts/LoanedModal';
-import LoanedIcon from 'designMaterials/LoanedIcon';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import non_image from 'components/parts/image/non_image.jpg';
-import Toggle from 'components/parts/Toggle';
+
 import { useAuth } from 'base/hooks/Authcontext';
+import { useApiAxios } from 'base/api/base';
+
+import LoanedModal from 'components/parts/LoanedModal';
+import LoadingIndicator from 'components/LoadingIndicator';
+import LoanedIcon from 'designMaterials/LoanedIcon';
+import Toggle from 'components/parts/Toggle';
+import non_image from 'components/parts/image/non_image.jpg';
+
 import { ToastContainer } from 'react-toastify';
 
 function BookDetail({ book_num }) {
@@ -35,7 +38,7 @@ function BookDetail({ book_num }) {
   }, []);
 
   useEffect(() => {
-    getWish();
+    book && getWish();
   }, [auth, book]);
 
   const reload = () => {
@@ -113,11 +116,11 @@ function BookDetail({ book_num }) {
                       ISBN {book?.ISBN}
                     </span>
                   </div>
-                  <p className="leading-relaxed select-none mt-14 hover:text-gray-900">
+                  <div className="leading-relaxed select-none mt-14 hover:text-gray-900">
                     {book?.story.split(/[\r\n]+/).map((line, index) => (
                       <p key={index}>{line}</p>
                     ))}
-                  </p>
+                  </div>
                   <div className="flex mt-10 items-center pb-5 border-b-2 border-gray-100 mb-5">
                     <button
                       onClick={buyLink}
@@ -159,12 +162,12 @@ function BookDetail({ book_num }) {
                             <span className="text-gray-600 m-auto select-none">
                               대출하기
                             </span>
-                            <button
+                            <div
                               onClick={handleClickLoan}
                               className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
                             >
                               <LoanedIcon />
-                            </button>
+                            </div>
                           </>
                         )}
 

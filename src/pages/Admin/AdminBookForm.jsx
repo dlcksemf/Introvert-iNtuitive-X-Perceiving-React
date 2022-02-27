@@ -93,7 +93,7 @@ function AdminBookForm({ postId, handleDidSave }) {
 
     if (window.confirm('도서의 정보를 업로드 하시겠습니까?')) {
       e.preventDefault();
-      console.log('성공');
+
       const formData = new FormData();
       Object.entries(fieldValues).forEach(([name, value]) => {
         if (Array.isArray(value)) {
@@ -103,8 +103,6 @@ function AdminBookForm({ postId, handleDidSave }) {
           formData.append(name, value);
         }
       });
-
-      console.log(formData);
 
       saveRequest({
         data: formData,

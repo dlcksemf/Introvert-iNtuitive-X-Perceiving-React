@@ -8,16 +8,16 @@ function WishBooks({ book }) {
   return (
     <React.Fragment>
       <tr>
-        <div
+        <td
           className="cursor-pointer hover:text-red-400"
           onClick={() => {
             navigate(`/books/${book.book_num}/`);
           }}
         >
-          <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+          <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
             {book.title}
-          </th>
-        </div>
+          </div>
+        </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
           {book.writer}
         </td>

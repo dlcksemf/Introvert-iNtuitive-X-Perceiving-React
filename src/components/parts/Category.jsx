@@ -1,18 +1,15 @@
-import { useApiAxios } from 'base/api/base';
-import { useAuth } from 'base/hooks/Authcontext';
 import React, { useEffect } from 'react';
+
 import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 
+import { useApiAxios } from 'base/api/base';
+
 function Category({ selected, setSelected }) {
-  const [auth] = useAuth();
   const [{ data: categoryList }, refetch] = useApiAxios(
     {
       url: `/books/api/category/`,
       method: 'GET',
-      headers: {
-        Authorization: `Bearer ${auth.access}`,
-      },
     },
     { manual: true },
   );

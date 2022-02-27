@@ -1,11 +1,12 @@
+import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
-import { useNavigate, useLocation } from 'react-router-dom';
-import React from 'react';
+
 import { toast, ToastContainer } from 'react-toastify';
 import CancelIcon from 'designMaterials/CancelIcon';
-import { NavLink } from 'react-router-dom';
 
 const INITIAL_STATE = { email: '', password: '' };
 
@@ -16,13 +17,13 @@ function useQuery() {
 }
 
 function LoginForm() {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   let query = useQuery();
 
-  const [auth, , login] = useAuth();
+  const [, , login] = useAuth();
   const { handleFieldChange, fieldValues } = useFieldValues(INITIAL_STATE);
 
-  const [{ loading, error, errorMessages }, refetch] = useApiAxios(
+  const [{ error }, refetch] = useApiAxios(
     {
       url: '/accounts/api/token/',
       method: 'POST',
@@ -45,9 +46,9 @@ function LoginForm() {
         });
 
         if (is_staff || query.get('next') === '/') {
-          Navigate('/');
+          navigate('/');
         } else {
-          Navigate(-1);
+          navigate(-1);
         }
       })
       .catch(() => {
@@ -68,6 +69,7 @@ function LoginForm() {
       {error?.response?.status === 401 && (
         <div className="text-red-400">로그인에 실패했습니다.</div>
       )}
+
       <form onSubmit={handleSubmit}>
         <div className="container px-5 py-36 mx-auto flex flex-wrap items-center">
           <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
@@ -92,9 +94,14 @@ function LoginForm() {
           </div>
           <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
             <div className="flex justify-end">
-              <NavLink to="/">
-                <CancelIcon className="flex justify-end" />
-              </NavLink>
+              <div
+                className="flex justify-end"
+                onClick={() => {
+                  navigate('/');
+                }}
+              >
+                <CancelIcon />
+              </div>
             </div>
             <h2 className="text-gray-900 text-lg font-bold title-font mb-5 select-none">
               Log In

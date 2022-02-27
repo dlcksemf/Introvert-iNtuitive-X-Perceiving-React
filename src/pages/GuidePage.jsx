@@ -1,18 +1,19 @@
-import background from './img/book1.jpg';
-import map from './img/map.png';
+// import map from './img/map.png';
 import ReactPlayer from 'react-player';
+
+import background from './img/book1.jpg';
 
 function GuidePage() {
   const Item = ({ text }) => {
     return (
-      <p>
-        {text.split('\n').map((txt) => (
-          <>
+      <div>
+        {text.split('\n').map((txt, index) => (
+          <p key={index}>
             {txt}
             <br />
-          </>
+          </p>
         ))}
-      </p>
+      </div>
     );
   };
 
@@ -79,13 +80,13 @@ function GuidePage() {
                   <h6 className="text-xl font-semibold select-none">
                     이달의 독서왕은 나야나
                   </h6>
-                  <p className="mt-2 mb-4 text-blueGray-500 select-none hover:font-semibold hover:text-gray-600">
+                  <div className="mt-2 mb-4 text-blueGray-500 select-none hover:font-semibold hover:text-gray-600">
                     <Item
                       text={
                         '이제 수기로 작성하던 기록은 No! \n 내가 빌린 책이 데이터로 남아 \n 이달의 독서왕도 도전할 수 있어요.'
                       }
                     />
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -104,13 +105,13 @@ function GuidePage() {
                   <h6 className="text-xl font-semibold select-none">
                     내가 읽고 싶은 책은..
                   </h6>
-                  <p className="mt-2 mb-4 text-blueGray-500 select-none hover:font-semibold hover:text-gray-600">
+                  <div className="mt-2 mb-4 text-blueGray-500 select-none hover:font-semibold hover:text-gray-600">
                     <Item
                       text={
                         '읽고 싶고 필요한 책은 많은데.. \n 이런 고민이 있었다면 이제는 도서 신청을 \n 적극 활용해봐요!'
                       }
                     />
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -129,13 +130,13 @@ function GuidePage() {
                   <h6 className="text-xl font-semibold select-none">
                     나의 독서 기록
                   </h6>
-                  <p className="mt-2 mb-4 text-blueGray-500 select-none hover:font-semibold hover:text-gray-600">
+                  <div className="mt-2 mb-4 text-blueGray-500 select-none hover:font-semibold hover:text-gray-600">
                     <Item
                       text={
                         '내가 이번 달에 책을 얼마나 읽었지? \n 이제는 마이페이지를 통해 \n 빌린 내역의 통계를 볼 수 있어요.'
                       }
                     />
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>

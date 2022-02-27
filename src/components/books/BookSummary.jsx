@@ -1,12 +1,15 @@
-import { useNavigate } from 'react-router-dom';
-import non_image from 'components/parts/image/non_image.jpg';
-import heavy_reader from 'components/parts/image/heavy_reader.png';
 import React, { useEffect, useState } from 'react';
-import LoanedIcon from 'designMaterials/LoanedIcon';
-import Toggle from 'components/parts/Toggle';
+import { useNavigate } from 'react-router-dom';
+
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
+
 import LoanedModal from 'components/parts/LoanedModal';
+import LoanedIcon from 'designMaterials/LoanedIcon';
+import Toggle from 'components/parts/Toggle';
+
+import non_image from 'components/parts/image/non_image.jpg';
+import heavy_reader from 'components/parts/image/heavy_reader.png';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -66,12 +69,12 @@ function BookSummary({ book, reloadBook }) {
             />
           </div>
           {book?.state === 'A' ? (
-            <button
+            <div
               onClick={handleClickLoan}
               className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
             >
               <LoanedIcon />
-            </button>
+            </div>
           ) : (
             <p className="m-auto ml-5 select-none hover:text-blue-500">
               {book?.loaned_books[0]?.return_due_date}
@@ -239,39 +242,38 @@ function HeavyReaderSummary({ book }) {
             className="w-3/5 h-3/5 rounded inline"
           />
           {book?.gender === 'F' && (
-            <p className="absolute mt-80">
+            <div className="absolute mt-80">
               <h1 className="mt-10 text-4xl select-none font-semibold">
                 EUCLID 다독왕 👸
               </h1>
-            </p>
+            </div>
           )}
           {book?.gender === 'M' && (
-            <p className="absolute mt-80">
+            <div className="absolute mt-80">
               <h1 className="mt-10 text-4xl select-none font-semibold">
                 EUCLID 다독왕 🤴
               </h1>
-            </p>
+            </div>
           )}
           {!book?.gender && (
-            <p className="absolute mt-80">
+            <div className="absolute mt-80">
               <h1 className="mt-10 text-4xl select-none font-semibold">
                 EUCLID 다독왕 🏆
               </h1>
-            </p>
+            </div>
           )}
-          <p className="absolute mt-96 flex justify-center font-bold">
-            <h1
-              className="mt-14 justify-center text-5xl select-none cursor-pointer
-          transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500"
-            >
+
+          {/* animation h1에 잡혀있는거 div로 옮겼옹 */}
+          <div className="absolute mt-96 flex justify-center font-bold transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500">
+            <h1 className="mt-14 justify-center text-5xl select-none cursor-pointer">
               {book.username}
             </h1>
-          </p>
-          <p className="absolute mt-96 font-semibold">
+          </div>
+          <div className="absolute mt-96 font-semibold">
             {book?.position && (
               <h1 className="mt-36 text-3xl select-none">{book.position}</h1>
             )}
-          </p>
+          </div>
         </span>
       )}
       {!book?.count_loans && (
@@ -281,27 +283,21 @@ function HeavyReaderSummary({ book }) {
             alt="다독왕"
             className="w-3/5 h-3/5 rounded inline"
           />
-          <p className="absolute mt-80">
+          <div className="absolute mt-80">
             <h1 className="mt-10 text-4xl select-none font-semibold">
               EUCLID 다독왕 🏆
             </h1>
-          </p>
-          <p className="absolute mt-96 flex justify-center font-bold">
-            <h1
-              className="mt-14 justify-center text-5xl select-none
-              transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500"
-            >
+          </div>
+          <div className="absolute mt-96 flex justify-center font-bold transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500">
+            <h1 className="mt-14 justify-center text-5xl select-none">
               Unknown
             </h1>
-          </p>
-          <p className="absolute mt-96 font-semibold">
-            <h1
-              className="mt-36 text-3xl select-none cursor-pointer
-              transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500"
-            >
+          </div>
+          <div className="absolute mt-96 font-semibold transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500">
+            <h1 className="mt-36 text-3xl select-none cursor-pointer">
               과연 누가 될까요?
             </h1>
-          </p>
+          </div>
         </span>
       )}
     </div>

@@ -187,7 +187,7 @@ function AdminLoanedBookList() {
 
               <tbody>
                 {postList?.results?.map((post) => (
-                  <React.Fragment>
+                  <React.Fragment key={post.loan_num}>
                     <tr className="focus:outline-none h-16 border border-gray-100 rounded">
                       <td className="flex items-center"></td>
                       <td className="">

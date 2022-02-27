@@ -6,8 +6,6 @@ import ReactPaginate from 'react-paginate';
 import { ToastContainer } from 'react-toastify';
 import AdminBookSummary from './AdminBookSummary';
 
-const STATELIST = ['All', 'Available', 'Borrowed', 'Deleted'];
-
 function AdminBookList() {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
@@ -66,7 +64,7 @@ function AdminBookList() {
         <div className="flex flex-wrap">
           {postList?.results?.map((post) => (
             <div
-              key={post.id}
+              key={post.book_num}
               className="w-full md:w-1/2 xl:w-1/3 px-4 transition-transform hover:-translate-y-5 duration-300"
             >
               <AdminBookSummary post={post} />

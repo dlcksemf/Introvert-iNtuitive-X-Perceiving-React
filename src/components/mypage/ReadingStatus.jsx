@@ -16,9 +16,7 @@ function ReadingStatus() {
     today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
   useEffect(() => {
-    refetch().then((response) => {
-      console.log(response.data.loaned_dates);
-    });
+    refetch();
   }, []);
 
   return (
