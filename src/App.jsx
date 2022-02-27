@@ -1,4 +1,4 @@
-import { useLocation, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
 
 import Test from 'Test';
@@ -12,19 +12,17 @@ import Footer from 'components/parts/Footer';
 
 function App() {
   const [auth] = useAuth();
-  let location = useLocation();
 
   return (
     <>
       <TopNav />
+
       <div className="app">
         <Routes>
           {auth?.is_staff && (
             <Route path="/" element={<Navigate to="/admin/" />} />
           )}
           {!auth?.is_staff && <Route path="/" element={<MainPage />} />}
-
-          <Route path="/test/" element={<Test />} />
 
           <Route path="/accounts/*" element={<PageAccountsRouter />} />
 
@@ -35,6 +33,7 @@ function App() {
           )}
         </Routes>
       </div>
+
       {!auth?.is_staff && (
         <>
           <hr />
