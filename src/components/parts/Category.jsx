@@ -6,7 +6,7 @@ import { Listbox, Transition } from '@headlessui/react';
 
 function Category({ selected, setSelected }) {
   const [auth] = useAuth();
-  const [{ data: categoryList, loading, error }, refetch] = useApiAxios(
+  const [{ data: categoryList }, refetch] = useApiAxios(
     {
       url: `/books/api/category/`,
       method: 'GET',
@@ -18,7 +18,7 @@ function Category({ selected, setSelected }) {
   );
 
   useEffect(() => {
-    refetch().then((result) => console.log(result));
+    refetch();
   }, []);
 
   return (
@@ -46,7 +46,7 @@ function Category({ selected, setSelected }) {
                   `${active ? 'text-indigo-900 bg-indigo-100' : 'text-gray-900'}
                         cursor-default select-none relative py-2 pl-10 pr-4`
                 }
-                value="All"
+                value="전체"
               >
                 {({ selected, active }) => (
                   <>
@@ -55,7 +55,7 @@ function Category({ selected, setSelected }) {
                         selected ? 'font-medium' : 'font-normal'
                       } block truncate`}
                     >
-                      All
+                      전체
                     </span>
                     {selected ? (
                       <span
