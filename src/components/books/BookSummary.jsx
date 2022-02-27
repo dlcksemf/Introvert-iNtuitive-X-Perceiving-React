@@ -49,46 +49,46 @@ function BookSummary({ book, reloadBook }) {
         <img
           alt={book?.title}
           className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
-          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 inline-block"
+          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 inline-block mt-28"
           src={book?.cover_photo ? book?.cover_photo : non_image}
           onClick={() => {
             navigate(`/books/${book.book_num}/`);
           }}
         />
-        <div className="flex-grow sm:pl-8">
-          <h3 className="text-sm text-gray-500 mb-3 select-none">
+        <span className="absolute inline-flex mt-96 ml-8">
+          <div className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
+            <Toggle
+              book={book}
+              wish={wish?.results[0]}
+              user_id={auth.user_id}
+              getWish={getWish}
+              reload={reload}
+            />
+          </div>
+          {book?.state === 'A' ? (
+            <button
+              onClick={handleClickLoan}
+              className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+            >
+              <LoanedIcon />
+            </button>
+          ) : (
+            <p className="m-auto ml-5 select-none hover:text-blue-500">
+              {book?.loaned_books[0]?.return_due_date}
+            </p>
+          )}
+          <LoanedModal
+            ariaHideApp={false}
+            modalIsOpen={modalIsOpen}
+            setModalIsOpen={setModalIsOpen}
+            book_num={book?.book_num}
+            reload={reloadBook}
+          />
+        </span>
+        <div className="flex-grow sm:pl-8 mt-36">
+          <h3 className="text-sm text-gray-500 mb-3 select-none flex">
             {book?.category && `[ ${book.category} ]`}
           </h3>
-          <span className="absolute inline-flex m-auto pl-80">
-            <div className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
-              <Toggle
-                book={book}
-                wish={wish?.results[0]}
-                user_id={auth.user_id}
-                getWish={getWish}
-                reload={reload}
-              />
-            </div>
-            {book?.state === 'A' ? (
-              <button
-                onClick={handleClickLoan}
-                className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
-              >
-                <LoanedIcon />
-              </button>
-            ) : (
-              <p className="m-auto ml-5 select-none hover:text-blue-500">
-                {book?.loaned_books[0]?.return_due_date}
-              </p>
-            )}
-            <LoanedModal
-              ariaHideApp={false}
-              modalIsOpen={modalIsOpen}
-              setModalIsOpen={setModalIsOpen}
-              book_num={book?.book_num}
-              reload={reloadBook}
-            />
-          </span>
           <h2
             className="absolute title-font font-medium text-lg text-black hover:text-blue-500 cursor-pointer grid
            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100 hover:font-semibold"
@@ -98,10 +98,15 @@ function BookSummary({ book, reloadBook }) {
           >
             {book.title}
           </h2>
-          <h3 className="text-sm text-gray-500 mb-3 mt-11 select-none">
+          <h3 className="mt-12 text-sm text-gray-500 select-none">
             {book.writer}
           </h3>
-          <p className="font-medium text-base mb-4 select-none">
+          <p
+            className="font-medium text-base mb-4 mt-6 select-none hover:font-semibold cursor-pointer"
+            onClick={() => {
+              navigate(`/books/${book.book_num}/`);
+            }}
+          >
             {truncateString(book.story)}
           </p>
         </div>
