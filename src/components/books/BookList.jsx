@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { BookSummary } from './BookSummary';
 import SearchBar from 'components/parts/SearchBar';
 import ReactPaginate from 'react-paginate';
-import { itemsPerPage } from 'Constants';
 import Category from 'components/parts/Category';
 import { ToastContainer } from 'react-toastify';
 
@@ -11,7 +10,7 @@ function BookList() {
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(1);
-  const [category, setCategory] = useState('All');
+  const [category, setCategory] = useState('전체');
 
   const [query, setQuery] = useState();
 
@@ -28,7 +27,7 @@ function BookList() {
       const params = {
         page: newPage,
         query: newQuery,
-        category: category === 'All' ? '' : category,
+        category: category === '전체' ? '' : category,
       };
 
       const { data } = await refetch({ params });
