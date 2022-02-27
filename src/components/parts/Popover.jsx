@@ -5,25 +5,25 @@ import { useNavigate } from 'react-router-dom';
 
 const LOGGED_IN = [
   {
-    name: 'Logout',
+    name: '로그아웃',
   },
   {
-    name: 'Application',
+    name: '도서 신청',
     url: '/books/application/',
   },
   {
-    name: 'My Page',
+    name: '마이페이지',
     url: '/accounts/mypage/',
   },
 ];
 
 const LOGGED_OUT = [
   {
-    name: 'Login',
+    name: '로그인',
     url: '/accounts/login/',
   },
   {
-    name: 'Signup',
+    name: '회원가입',
     url: '/accounts/signup/',
   },
 ];
@@ -75,7 +75,7 @@ function PopOver() {
                           <div
                             key={item.name}
                             onClick={() => {
-                              if (item.name === 'Logout') {
+                              if (item.name === '로그아웃') {
                                 handleLogout();
                                 return;
                               }
