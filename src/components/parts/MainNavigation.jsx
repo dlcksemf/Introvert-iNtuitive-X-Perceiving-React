@@ -30,7 +30,7 @@ function MainNavigation() {
             <MenuItem icon="🏠">
               <NavHashLink
                 smooth
-                activeStyle={{ fontWeight: 'bold' }}
+                activestyle={{ fontWeight: 'bold' }}
                 to={'/#top'}
                 className="hover:text-lg"
               >

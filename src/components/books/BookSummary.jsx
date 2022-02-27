@@ -129,10 +129,7 @@ function NewBookSummary({ book }) {
               <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
                 {book.category && `[ ${book.category} ]`}
               </h2>
-              <h1
-                className="text-gray-900 text-3xl title-font font-medium mb-4 
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 hover:font-bold"
-              >
+              <h1 className="text-gray-900 text-3xl title-font font-medium mb-4 hover:font-bold">
                 {book.title}
               </h1>
               <div className="flex mb-4">
@@ -149,7 +146,7 @@ function NewBookSummary({ book }) {
                   onClick={() => {
                     navigate(`/books/${book.book_num}/`);
                   }}
-                  className="flex justify-center text-white bg-indigo-500 border-0 mt-1 py-2 px-12 focus:outline-none hover:bg-indigo-600 rounded-full mb-16"
+                  className="flex justify-center text-white bg-indigo-600 border-0 mt-1 py-2 px-12 focus:outline-none hover:bg-indigo-700 rounded-full mb-16"
                 >
                   자세히보기
                 </button>
@@ -188,10 +185,7 @@ function Top5Summary({ book }) {
               <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
                 {book.category && `[ ${book.category} ]`}
               </h2>
-              <h1
-                className="text-gray-900 text-3xl title-font font-medium mb-4 
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 hover:font-bold"
-              >
+              <h1 className="text-gray-900 text-3xl title-font font-medium mb-4 hover:font-bold">
                 {book.title}
               </h1>
               <div className="flex mb-4">
@@ -208,8 +202,8 @@ function Top5Summary({ book }) {
                   onClick={() => {
                     navigate(`/books/${book.book_num}/`);
                   }}
-                  className="flex justify-center text-white bg-indigo-500 border-0 mt-2 py-2 px-12 
-                focus:outline-none hover:bg-indigo-600 rounded-full mb-16"
+                  className="flex justify-center text-white bg-indigo-600 border-0 mt-2 py-2 px-12 
+                focus:outline-none hover:bg-indigo-700 rounded-full mb-16"
                 >
                   자세히보기
                 </button>
