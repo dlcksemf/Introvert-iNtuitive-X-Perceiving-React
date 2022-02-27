@@ -159,7 +159,7 @@ function GuidePage() {
                   src="https://map2.daum.net/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=599606&MY=786443&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo"
                 />
               </a>
-              <div class="hide">
+              <div className="hide">
                 <strong>
                   <img
                     src="//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png"

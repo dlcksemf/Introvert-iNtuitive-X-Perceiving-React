@@ -65,19 +65,19 @@ function InfoEditModal() {
   };
 
   return (
-    <div class="h-screen flex justify-center items-center">
-      <div class="w-2/3">
+    <div className="h-screen flex justify-center items-center">
+      <div className="w-2/3">
         <form
-          class="bg-white p-10 rounded-lg shadow-lg min-w-full"
+          className="bg-white p-10 rounded-lg shadow-lg min-w-full"
           onSubmit={handleClickSubmitButton}
         >
-          <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">
+          <h1 className="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">
             내정보
           </h1>
 
           <div>
             <label
-              class="text-gray-800 font-semibold block my-3 text-md"
+              className="text-gray-800 font-semibold block my-3 text-md"
               for="username"
             >
               이름
@@ -94,7 +94,7 @@ function InfoEditModal() {
 
           <div>
             <label
-              class="text-gray-800 font-semibold block my-3 text-md"
+              className="text-gray-800 font-semibold block my-3 text-md"
               for="email"
             >
               전화번호
@@ -111,7 +111,7 @@ function InfoEditModal() {
 
           <div>
             <label
-              class="text-gray-800 font-semibold block my-3 text-md"
+              className="text-gray-800 font-semibold block my-3 text-md"
               for="birthdate"
             >
               생년월일
@@ -127,7 +127,7 @@ function InfoEditModal() {
 
           <div>
             <label
-              class="text-gray-800 font-semibold block my-3 text-md"
+              className="text-gray-800 font-semibold block my-3 text-md"
               for="password"
             >
               직급
@@ -155,7 +155,7 @@ function InfoEditModal() {
           <div>
             <div className="w-[5] mt-3">
               <label
-                class="text-gray-800 font-semibold block my-3 text-md"
+                className="text-gray-800 font-semibold block my-3 text-md"
                 for="confirm"
               >
                 성별
@@ -176,13 +176,13 @@ function InfoEditModal() {
           </div>
           <button
             onClick={handleClickSubmitButton}
-            class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans"
+            className="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans"
           >
             정보 수정
           </button>
           <button
             onClick={handleClickCancleButton}
-            class="w-full mt-6 mb-3 bg-indigo-100 rounded-lg px-4 py-2 text-lg text-gray-800 tracking-wide font-semibold font-sans"
+            className="w-full mt-6 mb-3 bg-indigo-100 rounded-lg px-4 py-2 text-lg text-gray-800 tracking-wide font-semibold font-sans"
           >
             취소
           </button>

@@ -82,7 +82,7 @@ function BookApplicationList() {
     <div className="w-3/4 m-auto">
       <div className="flex flex-col text-center w-full">
         <div className="flex justify-end">
-          <h3 class="text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mb-8 mt-4">
+          <h3 className="text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mb-8 mt-4">
             도서 신청 목록
           </h3>
           <div className="absolute flex justify-end items-end mb-28 mr-4">
@@ -102,11 +102,11 @@ function BookApplicationList() {
 
       <div>
         <div className="flex justify-between">
-          <label class="ml-4 inline-flex items-center mt-3">
+          <label className="ml-4 inline-flex items-center mt-3">
             <input
               type="checkbox"
               value={checked}
-              class="form-checkbox h-5 w-5 text-yellow-600"
+              className="form-checkbox h-5 w-5 text-yellow-600"
               onChange={(e) => {
                 setChecked(e.target.checked);
               }}
@@ -116,30 +116,30 @@ function BookApplicationList() {
 
           <button
             onClick={handleClick}
-            class="mr-5 bg-indigo-500 px-5 py-3 text-sm shadow-sm font-medium tracking-wider  text-indigo-100 rounded-full hover:shadow-2xl hover:bg-indigo-600"
+            className="mr-5 bg-indigo-500 px-5 py-3 text-sm shadow-sm font-medium tracking-wider  text-indigo-100 rounded-full hover:shadow-2xl hover:bg-indigo-600"
           >
             도서 신청
           </button>
         </div>
-        <section class="py-1 bg-blueGray-50">
-          <div class="w-full xl:mb-0 px-4">
-            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
-              <table class="items-center bg-transparent w-full border-collapse ">
+        <section className="py-1 bg-blueGray-50">
+          <div className="w-full xl:mb-0 px-4">
+            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+              <table className="items-center bg-transparent w-full border-collapse ">
                 <thead>
                   <tr>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                       도서명
                     </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                       저자
                     </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                       출판사
                     </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                       ISBN
                     </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                       신청상태
                     </th>
                   </tr>

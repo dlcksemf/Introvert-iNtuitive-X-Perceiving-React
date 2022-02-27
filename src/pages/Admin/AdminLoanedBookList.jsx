@@ -235,7 +235,7 @@ function AdminLoanedBookList() {
                         <div className="flex items-center">
                           <p className="text-sm leading-none text-gray-600 ml-2">
                             <button
-                              class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+                              className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
                               onClick={handleClickSubmitButton}
                               value={post.loan_num}
                             >
