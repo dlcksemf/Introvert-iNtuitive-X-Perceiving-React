@@ -4,6 +4,8 @@ import useFieldValues from 'base/hooks/useFieldValues';
 import { useNavigate, useLocation } from 'react-router-dom';
 import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import CancelIcon from 'designMaterials/CancelIcon';
+import { NavLink } from 'react-router-dom';
 
 const INITIAL_STATE = { email: '', password: '' };
 
@@ -89,6 +91,11 @@ function LoginForm() {
             </p>
           </div>
           <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
+            <div className="flex justify-end">
+              <NavLink to="/">
+                <CancelIcon className="flex justify-end" />
+              </NavLink>
+            </div>
             <h2 className="text-gray-900 text-lg font-bold title-font mb-5 select-none">
               Log In
             </h2>
@@ -139,14 +146,14 @@ function LoginForm() {
             </div>
             <button
               type="submit"
-              className="text-white bg-indigo-500 border-0 py-2 px-8 
-              focus:outline-none hover:bg-indigo-600 rounded text-lg
-              transition duration-500 ease-in-out hover:scale-105"
+              className="text-white bg-indigo-600 border-0 py-3 px-8 
+              focus:outline-none hover:bg-indigo-600 rounded text-lg hover:bg-indigo-700
+              transition duration-500 ease-in-out hover:scale-105 rounded-full"
             >
               로그인
             </button>
-            <p className="text-xs text-gray-500 mt-3 select-none">
-              (주) 유클리드 소프트
+            <p className="text-xs text-gray-500 mt-8 select-none">
+              (주) EUCLID SOFT
             </p>
           </div>
         </div>

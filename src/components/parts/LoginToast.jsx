@@ -5,7 +5,7 @@ function LoginToast() {
 
   return (
     <div>
-      <div>📘로그인 창으로 이동하시겠습니까?</div>
+      <div>📘 로그인 창으로 이동하시겠습니까?</div>
 
       <button
         onClick={() => {

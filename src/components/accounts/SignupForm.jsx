@@ -42,7 +42,7 @@ function SignupForm() {
       signup({ data: fieldValues }).then((response) => {
         Navigate('/accounts/login/?next=/');
         toast.success(
-          `🙋‍♀️ ${response.data.username}님 환영함다 로그인 해주세여`,
+          `🙋‍♀️ ${response.data.username}님 환영합니다 로그인 해주세요`,
           {
             position: 'top-right',
             autoClose: 5000,
@@ -126,10 +126,10 @@ function SignupForm() {
                 </NavLink> */}
 
                 <button
-                  className="mt-6 w-1/3 bg-indigo-500 rounded border border-gray-300
+                  className="mt-6 w-full bg-indigo-600 rounded border border-gray-300
               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
-              text-base outline-none text-white py-1 px-3 leading-8 ml-10
-              transition duration-500 ease-in-out hover:scale-105"
+              text-base outline-none text-white py-2 px-3 leading-8 hover:bg-indigo-700
+              transition duration-500 ease-in-out hover:scale-105 rounded-full"
                   onClick={handleClickSubmitButton}
                 >
                   회원가입
@@ -149,7 +149,7 @@ function SignupForm() {
           </div>
 
           <p className="text-xs text-gray-500 mt-3 select-none">
-            (주) 유클리드 소프트
+            (주) EUCLID SOFT
           </p>
         </div>
       </div>
