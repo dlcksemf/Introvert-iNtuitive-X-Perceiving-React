@@ -6,7 +6,7 @@ function PageModal() {
 
   return (
     <div className="bg-slate-800 bg-opacity-50 overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 flex justify-center items-center h-full md:inset-0">
-      <div className="relative px-4 h-full md:h-auto">
+      <div className="w-3/4 px-4 h-3/4 md:h-auto">
         <Modal modalType={modalType} />
       </div>
     </div>
