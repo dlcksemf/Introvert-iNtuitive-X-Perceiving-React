@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
 import { toast, ToastContainer } from 'react-toastify';
+import BookToast from './BookToast';
 
 function Toggle({ book, wish, user_id, reload }) {
   const [auth] = useAuth();
@@ -62,7 +63,7 @@ function Toggle({ book, wish, user_id, reload }) {
           setWishes(true);
           reload();
 
-          toast.success('😻 찜 되었습니다', {
+          toast.success(<BookToast>찜</BookToast>, {
             position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
