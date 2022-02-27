@@ -1,29 +1,27 @@
 import { useApiAxios } from 'base/api/base';
 import React, { useEffect, useState } from 'react';
-import LoadingIndicator from 'components/LoadingIndicator';
 import { useAuth } from 'base/hooks/Authcontext';
 
-function AdminUserList({ user }) {
-  const [userdelete, setUserDelete] = useState(false);
+function AdminUserList({ user, reload }) {
+  const [, setUserDelete] = useState(false);
   const [auth] = useAuth();
-  const [{ loading: deleteLoading, error: deleteError }, deleteUser, refresh] =
-    useApiAxios(
-      {
-        url: `/accounts/api/users/${user.user_id}/`,
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${auth.access}`,
-        },
+  const [{}, deleteUser, refresh] = useApiAxios(
+    {
+      url: `/accounts/api/users/${user.user_id}/`,
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
       },
-      { manual: true },
-    );
+    },
+    { manual: true },
+  );
 
   const handleDelete = () => {
     if (window.confirm('유저를 삭제하시겠습니까?')) {
       handleOkButton();
       alert('삭제되었습니다.');
       deleteUser().then(() => {
-        window.location.replace('/admin/user/');
+        reload();
       });
     } else {
       handleCancleButton();

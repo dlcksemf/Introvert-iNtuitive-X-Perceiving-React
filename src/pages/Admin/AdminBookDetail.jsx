@@ -32,11 +32,10 @@ function AdminBookDetail({ postId }) {
 
   const handleDelete = () => {
     // e.preventDeafault();
-    window.confirm('도서를 삭제하시겠습니까?');
-    // REST API 에서는 DELETE 요청에 대한 응답이 없다
-    deletePost().then(() => {
-      navigate('/admin/booklist/');
-    });
+    window.confirm('도서를 삭제하시겠습니까?') &&
+      deletePost().then(() => {
+        navigate('/admin/booklist/');
+      });
   };
 
   // const notify = () => toast('Wow so easy!');

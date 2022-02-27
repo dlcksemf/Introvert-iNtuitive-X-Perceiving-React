@@ -35,16 +35,18 @@ function AdminApplication({ application, reload }) {
 
   const handleStateClick = (e) => {
     e.preventDefault();
+    const { value } = e.target;
 
-    saveApplication({
-      data: { state: e.target.value },
-    })
-      .then(() => {
-        reload();
+    window.confirm(`도서를 ${value === 'O' ? '주문' : '반려'} 하시겠습니까?`) &&
+      saveApplication({
+        data: { state: value },
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then(() => {
+          reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   };
 
   return (
