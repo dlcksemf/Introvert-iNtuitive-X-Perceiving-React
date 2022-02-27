@@ -68,7 +68,7 @@ function BookDetail({ book_num }) {
                   <img
                     src={book?.cover_photo}
                     alt={book?.title}
-                    className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10
+                    className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
                     transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:skew-y-6"
                   />
                 )}
@@ -85,8 +85,14 @@ function BookDetail({ book_num }) {
                       [ {book?.category} ]
                     </h2>
                   )}
-                  <h1 className="text-gray-900 text-3xl title-font font-medium mb-5 select-none">
-                    {book?.title} - {book?.writer}
+                  <h1
+                    className="text-gray-900 text-3xl title-font font-medium mb-5 select-none
+                  hover:font-semibold"
+                  >
+                    {book?.title}
+                  </h1>
+                  <h1 className="text-gray-900 text-xl title-font font-medium mb-5 select-none hover:font-semibold">
+                    {book?.writer}
                   </h1>
                   <div className="flex mb-4 select-none">
                     {book?.translator && (
@@ -107,7 +113,7 @@ function BookDetail({ book_num }) {
                       ISBN {book?.ISBN}
                     </span>
                   </div>
-                  <p className="leading-relaxed select-none mt-14">
+                  <p className="leading-relaxed select-none mt-14 hover:text-gray-900">
                     {book?.story.split(/[\r\n]+/).map((line, index) => (
                       <p key={index}>{line}</p>
                     ))}

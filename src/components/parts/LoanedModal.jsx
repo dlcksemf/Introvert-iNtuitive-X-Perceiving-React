@@ -76,7 +76,7 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
   return (
     <>
       <div
-        className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto overflow-hidden"
         id="exampleModalLg"
         tabIndex="-1"
         aria-labelledby="exampleModalLgLabel"
@@ -93,14 +93,16 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
                 shouldCloseOnOverlayClick={false}
               >
                 <div className="flex items-center justify-between">
-                  <h5 className="text-xl font-medium leading-normal text-gray-800">
+                  <h5 className="text-3xl font-bold leading-normal text-gray-800 select-none mt-12 ml-4">
                     대출 신청
                   </h5>
                   <button
                     type="button"
-                    className="px-2
-                  py-1.5
-                  bg-gray-400
+                    className="px-4
+                  py-3
+                  mr-4
+                  mt-12
+                  bg-gray-500
                   text-white
                   font-medium
                   text-xs
@@ -108,12 +110,9 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
                   uppercase
                   rounded
                   shadow-md
-                  hover:bg-gray-500 hover:shadow-lg
-                  focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0
-                  active:bg-gray-600 active:shadow-lg
-                  transition
-                  duration-150
-                  ease-in-out"
+                  hover:bg-purple-700 hover:shadow-lg
+                  hover:scale-110 rounded-full
+                  transition duration-500 ease-in-out hover:-translate-y-1"
                     data-bs-dismiss="modal"
                     aria-label="Close"
                     onClick={() => setModalIsOpen(false)}
@@ -121,32 +120,27 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
                     X
                   </button>
                 </div>
-                <div className="flex items-center justify-center">
-                  <div className="modal-body relative p-4">
-                    <label
-                      htmlFor="floatingInput"
-                      className="text-gray-700 font-bold"
-                    >
-                      도서 사진
-                    </label>
+                <div className="flex items-center justify-between">
+                  <div className="modal-body relative p-4 ml-60">
                     {book?.cover_photo && (
                       <img
                         src={book?.cover_photo}
                         alt={book?.title}
-                        className="rounded-full"
+                        className="w-2/3 h-2/3 object-scale-down object-center inline-block rounded-full
+                        transition duration-500 ease-in-out hover:-translate-y-6 hover:scale-100 "
                       />
                     )}
                     {!book?.cover_photo && (
                       <img
                         src={non_image}
                         alt="non_image"
-                        className="rounded-full m-auto"
+                        className="w-2/3 h-2/3 object-scale-down object-center inline-block rounded-full
+                        transition duration-500 ease-in-out hover:-translate-y-6 hover:scale-100 "
                       />
                     )}
-                    <label
-                      htmlFor="floatingInput"
-                      className="text-gray-700 font-bold"
-                    >
+                  </div>
+                  <div className="mr-60">
+                    <label htmlFor="floatingInput" className="font-bold">
                       도서 제목
                     </label>
                     <p
@@ -163,7 +157,8 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
                   transition
                   ease-in-out
                   m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  select-none
+                  hover:text-black"
                       placeholder="{book.title}"
                     >
                       {book?.title}
@@ -171,7 +166,7 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
                     <div className="datepicker relative form-floating mb-3 xl:w-96">
                       <div>
                         <label className="font-bold">대출 시작일</label>
-                        <p className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                        <p className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black">
                           {startDate.getFullYear()}-{month}-
                           {startDate.getDate()}
                         </p>
@@ -180,7 +175,7 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
                         <label className="font-bold">대출 종료일</label>
                         <DatePicker
                           locale={ko}
-                          className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                          className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 cursor-pointer hover:border-blue-500 hover:text-black"
                           selected={endDate}
                           onChange={(date) => setEndDate(date)}
                           // selectsEnd
@@ -194,15 +189,13 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
                           filterDate={isWeekday}
                         />
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="float-right">
-                  <button
-                    type="button"
-                    className="px-6
-          py-2.5
-          bg-purple-600
+                      <div className="flex justify-center mt-10">
+                        <button
+                          type="button"
+                          className="px-10
+          py-4
+          mr-6
+          bg-blue-600
           text-white
           font-medium
           text-xs
@@ -210,22 +203,21 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
           uppercase
           rounded
           shadow-md
-          hover:bg-purple-700 hover:shadow-lg
-          focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0
-          active:bg-purple-800 active:shadow-lg
-          transition
-          duration-150
-          ease-in-out"
-                    data-bs-dismiss="modal"
-                    onClick={() => HandleSubmit()}
-                  >
-                    대출
-                  </button>
-                  <button
-                    type="button"
-                    className="px-6
-      py-2.5
-      bg-blue-600
+          hover:bg-blue-700 hover:shadow-lg
+          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+          active:bg-blue-800 active:shadow-lg
+          hover:scale-110 transition duration-500 
+          ease-in-out hover:-translate-y-1 rounded-full"
+                          data-bs-dismiss="modal"
+                          onClick={() => HandleSubmit()}
+                        >
+                          대출
+                        </button>
+                        <button
+                          type="button"
+                          className="px-10
+      py-4
+      bg-purple-600
       text-white
       font-medium
       text-xs
@@ -233,17 +225,18 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
       uppercase
       rounded
       shadow-md
-      hover:bg-blue-700 hover:shadow-lg
-      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-blue-800 active:shadow-lg
-      transition
-      duration-150
-      ease-in-out
-      ml-1"
-                    onClick={() => setModalIsOpen(false)}
-                  >
-                    취소
-                  </button>
+      hover:bg-purple-700 hover:shadow-lg
+      focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-purple-800 active:shadow-lg
+      hover:scale-110 transition duration-500 
+      ease-in-out hover:-translate-y-1 rounded-full"
+                          onClick={() => setModalIsOpen(false)}
+                        >
+                          취소
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </Modal>
             </div>
