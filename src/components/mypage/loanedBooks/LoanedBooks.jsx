@@ -3,11 +3,13 @@ import { useAuth } from 'base/hooks/Authcontext';
 import { useReload } from 'base/hooks/ReloadContext';
 import Badge from 'designMaterials/Badge';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function LoanedBooks({ book }) {
   const [, setBookReturn] = useState(false);
   const [auth] = useAuth();
   const [, setReload] = useReload();
+  const navigate = useNavigate();
 
   let today = new Date();
   const date =
@@ -70,9 +72,16 @@ function LoanedBooks({ book }) {
   return (
     <React.Fragment>
       <tr>
-        <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-          {book.title}
-        </th>
+        <td
+          className="cursor-pointer hover:text-red-400"
+          onClick={() => {
+            navigate(`/books/${book.book_num}/`);
+          }}
+        >
+          <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+            {book.title}
+          </div>
+        </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
           {book.writer}
         </td>
