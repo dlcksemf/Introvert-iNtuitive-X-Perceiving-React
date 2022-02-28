@@ -75,7 +75,7 @@ function UserInfo({ info }) {
               <div className="text-center my-3">
                 <div>
                   <button
-                    className="bg-indigo-600 mt-3 text-white hover:bg-indigo-700 text-sm font-bold uppercase px-3 py-1 rounded-full
+                    className="bg-amber-500 mt-3 text-white hover:bg-amber-400 text-sm font-bold uppercase px-3 py-2 rounded-full
                     transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 underline-offset-4"
                     type="button"
                   >

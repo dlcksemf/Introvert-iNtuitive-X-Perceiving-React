@@ -168,21 +168,23 @@ function InfoEditModal() {
                   onChange={handleFieldChange}
                 >
                   <option className="hidden">성별을 선택해주세요.</option>
-                  <option>F</option>
-                  <option>M</option>
+                  <option value="F">여성</option>
+                  <option value="M">남성</option>
                 </select>
               </div>
             </div>
           </div>
           <button
             onClick={handleClickSubmitButton}
-            className="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans"
+            className="w-full mt-6 bg-indigo-600 rounded-full px-4 py-2 text-lg text-white
+            tracking-wide font-semibold font-sans transition duration-500 ease-in-out hover:bg-indigo-700"
           >
             정보 수정
           </button>
           <button
             onClick={handleClickCancleButton}
-            className="w-full mt-6 mb-3 bg-indigo-100 rounded-lg px-4 py-2 text-lg text-gray-800 tracking-wide font-semibold font-sans"
+            className="w-full mt-6 mb-3 bg-indigo-100 rounded-full px-4 py-2 text-lg text-gray-800
+            tracking-wide font-semibold font-sans transition duration-500 ease-in-out hover:bg-indigo-200"
           >
             취소
           </button>

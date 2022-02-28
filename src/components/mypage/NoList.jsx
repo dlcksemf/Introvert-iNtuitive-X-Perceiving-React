@@ -6,14 +6,15 @@ function NoList({ children }) {
       <div className="my-7 text-xl font-semibold text-base text-blueGray-700">
         {children}
       </div>
-      <NavLink
-        className="bg-yellow-500 mt-3 text-white hover:bg-amber-500 text-sm font-bold uppercase px-3 py-1 rounded-full
-      transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 underline-offset-4 mb-10"
-        to="/books/booklist/"
+      <button
+        className=" bg-amber-500 hover:bg-amber-400 text-white text-sm font-bold uppercase px-4 py-3 rounded-full
+      transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
       >
-        도서 목록으로!
-      </NavLink>
-      <div className="h-7"></div>
+        <NavLink to="/books/booklist/" type="button">
+          도서 목록으로!
+        </NavLink>
+      </button>
+      <div className="h-32"></div>
     </div>
   );
 }

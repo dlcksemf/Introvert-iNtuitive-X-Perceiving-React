@@ -5,7 +5,7 @@ function ApplicationsList({ applicationList }) {
   let location = useLocation();
 
   return (
-    <div className="border-t-4 border-blue-500">
+    <div className="border-t-4 border-amber-400">
       <div className="flex items-center w-full justify-center">
         <div className="bg-white shadow-xl rounded-lg py-14">
           <div className="px-24">
@@ -26,8 +26,8 @@ function ApplicationsList({ applicationList }) {
 
             <div className="text-center mb-3">
               <button
-                className="bg-indigo-600 mt-3 text-white hover:bg-indigo-700 text-sm font-bold uppercase px-3 py-1 rounded-full
-                transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 underline-offset-4"
+                className="bg-amber-500 mt-3 text-white hover:bg-amber-400 text-sm font-bold uppercase px-3 py-2 rounded-full
+                transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
                 type="button"
               >
                 <Link

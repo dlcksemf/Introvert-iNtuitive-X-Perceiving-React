@@ -20,7 +20,7 @@ function ReadingStatus() {
   }, [refetch]);
 
   return (
-    <div className="h-60">
+    <div className="h-60 select-none">
       {data && (
         <ResponsiveCalendar
           data={data.loaned_dates}
