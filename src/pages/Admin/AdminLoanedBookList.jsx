@@ -93,8 +93,6 @@ function AdminLoanedBookList() {
               대출 도서 관리
             </p>
 
-            <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
-
             <div className="flex items-center">
               {Object.values(STATELIST.loaned).map((state, index) => (
                 <div
@@ -115,6 +113,12 @@ function AdminLoanedBookList() {
                   </button>
                 </div>
               ))}
+              <div className="text-right mb-2 ml-5">
+                <SearchBar
+                  handleChange={setQuery}
+                  handleSubmit={handleSubmit}
+                />
+              </div>
             </div>
           </div>
 
