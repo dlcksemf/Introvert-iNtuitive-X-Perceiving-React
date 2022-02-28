@@ -146,33 +146,15 @@ function GuidePage() {
         <div className="flex items-center p-5 w-full h-full bg-blue-100 mt-4">
           <div className=" grid grid-cols-2 gap-4 m-auto">
             <div className="flex flex-col justify-start">
-              {/* <div
-                  className="flex flex-col w-full object-cover h-full justify-items-start border rounded-lg overflow-hidden"
-                  style={{ backgroundImage: `url(${map})` }}
-                /> */}
-              <a
-                href="https://map.kakao.com/?urlX=599606&urlY=786443&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false"
-                target="_blank"
-              >
-                <img
-                  width="504"
-                  height="310"
-                  src="https://map2.daum.net/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=599606&MY=786443&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo"
-                />
-              </a>
-              <div className="hide">
-                <strong>
-                  <img
-                    src="//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png"
-                    width="72"
-                    height="16"
-                    alt="카카오맵"
-                  />
-                </strong>
-                <div></div>
-              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2240.320380004432!2d127.44264815233345!3d36.3274535222694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3565494830b9e129%3A0x242d1a163ecf4103!2z64yA7KCE7KeA7Iud7IKw7JeF7IS87YOA!5e0!3m2!1sko!2skr!4v1646012324942!5m2!1sko!2skr"
+                width="600"
+                height="450"
+                className=""
+                loading="lazy"
+              />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col ml-20 mt-20">
               <div className="flex flex-col gap-1">
                 <h1 className="capitalize text-2xl font-extrabold select-none">
                   Address
