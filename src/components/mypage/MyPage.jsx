@@ -103,7 +103,11 @@ function MyPage() {
                                   type="button"
                                 >
                                   <Link
-                                    to={`/accounts/modal/loanedbooks/`}
+                                    to={
+                                      showLoaned
+                                        ? `/accounts/modal/loanedbooks/`
+                                        : `/accounts/modal/wishes/`
+                                    }
                                     state={{ backgroundLocation: location }}
                                   >
                                     전체 내역 보기
