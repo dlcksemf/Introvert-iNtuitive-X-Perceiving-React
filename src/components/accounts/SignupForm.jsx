@@ -85,34 +85,35 @@ function SignupForm() {
             Sign Up
           </h2>
 
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <SignupFormComponent1
-                  fieldValues={fieldValues}
-                  handleFieldChange={handleFieldChange}
-                  errorMessages={errorMessages}
-                />
-              }
-            />
-            <Route
-              path="/2/"
-              element={
-                <SignupFormComponent2
-                  fieldValues={fieldValues}
-                  handleFieldChange={handleFieldChange}
-                  // handleSubmit={handleSubmit}
-                  setFieldValues={setFieldValues}
-                />
-              }
-            />
-          </Routes>
+          <form onSubmit={handleClickSubmitButton}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <SignupFormComponent1
+                    fieldValues={fieldValues}
+                    handleFieldChange={handleFieldChange}
+                    errorMessages={errorMessages}
+                  />
+                }
+              />
+              <Route
+                path="/2/"
+                element={
+                  <SignupFormComponent2
+                    fieldValues={fieldValues}
+                    handleFieldChange={handleFieldChange}
+                    // handleSubmit={handleSubmit}
+                    setFieldValues={setFieldValues}
+                  />
+                }
+              />
+            </Routes>
 
-          <div className="relative mb-4">
-            {location.pathname === '/accounts/signup/' ? (
-              <>
-                {/* <NavLink
+            <div className="relative mb-4">
+              {location.pathname === '/accounts/signup/' ? (
+                <>
+                  {/* <NavLink
                   to={`/accounts/signup/`}
                   type="button"
                   className="ml-14 mt-6 w-1/3 bg-white rounded border border-gray-300
@@ -123,28 +124,29 @@ function SignupForm() {
                   뒤로가기
                 </NavLink> */}
 
-                <button
-                  className="mt-6 w-full bg-indigo-600 rounded border border-gray-300
+                  <button
+                    className="mt-6 w-full bg-indigo-600 rounded border border-gray-300
               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
               text-base outline-none text-white py-2 px-3 leading-8 hover:bg-indigo-700
               transition duration-500 ease-in-out hover:scale-105 rounded-full"
-                  onClick={handleClickSubmitButton}
-                >
-                  회원가입
-                </button>
-              </>
-            ) : (
-              <NavLink
-                className="text-white bg-indigo-500 border-0 py-2 px-8 
+                    onClick={handleClickSubmitButton}
+                  >
+                    회원가입
+                  </button>
+                </>
+              ) : (
+                <NavLink
+                  className="text-white bg-indigo-500 border-0 py-2 px-8 
                 focus:outline-none hover:bg-indigo-600 rounded text-lg
               transition duration-500 ease-in-out hover:scale-105 w-full text-center"
-                type="button"
-                to="/accounts/signup/2/"
-              >
-                다음으로
-              </NavLink>
-            )}
-          </div>
+                  type="button"
+                  to="/accounts/signup/2/"
+                >
+                  다음으로
+                </NavLink>
+              )}
+            </div>
+          </form>
 
           <p className="text-xs text-gray-500 mt-3 select-none">
             (주) EUCLID SOFT
