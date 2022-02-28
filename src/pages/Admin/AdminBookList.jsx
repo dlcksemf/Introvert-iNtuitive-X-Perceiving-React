@@ -54,7 +54,7 @@ function AdminBookList() {
   return (
     <div className="my-5">
       <ToastContainer />
-      <div className="text-center mb-2">
+      <div className="text-right mb-2 mr-4">
         <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
       </div>
 
