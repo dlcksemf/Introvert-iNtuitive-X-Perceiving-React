@@ -15,7 +15,7 @@ function ApplicationsBooks({ application }) {
 
   return (
     <td className="flex my-5 ml-2">
-      {application.title}
+      {application.title.slice(0, 7) + '...'}
 
       <div className="ml-3">
         <Badge color={color}>{STATELIST.application[application.state]}</Badge>
