@@ -5,6 +5,7 @@ function ModalComponent({ titleList, bookInfo, modalType }) {
   const [contentList, setContentList] = useState([]);
 
   useEffect(() => {
+    setContentList([]);
     titleList.map((title) => {
       if (title === 'created_at') {
         setContentList((prev) => [...prev, bookInfo[title].slice(0, 10)]);

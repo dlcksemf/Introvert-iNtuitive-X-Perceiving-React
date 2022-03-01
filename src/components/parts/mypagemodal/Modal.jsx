@@ -126,48 +126,47 @@ function Modal({ modalType }) {
       <div className="p-6 ">
         <div className="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
           <div className="p-3">
-            <div className="">
-              <table className="table-auto w-full">
-                <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
-                  <tr>
-                    {TitleList[modalType].map((tableTitle, index) => {
-                      return (
-                        <React.Fragment key={index}>
-                          <th className="p-2 whitespace-nowrap font-semibold text-left">
-                            {tableTitle}
-                          </th>
-                        </React.Fragment>
-                      );
-                    })}
-                  </tr>
-                </thead>
-                <tbody className="text-sm divide-y divide-gray-100">
-                  {data?.results?.map((book, index) => {
+            <table className="table-auto w-full">
+              <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                <tr>
+                  {TitleList[modalType].map((tableTitle, index) => {
                     return (
-                      <tr key={index}>
-                        <ModalComponent
-                          bookInfo={book}
-                          titleList={TitleList[modalType]}
-                          modalType={stateType}
-                        />
-                      </tr>
+                      <React.Fragment key={index}>
+                        <th className="p-2 whitespace-nowrap font-semibold text-left">
+                          {tableTitle}
+                        </th>
+                      </React.Fragment>
                     );
                   })}
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </thead>
+              <tbody className="text-sm divide-y divide-gray-100">
+                {data?.results?.map((book, index) => (
+                  <tr key={index}>
+                    <ModalComponent
+                      bookInfo={book}
+                      titleList={TitleList[modalType]}
+                      modalType={stateType}
+                    />
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel=">"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={itemsPerPage}
-          pageCount={pageCount}
-          previousLabel="<"
-          renderOnZeroPageCount={null}
-          className="pagination"
-        />
+
+        <div className="mt-5">
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={itemsPerPage}
+            pageCount={pageCount}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+            className="pagination"
+          />
+        </div>
       </div>
     </div>
   );

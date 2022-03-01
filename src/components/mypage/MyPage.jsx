@@ -66,7 +66,7 @@ function MyPage() {
                           <div className="w-full xl:mb-0 px-0">
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
                               <div className="flex justify-between">
-                                <div className="flex mt-5 ml-5">
+                                <div className="flex my-5 ml-5">
                                   <button
                                     className={`${
                                       showLoaned
@@ -97,22 +97,22 @@ function MyPage() {
                                     찜 도서
                                   </button>
                                 </div>
-                                <button
-                                  className="bg-amber-500 mt-3 text-white hover:bg-amber-400 text-sm font-bold uppercase 
-                                  px-4 mt-5 mr-4 rounded-full transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
-                                  type="button"
+
+                                <Link
+                                  to={
+                                    showLoaned
+                                      ? `/accounts/modal/loanedbooks/`
+                                      : `/accounts/modal/wishes/`
+                                  }
+                                  state={{ backgroundLocation: location }}
                                 >
-                                  <Link
-                                    to={
-                                      showLoaned
-                                        ? `/accounts/modal/loanedbooks/`
-                                        : `/accounts/modal/wishes/`
-                                    }
-                                    state={{ backgroundLocation: location }}
+                                  <button
+                                    className="bg-amber-500 mt-3 text-white hover:bg-amber-400 text-sm font-bold uppercase 
+                                  px-4 py-2 mt-5 mr-4 rounded-full transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
                                   >
                                     전체 내역 보기
-                                  </Link>
-                                </button>
+                                  </button>
+                                </Link>
                               </div>
                               {showLoaned && (
                                 <LoanedBooksList
