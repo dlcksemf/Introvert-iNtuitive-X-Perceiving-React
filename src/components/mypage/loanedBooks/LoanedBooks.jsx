@@ -88,9 +88,9 @@ function LoanedBooks({ book }) {
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
           <Badge color={color}>
             {book.return_state === 'L' &&
-              (new Date(book.return_due_date) < new Date(date)
+              (new Date(book.return_due_date) < today
                 ? Math.floor(
-                    (Date.parse(date) - Date.parse(book.return_due_date)) /
+                    (Date.parse(today) - Date.parse(book.return_due_date)) /
                       (1000 * 3600 * 24),
                   ) + '일 연체'
                 : book.return_due_date)}
@@ -98,6 +98,7 @@ function LoanedBooks({ book }) {
             {book.return_state === 'R' && '반납 됨'}
           </Badge>
         </td>
+
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           {book.return_state === 'L' && (
             <button onClick={handleClickSubmitButton}>반납 신청</button>
