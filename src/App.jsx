@@ -37,9 +37,9 @@ function App() {
             <Route path="/admin/*" element={<PageAdminRouter />} />
           )}
         </Routes>
-        <Routes>
+        {/* <Routes>
           <Route path="*" element={<NotFound />} />
-        </Routes>
+        </Routes> */}
       </div>
 
       {!auth?.is_staff && (
