@@ -10,6 +10,7 @@ import MainPage from 'pages/MainPage';
 import Footer from 'components/parts/Footer';
 import { useEffect } from 'react';
 import NotFound from 'components/parts/NotFound';
+import ErrorForbidden from 'components/parts/ErrorForbidden';
 
 function App() {
   const [auth] = useAuth();
@@ -28,14 +29,12 @@ function App() {
             <Route path="/" element={<Navigate to="/admin/" />} />
           )}
           {!auth?.is_staff && <Route path="/" element={<MainPage />} />}
-
           <Route path="/accounts/*" element={<PageAccountsRouter />} />
-
           <Route path="/books/*" element={<PageBookRouter />} />
-
-          {auth.is_staff && (
-            <Route path="/admin/*" element={<PageAdminRouter />} />
-          )}
+          <Route
+            path="/admin/*"
+            element={auth.is_staff ? <PageAdminRouter /> : <ErrorForbidden />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

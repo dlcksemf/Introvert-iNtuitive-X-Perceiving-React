@@ -8,6 +8,7 @@ import AdminLoanedBookList from 'pages/Admin/AdminLoanedBookList';
 import AdminUserPage from 'pages/Admin/AdminUserPage';
 import AdminTopNav from 'components/maneger/AdminTopNav';
 import NotFound from 'components/parts/NotFound';
+import ErrorForbidden from 'components/parts/ErrorForbidden';
 
 function PageAdminRouter() {
   return (
@@ -25,6 +26,7 @@ function PageAdminRouter() {
           <Route path="/book/:postId/edit/" element={<PageAdminBookForm />} />
           <Route path="/application/" element={<AdminBookApplicationPage />} />
           <Route path="/loanedbook/" element={<AdminLoanedBookList />} />
+          <Route path="/403/" element={<ErrorForbidden />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
