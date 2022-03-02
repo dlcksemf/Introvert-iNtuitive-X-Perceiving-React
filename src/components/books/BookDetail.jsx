@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { useAuth } from 'base/hooks/Authcontext';
 import { useApiAxios } from 'base/api/base';
@@ -16,6 +16,8 @@ function BookDetail({ book_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [auth] = useAuth();
   const navigate = useNavigate();
+  let location = useLocation();
+  let { pathname, state } = location;
 
   const [{ data: book, loading, error }, refetch] = useApiAxios(
     {
@@ -132,19 +134,26 @@ function BookDetail({ book_num }) {
                       알라딘에서 구매하기
                     </button>
                   </div>
+
                   <div className="flex justify-between">
-                    <div className="flex justify-start">
-                      <Link
-                        to="/books/booklist/"
-                        type="button"
+                    <Link
+                      to={
+                        state?.beforeLocation
+                          ? `/books/booklist/${state.beforeLocation}`
+                          : `/books/booklist/`
+                      }
+                      state={{ pathname: pathname }}
+                    >
+                      <div
                         className="flex m-auto ml-auto 
                   text-gray-600 hover:text-blue-500 hover:font-bold 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                   transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
                       >
                         목록으로
-                      </Link>
-                    </div>
+                      </div>
+                    </Link>
+
                     <div className="flex">
                       <span className="text-gray-600 m-auto select-none">
                         찜하기

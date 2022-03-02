@@ -10,6 +10,8 @@ import Toggle from 'components/parts/Toggle';
 
 import non_image from 'components/parts/image/non_image.jpg';
 import heavy_reader from 'components/parts/image/heavy_reader.png';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -22,6 +24,7 @@ function BookSummary({ book, reloadBook }) {
   const [auth] = useAuth();
   const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  let location = useLocation();
 
   const [{ data: wish }, getWish] = useApiAxios(
     {
@@ -88,31 +91,37 @@ function BookSummary({ book, reloadBook }) {
             reload={reloadBook}
           />
         </span>
-        <div className="flex-grow sm:pl-8 mt-36">
-          <h3 className="text-sm text-gray-500 mb-3 select-none flex">
-            {book?.category && `[ ${book.category} ]`}
-          </h3>
-          <h2
-            className="absolute title-font font-medium text-lg text-black hover:text-blue-500 cursor-pointer grid
+
+        <Link
+          to={`/books/${book.book_num}/`}
+          state={{ beforeLocation: location.search }}
+        >
+          <div className="flex-grow sm:pl-8 mt-36">
+            <h3 className="text-sm text-gray-500 mb-3 select-none flex">
+              {book?.category && `[ ${book.category} ]`}
+            </h3>
+            <h2
+              className="absolute title-font font-medium text-lg text-black hover:text-blue-500 cursor-pointer grid
            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100 hover:font-semibold"
-            onClick={() => {
-              navigate(`/books/${book.book_num}/`);
-            }}
-          >
-            {book.title}
-          </h2>
-          <h3 className="mt-12 text-sm text-gray-500 select-none">
-            {book.writer}
-          </h3>
-          <p
-            className="font-medium text-base mb-4 mt-6 select-none hover:font-semibold cursor-pointer"
-            onClick={() => {
-              navigate(`/books/${book.book_num}/`);
-            }}
-          >
-            {truncateString(book.story)}
-          </p>
-        </div>
+              onClick={() => {
+                navigate(`/books/${book.book_num}/`);
+              }}
+            >
+              {book.title}
+            </h2>
+            <h3 className="mt-12 text-sm text-gray-500 select-none">
+              {book.writer}
+            </h3>
+            <p
+              className="font-medium text-base mb-4 mt-6 select-none hover:font-semibold cursor-pointer"
+              onClick={() => {
+                navigate(`/books/${book.book_num}/`);
+              }}
+            >
+              {truncateString(book.story)}
+            </p>
+          </div>
+        </Link>
       </div>
     </div>
   );
