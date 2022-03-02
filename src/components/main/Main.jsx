@@ -22,10 +22,10 @@ function Main() {
           <img
             src={ggumdori}
             alt="꿈돌이"
-            className="mt-64 ml-16 object-contain h-48 w-96"
+            className="mt-64 ml-8 object-contain h-48 w-96"
           />
           <div
-            className="text-white bg-indigo-600 border-0 py-4 ml-40 mr-24
+            className="text-white bg-indigo-600 border-0 py-4 ml-28 mr-24
               focus:outline-none hover:bg-indigo-700 rounded-full text-lg"
           >
             도서 목록 보러 가기
