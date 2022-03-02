@@ -54,7 +54,10 @@ function BookDetail({ book_num }) {
   };
 
   const buyLink = () => {
-    window.open('https://www.aladin.co.kr/home/welcome.aspx', '_blank');
+    window.open(
+      `https://www.aladin.co.kr/search/wsearchresult.aspx?SearchWord=${book.ISBN}`,
+      '_blank',
+    );
   };
 
   return (
