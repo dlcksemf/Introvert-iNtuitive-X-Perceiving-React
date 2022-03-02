@@ -34,7 +34,7 @@ function MainNavigation() {
                 to={'/#top'}
                 className="hover:text-lg"
               >
-                <h1 className="text-indigo-900">Home</h1>
+                <h1 className="text-indigo-900">메인화면</h1>
               </NavHashLink>
             </MenuItem>
 

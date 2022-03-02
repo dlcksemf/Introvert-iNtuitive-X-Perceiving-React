@@ -66,15 +66,16 @@ function AdminUser() {
           <div className="mt-7">
             <table className="w-full">
               <tbody>
-                <tr className="focus:outline-none h-16 border border-gray-100 bg-gray-100 rounded">
+                <tr
+                  className="focus:outline-none h-16 border border-gray-100 bg-gray-100 rounded
+                font-semibold text-dark"
+                >
                   <td className="">
                     <div className="ml-5"></div>
                   </td>
                   <td className="">
                     <div className="flex items-center cursor-default">
-                      <p className="text-base font-medium leading-none text-gray-700">
-                        이름
-                      </p>
+                      <p className="text-sm leading-none text-gray-600">이름</p>
                     </div>
                   </td>
                   <td className="pl-7">

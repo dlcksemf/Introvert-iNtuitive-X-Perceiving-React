@@ -132,7 +132,7 @@ function AdminLoanedBookList() {
 
                   <th className="">
                     <div className="flex items-center cursor-default">
-                      <p className="text-base font-medium leading-none text-gray-700">
+                      <p className="text-sm leading-none text-gray-600">
                         대출자
                       </p>
                     </div>
