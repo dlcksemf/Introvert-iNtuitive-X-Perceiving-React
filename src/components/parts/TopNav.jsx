@@ -29,7 +29,7 @@ function TopNav() {
             className="text-md text-primary-600 text-bold text-center"
             onClick={handleGoToMainPage}
           >
-            EULCIDSOFT
+            EUCLIDSOFT BOOKS
           </div>
         </div>
 
