@@ -176,11 +176,12 @@ function GuidePage() {
                 <h1 className="capitalize text-2xl font-extrabold select-none">
                   E-mail
                 </h1>
+
                 <p
                   className="text-lg text-black select-none 
                 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
                 >
-                  이메일
+                  euclidsoft.lab@gmail.com
                 </p>
                 <div className="flex items-center gap-4 my-6 cursor-pointer">
                   <button

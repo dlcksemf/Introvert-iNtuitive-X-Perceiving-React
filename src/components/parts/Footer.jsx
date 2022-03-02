@@ -11,7 +11,7 @@ function Footer() {
     >
       <div className="flex">
         <div className="inline-block text-semibold select-none mt-3 ml-10">
-          (주) EUCLID SOFT - 대전 동구 계족로 151
+          (주)유클리드소프트 - 대전 동구 계족로 151
         </div>
 
         <div className="absolute right-40 inline-block">
