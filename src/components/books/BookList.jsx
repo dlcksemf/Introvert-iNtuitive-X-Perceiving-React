@@ -63,12 +63,12 @@ function BookList() {
           <div className="flex flex-col text-center w-full">
             <div className="flex justify-end">
               <h1
-                className="text-2xl font-semibold title-font text-gray-900 tracking-widest m-auto mb-36 mt-4
+                className="text-2xl font-semibold title-font text-gray-900 tracking-widest m-auto mt-10
               select-none"
               >
                 전체 도서 목록
               </h1>
-              <div className="absolute flex justify-end items-end mb-28">
+              <div className="absolute flex justify-end items-end mt-10">
                 <div className="mr-3">
                   <Category selected={category} setSelected={setCategory} />
                 </div>
@@ -82,7 +82,7 @@ function BookList() {
                 {error && navigate(`*`)}
               </div>
             </div>
-            <div className="flex flex-wrap -m-4">
+            <div className="flex flex-wrap -m-4 mb-10">
               {bookList?.results?.map((book) => (
                 <React.Fragment key={book.book_num}>
                   <BookSummary
