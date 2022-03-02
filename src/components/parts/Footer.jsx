@@ -1,4 +1,3 @@
-import hopeBook from './image/hopeBook.png';
 import { useLocation } from 'react-router-dom';
 
 function Footer() {
