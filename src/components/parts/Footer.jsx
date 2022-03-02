@@ -10,11 +10,11 @@ function Footer() {
       style={{ zIndex: location.pathname === '/' ? 900 : 0 }}
     >
       <div className="flex">
-        <div className="inline-block text-semibold select-none ml-10">
+        <div className="inline-block text-semibold select-none ml-10 mt-3">
           (주)유클리드소프트 - 대전 동구 계족로 151
         </div>
 
-        <div className="absolute right-40 inline-block">
+        <div className="absolute right-40 inline-block mt-2">
           <div className="">
             <svg
               className="cursor-pointer"
@@ -38,7 +38,7 @@ function Footer() {
           </div>
         </div>
         <div
-          className="absolute right-10 ml-1 w-28 h-10 bg-contain cursor-pointer inline-block"
+          className="absolute right-10 ml-1 mt-3 w-28 h-10 bg-contain cursor-pointer inline-block"
           style={{ backgroundImage: `url(${hope_book})` }}
           onClick={() => window.open('http://djbook.or.kr/', '_blank')}
         ></div>
