@@ -234,72 +234,35 @@ function Top5Summary({ book }) {
 function HeavyReaderSummary({ book }) {
   return (
     <div>
-      {book?.count_loans && (
-        <span className="flex justify-center">
-          <img
-            src={heavy_reader}
-            alt="다독왕"
-            className="w-3/5 h-3/5 rounded inline"
-          />
-          {book?.gender === 'F' && (
-            <div className="absolute mt-80">
-              <h1 className="mt-10 text-4xl select-none font-semibold">
-                EUCLID 다독왕 👸
-              </h1>
-            </div>
-          )}
-          {book?.gender === 'M' && (
-            <div className="absolute mt-80">
-              <h1 className="mt-10 text-4xl select-none font-semibold">
-                EUCLID 다독왕 🤴
-              </h1>
-            </div>
-          )}
-          {!book?.gender && (
-            <div className="absolute mt-80">
-              <h1 className="mt-10 text-4xl select-none font-semibold">
-                EUCLID 다독왕 🏆
-              </h1>
-            </div>
-          )}
+      <span className="flex justify-center relative">
+        <img
+          src={heavy_reader}
+          alt="다독왕"
+          className="w-3/5 h-3/5 rounded inline"
+        />
 
-          {/* animation h1에 잡혀있는거 div로 옮겼옹 */}
-          <div className="absolute mt-96 flex justify-center font-bold transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500">
-            <h1 className="mt-14 justify-center text-5xl select-none cursor-pointer">
-              {book.username}
-            </h1>
-          </div>
-          <div className="absolute mt-96 font-semibold">
-            {book?.position && (
-              <h1 className="mt-36 text-3xl select-none">{book.position}</h1>
-            )}
-          </div>
-        </span>
-      )}
-      {!book?.count_loans && (
-        <span className="flex justify-center">
-          <img
-            src={heavy_reader}
-            alt="다독왕"
-            className="w-3/5 h-3/5 rounded inline"
-          />
-          <div className="absolute mt-80">
+        <div className="absolute mt-72">
+          <div className="flex flex-col justify-center">
             <h1 className="mt-10 text-4xl select-none font-semibold">
-              EUCLID 다독왕 🏆
+              {book?.gender === 'F'
+                ? 'EUCLID 다독왕 👸'
+                : book?.gender === 'M'
+                ? 'EUCLID 다독왕 🤴'
+                : 'EUCLID 다독왕 🏆'}
+            </h1>
+
+            <h1 className="mt-14 flex justify-center text-5xl select-none cursor-default font-bold transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500">
+              {book?.count_loans ? book.username : 'Unknown'}
+            </h1>
+
+            <h1 className="flex justify-center text-3xl select-none mt-14">
+              {book?.position
+                ? book.position
+                : !book?.count_loans && '과연 누가 될까요?'}
             </h1>
           </div>
-          <div className="absolute mt-96 flex justify-center font-bold transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500">
-            <h1 className="mt-14 justify-center text-5xl select-none">
-              Unknown
-            </h1>
-          </div>
-          <div className="absolute mt-96 font-semibold transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500">
-            <h1 className="mt-36 text-3xl select-none cursor-pointer">
-              과연 누가 될까요?
-            </h1>
-          </div>
-        </span>
-      )}
+        </div>
+      </span>
     </div>
   );
 }

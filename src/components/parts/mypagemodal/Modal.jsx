@@ -9,16 +9,26 @@ import ModalComponent from './ModalComponent';
 import { STATELIST, itemsPerPage } from 'Constants';
 
 const TitleList = {
-  applications: ['created_at', 'title', 'writer', 'state'],
-  loanedbooks: [
-    'title',
-    'writer',
-    'return_state',
-    'loaned_date',
-    'return_due_date',
-    'returned_date',
-  ],
-  wishes: ['title', 'writer', 'state', 'return_due_date'],
+  applications: {
+    created_at: '등록일',
+    title: '제목',
+    writer: '작가',
+    state: '상태',
+  },
+  loanedbooks: {
+    title: '제목',
+    writer: '작가',
+    return_state: '상태',
+    loaned_date: '대출일',
+    return_due_date: '반납 예정일',
+    returned_date: '반납일',
+  },
+  wishes: {
+    title: '제목',
+    writer: '작가',
+    state: '상태',
+    return_due_date: '반납 예정일',
+  },
 };
 
 function Modal({ modalType }) {
@@ -129,15 +139,17 @@ function Modal({ modalType }) {
             <table className="table-auto w-full">
               <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                 <tr>
-                  {TitleList[modalType].map((tableTitle, index) => {
-                    return (
-                      <React.Fragment key={index}>
-                        <th className="p-2 whitespace-nowrap font-semibold text-left">
-                          {tableTitle}
-                        </th>
-                      </React.Fragment>
-                    );
-                  })}
+                  {Object.values(TitleList[modalType]).map(
+                    (tableTitle, index) => {
+                      return (
+                        <React.Fragment key={index}>
+                          <th className="p-2 whitespace-nowrap font-semibold text-left">
+                            {tableTitle}
+                          </th>
+                        </React.Fragment>
+                      );
+                    },
+                  )}
                 </tr>
               </thead>
               <tbody className="text-sm divide-y divide-gray-100">
@@ -145,7 +157,7 @@ function Modal({ modalType }) {
                   <tr key={index}>
                     <ModalComponent
                       bookInfo={book}
-                      titleList={TitleList[modalType]}
+                      titleList={Object.keys(TitleList[modalType])}
                       modalType={stateType}
                     />
                   </tr>

@@ -68,32 +68,7 @@ function AdminUser() {
               <tbody>
                 <tr className="focus:outline-none h-16 border border-gray-100 bg-gray-100 rounded">
                   <td className="">
-                    <div className="ml-5">
-                      <div className="bg-gray-200 rounded-sm w-5 h-5 flex justify-center items-center relative">
-                        <input
-                          placeholder="checkbox"
-                          type="checkbox"
-                          className="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full"
-                        />
-                        <div className="check-icon hidden bg-indigo-700 text-white rounded-sm">
-                          <svg
-                            className="icon icon-tabler icon-tabler-check"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path stroke="none" d="M0 0h24v24H0z"></path>
-                            <path d="M5 12l5 5l10 -10"></path>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
+                    <div className="ml-5"></div>
                   </td>
                   <td className="">
                     <div className="flex items-center cursor-default">

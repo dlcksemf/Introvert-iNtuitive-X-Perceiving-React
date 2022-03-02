@@ -44,25 +44,25 @@ function AdminTopNav() {
       >
         <SidebarContent>
           <Menu iconShape="square">
-            <MenuItem icon="👩‍🏫">
+            <MenuItem icon="📃">
               <NavLink to={'/admin/loanedbook/'} className="hover:text-lg">
                 <h1 className="text-indigo-900">대출 관리</h1>
               </NavLink>
             </MenuItem>
 
-            <MenuItem icon="🎈">
+            <MenuItem icon="📚">
               <NavLink to={'/admin/booklist/'} className="hover:text-lg">
                 <h1 className="text-indigo-900">도서 관리</h1>
               </NavLink>
             </MenuItem>
 
-            <MenuItem icon="🌞">
+            <MenuItem icon="👩‍👦‍👦">
               <NavLink to={'/admin/user/'} className="hover:text-lg">
                 <h1 className="text-indigo-900">회원 관리</h1>
               </NavLink>
             </MenuItem>
 
-            <MenuItem icon="🍕">
+            <MenuItem icon="✍">
               <NavLink to={'/admin/application/'} className="hover:text-lg">
                 <h1 className="text-indigo-900">신청 관리</h1>
               </NavLink>
