@@ -9,6 +9,7 @@ import PageAdminRouter from 'pages/router/PageAdminRouter';
 import MainPage from 'pages/MainPage';
 import Footer from 'components/parts/Footer';
 import { useEffect } from 'react';
+import NotFound from 'components/parts/NotFound';
 
 function App() {
   const [auth] = useAuth();
@@ -35,6 +36,9 @@ function App() {
           {auth.is_staff && (
             <Route path="/admin/*" element={<PageAdminRouter />} />
           )}
+        </Routes>
+        <Routes>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
 

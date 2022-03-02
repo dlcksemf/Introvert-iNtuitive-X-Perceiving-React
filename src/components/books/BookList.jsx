@@ -5,8 +5,11 @@ import SearchBar from 'components/parts/SearchBar';
 import ReactPaginate from 'react-paginate';
 import Category from 'components/parts/Category';
 import { ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import NotFound from 'components/parts/NotFound';
 
 function BookList() {
+  const navigate = useNavigate();
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(1);
@@ -76,7 +79,7 @@ function BookList() {
                   />
                 </div>
                 {loading && '로딩 중 ...'}
-                {error && '로딩 중 에러가 발생했습니다.'}
+                {error && navigate(`*`)}
               </div>
             </div>
             <div className="flex flex-wrap -m-4">

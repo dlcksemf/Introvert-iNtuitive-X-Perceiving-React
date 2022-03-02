@@ -1,11 +1,10 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-
+import { Navigate, Route, Routes, Router } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
-
 import BookApplicationFormPage from 'pages/BookApplicationFormPage';
 import BookApplicationPage from 'pages/BookApplicationPage';
 import BookDetailPage from 'pages/BookDetailPage';
 import BookListPage from 'pages/BookListPage';
+import NotFound from 'components/parts/NotFound';
 
 function PageBookRouter() {
   const [auth] = useAuth();
@@ -27,6 +26,9 @@ function PageBookRouter() {
             )
           }
         />
+      </Routes>
+      <Routes>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

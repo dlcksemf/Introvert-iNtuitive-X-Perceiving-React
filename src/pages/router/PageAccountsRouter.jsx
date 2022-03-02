@@ -8,6 +8,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import PageModal from 'pages/PageModal';
 import PageUserInfoModal from 'pages/PageUserInfoModal';
 import { useAuth } from 'base/hooks/Authcontext';
+import NotFound from 'components/parts/NotFound';
 
 function PageAccountsRouter() {
   let location = useLocation();
@@ -34,6 +35,10 @@ function PageAccountsRouter() {
           <Route path="/modal/:modalType/" element={<PageModal />} />
         </Routes>
       )}
+
+      <Routes>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }

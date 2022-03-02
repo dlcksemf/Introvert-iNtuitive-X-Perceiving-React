@@ -60,8 +60,7 @@ function BookDetail({ book_num }) {
   return (
     <div>
       {loading && <LoadingIndicator />}
-      {error &&
-        `로딩 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+      {error && navigate(`*`)}
       {book && (
         <>
           <section className="text-gray-600 body-font overflow-hidden">
