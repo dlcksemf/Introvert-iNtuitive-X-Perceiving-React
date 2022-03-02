@@ -286,8 +286,6 @@ function AdminBookForm({ postId, handleDidSave }) {
               </select>
             </div>
 
-            <DebugStates fieldValues={fieldValues} />
-
             <div className="my-3">
               <Button>저장하기</Button>
             </div>
