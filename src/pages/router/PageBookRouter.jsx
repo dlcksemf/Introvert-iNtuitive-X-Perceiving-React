@@ -26,10 +26,8 @@ function PageBookRouter() {
             )
           }
         />
-      </Routes>
-      {/* <Routes>
         <Route path="*" element={<NotFound />} />
-      </Routes> */}
+      </Routes>
     </>
   );
 }

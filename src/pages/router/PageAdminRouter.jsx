@@ -25,11 +25,8 @@ function PageAdminRouter() {
           <Route path="/book/:postId/edit/" element={<PageAdminBookForm />} />
           <Route path="/application/" element={<AdminBookApplicationPage />} />
           <Route path="/loanedbook/" element={<AdminLoanedBookList />} />
-        </Routes>
-
-        {/* <Routes>
           <Route path="*" element={<NotFound />} />
-        </Routes> */}
+        </Routes>
       </div>
     </div>
   );

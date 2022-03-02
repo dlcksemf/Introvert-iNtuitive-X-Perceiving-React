@@ -36,10 +36,8 @@ function App() {
           {auth.is_staff && (
             <Route path="/admin/*" element={<PageAdminRouter />} />
           )}
-        </Routes>
-        {/* <Routes>
           <Route path="*" element={<NotFound />} />
-        </Routes> */}
+        </Routes>
       </div>
 
       {!auth?.is_staff && (

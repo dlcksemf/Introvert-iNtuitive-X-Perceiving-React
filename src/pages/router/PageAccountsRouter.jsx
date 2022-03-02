@@ -27,6 +27,7 @@ function PageAccountsRouter() {
             <Route path="/edit/" element={<UserInfoForm />} />
           </>
         )}
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       {state?.backgroundLocation && (
@@ -35,10 +36,6 @@ function PageAccountsRouter() {
           <Route path="/modal/:modalType/" element={<PageModal />} />
         </Routes>
       )}
-
-      {/* <Routes>
-        <Route path="*" element={<NotFound />} />
-      </Routes> */}
     </>
   );
 }
