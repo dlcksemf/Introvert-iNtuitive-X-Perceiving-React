@@ -23,7 +23,10 @@ function HeavyReader() {
         ?.sort((user1, user2) => user2.count_loans - user1.count_loans)
         .slice(0, 1)
         .map((book) => (
-          <HeavyReaderSummary book={book} key={book.count_loans} />
+          <HeavyReaderSummary
+            book={book.count_loans !== 0 && book}
+            key={book.count_loans}
+          />
         ))}
     </div>
   );
