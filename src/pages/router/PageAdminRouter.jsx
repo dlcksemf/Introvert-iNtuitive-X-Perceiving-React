@@ -27,9 +27,9 @@ function PageAdminRouter() {
           <Route path="/loanedbook/" element={<AdminLoanedBookList />} />
         </Routes>
 
-        <Routes>
+        {/* <Routes>
           <Route path="*" element={<NotFound />} />
-        </Routes>
+        </Routes> */}
       </div>
     </div>
   );

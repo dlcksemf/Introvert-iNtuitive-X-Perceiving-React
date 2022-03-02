@@ -36,9 +36,9 @@ function PageAccountsRouter() {
         </Routes>
       )}
 
-      <Routes>
+      {/* <Routes>
         <Route path="*" element={<NotFound />} />
-      </Routes>
+      </Routes> */}
     </>
   );
 }
