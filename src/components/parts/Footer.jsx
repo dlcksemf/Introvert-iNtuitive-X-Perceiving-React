@@ -6,16 +6,16 @@ function Footer() {
 
   return (
     <header
-      className="text-gray-600 body-font sticky top-0 bg-white pt-3 pb-5 mt-4"
+      className="bg-gray-200 text-gray-600 body-font sticky top-0 bg-white pt-3 pb-10"
       style={{ zIndex: location.pathname === '/' ? 900 : 0 }}
     >
       <div className="flex">
-        <div className="inline-block text-semibold select-none mt-3 ml-10">
+        <div className="inline-block text-semibold select-none ml-10">
           (주)유클리드소프트 - 대전 동구 계족로 151
         </div>
 
         <div className="absolute right-40 inline-block">
-          <div className="mb-8">
+          <div className="">
             <svg
               className="cursor-pointer"
               onClick={() =>
