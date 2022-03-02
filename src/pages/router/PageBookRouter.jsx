@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, Router } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
 import BookApplicationFormPage from 'pages/BookApplicationFormPage';
 import BookApplicationPage from 'pages/BookApplicationPage';
@@ -12,7 +12,7 @@ function PageBookRouter() {
   return (
     <>
       <Routes>
-        <Route path="/booklist/" element={<BookListPage />} />
+        <Route path="/booklist/*" element={<BookListPage />} />
         <Route path="/:book_num/" element={<BookDetailPage />} />
         <Route path="/application/" element={<BookApplicationPage />} />
 

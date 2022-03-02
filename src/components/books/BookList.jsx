@@ -5,17 +5,28 @@ import SearchBar from 'components/parts/SearchBar';
 import ReactPaginate from 'react-paginate';
 import Category from 'components/parts/Category';
 import { ToastContainer } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import NotFound from 'components/parts/NotFound';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 function BookList() {
   const navigate = useNavigate();
+  let { state } = useLocation();
+
+  let [searchParams] = useSearchParams();
+  let categoryParams = searchParams.get('category');
+  let pageParams = searchParams.get('page');
+  let queryParams = searchParams.get('query');
+
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
-  const [page, setPage] = useState(1);
-  const [category, setCategory] = useState('전체');
+  const [page, setPage] = useState(() => {
+    return pageParams ? pageParams : 1;
+  });
 
-  const [query, setQuery] = useState();
+  const [category, setCategory] = useState(() => {
+    return categoryParams ? categoryParams : '전체';
+  });
+
+  const [query, setQuery] = useState(queryParams || '');
 
   const [{ data: bookList, loading, error }, refetch] = useApiAxios(
     {
@@ -25,35 +36,46 @@ function BookList() {
     { manual: true },
   );
 
-  const fetchApplications = useCallback(
-    async (newPage, newQuery = query) => {
-      const params = {
-        page: newPage,
-        query: newQuery,
-        category: category === '전체' ? '' : category,
-      };
+  const fetchApplications = useCallback(async () => {
+    const params = {
+      page: pageParams,
+      query: queryParams,
+      category: categoryParams === '전체' ? '' : categoryParams,
+    };
 
-      const { data } = await refetch({ params });
+    const { data } = await refetch({ params });
 
-      setPage(newPage);
-      setPageCount(Math.ceil(data.count / 8));
-      setCurrentItems(data?.results);
-    },
-    [category, query, refetch],
-  );
+    setPageCount(Math.ceil(data.count / 8));
+    setCurrentItems(data?.results);
+  }, [categoryParams, queryParams, pageParams, refetch]);
 
   useEffect(() => {
-    fetchApplications(1);
-  }, [category, fetchApplications]);
+    page &&
+      navigate(
+        `/books/booklist/?page=${page}&category=${category}&query=${query}`,
+      );
+  }, [page]);
+
+  useEffect(() => {
+    state?.pathname
+      ? navigate(
+          `/books/booklist/?page=${pageParams}&category=${category}&query=${query}`,
+        )
+      : navigate(`/books/booklist/?page=1&category=${category}&query=${query}`);
+  }, [category]);
+
+  useEffect(() => {
+    fetchApplications();
+  }, [categoryParams, pageParams, queryParams]);
 
   const handlePageClick = (event) => {
-    fetchApplications(event.selected + 1);
+    setPage(event.selected + 1);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetchApplications(1, query);
+    navigate(`/books/booklist/?page=1&category=${category}&query=${query}`);
   };
 
   return (
@@ -102,6 +124,7 @@ function BookList() {
         <ReactPaginate
           breakLabel="..."
           nextLabel=">"
+          forcePage={page - 1}
           onPageChange={handlePageClick}
           pageRangeDisplayed="2"
           pageCount={pageCount}
