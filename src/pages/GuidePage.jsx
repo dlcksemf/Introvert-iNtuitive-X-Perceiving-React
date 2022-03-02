@@ -1,6 +1,5 @@
 // import map from './img/map.png';
 import ReactPlayer from 'react-player';
-
 import background from './img/book1.jpg';
 
 function GuidePage() {
@@ -42,7 +41,7 @@ function GuidePage() {
                   </h1>
 
                   <ReactPlayer
-                    url="https://www.youtube.com/watch?v=mXZZvpTvtIQ"
+                    url="https://www.youtube.com/watch?v=mBQ53W-iX94"
                     playing
                     controls
                   />
