@@ -1,6 +1,8 @@
 // import map from './img/map.png';
 import ReactPlayer from 'react-player';
 import background from './img/book1.jpg';
+import blog from 'components/parts/image/blog.png';
+import hopeBook from 'components/parts/image/hopeBook.png';
 
 function GuidePage() {
   const Item = ({ text }) => {
@@ -183,15 +185,68 @@ function GuidePage() {
                 >
                   euclidsoft.lab@gmail.com
                 </p>
-                <div className="flex items-center gap-4 my-6 cursor-pointer">
-                  <button
-                    className="bg-indigo-600 px-5 py-3 text-white rounded-full w-2/4 text-center hover:bg-indigo-700"
+                <div className="flex items-center mt-3">
+                  <div
+                    className=" gap-4 my-6 cursor-pointer
+                transition duration-500 ease-in-out hover:-translate-y-3 hover:scale-100"
+                  >
+                    <button
+                      onClick={() =>
+                        window.open(
+                          'https://blog.naver.com/euclidsoft',
+                          '_blank',
+                        )
+                      }
+                    >
+                      <img src={blog} alt="블로그" className="w-16 h-16 ml-1" />
+                      <h1 className="bg-indigo-600 px-3 py-2 text-white rounded-full text-center hover:bg-indigo-700 mt-2">
+                        블로그
+                      </h1>
+                    </button>
+                  </div>
+                  <div className=" inline-block">
+                    <div className="ml-7 transition duration-500 ease-in-out hover:-translate-y-3 hover:scale-100">
+                      <svg
+                        onClick={() =>
+                          window.open(
+                            'https://www.facebook.com/euclidsoft.lab/',
+                          )
+                        }
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 48 48"
+                        className="w-20 h-20 ml-1 cursor-pointer"
+                        width="48px"
+                        height="48px"
+                      >
+                        <path
+                          fill="#039be5"
+                          d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"
+                        />
+                      </svg>
+                      <h1 className="bg-indigo-600 px-2 py-2 text-white rounded-full text-center hover:bg-indigo-700 mb-2.5 select-none cursor-pointer">
+                        페이스북
+                      </h1>
+                    </div>
+                  </div>
+                  <div
+                    className="ml-6 transition duration-500 ease-in-out hover:-translate-y-3 hover:scale-100"
                     onClick={() =>
-                      window.open('https://blog.naver.com/euclidsoft', '_blank')
+                      window.open('http://djbook.or.kr/', '_blank')
                     }
                   >
-                    MORE EUCLID SOFT
-                  </button>
+                    <img
+                      src={hopeBook}
+                      alt="희망의책"
+                      className="ml-3 w-16 h-16 bg-contain cursor-pointer inline-block rounded-full"
+                    />
+                    <h1 className="bg-indigo-600 ml-1.5 px-2 py-2 text-white rounded-full text-center hover:bg-indigo-700 mt-2 select-none cursor-pointer">
+                      희망의책
+                    </h1>
+                  </div>
                 </div>
               </div>
             </div>
