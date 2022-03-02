@@ -243,7 +243,7 @@ function GuidePage() {
                       alt="희망의책"
                       className="ml-3 w-16 h-16 bg-contain cursor-pointer inline-block rounded-full"
                     />
-                    <h1 className="bg-indigo-600 ml-1.5 px-2 py-2 text-white rounded-full text-center hover:bg-indigo-700 mt-2 select-none cursor-pointer">
+                    <h1 className="bg-indigo-600 ml-1.5 px-2 py-2 text-white rounded-full text-center hover:bg-indigo-700 mt-1.5 select-none cursor-pointer">
                       희망의책
                     </h1>
                   </div>
