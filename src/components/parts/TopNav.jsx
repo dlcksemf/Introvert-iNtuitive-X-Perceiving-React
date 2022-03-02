@@ -16,7 +16,7 @@ function TopNav() {
   };
 
   return (
-    <header className="text-gray-600 body-font sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-20 border-b border-gray-200">
+    <header className="text-gray-600 body-font sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-80 border-b border-gray-200">
       <div className="mx-2 flex px-5 py-2 flex-col md:flex-row items-center">
         <div className="basis-1/3 grow-0 shrink-0 text-gray-900 mb-4 md:mb-0"></div>
 
