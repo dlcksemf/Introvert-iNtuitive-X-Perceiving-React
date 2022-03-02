@@ -39,12 +39,12 @@ function App() {
         </Routes>
       </div>
 
-      {!auth?.is_staff && (
-        <>
-          <hr />
-          <Footer />
-        </>
-      )}
+      {/* {!auth?.is_staff && ( */}
+      <>
+        <hr />
+        <Footer />
+      </>
+      {/* )} */}
     </>
   );
 }
