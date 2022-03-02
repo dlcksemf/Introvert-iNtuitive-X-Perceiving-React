@@ -14,7 +14,7 @@ function SignupFormComponent1({
           className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
         >
-          Name
+          이름
         </label>
         <input
           type="username"
@@ -42,7 +42,7 @@ function SignupFormComponent1({
           className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
         >
-          Email
+          이메일
         </label>
         <input
           type="email"
@@ -67,7 +67,7 @@ function SignupFormComponent1({
           className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
         >
-          Phone Number
+          핸드폰 번호
         </label>
         <input
           type="phone_num"
@@ -92,7 +92,7 @@ function SignupFormComponent1({
           className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
         >
-          Password
+          비밀번호
         </label>
         <input
           type="password"
@@ -117,7 +117,7 @@ function SignupFormComponent1({
           className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
         >
-          Re-enter password
+          비밀번호 확인
         </label>
         <input
           type="password"
@@ -184,7 +184,7 @@ function SignupFormComponent2({
           htmlFor="position"
           className="leading-7 text-sm text-gray-600 select-none font-semibold"
         >
-          Position
+          직급
         </label>
         <div>
           <select
@@ -212,7 +212,7 @@ function SignupFormComponent2({
           htmlFor="gender"
           className="leading-7 text-sm text-gray-600 select-none font-semibold"
         >
-          Gender
+          성별
         </label>
         <div>
           <select
@@ -232,7 +232,7 @@ function SignupFormComponent2({
 
       <div className="relative mb-4">
         <label className="leading-7 text-sm text-gray-600 select-none font-semibold">
-          Birth Day
+          생일
         </label>
         <div>
           <input

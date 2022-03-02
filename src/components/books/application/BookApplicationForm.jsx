@@ -8,7 +8,7 @@ import useFieldValues from 'base/hooks/useFieldValues';
 
 const INIT_VALUE = {};
 
-const DATA_FIELDS = ['title', 'writer', 'publisher', 'ISBN'];
+const DATA_FIELDS = ['제목', '저자', '출판사', 'ISBN'];
 
 function BookApplicationForm() {
   const [auth] = useAuth();

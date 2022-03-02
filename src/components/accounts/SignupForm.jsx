@@ -82,7 +82,7 @@ function SignupForm() {
             </NavLink>
           </div>
           <h2 className="flex text-gray-900 text-lg font-bold title-font mb-5 select-none">
-            Sign Up
+            회원가입 페이지
           </h2>
 
           <form onSubmit={handleClickSubmitButton}>
@@ -149,7 +149,7 @@ function SignupForm() {
           </form>
 
           <p className="text-xs text-gray-500 mt-3 select-none">
-            (주) EUCLID SOFT
+            (주)유클리드소프트
           </p>
         </div>
       </div>
