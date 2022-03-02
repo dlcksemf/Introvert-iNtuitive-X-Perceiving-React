@@ -1,4 +1,4 @@
-import main from 'pages/img/main.jpg';
+import book from 'pages/img/book.jpg';
 import ggumdori from 'components/parts/image/ggumdori.png';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ function Main() {
     <div>
       <span className="flex justify-center">
         <img
-          src={main}
+          src={book}
           alt="메인 책장"
           className="w-screen h-screen rounded inline opacity-95"
         />

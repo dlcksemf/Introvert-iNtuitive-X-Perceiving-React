@@ -47,6 +47,15 @@ function Modal({ modalType }) {
       return 'books';
     }
   });
+  const [modalTitle] = useState(() => {
+    if (modalType === 'applications') {
+      return '신청 내역';
+    } else if (modalType === 'loanedbooks') {
+      return '대출 내역';
+    } else {
+      return '찜 내역';
+    }
+  });
 
   const [query, setQuery] = useState('');
 
@@ -98,7 +107,7 @@ function Modal({ modalType }) {
       <div className="border-b dark:border-gray-600">
         <div className="flex justify-between items-start p-5 rounded-t">
           <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
-            {modalType}
+            {modalTitle}
           </h3>
 
           <div className="absolute right-72 mt-8">
