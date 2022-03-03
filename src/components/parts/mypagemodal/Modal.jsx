@@ -106,7 +106,7 @@ function Modal({ modalType }) {
     <div className="w-full bg-white rounded-lg shadow">
       <div className="border-b dark:border-gray-600">
         <div className="flex justify-between items-start p-5 rounded-t">
-          <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
+          <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white select-none">
             {modalTitle}
           </h3>
 
@@ -146,7 +146,7 @@ function Modal({ modalType }) {
         <div className="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
           <div className="p-3">
             <table className="table-auto w-full">
-              <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+              <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50 select-none">
                 <tr>
                   {Object.values(TitleList[modalType]).map(
                     (tableTitle, index) => {
@@ -161,7 +161,7 @@ function Modal({ modalType }) {
                   )}
                 </tr>
               </thead>
-              <tbody className="text-sm divide-y divide-gray-100">
+              <tbody className="text-sm divide-y divide-gray-100 select-none">
                 {data?.results?.map((book, index) => (
                   <tr key={index}>
                     <ModalComponent

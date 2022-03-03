@@ -89,7 +89,7 @@ function AdminLoanedBookList() {
       <div className="w-full">
         <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
           <div className="sm:flex items-end justify-between">
-            <p className="focus:outline-none text-base text-3xl font-bold leading-normal text-gray-800">
+            <p className="select-none focus:outline-none text-base text-3xl font-bold leading-normal text-gray-800">
               대출 도서 관리
             </p>
 
@@ -131,7 +131,7 @@ function AdminLoanedBookList() {
                   </td>
 
                   <th className="">
-                    <div className="flex items-center cursor-default">
+                    <div className="flex items-center select-none">
                       <p className="text-sm leading-none text-gray-600">
                         대출자
                       </p>
@@ -139,7 +139,7 @@ function AdminLoanedBookList() {
                   </th>
 
                   <th className="pl-7">
-                    <div className="flex items-center">
+                    <div className="flex items-center select-none">
                       <p className="text-sm leading-none text-gray-600 ml-2">
                         도서명
                       </p>
@@ -147,7 +147,7 @@ function AdminLoanedBookList() {
                   </th>
 
                   <th className="pl-7">
-                    <div className="flex items-center">
+                    <div className="flex items-center select-none">
                       <p className="text-sm leading-none text-gray-600 ml-2">
                         대출 현황
                       </p>
@@ -156,7 +156,7 @@ function AdminLoanedBookList() {
 
                   <th className="pl-3">
                     <div className="flex items-center justify-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         상태
                       </p>
                     </div>
@@ -179,7 +179,7 @@ function AdminLoanedBookList() {
 
                       <td className="pl-7">
                         <div className="flex items-center">
-                          <p className="text-sm leading-none text-gray-600 ml-2">
+                          <p className="text-sm leading-none text-gray-600 ml-2 select-none hover:font-semibold">
                             {post?.title}
                           </p>
                         </div>
@@ -187,7 +187,7 @@ function AdminLoanedBookList() {
 
                       <td className="pl-7">
                         <div className="flex items-center">
-                          <p className="text-sm leading-none text-gray-600 ml-2">
+                          <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                             {post?.return_state === 'L' &&
                             new Date(post?.return_due_date) < new Date(date) ? (
                               <Badge color="red">

@@ -84,7 +84,7 @@ function InfoEditModal() {
             </label>
             <input
               type="text"
-              className="w-full bg-amber-100 px-4 py-2 rounded-lg focus:outline-none"
+              className="w-full bg-gray-50 px-4 py-2 rounded-lg focus:outline-none"
               name="username"
               value={fieldValues.username}
               onChange={handleFieldChange}
@@ -101,7 +101,7 @@ function InfoEditModal() {
             </label>
             <input
               type="text"
-              className="w-full bg-amber-100 px-4 py-2 rounded-lg focus:outline-none"
+              className="w-full bg-gray-50 px-4 py-2 rounded-lg focus:outline-none"
               name="phone_num"
               value={fieldValues.phone_num}
               onChange={handleFieldChange}
@@ -118,7 +118,7 @@ function InfoEditModal() {
             </label>
             <input
               type="date"
-              className="w-full bg-amber-100 px-4 py-2 rounded-lg focus:outline-none"
+              className="w-full bg-gray-50 px-4 py-2 rounded-lg focus:outline-none"
               name="birthdate"
               value={fieldValues.birthdate}
               onChange={handleFieldChange}
@@ -134,7 +134,7 @@ function InfoEditModal() {
             </label>
 
             <select
-              className="block border border-grey-light w-full p-3 rounded mb-4"
+              className="outline-none block border border-grey-light w-full p-3 rounded mb-4"
               name="position"
               value={fieldValues.position}
               onChange={handleFieldChange}
@@ -162,7 +162,7 @@ function InfoEditModal() {
               </label>
               <div>
                 <select
-                  className="block border border-grey-light w-full p-3 rounded mb-4"
+                  className="outline-none block border border-grey-light w-full p-3 rounded mb-4"
                   name="gender"
                   value={fieldValues.gender}
                   onChange={handleFieldChange}
@@ -176,15 +176,15 @@ function InfoEditModal() {
           </div>
           <button
             onClick={handleClickSubmitButton}
-            className="w-full mt-6 bg-amber-600 rounded-full px-4 py-2 text-lg text-white
-            tracking-wide font-semibold font-sans transition duration-500 ease-in-out hover:bg-amber-500"
+            className="w-full mt-6 bg-indigo-600 rounded-full px-4 py-2 text-lg text-white
+            tracking-wide font-semibold font-sans transition duration-500 ease-in-out hover:bg-indigo-700"
           >
             정보 수정
           </button>
           <button
             onClick={handleClickCancleButton}
-            className="w-full mt-6 mb-3 bg-yellow-300 rounded-full px-4 py-2 text-lg text-gray-800
-            tracking-wide font-semibold font-sans transition duration-500 ease-in-out hover:bg-yellow-200"
+            className="w-full mt-6 mb-3 bg-gray-300 rounded-full px-4 py-2 text-lg text-gray-800
+            tracking-wide font-semibold font-sans transition duration-500 ease-in-out hover:bg-indigo-200"
           >
             취소
           </button>

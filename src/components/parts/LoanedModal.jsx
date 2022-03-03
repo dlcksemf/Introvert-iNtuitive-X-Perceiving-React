@@ -110,7 +110,7 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
                   uppercase
                   rounded
                   shadow-md
-                  hover:bg-purple-700 hover:shadow-lg
+                  hover:bg-gray-400 hover:shadow-lg
                   hover:scale-110 rounded-full
                   transition duration-500 ease-in-out hover:-translate-y-1"
                     data-bs-dismiss="modal"
@@ -175,7 +175,7 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
                         <label className="font-bold">대출 종료일</label>
                         <DatePicker
                           locale={ko}
-                          className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 cursor-pointer hover:border-blue-500 hover:text-black"
+                          className="outline-none form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 cursor-pointer hover:border-blue-500 hover:text-black"
                           selected={endDate}
                           onChange={(date) => setEndDate(date)}
                           // selectsEnd
@@ -197,8 +197,8 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
           mr-6
           bg-blue-600
           text-white
-          font-medium
-          text-xs
+          font-semibold
+          text-md
           leading-tight
           uppercase
           rounded
@@ -217,15 +217,15 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
                           type="button"
                           className="px-10
       py-4
-      bg-purple-600
-      text-white
-      font-medium
-      text-xs
+      bg-gray-300
+      text-black
+      font-semibold
+      text-md
       leading-tight
       uppercase
       rounded
       shadow-md
-      hover:bg-purple-700 hover:shadow-lg
+      hover:bg-indigo-200 hover:shadow-lg
       focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0
       active:bg-purple-800 active:shadow-lg
       hover:scale-110 transition duration-500 

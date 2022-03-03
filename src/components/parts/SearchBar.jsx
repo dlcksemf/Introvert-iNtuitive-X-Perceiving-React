@@ -15,7 +15,7 @@ function SearchBar({ handleSubmit, handleChange }) {
           pr-8 rounded-lg text-sm focus:outline-none"
           type="search"
           name="search"
-          placeholder="검색어를 입력해주세요."
+          placeholder="검색어 입력"
           onChange={(e) => {
             handleChange(e.target.value);
           }}

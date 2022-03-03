@@ -104,7 +104,7 @@ function LoginForm() {
           </div>
           <div>
             <h2 className="text-gray-900 text-lg font-bold title-font mb-5 select-none">
-              Log In
+              로그인
             </h2>
             <form onSubmit={handleSubmit}>
               <div className="relative mb-4">
@@ -112,7 +112,7 @@ function LoginForm() {
                   htmlFor="email"
                   className="leading-7 text-sm text-gray-600 select-none font-semibold"
                 >
-                  Email
+                  이메일
                 </label>
                 <input
                   type="email"
@@ -136,7 +136,7 @@ function LoginForm() {
                   htmlFor="password"
                   className="leading-7 text-sm text-gray-600 select-none font-semibold"
                 >
-                  Password
+                  비밀번호
                 </label>
                 <input
                   type="password"
@@ -158,7 +158,7 @@ function LoginForm() {
               focus:outline-none hover:bg-indigo-600 rounded text-lg hover:bg-indigo-700
               transition duration-500 ease-in-out hover:scale-105 rounded-full"
               >
-                로그인
+                들어가기
               </button>
             </form>
             <p className="text-xs text-gray-500 mt-8 select-none">

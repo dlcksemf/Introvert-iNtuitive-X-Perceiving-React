@@ -23,13 +23,13 @@ function ConfirmationModal({ children, handleOkButton, handleCancleButton }) {
           onClick={cancleButtonClicked}
           className="bg-indigo-500 px-4 py-2 rounded-md text-md text-white"
         >
-          Cancle
+          취소
         </button>
         <button
           onClick={submitButtonClicked}
           className="bg-red-500 px-7 py-2 ml-2 rounded-md text-md text-white font-semibold"
         >
-          Ok
+          확인
         </button>
       </div>
     </div>

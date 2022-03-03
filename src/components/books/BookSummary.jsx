@@ -97,7 +97,7 @@ function BookSummary({ book, reloadBook }) {
           state={{ beforeLocation: location.search }}
         >
           <div className="flex-grow sm:pl-8 mt-36">
-            <h3 className="text-sm text-gray-500 mb-3 select-none flex">
+            <h3 className="text-sm text-gray-500 mb-3 select-none flex cursor-default">
               {book?.category && `[ ${book.category} ]`}
             </h3>
             <h2
@@ -109,7 +109,7 @@ function BookSummary({ book, reloadBook }) {
             >
               {book.title}
             </h2>
-            <h3 className="mt-12 text-sm text-gray-500 select-none">
+            <h3 className="mt-12 text-sm text-gray-500 select-none cursor-default">
               {book.writer}
             </h3>
             <p

@@ -12,7 +12,7 @@ function ApplicationsList({ applicationList }) {
             <h3 className="font-semibold text-lg text-gray-800 text-center select-none px-1">
               신청 도서 목록
             </h3>
-            <table className="text-xs ml-3 mt-3">
+            <table className="text-xs ml-3 mt-3 select-none hover:font-semibold">
               <tbody>
                 {applicationList?.slice(0, 3).map((application) => {
                   return (
@@ -24,7 +24,7 @@ function ApplicationsList({ applicationList }) {
               </tbody>
             </table>
 
-            <div className="text-center mb-3">
+            <div className="text-center mb-3 select-none">
               <button
                 className="bg-amber-500 mt-3 text-white hover:bg-amber-400 text-sm font-bold uppercase px-3 py-2 rounded-full
                 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"

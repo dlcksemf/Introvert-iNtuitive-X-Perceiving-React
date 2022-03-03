@@ -54,7 +54,7 @@ function AdminUser() {
       <div className="w-full">
         <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
           <div className="flex items-end justify-between">
-            <p className="focus:outline-none text-base text-3xl font-bold leading-normal text-gray-800">
+            <p className="focus:outline-none text-base text-3xl font-bold leading-normal text-gray-800 select-none">
               회원 관리
             </p>
 
@@ -74,34 +74,36 @@ function AdminUser() {
                     <div className="ml-5"></div>
                   </td>
                   <td className="">
-                    <div className="flex items-center cursor-default">
-                      <p className="text-sm leading-none text-gray-600">이름</p>
+                    <div className="flex items-center">
+                      <p className="text-sm leading-none text-gray-600 select-none">
+                        이름
+                      </p>
                     </div>
                   </td>
                   <td className="pl-7">
                     <div className="flex items-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         이메일
                       </p>
                     </div>
                   </td>
                   <td className="pl-7">
                     <div className="flex items-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         가입일
                       </p>
                     </div>
                   </td>
                   <td className="pl-7">
                     <div className="flex items-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         대출 빈도
                       </p>
                     </div>
                   </td>
                   <td className="pl-7">
                     <div className="flex items-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         삭제
                       </p>
                     </div>
@@ -111,7 +113,7 @@ function AdminUser() {
                 {userdata?.results?.map((user) => (
                   <React.Fragment key={user.user_id}>
                     {user.is_staff === false && (
-                      <tr className="focus:outline-none h-16 border border-gray-100 rounded">
+                      <tr className="focus:outline-none h-16 border border-gray-100 rounded select-none">
                         <AdminUserList
                           user={user}
                           reload={() => {

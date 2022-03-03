@@ -9,7 +9,7 @@ function Footer() {
       style={{ zIndex: location.pathname === '/' ? 900 : 0 }}
     >
       <div className="flex relative fixed bottom-full">
-        <div className="inline-block text-semibold text-sm select-none ml-20 mt-2 tracking-widest">
+        <div className="inline-block text-semibold text-sm select-none ml-24 mt-2 tracking-widest">
           ㈜ 유클리드 소프트 | 대전 동구 계족로 151 601호 | ☎ 042) 488-6589 | ✉
           euclidsoft.lab@gmail.com
         </div>

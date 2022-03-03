@@ -8,14 +8,22 @@ function PageAdminBookList() {
       <div className="text-center text-white">관리자 도서 목록</div>
       <div className="-m-2 text-center mt-2">
         <div className="p-2">
-          <div class="inline-flex items-center bg-white leading-none text-black-600 rounded-full p-2 shadow text-teal text-sm">
+          <div
+            class="inline-flex items-center bg-white leading-none text-black-600 rounded-full p-2 text-teal text-sm
+          transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-105"
+          >
             <span
-              class="cursor-pointer inline-flex bg-indigo-600 text-white rounded-full h-6 px-3 justify-center items-center"
+              class="font-semibold cursor-pointer before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-indigo-300 relative inline-block justify-center items-center"
               onClick={() => navigate('/admin/book/new/')}
             >
-              등록
+              <span className="relative text-white text-lg">새로운</span>
             </span>
-            <span class="inline-flex px-2">새로운 도서를 등록해주세요!📖</span>
+            <span
+              class="inline-flex px-2 select-none cursor-pointer"
+              onClick={() => navigate('/admin/book/new/')}
+            >
+              도서 등록 📖
+            </span>
           </div>
         </div>
       </div>

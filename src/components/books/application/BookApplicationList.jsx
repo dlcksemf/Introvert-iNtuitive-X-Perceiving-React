@@ -82,7 +82,7 @@ function BookApplicationList() {
     <div className="w-3/4 m-auto">
       <div className="flex flex-col text-center w-full">
         <div className="flex justify-end">
-          <h3 className="text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mb-8 mt-4">
+          <h3 className="text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mb-8 mt-4 select-none">
             도서 신청 목록
           </h3>
           <div className="absolute flex justify-end items-end mb-28 mr-4">
@@ -124,7 +124,7 @@ function BookApplicationList() {
         <section className="py-1 bg-blueGray-50">
           <div className="w-full xl:mb-0 px-4">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
-              <table className="items-center bg-transparent w-full border-collapse mt-1">
+              <table className="items-center bg-transparent w-full border-collapse mt-1 select-none">
                 <thead>
                   <tr>
                     <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">

@@ -73,41 +73,43 @@ function AdminApplicationList() {
                     <div className="ml-5"></div>
                   </td>
                   <td className="">
-                    <div className="flex items-center cursor-default">
-                      <p className="text-sm leading-none text-gray-600">제목</p>
+                    <div className="flex items-center">
+                      <p className="text-sm leading-none text-gray-600 select-none">
+                        제목
+                      </p>
                     </div>
                   </td>
                   <td className="pl-7">
                     <div className="flex items-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         저자
                       </p>
                     </div>
                   </td>
                   <td className="pl-7">
                     <div className="flex items-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         출판사
                       </p>
                     </div>
                   </td>
                   <td className="pl-7">
                     <div className="flex items-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         신청일
                       </p>
                     </div>
                   </td>
                   <td className="pl-7">
                     <div className="flex items-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         처리일
                       </p>
                     </div>
                   </td>
                   <td className="pl-3">
                     <div className="flex items-center justify-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         주문 상태
                       </p>
                     </div>
@@ -116,7 +118,7 @@ function AdminApplicationList() {
 
                 {data?.results?.map((application) => (
                   <React.Fragment key={application.application_num}>
-                    <tr className="focus:outline-none h-16 border border-gray-100 rounded">
+                    <tr className="focus:outline-none h-16 border border-gray-100 rounded select-none">
                       <AdminApplication
                         application={application}
                         reload={() => {

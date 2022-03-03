@@ -63,11 +63,11 @@ function BookApplicationForm() {
 
   return (
     <div>
-      <div className="h-screen flex justify-center items-center ">
+      <div className="h-screen flex justify-center items-center">
         <div className="w-1/3">
-          <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
-            <h2 className="mb-10 text-center text-2xl text-gray-600 font-bold font-sans">
-              📚도서 신청 폼📖
+          <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg border-2 border-gray-200">
+            <h2 className="mb-10 text-center text-2xl text-gray-600 font-bold font-sans select-none">
+              📚 도서 신청 📖
             </h2>
             {DATA_FIELDS.map((dataType, index) => (
               <div key={index} className="mb-6">
@@ -76,9 +76,9 @@ function BookApplicationForm() {
                   name={dataType.field}
                   onChange={handleFieldChange}
                   placeholder={dataType.placeholder}
+                  autoComplete="off"
                   className="
-                  w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none
-                        "
+                  w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none hover:font-semibold"
                 />
                 {errorMessages[dataType] &&
                   errorMessages[dataType].map((message, index) => (
@@ -93,17 +93,17 @@ function BookApplicationForm() {
               <button
                 onClick={handleClickSubmitButton}
                 className="
-                w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans
-                        "
+                w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white
+                tracking-wide font-semibold font-sans hover:bg-indigo-700"
               >
-                도서 신청하기
+                신청하기
               </button>
 
               <button
                 onClick={handleClickCancleButton}
                 className="
-                w-full mt-6 mb-3 bg-indigo-100 rounded-lg px-4 py-2 text-lg text-gray-800 tracking-wide font-semibold font-sans
-                        "
+                w-full mt-6 mb-3 bg-gray-300 rounded-lg px-4 py-2 text-lg text-gray-800 
+                tracking-wide font-semibold font-sans hover:bg-indigo-200"
               >
                 취소
               </button>
