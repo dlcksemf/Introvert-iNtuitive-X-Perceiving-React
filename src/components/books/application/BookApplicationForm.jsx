@@ -8,7 +8,12 @@ import useFieldValues from 'base/hooks/useFieldValues';
 
 const INIT_VALUE = {};
 
-const DATA_FIELDS = ['title', 'writer', 'publisher', 'ISBN'];
+const DATA_FIELDS = [
+  { field: 'title', placeholder: '제목' },
+  { field: 'writer', placeholder: '저자' },
+  { field: 'publisher', placeholder: '출판사' },
+  { field: 'ISBN', placeholder: 'ISBN' },
+];
 
 function BookApplicationForm() {
   const [auth] = useAuth();
@@ -70,7 +75,7 @@ function BookApplicationForm() {
                   type="text"
                   name={dataType}
                   onChange={handleFieldChange}
-                  placeholder={dataType}
+                  placeholder={dataType.placeholder}
                   className="
                   w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none
                         "
