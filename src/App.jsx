@@ -8,6 +8,7 @@ import PageAccountsRouter from 'pages/router/PageAccountsRouter';
 import PageAdminRouter from 'pages/router/PageAdminRouter';
 import MainPage from 'pages/MainPage';
 import Footer from 'components/parts/Footer';
+import { useEffect } from 'react';
 import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
 
@@ -15,7 +16,7 @@ function App() {
   const [auth] = useAuth();
 
   return (
-    <>
+    <div className="relative min-h-screen">
       <TopNav />
 
       <div className="app">
@@ -34,13 +35,15 @@ function App() {
         </Routes>
       </div>
 
+      <div className="h-[60px]"></div>
+
       {/* {!auth?.is_staff && ( */}
-      <>
+      <div className="absolute bottom-0 w-full">
         <hr />
         <Footer />
-      </>
+      </div>
       {/* )} */}
-    </>
+    </div>
   );
 }
 
