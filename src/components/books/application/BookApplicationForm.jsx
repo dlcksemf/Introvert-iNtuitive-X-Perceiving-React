@@ -73,7 +73,7 @@ function BookApplicationForm() {
               <div key={index} className="mb-6">
                 <input
                   type="text"
-                  name={dataType}
+                  name={dataType.field}
                   onChange={handleFieldChange}
                   placeholder={dataType.placeholder}
                   className="
