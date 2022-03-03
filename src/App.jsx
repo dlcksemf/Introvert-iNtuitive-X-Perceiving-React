@@ -11,6 +11,7 @@ import Footer from 'components/parts/Footer';
 import { useEffect } from 'react';
 import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
+import Back from 'components/parts/Back';
 
 function App() {
   const [auth] = useAuth();
@@ -34,7 +35,9 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
-
+      <div className="sticky top-1/4 z-50">
+        <Back className="sticky" />
+      </div>
       <div className="h-[60px]"></div>
 
       {/* {!auth?.is_staff && ( */}

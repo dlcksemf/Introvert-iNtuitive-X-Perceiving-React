@@ -4,46 +4,68 @@ import {
   ChildButton,
   Directions,
 } from 'react-floating-button-menu';
-import { useState } from 'react';
-import Button from 'designMaterials/Button';
+import { useEffect, useState } from 'react';
+import click from 'components/parts/image/click.png';
+import left from 'components/parts/image/left.png';
+import right from 'components/parts/image/right.png';
+import up from 'components/parts/image/up.png';
+import { useNavigate } from 'react-router-dom';
 
 function Back() {
-  //   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  // const moveToTop = () => (document.documentElement.scrollTop = 0);
+  const [goToTop, setGoToTop] = useState(0);
+
+  useEffect(() => {
+    setGoToTop((document.documentElement.scrollTop = 0));
+  }, []);
+
+  const moveToTop = () => {
+    window.scrollTo({
+      top: goToTop,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    moveToTop();
+  }, [goToTop]);
 
   return (
     <>
-      <div className="relative left-3/4">
+      <div className="relative flex justify-end mr-4">
         <FloatingMenu
-          slideSpeed={500}
-          direction={Directions.Up}
+          slideSpeed={700}
+          direction={Directions.Left}
           spacing={8}
           isOpen={open}
         >
           <MainButton
-            iconResting={
-              <Button style={{ fontSize: 20 }} nativeColor="white" />
-            }
-            iconActive={<Button style={{ fontSize: 20 }} nativeColor="white" />}
-            background="black"
+            iconResting={<img src={click} />}
+            iconActive={<img src={click} />}
+            background={click}
             onClick={() => setOpen(true)}
-            size={56}
+            size={65}
+            className="transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-110"
           />
           <ChildButton
-            icon={<Button style={{ fontSize: 20 }} />}
+            icon={<img src={up} />}
             background="white"
-            size={40}
-            onClick={() => console.log('First button clicked')}
+            size={45}
+            onClick={() => moveToTop()}
           />
           <ChildButton
-            icon={<Button style={{ fontSize: 20 }} />}
+            icon={<img src={right} />}
             background="white"
-            size={40}
+            size={45}
+            onClick={() => navigate(1)}
           />
           <ChildButton
-            icon={<Button style={{ fontSize: 20 }} />}
+            icon={<img src={left} />}
             background="white"
-            size={40}
+            size={45}
+            onClick={() => navigate(-1)}
           />
         </FloatingMenu>
       </div>

@@ -11,10 +11,6 @@ function MainPage() {
     <div>
       <MainNavigation />
 
-      <div className="sticky top-3/4 z-50">
-        <Back />
-      </div>
-
       <div>
         <div className="ml-[80px] z-0">
           <section id="main">
