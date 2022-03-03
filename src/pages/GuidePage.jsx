@@ -157,7 +157,7 @@ function GuidePage() {
                 loading="lazy"
               />
             </div>
-            <div className="flex flex-col ml-20 mt-20">
+            <div className="flex flex-col ml-20 mt-12">
               <div className="flex flex-col gap-1">
                 <h1 className="capitalize text-2xl font-extrabold select-none">
                   Address

@@ -8,16 +8,11 @@ import PageAccountsRouter from 'pages/router/PageAccountsRouter';
 import PageAdminRouter from 'pages/router/PageAdminRouter';
 import MainPage from 'pages/MainPage';
 import Footer from 'components/parts/Footer';
-import { useEffect } from 'react';
 import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
 
 function App() {
   const [auth] = useAuth();
-
-  useEffect(() => {
-    document.title = 'EUCLID BOOKS';
-  }, []);
 
   return (
     <>
