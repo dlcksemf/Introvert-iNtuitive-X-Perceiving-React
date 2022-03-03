@@ -95,7 +95,7 @@ function LoanedBooks({ book }) {
                   ) + '일 연체'
                 : book.return_due_date)}
             {book.return_state === 'P' && '반납 신청..'}
-            {book.return_state === 'R' && '반납 됨'}
+            {book.return_state === 'R' && '반납 완료'}
           </Badge>
         </td>
 
