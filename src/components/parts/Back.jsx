@@ -14,7 +14,6 @@ import { useNavigate } from 'react-router-dom';
 function Back() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  // const moveToTop = () => (document.documentElement.scrollTop = 0);
   const [goToTop, setGoToTop] = useState(0);
 
   useEffect(() => {
