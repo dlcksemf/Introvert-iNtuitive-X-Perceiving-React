@@ -119,7 +119,6 @@ function BookList() {
           </div>
         </div>
       </section>
-
       <div className="mt-14">
         <ReactPaginate
           breakLabel="..."
@@ -133,11 +132,9 @@ function BookList() {
           siblingCount="1"
           className="pagination mb-14"
         />
-
         <ToastContainer />
       </div>
     </>
   );
 }
-
 export default BookList;
