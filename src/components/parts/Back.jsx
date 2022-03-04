@@ -47,24 +47,32 @@ function Back() {
             background={ggumdoriClick}
             onClick={() => setOpen((prev) => !prev)}
             size={65}
+            data-bs-toggle="tooltip"
+            title="꿈돌이를 눌러보세요!"
           />
           <ChildButton
             icon={<img src={up} alt="위로가기" />}
             background="white"
             size={45}
             onClick={() => moveToTop()}
+            data-bs-toggle="tooltip"
+            title="위로 가요!"
           />
           <ChildButton
             icon={<img src={right} alt="앞으로가기" />}
             background="white"
             size={45}
             onClick={() => navigate(1)}
+            data-bs-toggle="tooltip"
+            title="앞으로 가요!"
           />
           <ChildButton
             icon={<img src={left} alt="뒤로가기" />}
             background="white"
             size={45}
             onClick={() => navigate(-1)}
+            data-bs-toggle="tooltip"
+            title="뒤로 가요!"
           />
         </FloatingMenu>
       </div>

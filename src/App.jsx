@@ -35,13 +35,7 @@ function App() {
         </Routes>
         <div className="relative">
           <div className="fixed bottom-20 right-16">
-            <div
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="꿈돌이를 눌러보세요!"
-            >
-              <Back className="sticky top-0" />
-            </div>
+            <Back className="sticky top-0" />
           </div>
         </div>
       </div>
