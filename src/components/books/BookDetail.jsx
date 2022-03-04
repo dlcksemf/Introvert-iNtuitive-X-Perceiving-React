@@ -131,7 +131,7 @@ function BookDetail({ book_num }) {
                       className="text-gray-600 text-s mb-20 hover:text-blue-500 hover:font-bold
                       transition duration-500 ease-in-out hover:scale-105"
                     >
-                      알라딘에서 구매하기
+                      알라딘에서 책찾기
                     </button>
                   </div>
 
