@@ -8,7 +8,6 @@ import PageAccountsRouter from 'pages/router/PageAccountsRouter';
 import PageAdminRouter from 'pages/router/PageAdminRouter';
 import MainPage from 'pages/MainPage';
 import Footer from 'components/parts/Footer';
-import { useEffect } from 'react';
 import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
 import Back from 'components/parts/Back';
@@ -36,7 +35,13 @@ function App() {
         </Routes>
         <div className="relative">
           <div className="fixed bottom-20 right-16">
-            <Back className="sticky top-0" />
+            <div
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="꿈돌이를 눌러보세요!"
+            >
+              <Back className="sticky top-0" />
+            </div>
           </div>
         </div>
       </div>

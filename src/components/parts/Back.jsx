@@ -5,7 +5,7 @@ import {
   Directions,
 } from 'react-floating-button-menu';
 import { useEffect, useState } from 'react';
-import click from 'components/parts/image/click.png';
+import ggumdoriClick from 'components/parts/image/ggumdoriClick.png';
 import left from 'components/parts/image/left.png';
 import right from 'components/parts/image/right.png';
 import up from 'components/parts/image/up.png';
@@ -39,14 +39,14 @@ function Back() {
           direction={Directions.Left}
           spacing={10}
           isOpen={open}
+          className="z-10"
         >
           <MainButton
-            iconResting={<img src={click} alt="클릭버튼" />}
-            iconActive={<img src={click} alt="클릭버튼" />}
-            background={click}
+            iconResting={<img src={ggumdoriClick} alt="클릭버튼" />}
+            iconActive={<img src={ggumdoriClick} alt="클릭버튼" />}
+            background={ggumdoriClick}
             onClick={() => setOpen((prev) => !prev)}
             size={65}
-            className="transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-110"
           />
           <ChildButton
             icon={<img src={up} alt="위로가기" />}
