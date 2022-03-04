@@ -39,7 +39,7 @@ function Back() {
           direction={Directions.Left}
           spacing={10}
           isOpen={open}
-          className="z-10"
+          className="z-10 transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-110"
         >
           <MainButton
             iconResting={<img src={ggumdoriClick} alt="클릭버튼" />}

@@ -11,6 +11,7 @@ import Footer from 'components/parts/Footer';
 import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
 import Back from 'components/parts/Back';
+import LoginPage from 'pages/LoginPage';
 
 function App() {
   const [auth] = useAuth();

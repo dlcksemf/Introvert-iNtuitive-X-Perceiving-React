@@ -116,7 +116,7 @@ function BookApplicationList() {
 
           <button
             onClick={handleClick}
-            className="mr-5 bg-indigo-500 px-5 py-3 text-sm shadow-sm font-medium tracking-wider  text-indigo-100 rounded-full hover:shadow-2xl hover:bg-indigo-600"
+            className="mr-5 bg-indigo-100 px-5 py-3 text-sm shadow-sm font-semibold tracking-wider text-black rounded-full hover:shadow-2xl hover:bg-indigo-200"
           >
             도서 신청
           </button>
