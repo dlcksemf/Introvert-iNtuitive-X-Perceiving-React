@@ -35,8 +35,10 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <div className="relative">
-          <div className="fixed bottom-24 left-0 right-5">
-            <Back className="sticky top-0" />
+          <div className="fixed bottom-24 left-0 right-5 mb-10">
+            <div className="">
+              <Back className="sticky top-0" />
+            </div>
           </div>
         </div>
       </div>
