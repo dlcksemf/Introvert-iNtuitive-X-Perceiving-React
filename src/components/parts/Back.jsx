@@ -33,7 +33,7 @@ function Back() {
 
   return (
     <>
-      <div className="sticky top-0 flex justify-end mr-4">
+      <div>
         <FloatingMenu
           slideSpeed={700}
           direction={Directions.Left}
