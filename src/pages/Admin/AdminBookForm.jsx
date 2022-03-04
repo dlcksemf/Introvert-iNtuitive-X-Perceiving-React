@@ -7,7 +7,6 @@ import Button from './Button';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { useNavigate } from 'react-router-dom';
 import FormCategory from 'components/parts/FormCategory';
-import DebugStates from 'base/DebugStates';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -120,9 +119,9 @@ function AdminBookForm({ postId, handleDidSave }) {
         `저장 중 에러가 발생했습니다 (${saveError.response?.status} ${saveError.response?.statusText})`}
       <form onSubmit={handleSubmit}>
         <div className="h-screen">
-          <div className="max-w-3xl mx-auto px-4 py-10">
+          <div className="max-w-3xl mx-auto px-4 py-10 shadow-xl">
             <div className="py-10">
-              <label className="font-bold mb-2 text-gray-700 block">
+              <label className="font-bold mb-2 text-gray-700 block text-center">
                 도서 표지
               </label>
 
@@ -139,7 +138,11 @@ function AdminBookForm({ postId, handleDidSave }) {
                     }}
                   />
                   <div className="hover:text-blue-400">
-                    <label for="img" className="cursor-pointer">
+                    <label
+                      for="img"
+                      className="cursor-pointer flex justify-center
+                      transition duration-500 ease-in-out hover:scale-110"
+                    >
                       도서 표지 등록하기
                     </label>
                   </div>
@@ -161,6 +164,20 @@ function AdminBookForm({ postId, handleDidSave }) {
                 </p>
               ))}
             </div>
+
+            <div className="mb-5">
+              <label className="font-bold mb-1 text-gray-700 block outline-none">
+                카테고리
+              </label>
+              <select
+                name="category"
+                onChange={handleFieldChange}
+                value={fieldValues.category}
+              >
+                <FormCategory />
+              </select>
+            </div>
+
             <div className="mb-5">
               <label className="font-bold mb-1 text-gray-700 block">제목</label>
               <input
@@ -168,7 +185,9 @@ function AdminBookForm({ postId, handleDidSave }) {
                 value={fieldValues.title}
                 onChange={handleFieldChange}
                 type="text"
-                className="p-1 bg-gray-100 w-full outline-none"
+                autoComplete="off"
+                placeholder="도서 제목을 넣어주세요."
+                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.title?.map((message, index) => (
                 <p key={index} className="text-xs text-red-400">
@@ -183,7 +202,9 @@ function AdminBookForm({ postId, handleDidSave }) {
                 value={fieldValues.writer}
                 onChange={handleFieldChange}
                 type="text"
-                className="p-1 bg-gray-100 w-full outline-none"
+                autoComplete="off"
+                placeholder="글쓴이를 넣어주세요."
+                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.writer?.map((message, index) => (
                 <p key={index} className="text-xs text-red-400">
@@ -198,7 +219,9 @@ function AdminBookForm({ postId, handleDidSave }) {
                 value={fieldValues.translator}
                 onChange={handleFieldChange}
                 type="text"
-                className="p-1 bg-gray-100 w-full outline-none"
+                autoComplete="off"
+                placeholder="역자를 넣어주세요."
+                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.translator?.map((message, index) => (
                 <p key={index} className="text-xs text-red-400">
@@ -215,7 +238,9 @@ function AdminBookForm({ postId, handleDidSave }) {
                 value={fieldValues.publisher}
                 onChange={handleFieldChange}
                 type="text"
-                className="p-1 bg-gray-100 w-full outline-none"
+                autoComplete="off"
+                placeholder="출판사를 넣어주세요."
+                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.publisher?.map((message, index) => (
                 <p key={index} className="text-xs text-red-400">
@@ -232,7 +257,9 @@ function AdminBookForm({ postId, handleDidSave }) {
                 value={fieldValues.published_date}
                 onChange={handleFieldChange}
                 type="date"
-                className="p-1 bg-gray-100 w-full outline-none"
+                autoComplete="off"
+                placeholder="출판일을 선택해주세요."
+                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.published_date?.map((message, index) => (
                 <p key={index} className="text-xs text-red-400">
@@ -247,7 +274,9 @@ function AdminBookForm({ postId, handleDidSave }) {
                 value={fieldValues.ISBN}
                 onChange={handleFieldChange}
                 type="text"
-                className="p-1 bg-gray-100 w-full outline-none"
+                autoComplete="off"
+                placeholder="ISBN을 넣어주세요."
+                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.ISBN?.map((message, index) => (
                 <p key={index} className="text-xs text-red-400">
@@ -264,7 +293,9 @@ function AdminBookForm({ postId, handleDidSave }) {
                 value={fieldValues.story}
                 onChange={handleFieldChange}
                 type="text"
-                className="p-1 bg-gray-100 w-full h-80 outline-none"
+                autoComplete="off"
+                placeholder="줄거리를 넣어주세요."
+                className="w-full h-80 bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.story?.map((message, index) => (
                 <p key={index} className="text-xs text-red-400">
@@ -273,20 +304,7 @@ function AdminBookForm({ postId, handleDidSave }) {
               ))}
             </div>
 
-            <div className="mb-5">
-              <label className="font-bold mb-1 text-gray-700 block">
-                카테고리
-              </label>
-              <select
-                name="category"
-                onChange={handleFieldChange}
-                value={fieldValues.category}
-              >
-                <FormCategory />
-              </select>
-            </div>
-
-            <div className="my-3">
+            <div className="my-3 text-center">
               <Button>저장하기</Button>
             </div>
           </div>

@@ -15,7 +15,7 @@ function AdminBookList() {
 
   const [{ data: postList, loading, error }, refetch] = useApiAxios(
     {
-      url: '/books/api/books/',
+      url: '/books/api/books/?page_size=9',
       method: 'GET',
     },
     { manual: true },
@@ -52,7 +52,7 @@ function AdminBookList() {
   }, [fetchApplications]);
 
   return (
-    <div className="my-5">
+    <div className="my-5 cursor-pointer">
       <ToastContainer />
       <div className="text-right mb-2 mr-4 absolute left-3/4 top-24 ml-36">
         <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />

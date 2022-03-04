@@ -132,7 +132,7 @@ function AdminBookDetail({ postId }) {
                       className="text-gray-600 text-s mb-10 hover:text-blue-500 hover:font-bold
                       transition duration-500 ease-in-out hover:scale-105"
                     >
-                      대전 책방 찾아보기
+                      대전 책방 알아보기
                     </button>
                   </div>
                   <div className="flex items-center border-b-2 border-gray-100 mb-3">
@@ -141,7 +141,7 @@ function AdminBookDetail({ postId }) {
                       className="text-gray-600 text-s mb-10 hover:text-blue-500 hover:font-bold
                       transition duration-500 ease-in-out hover:scale-105"
                     >
-                      알라딘에서 찾아보기
+                      알라딘에서 책찾기
                     </button>
                   </div>
 
