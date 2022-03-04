@@ -33,35 +33,35 @@ function Back() {
 
   return (
     <>
-      <div className="relative flex justify-end mr-4">
+      <div className="sticky top-0 flex justify-end mr-4">
         <FloatingMenu
           slideSpeed={700}
           direction={Directions.Left}
-          spacing={8}
+          spacing={10}
           isOpen={open}
         >
           <MainButton
-            iconResting={<img src={click} />}
-            iconActive={<img src={click} />}
+            iconResting={<img src={click} alt="클릭버튼" />}
+            iconActive={<img src={click} alt="클릭버튼" />}
             background={click}
-            onClick={() => setOpen(true)}
+            onClick={() => setOpen((prev) => !prev)}
             size={65}
             className="transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-110"
           />
           <ChildButton
-            icon={<img src={up} />}
+            icon={<img src={up} alt="위로가기" />}
             background="white"
             size={45}
             onClick={() => moveToTop()}
           />
           <ChildButton
-            icon={<img src={right} />}
+            icon={<img src={right} alt="앞으로가기" />}
             background="white"
             size={45}
             onClick={() => navigate(1)}
           />
           <ChildButton
-            icon={<img src={left} />}
+            icon={<img src={left} alt="뒤로가기" />}
             background="white"
             size={45}
             onClick={() => navigate(-1)}

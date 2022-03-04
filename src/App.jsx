@@ -34,18 +34,20 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
-      <div className="relative">
-        <Back />
+        <div className="relative">
+          <div className="fixed bottom-24 left-0 right-5">
+            <Back className="sticky top-0" />
+          </div>
+        </div>
       </div>
       <div className="h-[60px]"></div>
 
-      {/* {!auth?.is_staff && ( */}
-      <div className="absolute bottom-0 w-full">
-        <hr />
-        <Footer />
-      </div>
-      {/* )} */}
+      {!auth?.is_staff && (
+        <div className="absolute bottom-0 w-full">
+          <hr />
+          <Footer />
+        </div>
+      )}
     </div>
   );
 }
