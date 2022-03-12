@@ -20,22 +20,20 @@ function NewBook() {
 
   return (
     <div className="flex justify-center">
-      <div className="h-[800px] w-[1100px]">
+      <div className="h-[400px] w-[500px]">
         <Carousel
           stopAutoPlayOnHover={true}
           fullHeightHover={false}
           indicators={false}
-          navButtonsProps={{
-            style: {
-              backgroundColor: 'cornflowerblue',
-              borderRadius: 100,
-            },
-          }}
+          NavButton={false}
+          navButtonsAlwaysInvisible={true}
+          swipeable={true}
+          swipeScrollTolerance={10}
         >
           {bookList?.slice(0, 3).map((book) => (
             <div
               key={book.book_num}
-              className="h-[600px] w-[1000px] flex justify-center items-center"
+              className="h-[200px] w-[450px] flex justify-center items-center"
             >
               <NewBookSummary book={book} />
             </div>

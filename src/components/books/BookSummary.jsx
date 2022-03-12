@@ -9,7 +9,7 @@ import LoanedIcon from 'designMaterials/LoanedIcon';
 import Toggle from 'components/parts/Toggle';
 
 import non_image from 'components/parts/image/non_image.jpg';
-import heavy_reader from 'components/parts/image/heavy_reader.png';
+import heavy_reader from 'components/parts/image/heavyReader.jpg';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
@@ -188,29 +188,21 @@ function Top5Summary({ book }) {
 
   return (
     <>
-      <h1
-        className="text-5xl font-semibold mt-10 absolute left-8 top-16
-      border-b-4 border-blue-300 py-2 hover:border-blue-500"
-      >
-        인기도서
-      </h1>
-
       <section className="text-gray-600 body-font overflow-hidden mt-20">
+        <h1 className="text-5xl font-semibold relative top-full text-left mb-7 mt-10">
+          인기도서
+        </h1>
         <div className="container mx-auto">
           <div className="lg:w-full mx-auto flex flex-wrap items-center">
             <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 m-auto">
-              <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
+              <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2 text-left">
                 {book.category && `[ ${book.category} ]`}
               </h2>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-4 hover:font-bold">
+              <div className="text-lg m-auto">{book.writer}</div>
+              <h1 className="text-gray-900 text-3xl title-font font-medium mb-4 border-b-2 border-blue-400 py-3">
                 {book.title}
               </h1>
-              <div className="flex mb-4">
-                <div className="flex-grow border-b-2 border-blue-300 py-2 text-lg px-1">
-                  {book.writer}
-                </div>
-              </div>
-              <p className="leading-relaxed mb-4 hover:font-semibold m-auto">
+              <p className="leading-relaxed mb-4 hover:font-semibold m-auto cursor-grab">
                 {truncateString(book.story)}
               </p>
 
@@ -219,8 +211,8 @@ function Top5Summary({ book }) {
                   onClick={() => {
                     navigate(`/books/${book.book_num}/`);
                   }}
-                  className="flex justify-center text-white bg-indigo-600 border-0 mt-2 py-2 px-12 
-                focus:outline-none hover:bg-indigo-700 rounded-full mb-16"
+                  className="flex justify-center text-white bg-blue-400 border-0 mt-2 py-2 px-12 
+                focus:outline-none hover:bg-blue-500 rounded-full mb-16"
                 >
                   자세히보기
                 </button>
@@ -231,7 +223,10 @@ function Top5Summary({ book }) {
               src={book?.cover_photo ? book.cover_photo : non_image}
               alt={book.title}
               className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block"
+            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block cursor-pointer"
+              onClick={() => {
+                navigate(`/books/${book.book_num}/`);
+              }}
             />
           </div>
         </div>
@@ -247,30 +242,29 @@ function HeavyReaderSummary({ book }) {
         <img
           src={heavy_reader}
           alt="다독왕"
-          className="w-3/5 h-3/5 rounded inline"
+          className="bg-cover h-56 w-screen rounded inline mr-20 mt-20 grayscale hover:grayscale-0"
         />
+        {/* <h1 className="relative text-center text-4xl select-none font-semibold">
+          EUCLID 다독왕
+        </h1>
 
-        <div className="absolute mt-72">
-          <div className="flex flex-col justify-center">
-            <h1 className="mt-10 text-4xl select-none font-semibold">
-              {book?.gender === 'F'
-                ? 'EUCLID 다독왕 👸'
-                : book?.gender === 'M'
-                ? 'EUCLID 다독왕 🤴'
-                : 'EUCLID 다독왕 🏆'}
-            </h1>
-
-            <h1 className="mt-14 flex justify-center text-5xl select-none cursor-default font-bold transition duration-500 ease-in-out hover:scale-125 hover:text-blue-500">
-              {book?.count_loans ? book.username : 'Unknown'}
-            </h1>
-
-            <h1 className="flex justify-center text-3xl select-none mt-14">
-              {book?.position
-                ? book.position
-                : !book?.count_loans && '과연 누가 될까요?'}
-            </h1>
-          </div>
+        <div
+          className="mt-10 before:block before:absolute before:-inset-1 before:-skew-y-12
+      before:bg-gradient-to-r from-blue-200 via-blue-400 to-blue-700 relative inline-block justify-center items-center"
+        >
+          <h1
+            className="mt-7 flex justify-center text-5xl select-none cursor-default font-extrabold
+      transition duration-500 ease-in-out hover:scale-125 relative italic"
+          >
+            {book?.count_loans ? book.username : 'Unknown'}
+          </h1>{' '}
         </div>
+
+        <h1 className="flex justify-center text-3xl select-none mt-14">
+          {book?.position
+            ? book.position
+            : !book?.count_loans && '과연 누가 될까요?'}
+        </h1> */}
       </span>
     </div>
   );
