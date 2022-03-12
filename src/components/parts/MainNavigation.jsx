@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   ProSidebar,
@@ -7,15 +7,36 @@ import {
   SidebarContent,
   SidebarFooter,
 } from 'react-pro-sidebar';
-
 import 'react-pro-sidebar/dist/css/styles.css';
 import 'css/Navigation.css';
 
-import { HashLink, NavHashLink } from 'react-router-hash-link';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
+import up from 'components/parts/image/up3.png';
+import left from 'components/parts/image/left3.png';
+import right from 'components/parts/image/right3.png';
+import logoutIcon from 'components/parts/image/logout.png';
+import login from 'components/parts/image/login3.png';
 
 function MainNavigation() {
+  const [auth] = useAuth();
+  const [goToTop, setGoToTop] = useState(0);
+
+  useEffect(() => {
+    setGoToTop((document.documentElement.scrollTop = 0));
+  }, []);
+
+  const moveToTop = () => {
+    window.scrollTo({
+      top: goToTop,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    moveToTop();
+  }, [goToTop]);
+
   const navigate = useNavigate();
 
   const [, , , logout] = useAuth();
@@ -41,52 +62,54 @@ function MainNavigation() {
         collapsed={menuCollapse}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        rtl="true"
       >
         <SidebarContent>
-          <Menu iconShape="square">
-            <MenuItem icon="🏠">
-              <NavHashLink
-                smooth
-                activestyle={{ fontWeight: 'bold' }}
-                to={'/#top'}
-                className="hover:text-lg"
-              >
-                <h1 className="text-indigo-900">메인화면</h1>
-              </NavHashLink>
-            </MenuItem>
+          <Menu>
+            <div
+              activestyle={{ fontWeight: 'bold' }}
+              onClick={() => moveToTop()}
+              className="hover:text-lg"
+            >
+              <MenuItem icon={<img src={up} alt="위" />}>
+                <h1 className="text-indigo-900 select-none">위로가기</h1>
+              </MenuItem>
+            </div>
 
-            <MenuItem icon="🏆">
-              <HashLink smooth to={'/#rank'} className="hover:text-lg">
-                <h1 className="text-indigo-900">인기도서</h1>
-              </HashLink>
-            </MenuItem>
+            <div onClick={() => navigate(-1)} className="hover:text-lg">
+              <MenuItem icon={<img src={left} alt="뒤" />}>
+                <h1 className="text-indigo-900 select-none">뒤로가기</h1>
+              </MenuItem>
+            </div>
 
-            <MenuItem icon="😎">
-              <HashLink smooth to={'/#top-reader'} className="hover:text-lg">
-                <h1 className="text-indigo-900">다독왕</h1>
-              </HashLink>
-            </MenuItem>
-
-            <MenuItem icon="🤩">
-              <HashLink smooth to={'/#new-book'} className="hover:text-lg">
-                <h1 className="text-indigo-900">신간도서</h1>
-              </HashLink>
-            </MenuItem>
-
-            <MenuItem icon="🔍">
-              <HashLink smooth to={'/#guide'} className="hover:text-lg">
-                <h1 className="text-indigo-900">이용안내</h1>
-              </HashLink>
-            </MenuItem>
+            <div onClick={() => navigate(1)} className="hover:text-lg">
+              <MenuItem icon={<img src={right} alt="앞" />}>
+                <h1 className="text-indigo-900 select-none">앞으로가기</h1>
+              </MenuItem>
+            </div>
           </Menu>
         </SidebarContent>
         <SidebarFooter>
-          <Menu iconShape="square">
-            <MenuItem icon="🙋‍♀️">
-              <div onClick={handleLogout} className="hover:text-lg">
-                <h1 className="text-black">Log Out</h1>
+          <Menu>
+            {!auth.isLoggedIn && (
+              <div
+                onClick={() => {
+                  navigate('/accounts/login/');
+                }}
+                className="hover:text-lg"
+              >
+                <MenuItem icon={<img src={login} alt="들어오기" />}>
+                  <h1 className="text-black">Log In</h1>
+                </MenuItem>
               </div>
-            </MenuItem>
+            )}
+            {auth.isLoggedIn && (
+              <div onClick={handleLogout} className="hover:text-lg">
+                <MenuItem icon={<img src={logoutIcon} alt="나가기" />}>
+                  <h1 className="text-black">Log Out</h1>
+                </MenuItem>
+              </div>
+            )}
           </Menu>
         </SidebarFooter>
       </ProSidebar>

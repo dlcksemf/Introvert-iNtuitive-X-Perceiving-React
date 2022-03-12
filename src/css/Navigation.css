@@ -18,7 +18,7 @@
 #header .pro-sidebar {
   width: 100%;
   min-width: 100%;
-  height: 100vh;
+  height: 54vh;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(5px);
 }
@@ -30,7 +30,7 @@
 }
 #header .pro-sidebar-inner {
   background-color: transparent;
-  box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0.5px 0.866px 2px 1px rgba(0, 0, 0, 0.15);
 }
 #header .pro-sidebar-inner .pro-sidebar-layout {
   overflow-y: hidden;
@@ -56,7 +56,7 @@
   ul
   .pro-inner-item
   .pro-icon-wrapper {
-  background-color: #dcebff;
+  background-color: #fcfcfc00;
   color: #000;
   border-radius: 3px;
 }
