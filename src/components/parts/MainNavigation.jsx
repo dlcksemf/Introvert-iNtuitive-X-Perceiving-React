@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
 
-import { ProSidebar, Menu, MenuItem, SidebarContent } from 'react-pro-sidebar';
+import {
+  ProSidebar,
+  Menu,
+  MenuItem,
+  SidebarContent,
+  SidebarFooter,
+} from 'react-pro-sidebar';
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import 'css/Navigation.css';
 
 import { HashLink, NavHashLink } from 'react-router-hash-link';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'base/hooks/Authcontext';
 
 function MainNavigation() {
+  const navigate = useNavigate();
+
+  const [, , , logout] = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   const [menuCollapse, setMenuCollapse] = useState(true);
 
   const handleMouseEnter = () => {
@@ -63,6 +80,15 @@ function MainNavigation() {
             </MenuItem>
           </Menu>
         </SidebarContent>
+        <SidebarFooter>
+          <Menu iconShape="square">
+            <MenuItem icon="🙋‍♀️">
+              <div onClick={handleLogout} className="hover:text-lg">
+                <h1 className="text-black">Log Out</h1>
+              </div>
+            </MenuItem>
+          </Menu>
+        </SidebarFooter>
       </ProSidebar>
     </div>
   );
