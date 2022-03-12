@@ -7,6 +7,7 @@ import ErrorBoundary from 'base/ErrorBoundary';
 import { AuthProvider } from 'base/hooks/Authcontext';
 import { RenderProvider } from 'base/hooks/RenderContext';
 import { ReloadProvider } from 'base/hooks/ReloadContext';
+import './static/fonts/font.css';
 
 ReactDOM.render(
   <React.StrictMode>
