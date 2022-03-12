@@ -20,17 +20,15 @@ function Top5() {
 
   return (
     <div className="flex justify-center">
-      <div className="h-[700px] w-[1100px]">
+      <div className="h-[700px] w-[700px]">
         <Carousel
           stopAutoPlayOnHover={true}
           fullHeightHover={false}
           indicators={false}
-          navButtonsProps={{
-            style: {
-              backgroundColor: 'cornflowerblue',
-              borderRadius: 100,
-            },
-          }}
+          NavButton={false}
+          navButtonsAlwaysInvisible={true}
+          swipeable={true}
+          swipeScrollTolerance={10}
         >
           {bookList
             ?.sort((book1, book2) => book2.count_loans - book1.count_loans)
@@ -38,7 +36,7 @@ function Top5() {
             .map((book) => (
               <div
                 key={book.book_num}
-                className="h-[700px] w-[1000px] flex justify-center items-center"
+                className="ml-32 h-[600px] w-[500px] flex justify-center items-center"
               >
                 <Top5Summary book={book} />
               </div>
