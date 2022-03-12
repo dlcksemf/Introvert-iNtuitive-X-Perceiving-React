@@ -69,7 +69,7 @@ function MainNavigation() {
             <div
               activestyle={{ fontWeight: 'bold' }}
               onClick={() => moveToTop()}
-              className="hover:text-lg"
+              className="hover:text-lg scroll-smooth"
             >
               <MenuItem icon={<img src={up} alt="위" />}>
                 <h1 className="text-indigo-900 select-none">위로가기</h1>
