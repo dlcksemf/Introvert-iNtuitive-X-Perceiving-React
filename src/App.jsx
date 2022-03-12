@@ -10,7 +10,6 @@ import MainPage from 'pages/MainPage';
 import Footer from 'components/parts/Footer';
 import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
-import Back from 'components/parts/Back';
 import LoginPage from 'pages/LoginPage';
 
 function App() {
@@ -34,11 +33,6 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <div className="relative">
-          <div className="fixed bottom-20 right-16">
-            <Back className="sticky top-0" />
-          </div>
-        </div>
       </div>
       <div className="h-[60px]"></div>
 
