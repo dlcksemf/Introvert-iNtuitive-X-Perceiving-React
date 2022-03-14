@@ -132,8 +132,34 @@ function NewBookSummary({ book }) {
 
   return (
     <>
-      <h1
-        className="text-5xl font-semibold mt-10 absolute left-6 top-14
+      <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <img
+          class="w-96 h-48 object-scale-down"
+          src={book?.cover_photo ? book.cover_photo : non_image}
+          alt={book.title}
+        />
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{book.title}</div>
+          <p class="text-gray-700 text-base">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Voluptatibus quia, nulla! Maiores et perferendis eaque,
+            exercitationem praesentium nihil.
+          </p>
+        </div>
+        <div class="px-6 pt-4 pb-2">
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            #photography
+          </span>
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            #travel
+          </span>
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            #winter
+          </span>
+        </div>
+      </div>
+      {/* <h1
+        className="text-5xl font-semibold mt-10 relative  text-right
       border-b-4 border-blue-300 py-2 hover:border-blue-500"
       >
         신간도서
@@ -141,6 +167,12 @@ function NewBookSummary({ book }) {
 
       <section className="text-gray-600 body-font overflow-hidden mt-28">
         <div className="container mx-auto">
+          <img
+            src={book?.cover_photo ? book.cover_photo : non_image}
+            alt={book.title}
+            className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
+            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block"
+          />
           <div className="lg:w-full mx-auto flex flex-wrap items-center">
             <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 m-auto">
               <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
@@ -169,16 +201,9 @@ function NewBookSummary({ book }) {
                 </button>
               </div>
             </div>
-
-            <img
-              src={book?.cover_photo ? book.cover_photo : non_image}
-              alt={book.title}
-              className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block"
-            />
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }
@@ -194,7 +219,7 @@ function Top5Summary({ book }) {
         </h1>
         <div className="container mx-auto">
           <div className="lg:w-full mx-auto flex flex-wrap items-center">
-            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 m-auto">
+            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 mt-10 m-auto">
               <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2 text-left">
                 {book.category && `[ ${book.category} ]`}
               </h2>
@@ -222,7 +247,7 @@ function Top5Summary({ book }) {
             <img
               src={book?.cover_photo ? book.cover_photo : non_image}
               alt={book.title}
-              className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
+              className="lg:w-1/2 max-w-xs lg:h-96 max-h-xs object-fill object-center rounded-lg object-scale-down
             transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block cursor-pointer"
               onClick={() => {
                 navigate(`/books/${book.book_num}/`);
@@ -237,36 +262,58 @@ function Top5Summary({ book }) {
 
 function HeavyReaderSummary({ book }) {
   return (
-    <div>
-      <span className="flex justify-center relative">
+    <div class="h-screen flex items-center justify-center">
+      <card class="relative h-[30rem] sm:h-96 w-[40rem] rounded-lg">
         <img
           src={heavy_reader}
           alt="다독왕"
-          className="bg-cover h-56 w-screen rounded inline mr-20 mt-20 grayscale hover:grayscale-0"
+          class="object-cover w-full h-full rounded-lg"
         />
-        {/* <h1 className="relative text-center text-4xl select-none font-semibold">
-          EUCLID 다독왕
-        </h1>
 
-        <div
-          className="mt-10 before:block before:absolute before:-inset-1 before:-skew-y-12
-      before:bg-gradient-to-r from-blue-200 via-blue-400 to-blue-700 relative inline-block justify-center items-center"
-        >
-          <h1
-            className="mt-7 flex justify-center text-5xl select-none cursor-default font-extrabold
-      transition duration-500 ease-in-out hover:scale-125 relative italic"
-          >
-            {book?.count_loans ? book.username : 'Unknown'}
-          </h1>{' '}
+        <div class="absolute w-full h-full bottom-0 bg-gradient-to-r from-indigo-700/30 to-blue-700 rounded-lg flex flex-col items-center justify-center text-center">
+          <p class="text-lg px-14 text-gray-300 mt-10">
+            GitHub helps us ensure that we have our security controls baked into
+            our pipelines all the way from the first line of code we’re writing.
+          </p>
+
+          <p class="text-base font-bold px-14 text-gray-300 mt-3">
+            Chief Information Security Officer
+          </p>
+
+          <p class="text-sm font-light px-14 text-gray-300 ">Dow Jones</p>
         </div>
-
-        <h1 className="flex justify-center text-3xl select-none mt-14">
-          {book?.position
-            ? book.position
-            : !book?.count_loans && '과연 누가 될까요?'}
-        </h1> */}
-      </span>
+      </card>
     </div>
+    // <div>
+    //   <span className="flex justify-center relative">
+    //     <img
+    //       src={heavy_reader}
+    //       alt="다독왕"
+    //       className="bg-cover h-56 w-screen rounded inline mr-20 mt-20 grayscale hover:grayscale-0"
+    //     />
+    //     <h1 className="relative text-center text-4xl select-none font-semibold">
+    //       EUCLID 다독왕
+    //     </h1>
+
+    //     <div
+    //       className="mt-10 before:block before:absolute before:-inset-1 before:-skew-y-12
+    //   before:bg-gradient-to-r from-blue-200 via-blue-400 to-blue-700 relative inline-block justify-center items-center"
+    //     >
+    //       <h1
+    //         className="mt-7 flex justify-center text-5xl select-none cursor-default font-extrabold
+    //   transition duration-500 ease-in-out hover:scale-125 relative italic"
+    //       >
+    //         {book?.count_loans ? book.username : 'Unknown'}
+    //       </h1>{' '}
+    //     </div>
+
+    //     <h1 className="flex justify-center text-3xl select-none mt-14">
+    //       {book?.position
+    //         ? book.position
+    //         : !book?.count_loans && '과연 누가 될까요?'}
+    //     </h1>
+    //   </span>
+    // </div>
   );
 }
 
