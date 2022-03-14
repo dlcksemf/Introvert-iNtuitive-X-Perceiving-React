@@ -9,6 +9,7 @@ import AdminUserPage from 'pages/Admin/AdminUserPage';
 import AdminTopNav from 'components/maneger/AdminTopNav';
 import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
+import AdminGameListPage from 'pages/Admin/Game/AdminGameListPage';
 
 function PageAdminRouter() {
   return (
@@ -26,6 +27,7 @@ function PageAdminRouter() {
           <Route path="/book/:postId/edit/" element={<PageAdminBookForm />} />
           <Route path="/application/" element={<AdminBookApplicationPage />} />
           <Route path="/loanedbook/" element={<AdminLoanedBookList />} />
+          <Route path="/gamelist/" element={<AdminGameListPage />} />
           <Route path="/403/" element={<ErrorForbidden />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
