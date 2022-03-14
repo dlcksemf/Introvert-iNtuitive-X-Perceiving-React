@@ -2,7 +2,7 @@
 
 import { useAuth } from 'base/hooks/Authcontext';
 import { NavLink, useNavigate } from 'react-router-dom';
-import name from 'components/parts/image/name2.png';
+import name from 'components/parts/image/euclidLibrary.png';
 import search from 'components/parts/image/search.png';
 import user from 'components/parts/image/user.png';
 
@@ -18,8 +18,8 @@ function TopNav() {
   };
 
   return (
-    <header className="border-t-4 border-blue-700 text-gray-600 border-double body-font sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-80">
-      <div className="mx-2 flex px-5 py-2 flex-col md:flex-row items-center">
+    <header className="text-gray-600 body-font sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-80">
+      <div className="mx-2 flex px-7 pt-1 pb-4 flex-col md:flex-row items-center">
         <div className="basis-1/3 grow-0 shrink-0 text-gray-900 md:mb-0"></div>
 
         <div
@@ -31,7 +31,7 @@ function TopNav() {
             className="text-md text-primary-600 text-bold text-center"
             onClick={handleGoToMainPage}
           >
-            <img src={name} alt="EUCLID BOOKS" />
+            <img src={name} alt="EUCLID BOOKS" className="h-32" />
           </div>
         </div>
 

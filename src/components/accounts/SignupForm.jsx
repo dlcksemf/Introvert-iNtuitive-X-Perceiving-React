@@ -58,23 +58,49 @@ function SignupForm() {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 pb-16 mx-auto flex flex-wrap items-center">
-        <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-          <h1
-            className="title-font font-medium text-3xl text-gray-900 text-center select-none
+        {location.pathname === '/accounts/signup/2/' ? (
+          <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+            <h1
+              className="title-font font-medium text-3xl text-gray-900 text-center select-none
+          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105"
+            >
+              🖐🏻 회원가입 화면입니다!
+            </h1>
+            <p className="leading-relaxed mt-4 text-center select-none">
+              선택정보를 입력해주시면
+            </p>
+            <p className="leading-relaxed mt-4 text-center select-none">
+              선택정보를 활용한 도서통계를 통해
+            </p>
+            <p className="leading-relaxed mt-4 text-center select-none">
+              추천도서 서비스를 이용하실 수 있습니다.
+            </p>
+            <p
+              className="leading-relaxed mt-4 text-center text-lg text-red-600 font-semibold 
+          select-none underline decoration-wavy underline-offset-8"
+            >
+              선택정보를 입력하지 않아도 회원가입을 하실 수 있습니다.
+            </p>
+          </div>
+        ) : (
+          <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+            <h1
+              className="title-font font-medium text-3xl text-gray-900 text-center select-none
             transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105"
-          >
-            🖐🏻 안녕하세요, 반가워요!
-          </h1>
-          <p className="leading-relaxed mt-4 text-center select-none">
-            회원가입을 하시면
-          </p>
-          <p className="leading-relaxed mt-4 text-center select-none">
-            약 400여 권의 도서를 통해
-          </p>
-          <p className="leading-relaxed mt-4 text-center select-none">
-            폭 넓은 지식을 쌓으실 수 있습니다!
-          </p>
-        </div>
+            >
+              🖐🏻 회원가입 화면입니다!
+            </h1>
+            <p className="leading-relaxed mt-4 text-center select-none">
+              필수정보를 입력 후 가입 하시면
+            </p>
+            <p className="leading-relaxed mt-4 text-center select-none">
+              약 400여 권의 도서를 통해
+            </p>
+            <p className="leading-relaxed mt-4 text-center select-none">
+              폭 넓은 지식을 쌓으실 수 있습니다!
+            </p>
+          </div>
+        )}
 
         <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
           {location.pathname === '/accounts/signup/2/' ? (

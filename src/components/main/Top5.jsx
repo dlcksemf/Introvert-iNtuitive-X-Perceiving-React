@@ -20,7 +20,7 @@ function Top5() {
 
   return (
     <div className="flex justify-center">
-      <div className="h-[700px] w-[700px]">
+      <div className="h-[700px] w-[750px]">
         <Carousel
           stopAutoPlayOnHover={true}
           fullHeightHover={false}
@@ -36,7 +36,7 @@ function Top5() {
             .map((book) => (
               <div
                 key={book.book_num}
-                className="ml-32 h-[600px] w-[500px] flex justify-center items-center"
+                className="ml-32 h-[600px] w-[650px] flex justify-center items-center"
               >
                 <Top5Summary book={book} />
               </div>

@@ -1,6 +1,6 @@
 @font-face {
   /* 사용할 폰트의 이름 */
-  font-family: 'Binggrae';
+  font-family: 'SUIT-Variable';
   font-display: fallback;
 
   /* 
@@ -9,9 +9,9 @@
        Modern Browsers => woff
        IE6-IE8 => eot
     */
-  src: url('./Binggrae.ttf') format('truetype'),
-    url('./Binggrae.woff') format('woff'),
-    url('./Binggrae.eot?iefix') format('embedded-opentype');
+  src: url('./SUIT-Variable.ttf') format('truetype'),
+    url('./SUIT-Variable.woff') format('woff'),
+    url('./SUIT-Variable.eot?iefix') format('embedded-opentype');
 
   /* 사용할 폰트의 기본 스타일 */
   font-weight: 400;
