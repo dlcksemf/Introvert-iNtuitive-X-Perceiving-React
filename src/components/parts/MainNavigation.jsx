@@ -57,12 +57,11 @@ function MainNavigation() {
   };
 
   return (
-    <div id="header">
+    <div id="header" className="mt-24">
       <ProSidebar
         collapsed={menuCollapse}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        rtl="true"
       >
         <SidebarContent>
           <Menu>
