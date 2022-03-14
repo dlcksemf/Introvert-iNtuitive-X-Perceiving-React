@@ -10,7 +10,7 @@ function MainPage() {
   return (
     <div>
       <MainNavigation />
-      <header class="grid grid-cols-8 text-center">
+      <header class="grid grid-cols-8 text-center text-xl">
         <div
           className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
