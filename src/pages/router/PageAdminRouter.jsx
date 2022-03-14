@@ -10,6 +10,7 @@ import AdminTopNav from 'components/maneger/AdminTopNav';
 import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
 import AdminGameListPage from 'pages/Admin/Game/AdminGameListPage';
+import AdminGameDetailPage from 'pages/Admin/Game/AdminGameDetailPage';
 
 function PageAdminRouter() {
   return (
@@ -28,6 +29,7 @@ function PageAdminRouter() {
           <Route path="/application/" element={<AdminBookApplicationPage />} />
           <Route path="/loanedbook/" element={<AdminLoanedBookList />} />
           <Route path="/gamelist/" element={<AdminGameListPage />} />
+          <Route path="/gamelist/:gameId/" element={<AdminGameDetailPage />} />
           <Route path="/403/" element={<ErrorForbidden />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
