@@ -265,10 +265,10 @@ function SignupFormComponent2({
             value={year}
             onChange={(e) => setYear(e.target.value)}
             placeholder="생년 4자리"
-            className="w-32 text-center bg-white rounded border border-gray-3s00 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 ease-in-out"
+            className="w-[143px] text-center bg-white rounded border border-gray-3s00 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 ease-in-out"
           />
           <select
-            className="w-32 h-[42px] text-gray-400 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"
+            className="w-[143px] h-[42px] text-gray-400 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"
             name="month"
             value={month}
             onChange={(e) => setMonth(e.target.value)}
@@ -292,7 +292,7 @@ function SignupFormComponent2({
             value={day}
             onChange={(e) => setDay(e.target.value)}
             placeholder="생일 2자리"
-            className="w-32 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 ease-in-out"
+            className="w-[143px] text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 ease-in-out"
           />
         </div>
       </div>
