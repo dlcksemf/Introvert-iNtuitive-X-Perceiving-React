@@ -70,12 +70,9 @@ function LoginForm() {
         <div className="text-red-400">로그인에 실패했습니다.</div>
       )}
 
-      <div className="container px-5 py-36 mx-auto flex flex-wrap items-center">
+      <div className="container px-5 mx-auto flex flex-wrap items-center">
         <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-          <h1
-            className="title-font font-medium text-3xl text-gray-900 text-center select-none
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105"
-          >
+          <h1 className="title-font font-medium text-3xl text-gray-900 text-center select-none">
             📖 로그인 화면 입니다.
           </h1>
           <p className="leading-relaxed mt-4 text-center select-none">
@@ -84,12 +81,19 @@ function LoginForm() {
           <p className="leading-relaxed mt-4 text-center select-none">
             도서를 신청 하고 싶으신가요?
           </p>
-          <p
-            className="leading-relaxed mt-4 text-center select-none hover:text-blue-500
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
-          >
+          <p className="leading-relaxed mt-4 text-center select-none">
             로그인 후 이용하실 수 있습니다.
           </p>
+          <h1
+            className="leading-relaxed mt-4 text-xl font-semibold text-center select-none text-blue-700 cursor-pointer
+            hover:text-blue-500 transition duration-500 ease-in-out hover:scale-125 hover:font-extrabold
+            underline decoration-wavy underline-offset-8"
+            onClick={() => {
+              navigate(`/accounts/signup/`);
+            }}
+          >
+            회원가입하기
+          </h1>
         </div>
         <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
           <div className="flex justify-end">
