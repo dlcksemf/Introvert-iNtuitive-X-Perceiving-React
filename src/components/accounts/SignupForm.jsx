@@ -8,6 +8,7 @@ import {
 } from './SignupFormComponent';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import back from 'components/parts/image/back.png';
 
 const INIT_FILED_VALUES = {
   username: '',
@@ -56,7 +57,7 @@ function SignupForm() {
 
   return (
     <section className="text-gray-600 body-font">
-      <div className="container px-5 py-36 mx-auto flex flex-wrap items-center">
+      <div className="container px-5 pb-16 mx-auto flex flex-wrap items-center">
         <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
           <h1
             className="title-font font-medium text-3xl text-gray-900 text-center select-none
@@ -76,11 +77,26 @@ function SignupForm() {
         </div>
 
         <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
-          <div className="flex justify-end">
-            <NavLink to="/">
-              <CancelIcon className="flex justify-end" />
-            </NavLink>
-          </div>
+          {location.pathname === '/accounts/signup/2/' ? (
+            <div className="flex justify-end">
+              <NavLink to="/accounts/signup/">
+                <img
+                  src={back}
+                  alt="뒤로가기"
+                  className="flex justify-end w-[42px] h-[42px] fill-white mr-1 mt-1 transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-100"
+                />
+              </NavLink>
+              <NavLink to="/">
+                <CancelIcon className="flex justify-end" />
+              </NavLink>
+            </div>
+          ) : (
+            <div className="flex justify-end">
+              <NavLink to="/">
+                <CancelIcon className="flex justify-end" />
+              </NavLink>{' '}
+            </div>
+          )}
           <h2 className="flex text-gray-900 text-lg font-bold title-font mb-5 select-none">
             회원가입 페이지
           </h2>
@@ -110,34 +126,23 @@ function SignupForm() {
               />
             </Routes>
 
+            {/* 첫 회원가입 화면에서 다음으로 누를 때 필수항목이 다 채워지지 않으면 넘어가지 않게 해주세요.....
+            지금은 그냥 다음으로 눌러도 넘어가집니당.... */}
             <div className="relative mb-4">
-              {location.pathname === '/accounts/signup/' ? (
-                <>
-                  {/* <NavLink
-                  to={`/accounts/signup/`}
-                  type="button"
-                  className="ml-14 mt-6 w-1/3 bg-white rounded border border-gray-300
-                  focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
-                  text-base outline-none text-gray-700 py-1 px-3 leading-8 mr-0
-                  transition duration-500 ease-in-out hover:scale-105 text-center"
-                >
-                  뒤로가기
-                </NavLink> */}
-
-                  <button
-                    className="mt-6 w-full bg-indigo-600 rounded border border-gray-300
+              {location.pathname === '/accounts/signup/2/' ? (
+                <button
+                  className="mt-6 w-full bg-indigo-600 border border-gray-300
               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
               text-base outline-none text-white py-2 px-3 leading-8 hover:bg-indigo-700
               transition duration-500 ease-in-out hover:scale-105 rounded-full"
-                    onClick={handleClickSubmitButton}
-                  >
-                    회원가입
-                  </button>
-                </>
+                  onClick={handleClickSubmitButton}
+                >
+                  회원가입
+                </button>
               ) : (
                 <NavLink
                   className="text-white bg-indigo-500 border-0 py-2 px-8 
-                focus:outline-none hover:bg-indigo-600 rounded text-lg
+                focus:outline-none hover:bg-indigo-600 rounded-full text-lg
               transition duration-500 ease-in-out hover:scale-105 w-full text-center"
                   type="button"
                   to="/accounts/signup/2/"
@@ -149,7 +154,7 @@ function SignupForm() {
           </form>
 
           <p className="text-xs text-gray-500 mt-3 select-none">
-            (주)유클리드소프트
+            ㈜ 유클리드소프트
           </p>
         </div>
       </div>

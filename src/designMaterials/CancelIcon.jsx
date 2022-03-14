@@ -1,6 +1,6 @@
 function CancelIcon() {
   return (
-    <button className="text-white hover:text-red-600 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
+    <button className="text-white transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-100">
       <svg
         fill="currentColor"
         height="48"

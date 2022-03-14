@@ -166,7 +166,7 @@ function LoginForm() {
               </button>
             </form>
             <p className="text-xs text-gray-500 mt-8 select-none">
-              (주) EUCLID SOFT
+              ㈜ 유클리드소프트
             </p>
           </div>
         </div>

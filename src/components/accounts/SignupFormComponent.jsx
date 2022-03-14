@@ -63,6 +63,30 @@ function SignupFormComponent1({
 
       <div className="relative mb-4">
         <label
+          htmlFor="department"
+          className="leading-7 text-sm text-gray-600 select-none
+                after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
+        >
+          부서
+        </label>
+        <div>
+          <select
+            className="w-full h-10 bg-white rounded border border-gray-300 text-gray-400 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            name="department"
+            // value={department}
+            // onChange={(e) => setDepartment(e.target.value)}
+          >
+            <option className="hidden">부서를 선택해주세요.</option>
+            <option>경영관리본부</option>
+            <option>공공사업그룹</option>
+            <option>플랫폼사업그룹</option>
+            <option>기업부설연구소</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="relative mb-4">
+        <label
           htmlFor="phone_num"
           className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
@@ -188,7 +212,7 @@ function SignupFormComponent2({
         </label>
         <div>
           <select
-            className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            className="w-full h-10 bg-white rounded border border-gray-300 text-gray-400 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             name="position"
             value={fieldValues.position}
             onChange={handleFieldChange}
@@ -216,7 +240,7 @@ function SignupFormComponent2({
         </label>
         <div>
           <select
-            className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            className="w-full h-10 bg-white rounded border border-gray-300 text-gray-400 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             name="gender"
             value={gender}
             onChange={(e) => setGender(e.target.value)}
@@ -241,10 +265,10 @@ function SignupFormComponent2({
             value={year}
             onChange={(e) => setYear(e.target.value)}
             placeholder="생년 4자리"
-            className="w-32 text-center bg-white rounded border border-gray-3s00 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            className="w-32 text-center bg-white rounded border border-gray-3s00 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 ease-in-out"
           />
           <select
-            className="w-32 text-center pt-2 pb-2 bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            className="w-32 h-[42px] text-gray-400 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"
             name="month"
             value={month}
             onChange={(e) => setMonth(e.target.value)}
@@ -268,7 +292,7 @@ function SignupFormComponent2({
             value={day}
             onChange={(e) => setDay(e.target.value)}
             placeholder="생일 2자리"
-            className="w-32 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            className="w-32 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 ease-in-out"
           />
         </div>
       </div>
