@@ -12,7 +12,7 @@ function MainPage() {
       <MainNavigation />
       <header class="grid grid-cols-8 text-center">
         <div
-          className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-point
+          className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
           onClick={() => {
             navigate(`/books/booklist/`);
@@ -21,7 +21,7 @@ function MainPage() {
           도서목록
         </div>
         <div
-          className="col-start-4 select-none transition duration-500 ease-in-out hover:scale-125 cursor-point
+          className="col-start-4 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
           onClick={() => {
             navigate(`/`);
@@ -30,7 +30,7 @@ function MainPage() {
           도서신청
         </div>
         <div
-          className="col-start-5 select-none transition duration-500 ease-in-out hover:scale-125 cursor-point
+          className="col-start-5 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
           onClick={() => {
             navigate(`/`);
@@ -39,7 +39,7 @@ function MainPage() {
           보드게임
         </div>
         <div
-          className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-point
+          className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
           onClick={() => {
             navigate(`/`);
