@@ -6,7 +6,6 @@ import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
 import { useEffect, useState } from 'react';
 import BookApplicationSearch from './BookApplicationSearch';
-import { ID, PW } from 'topsecret';
 import { useApiAxios } from 'base/api/base';
 
 const INIT_VALUE = {};
