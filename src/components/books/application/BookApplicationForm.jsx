@@ -2,9 +2,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
-import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
+import { useEffect, useState } from 'react';
+import BookApplicationSearch from './BookApplicationSearch';
+import { ID, PW } from 'topsecret';
+import { useApiAxios } from 'base/api/base';
 
 const INIT_VALUE = {};
 
@@ -19,6 +22,15 @@ function BookApplicationForm() {
   const [auth] = useAuth();
   const navigate = useNavigate();
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_VALUE);
+  const [query, setQuery] = useState();
+
+  const [{ data }, refetch] = useApiAxios(
+    {
+      url: `/books/api/naver_api/?query=${query}`,
+      method: 'GET',
+    },
+    { manual: true },
+  );
 
   const [{ errorMessages }, saveApplication] = useApiAxios(
     {
@@ -30,6 +42,14 @@ function BookApplicationForm() {
     },
     { manual: true },
   );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    refetch().then((response) => {
+      console.log(response.data);
+    });
+  };
 
   const handleClickSubmitButton = (e) => {
     e.preventDefault();
@@ -61,6 +81,10 @@ function BookApplicationForm() {
     window.confirm('취소하시겠습니까?') && navigate(-1);
   };
 
+  useEffect(() => {
+    console.log(data?.items[0]);
+  }, [data]);
+
   return (
     <div>
       <div className="h-screen flex justify-center items-center">
@@ -69,25 +93,12 @@ function BookApplicationForm() {
             <h2 className="mb-10 text-center text-2xl text-gray-600 font-bold font-sans select-none">
               📚 도서 신청 📖
             </h2>
-            {DATA_FIELDS.map((dataType, index) => (
-              <div key={index} className="mb-6">
-                <input
-                  type="text"
-                  name={dataType.field}
-                  onChange={handleFieldChange}
-                  placeholder={dataType.placeholder}
-                  autoComplete="off"
-                  className="
-                  w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none hover:font-semibold"
-                />
-                {errorMessages[dataType] &&
-                  errorMessages[dataType].map((message, index) => (
-                    <p key={index} className="text-xs text-red-400">
-                      {message}
-                    </p>
-                  ))}
-              </div>
-            ))}
+            <BookApplicationSearch
+              handleSubmit={handleSubmit}
+              setQuery={setQuery}
+            />
+
+            {data?.items[0].title}
 
             <div>
               <button

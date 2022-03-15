@@ -5,6 +5,7 @@ import BookApplicationPage from 'pages/BookApplicationPage';
 import BookDetailPage from 'pages/BookDetailPage';
 import BookListPage from 'pages/BookListPage';
 import NotFound from 'components/parts/NotFound';
+import BookApplicationSearch from 'components/books/application/BookApplicationSearch';
 
 function PageBookRouter() {
   const [auth] = useAuth();
@@ -15,6 +16,10 @@ function PageBookRouter() {
         <Route path="/booklist/*" element={<BookListPage />} />
         <Route path="/:book_num/" element={<BookDetailPage />} />
         <Route path="/application/" element={<BookApplicationPage />} />
+        <Route
+          path="/application/search/"
+          element={<BookApplicationSearch />}
+        />
 
         <Route
           path="/application/new/"
