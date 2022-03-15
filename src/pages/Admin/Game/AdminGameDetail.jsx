@@ -72,13 +72,13 @@ function AdminGameDetail({ gameId }) {
 
                   <div className="flex mb-4 select-none">
                     <span className="flex py-2 select-none">
-                      {game?.player_num}
+                      플레이어 수:{game?.player_num}
                     </span>
                     <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      {game?.play_time}
+                      플레이 시간:{game?.play_time}
                     </span>
                     <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      {game?.level}
+                      난이도:{game?.level}
                     </span>
                   </div>
                   <div className="leading-relaxed select-none mt-14 hover:text-gray-900">

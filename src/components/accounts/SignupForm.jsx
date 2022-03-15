@@ -37,10 +37,25 @@ function SignupForm() {
     { manual: true },
   );
 
+  const [{ errorMessage }, pass] = useApiAxios(
+    {
+      url: 'accounts/api/signup/',
+      method: 'UPDATE',
+    },
+    { manual: true },
+  );
+
+  const handlepassbutton = (e) => {
+    e.preventDefault();
+    signup({ data: fieldValues }).then(() => {
+      Navigate('/accounts/signup/2/');
+    });
+  };
+
   const handleClickSubmitButton = (e) => {
     e.preventDefault();
-    window.confirm('😶‍🌫️ 회원가입 하시겠습니까?') &&
-      signup({ data: fieldValues }).then((response) => {
+    window.confirm('😶‍🌫️ 로그인 창으로 이동하시겠습니까?') &&
+      pass({ data: fieldValues }).then((response) => {
         Navigate('/accounts/login/?next=/');
         toast.success(
           `🙋‍♀️ ${response.data.username}님 환영합니다 로그인 해주세요`,
@@ -175,6 +190,7 @@ function SignupForm() {
               transition duration-500 ease-in-out hover:scale-105 w-full text-center"
                   type="button"
                   to="/accounts/signup/2/"
+                  onClick={handlepassbutton}
                 >
                   다음으로
                 </NavLink>
