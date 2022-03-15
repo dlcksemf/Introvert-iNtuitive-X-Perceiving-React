@@ -86,6 +86,11 @@ function SignupFormComponent1({
               <option>플랫폼사업그룹</option>
               <option>기업부설연구소</option>
             </select>
+            {errorMessages.department?.map((message, index) => (
+              <p key={index} className="mt-2 text-pink-600 text-sm">
+                {message}
+              </p>
+            ))}
           </div>
         </div>
 
