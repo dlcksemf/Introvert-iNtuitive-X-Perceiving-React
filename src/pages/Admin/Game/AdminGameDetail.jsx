@@ -14,7 +14,7 @@ function AdminGameDetail({ gameId }) {
     { maual: true },
   );
 
-  const [{ loading: deleteLoading, error: deleteError }, deletePost] =
+  const [{ loading: deleteLoading, error: deleteError }, deleteGame] =
     useApiAxios(
       {
         url: `/game/api/game/${gameId}/`,
@@ -25,8 +25,8 @@ function AdminGameDetail({ gameId }) {
 
   const handleDelete = () => {
     window.confirm('게임을 삭제하시겠습니까?') &&
-      deletePost().then(() => {
-        navigate('admin/gamelist/');
+      deleteGame().then(() => {
+        navigate('/admin/gamelist/');
       });
   };
 
