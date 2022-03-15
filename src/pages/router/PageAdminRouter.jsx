@@ -11,6 +11,7 @@ import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
 import AdminGameListPage from 'pages/Admin/Game/AdminGameListPage';
 import AdminGameDetailPage from 'pages/Admin/Game/AdminGameDetailPage';
+import AdminGameFormPage from 'pages/Admin/Game/AdminGameFormPage';
 
 function PageAdminRouter() {
   return (
@@ -30,6 +31,8 @@ function PageAdminRouter() {
           <Route path="/loanedbook/" element={<AdminLoanedBookList />} />
           <Route path="/gamelist/" element={<AdminGameListPage />} />
           <Route path="/gamelist/:gameId/" element={<AdminGameDetailPage />} />
+          <Route path="/game/new/" element={<AdminGameFormPage />} />
+          <Route path="/game/:gameId/edit/" element={<AdminGameFormPage />} />
           <Route path="/403/" element={<ErrorForbidden />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

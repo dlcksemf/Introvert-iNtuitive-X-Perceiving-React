@@ -9,6 +9,7 @@ import {
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import back from 'components/parts/image/back.png';
+import DebugStates from 'base/DebugStates';
 
 const INIT_FILED_VALUES = {
   username: '',
@@ -18,6 +19,7 @@ const INIT_FILED_VALUES = {
   gender: '',
   password: '',
   password2: '',
+  department: '',
 };
 
 function SignupForm() {
@@ -126,6 +128,7 @@ function SignupForm() {
           <h2 className="flex text-gray-900 text-lg font-bold title-font mb-5 select-none">
             회원가입 페이지
           </h2>
+          {/* <DebugStates fieldValues={fieldValues} /> */}
 
           <form onSubmit={handleClickSubmitButton}>
             <Routes>
