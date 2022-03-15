@@ -12,6 +12,7 @@ import non_image from 'components/parts/image/non_image.jpg';
 import heavy_reader from 'components/parts/image/heavyReader.jpg';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import 'animate.css';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -132,78 +133,41 @@ function NewBookSummary({ book }) {
 
   return (
     <>
-      <div class="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="max-w-sm rounded overflow-hidden shadow-xl">
         <img
-          class="w-96 h-48 object-scale-down"
+          className="w-[500px] h-[300px] object-scale-down cursor-pointer
+          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-95"
           src={book?.cover_photo ? book.cover_photo : non_image}
           alt={book.title}
+          onClick={() => {
+            navigate(`/books/${book.book_num}/`);
+          }}
         />
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">{book.title}</div>
-          <p class="text-gray-700 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil.
+        <div className="px-6 py-4">
+          <div
+            className="font-bold text-xl mb-2 select-none cursor-pointer hover:text-blue-600"
+            onClick={() => {
+              navigate(`/books/${book.book_num}/`);
+            }}
+          >
+            {book.title}
+          </div>
+          <p className="text-gray-700 text-base select-none">
+            {truncateString(book.story)}
           </p>
         </div>
-        <div class="px-6 pt-4 pb-2">
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #photography
+        <div className="px-6 pt-4 pb-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+            {book.category && `#${book.category}`}
           </span>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #travel
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+            #{book.writer}
           </span>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #winter
+          <span className="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+            #따끈따끈
           </span>
         </div>
       </div>
-      {/* <h1
-        className="text-5xl font-semibold mt-10 relative  text-right
-      border-b-4 border-blue-300 py-2 hover:border-blue-500"
-      >
-        신간도서
-      </h1>
-
-      <section className="text-gray-600 body-font overflow-hidden mt-28">
-        <div className="container mx-auto">
-          <img
-            src={book?.cover_photo ? book.cover_photo : non_image}
-            alt={book.title}
-            className="lg:w-1/2 max-w-xs lg:h-4/3 max-h-xs object-fill object-center rounded-lg
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block"
-          />
-          <div className="lg:w-full mx-auto flex flex-wrap items-center">
-            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 m-auto">
-              <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2">
-                {book.category && `[ ${book.category} ]`}
-              </h2>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-4 hover:font-bold">
-                {book.title}
-              </h1>
-              <div className="flex mb-4">
-                <div className="flex-grow border-b-2 border-blue-300 py-2 text-lg px-1">
-                  {book.writer}
-                </div>
-              </div>
-              <p className="leading-relaxed mb-4 hover:font-semibold m-auto">
-                {truncateString(book.story)}
-              </p>
-
-              <div className="flex justify-center">
-                <button
-                  onClick={() => {
-                    navigate(`/books/${book.book_num}/`);
-                  }}
-                  className="flex justify-center text-white bg-indigo-600 border-0 mt-1 py-2 px-12 focus:outline-none hover:bg-indigo-700 rounded-full mb-16"
-                >
-                  자세히보기
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 }
@@ -214,9 +178,6 @@ function Top5Summary({ book }) {
   return (
     <>
       <section className="text-gray-600 body-font overflow-hidden mt-20">
-        <h1 className="text-5xl font-semibold relative top-full text-left mb-7 mt-10">
-          인기도서
-        </h1>
         <div className="container mx-auto">
           <div className="lg:w-full mx-auto flex flex-wrap items-center">
             <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 mt-10 m-auto">
@@ -262,27 +223,30 @@ function Top5Summary({ book }) {
 
 function HeavyReaderSummary({ book }) {
   return (
-    <div class="h-screen flex items-center justify-center">
-      <card class="relative h-[30rem] sm:h-96 w-[40rem] rounded-lg">
+    <div className="h-screen flex items-center justify-center">
+      <div className="relative h-[30rem] sm:h-96 w-[40rem] rounded-lg bottom-[38px]">
         <img
           src={heavy_reader}
           alt="다독왕"
-          class="object-cover w-full h-full rounded-lg"
+          className="object-cover w-full h-full rounded-lg grayscale hover:grayscale-0"
         />
 
-        <div class="absolute w-full h-full bottom-0 bg-gradient-to-r from-indigo-700/30 to-blue-700 rounded-lg flex flex-col items-center justify-center text-center">
-          <p class="text-lg px-14 text-gray-300 mt-10">
-            GitHub helps us ensure that we have our security controls baked into
-            our pipelines all the way from the first line of code we’re writing.
+        <div className="absolute w-full h-full bottom-0 hover:bg-gradient-to-r from-indigo-700/30 to-blue-700 rounded-lg flex flex-col items-center justify-center text-center">
+          <p className="animate__fadeIn text-2xl px-14 text-gray-300 mt-10 select-none">
+            유클리드의 자랑
           </p>
 
-          <p class="text-base font-bold px-14 text-gray-300 mt-3">
-            Chief Information Security Officer
+          <p className="text-5xl font-bold px-14 text-gray-300 mt-3 select-none">
+            {book?.count_loans ? book.username : 'Unknown'}
           </p>
 
-          <p class="text-sm font-light px-14 text-gray-300 ">Dow Jones</p>
+          <p className="text-xl font-light px-14 text-gray-300 select-none">
+            {book?.position
+              ? book.position
+              : !book?.count_loans && '과연 누가 될까요?'}
+          </p>
         </div>
-      </card>
+      </div>
     </div>
     // <div>
     //   <span className="flex justify-center relative">
@@ -317,4 +281,23 @@ function HeavyReaderSummary({ book }) {
   );
 }
 
-export { BookSummary, NewBookSummary, Top5Summary, HeavyReaderSummary };
+function ReviewSummary({ review }) {
+  return (
+    <div>
+      <h1 className="mt-4">{review?.user_id}</h1>
+      <span className="flex">
+        <h2 className="mr-4">{review?.review_rate}</h2>
+        <h2 className="mr-4">{review?.review_content}</h2>
+        <h2>{review?.created_at}</h2>
+      </span>
+    </div>
+  );
+}
+
+export {
+  BookSummary,
+  NewBookSummary,
+  Top5Summary,
+  HeavyReaderSummary,
+  ReviewSummary,
+};

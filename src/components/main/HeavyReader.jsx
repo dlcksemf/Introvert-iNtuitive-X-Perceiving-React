@@ -18,17 +18,24 @@ function HeavyReader() {
   }, [auth, refetch]);
 
   return (
-    <div>
-      {userList
-        ?.sort((user1, user2) => user2.count_loans - user1.count_loans)
-        .slice(0, 1)
-        .map((book) => (
-          <HeavyReaderSummary
-            book={book.count_loans !== 0 && book}
-            key={book.count_loans}
-          />
-        ))}
-    </div>
+    <>
+      <div>
+        <h1 className="text-5xl font-semibold relative top-[110px] text-left ml-2 text-gray-700 select-none">
+          다독왕
+        </h1>
+      </div>
+      <div>
+        {userList
+          ?.sort((user1, user2) => user2.count_loans - user1.count_loans)
+          .slice(0, 1)
+          .map((book) => (
+            <HeavyReaderSummary
+              book={book.count_loans !== 0 && book}
+              key={book.count_loans}
+            />
+          ))}
+      </div>
+    </>
   );
 }
 

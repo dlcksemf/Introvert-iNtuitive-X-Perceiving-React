@@ -11,9 +11,9 @@ import Toggle from 'components/parts/Toggle';
 import non_image from 'components/parts/image/non_image.jpg';
 
 import { ToastContainer } from 'react-toastify';
+import ReviewList from './ReviewList';
 
 function BookDetail({ book_num }) {
-  const [rate, setRate] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [auth] = useAuth();
   const navigate = useNavigate();
@@ -28,14 +28,6 @@ function BookDetail({ book_num }) {
     { manual: true },
   );
 
-  const [{ data: review }, getReview] = useApiAxios(
-    {
-      url: `/books/api/review/`,
-      method: 'GET',
-    },
-    { manual: true },
-  );
-
   const [{ data: wish }, getWish] = useApiAxios(
     {
       url: `/books/api/wishes/?user=${auth?.user_id}&book=${book?.book_num}`,
@@ -43,8 +35,6 @@ function BookDetail({ book_num }) {
     },
     { manual: true },
   );
-
-  console.log(review);
 
   useEffect(() => {
     refetch();
@@ -55,7 +45,6 @@ function BookDetail({ book_num }) {
   }, [auth, book, getWish]);
 
   const reload = () => {
-    getReview();
     getWish();
     refetch();
   };
@@ -208,35 +197,7 @@ function BookDetail({ book_num }) {
                       </span>
                     </div>
                   </div>
-                  <h1 className="text-lg font-bold mt-4">리뷰</h1>
-                  <h1 className="mt-4">유저이름</h1>
-                  <span className="flex">
-                    <h2 className="mr-4">별점</h2>
-                    <h2 className="mr-4">리뷰 내용</h2>
-                    <h2>작성일</h2>
-                  </span>
-                  <span className="flex mt-10">
-                    <select
-                      className="w-[143px] h-[42px] text-gray-400 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"
-                      name="rate"
-                      value={review}
-                      onChange={(e) => setRate(e.target.value)}
-                    >
-                      <option className="hidden text-center">별점</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                    <input
-                      type="text"
-                      name="content"
-                      placeholder="100자 이내의 리뷰"
-                      className="ml-4 w-[345px] text-center bg-white rounded border border-gray-3s00 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 ease-in-out"
-                    />
-                    <button className="ml-4 border-2 border-black">등록</button>
-                  </span>
+                  <ReviewList />
                 </div>
               </div>
             </div>

@@ -10,7 +10,7 @@ function MainPage() {
   return (
     <div>
       <MainNavigation />
-      <header class="grid grid-cols-8 text-center text-xl">
+      <header className="grid grid-cols-8 text-center text-xl">
         <div
           className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
@@ -48,15 +48,15 @@ function MainPage() {
           이용안내
         </div>
       </header>
-      <div class="grid grid-rows-1 grid-flow-col gap-1 text-center">
-        <div class="row-span-1">
+      <div className="grid grid-flow-col gap-1 text-center">
+        <div className="row-span-1">
           <Top5 />
         </div>
-        <div class="col-span-1 m-auto">
+        <div className="col-span-1 m-auto">
           <HeavyReader />
         </div>
       </div>
-      <div class="grid grid col-span-1 m-auto">
+      <div className="grid grid col-span-1 m-auto">
         <div>
           <NewBook />
         </div>
