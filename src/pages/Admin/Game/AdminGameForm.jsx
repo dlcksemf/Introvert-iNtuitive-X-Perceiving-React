@@ -178,7 +178,7 @@ function AdminGameForm({ gameId, handleDidSaveGame }) {
                 onChange={handleFieldChange}
                 type="text"
                 autoComplete="off"
-                placeholder="플레이어 수를 작성해주세요."
+                placeholder="플레이어 수를 작성해주세요. ex) 2~4명"
                 className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.player_num?.map((message, index) => (
@@ -197,7 +197,7 @@ function AdminGameForm({ gameId, handleDidSaveGame }) {
                 onChange={handleFieldChange}
                 type="text"
                 autoComplete="off"
-                placeholder="대략적인 플레이 시간을 작성해주세요(1회 기준)"
+                placeholder="대략적인 플레이 시간을 작성해주세요(1회 기준) ex) 30분"
                 className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.play_time?.map((message, index) => (
@@ -216,7 +216,7 @@ function AdminGameForm({ gameId, handleDidSaveGame }) {
                 onChange={handleFieldChange}
                 type="text"
                 autoComplete="off"
-                placeholder="게임 난이도를 작성해주세요."
+                placeholder="게임 난이도를 작성해주세요. ex) 만 8세 이상"
                 className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.level?.map((message, index) => (
@@ -235,7 +235,7 @@ function AdminGameForm({ gameId, handleDidSaveGame }) {
                 onChange={handleFieldChange}
                 type="date"
                 autoComplete="off"
-                placeholder="게임 난이도를 작성해주세요."
+                placeholder="게임 방법을 작성해주세요."
                 className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.game_rule?.map((message, index) => (
