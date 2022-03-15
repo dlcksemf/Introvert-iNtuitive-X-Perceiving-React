@@ -15,13 +15,13 @@ function AdminGameListPage() {
           >
             <span
               class="font-semibold cursor-pointer before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-indigo-300 relative inline-block justify-center items-center"
-              onClick={() => navigate('/admin/book/new/')}
+              onClick={() => navigate('/admin/game/new/')}
             >
               <span className="relative text-white text-lg">새로운</span>
             </span>
             <span
               class="inline-flex px-2 select-none cursor-pointer"
-              onClick={() => navigate('/admin/book/new/')}
+              onClick={() => navigate('/admin/game/new/')}
             >
               게임 등록 🎮
             </span>
