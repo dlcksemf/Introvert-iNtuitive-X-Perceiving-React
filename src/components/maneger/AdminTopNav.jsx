@@ -56,6 +56,12 @@ function AdminTopNav() {
               </NavLink>
             </MenuItem>
 
+            <MenuItem icon="🎮">
+              <NavLink to={'/admin/gamelist/'} className="hover:text-lg">
+                <h1 className="text-indigo-900">보드게임 관리</h1>
+              </NavLink>
+            </MenuItem>
+
             <MenuItem icon="👩‍👦‍👦">
               <NavLink to={'/admin/user/'} className="hover:text-lg">
                 <h1 className="text-indigo-900">회원 관리</h1>
