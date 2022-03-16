@@ -24,7 +24,7 @@ function NewBook() {
           신간도서
         </h1>
       </div>
-      <div className="flex justify-center mb-24">
+      <div className="flex justify-center mb-28">
         {bookList?.slice(0, 3).map((book) => (
           <div
             key={book.book_num}

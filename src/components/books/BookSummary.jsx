@@ -12,7 +12,7 @@ import non_image from 'components/parts/image/non_image.jpg';
 import heavy_reader from 'components/parts/image/heavyReader.jpg';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-// import 'animate.css';
+import 'animate.css';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -223,7 +223,7 @@ function Top5Summary({ book }) {
 
 function HeavyReaderSummary({ book }) {
   return (
-    <div className="h-screen flex items-center justify-center">
+    <div className="flex items-center justify-center mt-[102px]">
       <div className="relative h-[30rem] sm:h-96 w-[40rem] rounded-lg bottom-[38px]">
         <img
           src={heavy_reader}

@@ -26,7 +26,7 @@ function Top5() {
         </h1>
       </div>
       <div className="flex justify-center">
-        <div className="h-[700px] w-[750px]">
+        <div className="h-[650px] w-[750px]">
           <Carousel
             stopAutoPlayOnHover={true}
             fullHeightHover={false}

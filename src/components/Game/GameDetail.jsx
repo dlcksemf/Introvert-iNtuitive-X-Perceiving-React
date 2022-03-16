@@ -1,11 +1,17 @@
 import { useApiAxios } from 'base/api/base';
 import LoadingIndicator from 'components/LoadingIndicator';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import non_image from 'components/parts/image/non_image.jpg';
+import { useAuth } from 'base/hooks/Authcontext';
+import LoanedIcon from 'designMaterials/LoanedIcon';
+import LoanedModal from 'components/parts/LoanedModal';
+import GameLoanedModal from 'components/parts/GameLoanedModal';
 
-function AdminGameDetail({ gameId }) {
+function GameDetail({ gameId }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
+  const [auth] = useAuth();
   const [{ data: game, loading, error }, refetch] = useApiAxios(
     {
       url: `/game/api/game/${gameId}/`,
@@ -14,34 +20,25 @@ function AdminGameDetail({ gameId }) {
     { manual: true },
   );
 
-  const [{ loading: deleteLoading, error: deleteError }, deleteGame] =
-    useApiAxios(
-      {
-        url: `/game/api/game/${gameId}/`,
-        method: 'DELETE',
-      },
-      { manual: true },
-    );
-
-  const handleDelete = () => {
-    window.confirm('게임을 삭제하시겠습니까?') &&
-      deleteGame().then(() => {
-        navigate('/admin/gamelist/');
-      });
-  };
-
   useEffect(() => {
     refetch();
   }, [refetch]);
 
+  const handleClickLoan = () => {
+    auth.isLoggedIn
+      ? setModalIsOpen(true)
+      : window.confirm('로그인 후 이용해주세요🎈') &&
+        navigate('/accounts/login/');
+  };
+
+  const reload = () => {
+    refetch();
+  };
+
   return (
     <div>
       {loading && <LoadingIndicator />}
-      {deleteLoading && <LoadingIndicator>삭제 중..</LoadingIndicator>}
-      {error &&
-        `로딩 중 에러(${deleteError.response.status} ${deleteError.response.statusText})`}
-      {deleteError &&
-        `삭제 요청 중 에러가 발생 (${deleteError.response.status} ${deleteError.response.statusText})`}
+      {error && navigate(`*`)}
       {game && (
         <>
           <section className="text-gray-600 body-font overflow-hidden">
@@ -88,7 +85,7 @@ function AdminGameDetail({ gameId }) {
                   </div>
 
                   <div className="flex justify-start">
-                    <Link to="/admin/gamelist/">
+                    <Link to="/game/gamelist/">
                       <div
                         className="flex m-auto ml-auto 
                   text-gray-600 hover:text-blue-500 hover:font-bold 
@@ -98,29 +95,36 @@ function AdminGameDetail({ gameId }) {
                         목록으로
                       </div>
                     </Link>
-                    <Link to={`/admin/game/${gameId}/edit/`}>
-                      <div
-                        className="flex m-auto ml-52
-                  text-gray-600 hover:text-blue-500 hover:font-bold 
-                  border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
-                  transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
-                      >
-                        수정
-                      </div>
-                    </Link>
-                    <div className="flex">
-                      <button
-                        disabled={deleteLoading}
-                        onClick={handleDelete}
-                        className="flex m-auto ml-5
-                      text-gray-600 hover:text-blue-500 hover:font-bold 
-                      border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
-                      transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
-                      >
-                        삭제
-                      </button>
-                    </div>
                   </div>
+                  <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
+                    {game?.game_state === 'A' && (
+                      <>
+                        <span className="text-gray-600 m-auto select-none">
+                          대여하기
+                        </span>
+                        <div
+                          onClick={handleClickLoan}
+                          className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                        >
+                          <LoanedIcon />
+                        </div>
+                      </>
+                    )}
+                    {/* 
+                    {game?.game_state !== 'A' && (
+                      <p className="m-auto select-none hover:text-blue-500">
+                        반납 예정 시간 ::
+                        {game?.loaned_game[0]?.return_due_time}
+                      </p>
+                    )} */}
+                    <GameLoanedModal
+                      ariaHideApp={false}
+                      modalIsOpen={modalIsOpen}
+                      setModalIsOpen={setModalIsOpen}
+                      game_num={game?.game_num}
+                      reload={reload}
+                    />
+                  </span>
                 </div>
               </div>
             </div>
@@ -130,4 +134,4 @@ function AdminGameDetail({ gameId }) {
     </div>
   );
 }
-export default AdminGameDetail;
+export default GameDetail;
