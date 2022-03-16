@@ -95,48 +95,57 @@ function BookApplicationForm() {
             <h2 className="mb-10 text-center text-2xl text-gray-600 font-bold font-sans select-none">
               📚 도서 신청 📖
             </h2>
-            <BookApplicationSearch
-              handleSubmit={handleSubmit}
-              setQuery={setQuery}
-            />
             <div>
-              <img className="w-28" src={data?.items[0].image} alt="" />
-            </div>
-            <form onClick={handleClickSubmitButton}>
-              <div>
-                <p className="mt-3 text-lg font-bold">{data?.items[0].title}</p>
-              </div>
-              <div>
-                <p>
-                  {data?.items[0].author} | {data?.items[0].publisher}
-                </p>
-              </div>
+              <BookApplicationSearch
+                handleSubmit={handleSubmit}
+                setQuery={setQuery}
+                className="w-full"
+              />
+              {data && (
+                <>
+                  <div>
+                    <img className="w-28" src={data?.items[0].image} alt="" />
+                  </div>
+                  <form onClick={handleClickSubmitButton}>
+                    <div>
+                      <p className="mt-3 text-lg font-bold">
+                        {data?.items[0].title}
+                      </p>
+                    </div>
+                    <div>
+                      <p>
+                        {data?.items[0].author} | {data?.items[0].publisher}
+                      </p>
+                    </div>
 
-              <div>
-                <p className="text-gray-500 text-sm">
-                  ISBN: {data?.items[0].isbn.slice(-13)}
-                </p>
-              </div>
+                    <div>
+                      <p className="text-gray-500 text-sm">
+                        ISBN: {data?.items[0].isbn.slice(-13)}
+                      </p>
+                    </div>
 
-              <div>
-                <button
-                  className="
+                    <div>
+                      <button
+                        className="
                 w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white
                 tracking-wide font-semibold font-sans hover:bg-indigo-700"
-                >
-                  신청하기
-                </button>
+                      >
+                        신청하기
+                      </button>
 
-                <button
-                  onClick={handleClickCancleButton}
-                  className="
+                      <button
+                        onClick={handleClickCancleButton}
+                        className="
                 w-full mt-6 mb-3 bg-gray-300 rounded-lg px-4 py-2 text-lg text-gray-800 
                 tracking-wide font-semibold font-sans hover:bg-indigo-200"
-                >
-                  취소
-                </button>
-              </div>
-            </form>
+                      >
+                        취소
+                      </button>
+                    </div>
+                  </form>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
