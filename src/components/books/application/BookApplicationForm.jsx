@@ -55,7 +55,14 @@ function BookApplicationForm() {
 
     window.confirm('신청하시겠습니까?') &&
       saveApplication({
-        data: { ...fieldValues, state: 'P', user_id: auth.user_id },
+        data: {
+          title: data?.items[0].title,
+          writer: data?.items[0].author,
+          publisher: data?.items[0].publisher,
+          ISBN: data?.items[0].isbn.slice(-13),
+          state: 'P',
+          user_id: auth.user_id,
+        },
       })
         .then((response) => {
           toast.info(`💫 ${response.data.title}(이)가 신청 되었습니다`, {
@@ -80,15 +87,11 @@ function BookApplicationForm() {
     window.confirm('취소하시겠습니까?') && navigate(-1);
   };
 
-  useEffect(() => {
-    console.log(data?.items[0]);
-  }, [data]);
-
   return (
     <div>
       <div className="h-screen flex justify-center items-center">
         <div className="w-1/3">
-          <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg border-2 border-gray-200">
+          <div className="bg-white relative rounded-lg p-8 sm:p-4 lg:p-12 shadow-lg border-2 border-gray-200">
             <h2 className="mb-10 text-center text-2xl text-gray-600 font-bold font-sans select-none">
               📚 도서 신청 📖
             </h2>
@@ -96,28 +99,44 @@ function BookApplicationForm() {
               handleSubmit={handleSubmit}
               setQuery={setQuery}
             />
-
-            {data?.items[0].title}
-
             <div>
-              <button
-                onClick={handleClickSubmitButton}
-                className="
+              <img className="w-28" src={data?.items[0].image} alt="" />
+            </div>
+            <form onClick={handleClickSubmitButton}>
+              <div>
+                <p className="mt-3 text-lg font-bold">{data?.items[0].title}</p>
+              </div>
+              <div>
+                <p>
+                  {data?.items[0].author} | {data?.items[0].publisher}
+                </p>
+              </div>
+
+              <div>
+                <p className="text-gray-500 text-sm">
+                  ISBN: {data?.items[0].isbn.slice(-13)}
+                </p>
+              </div>
+
+              <div>
+                <button
+                  className="
                 w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white
                 tracking-wide font-semibold font-sans hover:bg-indigo-700"
-              >
-                신청하기
-              </button>
+                >
+                  신청하기
+                </button>
 
-              <button
-                onClick={handleClickCancleButton}
-                className="
+                <button
+                  onClick={handleClickCancleButton}
+                  className="
                 w-full mt-6 mb-3 bg-gray-300 rounded-lg px-4 py-2 text-lg text-gray-800 
                 tracking-wide font-semibold font-sans hover:bg-indigo-200"
-              >
-                취소
-              </button>
-            </div>
+                >
+                  취소
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
