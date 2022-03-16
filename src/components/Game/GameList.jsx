@@ -1,10 +1,10 @@
 import { useApiAxios } from 'base/api/base';
 import SearchBar from 'components/parts/SearchBar';
-import AdminGameSummary from 'pages/Admin/Game/AdminGameSummary';
 import { useCallback, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import GameSummary from './GameSummary';
 
 function GameList() {
   const [query, setQuery] = useState();
@@ -67,7 +67,7 @@ function GameList() {
               key={game.game_num}
               className="w-full md:w-1/2 xl:w-1/3 px-4 transition-transform hover:-translate-y-5 duration-300"
             >
-              <AdminGameSummary game={game} />
+              <GameSummary game={game} />
             </div>
           ))}
         </div>
