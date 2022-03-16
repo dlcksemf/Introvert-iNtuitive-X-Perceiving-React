@@ -33,7 +33,7 @@ function MainPage() {
           className="col-start-5 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
           onClick={() => {
-            navigate(`/`);
+            navigate(`/game/gamelist/`);
           }}
         >
           보드게임

@@ -12,7 +12,7 @@ import non_image from 'components/parts/image/non_image.jpg';
 import heavy_reader from 'components/parts/image/heavyReader.jpg';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import 'animate.css';
+// import 'animate.css';
 
 function truncateString(str) {
   if (str.length > 70) {
