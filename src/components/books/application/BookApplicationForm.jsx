@@ -101,7 +101,13 @@ function BookApplicationForm() {
                 setQuery={setQuery}
                 className="w-full"
               />
-              {data && (
+              {!data?.items[0]?.image ? (
+                data?.items && (
+                  <div className="text-red-400 font-sm">
+                    검색결과가 없습니다.
+                  </div>
+                )
+              ) : (
                 <>
                   <div>
                     <img className="w-28" src={data?.items[0].image} alt="" />
