@@ -9,7 +9,6 @@ function BookApplicationSearch({ setQuery, handleSubmit }) {
 
   return (
     <div>
-      검색
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -19,9 +18,19 @@ function BookApplicationSearch({ setQuery, handleSubmit }) {
           placeholder={'ISBN으로 검색가능'}
           autoComplete="off"
           className="
-                  w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none hover:font-semibold"
+                  w-5/6 bg-gray-100 px-4 py-2 rounded-lg focus:outline-none hover:font-semibold"
         />
-        <button onClick={handleSubmit}>검색하기</button>
+
+        <button className="ml-2" onClick={handleSubmit}>
+          <div
+            className="flex 
+                  text-gray-600 hover:text-blue-500 hover:font-bold 
+                  border-2 border-gray-200 p-2 focus:outline-none rounded
+                  transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+          >
+            검색
+          </div>
+        </button>
       </form>
     </div>
   );
