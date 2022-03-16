@@ -12,7 +12,6 @@ import non_image from 'components/parts/image/non_image.jpg';
 import heavy_reader from 'components/parts/image/heavyReader.jpg';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import 'animate.css';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -228,56 +227,30 @@ function HeavyReaderSummary({ book }) {
         <img
           src={heavy_reader}
           alt="다독왕"
-          className="object-cover w-full h-full rounded-lg grayscale hover:grayscale-0"
+          className="object-cover w-full h-full rounded-lg"
         />
 
-        <div className="absolute w-full h-full bottom-0 hover:bg-gradient-to-r from-indigo-700/30 to-blue-700 rounded-lg flex flex-col items-center justify-center text-center">
-          <p className="animate__fadeIn text-2xl px-14 text-gray-300 mt-10 select-none">
+        <div className="absolute w-full h-full bottom-0 bg-gradient-to-r from-indigo-700/30 to-blue-700/30 rounded-lg flex flex-col items-center justify-center text-center">
+          <p className="text-4xl px-14 text-gray-300 mb-16 select-none font-semibold">
             유클리드의 자랑
           </p>
 
-          <p className="text-5xl font-bold px-14 text-gray-300 mt-3 select-none">
+          <p
+            className="animate__animated animate__fadeIn animate__slower animate__infinite
+          text-6xl font-extrabold px-14 text-gray-300 mb-10 select-none"
+          >
             {book?.count_loans ? book.username : 'Unknown'}
           </p>
 
-          <p className="text-xl font-light px-14 text-gray-300 select-none">
+          <p className="text-4xl font-light px-14 mt-10 text-gray-300 select-none">
             {book?.position
               ? book.position
-              : !book?.count_loans && '과연 누가 될까요?'}
+              : !book?.count_loans && '과연 누가 될까요?'}{' '}
+            사원
           </p>
         </div>
       </div>
     </div>
-    // <div>
-    //   <span className="flex justify-center relative">
-    //     <img
-    //       src={heavy_reader}
-    //       alt="다독왕"
-    //       className="bg-cover h-56 w-screen rounded inline mr-20 mt-20 grayscale hover:grayscale-0"
-    //     />
-    //     <h1 className="relative text-center text-4xl select-none font-semibold">
-    //       EUCLID 다독왕
-    //     </h1>
-
-    //     <div
-    //       className="mt-10 before:block before:absolute before:-inset-1 before:-skew-y-12
-    //   before:bg-gradient-to-r from-blue-200 via-blue-400 to-blue-700 relative inline-block justify-center items-center"
-    //     >
-    //       <h1
-    //         className="mt-7 flex justify-center text-5xl select-none cursor-default font-extrabold
-    //   transition duration-500 ease-in-out hover:scale-125 relative italic"
-    //       >
-    //         {book?.count_loans ? book.username : 'Unknown'}
-    //       </h1>{' '}
-    //     </div>
-
-    //     <h1 className="flex justify-center text-3xl select-none mt-14">
-    //       {book?.position
-    //         ? book.position
-    //         : !book?.count_loans && '과연 누가 될까요?'}
-    //     </h1>
-    //   </span>
-    // </div>
   );
 }
 
