@@ -11,7 +11,7 @@ function AdminGameDetail({ gameId }) {
       url: `/game/api/game/${gameId}/`,
       method: 'GET',
     },
-    { maual: true },
+    { manual: true },
   );
 
   const [{ loading: deleteLoading, error: deleteError }, deleteGame] =
