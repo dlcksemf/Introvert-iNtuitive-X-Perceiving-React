@@ -12,6 +12,7 @@ const INIT_FIELD_VALUES = {
   play_time: '',
   level: '',
   game_rule: '',
+  game_state: 'A',
 };
 
 function AdminGameForm({ gameId, handleDidSaveGame }) {
