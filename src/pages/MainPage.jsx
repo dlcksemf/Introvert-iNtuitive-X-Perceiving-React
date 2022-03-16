@@ -48,15 +48,15 @@ function MainPage() {
           이용안내
         </div>
       </header>
-      <div className="grid grid-flow-col gap-1 text-center">
-        <div className="row-span-1">
+      <div className="grid grid-row-1 grid-flow-col gap-1 text-center">
+        <div>
           <Top5 />
         </div>
-        <div className="col-span-1 m-auto">
+        <div className="m-auto">
           <HeavyReader />
         </div>
       </div>
-      <div className="grid grid col-span-1 m-auto">
+      <div className="grid grid-col-1 m-auto">
         <div>
           <NewBook />
         </div>
