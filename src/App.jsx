@@ -6,6 +6,7 @@ import TopNav from 'components/parts/TopNav';
 import PageBookRouter from 'pages/router/PageBookRouter';
 import PageAccountsRouter from 'pages/router/PageAccountsRouter';
 import PageAdminRouter from 'pages/router/PageAdminRouter';
+import PageGameRouter from 'pages/router/PageGameRouter';
 import MainPage from 'pages/MainPage';
 import Footer from 'components/parts/Footer';
 import NotFound from 'components/parts/NotFound';
@@ -27,6 +28,7 @@ function App() {
           {!auth?.is_staff && <Route path="/" element={<MainPage />} />}
           <Route path="/accounts/*" element={<PageAccountsRouter />} />
           <Route path="/books/*" element={<PageBookRouter />} />
+          <Route path="/game/*" element={<PageGameRouter />} />
           <Route
             path="/admin/*"
             element={auth.is_staff ? <PageAdminRouter /> : <ErrorForbidden />}

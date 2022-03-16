@@ -11,6 +11,7 @@ import Toggle from 'components/parts/Toggle';
 import non_image from 'components/parts/image/non_image.jpg';
 
 import { ToastContainer } from 'react-toastify';
+// import ReviewList from './ReviewList';
 
 function BookDetail({ book_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -134,7 +135,6 @@ function BookDetail({ book_num }) {
                       알라딘에서 책찾기
                     </button>
                   </div>
-
                   <div className="flex justify-between">
                     <Link
                       to={
@@ -153,7 +153,6 @@ function BookDetail({ book_num }) {
                         목록으로
                       </div>
                     </Link>
-
                     <div className="flex">
                       <span className="text-gray-600 m-auto select-none">
                         찜하기
@@ -198,6 +197,7 @@ function BookDetail({ book_num }) {
                       </span>
                     </div>
                   </div>
+                  {/* <ReviewList /> */}
                 </div>
               </div>
             </div>
