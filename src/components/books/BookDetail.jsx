@@ -12,6 +12,7 @@ import non_image from 'components/parts/image/non_image.jpg';
 
 import { ToastContainer } from 'react-toastify';
 import { ReviewSummary } from './BookSummary';
+import ReviewForm from './ReviewForm';
 
 function BookDetail({ book_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -35,8 +36,6 @@ function BookDetail({ book_num }) {
     },
     { manual: true },
   );
-
-  console.log(book);
 
   useEffect(() => {
     refetch();
@@ -199,19 +198,19 @@ function BookDetail({ book_num }) {
                       </span>
                     </div>
                   </div>
-                  <div>
-                    {book?.review_set
-                      ?.sort(
-                        (user1, user2) => user2.count_loans - user1.count_loans,
-                      )
-                      .map((review) => (
-                        <ReviewSummary
-                          review={review}
-                          key={review.review_num}
-                        />
-                      ))}
-                  </div>
                 </div>
+              </div>
+              <div className="ml-[260px] mr-[185px] border-2 border-gray-400">
+                {book?.review_set
+                  ?.sort(
+                    (user1, user2) => user2.count_loans - user1.count_loans,
+                  )
+                  .map((review) => (
+                    <ReviewSummary review={review} key={review.review_num} />
+                  ))}
+              </div>
+              <div className="ml-[260px] mt-4">
+                <ReviewForm />
               </div>
             </div>
           </section>

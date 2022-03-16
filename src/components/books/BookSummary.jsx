@@ -284,10 +284,10 @@ function HeavyReaderSummary({ book }) {
 function ReviewSummary({ review }) {
   return (
     <div>
-      <h1 className="mt-4">{review?.user_id}</h1>
+      <h1 className="mt-4 ml-4">{review?.user_id}</h1>
       <span className="flex">
-        <h2 className="mr-4">{review?.review_rate}</h2>
-        <h2 className="mr-4">{review?.review_content}</h2>
+        <h2 className="mr-4 ml-8">{review?.review_rate}</h2>
+        <h2 className="mr-4 mb-4">{review?.review_content}</h2>
         <h2>{review?.created_at}</h2>
       </span>
     </div>
