@@ -11,19 +11,27 @@ import non_image from 'components/parts/image/non_image.jpg';
 import { toast } from 'react-toastify';
 import BookToast from './BookToast';
 import GameToast from './GameToast';
+import setMinutes from 'date-fns/setMinutes';
+import setHours from 'date-fns/setHours';
+import getHours from 'date-fns/getHours';
+import getMinutes from 'date-fns/getMinutes';
 
 function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
   const [startDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const month = ('0' + (startDate.getMonth() + 1)).slice(-2);
   const [auth] = useAuth();
   const endDay = new Date(+new Date(endDate) + 3240 * 10000)
     .toISOString()
     .split('T')[0];
 
-  const isWeekday = (date) => {
-    const day = date.getDay();
-    return day !== 0 && day !== 6;
+  const [startTime, setStartTime] = useState(null);
+  const [endTime, setEndTime] = useState(null);
+  const [isSelected, setIsSelected] = useState(false);
+
+  const onSelect = (time) => {
+    setStartTime(time);
+    setIsSelected(true);
+    setEndTime(null);
   };
 
   const [{ data: game }, refetch] = useApiAxios({
@@ -43,12 +51,20 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
   );
 
   const HandleSubmit = () => {
+    var hours = ('0' + endTime.getHours()).slice(-2);
+    var minutes = ('0' + endTime.getMinutes()).slice(-2);
+
+    var timeString = hours + ':' + minutes;
+
+    console.log(timeString);
+    console.log(endTime);
+    console.log(endTime.toLocaleTimeString());
     saveLoanedGame({
       data: {
         ...useFieldValues,
         game_name: game.game_num,
         user_id: auth.user_id,
-        return_due_date: endDay,
+        return_due_time: timeString,
         return_state: 'L',
       },
     })
@@ -159,42 +175,87 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                     ease-in-out
                     m-0
                     select-none
-                    hover:text-black"
+                    hover:text-black
+                    mb-3
+                    mt-1"
                       placeholder="{game.results.game_name}"
                     >
                       {game?.game_name}
                     </p>
-                    <div className="datepicker relative form-floating mb-3 xl:w-96">
+                    <div>
+                      <label className="font-bold">대여 시간</label>
+                    </div>
+                    {/* <div className="datepicker relative form-floating mb-3 xl:w-96">
                       <div>
-                        <label className="font-bold">대출 시작일</label>
+                        <label className="font-bold">대출 시작 시간</label>
                         <p className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black">
-                          {startDate.getFullYear()}-{month}-
-                          {startDate.getDate()}
-                          {/* {game.loaned_game.loaned_time} */}
+                          {startDate.getHours()}시 {startDate.getMinutes()}분
+                         
                         </p>
                       </div>
                       <div>
-                        <label className="font-bold">대출 종료일</label>
+                        <label className="font-bold">반납 시간</label>
+                        <div>
+                          <input
+                            type="time"
+                            name="time"
+                            step="3600"
+                            value={game.return_due_time}
+                            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black"
+                          />
+                        </div>
+                      </div> */}
+                    <div>
+                      <DatePicker
+                        selected={startTime}
+                        onChange={onSelect}
+                        locale={ko}
+                        showTimeSelect
+                        showTimeSelectOnly
+                        timeIntervals={30}
+                        minTime={setHours(setMinutes(new Date(), 30), 9)}
+                        maxTime={setHours(setMinutes(new Date(), 0), 17)}
+                        timeCaption="Time"
+                        dateFormat="aa h:mm 시작"
+                        placeholderText="시작 시간"
+                        className=" mt-1 orm-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black"
+                      />
+                    </div>
+
+                    {isSelected ? ( // 시작 시간을 선택해야 종료 시간 선택 가능
+                      <div>
                         <DatePicker
+                          selected={endTime}
+                          onChange={(time) => setEndTime(time)}
                           locale={ko}
-                          className="outline-none form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 cursor-pointer hover:border-blue-500 hover:text-black"
-                          selected={endDate}
-                          onChange={(date) => setEndDate(date)}
-                          // selectsEnd
-                          startDate={startDate}
-                          endDate={endDate}
-                          minDate={startDate}
-                          maxDate={addMonths(new Date(), 1)}
-                          isClearable={true}
-                          dateFormat="yyyy-MM-dd"
-                          dateFormatCalendar="yyyy년 MM월"
-                          filterDate={isWeekday}
+                          showTimeSelect
+                          showTimeSelectOnly
+                          timeIntervals={30}
+                          minTime={startTime}
+                          maxTime={setHours(
+                            setMinutes(new Date(), getMinutes(startTime)),
+                            getHours(startTime) + 2,
+                          )} // 시작 시간부터 2시간
+                          excludeTimes={[
+                            // 시작 시간 제외
+                            startTime,
+                            // 5:00 선택 기준 최대 7:00까지 예외처리
+                            setHours(setMinutes(new Date(), 0), 18),
+                            setHours(setMinutes(new Date(), 30), 18),
+                            setHours(setMinutes(new Date(), 0), 19),
+                          ]}
+                          timeCaption="Time"
+                          dateFormat="aa h:mm 종료"
+                          placeholderText="종료 시간"
+                          className="mt-3 orm-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black"
                         />
                       </div>
-                      <div className="flex justify-center mt-10">
-                        <button
-                          type="button"
-                          className="px-10
+                    ) : null}
+
+                    <div className="flex justify-center mt-10">
+                      <button
+                        type="button"
+                        className="px-10
             py-4
             mr-6
             bg-blue-600
@@ -210,14 +271,14 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
             active:bg-blue-800 active:shadow-lg
             hover:scale-110 transition duration-500 
             ease-in-out hover:-translate-y-1 rounded-full"
-                          data-bs-dismiss="modal"
-                          onClick={() => HandleSubmit()}
-                        >
-                          대여
-                        </button>
-                        <button
-                          type="button"
-                          className="px-10
+                        data-bs-dismiss="modal"
+                        onClick={() => HandleSubmit()}
+                      >
+                        대여
+                      </button>
+                      <button
+                        type="button"
+                        className="px-10
         py-4
         bg-gray-300
         text-black
@@ -232,11 +293,10 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
         active:bg-purple-800 active:shadow-lg
         hover:scale-110 transition duration-500 
         ease-in-out hover:-translate-y-1 rounded-full"
-                          onClick={() => setModalIsOpen(false)}
-                        >
-                          취소
-                        </button>
-                      </div>
+                        onClick={() => setModalIsOpen(false)}
+                      >
+                        취소
+                      </button>
                     </div>
                   </div>
                 </div>
