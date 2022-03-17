@@ -8,14 +8,9 @@ import {
   NavLink,
 } from 'react-router-dom';
 import CancelIcon from 'designMaterials/CancelIcon';
-import {
-  SignupFormComponent1,
-  SignupFormComponent2,
-} from './SignupFormComponent';
-import { toast } from 'react-toastify';
+import { SignupFormComponent1 } from './SignupFormComponent';
 import back from 'components/parts/image/back.png';
-import { useAuth } from 'base/hooks/Authcontext';
-import DebugStates from 'base/DebugStates';
+import SignupForm2 from './SignupForm2';
 
 const INIT_FILED_VALUES = {
   username: '',
@@ -30,10 +25,9 @@ const INIT_FILED_VALUES = {
 
 function SignupForm({ user_id }) {
   const Navigate = useNavigate();
-  let location = useLocation();
+  // let location = useLocation();
 
-  const { fieldValues, handleFieldChange, setFieldValues } =
-    useFieldValues(INIT_FILED_VALUES);
+  const { fieldValues, handleFieldChange } = useFieldValues(INIT_FILED_VALUES);
 
   const [{ errorMessages }, signup] = useApiAxios(
     {
@@ -43,40 +37,12 @@ function SignupForm({ user_id }) {
     { manual: true },
   );
 
-  // const [{ errorMessage }, update_info] = useApiAxios(
-  //   {
-  //     url: `accounts/api/users/${user_id}`,
-  //     method: 'PATCH',
-  //   },
-  //   { manual: true },
-  // );
-
   const handlepassbutton = (e) => {
     e.preventDefault();
     signup({ data: fieldValues }).then(() => {
       Navigate('/accounts/signup/2/');
     });
   };
-
-  // const handleClickSubmitButton = (e) => {
-  //   e.preventDefault();
-  //   window.confirm('😶‍🌫️ 로그인 창으로 이동하시겠습니까?') &&
-  //     update_info({ data: fieldValues }).then((response) => {
-  //       Navigate('/accounts/login/');
-  //       toast.success(
-  //         `🙋‍♀️ ${response.data.username}님 환영합니다 로그인 해주세요`,
-  //         {
-  //           position: 'top-right',
-  //           autoClose: 5000,
-  //           hideProgressBar: false,
-  //           closeOnClick: true,
-  //           pauseOnHover: true,
-  //           draggable: true,
-  //           progress: undefined,
-  //         },
-  //       );
-  //     });
-  // };
 
   console.log(user_id);
 
@@ -100,31 +66,22 @@ function SignupForm({ user_id }) {
         </p>
       </div>
       <div className="lg:w-2/6 md:w-1/2 box-decoration-clone bg-gradient-to-r from-blue-100 to-indigo-300 rounded-lg p-8 flex flex-col md:ml-0 w-full mt-10 md:mt-0">
-        {location.pathname === '/accounts/signup/2/' ? (
-          <div className="flex justify-end">
-            <NavLink to="/accounts/signup/">
-              <img
-                src={back}
-                alt="뒤로가기"
-                className="flex justify-end w-[42px] h-[42px] fill-white mr-1 mt-1 transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-100"
-              />
-            </NavLink>
-            <DebugStates fieldValues={fieldValues} />
-            <NavLink to="/">
-              <CancelIcon className="flex justify-end" />
-            </NavLink>
-          </div>
-        ) : (
-          <div className="flex justify-end">
-            <NavLink to="/">
-              <CancelIcon className="flex justify-end" />
-            </NavLink>{' '}
-          </div>
-        )}
+        <div className="flex justify-end">
+          <NavLink to="/accounts/signup/">
+            <img
+              src={back}
+              alt="뒤로가기"
+              className="flex justify-end w-[42px] h-[42px] fill-white mr-1 mt-1 transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-100"
+            />
+          </NavLink>
+          <NavLink to="/">
+            <CancelIcon className="flex justify-end" />
+          </NavLink>
+        </div>
+
         <h2 className="flex text-gray-900 text-lg font-bold title-font mb-5 select-none">
           회원가입 페이지
         </h2>
-        {/* <DebugStates fieldValues={fieldValues} /> */}
         <Routes>
           <Route
             path="/"
@@ -136,47 +93,20 @@ function SignupForm({ user_id }) {
               />
             }
           />
-          <Route
-            path="/2/"
-            element={
-              <SignupFormComponent2
-                fieldValues={fieldValues}
-                handleFieldChange={handleFieldChange}
-                // handleSubmit={handleSubmit}
-                setFieldValues={setFieldValues}
-                // errorMessages={errorMessage}
-              />
-            }
-          />
         </Routes>
-        <div className="relative mb-4">
-          {location.pathname === '/accounts/signup/2/' ? (
-            <button
-              className="mt-6 w-full bg-indigo-600 border border-gray-300
-              focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
-              text-base outline-none text-white py-2 px-3 leading-8 hover:bg-indigo-700
-              transition duration-500 ease-in-out hover:scale-105 rounded-full"
-              // onClick={handleClickSubmitButton}
-            >
-              회원가입
-            </button>
-          ) : (
-            <NavLink
-              className="text-white bg-indigo-500 border-0 py-2 px-8 
+        <button
+          className="text-white bg-indigo-500 border-0 py-2 px-8 
                 focus:outline-none hover:bg-indigo-600 rounded-full text-lg
               transition duration-500 ease-in-out hover:scale-105 w-full text-center"
-              type="button"
-              to="/accounts/signup/2/"
-              onClick={handlepassbutton}
-            >
-              다음으로
-            </NavLink>
-          )}
-        </div>
-        <p className="text-xs text-gray-500 mt-3 select-none">
-          ㈜ 유클리드소프트
-        </p>
+          type="button"
+          onClick={handlepassbutton}
+        >
+          다음으로
+        </button>
       </div>
+      <p className="text-xs text-gray-500 mt-3 select-none">
+        ㈜ 유클리드소프트
+      </p>
     </section>
   );
 }

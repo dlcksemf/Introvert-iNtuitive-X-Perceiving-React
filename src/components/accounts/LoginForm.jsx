@@ -36,13 +36,16 @@ function LoginForm() {
 
     refetch({ data: fieldValues })
       .then((response) => {
-        const { access, refresh, user_id, is_staff, username } = response.data;
+        const { access, refresh, user_id, is_staff, username, birthdate } =
+          response.data;
+        console.log(response.data);
         login({
           access,
           refresh,
           user_id,
           is_staff,
           username,
+          birthdate,
         });
 
         if (is_staff || query.get('next') === '/') {

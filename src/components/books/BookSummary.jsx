@@ -254,6 +254,23 @@ function HeavyReaderSummary({ book }) {
   );
 }
 
+function RecommendedBooksSummary({ book }) {
+  return (
+    <div>
+      <p>RecommendedBooks</p>
+      <div>{book.title}</div>
+      <div className="px-6 pt-4 pb-2">
+        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+          {book.category && `#${book.category}`}
+        </span>
+        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+          #{book.writer}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function ReviewSummary({ review }) {
   return (
     <div>
@@ -272,5 +289,6 @@ export {
   NewBookSummary,
   Top5Summary,
   HeavyReaderSummary,
+  RecommendedBooksSummary,
   ReviewSummary,
 };

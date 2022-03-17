@@ -8,13 +8,9 @@ import {
   NavLink,
 } from 'react-router-dom';
 import CancelIcon from 'designMaterials/CancelIcon';
-import {
-  SignupFormComponent1,
-  SignupFormComponent2,
-} from './SignupFormComponent';
+import { SignupFormComponent2 } from './SignupFormComponent';
 import { toast } from 'react-toastify';
 import back from 'components/parts/image/back.png';
-import { useAuth } from 'base/hooks/Authcontext';
 import DebugStates from 'base/DebugStates';
 
 const INIT_FILED_VALUES = {
@@ -28,17 +24,19 @@ const INIT_FILED_VALUES = {
   department: '',
 };
 
-function SignupForm({ user_id }) {
+function SignupForm2({ user_id }) {
   const Navigate = useNavigate();
   let location = useLocation();
 
   const { fieldValues, handleFieldChange, setFieldValues } =
     useFieldValues(INIT_FILED_VALUES);
 
-  const [{ errorMessage }, update_info] = useApiAxios(
+  console.log(user_id);
+
+  const [{ errorMessages }, signup] = useApiAxios(
     {
-      url: `accounts/api/users/${user_id}`,
-      method: 'PATCH',
+      url: 'accounts/api/signup/',
+      method: 'POST',
     },
     { manual: true },
   );
@@ -46,7 +44,7 @@ function SignupForm({ user_id }) {
   const handleClickSubmitButton = (e) => {
     e.preventDefault();
     window.confirm('😶‍🌫️ 로그인 창으로 이동하시겠습니까?') &&
-      update_info({ data: fieldValues }).then((response) => {
+      signup({ data: fieldValues }).then((response) => {
         Navigate('/accounts/login/');
         toast.success(
           `🙋‍♀️ ${response.data.username}님 환영합니다 로그인 해주세요`,
@@ -62,8 +60,6 @@ function SignupForm({ user_id }) {
         );
       });
   };
-
-  console.log(user_id);
 
   return (
     <section className="text-gray-600 body-font">
@@ -102,7 +98,6 @@ function SignupForm({ user_id }) {
                   className="flex justify-end w-[42px] h-[42px] fill-white mr-1 mt-1 transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-100"
                 />
               </NavLink>
-              <DebugStates fieldValues={fieldValues} />
               <NavLink to="/">
                 <CancelIcon className="flex justify-end" />
               </NavLink>
@@ -117,58 +112,30 @@ function SignupForm({ user_id }) {
           <h2 className="flex text-gray-900 text-lg font-bold title-font mb-5 select-none">
             회원가입 페이지
           </h2>
-          {/* <DebugStates fieldValues={fieldValues} /> */}
-          <form onSubmit={handleClickSubmitButton}>
-            <Routes>
+          <Routes>
+            <>
               <Route
                 path="/"
-                element={
-                  <SignupFormComponent1
-                    fieldValues={fieldValues}
-                    handleFieldChange={handleFieldChange}
-                  />
-                }
-              />
-              <Route
-                path="/2/"
                 element={
                   <SignupFormComponent2
                     fieldValues={fieldValues}
                     handleFieldChange={handleFieldChange}
-                    // handleSubmit={handleSubmit}
                     setFieldValues={setFieldValues}
-                    errorMessages={errorMessage}
                   />
                 }
               />
-            </Routes>
-          </form>
-
-          {/* 첫 회원가입 화면에서 다음으로 누를 때 필수항목이 다 채워지지 않으면 넘어가지 않게 해주세요.....
-            지금은 그냥 다음으로 눌러도 넘어가집니당.... */}
+            </>
+          </Routes>
           <div className="relative mb-4">
-            {location.pathname === '/accounts/signup/2/' ? (
-              <button
-                className="mt-6 w-full bg-indigo-600 border border-gray-300
+            <button
+              className="mt-6 w-full bg-indigo-600 border border-gray-300
               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200
               text-base outline-none text-white py-2 px-3 leading-8 hover:bg-indigo-700
               transition duration-500 ease-in-out hover:scale-105 rounded-full"
-                onClick={handleClickSubmitButton}
-              >
-                회원가입
-              </button>
-            ) : (
-              <NavLink
-                className="text-white bg-indigo-500 border-0 py-2 px-8 
-                focus:outline-none hover:bg-indigo-600 rounded-full text-lg
-              transition duration-500 ease-in-out hover:scale-105 w-full text-center"
-                type="button"
-                to="/accounts/signup/2/"
-                // onClick={handlepassbutton}
-              >
-                다음으로
-              </NavLink>
-            )}
+              onClick={handleClickSubmitButton}
+            >
+              회원가입
+            </button>
           </div>
           <p className="text-xs text-gray-500 mt-3 select-none">
             ㈜ 유클리드소프트
@@ -179,4 +146,4 @@ function SignupForm({ user_id }) {
   );
 }
 
-export default SignupForm;
+export default SignupForm2;
