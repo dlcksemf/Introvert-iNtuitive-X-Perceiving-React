@@ -25,7 +25,7 @@ function MainPage() {
           className="col-start-4 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
           onClick={() => {
-            navigate(`/`);
+            navigate(`/books/application/new`);
           }}
         >
           도서신청
