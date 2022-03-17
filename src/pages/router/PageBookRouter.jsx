@@ -16,10 +16,6 @@ function PageBookRouter() {
         <Route path="/booklist/*" element={<BookListPage />} />
         <Route path="/:book_num/" element={<BookDetailPage />} />
         <Route path="/application/" element={<BookApplicationPage />} />
-        <Route
-          path="/application/search/"
-          element={<BookApplicationSearch />}
-        />
 
         <Route
           path="/application/new/"
