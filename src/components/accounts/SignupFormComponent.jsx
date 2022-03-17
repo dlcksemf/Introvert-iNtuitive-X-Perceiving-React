@@ -8,169 +8,166 @@ function SignupFormComponent1({
 }) {
   return (
     <>
-      <div className="relative mb-4">
-        <label
-          htmlFor="username"
-          className="leading-7 text-sm text-gray-600 select-none
+      <form onSubmit={handleSubmit}>
+        <div className="relative mb-4">
+          <label
+            htmlFor="username"
+            className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
-        >
-          이름
-        </label>
-        <input
-          type="username"
-          id="username"
-          name="username"
-          autoComplete="off"
-          value={fieldValues.username}
-          onChange={handleFieldChange}
-          placeholder="이름을 입력해 주세요."
-          className="peer w-full bg-white rounded border border-gray-300 
+          >
+            이름
+          </label>
+          <input
+            type="username"
+            id="username"
+            name="username"
+            autoComplete="off"
+            value={fieldValues.username}
+            onChange={handleFieldChange}
+            placeholder="이름을 입력해 주세요."
+            className="peer w-full bg-white rounded border border-gray-300 
               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
               text-base outline-none text-gray-700 py-1 px-3 leading-8 
               transition-colors duration-200 ease-in-out hover:font-bold"
-        />
-        {errorMessages.username?.map((message, index) => (
-          <p key={index} className="mt-2 text-pink-600 text-sm">
-            {message}
-          </p>
-        ))}
-      </div>
-
-      <div className="relative mb-4">
-        <label
-          htmlFor="email"
-          className="leading-7 text-sm text-gray-600 select-none
-                after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
-        >
-          이메일
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          autoComplete="off"
-          value={fieldValues.email}
-          onChange={handleFieldChange}
-          placeholder="이메일을 입력해주세요."
-          className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-        />
-        {errorMessages.email?.map((message, index) => (
-          <p key={index} className="mt-2 text-pink-600 text-sm">
-            {message}
-          </p>
-        ))}
-      </div>
-
-      <div className="relative mb-4">
-        <label
-          htmlFor="department"
-          className="leading-7 text-sm text-gray-600 select-none
-                after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
-        >
-          부서
-        </label>
-        <div>
-          <select
-            className="w-full h-10 bg-white rounded border border-gray-300 
-              text-gray-400 hover:font-bold focus:border-indigo-500 focus:ring-2 
-              focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 
-              leading-8 transition-colors duration-200 ease-in-out"
-            name="department"
-            value={fieldValues.department}
-            onChange={handleFieldChange}
-          >
-            <option className="hidden">부서를 선택해주세요.</option>
-            <option>경영관리본부</option>
-            <option>공공사업그룹</option>
-            <option>플랫폼사업그룹</option>
-            <option>기업부설연구소</option>
-          </select>
-          {errorMessages.department?.map((message, index) => (
+          />
+          {errorMessages.username?.map((message, index) => (
             <p key={index} className="mt-2 text-pink-600 text-sm">
               {message}
             </p>
           ))}
         </div>
-      </div>
-
-      <div className="relative mb-4">
-        <label
-          htmlFor="phone_num"
-          className="leading-7 text-sm text-gray-600 select-none
+        <div className="relative mb-4">
+          <label
+            htmlFor="email"
+            className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
-        >
-          핸드폰 번호
-        </label>
-        <input
-          type="phone_num"
-          id="phone_num"
-          name="phone_num"
-          autoComplete="off"
-          value={fieldValues.phone_num}
-          onChange={handleFieldChange}
-          placeholder="휴대전화 번호를 입력해주세요."
-          className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-        />
-        {errorMessages.phone_num?.map((message, index) => (
-          <p key={index} className="mt-2 text-pink-600 text-sm">
-            {message}
-          </p>
-        ))}
-      </div>
-
-      <div className="relative mb-4">
-        <label
-          htmlFor="password"
-          className="leading-7 text-sm text-gray-600 select-none
+          >
+            이메일
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autoComplete="off"
+            value={fieldValues.email}
+            onChange={handleFieldChange}
+            placeholder="이메일을 입력해주세요."
+            className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+          {errorMessages.email?.map((message, index) => (
+            <p key={index} className="mt-2 text-pink-600 text-sm">
+              {message}
+            </p>
+          ))}
+        </div>
+        <div className="relative mb-4">
+          <label
+            htmlFor="department"
+            className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
-        >
-          비밀번호
-        </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          autoComplete="off"
-          value={fieldValues.password}
-          onChange={handleFieldChange}
-          placeholder="비밀번호를 설정해주세요."
-          className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-        />
-        {errorMessages.password?.map((message, index) => (
-          <p key={index} className="mt-2 text-pink-600 text-sm">
-            {message}
-          </p>
-        ))}
-      </div>
+          >
+            부서
+          </label>
+          <div>
+            <select
+              className="w-full h-10 bg-white rounded border border-gray-300 
+              text-gray-400 hover:font-bold focus:border-indigo-500 focus:ring-2 
+              focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 
+              leading-8 transition-colors duration-200 ease-in-out"
+              name="department"
+              value={fieldValues.department}
+              onChange={handleFieldChange}
+            >
+              <option className="hidden">부서를 선택해주세요.</option>
+              <option>경영관리본부</option>
+              <option>공공사업그룹</option>
+              <option>플랫폼사업그룹</option>
+              <option>기업부설연구소</option>
+            </select>
+            {errorMessages.department?.map((message, index) => (
+              <p key={index} className="mt-2 text-pink-600 text-sm">
+                {message}
+              </p>
+            ))}
+          </div>
+        </div>
 
-      <div className="relative mb-4">
-        <label
-          htmlFor="password2"
-          className="leading-7 text-sm text-gray-600 select-none
+        <div className="relative mb-4">
+          <label
+            htmlFor="phone_num"
+            className="leading-7 text-sm text-gray-600 select-none
                 after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
-        >
-          비밀번호 확인
-        </label>
-        <input
-          type="password"
-          id="password2"
-          name="password2"
-          autoComplete="off"
-          value={fieldValues.password2}
-          onChange={handleFieldChange}
-          placeholder="비밀번호를 재확인해주세요."
-          className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-        />
-        {errorMessages.non_field_errors?.map((message, index) => (
-          <p key={index} className="mt-2 text-pink-600 text-sm">
-            {message}
-          </p>
-        ))}
-      </div>
+          >
+            핸드폰 번호
+          </label>
+          <input
+            type="phone_num"
+            id="phone_num"
+            name="phone_num"
+            autoComplete="off"
+            value={fieldValues.phone_num}
+            onChange={handleFieldChange}
+            placeholder="휴대전화 번호를 입력해주세요."
+            className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+          {errorMessages.phone_num?.map((message, index) => (
+            <p key={index} className="mt-2 text-pink-600 text-sm">
+              {message}
+            </p>
+          ))}
+        </div>
+        <div className="relative mb-4">
+          <label
+            htmlFor="password"
+            className="leading-7 text-sm text-gray-600 select-none
+                after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
+          >
+            비밀번호
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autoComplete="off"
+            value={fieldValues.password}
+            onChange={handleFieldChange}
+            placeholder="비밀번호를 설정해주세요."
+            className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+          {errorMessages.password?.map((message, index) => (
+            <p key={index} className="mt-2 text-pink-600 text-sm">
+              {message}
+            </p>
+          ))}
+        </div>
+        <div className="relative mb-4">
+          <label
+            htmlFor="password2"
+            className="leading-7 text-sm text-gray-600 select-none
+                after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700"
+          >
+            비밀번호 확인
+          </label>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            autoComplete="off"
+            value={fieldValues.password2}
+            onChange={handleFieldChange}
+            placeholder="비밀번호를 재확인해주세요."
+            className="peer w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          />
+          {errorMessages.non_field_errors?.map((message, index) => (
+            <p key={index} className="mt-2 text-pink-600 text-sm">
+              {message}
+            </p>
+          ))}
+        </div>
+      </form>
     </>
   );
 }
-
 function SignupFormComponent2({
   fieldValues,
   handleFieldChange,
@@ -180,9 +177,7 @@ function SignupFormComponent2({
   const [year, setYear] = useState(null);
   const [month, setMonth] = useState(null);
   const [day, setDay] = useState(null);
-
   const [gender, setGender] = useState(null);
-
   useEffect(() => {
     gender &&
       (gender === '남성'
@@ -196,7 +191,6 @@ function SignupFormComponent2({
             };
           }));
   }, [gender, setFieldValues]);
-
   useEffect(() => {
     year &&
       month &&
@@ -208,9 +202,8 @@ function SignupFormComponent2({
         };
       });
   }, [year, month, day, setFieldValues]);
-
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <div className="relative mb-4">
         <label
           htmlFor="position"
@@ -238,7 +231,6 @@ function SignupFormComponent2({
           </select>
         </div>
       </div>
-
       <div className="relative mb-4">
         <label
           htmlFor="gender"
@@ -259,7 +251,6 @@ function SignupFormComponent2({
           </select>
         </div>
       </div>
-
       <div className="relative mb-4">
         <label className="leading-7 text-sm text-gray-600 select-none font-semibold">
           생일
@@ -302,8 +293,7 @@ function SignupFormComponent2({
           />
         </div>
       </div>
-    </>
+    </form>
   );
 }
-
 export { SignupFormComponent1, SignupFormComponent2 };
