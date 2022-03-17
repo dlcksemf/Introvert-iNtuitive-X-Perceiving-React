@@ -35,7 +35,7 @@ function SignupForm() {
 
   const handleClickSubmitButton = (e) => {
     e.preventDefault();
-    window.confirm('😶‍🌫️ 로그인 창으로 이동하시겠습니까?') &&
+    window.confirm('😶‍🌫️ 회원가입 하시겠습니까?') &&
       signup({ data: fieldValues })
         .then((response) => {
           Navigate('/accounts/login/?next=/');
@@ -52,11 +52,12 @@ function SignupForm() {
             },
           );
         })
-        .catch(
-          window.confirm(
-            '회원가입을 하실 수 없습니다😂 이전 페이지를 확인해주세요!',
-          ),
-        );
+        .catch((error) => {
+          error &&
+            window.confirm(
+              '회원가입을 하실 수 없습니다😂 이전 페이지를 확인해주세요!',
+            );
+        });
   };
   return (
     <section className="text-gray-600 body-font">
