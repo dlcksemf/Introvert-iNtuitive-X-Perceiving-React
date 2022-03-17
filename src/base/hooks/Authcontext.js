@@ -10,7 +10,7 @@ function AuthProvider({ children }) {
   const [auth, setAuth] = useLocalStorage('auth', INITIAL_AUTH);
 
   const login = useCallback(
-    ({ access, refresh, user_id, is_staff, username }) => {
+    ({ access, refresh, user_id, is_staff, username, birthdate }) => {
       setAuth({
         isLoggedIn: true,
         access,
@@ -18,6 +18,7 @@ function AuthProvider({ children }) {
         user_id,
         is_staff,
         username,
+        birthdate,
       });
     },
     [setAuth],
