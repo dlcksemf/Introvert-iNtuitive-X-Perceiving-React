@@ -3,6 +3,7 @@ import Top5 from 'components/main/Top5';
 import HeavyReader from 'components/main/HeavyReader';
 import NewBook from 'components/main/NewBook';
 import { useNavigate } from 'react-router-dom';
+import RecommendedBooks from 'components/main/RecommendedBooks';
 
 function MainPage() {
   const navigate = useNavigate();
@@ -59,6 +60,11 @@ function MainPage() {
       <div className="grid grid-col-1 m-auto">
         <div>
           <NewBook />
+        </div>
+      </div>
+      <div className="grid grid-col-1 m-auto">
+        <div>
+          <RecommendedBooks />
         </div>
       </div>
     </div>
