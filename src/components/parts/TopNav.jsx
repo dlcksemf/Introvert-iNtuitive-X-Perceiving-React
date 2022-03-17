@@ -1,5 +1,3 @@
-// hamburger 바 만들기 & 스타일링 (중앙정렬)
-
 import { useAuth } from 'base/hooks/Authcontext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import name from 'components/parts/image/euclidLibrary.png';
@@ -18,7 +16,7 @@ function TopNav() {
   };
 
   return (
-    <header className="text-gray-600 body-font sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-80">
+    <header className="text-gray-700 body-font sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
       <div className="mx-2 flex px-7 pt-1 pb-4 flex-col md:flex-row items-center">
         <div className="basis-1/3 grow-0 shrink-0 text-gray-900 md:mb-0"></div>
 
@@ -71,6 +69,46 @@ function TopNav() {
             className="h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
           />
         </div>
+      </div>
+      <div>
+        <header className="grid grid-cols-8 text-center text-xl">
+          <div
+            className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
+          hover:text-blue-700 hover:font-extrabold mb-5"
+            onClick={() => {
+              navigate(`/books/booklist/`);
+            }}
+          >
+            도서목록
+          </div>
+          <div
+            className="col-start-4 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
+          hover:text-blue-700 hover:font-extrabold"
+            onClick={() => {
+              navigate(`/books/application/new`);
+            }}
+          >
+            도서신청
+          </div>
+          <div
+            className="col-start-5 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
+          hover:text-blue-700 hover:font-extrabold"
+            onClick={() => {
+              navigate(`/game/gamelist/`);
+            }}
+          >
+            보드게임
+          </div>
+          <div
+            className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
+          hover:text-blue-700 hover:font-extrabold"
+            onClick={() => {
+              navigate(`/`);
+            }}
+          >
+            이용안내
+          </div>
+        </header>
       </div>
     </header>
   );
