@@ -98,14 +98,14 @@ function MainNavigation() {
                 className="hover:text-lg"
               >
                 <MenuItem icon={<img src={login} alt="들어오기" />}>
-                  <h1 className="text-black">Log In</h1>
+                  <h1 className="text-black">들어가기</h1>
                 </MenuItem>
               </div>
             )}
             {auth.isLoggedIn && (
               <div onClick={handleLogout} className="hover:text-lg">
                 <MenuItem icon={<img src={logoutIcon} alt="나가기" />}>
-                  <h1 className="text-black">Log Out</h1>
+                  <h1 className="text-black">나가기</h1>
                 </MenuItem>
               </div>
             )}
