@@ -9,9 +9,11 @@ import LoanedIcon from 'designMaterials/LoanedIcon';
 import Toggle from 'components/parts/Toggle';
 
 import non_image from 'components/parts/image/non_image.jpg';
-import heavy_reader from 'components/parts/image/heavyReader.jpg';
+import heavy_reader from 'components/parts/image/heavyReader.gif';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+
+import 'css/HeavyReader.css';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -227,27 +229,65 @@ function HeavyReaderSummary({ book }) {
         <img
           src={heavy_reader}
           alt="다독왕"
-          className="object-cover w-full h-full rounded-lg"
+          className="object-cover w-full h-full rounded-lg cursor-pointer"
         />
 
-        <div className="absolute w-full h-full bottom-0 bg-gradient-to-r from-indigo-700/30 to-blue-700/30 rounded-lg flex flex-col items-center justify-center text-center">
-          <p className="text-4xl px-14 text-gray-300 mb-16 select-none font-semibold">
-            유클리드의 자랑
-          </p>
-
-          <p
-            className="animate__animated animate__fadeIn animate__slower animate__infinite
-          text-6xl font-extrabold px-14 text-gray-300 mb-10 select-none"
+        <div
+          className="text_photo absolute w-full h-full bottom-0 rounded-lg
+          bg-gradient-to-r from-gray-500 to-slate-700 hover:bg-none"
+        >
+          <div
+            id="mouse"
+            className="select-none animate__animated animate__heartBeat animate__slower animate__infinite"
           >
-            {book?.count_loans ? book.username : 'Unknown'}
-          </p>
+            <svg width="500" height="400" viewBox="0 0 620 140">
+              <text
+                x="180"
+                y="75"
+                fill="white"
+                font-size="70"
+                font-family="'HSSummer'"
+              >
+                과연 누구일까요?
+              </text>
+            </svg>
+          </div>
 
-          <p className="text-4xl font-light px-14 mt-10 text-gray-300 select-none">
-            {book?.position
-              ? book.position
-              : !book?.count_loans && '과연 누가 될까요?'}{' '}
-            사원
-          </p>
+          <div
+            id="name"
+            className="select-none animate__animated animate__pulse animate__infinite"
+          >
+            <svg width="500" height="140" viewBox="0 0 620 140">
+              <text
+                x="175"
+                y="90"
+                fill="white"
+                font-size="150"
+                font-family="'Dongle-Bold'"
+                textLength="300"
+              >
+                {book?.count_loans ? book.username : 'Unknown'}
+              </text>
+            </svg>
+          </div>
+
+          <div id="position" className="select-none">
+            <svg width="300" height="90" viewBox="0 0 620 140">
+              <text
+                x="200"
+                y="90"
+                fill="white"
+                font-size="150"
+                font-family="'Dongle-Bold'"
+                textLength="170"
+              >
+                {book?.position
+                  ? book.position
+                  : !book?.count_loans && '과연 누가 될까요?'}{' '}
+                사원
+              </text>
+            </svg>
+          </div>
         </div>
       </div>
     </div>

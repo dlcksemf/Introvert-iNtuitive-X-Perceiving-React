@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'HSSummer';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/HSSummer.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Dongle-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108_2@1.0/Dongle-Bold.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#mouse {
+  text-align: center;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  opacity: 1;
+  text-shadow: -1px -1px 0px gray, 3px 3px 0px gray, 6px 6px 0px darkslategrey;
+}
+
+.text_photo:hover #mouse {
+  opacity: 0;
+}
+
+#name {
+  text-align: center;
+  position: absolute;
+  top: 58%;
+  right: 23%;
+  opacity: 0;
+}
+
+.text_photo:hover #name {
+  opacity: 1;
+  text-shadow: -1px -1px 0px darkturquoise, 3px 3px 0px darkturquoise,
+    6px 6px 0px darkblue;
+}
+
+#position {
+  text-align: center;
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  opacity: 0;
+}
+
+.text_photo:hover #position {
+  opacity: 1;
+  text-shadow: -1px -1px 0px darkturquoise, 3px 3px 0px darkturquoise,
+    6px 6px 0px darkblue;
+}
