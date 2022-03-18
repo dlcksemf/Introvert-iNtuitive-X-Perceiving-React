@@ -137,7 +137,7 @@ function NewBookSummary({ book }) {
       <div className="max-w-sm rounded overflow-hidden shadow-xl">
         <img
           className="w-[500px] h-[300px] object-scale-down cursor-pointer
-          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-95"
+          transition duration-500 ease-in-out hver:-translate-y-1 hover:scale-95"
           src={book?.cover_photo ? book.cover_photo : non_image}
           alt={book.title}
           onClick={() => {
@@ -295,19 +295,41 @@ function HeavyReaderSummary({ book }) {
 }
 
 function RecommendedBooksSummary({ book }) {
+  const navigate = useNavigate();
   return (
-    <div>
-      <p>RecommendedBooks</p>
-      <div>{book.title}</div>
-      <div className="px-6 pt-4 pb-2">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
-          {book.category && `#${book.category}`}
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
-          #{book.writer}
-        </span>
+    <>
+      <div className="max-w-sm rounded  shadow-xl">
+        <img
+          className="w-[500px] h-[300px] object-scale-down cursor-pointer"
+          src={book?.cover_photo ? book.cover_photo : non_image}
+          alt={book.title}
+          onClick={() => {
+            navigate(`/books/${book.book_num}/`);
+          }}
+        />
+        <div className="px-6 py-4 cursor-pointer">
+          <div
+            className="font-bold text-xl mb-2 "
+            onClick={() => {
+              navigate(`/books/${book.book_num}`);
+            }}
+          >
+            {book.title}
+          </div>
+          <p className="text-gray-700 text-base select-none">
+            {truncateString(book.story)}
+          </p>
+        </div>
+        <div className="px-6 pt-4 pb-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+            {book.category && `#${book.category}`}
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+            #{book.writer}
+          </span>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

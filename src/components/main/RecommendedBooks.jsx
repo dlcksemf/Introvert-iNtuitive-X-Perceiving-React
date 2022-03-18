@@ -32,7 +32,7 @@ function RecommendedBooks() {
           동년배가 많이 빌린 책
         </h1>
       </div>
-      <div>
+      <div className="flex justify-center mb-28">
         {bookList
           ?.filter((item, index) => {
             return (
@@ -53,7 +53,10 @@ function RecommendedBooks() {
                   (date.slice(0, 4) - book.birthdate.slice(0, 4)) / 10,
                 ) *
                   10 && (
-                <div>
+                <div
+                  key={book.book_num}
+                  className="h-[400px] w-[485px] flex justify-center items-center"
+                >
                   <RecommendedBooksSummary book={book} />
                 </div>
               ),
