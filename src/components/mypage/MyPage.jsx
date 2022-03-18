@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import ApplicationsList from './applications/ApplicationsList';
 import LoanedBooksList from './loanedBooks/LoanedBooksList';
 import WishBooksList from './wishes/WishBooksList';
+import LoanedGameList from './loanedGame/LoanedGameList';
 import UserInfo from './UserInfo';
 import { useReload } from 'base/hooks/ReloadContext';
 import ReadingStatus from './ReadingStatus';
@@ -12,6 +13,7 @@ import { Link, useLocation } from 'react-router-dom';
 function MyPage() {
   const [showWish, setShowWish] = useState(false);
   const [showLoaned, setShowLoaned] = useState(true);
+  const [showGame, setShowGame] = useState(false);
   const [auth] = useAuth();
   const [, setReload] = useReload();
   let location = useLocation();
@@ -77,9 +79,30 @@ function MyPage() {
                           text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
                           transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110`}
                                     onClick={() => setShowLoaned(true)}
-                                    onClickCapture={() => setShowWish(false)}
+                                    onClickCapture={() => {
+                                      setShowWish(false);
+                                      setShowGame(false);
+                                    }}
                                   >
                                     대출 도서
+                                  </button>
+
+                                  <button
+                                    className={`${
+                                      showGame
+                                        ? 'bg-amber-500 text-white border-none px-5 py-2.5'
+                                        : 'text-gray-800'
+                                    }
+                                    bottom-20 border-2 border-amber-500 px-3 mr-2
+                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
+                          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110`}
+                                    onClick={() => setShowGame(true)}
+                                    onClickCapture={() => {
+                                      setShowWish(false);
+                                      setShowLoaned(false);
+                                    }}
+                                  >
+                                    게임 대여
                                   </button>
 
                                   <button
@@ -92,7 +115,10 @@ function MyPage() {
                           text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
                           transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110`}
                                     onClick={() => setShowWish(true)}
-                                    onClickCapture={() => setShowLoaned(false)}
+                                    onClickCapture={() => {
+                                      setShowLoaned(false);
+                                      setShowGame(false);
+                                    }}
                                   >
                                     찜 도서
                                   </button>
@@ -117,6 +143,11 @@ function MyPage() {
                               {showLoaned && (
                                 <LoanedBooksList
                                   loanedBookList={data?.loanedbooks_set}
+                                />
+                              )}
+                              {showGame && (
+                                <LoanedGameList
+                                  loanedGameList={data?.loanedgame_set}
                                 />
                               )}
                               {showWish && (
