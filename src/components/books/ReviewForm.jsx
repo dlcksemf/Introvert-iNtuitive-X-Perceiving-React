@@ -1,5 +1,4 @@
 import { useApiAxios } from 'base/api/base';
-import DebugStates from 'base/DebugStates';
 import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
 import LoadingIndicator from 'components/LoadingIndicator';
@@ -13,8 +12,7 @@ const INIT_FIELD_VALUES = {
 function ReviewForm({ reviewId, book, setReload }) {
   const [auth] = useAuth();
 
-  const [{ data: review, loading: getLoading, error: getError }, refetch] =
-    useApiAxios(`/books/api/review/`, { manual: true });
+  const [{}, refetch] = useApiAxios(`/books/api/review/`, { manual: true });
 
   const [
     {
@@ -36,8 +34,6 @@ function ReviewForm({ reviewId, book, setReload }) {
 
   const { fieldValues, handleFieldChange, emptyFieldValues } =
     useFieldValues(INIT_FIELD_VALUES);
-
-  console.log(fieldValues);
 
   useEffect(() => {
     refetch();
@@ -105,13 +101,6 @@ function ReviewForm({ reviewId, book, setReload }) {
           </button>
         </span>
       </form>
-      <DebugStates
-        review={review}
-        getLoading={getLoading}
-        getError={getError}
-        saveErrorMessages={saveErrorMessages}
-        fieldValues={fieldValues}
-      />
     </div>
   );
 }
