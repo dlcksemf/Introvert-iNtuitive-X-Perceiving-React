@@ -12,11 +12,12 @@ import non_image from 'components/parts/image/non_image.jpg';
 
 import { ToastContainer } from 'react-toastify';
 import { ReviewSummary } from './BookSummary';
-import ReviewForm from './ReviewForm';
+import ReviewPage from 'pages/ReviewPage';
 
 function BookDetail({ book_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [auth] = useAuth();
+  const [reloading, setReloading] = useState(false);
   const navigate = useNavigate();
   let location = useLocation();
   let { pathname, state } = location;
@@ -49,6 +50,10 @@ function BookDetail({ book_num }) {
     getWish();
     refetch();
   };
+
+  useEffect(() => {
+    refetch();
+  }, [refetch, reloading]);
 
   const handleClickLoan = () => {
     auth.isLoggedIn
@@ -210,7 +215,7 @@ function BookDetail({ book_num }) {
                   ))}
               </div>
               <div className="ml-[260px] mt-4">
-                <ReviewForm />
+                <ReviewPage book={book_num} setReload={setReloading} />
               </div>
             </div>
           </section>
