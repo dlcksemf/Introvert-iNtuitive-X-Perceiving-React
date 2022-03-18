@@ -60,9 +60,6 @@ function ReviewForm({ reviewId, book, setReload }) {
       {saveError &&
         `저장 중 에러가 발생했습니다 (${saveError.response?.status} ${saveError.response?.statusText})`}
       <form onSubmit={handleSubmit}>
-        <label className="leading-7 text-sm text-gray-600 select-none font-semibold">
-          {auth?.username}
-        </label>
         <span className="flex">
           <select
             className="w-[100px] h-[42px] text-gray-400 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"
@@ -89,7 +86,10 @@ function ReviewForm({ reviewId, book, setReload }) {
             value={fieldValues.review_content}
             onChange={handleFieldChange}
             placeholder="도서 감상평 100자 이내 등록"
-            className="w-[850px] ml-4 text-center bg-white rounded border border-gray-3s00 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 ease-in-out"
+            className="w-[850px] ml-4 text-center bg-white rounded border border-gray-300 
+            hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
+            text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 
+            ease-in-out"
           />
           {saveErrorMessages.review_content?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">

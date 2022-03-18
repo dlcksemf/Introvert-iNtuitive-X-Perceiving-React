@@ -9,9 +9,9 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import LoanedIcon from 'designMaterials/LoanedIcon';
 import Toggle from 'components/parts/Toggle';
 import non_image from 'components/parts/image/non_image.jpg';
+import { ReviewSummary } from 'components/books/BookSummary';
 
 import { ToastContainer } from 'react-toastify';
-import { ReviewSummary } from './BookSummary';
 import ReviewPage from 'pages/ReviewPage';
 
 function BookDetail({ book_num }) {

@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 import 'css/HeavyReader.css';
+import LoadingIndicator from 'components/LoadingIndicator';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -333,15 +334,65 @@ function RecommendedBooksSummary({ book }) {
   );
 }
 
-function ReviewSummary({ review }) {
+function ReviewSummary({ review, review_num, book_num }) {
+  const navigate = useNavigate();
+  const [auth] = useAuth();
+
+  const [{}, refetch] = useApiAxios(`/books/api/review/${review_num}/`, {
+    manual: true,
+  });
+
+  const [{ loading: deleteLoading, error: deleteError }, deleteCharacter] =
+    useApiAxios(
+      {
+        url: `/books/api/review/${review_num}/`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${auth.access}`,
+        },
+      },
+      { manual: true },
+    );
+
+  const handleDelete = () => {
+    if (window.confirm('한줄평을 삭제하시겠습니까?')) {
+      deleteCharacter().then(() => {
+        navigate(`/books/${book_num}`);
+      });
+    }
+  };
+
+  useEffect(() => {
+    refetch();
+  }, []);
+
   return (
     <div>
-      <h1 className="mt-4 ml-4">{review?.user_id}</h1>
-      <span className="flex">
-        <h2 className="mr-4 ml-8">{review?.review_rate}</h2>
-        <h2 className="mr-4 mb-4">{review?.review_content}</h2>
-        <h2>{review?.created_at}</h2>
-      </span>
+      {deleteLoading && <LoadingIndicator>삭제 중..</LoadingIndicator>}
+      {deleteError &&
+        `삭제 요청 중 에러가 발생 (${deleteError.response.status} ${deleteError.response.statusText})`}
+      {review && (
+        <>
+          <span className="flex">
+            <h1 className="mt-4 ml-4">{review?.user_id}</h1>
+            <button className="border-2 border-gray-400 h-8 w-8 ml-4">
+              수정
+            </button>{' '}
+            <button
+              disabled={deleteLoading}
+              onClick={handleDelete}
+              className="border-2 border-gray-400 h-8 w-8 ml-4"
+            >
+              삭제
+            </button>
+          </span>
+          <span className="flex">
+            <h2 className="mr-4 ml-8">{review?.review_rate}</h2>
+            <h2 className="mr-4 mb-4">{review?.review_content}</h2>
+            <h2>{review?.created_at}</h2>
+          </span>{' '}
+        </>
+      )}
     </div>
   );
 }
