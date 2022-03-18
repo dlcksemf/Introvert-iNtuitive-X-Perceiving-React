@@ -15,6 +15,15 @@ function TopNav() {
     }
   };
 
+  // const scrollDown = () => {
+  //   Math.floor(
+  //     (window.scrollY / (document.body.clientHeight - window.innerHeight)) *
+  //       100,
+  //   );
+  // };
+
+  // window.addEventListener('scroll', scrollDown());
+
   return (
     <header className="text-gray-700 body-font sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
       <div className="mx-2 flex px-7 pt-1 pb-4 flex-col md:flex-row items-center">
