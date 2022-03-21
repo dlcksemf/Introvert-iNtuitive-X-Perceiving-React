@@ -62,7 +62,7 @@ function ReviewForm({ reviewId, book, setReload }) {
       <form onSubmit={handleSubmit}>
         <span className="flex">
           <select
-            className="w-[100px] h-[42px] text-gray-400 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"
+            className="w-[100px] outline-none h-[42px] text-gray-400 text-center bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"
             name="review_rate"
             value={fieldValues.review_rate}
             onChange={handleFieldChange}
@@ -89,7 +89,8 @@ function ReviewForm({ reviewId, book, setReload }) {
             className="w-[850px] ml-4 text-center bg-white rounded border border-gray-300 
             hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
             text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 
-            ease-in-out"
+            ease-in-out outline-none"
+            autoComplete="off"
           />
           {saveErrorMessages.review_content?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">
