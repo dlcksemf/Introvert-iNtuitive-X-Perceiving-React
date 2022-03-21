@@ -22,6 +22,11 @@ const STATELIST = {
     B: '대여 불가',
     D: '삭제',
   },
+  game: {
+    ALL: '전체',
+    L: '대여 중',
+    R: '반납 완료',
+  },
 };
 
 export { API_HOST, itemsPerPage, STATELIST };

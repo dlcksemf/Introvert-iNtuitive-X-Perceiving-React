@@ -9,6 +9,7 @@ import PageModal from 'pages/PageModal';
 import PageUserInfoModal from 'pages/PageUserInfoModal';
 import { useAuth } from 'base/hooks/Authcontext';
 import NotFound from 'components/parts/NotFound';
+import PageGameModal from 'pages/PageGameModal';
 
 function PageAccountsRouter() {
   let location = useLocation();
@@ -34,6 +35,7 @@ function PageAccountsRouter() {
         <Routes>
           <Route path="/modal/userinfo/" element={<PageUserInfoModal />} />
           <Route path="/modal/:modalType/" element={<PageModal />} />
+          <Route path="/modal/loanedgame/" element={<PageGameModal />} />
         </Routes>
       )}
     </>

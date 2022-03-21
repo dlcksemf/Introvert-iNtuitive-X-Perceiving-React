@@ -34,7 +34,7 @@ function LoanedGame({ game }) {
     e.preventDefault();
     if (window.confirm('반납하시겠습니까?')) {
       handleOkButton();
-      alert('반납신청 되었습니다');
+      alert('반납 되었습니다');
     } else {
       handleCancleButton();
       alert('취소 되었습니다');
@@ -47,11 +47,11 @@ function LoanedGame({ game }) {
       .then(() => {
         setGameReturn(false);
         setReload(true);
-        setColor('blue');
       })
       .catch((error) => {
         console.log(error);
       });
+    window.location.replace('/accounts/mypage/');
   };
 
   const handleCancleButton = () => {

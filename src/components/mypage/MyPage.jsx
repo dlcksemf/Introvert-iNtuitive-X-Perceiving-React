@@ -128,7 +128,9 @@ function MyPage() {
                                   to={
                                     showLoaned
                                       ? `/accounts/modal/loanedbooks/`
-                                      : `/accounts/modal/wishes/`
+                                      : showWish
+                                      ? `/accounts/modal/wishes/`
+                                      : `/accounts/modal/loanedgame/`
                                   }
                                   state={{ backgroundLocation: location }}
                                 >
