@@ -1,4 +1,4 @@
-import NoList from '../NoList';
+import NoListGame from '../NoListGame';
 import LoanedGame from './LoanedGame';
 
 function LoanedGameList({ loanedGameList }) {
@@ -9,7 +9,7 @@ function LoanedGameList({ loanedGameList }) {
   return (
     <div className="block w-full overflow-x-auto text-gray-800 select-none">
       {filtered_list?.length === 0 ? (
-        <NoList>대여할 게임을 찾으러 가요!</NoList>
+        <NoListGame>대여할 게임을 찾으러 가요!</NoListGame>
       ) : (
         <table className="items-center bg-transparent w-full border-collapse ">
           <thead>
