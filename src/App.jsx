@@ -12,13 +12,15 @@ import Footer from 'components/parts/Footer';
 import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
 import LoginPage from 'pages/LoginPage';
+import SecondNav from 'components/parts/SecondNav';
 
 function App() {
   const [auth] = useAuth();
 
   return (
     <div className="relative min-h-screen">
-      <TopNav />
+      {/* <TopNav /> */}
+      <SecondNav />
 
       <div className="app">
         <Routes>

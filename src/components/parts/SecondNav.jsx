@@ -1,9 +1,24 @@
 import { useAuth } from 'base/hooks/Authcontext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import name from 'components/parts/image/euclidLibrary.png';
 import search from 'components/parts/image/search.png';
 import user from 'components/parts/image/user.png';
+
+const useScroll = () => {
+  const [state, setState] = useState({
+    x: 0,
+    y: 0,
+  });
+  const onScroll = (e) => {
+    setState({ y: window.scrollY, x: window.scrollX });
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return state;
+};
 
 function SecondNav() {
   const navigate = useNavigate();
@@ -17,13 +32,9 @@ function SecondNav() {
       window.scrollTo(0, 0);
     }
   };
-  console.log(offset);
+  const { y } = useScroll();
 
-  window.addEventListener('scroll', function () {
-    setOffset(window.pageYOffset);
-  });
-
-  if (offset > 200) {
+  if (y > 200) {
     return (
       <div className="sticky  body-font top-0 z-10">
         <header className="text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
@@ -115,7 +126,7 @@ function SecondNav() {
         </header>
       </div>
     );
-  } else if (0 <= offset <= 200) {
+  } else if (0 <= y <= 200) {
     return (
       <div className="sticky">
         <header className="text-gray-700 body-font top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
