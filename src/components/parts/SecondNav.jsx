@@ -34,19 +34,19 @@ function SecondNav() {
   };
   const { y } = useScroll();
 
-  if (y > 200) {
+  if (y > 80) {
     return (
       <div className="sticky  body-font top-0 z-10">
-        <header className="text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
+        <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="flex justify-between">
             <div>
               <img src={name} alt="EUCLID BOOKS" className="h-20" />
             </div>
             <div>
-              <header className="grid grid-cols-8 text-center text-xl">
+              <header className="ml-52 mt-5 grid grid-cols-4 text-xl">
                 <div
-                  className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold mb-5"
+                  className="mr-32 select-none transition duration-500 ease-in-out cursor-pointer
+          hover:text-blue-700"
                   onClick={() => {
                     navigate(`/books/booklist/`);
                   }}
@@ -54,8 +54,8 @@ function SecondNav() {
                   도서목록
                 </div>
                 <div
-                  className="col-start-4 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                  className=" select-none transition duration-500 ease-in-out cursor-pointer
+          hover:text-blue-700 "
                   onClick={() => {
                     navigate(`/books/application/new`);
                   }}
@@ -63,8 +63,8 @@ function SecondNav() {
                   도서신청
                 </div>
                 <div
-                  className="col-start-5 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                  className=" select-none transition duration-500 ease-in-out cursor-pointer
+          hover:text-blue-700 "
                   onClick={() => {
                     navigate(`/game/gamelist/`);
                   }}
@@ -72,8 +72,8 @@ function SecondNav() {
                   보드게임
                 </div>
                 <div
-                  className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                  className=" select-none transition duration-500 ease-in-out cursor-pointer
+          hover:text-blue-700 "
                   onClick={() => {
                     navigate(`/`);
                   }}
@@ -83,7 +83,7 @@ function SecondNav() {
               </header>
             </div>
             <div>
-              <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0">
+              <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 pt-5 pr-10 px-3 focus:outline-none rounded text-base mt-8 md:mt-0">
                 {!auth.isLoggedIn && (
                   <NavLink
                     className="font-semibold select-none mr-3 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
@@ -126,7 +126,7 @@ function SecondNav() {
         </header>
       </div>
     );
-  } else if (0 <= y <= 200) {
+  } else {
     return (
       <div className="sticky">
         <header className="text-gray-700 body-font top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
@@ -186,7 +186,7 @@ function SecondNav() {
             </div>
           </div>
           <div>
-            <header className="grid grid-cols-8 text-center text-xl">
+            <header className=" grid grid-cols-8 text-center text-xl">
               <div
                 className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold mb-5"
