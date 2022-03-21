@@ -1,59 +1,33 @@
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import React, { useEffect, useState, useCallback } from 'react';
-import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
-import SearchBar from '../SearchBar';
-import StateCategory from '../StateCategory';
-import ModalComponent from './ModalComponent';
 import { STATELIST, itemsPerPage } from 'Constants';
+import SearchBar from '../SearchBar';
+import ReactPaginate from 'react-paginate';
+import StateCategory from '../StateCategory';
+import GameModalComponent from './GameModalComponent';
 
 const TitleList = {
-  applications: {
-    created_at: '등록일',
-    title: '제목',
-    writer: '저자',
-    state: '상태',
-  },
-  loanedbooks: {
-    title: '제목',
-    writer: '저자',
-    return_state: '상태',
-    loaned_date: '대출일',
-    return_due_date: '반납 예정일',
-    returned_date: '반납일',
-  },
-  wishes: {
-    title: '제목',
-    writer: '저자',
-    state: '상태',
-    return_due_date: '반납 예정일',
+  loanedgame: {
+    game_name: '게임명',
+    return_due_time: '반납 예정 시간',
+    returned_time: '반납 시간',
+    return_state: '반납 상태',
   },
 };
 
-function Modal({ modalType }) {
+function GameModal({ modalType }) {
   const navigate = useNavigate();
   const [auth] = useAuth();
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
   const [state, setState] = useState('ALL');
+
   const [stateType] = useState(() => {
-    if (modalType === 'applications') {
-      return 'application';
-    } else if (modalType === 'loanedbooks') {
-      return 'loaned';
-    } else {
-      return 'books';
-    }
-  });
-  const [modalTitle] = useState(() => {
-    if (modalType === 'applications') {
-      return '신청 내역';
-    } else if (modalType === 'loanedbooks') {
-      return '대출 내역';
-    } else {
-      return '찜 내역';
+    if (modalType === 'loanedgame') {
+      return 'game';
     }
   });
 
@@ -61,7 +35,7 @@ function Modal({ modalType }) {
 
   const [{ data }, getUserInfo] = useApiAxios(
     {
-      url: `/books/api/${modalType}/?user_id=${auth.user_id}`,
+      url: `/game/api/loanedgame/?user_id=${auth.user_id}/`,
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access}`,
@@ -76,7 +50,7 @@ function Modal({ modalType }) {
         email: auth.email,
         page: newPage,
         query: newQuery,
-        state: state === 'ALL' ? '' : state,
+        game_state: state === 'All' ? '' : state,
       };
 
       const { data } = await getUserInfo({ params });
@@ -107,7 +81,7 @@ function Modal({ modalType }) {
       <div className="border-b dark:border-gray-600">
         <div className="flex justify-between items-start p-5 rounded-t">
           <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white select-none">
-            {modalTitle}
+            게임 대여 내역
           </h3>
 
           <div className="absolute right-72 mt-8">
@@ -132,23 +106,21 @@ function Modal({ modalType }) {
             </svg>
           </button>
         </div>
-
         <div className="ml-4 mb-3">
           <StateCategory
             setCategory={setState}
             category={state}
-            stateObject={STATELIST[stateType]}
+            stateObject={STATELIST['game']}
           />
         </div>
       </div>
-
       <div className="p-6 ">
         <div className="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
           <div className="p-3">
             <table className="table-auto w-full">
               <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50 select-none">
                 <tr>
-                  {Object.values(TitleList[modalType]).map(
+                  {Object.values(TitleList['loanedgame']).map(
                     (tableTitle, index) => {
                       return (
                         <React.Fragment key={index}>
@@ -162,11 +134,11 @@ function Modal({ modalType }) {
                 </tr>
               </thead>
               <tbody className="text-sm divide-y divide-gray-100 select-none">
-                {data?.results?.map((book, index) => (
+                {data?.results?.map((game, index) => (
                   <tr key={index}>
-                    <ModalComponent
-                      bookInfo={book}
-                      titleList={Object.keys(TitleList[modalType])}
+                    <GameModalComponent
+                      gameInfo={game}
+                      titleList={Object.keys(TitleList['loanedgame'])}
                       modalType={stateType}
                     />
                   </tr>
@@ -192,5 +164,4 @@ function Modal({ modalType }) {
     </div>
   );
 }
-
-export default Modal;
+export default GameModal;
