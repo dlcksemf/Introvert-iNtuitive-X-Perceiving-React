@@ -42,7 +42,7 @@ function RecommendedBooks() {
             );
           })
           .sort((book1, book2) => book2.count_loans - book1.count_loans)
-          .slice(0, 4)
+          .slice(0, 3)
           .map(
             (book) =>
               book?.birthdate &&
