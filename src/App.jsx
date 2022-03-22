@@ -13,6 +13,7 @@ import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
 import LoginPage from 'pages/LoginPage';
 import SecondNav from 'components/parts/SecondNav';
+import Test from 'Test';
 
 function App() {
   const [auth] = useAuth();
@@ -36,6 +37,7 @@ function App() {
             element={auth.is_staff ? <PageAdminRouter /> : <ErrorForbidden />}
           />
           <Route path="*" element={<NotFound />} />
+          <Route path="/test/" element={<Test />} />
         </Routes>
       </div>
       <div className="h-[60px]"></div>

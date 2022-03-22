@@ -2,6 +2,7 @@ import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import { useReload } from 'base/hooks/ReloadContext';
 import Badge from 'designMaterials/Badge';
+import PageReturnModal from 'pages/PageReturnModal';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +11,7 @@ function LoanedGame({ game }) {
   const [auth] = useAuth();
   const [, setReload] = useReload();
   const navigate = useNavigate();
+  const [showReturn, setShowReturn] = useState(false);
 
   const [color, setColor] = useState(() => {
     if (game.return_state === 'L') {
@@ -30,33 +32,34 @@ function LoanedGame({ game }) {
     { manual: true },
   );
 
-  const handleClickSubmitButton = (e) => {
-    e.preventDefault();
-    if (window.confirm('반납하시겠습니까?')) {
-      handleOkButton();
-      alert('반납 되었습니다');
-    } else {
-      handleCancleButton();
-      alert('취소 되었습니다');
-    }
-    setGameReturn(true);
-  };
+  //   const handleClickSubmitButton = (e) => {
+  //     e.preventDefault();
+  //     if (window.confirm('반납하시겠습니까?')) {
+  //       handleOkButton();
+  //       alert('반납 되었습니다');
+  //     } else {
+  //       handleCancleButton();
+  //       alert('취소 되었습니다');
+  //     }
+  //     // <ReturnModal />;
+  //     setGameReturn(true);
+  //   };
 
-  const handleOkButton = () => {
-    updateState({ data: { return_state: 'R' } })
-      .then(() => {
-        setGameReturn(false);
-        setReload(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    window.location.replace('/accounts/mypage/');
-  };
+  //   const handleOkButton = () => {
+  //     updateState({ data: { return_state: 'R' } })
+  //       .then(() => {
+  //         setGameReturn(false);
+  //         setReload(true);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //     window.location.replace('/accounts/mypage/');
+  //   };
 
-  const handleCancleButton = () => {
-    setGameReturn(false);
-  };
+  //   const handleCancleButton = () => {
+  //     setGameReturn(false);
+  //   };
 
   return (
     <React.Fragment>
@@ -80,11 +83,34 @@ function LoanedGame({ game }) {
             {game.return_state === 'R' && '반납 완료'}
           </Badge>
         </td>
-
+        {/* {showReturn && <PageReturnModal updateState={updateState} />} */}
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+          {/* {game.return_state === 'L' && */}
           {game.return_state === 'L' && (
-            <button onClick={handleClickSubmitButton}>반납 신청</button>
+            // <Link
+            //   to="/accounts/modal/return/"
+            //   state={{ backgroundLocation: location }}
+            //   updateState={updateState}
+            // >
+            <button onClick={() => setShowReturn(true)}>반납 신청</button>
+            // </Link>
           )}
+
+          {showReturn && (
+            <PageReturnModal
+              updateState={updateState}
+              handleClose={() => setShowReturn(false)}
+            />
+          )}
+          {/* {game.return_state === 'L' && (
+            <Link
+              to="/accounts/modal/return/"
+              state={{ backgroundLocation: location }}
+              updateState={updateState}
+            >
+              <button>반납 신청</button>
+            </Link>
+          )} */}
         </td>
       </tr>
     </React.Fragment>
