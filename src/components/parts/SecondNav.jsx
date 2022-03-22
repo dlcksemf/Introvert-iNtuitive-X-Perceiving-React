@@ -23,8 +23,6 @@ const useScroll = () => {
 function SecondNav() {
   const navigate = useNavigate();
   const [auth] = useAuth();
-  const nav = document.querySelector('nav');
-  const [offset, setOffset] = useState();
 
   const handleGoToMainPage = () => {
     if (!auth.is_staff) {
@@ -36,7 +34,7 @@ function SecondNav() {
 
   if (y > 80) {
     return (
-      <div className="sticky  body-font top-0 z-10">
+      <div className="fixed w-full  body-font top-0 z-10">
         <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="flex justify-between">
             <div>
@@ -57,7 +55,7 @@ function SecondNav() {
                   className=" select-none transition duration-500 ease-in-out cursor-pointer
           hover:text-blue-700 "
                   onClick={() => {
-                    navigate(`/books/application/new`);
+                    navigate(`/books/application/new/`);
                   }}
                 >
                   도서신청
@@ -83,7 +81,7 @@ function SecondNav() {
               </header>
             </div>
             <div>
-              <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 pt-5 pr-10 px-3 focus:outline-none rounded text-base mt-8 md:mt-0">
+              <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 pt-5 pl-3 focus:outline-none rounded text-base mt-8 md:mt-0">
                 {!auth.isLoggedIn && (
                   <NavLink
                     className="font-semibold select-none mr-3 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
@@ -118,7 +116,7 @@ function SecondNav() {
                 <img
                   src={search}
                   alt="검색"
-                  className="h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
+                  className="mr-5 h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
                 />
               </div>
             </div>
@@ -128,7 +126,7 @@ function SecondNav() {
     );
   } else {
     return (
-      <div className="sticky">
+      <div className="fixed">
         <header className="text-gray-700 body-font top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="mx-2 flex px-7 pt-1 pb-4 flex-col md:flex-row items-center">
             <div className="basis-1/3 grow-0 shrink-0 text-gray-900 md:mb-0"></div>
