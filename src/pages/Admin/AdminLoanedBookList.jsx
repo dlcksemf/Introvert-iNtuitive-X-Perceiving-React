@@ -202,9 +202,10 @@ function AdminLoanedBookList() {
                                 <Badge color="green">대출중</Badge>
                               )
                             )}
-                            {post?.return_state === 'P' && (
+                            {/* 아래 코드는 기존 반납 확인 */}
+                            {/* {post?.return_state === 'P' && (
                               <Badge color="yellow">반납 신청중</Badge>
-                            )}
+                            )} */}
                             {post?.return_state === 'R' && (
                               <Badge color="blue">반납 완료</Badge>
                             )}
