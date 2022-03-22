@@ -23,7 +23,7 @@ function BookList() {
   });
 
   const [category, setCategory] = useState(() => {
-    return categoryParams ? categoryParams : '전체';
+    return categoryParams ? categoryParams : '카테고리';
   });
 
   const [query, setQuery] = useState(queryParams || '');
@@ -40,7 +40,7 @@ function BookList() {
     const params = {
       page: pageParams,
       query: queryParams,
-      category: categoryParams === '전체' ? '' : categoryParams,
+      category: categoryParams === '카테고리' ? '' : categoryParams,
     };
 
     const { data } = await refetch({ params });

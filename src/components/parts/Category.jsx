@@ -43,7 +43,7 @@ function Category({ selected, setSelected }) {
                   `${active ? 'text-indigo-900 bg-indigo-100' : 'text-gray-900'}
                         cursor-default select-none relative py-2 pl-10 pr-4`
                 }
-                value="전체"
+                value="카테고리"
               >
                 {({ selected, active }) => (
                   <>

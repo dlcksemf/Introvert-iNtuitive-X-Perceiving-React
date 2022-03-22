@@ -15,6 +15,8 @@ import { useLocation } from 'react-router-dom';
 
 import 'css/HeavyReader.css';
 import LoadingIndicator from 'components/LoadingIndicator';
+import { RateIcon } from 'designMaterials/RateIcon';
+import { utc } from 'moment';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -246,7 +248,7 @@ function HeavyReaderSummary({ book }) {
                 x="180"
                 y="75"
                 fill="white"
-                font-size="70"
+                fontSize="70"
                 font-family="'HSSummer'"
               >
                 과연 누구일까요?
@@ -263,7 +265,7 @@ function HeavyReaderSummary({ book }) {
                 x="175"
                 y="90"
                 fill="white"
-                font-size="150"
+                fontSize="150"
                 font-family="'Dongle-Bold'"
                 textLength="300"
               >
@@ -278,7 +280,7 @@ function HeavyReaderSummary({ book }) {
                 x="200"
                 y="90"
                 fill="white"
-                font-size="150"
+                fontSize="150"
                 font-family="'Dongle-Bold'"
                 textLength="170"
               >
@@ -334,18 +336,19 @@ function RecommendedBooksSummary({ book }) {
   );
 }
 
-function ReviewSummary({ review, review_num, book_num }) {
-  const navigate = useNavigate();
+function ReviewSummary({ review, setReload }) {
   const [auth] = useAuth();
+  const [, setReviewDelete] = useState(false);
 
-  const [{}, refetch] = useApiAxios(`/books/api/review/${review_num}/`, {
-    manual: true,
-  });
+  const [{ data }, refetch] = useApiAxios(
+    { url: `/books/api/review/`, method: 'GET' },
+    { manual: true },
+  );
 
-  const [{ loading: deleteLoading, error: deleteError }, deleteCharacter] =
+  const [{ loading: deleteLoading, error: deleteError }, deleteReview] =
     useApiAxios(
       {
-        url: `/books/api/review/${review_num}/`,
+        url: `/books/api/review/${review?.review_num}/`,
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${auth.access}`,
@@ -356,15 +359,30 @@ function ReviewSummary({ review, review_num, book_num }) {
 
   const handleDelete = () => {
     if (window.confirm('한줄평을 삭제하시겠습니까?')) {
-      deleteCharacter().then(() => {
-        navigate(`/books/${book_num}`);
+      handleOkButton();
+      alert('삭제되었습니다.');
+      deleteReview().then(() => {
+        setReload((prev) => !prev);
       });
+    } else {
+      handleCancleButton();
+      alert('취소되었습니다.');
     }
+    setReviewDelete(true);
   };
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [refetch]);
+
+  const handleOkButton = () => {
+    setReviewDelete(true);
+  };
+
+  const handleCancleButton = () => {
+    setReviewDelete(false);
+  };
+  console.log(data);
 
   return (
     <div>
@@ -373,23 +391,31 @@ function ReviewSummary({ review, review_num, book_num }) {
         `삭제 요청 중 에러가 발생 (${deleteError.response.status} ${deleteError.response.statusText})`}
       {review && (
         <>
-          <span className="flex">
-            <h1 className="mt-4 ml-4">{review?.user_id}</h1>
-            <button className="border-2 border-gray-400 h-8 w-8 ml-4">
-              수정
-            </button>{' '}
-            <button
-              disabled={deleteLoading}
-              onClick={handleDelete}
-              className="border-2 border-gray-400 h-8 w-8 ml-4"
-            >
-              삭제
-            </button>
+          <span className="flex justify-between">
+            <h1 className="mt-4 ml-4 font-extrabold select-none">
+              {review?.user_id}
+            </h1>
+            {auth?.username === review?.user_id && (
+              <div className="mr-2 mt-3">
+                <button className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center">
+                  수정
+                </button>
+                <button
+                  disabled={deleteLoading}
+                  onClick={handleDelete}
+                  className="inline-flex ml-1 border-2 border-pink-500 text-black hover:text-pink-600 rounded-full h-6 px-3 justify-center items-center"
+                >
+                  삭제
+                </button>
+              </div>
+            )}
           </span>
           <span className="flex">
-            <h2 className="mr-4 ml-8">{review?.review_rate}</h2>
-            <h2 className="mr-4 mb-4">{review?.review_content}</h2>
-            <h2>{review?.created_at}</h2>
+            <h2 className="mr-4 ml-4 select-none">
+              <RateIcon review_rate={review.review_rate} />
+            </h2>
+            <h2 className="mr-4 mb-4 select-none">{review?.review_content}</h2>
+            <h2>{data[0]?.updated_at}</h2>
           </span>{' '}
         </>
       )}

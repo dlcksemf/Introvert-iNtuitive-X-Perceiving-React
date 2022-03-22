@@ -205,16 +205,24 @@ function BookDetail({ book_num }) {
                   </div>
                 </div>
               </div>
-              <div className="ml-[260px] mr-[185px] border-2 border-gray-400">
-                {book?.review_set
-                  ?.sort(
-                    (user1, user2) => user2.count_loans - user1.count_loans,
-                  )
-                  .map((review) => (
-                    <ReviewSummary review={review} key={review.review_num} />
-                  ))}
+              <div className="flex justify-center">
+                <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">
+                  <ul className="divide-y divide-gray-300 hover:bg-gray-50">
+                    {book?.review_set
+                      ?.sort(
+                        (user1, user2) => user2.count_loans - user1.count_loans,
+                      )
+                      .map((review) => (
+                        <ReviewSummary
+                          review={review}
+                          key={review.review_num}
+                          setReload={setReloading}
+                        />
+                      ))}
+                  </ul>
+                </div>
               </div>
-              <div className="ml-[260px] mt-4">
+              <div className="ml-[260px] mt-6">
                 <ReviewPage book={book_num} setReload={setReloading} />
               </div>
             </div>
