@@ -116,7 +116,7 @@ function SecondNav() {
                 <img
                   src={search}
                   alt="검색"
-                  className="mr-5 h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
+                  className="mr-12 h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
                 />
               </div>
             </div>
@@ -126,8 +126,8 @@ function SecondNav() {
     );
   } else {
     return (
-      <div className="fixed">
-        <header className="text-gray-700 body-font top-0 z-10 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
+      <div className="fixed w-full">
+        <header className="text-gray-700 body-font top-0 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="mx-2 flex px-7 pt-1 pb-4 flex-col md:flex-row items-center">
             <div className="basis-1/3 grow-0 shrink-0 text-gray-900 md:mb-0"></div>
 
@@ -198,7 +198,7 @@ function SecondNav() {
                 className="col-start-4 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
                 onClick={() => {
-                  navigate(`/books/application/new`);
+                  navigate(`/books/application/new/`);
                 }}
               >
                 도서신청
