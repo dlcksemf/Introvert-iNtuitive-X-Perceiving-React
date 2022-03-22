@@ -8,7 +8,7 @@ function MainPage() {
   return (
     <div>
       <MainNavigation />
-      <div className="grid grid-row-1 grid-flow-col gap-1 text-center">
+      <div className="grid grid-row-1 grid-flow-col gap-5 text-center">
         <div>
           <Top5 />
         </div>
