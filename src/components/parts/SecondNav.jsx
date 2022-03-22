@@ -126,8 +126,8 @@ function SecondNav() {
     );
   } else {
     return (
-      <div className="fixed w-full">
-        <header className="text-gray-700 body-font top-0 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
+      <div className="fixed w-full body-font top-0 z-10 h-96">
+        <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="mx-2 flex px-7 pt-1 pb-4 flex-col md:flex-row items-center">
             <div className="basis-1/3 grow-0 shrink-0 text-gray-900 md:mb-0"></div>
 
