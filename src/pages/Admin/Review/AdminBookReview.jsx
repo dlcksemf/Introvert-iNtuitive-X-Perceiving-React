@@ -14,7 +14,7 @@ function AdminBookReview() {
 
   const [{ data: bookreviewdata }, refresh] = useApiAxios(
     {
-      url: '/books/api/review/',
+      url: '/books/api/review/?page_size=5',
       method: 'GET',
     },
     { manual: true },
@@ -30,7 +30,7 @@ function AdminBookReview() {
       const { data } = await refresh({ params });
 
       setPage(newPage);
-      setPageCount(Math.ceil(data?.count / itemsPerPage));
+      setPageCount(Math.ceil(data?.count / 5));
       setCurrentItems(data?.results);
     },
     [query, refresh],
@@ -111,7 +111,7 @@ function AdminBookReview() {
                   </td>
                 </tr>
 
-                {bookreviewdata?.map((review) => (
+                {bookreviewdata?.results.map((review) => (
                   <React.Fragment key={review.reivew_num}>
                     <tr className="focus:outline-none h-16 border border-gray-100 rounded select-none">
                       <AdminBookReviewList
