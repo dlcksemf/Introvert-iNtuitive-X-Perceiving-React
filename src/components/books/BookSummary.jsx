@@ -310,23 +310,26 @@ function RecommendedBooksSummary({ book }) {
 function ReviewSummary({ review, setReload }) {
   const [auth] = useAuth();
   const [, setReviewDelete] = useState(false);
+  const timeStamp = () => {
+    const today = new Date(review.updated_at);
+    today.setHours(today.getHours() + 9);
+    return today.toISOString().replace('T', ' ').substring(0, 16);
+  };
 
-  const [{ data }, refetch] = useApiAxios(
-    { url: `/books/api/review/`, method: 'GET' },
+  const [
+    { loading: deleteLoading, error: deleteError },
+    deleteReview,
+    refetch,
+  ] = useApiAxios(
+    {
+      url: `/books/api/review/${review?.review_num}/`,
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
+    },
     { manual: true },
   );
-
-  const [{ loading: deleteLoading, error: deleteError }, deleteReview] =
-    useApiAxios(
-      {
-        url: `/books/api/review/${review?.review_num}/`,
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${auth.access}`,
-        },
-      },
-      { manual: true },
-    );
 
   const handleDelete = () => {
     if (window.confirm('한줄평을 삭제하시겠습니까?')) {
@@ -353,7 +356,8 @@ function ReviewSummary({ review, setReload }) {
   const handleCancleButton = () => {
     setReviewDelete(false);
   };
-  console.log(data);
+
+  console.log(review?.updated_at);
 
   return (
     <div>
@@ -386,7 +390,7 @@ function ReviewSummary({ review, setReload }) {
               <RateIcon review_rate={review.review_rate} />
             </h2>
             <h2 className="mr-4 mb-4 select-none">{review?.review_content}</h2>
-            <h2>{data[0]?.updated_at}</h2>
+            <h2>{timeStamp(review.updated_at)}</h2>
           </span>{' '}
         </>
       )}
