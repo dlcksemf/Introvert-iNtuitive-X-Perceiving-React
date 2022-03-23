@@ -1,4 +1,3 @@
-import MainNavigation from 'components/parts/MainNavigation';
 import Top5 from 'components/main/Top5';
 import HeavyReader from 'components/main/HeavyReader';
 import NewBook from 'components/main/NewBook';
@@ -7,7 +6,6 @@ import RecommendedBooks from 'components/main/RecommendedBooks';
 function MainPage() {
   return (
     <div>
-      <MainNavigation />
       <div className="grid grid-row-1 grid-flow-col gap-5 text-center">
         <div>
           <Top5 />
