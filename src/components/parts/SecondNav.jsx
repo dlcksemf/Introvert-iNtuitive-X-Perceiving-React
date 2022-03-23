@@ -38,7 +38,14 @@ function SecondNav() {
         <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="flex justify-between">
             <div>
-              <img src={name} alt="EUCLID BOOKS" className="h-20" />
+              <img
+                src={name}
+                alt="EUCLID BOOKS"
+                className="h-20 cursor-pointer"
+                onClick={() => {
+                  navigate(`/`);
+                }}
+              />
             </div>
             <div>
               <header className="ml-52 mt-5 grid grid-cols-4 text-xl">
