@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
@@ -18,6 +18,7 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
 import { utc } from 'moment';
 import ggumdoriClick from 'components/parts/image/ggumdoriClick.png';
+import ReviewForm from './ReviewForm';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -309,7 +310,11 @@ function RecommendedBooksSummary({ book }) {
 
 function ReviewSummary({ review, setReload }) {
   const [auth] = useAuth();
+  const { book_num } = useParams();
   const [, setReviewDelete] = useState(false);
+  const [input, setInput] = useState('');
+  const [value, setValue] = useState(0);
+  const navigate = useNavigate();
   const timeStamp = () => {
     const today = new Date(review.updated_at);
     today.setHours(today.getHours() + 9);
@@ -357,7 +362,13 @@ function ReviewSummary({ review, setReload }) {
     setReviewDelete(false);
   };
 
-  console.log(review?.updated_at);
+  const handleClick = () => {
+    setInput(review.review_rate, review.review_content);
+  };
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
 
   return (
     <div>
@@ -369,7 +380,10 @@ function ReviewSummary({ review, setReload }) {
           <span className="flex justify-end">
             {auth?.username === review?.user_id && (
               <div className="mr-2 mt-4">
-                <button className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center">
+                <button
+                  onClick={handleClick}
+                  className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center"
+                >
                   수정
                 </button>
                 <button
@@ -382,7 +396,7 @@ function ReviewSummary({ review, setReload }) {
               </div>
             )}
           </span>
-          <span className="flex mt-2.5">
+          <span className="flex mt-3">
             <h2 className="mr-4 ml-4 select-none">
               <RateIcon review_rate={review.review_rate} />
             </h2>
@@ -391,7 +405,12 @@ function ReviewSummary({ review, setReload }) {
             <h2 className="ml-4 select-none text-gray-500 text-sm mt-0.5">
               {timeStamp(review.updated_at)}
             </h2>
-          </span>{' '}
+          </span>
+          <div className="mb-4 pl-0.5 pr-0.5">
+            {input ? (
+              <ReviewForm value={review.review_id} onChange={handleChange} />
+            ) : null}
+          </div>
         </>
       )}
     </div>
