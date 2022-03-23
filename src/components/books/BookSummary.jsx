@@ -366,12 +366,9 @@ function ReviewSummary({ review, setReload }) {
         `삭제 요청 중 에러가 발생 (${deleteError.response.status} ${deleteError.response.statusText})`}
       {review && (
         <>
-          <span className="flex justify-between">
-            <h1 className="mt-4 ml-4 font-extrabold select-none">
-              {review?.user_id}
-            </h1>
+          <span className="flex justify-end">
             {auth?.username === review?.user_id && (
-              <div className="mr-2 mt-3">
+              <div className="mr-2 mt-4">
                 <button className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center">
                   수정
                 </button>
@@ -385,12 +382,15 @@ function ReviewSummary({ review, setReload }) {
               </div>
             )}
           </span>
-          <span className="flex">
+          <span className="flex mt-2.5">
             <h2 className="mr-4 ml-4 select-none">
               <RateIcon review_rate={review.review_rate} />
             </h2>
-            <h2 className="mr-4 mb-4 select-none">{review?.review_content}</h2>
-            <h2>{timeStamp(review.updated_at)}</h2>
+            <h1 className="font-extrabold select-none">{review?.user_id}</h1>
+            <h2 className="ml-4 mb-4 select-none">{review?.review_content}</h2>
+            <h2 className="ml-4 select-none text-gray-500 text-sm mt-0.5">
+              {timeStamp(review.updated_at)}
+            </h2>
           </span>{' '}
         </>
       )}
