@@ -88,13 +88,13 @@ function AdminBookReview() {
                       </p>
                     </div>
                   </td>
-                  <td className="pl-7">
+                  {/* <td className="pl-7">
                     <div className="flex items-center">
                       <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         리뷰 작성일
                       </p>
                     </div>
-                  </td>
+                  </td> */}
                   <td className="pl-7">
                     <div className="flex items-center">
                       <p className="text-sm leading-none text-gray-600 ml-2 select-none">
