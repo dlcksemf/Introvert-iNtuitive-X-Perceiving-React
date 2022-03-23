@@ -17,6 +17,7 @@ import 'css/HeavyReader.css';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
 import { utc } from 'moment';
+import ggumdoriClick from 'components/parts/image/ggumdoriClick.png';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -226,73 +227,43 @@ function Top5Summary({ book }) {
 }
 
 function HeavyReaderSummary({ book }) {
-  return (
-    <div className="flex items-center justify-center mt-[102px]">
-      <div className="relative h-[30rem] sm:h-96 w-[40rem] rounded-lg bottom-[38px]">
-        <img
-          src={heavy_reader}
-          alt="다독왕"
-          className="object-cover w-full h-full rounded-lg cursor-pointer"
-        />
+  const [flip, setFlip] = useState(false);
 
+  //onClick 시 사용
+  // function flipCard() {
+  //   setFlip((prev) => !prev);
+  // }
+
+  return (
+    <div className="mt-40">
+      <>
         <div
-          className="text_photo absolute w-full h-full bottom-0 rounded-lg
-          bg-gradient-to-r from-gray-500 to-slate-700 hover:bg-none"
+          className="maincontainer"
+          onMouseEnter={() => setFlip(true)}
+          onMouseLeave={() => setFlip(false)}
         >
           <div
-            id="mouse"
-            className="select-none animate__animated animate__heartBeat animate__slower animate__infinite"
-          >
-            <svg width="500" height="400" viewBox="0 0 620 140">
-              <text
-                x="180"
-                y="75"
-                fill="white"
-                fontSize="70"
-                font-family="'HSSummer'"
-              >
-                과연 누구일까요?
-              </text>
-            </svg>
-          </div>
+            // onClick={() => flipCard()}
 
-          <div
-            id="name"
-            className="select-none animate__animated animate__pulse animate__infinite"
+            className={`card ${flip ? 'flipCard' : ''}`}
+            id="card"
           >
-            <svg width="500" height="140" viewBox="0 0 620 140">
-              <text
-                x="175"
-                y="90"
-                fill="white"
-                fontSize="150"
-                font-family="'Dongle-Bold'"
-                textLength="300"
-              >
-                {book?.count_loans ? book.username : 'Unknown'}
-              </text>
-            </svg>
-          </div>
-
-          <div id="position" className="select-none">
-            <svg width="300" height="90" viewBox="0 0 620 140">
-              <text
-                x="200"
-                y="90"
-                fill="white"
-                fontSize="150"
-                font-family="'Dongle-Bold'"
-                textLength="170"
-              >
+            <div className="front">
+              <img src={ggumdoriClick} alt="" />
+              <p>과연 누가 될까요?</p>
+            </div>
+            <div className="back">
+              <p>{book?.count_loans ? book.username : 'Unknown'}</p>
+              <p className="">
                 {book?.position
                   ? book.position
-                  : !book?.count_loans && '과연 누가 될까요?'}{' '}
+                  : !book?.count_loans && '과연 누가 될까요?'}
                 사원
-              </text>
-            </svg>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     </div>
   );
 }
@@ -339,23 +310,26 @@ function RecommendedBooksSummary({ book }) {
 function ReviewSummary({ review, setReload }) {
   const [auth] = useAuth();
   const [, setReviewDelete] = useState(false);
+  const timeStamp = () => {
+    const today = new Date(review.updated_at);
+    today.setHours(today.getHours() + 9);
+    return today.toISOString().replace('T', ' ').substring(0, 16);
+  };
 
-  const [{ data }, refetch] = useApiAxios(
-    { url: `/books/api/review/`, method: 'GET' },
+  const [
+    { loading: deleteLoading, error: deleteError },
+    deleteReview,
+    refetch,
+  ] = useApiAxios(
+    {
+      url: `/books/api/review/${review?.review_num}/`,
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
+    },
     { manual: true },
   );
-
-  const [{ loading: deleteLoading, error: deleteError }, deleteReview] =
-    useApiAxios(
-      {
-        url: `/books/api/review/${review?.review_num}/`,
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${auth.access}`,
-        },
-      },
-      { manual: true },
-    );
 
   const handleDelete = () => {
     if (window.confirm('한줄평을 삭제하시겠습니까?')) {
@@ -382,7 +356,8 @@ function ReviewSummary({ review, setReload }) {
   const handleCancleButton = () => {
     setReviewDelete(false);
   };
-  console.log(data);
+
+  console.log(review?.updated_at);
 
   return (
     <div>
@@ -415,7 +390,7 @@ function ReviewSummary({ review, setReload }) {
               <RateIcon review_rate={review.review_rate} />
             </h2>
             <h2 className="mr-4 mb-4 select-none">{review?.review_content}</h2>
-            <h2>{data[0]?.updated_at}</h2>
+            <h2>{timeStamp(review.updated_at)}</h2>
           </span>{' '}
         </>
       )}
