@@ -1,9 +1,11 @@
 import AdminBookReview from './AdminBookReview';
+import AdminGameReview from './AdminGameReview';
 
 function AdminReviewPage() {
   return (
     <div>
-      <AdminBookReview />
+      {/* <AdminBookReview /> */}
+      <AdminGameReview />
     </div>
   );
 }
