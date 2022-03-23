@@ -20,8 +20,7 @@ function App() {
 
   return (
     <div className="relative min-h-screen">
-      {/* <TopNav /> */}
-      <SecondNav />
+      {auth.is_staff ? <TopNav /> : <SecondNav />}
 
       <div className="app mt-56">
         <Routes>
