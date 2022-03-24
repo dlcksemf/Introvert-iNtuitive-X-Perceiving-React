@@ -2,11 +2,10 @@ import Top5 from 'components/main/Top5';
 import HeavyReader from 'components/main/HeavyReader';
 import NewBook from 'components/main/NewBook';
 import RecommendedBooks from 'components/main/RecommendedBooks';
-
 function MainPage() {
   return (
     <div>
-      <div className="grid grid-row-1 grid-flow-col gap-1 text-center">
+      <div className="grid grid-row-1 grid-flow-col gap-5 text-center">
         <div>
           <Top5 />
         </div>
