@@ -1,7 +1,7 @@
 import { useApiAxios } from 'base/api/base';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import non_image from 'components/parts/image/non_image.jpg';
 import { useAuth } from 'base/hooks/Authcontext';
 import LoanedIcon from 'designMaterials/LoanedIcon';
@@ -12,6 +12,9 @@ function GameDetail({ gameId }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
   const [auth] = useAuth();
+  let location = useLocation();
+  let { pathname, state } = location;
+
   const [{ data: game, loading, error }, refetch] = useApiAxios(
     {
       url: `/game/api/game/${gameId}/`,
@@ -78,52 +81,64 @@ function GameDetail({ gameId }) {
                       난이도:{game?.level}
                     </span>
                   </div>
-                  <div className="leading-relaxed select-none mt-14 hover:text-gray-900">
+                  <div className="leading-relaxed select-none mt-14 hover:text-gray-900 mb-20">
                     {game?.game_rule.split(/[\r\n]+/).map((line, index) => (
                       <p key={index}>{line}</p>
                     ))}
                   </div>
 
-                  <div className="flex justify-start">
-                    <Link to="/game/gamelist/">
-                      <div
-                        className="flex m-auto ml-auto 
-                  text-gray-600 hover:text-blue-500 hover:font-bold 
-                  border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
-                  transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                  <div className="border-t-2 border-gray-200">
+                    <div className="flex justify-between mt-4">
+                      <Link
+                        to={
+                          state?.beforeLocation
+                            ? `/game/gamelist/${state.beforeLocation}`
+                            : `/game/gamelist/`
+                        }
+                        state={{ pathname: pathname }}
                       >
-                        목록으로
-                      </div>
-                    </Link>
-                  </div>
-                  <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                    {game?.game_state === 'A' && (
-                      <>
-                        <span className="text-gray-600 m-auto select-none">
-                          대여하기
-                        </span>
                         <div
-                          onClick={handleClickLoan}
-                          className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                          className="flex m-auto ml-auto 
+                        text-gray-600 hover:text-blue-500 hover:font-bold
+                        border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
+                        transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
                         >
-                          <LoanedIcon />
+                          목록으로
                         </div>
-                      </>
-                    )}
+                      </Link>
+                      <div className="flex justify-between">
+                        <span className="flex">
+                          {game?.game_state === 'A' && (
+                            <>
+                              <span className="text-gray-600 m-auto select-none">
+                                대여하기
+                              </span>
+                              <div
+                                onClick={handleClickLoan}
+                                className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                              >
+                                <LoanedIcon />
+                              </div>
+                            </>
+                          )}
 
-                    {game?.game_state !== 'A' && (
-                      <p className="m-auto select-none hover:text-blue-500">
-                        반납 예정 시간 :{game?.loaned_game[0]?.return_due_time}
-                      </p>
-                    )}
-                    <GameLoanedModal
-                      ariaHideApp={false}
-                      modalIsOpen={modalIsOpen}
-                      setModalIsOpen={setModalIsOpen}
-                      game_num={game?.game_num}
-                      reload={reload}
-                    />
-                  </span>
+                          {game?.game_state !== 'A' && (
+                            <p className="m-auto select-none hover:text-blue-500">
+                              반납 예정 시간 :
+                              {game?.loaned_game[0]?.return_due_time}
+                            </p>
+                          )}
+                          <GameLoanedModal
+                            ariaHideApp={false}
+                            modalIsOpen={modalIsOpen}
+                            setModalIsOpen={setModalIsOpen}
+                            game_num={game?.game_num}
+                            reload={reload}
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

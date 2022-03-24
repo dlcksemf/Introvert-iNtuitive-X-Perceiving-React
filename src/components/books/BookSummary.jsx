@@ -370,6 +370,8 @@ function ReviewSummary({ review, setReload }) {
     setInput(e.target.value);
   };
 
+  console.log(review.updated_at);
+
   return (
     <div>
       {deleteLoading && <LoadingIndicator>삭제 중..</LoadingIndicator>}
