@@ -104,7 +104,7 @@ function BookList() {
                 {error && navigate(`*`)}
               </div>
             </div>
-            <div className="flex flex-wrap -m-4 mb-10">
+            <div className="flex flex-wrap mx-4 mb-10">
               {bookList?.results?.map((book) => (
                 <React.Fragment key={book.book_num}>
                   <BookSummary
