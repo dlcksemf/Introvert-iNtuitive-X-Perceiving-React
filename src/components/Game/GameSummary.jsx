@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useApiAxios } from 'base/api/base';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
-import ReviewForm from 'components/books/ReviewForm';
+import GameReviewForm from './GameReviewForm';
 
 function GameSummary({ game }) {
   return (
@@ -54,7 +54,7 @@ function GameReviewSummary({ review, setReload }) {
     refetch,
   ] = useApiAxios(
     {
-      url: `/game/api/game/${review?.review_num}/`,
+      url: `/game/api/gamereview/${review?.game_review_num}/`,
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${auth.access}`,
@@ -90,14 +90,14 @@ function GameReviewSummary({ review, setReload }) {
   };
 
   const handleClick = () => {
-    setInput(review.review_rate, review.review_content);
+    setInput(review.game_review_rate, review.game_review_content);
   };
 
   const handleChange = (e) => {
     setInput(e.target.value);
   };
 
-  console.log(review.updated_at);
+  console.log(review);
 
   return (
     <div>
@@ -127,17 +127,22 @@ function GameReviewSummary({ review, setReload }) {
           </span>
           <span className="flex mt-3">
             <h2 className="mr-4 ml-4 select-none">
-              <RateIcon review_rate={review.review_rate} />
+              <RateIcon game_review_rate={review.game_review_rate} />
             </h2>
             <h1 className="font-extrabold select-none">{review?.user_id}</h1>
-            <h2 className="ml-4 mb-4 select-none">{review?.review_content}</h2>
+            <h2 className="ml-4 mb-4 select-none">
+              {review?.game_review_content}
+            </h2>
             <h2 className="ml-4 select-none text-gray-500 text-sm mt-0.5">
               {timeStamp(review.updated_at)}
             </h2>
           </span>
           <div className="mb-4 pl-0.5 pr-0.5">
             {input ? (
-              <ReviewForm value={review.review_id} onChange={handleChange} />
+              <GameReviewForm
+                value={review.game_review_id}
+                onChange={handleChange}
+              />
             ) : null}
           </div>
         </>

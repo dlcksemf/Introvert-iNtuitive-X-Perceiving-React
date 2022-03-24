@@ -22,6 +22,8 @@ function BookDetail({ book_num }) {
   let location = useLocation();
   let { pathname, state } = location;
 
+  console.log(location);
+
   const [{ data: book, loading, error }, refetch] = useApiAxios(
     {
       url: `/books/api/books/${book_num}/`,
@@ -189,7 +191,7 @@ function BookDetail({ book_num }) {
 
                         {book?.state !== 'A' && (
                           <p className="m-auto select-none hover:text-blue-500">
-                            반납 예정일 ::
+                            반납 예정일 :: {''}
                             {book?.loaned_books[0]?.return_due_date}
                           </p>
                         )}

@@ -5,14 +5,17 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import non_image from 'components/parts/image/non_image.jpg';
 import { useAuth } from 'base/hooks/Authcontext';
 import LoanedIcon from 'designMaterials/LoanedIcon';
-import LoanedModal from 'components/parts/LoanedModal';
 import GameLoanedModal from 'components/parts/GameLoanedModal';
+import { GameReviewSummary } from './GameSummary';
+import GameReviewPage from 'pages/GameReviewPage';
 
 function GameDetail({ gameId }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
+  const [reloading, setReloading] = useState(false);
   const [auth] = useAuth();
   let location = useLocation();
+  console.log(location);
   let { pathname, state } = location;
 
   const [{ data: game, loading, error }, refetch] = useApiAxios(
@@ -25,7 +28,7 @@ function GameDetail({ gameId }) {
 
   useEffect(() => {
     refetch();
-  }, [refetch]);
+  }, [refetch, reloading]);
 
   const handleClickLoan = () => {
     auth.isLoggedIn
@@ -36,6 +39,13 @@ function GameDetail({ gameId }) {
 
   const reload = () => {
     refetch();
+  };
+
+  const buyLink = () => {
+    window.open(
+      `https://www.boardgamemall.co.kr/goods/goods_search.php?adUrl=%2Fgoods%2Fgoods_view.php%3FgoodsNo%3D1000007636&keyword=${game.game_name}`,
+      '_blank',
+    );
   };
 
   return (
@@ -86,8 +96,17 @@ function GameDetail({ gameId }) {
                       <p key={index}>{line}</p>
                     ))}
                   </div>
+                  <div className="flex mt-10 items-center pb-5 border-b-2 border-gray-100 mb-5">
+                    <button
+                      onClick={buyLink}
+                      className="text-gray-600 text-s mb-20 hover:text-blue-500 hover:font-bold
+                      transition duration-500 ease-in-out hover:scale-105"
+                    >
+                      보드게임몰에서 게임찾기
+                    </button>
+                  </div>
 
-                  <div className="border-t-2 border-gray-200">
+                  <div>
                     <div className="flex justify-between mt-4">
                       <Link
                         to={
@@ -124,7 +143,7 @@ function GameDetail({ gameId }) {
 
                           {game?.game_state !== 'A' && (
                             <p className="m-auto select-none hover:text-blue-500">
-                              반납 예정 시간 :
+                              반납 예정 시간 : {''}
                               {game?.loaned_game[0]?.return_due_time}
                             </p>
                           )}
@@ -140,6 +159,26 @@ function GameDetail({ gameId }) {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="flex justify-center">
+                <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">
+                  <ul className="divide-y divide-gray-300 hover:bg-gray-50">
+                    {game?.gamereview_set
+                      ?.sort(
+                        (user1, user2) => user2.count_loans - user1.count_loans,
+                      )
+                      .map((gamereview) => (
+                        <GameReviewSummary
+                          review={gamereview}
+                          key={gamereview.game_review_num}
+                          setReload={setReloading}
+                        />
+                      ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="ml-[260px] mt-6">
+                <GameReviewPage game={gameId} setReload={setReloading} />
               </div>
             </div>
           </section>

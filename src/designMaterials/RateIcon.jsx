@@ -1,11 +1,15 @@
-function RateIcon({ review_rate }) {
+function RateIcon({ review_rate, game_review_rate }) {
   return (
     <div>
       <ul className="flex">
         {[0, 1, 2, 3, 4].map((index) => {
-          return (
+          return review_rate ? (
             <li key={index}>
               {index < review_rate ? <FilledStar /> : <EmptyStar />}
+            </li>
+          ) : (
+            <li key={index}>
+              {index < game_review_rate ? <FilledStar /> : <EmptyStar />}
             </li>
           );
         })}
