@@ -80,7 +80,7 @@ function SecondNav() {
                   className=" select-none transition duration-500 ease-in-out cursor-pointer
           hover:text-blue-700 "
                   onClick={() => {
-                    navigate(`/`);
+                    navigate(`/guidepage/`);
                   }}
                 >
                   이용안내
@@ -223,7 +223,7 @@ function SecondNav() {
                 className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
                 onClick={() => {
-                  navigate(`/`);
+                  navigate(`/guidepage/`);
                 }}
               >
                 이용안내
