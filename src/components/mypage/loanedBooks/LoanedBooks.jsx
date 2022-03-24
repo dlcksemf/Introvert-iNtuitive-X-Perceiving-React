@@ -1,3 +1,4 @@
+import { data } from 'autoprefixer';
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import { useReload } from 'base/hooks/ReloadContext';
@@ -42,6 +43,32 @@ function LoanedBooks({ book }) {
     },
     { manual: true },
   );
+  const [disable, setDisable] = useState();
+  const handleExtendButton = () => {
+    let return_extend_date = book.return_due_date;
+    const strArr = return_extend_date.split('-');
+    const date1 = new Date(strArr[0], strArr[1] - 1, strArr[2]);
+
+    date1.setDate(date1.getDate() + 7);
+    const date2 =
+      date1.getFullYear() +
+      '-' +
+      (date1.getMonth() + 1) +
+      '-' +
+      date1.getDate();
+
+    updateState({
+      data: { return_state: 'E', return_due_date: date2 },
+    })
+      .then(() => {
+        setDisable(true);
+        setReload(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    window.location.replace('/accounts/mypage/');
+  };
 
   // const handleClickSubmitButton = (e) => {
   //   e.preventDefault();
@@ -96,6 +123,13 @@ function LoanedBooks({ book }) {
                       (1000 * 3600 * 24),
                   ) + '일 연체'
                 : book.return_due_date)}
+            {book.return_state === 'E' &&
+              (new Date(book.return_due_date) < today
+                ? Math.floor(
+                    (Date.parse(today) - Date.parse(book.return_due_date)) /
+                      (1000 * 3600 * 24),
+                  ) + '일 연체'
+                : book.return_due_date)}
             {book.return_state === 'P' && '반납 신청..'}
             {book.return_state === 'R' && '반납 완료'}
           </Badge>
@@ -105,12 +139,29 @@ function LoanedBooks({ book }) {
           {book.return_state === 'L' && (
             <button onClick={() => setShowReturn(true)}>반납 신청</button>
           )}
+          {book.return_state === 'E' && (
+            <button onClick={() => setShowReturn(true)}>반납 신청</button>
+          )}
 
           {showReturn && (
             <PageReturnModal
               updateState={updateState}
               handleClose={() => setShowReturn(false)}
             />
+          )}
+        </td>
+        <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+          {book.return_state === 'L' && (
+            <div>
+              <button
+                disabled={disable}
+                onClick={() => {
+                  handleExtendButton(true);
+                }}
+              >
+                연장 신청
+              </button>
+            </div>
           )}
         </td>
       </tr>

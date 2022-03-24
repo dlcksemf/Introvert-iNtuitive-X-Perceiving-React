@@ -2,9 +2,10 @@ import LoanedBooks from './LoanedBooks';
 import NoList from '../NoList';
 
 function LoanedBooksList({ loanedBookList }) {
-  const filtered_list = loanedBookList
-    ?.filter((book) => book.return_state === 'L')
-    .slice(0, 3);
+  const filtered_list = loanedBookList?.filter(
+    (book) => book.return_state === 'L' || book.return_state === 'E',
+  );
+  // .slice(0, 3);
 
   return (
     <div className="block w-full overflow-x-auto text-gray-800 select-none">
@@ -25,6 +26,9 @@ function LoanedBooksList({ loanedBookList }) {
               </th>
               <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                 반납 신청
+              </th>
+              <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                연장(1회, 7일)
               </th>
             </tr>
           </thead>

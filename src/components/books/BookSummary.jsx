@@ -17,7 +17,8 @@ import 'css/HeavyReader.css';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
 import { utc } from 'moment';
-import ggumdoriClick from 'components/parts/image/ggumdoriClick.png';
+import card from 'components/parts/image/card.png';
+import card2 from 'components/parts/image/card2.png';
 import ReviewForm from './ReviewForm';
 
 function truncateString(str) {
@@ -236,7 +237,7 @@ function HeavyReaderSummary({ book }) {
   // }
 
   return (
-    <div className="mt-40">
+    <div className="mt-10">
       <>
         <div
           className="maincontainer"
@@ -250,12 +251,13 @@ function HeavyReaderSummary({ book }) {
             id="card"
           >
             <div className="front">
-              <img src={ggumdoriClick} alt="" />
-              <p>과연 누가 될까요?</p>
+              <img src={card} alt="" />
             </div>
             <div className="back">
-              <p>{book?.count_loans ? book.username : 'Unknown'}</p>
-              <p className="">
+              <img src={card2} alt=""></img>
+
+              <p className=" absolute top-48 left-24 font-bold text-2xl text-gray-500">
+                {book?.count_loans ? book.username : 'Unknown'}
                 {book?.position
                   ? book.position
                   : !book?.count_loans && '과연 누가 될까요?'}

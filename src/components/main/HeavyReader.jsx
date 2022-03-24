@@ -20,7 +20,7 @@ function HeavyReader() {
   return (
     <>
       <div>
-        <h1 className="text-5xl font-semibold relative bottom-7 text-left mb-[60px] text-gray-700 select-none">
+        <h1 className="text-5xl font-semibold relative text-left text-gray-700 select-none">
           다독왕
         </h1>
       </div>
