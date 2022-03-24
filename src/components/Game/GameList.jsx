@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import GameSummary from './GameSummary';
+import { GameSummary } from './GameSummary';
 
 function GameList() {
   const [query, setQuery] = useState();
