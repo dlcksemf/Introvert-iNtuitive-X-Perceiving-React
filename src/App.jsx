@@ -15,6 +15,7 @@ import LoginPage from 'pages/LoginPage';
 import SecondNav from 'components/parts/SecondNav';
 import { DotsItem } from '@nivo/core';
 import MainNavigation from 'components/parts/MainNavigation';
+import GuidePage from 'pages/GuidePage';
 // import Test from 'Test';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
               path="/admin/*"
               element={auth.is_staff ? <PageAdminRouter /> : <ErrorForbidden />}
             />
+            <Route path="/guidepage/" element={<GuidePage />} />
             <Route path="*" element={<NotFound />} />
             {/* <Route path="/test/" element={<Test />} /> */}
           </Routes>
