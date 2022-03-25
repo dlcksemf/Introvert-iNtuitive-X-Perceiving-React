@@ -4,6 +4,7 @@ import AdminUserList from './AdminUserList';
 import ReactPaginate from 'react-paginate';
 import SearchBar from 'components/parts/SearchBar';
 import { itemsPerPage } from 'Constants';
+import AdminUserList_Point from './AdminUserList_Point';
 
 function AdminUser() {
   const [, setCurrentItems] = useState(null);
@@ -13,11 +14,23 @@ function AdminUser() {
 
   const [{ data: userdata }, refresh] = useApiAxios(
     {
-      url: 'accounts/api/users/',
-      methid: 'GET',
+      url: '/accounts/api/users/',
+      method: 'GET',
     },
     { manual: true },
   );
+
+  const [{ data: bookdata }, refetch] = useApiAxios(
+    {
+      url: 'books/api/loanedbooks/',
+      method: 'GET',
+    },
+    { manual: true },
+  );
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   const fetchApplications = useCallback(
     async (newPage, newQuery = query) => {
@@ -104,12 +117,18 @@ function AdminUser() {
                   <td className="pl-7">
                     <div className="flex items-center">
                       <p className="text-sm leading-none text-gray-600 ml-2 select-none">
+                        포인트
+                      </p>
+                    </div>
+                  </td>
+                  <td className="pl-7">
+                    <div className="flex items-center">
+                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
                         삭제
                       </p>
                     </div>
                   </td>
                 </tr>
-
                 {userdata?.results?.map((user) => (
                   <React.Fragment key={user.user_id}>
                     {user.is_staff === false && (
@@ -122,6 +141,13 @@ function AdminUser() {
                         />
                       </tr>
                     )}
+                  </React.Fragment>
+                ))}
+                {bookdata?.results?.map((book) => (
+                  <React.Fragment key={bookdata.loan_num}>
+                    <tr className="focus:outline-none h-16 border border-gray-100 rounded select-none">
+                      <AdminUserList_Point book={book} />
+                    </tr>
                   </React.Fragment>
                 ))}
               </tbody>
