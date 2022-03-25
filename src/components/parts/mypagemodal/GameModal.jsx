@@ -35,7 +35,7 @@ function GameModal({ modalType }) {
 
   const [{ data }, getUserInfo] = useApiAxios(
     {
-      url: `/game/api/loanedgame/?user_id=${auth.user_id}/`,
+      url: `/game/api/loanedgame/?user_id=${auth.user_id}`,
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access}`,
@@ -50,7 +50,7 @@ function GameModal({ modalType }) {
         email: auth.email,
         page: newPage,
         query: newQuery,
-        game_state: state === 'All' ? '' : state,
+        return_state: state === 'ALL' ? '' : state,
       };
 
       const { data } = await getUserInfo({ params });

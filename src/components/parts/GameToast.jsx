@@ -6,7 +6,7 @@ function GameToast({ children }) {
   return (
     <div>
       <div className="select-none cursor-default">
-        ✨ {children}이 완료되었습니다.
+        ✨ {children}가 완료되었습니다.
       </div>
 
       <div className="ml-6">
