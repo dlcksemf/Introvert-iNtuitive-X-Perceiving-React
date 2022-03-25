@@ -2,7 +2,7 @@ import { useApiAxios } from 'base/api/base';
 import React, { useEffect, useState } from 'react';
 import { useAuth } from 'base/hooks/Authcontext';
 
-function AdminUserList({ user, reload }) {
+function AdminUserList({ user, reload, books }) {
   const [, setUserDelete] = useState(false);
   const [auth] = useAuth();
   const [, deleteUser, refresh] = useApiAxios(
@@ -15,6 +15,18 @@ function AdminUserList({ user, reload }) {
     },
     { manual: true },
   );
+
+  // const [{ data: bookdata }, refetch] = useApiAxios(
+  //   {
+  //     url: 'books/api/loanedbooks/',
+  //     method: 'GET',
+  //   },
+  //   { manual: true },
+  // );
+
+  // useEffect(() => {
+  //   refetch();
+  // }, []);
 
   const handleDelete = () => {
     if (window.confirm('유저를 삭제하시겠습니까?')) {
@@ -68,6 +80,14 @@ function AdminUserList({ user, reload }) {
         <div className="flex items-center">
           <p className="text-sm leading-none text-gray-600 ml-2">
             {user.count_loans}
+          </p>
+        </div>
+      </td>
+      <td className="pl-7">
+        <div className="flex items-center">
+          <p className="text-sm leading-none text-gray-600 ml-2">
+            {user.count_loans * 100}
+            {/* - (연체된 책 수 * 연체일) * 10  */}
           </p>
         </div>
       </td>

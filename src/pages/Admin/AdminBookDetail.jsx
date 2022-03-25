@@ -120,6 +120,9 @@ function AdminBookDetail({ postId }) {
                     <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
                       ISBN {post?.ISBN}
                     </span>
+                    <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
+                      수량 : {post?.amount}
+                    </span>
                   </div>
                   <div className="leading-relaxed select-none mt-14 hover:text-gray-900">
                     {post?.story.split(/[\r\n]+/).map((line, index) => (
