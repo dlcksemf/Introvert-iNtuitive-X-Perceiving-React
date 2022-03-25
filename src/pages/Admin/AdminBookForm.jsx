@@ -18,6 +18,7 @@ const INIT_FIELD_VALUES = {
   story: '',
   state: 'A',
   category: '',
+  amount: '1',
 };
 
 function AdminBookForm({ postId, handleDidSave }) {
@@ -279,6 +280,23 @@ function AdminBookForm({ postId, handleDidSave }) {
                 className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
               {saveErrorMessages.ISBN?.map((message, index) => (
+                <p key={index} className="text-xs text-red-400">
+                  {message}
+                </p>
+              ))}
+            </div>
+            <div className="mb-5">
+              <label className="font-bold mb-1 text-gray-700 block">
+                도서 수량
+              </label>
+              <input
+                name="amount"
+                value={fieldValues.amount}
+                onChange={handleFieldChange}
+                placeholder="도서 수량을 입력해주세요."
+                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+              {saveErrorMessages.amount?.map((message, index) => (
                 <p key={index} className="text-xs text-red-400">
                   {message}
                 </p>
