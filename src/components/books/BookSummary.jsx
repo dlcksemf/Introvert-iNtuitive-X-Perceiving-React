@@ -261,7 +261,6 @@ function HeavyReaderSummary({ book }) {
                 {book?.position
                   ? book.position
                   : !book?.count_loans && '과연 누가 될까요?'}
-                사원
               </p>
             </div>
           </div>
