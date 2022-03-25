@@ -38,7 +38,14 @@ function SecondNav() {
         <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="flex justify-between">
             <div>
-              <img src={name} alt="EUCLID BOOKS" className="h-20" />
+              <img
+                src={name}
+                alt="EUCLID BOOKS"
+                className="h-20 cursor-pointer"
+                onClick={() => {
+                  navigate(`/`);
+                }}
+              />
             </div>
             <div>
               <header className="ml-52 mt-5 grid grid-cols-4 text-xl">
@@ -73,7 +80,7 @@ function SecondNav() {
                   className=" select-none transition duration-500 ease-in-out cursor-pointer
           hover:text-blue-700 "
                   onClick={() => {
-                    navigate(`/`);
+                    navigate(`/guidepage/`);
                   }}
                 >
                   이용안내
@@ -126,8 +133,8 @@ function SecondNav() {
     );
   } else {
     return (
-      <div className="fixed w-full">
-        <header className="text-gray-700 body-font top-0 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
+      <div className="fixed w-full body-font top-0 z-10 h-68">
+        <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="mx-2 flex px-7 pt-1 pb-4 flex-col md:flex-row items-center">
             <div className="basis-1/3 grow-0 shrink-0 text-gray-900 md:mb-0"></div>
 
@@ -216,7 +223,7 @@ function SecondNav() {
                 className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
                 onClick={() => {
-                  navigate(`/`);
+                  navigate(`/guidepage/`);
                 }}
               >
                 이용안내

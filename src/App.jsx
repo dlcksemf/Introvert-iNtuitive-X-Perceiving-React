@@ -13,41 +13,47 @@ import NotFound from 'components/parts/NotFound';
 import ErrorForbidden from 'components/parts/ErrorForbidden';
 import LoginPage from 'pages/LoginPage';
 import SecondNav from 'components/parts/SecondNav';
-import Test from 'Test';
+import { DotsItem } from '@nivo/core';
+import MainNavigation from 'components/parts/MainNavigation';
+import GuidePage from 'pages/GuidePage';
+// import Test from 'Test';
 
 function App() {
   const [auth] = useAuth();
 
   return (
-    <div className="relative min-h-screen">
-      {/* <TopNav /> */}
-      <SecondNav />
+    <div>
+      <MainNavigation />
+      <div className="relative min-h-screen">
+        {auth.is_staff ? <TopNav /> : <SecondNav />}
 
-      <div className="app">
-        <Routes>
-          {auth?.is_staff && (
-            <Route path="/" element={<Navigate to="/admin/" />} />
-          )}
-          {!auth?.is_staff && <Route path="/" element={<MainPage />} />}
-          <Route path="/accounts/*" element={<PageAccountsRouter />} />
-          <Route path="/books/*" element={<PageBookRouter />} />
-          <Route path="/game/*" element={<PageGameRouter />} />
-          <Route
-            path="/admin/*"
-            element={auth.is_staff ? <PageAdminRouter /> : <ErrorForbidden />}
-          />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/test/" element={<Test />} />
-        </Routes>
-      </div>
-      <div className="h-[60px]"></div>
-
-      {!auth?.is_staff && (
-        <div className="absolute bottom-0 w-full">
-          <hr />
-          <Footer />
+        <div className="app mt-56">
+          <Routes>
+            {auth?.is_staff && (
+              <Route path="/" element={<Navigate to="/admin/" />} />
+            )}
+            {!auth?.is_staff && <Route path="/" element={<MainPage />} />}
+            <Route path="/accounts/*" element={<PageAccountsRouter />} />
+            <Route path="/books/*" element={<PageBookRouter />} />
+            <Route path="/game/*" element={<PageGameRouter />} />
+            <Route
+              path="/admin/*"
+              element={auth.is_staff ? <PageAdminRouter /> : <ErrorForbidden />}
+            />
+            <Route path="/guidepage/" element={<GuidePage />} />
+            <Route path="*" element={<NotFound />} />
+            {/* <Route path="/test/" element={<Test />} /> */}
+          </Routes>
         </div>
-      )}
+        <div className="h-[60px]"></div>
+
+        {!auth?.is_staff && (
+          <div className="absolute bottom-0 w-full">
+            <hr />
+            <Footer />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

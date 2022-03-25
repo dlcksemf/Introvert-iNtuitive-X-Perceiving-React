@@ -68,6 +68,12 @@ function AdminTopNav() {
               </NavLink>
             </MenuItem>
 
+            <MenuItem icon="👩‍👦‍👦">
+              <NavLink to={'/admin/review/'} className="hover:text-lg">
+                <h1 className="text-indigo-900">리뷰 관리</h1>
+              </NavLink>
+            </MenuItem>
+
             <MenuItem icon="✍">
               <NavLink to={'/admin/application/'} className="hover:text-lg">
                 <h1 className="text-indigo-900">신청 관리</h1>

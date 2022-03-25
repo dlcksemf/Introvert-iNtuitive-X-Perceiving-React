@@ -7,16 +7,16 @@ import { useNavigate } from 'react-router-dom';
 import StarRatingComponent from 'react-star-rating-component';
 
 const INIT_FIELD_VALUES = {
-  review_rate: '',
-  review_content: '',
+  game_review_rate: '',
+  game_review_content: '',
 };
 
-function ReviewForm({ reviewId, book, setReload }) {
+function GameReviewForm({ reviewId, game, setReload }) {
   const [auth] = useAuth();
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
 
-  const [{}, refetch] = useApiAxios(`/books/api/review/`, { manual: true });
+  const [{}, refetch] = useApiAxios(`/game/api/gamereview/`, { manual: true });
 
   const [
     {
@@ -27,7 +27,9 @@ function ReviewForm({ reviewId, book, setReload }) {
     saveRequest,
   ] = useApiAxios(
     {
-      url: !reviewId ? `/books/api/review/` : `/books/api/review/${reviewId}/`,
+      url: !reviewId
+        ? `/game/api/gamereview/`
+        : `/game/api/gamereview/${reviewId}/`,
       method: !reviewId ? 'POST' : 'PUT',
       headers: {
         Authorization: `Bearer ${auth.access}`,
@@ -46,12 +48,12 @@ function ReviewForm({ reviewId, book, setReload }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (window.confirm('도서평가를 남기시겠습니까?')) {
+    if (window.confirm('게임평가를 남기시겠습니까?')) {
       e.preventDefault();
 
       auth.isLoggedIn
         ? saveRequest({
-            data: { ...fieldValues, user_id: auth.user_id, book_name: book },
+            data: { ...fieldValues, user_id: auth.user_id, game_name: game },
           }).then(() => {
             setReload((prev) => !prev);
             emptyFieldValues();
@@ -67,7 +69,7 @@ function ReviewForm({ reviewId, book, setReload }) {
 
   useEffect(() => {
     setFieldValues((prev) => {
-      return { ...prev, review_rate: value };
+      return { ...prev, game_review_rate: value };
     });
   }, [value]);
 
@@ -80,31 +82,31 @@ function ReviewForm({ reviewId, book, setReload }) {
         <span className="flex">
           <div className="text-4xl select-none">
             <StarRatingComponent
-              name="review_rate"
+              name="game_review_rate"
               starCount={5}
               value={value}
               onStarClick={onStarClick}
               emptyStarColor="#C0C0C0"
             />
           </div>
-          {saveErrorMessages.review_rate?.map((message, index) => (
+          {saveErrorMessages.game_review_rate?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">
               {message}
             </p>
           ))}
           <input
             type="text"
-            name="review_content"
-            value={fieldValues.review_content}
+            name="game_review_content"
+            value={fieldValues.game_review_content}
             onChange={handleFieldChange}
-            placeholder="도서 감상평 100자 이내 등록"
+            placeholder="게임 이용 후기 100자 이내 등록"
             className="w-[770px] mt-0.5 ml-4 text-center bg-white rounded border border-gray-300 
             hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
             text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 
             ease-in-out outline-none"
             autoComplete="off"
           />
-          {saveErrorMessages.review_content?.map((message, index) => (
+          {saveErrorMessages.game_review_content?.map((message, index) => (
             <p key={index} className="text-xs text-red-400">
               {message}
             </p>
@@ -118,4 +120,4 @@ function ReviewForm({ reviewId, book, setReload }) {
   );
 }
 
-export default ReviewForm;
+export default GameReviewForm;

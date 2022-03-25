@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
@@ -17,6 +17,9 @@ import 'css/HeavyReader.css';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
 import { utc } from 'moment';
+import card from 'components/parts/image/card.png';
+import card2 from 'components/parts/image/card2.png';
+import ReviewForm from './ReviewForm';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -226,73 +229,44 @@ function Top5Summary({ book }) {
 }
 
 function HeavyReaderSummary({ book }) {
-  return (
-    <div className="flex items-center justify-center mt-[102px]">
-      <div className="relative h-[30rem] sm:h-96 w-[40rem] rounded-lg bottom-[38px]">
-        <img
-          src={heavy_reader}
-          alt="다독왕"
-          className="object-cover w-full h-full rounded-lg cursor-pointer"
-        />
+  const [flip, setFlip] = useState(false);
 
+  //onClick 시 사용
+  // function flipCard() {
+  //   setFlip((prev) => !prev);
+  // }
+
+  return (
+    <div className="mt-10">
+      <>
         <div
-          className="text_photo absolute w-full h-full bottom-0 rounded-lg
-          bg-gradient-to-r from-gray-500 to-slate-700 hover:bg-none"
+          className="maincontainer"
+          onMouseEnter={() => setFlip(true)}
+          onMouseLeave={() => setFlip(false)}
         >
           <div
-            id="mouse"
-            className="select-none animate__animated animate__heartBeat animate__slower animate__infinite"
-          >
-            <svg width="500" height="400" viewBox="0 0 620 140">
-              <text
-                x="180"
-                y="75"
-                fill="white"
-                fontSize="70"
-                font-family="'HSSummer'"
-              >
-                과연 누구일까요?
-              </text>
-            </svg>
-          </div>
+            // onClick={() => flipCard()}
 
-          <div
-            id="name"
-            className="select-none animate__animated animate__pulse animate__infinite"
+            className={`card ${flip ? 'flipCard' : ''}`}
+            id="card"
           >
-            <svg width="500" height="140" viewBox="0 0 620 140">
-              <text
-                x="175"
-                y="90"
-                fill="white"
-                fontSize="150"
-                font-family="'Dongle-Bold'"
-                textLength="300"
-              >
+            <div className="front">
+              <img src={card} alt="" />
+            </div>
+            <div className="back">
+              <img src={card2} alt=""></img>
+
+              <p className=" absolute top-48 left-24 font-bold text-2xl text-gray-500">
                 {book?.count_loans ? book.username : 'Unknown'}
-              </text>
-            </svg>
-          </div>
-
-          <div id="position" className="select-none">
-            <svg width="300" height="90" viewBox="0 0 620 140">
-              <text
-                x="200"
-                y="90"
-                fill="white"
-                fontSize="150"
-                font-family="'Dongle-Bold'"
-                textLength="170"
-              >
                 {book?.position
                   ? book.position
-                  : !book?.count_loans && '과연 누가 될까요?'}{' '}
+                  : !book?.count_loans && '과연 누가 될까요?'}
                 사원
-              </text>
-            </svg>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     </div>
   );
 }
@@ -338,24 +312,31 @@ function RecommendedBooksSummary({ book }) {
 
 function ReviewSummary({ review, setReload }) {
   const [auth] = useAuth();
+  const { book_num } = useParams();
   const [, setReviewDelete] = useState(false);
+  const [input, setInput] = useState('');
+  const [value, setValue] = useState(0);
+  const navigate = useNavigate();
+  const timeStamp = () => {
+    const today = new Date(review.updated_at);
+    today.setHours(today.getHours() + 9);
+    return today.toISOString().replace('T', ' ').substring(0, 16);
+  };
 
-  const [{ data }, refetch] = useApiAxios(
-    { url: `/books/api/review/`, method: 'GET' },
+  const [
+    { loading: deleteLoading, error: deleteError },
+    deleteReview,
+    refetch,
+  ] = useApiAxios(
+    {
+      url: `/books/api/review/${review?.review_num}/`,
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
+    },
     { manual: true },
   );
-
-  const [{ loading: deleteLoading, error: deleteError }, deleteReview] =
-    useApiAxios(
-      {
-        url: `/books/api/review/${review?.review_num}/`,
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${auth.access}`,
-        },
-      },
-      { manual: true },
-    );
 
   const handleDelete = () => {
     if (window.confirm('한줄평을 삭제하시겠습니까?')) {
@@ -382,7 +363,16 @@ function ReviewSummary({ review, setReload }) {
   const handleCancleButton = () => {
     setReviewDelete(false);
   };
-  console.log(data);
+
+  const handleClick = () => {
+    setInput(review.review_rate, review.review_content);
+  };
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  console.log(review.updated_at);
 
   return (
     <div>
@@ -391,13 +381,13 @@ function ReviewSummary({ review, setReload }) {
         `삭제 요청 중 에러가 발생 (${deleteError.response.status} ${deleteError.response.statusText})`}
       {review && (
         <>
-          <span className="flex justify-between">
-            <h1 className="mt-4 ml-4 font-extrabold select-none">
-              {review?.user_id}
-            </h1>
+          <span className="flex justify-end">
             {auth?.username === review?.user_id && (
-              <div className="mr-2 mt-3">
-                <button className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center">
+              <div className="mr-2 mt-4">
+                <button
+                  onClick={handleClick}
+                  className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center"
+                >
                   수정
                 </button>
                 <button
@@ -410,13 +400,21 @@ function ReviewSummary({ review, setReload }) {
               </div>
             )}
           </span>
-          <span className="flex">
+          <span className="flex mt-3">
             <h2 className="mr-4 ml-4 select-none">
               <RateIcon review_rate={review.review_rate} />
             </h2>
-            <h2 className="mr-4 mb-4 select-none">{review?.review_content}</h2>
-            <h2>{data[0]?.updated_at}</h2>
-          </span>{' '}
+            <h1 className="font-extrabold select-none">{review?.user_id}</h1>
+            <h2 className="ml-4 mb-4 select-none">{review?.review_content}</h2>
+            <h2 className="ml-4 select-none text-gray-500 text-sm mt-0.5">
+              {timeStamp(review.updated_at)}
+            </h2>
+          </span>
+          <div className="mb-4 pl-0.5 pr-0.5">
+            {input ? (
+              <ReviewForm value={review.review_id} onChange={handleChange} />
+            ) : null}
+          </div>
         </>
       )}
     </div>

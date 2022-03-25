@@ -15,24 +15,25 @@ import setMinutes from 'date-fns/setMinutes';
 import setHours from 'date-fns/setHours';
 import getHours from 'date-fns/getHours';
 import getMinutes from 'date-fns/getMinutes';
+import { addHours } from 'date-fns';
 
 function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
   const [startDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  // const [endTime, setEndTime] = useState(new Date());
   const [auth] = useAuth();
-  const endDay = new Date(+new Date(endDate) + 3240 * 10000)
-    .toISOString()
-    .split('T')[0];
+  // const endDay = new Date(+new Date(endDate) + 3240 * 10000)
+  //   .toISOString()
+  //   .split('T')[0];
 
-  const [startTime, setStartTime] = useState(null);
-  const [endTime, setEndTime] = useState(null);
-  const [isSelected, setIsSelected] = useState(false);
+  const [startTime, setStartTime] = useState();
+  const [endTime, setEndTime] = useState();
+  const [isSelected, setIsSelected] = useState(true);
 
-  const onSelect = (time) => {
-    setStartTime(time);
-    setIsSelected(true);
-    setEndTime(null);
-  };
+  // const onSelect = (time) => {
+  //   setStartTime(time);
+  //   setIsSelected(true);
+  //   setEndTime(null);
+  // };
 
   const [{ data: game }, refetch] = useApiAxios({
     url: `/game/api/game/${game_num}/`,
@@ -64,7 +65,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
         ...useFieldValues,
         game_name: game.game_num,
         user_id: auth.user_id,
-        return_due_time: timeString,
+        return_due_time: endTime,
         return_state: 'L',
       },
     })
@@ -89,6 +90,13 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
   useEffect(() => {
     refetch();
   }, [refetch]);
+
+  // const filterPassedTime = (time) => {
+  //   const currentDate = new Date();
+  //   const selectedDate = new Date(time);
+
+  //   return currentDate.getTime() < selectedDate.getTime();
+  // };
 
   return (
     <>
@@ -182,9 +190,104 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                     >
                       {game?.game_name}
                     </p>
+
                     <div>
                       <label className="font-bold">대여 시간</label>
                     </div>
+                    <div className="datepicker relative form-floating mb-3 xl:w-96">
+                      <div>
+                        {startDate.getHours() > 12 ? (
+                          <p className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black">
+                            오후 {startDate.getHours() - 12}시{' '}
+                            {startDate.getMinutes()}분
+                          </p>
+                        ) : (
+                          <p className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black">
+                            오전 {startDate.getHours()}시{' '}
+                            {startDate.getMinutes()}분
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div>
+                      {' '}
+                      <label className="font-bold">반납 시간</label>
+                    </div>
+
+                    <div>
+                      <DatePicker
+                        selected={endTime}
+                        onChange={(time) => setEndTime(time)}
+                        locale={ko}
+                        showTimeSelect
+                        showTimeSelectOnly
+                        timeIntervals={10}
+                        minTime={startDate}
+                        maxTime={setHours(
+                          setMinutes(new Date(), getMinutes(startDate)),
+                          getHours(startDate) + 2,
+                        )} // 시작 시간부터 2시간
+                        excludeTimes={[
+                          // 시작 시간 제외
+                          startTime,
+                          // 5:00 선택 기준 최대 7:00까지 예외처리
+                          // setHours(setMinutes(new Date(), 0), 18),
+                          // setHours(setMinutes(new Date(), 30), 18),
+                          // setHours(setMinutes(new Date(), 0), 19),
+                        ]}
+                        timeCaption="Time"
+                        dateFormat="aa h시 mm분 종료"
+                        placeholderText="종료 시간"
+                        className="mt-3 orm-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black"
+                      />
+                    </div>
+                    {/* <DatePicker
+                      locale={ko}
+                      className="outline-none form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 cursor-pointer hover:border-blue-500 hover:text-black"
+                      selected={endTime}
+                      onChange={(time) => setEndTime(time)}
+                      // showTimeSelect
+                      // showTimeSelectOnly
+                      startTime={startTime}
+                      endTime={endTime}
+                      minTime={startTime}
+                      maxTime={setHours(
+                        setMinutes(new Date(), getMinutes(startTime)),
+                        getHours(startTime) + 2,
+                      )}
+                      isClearable={true}
+                      dateFormat="aa hh:mm 종료"
+                      placeholderText="종료 시간"
+                    /> */}
+
+                    {/* <div className="datepicker relative form-floating mb-3 xl:w-96">
+                      <div>
+                        {startDate.getHours() + 2 > 12 ? (
+                          <p className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black">
+                            오후 {startDate.getHours() - 10}시{' '}
+                            {startDate.getMinutes()}분
+                          </p>
+                        ) : (
+                          <p className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black">
+                            오전 {startDate.getHours() - 10}시{' '}
+                            {startDate.getMinutes()}분
+                          </p>
+                        )}
+                      </div>
+                    </div> */}
+                    {/* <div>
+                      <label className="font-bold">반납 시간</label>
+                      <div>
+                        <input
+                          type="time"
+                          name="time"
+                          step="3600"
+                          value={game.return_due_time}
+                          className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black"
+                        />
+                      </div>
+                    </div> */}
                     {/* <div className="datepicker relative form-floating mb-3 xl:w-96">
                       <div>
                         <label className="font-bold">대출 시작 시간</label>
@@ -205,22 +308,24 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                           />
                         </div>
                       </div> */}
-                    <div>
+                    {/* <div>
                       <DatePicker
                         selected={startTime}
                         onChange={onSelect}
                         locale={ko}
                         showTimeSelect
                         showTimeSelectOnly
-                        timeIntervals={30}
+                        timeIntervals={10}
+                        filterTime={filterPassedTime}
                         minTime={setHours(setMinutes(new Date(), 30), 9)}
-                        maxTime={setHours(setMinutes(new Date(), 0), 17)}
+                        maxTime={setHours(setMinutes(new Date(), 0), 20)}
                         timeCaption="Time"
                         dateFormat="aa h:mm 시작"
                         placeholderText="시작 시간"
                         className=" mt-1 orm-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black"
                       />
                     </div>
+                    
 
                     {isSelected ? ( // 시작 시간을 선택해야 종료 시간 선택 가능
                       <div>
@@ -230,7 +335,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                           locale={ko}
                           showTimeSelect
                           showTimeSelectOnly
-                          timeIntervals={30}
+                          timeIntervals={10}
                           minTime={startTime}
                           maxTime={setHours(
                             setMinutes(new Date(), getMinutes(startTime)),
@@ -240,9 +345,9 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                             // 시작 시간 제외
                             startTime,
                             // 5:00 선택 기준 최대 7:00까지 예외처리
-                            setHours(setMinutes(new Date(), 0), 18),
-                            setHours(setMinutes(new Date(), 30), 18),
-                            setHours(setMinutes(new Date(), 0), 19),
+                            // setHours(setMinutes(new Date(), 0), 18),
+                            // setHours(setMinutes(new Date(), 30), 18),
+                            // setHours(setMinutes(new Date(), 0), 19),
                           ]}
                           timeCaption="Time"
                           dateFormat="aa h:mm 종료"
@@ -250,7 +355,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                           className="mt-3 orm-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black"
                         />
                       </div>
-                    ) : null}
+                    ) : null} */}
 
                     <div className="flex justify-center mt-10">
                       <button
