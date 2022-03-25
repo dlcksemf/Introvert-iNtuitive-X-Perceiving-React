@@ -51,10 +51,14 @@ function ReviewForm({ reviewId, book, setReload }) {
 
       auth.isLoggedIn
         ? saveRequest({
-            data: { ...fieldValues, user_id: auth.user_id, book_name: book },
+            data: {
+              ...fieldValues,
+              user_id: auth.user_id,
+              book_name: book,
+            },
           }).then(() => {
-            setReload((prev) => !prev);
             emptyFieldValues();
+            setReload((prev) => !prev);
           })
         : window.confirm('로그인 후 이용해주세요🎈') &&
           navigate('/accounts/login/');

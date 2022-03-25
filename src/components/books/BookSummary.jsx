@@ -406,7 +406,7 @@ function ReviewSummary({ review, setReload }) {
             <h1 className="font-extrabold select-none">{review?.user_id}</h1>
             <h2 className="ml-4 mb-4 select-none">{review?.review_content}</h2>
             <h2 className="ml-4 select-none text-gray-500 text-sm mt-0.5">
-              {timeStamp(review.updated_at)}
+              {/* {timeStamp(review.updated_at)} */}
             </h2>
           </span>
           <div className="mb-4 pl-0.5 pr-0.5">

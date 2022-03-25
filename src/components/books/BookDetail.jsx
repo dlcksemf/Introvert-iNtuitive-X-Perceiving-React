@@ -9,7 +9,6 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import LoanedIcon from 'designMaterials/LoanedIcon';
 import Toggle from 'components/parts/Toggle';
 import non_image from 'components/parts/image/non_image.jpg';
-import { ReviewSummary } from 'components/books/BookSummary';
 
 import { ToastContainer } from 'react-toastify';
 import ReviewPage from 'pages/ReviewPage';
@@ -17,7 +16,6 @@ import ReviewPage from 'pages/ReviewPage';
 function BookDetail({ book_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [auth] = useAuth();
-  const [reloading, setReloading] = useState(false);
   const navigate = useNavigate();
   let location = useLocation();
   let { pathname, state } = location;
@@ -52,10 +50,6 @@ function BookDetail({ book_num }) {
     getWish();
     refetch();
   };
-
-  useEffect(() => {
-    refetch();
-  }, [refetch, reloading]);
 
   const handleClickLoan = () => {
     auth.isLoggedIn
@@ -211,24 +205,9 @@ function BookDetail({ book_num }) {
                 </div>
               </div>
               <div className="flex justify-center">
-                <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">
-                  <ul className="divide-y divide-gray-300 hover:bg-gray-50">
-                    {book?.review_set
-                      ?.sort(
-                        (user1, user2) => user2.count_loans - user1.count_loans,
-                      )
-                      .map((review) => (
-                        <ReviewSummary
-                          review={review}
-                          key={review.review_num}
-                          setReload={setReloading}
-                        />
-                      ))}
-                  </ul>
+                <div className="">
+                  <ReviewPage book={book_num} />
                 </div>
-              </div>
-              <div className="ml-[260px] mt-6">
-                <ReviewPage book={book_num} setReload={setReloading} />
               </div>
             </div>
           </section>
