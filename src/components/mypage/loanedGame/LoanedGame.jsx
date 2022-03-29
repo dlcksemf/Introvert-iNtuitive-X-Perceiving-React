@@ -75,7 +75,7 @@ function LoanedGame({ game }) {
           </div>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-          {game.return_due_time}
+          {game.return_due_time.replace('T', ' ').substring(0, 16)}
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
           <Badge color={color}>

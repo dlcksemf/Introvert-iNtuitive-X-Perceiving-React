@@ -144,7 +144,9 @@ function GameDetail({ gameId }) {
                           {game?.game_state !== 'A' && (
                             <p className="m-auto select-none hover:text-blue-500">
                               반납 예정 시간 : {''}
-                              {game?.loaned_game[0]?.return_due_time}
+                              {game?.loaned_game[0]?.return_due_time
+                                .replace('T', ' ')
+                                .substring(0, 16)}
                             </p>
                           )}
                           <GameLoanedModal
