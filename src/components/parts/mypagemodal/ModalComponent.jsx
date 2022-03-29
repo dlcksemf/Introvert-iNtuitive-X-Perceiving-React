@@ -7,13 +7,15 @@ function ModalComponent({ titleList, bookInfo, modalType }) {
   useEffect(() => {
     setContentList([]);
     titleList.map((title) => {
-      if (title === 'created_at') {
-        setContentList((prev) => [...prev, bookInfo[title].slice(0, 10)]);
-      } else if (title === 'title') {
-        setContentList((prev) => [
-          ...prev,
-          bookInfo[title].slice(0, 15) + '...',
-        ]);
+      if (title === 'title') {
+        if (bookInfo[title].length > 15) {
+          setContentList((prev) => [
+            ...prev,
+            bookInfo[title].slice(0, 15) + '...',
+          ]);
+        } else {
+          setContentList((prev) => [...prev, bookInfo[title]]);
+        }
       } else if (title === 'state' || title === 'return_state') {
         setContentList((prev) => [
           ...prev,
