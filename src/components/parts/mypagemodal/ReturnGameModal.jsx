@@ -1,11 +1,14 @@
 import { useAuth } from 'base/hooks/Authcontext';
 import { useReload } from 'base/hooks/ReloadContext';
 import { useNavigate } from 'react-router-dom';
+import useFieldValues from 'base/hooks/useFieldValues';
 
-function ReturnModal({ game, updateState, handleClose }) {
+function ReturnGameModal({ game, updateState, handleClose }) {
   const [auth] = useAuth();
   const [, setReload] = useReload();
   const navigate = useNavigate();
+
+  const today = new Date();
 
   const handleClickSubmitButton = (e) => {
     e.preventDefault();
@@ -19,9 +22,15 @@ function ReturnModal({ game, updateState, handleClose }) {
   };
 
   const handleOkButton = () => {
-    updateState({ data: { return_state: 'R' } })
+    updateState({
+      data: {
+        returned_time: today,
+        return_state: 'R',
+      },
+    })
       .then(() => {
         handleClose();
+        console.log(today);
         setReload(true);
       })
       .catch((error) => {
@@ -91,4 +100,4 @@ function ReturnModal({ game, updateState, handleClose }) {
     </div>
   );
 }
-export default ReturnModal;
+export default ReturnGameModal;
