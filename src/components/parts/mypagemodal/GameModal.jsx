@@ -11,6 +11,7 @@ import GameModalComponent from './GameModalComponent';
 const TitleList = {
   loanedgame: {
     game_name: '게임명',
+    loaned_time: '대여 시간',
     return_due_time: '반납 예정 시간',
     returned_time: '반납 시간',
     return_state: '반납 상태',
