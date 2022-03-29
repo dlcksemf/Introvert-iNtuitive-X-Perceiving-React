@@ -20,6 +20,8 @@ import { utc } from 'moment';
 import card from 'components/parts/image/card.png';
 import card2 from 'components/parts/image/card2.png';
 import ReviewForm from './ReviewForm';
+import StarRatingComponent from 'react-star-rating-component';
+import useFieldValues from 'base/hooks/useFieldValues';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -311,16 +313,9 @@ function RecommendedBooksSummary({ book }) {
 
 function ReviewSummary({ review, setReload }) {
   const [auth] = useAuth();
-  const { book_num } = useParams();
   const [, setReviewDelete] = useState(false);
-  const [input, setInput] = useState('');
-  const [value, setValue] = useState(0);
-  const navigate = useNavigate();
-  const timeStamp = () => {
-    const today = new Date(review.updated_at);
-    today.setHours(today.getHours() + 9);
-    return today.toISOString().replace('T', ' ').substring(0, 16);
-  };
+
+  console.log(review.review_rate);
 
   const [
     { loading: deleteLoading, error: deleteError },
@@ -340,13 +335,11 @@ function ReviewSummary({ review, setReload }) {
   const handleDelete = () => {
     if (window.confirm('한줄평을 삭제하시겠습니까?')) {
       handleOkButton();
-      alert('삭제되었습니다.');
       deleteReview().then(() => {
         setReload((prev) => !prev);
       });
     } else {
       handleCancleButton();
-      alert('취소되었습니다.');
     }
     setReviewDelete(true);
   };
@@ -363,16 +356,6 @@ function ReviewSummary({ review, setReload }) {
     setReviewDelete(false);
   };
 
-  const handleClick = () => {
-    setInput(review.review_rate, review.review_content);
-  };
-
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
-
-  console.log(review.updated_at);
-
   return (
     <div>
       {deleteLoading && <LoadingIndicator>삭제 중..</LoadingIndicator>}
@@ -381,10 +364,10 @@ function ReviewSummary({ review, setReload }) {
       {review && (
         <>
           <span className="flex justify-end">
-            {auth?.username === review?.user_id && (
-              <div className="mr-2 mt-4">
+            {auth?.user_id === review?.user_id && (
+              <div className="relative top-4 right-4">
                 <button
-                  onClick={handleClick}
+                  // onClick={}
                   className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center"
                 >
                   수정
@@ -403,15 +386,22 @@ function ReviewSummary({ review, setReload }) {
             <h2 className="mr-4 ml-4 select-none">
               <RateIcon review_rate={review.review_rate} />
             </h2>
-            <h1 className="font-extrabold select-none">{review?.user_id}</h1>
+            <h1 className="font-extrabold select-none">{review?.username}</h1>
             <h2 className="ml-4 mb-4 select-none">{review?.review_content}</h2>
             <h2 className="ml-4 select-none text-gray-500 text-sm mt-0.5">
-              {/* {timeStamp(review.updated_at)} */}
+              {review.updated_at.replace('T', ' ').substring(0, 16)}
             </h2>
           </span>
-          <div className="mb-4 pl-0.5 pr-0.5">
-            {input ? (
-              <ReviewForm value={review.review_id} onChange={handleChange} />
+          <div className="relative right-10 bottom-6">
+            {review.review_num ? (
+              <ReviewForm
+                input={review.review_content}
+                review_num={review.review_num}
+                review_rate={review.review_rate}
+                review_content={review.review_content}
+                value={review.review_num}
+                // onChange={}
+              />
             ) : null}
           </div>
         </>

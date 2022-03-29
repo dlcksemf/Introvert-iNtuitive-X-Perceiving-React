@@ -46,7 +46,7 @@ function ReviewForm({ reviewId, book, setReload }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (window.confirm('도서평가를 남기시겠습니까?')) {
+    if (e) {
       e.preventDefault();
 
       auth.isLoggedIn
@@ -80,8 +80,8 @@ function ReviewForm({ reviewId, book, setReload }) {
       {saveLoading && <LoadingIndicator>저장 중..</LoadingIndicator>}
       {saveError &&
         `저장 중 에러가 발생했습니다 (${saveError.response?.status} ${saveError.response?.statusText})`}
-      <form onSubmit={handleSubmit}>
-        <span className="flex">
+      <form onSubmit={handleSubmit} className="relative top-full">
+        <span className="flex justify-center mt-8 relative left-[39px] ">
           <div className="text-4xl select-none">
             <StarRatingComponent
               name="review_rate"
