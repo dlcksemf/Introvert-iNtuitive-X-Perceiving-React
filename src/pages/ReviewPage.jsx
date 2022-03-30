@@ -13,7 +13,7 @@ function ReviewPage({ book }) {
 
   const [{ data: review }, refetch] = useApiAxios(
     {
-      url: `/books/api/review/?page_size=5`,
+      url: `/books/api/review/?book_num=${book.book_num}&?page_size=5`,
       method: 'GET',
     },
     { manual: true },
@@ -53,9 +53,9 @@ function ReviewPage({ book }) {
             <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">
               <ul className="divide-y divide-gray-300">
                 {review?.results
-                  ?.filter(
-                    (review) => review.book_name.book_num === book.book_num,
-                  )
+                  // ?.filter(
+                  //   (review) => review.book_name.book_num === book.book_num,
+                  // )
                   .sort((user1, user2) => user2.count_loans - user1.count_loans)
                   .map((review) => (
                     <ReviewSummary
