@@ -143,13 +143,13 @@ function AdminUser() {
                     )}
                   </React.Fragment>
                 ))}
-                {bookdata?.results?.map((book) => (
+                {/* {bookdata?.results?.map((book) => (
                   <React.Fragment key={bookdata.loan_num}>
                     <tr className="focus:outline-none h-16 border border-gray-100 rounded select-none">
                       <AdminUserList_Point book={book} />
                     </tr>
                   </React.Fragment>
-                ))}
+                ))} */}
               </tbody>
             </table>
           </div>
