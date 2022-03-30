@@ -194,6 +194,20 @@ function AdminLoanedBookList() {
                                 <Badge color="green">대출중</Badge>
                               )
                             )}
+                            {post?.return_state === 'E' &&
+                            new Date(post?.return_due_date) < new Date(date) ? (
+                              <Badge color="red">
+                                {Math.floor(
+                                  (Date.parse(date) -
+                                    Date.parse(post?.return_due_date)) /
+                                    (1000 * 3600 * 24),
+                                ) + '일 연체'}
+                              </Badge>
+                            ) : (
+                              post?.return_state === 'E' && (
+                                <Badge color="green">대출중</Badge>
+                              )
+                            )}
                             {/* 아래 코드는 기존 반납 확인 */}
                             {/* {post?.return_state === 'P' && (
                               <Badge color="yellow">반납 신청중</Badge>
