@@ -55,6 +55,7 @@ function ReviewForm({ reviewId, book, setReload }) {
           },
         }).then(() => {
           emptyFieldValues();
+          setValue(0);
           setReload((prev) => !prev);
         })
       : window.confirm('로그인 후 이용해주세요🎈') &&

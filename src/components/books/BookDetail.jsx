@@ -12,9 +12,8 @@ import non_image from 'components/parts/image/non_image.jpg';
 
 import { ToastContainer } from 'react-toastify';
 import ReviewPage from 'pages/ReviewPage';
-import ReviewForm from 'components/books/ReviewForm';
 
-function BookDetail({ book_num, setReload, review_num }) {
+function BookDetail({ book_num, review_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [reloading, setReloading] = useState(false);
   const [auth] = useAuth();
@@ -207,20 +206,11 @@ function BookDetail({ book_num, setReload, review_num }) {
                   </div>
                 </div>
               </div>
-              <div className="relative">
-                <ReviewForm
-                  review_num={review_num}
-                  book={book.book_num}
-                  setReload={setReload}
-                />
-              </div>
-              {book?.review_set[0] && (
-                <div className="flex justify-center">
-                  <div>
-                    <ReviewPage book={book.book_num} reload={setReloading} />
-                  </div>
+              <div className="flex justify-center">
+                <div>
+                  <ReviewPage book={book} reload={setReloading} />
                 </div>
-              )}
+              </div>
             </div>
           </section>
         </>
