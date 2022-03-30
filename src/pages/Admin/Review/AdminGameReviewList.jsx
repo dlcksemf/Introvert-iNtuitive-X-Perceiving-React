@@ -48,7 +48,7 @@ function AdminGameReviewList({ review, reload }) {
       <td className="">
         <div className="flex items-center cursor-pointer">
           <p className="text-sm leading-none text-gray-600">
-            {review.user_id.username}
+            {review.username}
           </p>
         </div>
       </td>
@@ -69,7 +69,7 @@ function AdminGameReviewList({ review, reload }) {
       <td className="pl-7">
         <div className="flex items-center">
           <p className="text-sm leading-none text-gray-600 ml-2">
-            {review.game_name?.game_name}
+            {review.game_name}
           </p>
         </div>
       </td>
