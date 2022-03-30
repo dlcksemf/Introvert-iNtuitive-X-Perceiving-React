@@ -153,14 +153,6 @@ function AdminLoanedBookList() {
                       </p>
                     </div>
                   </th>
-
-                  <th className="pl-3">
-                    <div className="flex items-center justify-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
-                        상태
-                      </p>
-                    </div>
-                  </th>
                 </tr>
               </thead>
 
@@ -209,20 +201,6 @@ function AdminLoanedBookList() {
                             {post?.return_state === 'R' && (
                               <Badge color="blue">반납 완료</Badge>
                             )}
-                          </p>
-                        </div>
-                      </td>
-
-                      <td className="pl-7">
-                        <div className="flex items-center">
-                          <p className="text-sm leading-none text-gray-600 ml-2">
-                            <button
-                              className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                              onClick={handleClickSubmitButton}
-                              value={post.loan_num}
-                            >
-                              {post?.return_state === 'P' ? '반납 확인' : ''}
-                            </button>
                           </p>
                         </div>
                       </td>
