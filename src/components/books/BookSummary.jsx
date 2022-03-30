@@ -364,12 +364,12 @@ function ReviewSummary({ review, setReload }) {
           <span className="flex justify-end">
             {auth?.user_id === review?.user_id && (
               <div className="relative top-4 right-4">
-                <button
+                {/* <button
                   // onClick={}
                   className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center"
                 >
                   수정
-                </button>
+                </button> */}
                 <button
                   disabled={deleteLoading}
                   onClick={handleDelete}
@@ -390,7 +390,7 @@ function ReviewSummary({ review, setReload }) {
               {review.updated_at.replace('T', ' ').substring(0, 16)}
             </h2>
           </span>
-          <div className="relative right-10 bottom-6">
+          {/* <div className="relative right-10 bottom-6">
             {review.review_num ? (
               <ReviewForm
                 input={review.review_content}
@@ -401,7 +401,7 @@ function ReviewSummary({ review, setReload }) {
                 // onChange={}
               />
             ) : null}
-          </div>
+          </div> */}
         </>
       )}
     </div>

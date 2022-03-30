@@ -13,7 +13,7 @@ function ReviewPage({ book }) {
 
   const [{ data: review }, refetch] = useApiAxios(
     {
-      url: `/books/api/review/?book_num=${book.book_num}&?page_size=5`,
+      url: `/books/api/review/?book_num=${book.book_num}`,
       method: 'GET',
     },
     { manual: true },
@@ -30,7 +30,7 @@ function ReviewPage({ book }) {
 
       setPage(newPage);
 
-      setPageCount(Math.ceil(data.count / 5));
+      setPageCount(Math.ceil(data.count / 10));
       setCurrentItems(data?.results);
     },
     [query, refetch],
@@ -47,39 +47,34 @@ function ReviewPage({ book }) {
   return (
     <>
       <ReviewForm book={book.book_num} setReload={setReloading} />
-      {book?.review_set[0] && (
-        <div className="flex m-auto mt-4">
-          <div className="flex justify-center">
-            <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">
-              <ul className="divide-y divide-gray-300">
-                {review?.results
-                  // ?.filter(
-                  //   (review) => review.book_name.book_num === book.book_num,
-                  // )
-                  .sort((user1, user2) => user2.count_loans - user1.count_loans)
-                  .map((review) => (
-                    <ReviewSummary
-                      review={review}
-                      key={review.review_num}
-                      setReload={setReloading}
-                    />
-                  ))}
-              </ul>
-              <div className="relative bottom-7 pt-8">
-                <ReactPaginate
-                  breakLabel="..."
-                  nextLabel=">"
-                  onPageChange={handlePageClick}
-                  pageCount={pageCount}
-                  previousLabel="<"
-                  renderOnZeroPageCount={null}
-                  className="pagination"
-                />
-              </div>
+      <div className="flex m-auto mt-4">
+        <div className="flex justify-center">
+          <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">
+            <ul className="divide-y divide-gray-300">
+              {review?.results
+                .sort((user1, user2) => user2.count_loans - user1.count_loans)
+                .map((review) => (
+                  <ReviewSummary
+                    review={review}
+                    key={review.review_num}
+                    setReload={setReloading}
+                  />
+                ))}
+            </ul>
+            <div className="relative bottom-7 pt-8">
+              <ReactPaginate
+                breakLabel="..."
+                nextLabel=">"
+                onPageChange={handlePageClick}
+                pageCount={pageCount}
+                previousLabel="<"
+                renderOnZeroPageCount={null}
+                className="pagination"
+              />
             </div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }
