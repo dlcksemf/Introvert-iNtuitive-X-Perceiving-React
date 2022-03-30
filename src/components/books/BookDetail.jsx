@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { useAuth } from 'base/hooks/Authcontext';
 import { useApiAxios } from 'base/api/base';
@@ -13,7 +13,7 @@ import non_image from 'components/parts/image/non_image.jpg';
 import { ToastContainer } from 'react-toastify';
 import ReviewPage from 'pages/ReviewPage';
 
-function BookDetail({ book_num, setReload }) {
+function BookDetail({ book_num, review_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [reloading, setReloading] = useState(false);
   const [auth] = useAuth();
@@ -30,8 +30,6 @@ function BookDetail({ book_num, setReload }) {
     },
     { manual: true },
   );
-
-  console.log(book);
 
   const [{ data: wish }, getWish] = useApiAxios(
     {
@@ -68,6 +66,7 @@ function BookDetail({ book_num, setReload }) {
     );
   };
 
+  console.log(book);
   return (
     <div>
       {loading && <LoadingIndicator />}
@@ -209,9 +208,7 @@ function BookDetail({ book_num, setReload }) {
               </div>
               <div className="flex justify-center">
                 <div>
-                  {book?.review_set[0] && (
-                    <ReviewPage book={book_num} reload={reload} />
-                  )}
+                  <ReviewPage book={book} reload={setReloading} />
                 </div>
               </div>
             </div>
