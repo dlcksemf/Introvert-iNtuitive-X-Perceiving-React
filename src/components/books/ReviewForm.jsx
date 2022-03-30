@@ -46,23 +46,19 @@ function ReviewForm({ reviewId, book, setReload }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (e) {
-      e.preventDefault();
-
-      auth.isLoggedIn
-        ? saveRequest({
-            data: {
-              ...fieldValues,
-              user_id: auth.user_id,
-              book_name: book,
-            },
-          }).then(() => {
-            emptyFieldValues();
-            setReload((prev) => !prev);
-          })
-        : window.confirm('로그인 후 이용해주세요🎈') &&
-          navigate('/accounts/login/');
-    }
+    auth.isLoggedIn
+      ? saveRequest({
+          data: {
+            ...fieldValues,
+            user_id: auth.user_id,
+            book_name: book,
+          },
+        }).then(() => {
+          emptyFieldValues();
+          setReload((prev) => !prev);
+        })
+      : window.confirm('로그인 후 이용해주세요🎈') &&
+        navigate('/accounts/login/');
   };
 
   const onStarClick = (nextValue) => {

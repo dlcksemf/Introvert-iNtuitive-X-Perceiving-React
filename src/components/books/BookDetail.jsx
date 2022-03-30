@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { useAuth } from 'base/hooks/Authcontext';
 import { useApiAxios } from 'base/api/base';
@@ -12,8 +12,9 @@ import non_image from 'components/parts/image/non_image.jpg';
 
 import { ToastContainer } from 'react-toastify';
 import ReviewPage from 'pages/ReviewPage';
+import ReviewForm from 'components/books/ReviewForm';
 
-function BookDetail({ book_num, setReload }) {
+function BookDetail({ book_num, setReload, review_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [reloading, setReloading] = useState(false);
   const [auth] = useAuth();
@@ -30,8 +31,6 @@ function BookDetail({ book_num, setReload }) {
     },
     { manual: true },
   );
-
-  console.log(book);
 
   const [{ data: wish }, getWish] = useApiAxios(
     {
@@ -68,6 +67,7 @@ function BookDetail({ book_num, setReload }) {
     );
   };
 
+  console.log(book);
   return (
     <div>
       {loading && <LoadingIndicator />}
@@ -207,13 +207,20 @@ function BookDetail({ book_num, setReload }) {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center">
-                <div>
-                  {book?.review_set[0] && (
-                    <ReviewPage book={book_num} reload={reload} />
-                  )}
-                </div>
+              <div className="relative">
+                <ReviewForm
+                  review_num={review_num}
+                  book={book.book_num}
+                  setReload={setReload}
+                />
               </div>
+              {book?.review_set[0] && (
+                <div className="flex justify-center">
+                  <div>
+                    <ReviewPage book={book.book_num} reload={setReloading} />
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         </>

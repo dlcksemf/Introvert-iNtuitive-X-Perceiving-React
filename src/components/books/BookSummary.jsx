@@ -315,8 +315,6 @@ function ReviewSummary({ review, setReload }) {
   const [auth] = useAuth();
   const [, setReviewDelete] = useState(false);
 
-  console.log(review.review_rate);
-
   const [
     { loading: deleteLoading, error: deleteError },
     deleteReview,

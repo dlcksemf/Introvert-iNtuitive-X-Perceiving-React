@@ -1,19 +1,14 @@
 import { useApiAxios } from 'base/api/base';
-import { useAuth } from 'base/hooks/Authcontext';
 import { ReviewSummary } from 'components/books/BookSummary';
-import ReviewForm from 'components/books/ReviewForm';
 import { useCallback, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { useParams } from 'react-router-dom';
 
 function ReviewPage({ book, setReload }) {
-  const [auth] = useAuth();
   const [query, setQuery] = useState();
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [, setPage] = useState(1);
   const [reloading, setReloading] = useState(false);
-  const { reviewId } = useParams();
 
   const [{ data: review }, refetch] = useApiAxios(
     {
@@ -49,22 +44,20 @@ function ReviewPage({ book, setReload }) {
     fetchApplications();
   }, [refetch, reloading, fetchApplications]);
 
-  console.log(review?.results);
-
   return (
     <>
-      <ReviewForm reviewId={reviewId} book={book} setReload={setReload} />
       <div className="flex m-auto mt-4">
         <div className="flex justify-center">
           <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">
             <ul className="divide-y divide-gray-300">
               {review?.results
-                ?.sort((user1, user2) => user2.count_loans - user1.count_loans)
+                ?.filter((review) => review.book_name.book_num === book)
+                .sort((user1, user2) => user2.count_loans - user1.count_loans)
                 .map((review) => (
                   <ReviewSummary
                     review={review}
                     key={review.review_num}
-                    setReload={setReload}
+                    setReload={setReloading}
                   />
                 ))}
             </ul>
