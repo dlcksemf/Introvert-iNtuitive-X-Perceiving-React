@@ -3,7 +3,8 @@ import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import { useReload } from 'base/hooks/ReloadContext';
 import Badge from 'designMaterials/Badge';
-import PageReturnModal from 'pages/PageReturnModal';
+import PageReturnBookModal from 'pages/PageReturnBookModal';
+import PageReturnModal from 'pages/PageReturnGameModal';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -70,34 +71,6 @@ function LoanedBooks({ book }) {
     window.location.replace('/accounts/mypage/');
   };
 
-  // const handleClickSubmitButton = (e) => {
-  //   e.preventDefault();
-  //   if (window.confirm('반납하시겠습니까?')) {
-  //     handleOkButton();
-  //     alert('반납 되었습니다.');
-  //   } else {
-  //     handleCancleButton();
-  //     alert('취소되었습니다.');
-  //   }
-  //   setBookReturn(true);
-  // };
-
-  // const handleOkButton = () => {
-  //   updateState({ data: { return_state: 'R' } })
-  //     .then(() => {
-  //       setBookReturn(false);
-  //       setReload(true);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  //   window.location.replace('/accounts/mypage/');
-  // };
-
-  // const handleCancleButton = () => {
-  //   setBookReturn(false);
-  // };
-
   return (
     <React.Fragment>
       <tr>
@@ -144,7 +117,7 @@ function LoanedBooks({ book }) {
           )}
 
           {showReturn && (
-            <PageReturnModal
+            <PageReturnBookModal
               updateState={updateState}
               handleClose={() => setShowReturn(false)}
             />

@@ -7,6 +7,7 @@ function GameModalComponent({ titleList, gameInfo, modalType }) {
   useEffect(() => {
     setContentList([]);
     titleList.map((game) => {
+      // game.returned_time.replace('T', ' ').substring(0, 16);
       if (game === 'loaned_time') {
         setContentList((prev) => [
           ...prev,
@@ -28,6 +29,15 @@ function GameModalComponent({ titleList, gameInfo, modalType }) {
         }
       } else if (game === 'game_state' || game === 'return_state') {
         setContentList((prev) => [...prev, STATELIST['game'][gameInfo[game]]]);
+      } else if (game === 'returned_time') {
+        if (gameInfo[game] !== null) {
+          setContentList((prev) => [
+            ...prev,
+            gameInfo[game].replace('T', ' ').substring(0, 16),
+          ]);
+        } else {
+          setContentList((prev) => [...prev, gameInfo[game]]);
+        }
       } else {
         setContentList((prev) => [...prev, gameInfo[game]]);
       }

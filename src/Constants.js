@@ -12,9 +12,7 @@ const STATELIST = {
   loaned: {
     ALL: '전체',
     L: '대출 중',
-    P: '반납 중',
     R: '반납 완료',
-    O: '연체',
   },
   books: {
     ALL: '전체',

@@ -2,7 +2,7 @@ import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import { useReload } from 'base/hooks/ReloadContext';
 import Badge from 'designMaterials/Badge';
-import PageReturnModal from 'pages/PageReturnModal';
+import PageReturnGameModal from 'pages/PageReturnGameModal';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -105,7 +105,7 @@ function LoanedGame({ game }) {
           )}
 
           {showReturn && (
-            <PageReturnModal
+            <PageReturnGameModal
               updateState={updateState}
               handleClose={() => setShowReturn(false)}
             />

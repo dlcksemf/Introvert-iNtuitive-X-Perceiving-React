@@ -13,8 +13,9 @@ import non_image from 'components/parts/image/non_image.jpg';
 import { ToastContainer } from 'react-toastify';
 import ReviewPage from 'pages/ReviewPage';
 
-function BookDetail({ book_num }) {
+function BookDetail({ book_num, setReload }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [reloading, setReloading] = useState(false);
   const [auth] = useAuth();
   const navigate = useNavigate();
   let location = useLocation();
@@ -30,6 +31,8 @@ function BookDetail({ book_num }) {
     { manual: true },
   );
 
+  console.log(book);
+
   const [{ data: wish }, getWish] = useApiAxios(
     {
       url: `/books/api/wishes/?user=${auth?.user_id}&book=${book?.book_num}`,
@@ -40,7 +43,7 @@ function BookDetail({ book_num }) {
 
   useEffect(() => {
     refetch();
-  }, [refetch]);
+  }, [refetch, reloading]);
 
   useEffect(() => {
     book && getWish();
@@ -205,8 +208,10 @@ function BookDetail({ book_num }) {
                 </div>
               </div>
               <div className="flex justify-center">
-                <div className="">
-                  <ReviewPage book={book_num} />
+                <div>
+                  {book?.review_set[0] && (
+                    <ReviewPage book={book_num} reload={reload} />
+                  )}
                 </div>
               </div>
             </div>

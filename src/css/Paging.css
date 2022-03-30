@@ -9,8 +9,7 @@ ul {
 ul.pagination li {
   display: inline-block;
   width: 50px;
-  height: 40px;
-  border: 1px solid #e2e2e2;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,18 +24,16 @@ ul.pagination li:last-child {
 ul.pagination li a {
   text-decoration: none;
   color: #337ab7;
-  font-size: 1rem;
+  font-size: 20px;
 }
 ul.pagination li.selected a {
   color: white;
 }
 ul.pagination li.selected {
   background-color: #93c5fd;
+  border-radius: 50px;
 }
-ul.pagination li a:hover,
-ul.pagination li a.selected {
-  color: #3b82f6;
-}
+
 .page-selection {
   width: 48px;
   height: 30px;
