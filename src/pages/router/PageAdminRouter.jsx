@@ -17,7 +17,7 @@ function PageAdminRouter() {
   return (
     <div className="ml-[80px] z-0">
       <Routes>
-        <Route path="/" element={<Navigate to="/admin/loanedbook/" />} />
+        <Route path="/" element={<Navigate to="/admin/loaned/" />} />
 
         <Route path="/user/" element={<AdminUserPage />} />
         <Route path="/booklist/" element={<PageAdminBookList />} />
