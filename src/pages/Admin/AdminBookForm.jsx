@@ -109,7 +109,13 @@ function AdminBookForm({ postId, handleDidSave }) {
         if (handleDidSave) handleDidSave(savedPost);
       });
     } else {
-      navigate(-1);
+      // navigate(-1);
+    }
+  };
+
+  const handleCancleButton = (e) => {
+    if (window.confirm('도서 등록을 취소하시겠습니까?')) {
+      navigate('/admin/booklist/');
     }
   };
 
@@ -118,7 +124,8 @@ function AdminBookForm({ postId, handleDidSave }) {
       {saveLoading && <LoadingIndicator>저장 중..</LoadingIndicator>}
       {saveError &&
         `저장 중 에러가 발생했습니다 (${saveError.response?.status} ${saveError.response?.statusText})`}
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}> */}
+      <form>
         <div className="h-screen">
           <div className="max-w-3xl mx-auto px-4 py-10 shadow-xl">
             <div className="py-10">
@@ -323,7 +330,8 @@ function AdminBookForm({ postId, handleDidSave }) {
             </div>
 
             <div className="my-3 text-center">
-              <Button>저장하기</Button>
+              <Button onClick={handleSubmit}>저장하기</Button>
+              <Button onClick={handleCancleButton}>취소하기</Button>
             </div>
           </div>
         </div>

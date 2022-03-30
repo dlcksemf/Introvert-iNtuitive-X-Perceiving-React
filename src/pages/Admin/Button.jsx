@@ -7,7 +7,7 @@ function Button({ type, children, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`${COLORS[type]} font-bold py-2 px-4 rounded`}
+      className={`${COLORS[type]} font-bold py-2 px-4 mr-3 rounded`}
     >
       {children}
     </button>
