@@ -1,4 +1,5 @@
 import { useApiAxios } from 'base/api/base';
+import { useAuth } from 'base/hooks/Authcontext';
 import { ReviewSummary } from 'components/books/BookSummary';
 import ReviewForm from 'components/books/ReviewForm';
 import { useCallback, useEffect, useState } from 'react';
@@ -6,6 +7,7 @@ import ReactPaginate from 'react-paginate';
 import { useParams } from 'react-router-dom';
 
 function ReviewPage({ book, setReload }) {
+  const [auth] = useAuth();
   const [query, setQuery] = useState();
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
@@ -47,28 +49,26 @@ function ReviewPage({ book, setReload }) {
     fetchApplications();
   }, [refetch, reloading, fetchApplications]);
 
-  console.log(review?.results[0]);
+  console.log(review?.results);
 
   return (
     <>
-      <div className="flex m-auto">
+      <ReviewForm reviewId={reviewId} book={book} setReload={setReload} />
+      <div className="flex m-auto mt-4">
         <div className="flex justify-center">
           <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">
-            <ul className="divide-y divide-gray-300 hover:bg-gray-50">
-              {review?.results ===
-                review?.results?.book_name
-                  ?.sort(
-                    (user1, user2) => user2.count_loans - user1.count_loans,
-                  )
-                  .map((review) => (
-                    <ReviewSummary
-                      review={review}
-                      key={review.review_num}
-                      setReload={setReloading}
-                    />
-                  ))}
+            <ul className="divide-y divide-gray-300">
+              {review?.results
+                ?.sort((user1, user2) => user2.count_loans - user1.count_loans)
+                .map((review) => (
+                  <ReviewSummary
+                    review={review}
+                    key={review.review_num}
+                    setReload={setReload}
+                  />
+                ))}
             </ul>
-            <div className="mt-14">
+            <div className="relative bottom-7 pt-8">
               <ReactPaginate
                 breakLabel="..."
                 nextLabel=">"
@@ -82,7 +82,6 @@ function ReviewPage({ book, setReload }) {
           </div>
         </div>
       </div>
-      <ReviewForm reviewId={reviewId} book={book} setReload={setReload} />
     </>
   );
 }
