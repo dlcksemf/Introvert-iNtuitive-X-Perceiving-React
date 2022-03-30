@@ -47,7 +47,7 @@ function TopNav() {
                   className="mr-10 col-start-1 select-none transition duration-500 ease-in-out cursor-pointer
           hover:text-blue-700 hover:font-extrabold mb-5"
                   onClick={() => {
-                    navigate(`/admin/loanedbook/`);
+                    navigate(`/admin/loaned/`);
                   }}
                 >
                   대출관리
@@ -210,7 +210,7 @@ function TopNav() {
                 className="col-start-1 select-none transition duration-500 ease-in-out cursor-pointer
           hover:text-blue-700 hover:font-extrabold mb-5"
                 onClick={() => {
-                  navigate(`/admin/loanedbook/`);
+                  navigate(`/admin/loaned/`);
                 }}
               >
                 대출관리

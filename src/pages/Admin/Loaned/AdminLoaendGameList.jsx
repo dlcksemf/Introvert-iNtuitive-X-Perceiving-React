@@ -1,14 +1,14 @@
-import { useApiAxios } from 'base/api/base';
-import { useAuth } from 'base/hooks/Authcontext';
-import SearchBar from 'components/parts/SearchBar';
-import { itemsPerPage } from 'Constants';
-import Badge from 'designMaterials/Badge';
 import { useCallback, useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
 import { STATELIST } from 'Constants';
+import { useAuth } from 'base/hooks/Authcontext';
+import { useApiAxios } from 'base/api/base';
+import { itemsPerPage } from 'Constants';
+import ReactPaginate from 'react-paginate';
+import Badge from 'designMaterials/Badge';
+import SearchBar from 'components/parts/SearchBar';
 import React from 'react';
 
-function AdminLoanedBookList() {
+function AdminLoanedGameList() {
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(1);
@@ -17,9 +17,11 @@ function AdminLoanedBookList() {
 
   const [query, setQuery] = useState();
 
-  const [{ data: postList }, getApplications] = useApiAxios(
+  let today = new Date();
+
+  const [{ data: gameList }, getApplications] = useApiAxios(
     {
-      url: 'books/api/loanedbooks/',
+      url: '/game/api/loanedgame/',
       method: 'GET',
     },
     { manual: true },
@@ -32,7 +34,6 @@ function AdminLoanedBookList() {
         query: newQuery,
         state: category === 'ALL' ? '' : category,
       };
-
       const { data } = await getApplications({ params });
 
       setPage(newPage);
@@ -56,45 +57,17 @@ function AdminLoanedBookList() {
     fetchApplications(1, query);
   };
 
-  // const [, updateState] = useApiAxios(
-  //   {
-  //     url: `/books/api/loanedbooks/${postList?.loan_num}/`,
-  //     method: 'PATCH',
-  //     headers: {
-  //       Authorization: `Bearer ${auth.access}`,
-  //     },
-  //   },
-  //   { manual: true },
-  // );
-
-  // const handleClickSubmitButton = (e) => {
-  //   e.preventDefault();
-  //   const loan_num = e.target.value;
-  //   window.confirm('반납 상태를 변경하시겠습니까?') &&
-  //     updateState({
-  //       data: { return_state: 'R' },
-  //       url: `/books/api/loanedbooks/${loan_num}/`,
-  //       method: 'PATCH',
-  //     }).then(() => {
-  //       fetchApplications(page);
-  //     });
-  // };
-
-  let today = new Date();
-  const date =
-    today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
   return (
     <>
       <div className="w-full">
         <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
           <div className="sm:flex items-end justify-between">
             <p className="select-none focus:outline-none text-base text-3xl font-bold leading-normal text-gray-800">
-              대출 도서 관리
+              대여 게임 관리
             </p>
 
             <div className="flex items-center">
-              {Object.values(STATELIST.loaned).map((state, index) => (
+              {Object.values(STATELIST.game).map((state, index) => (
                 <div
                   key={index}
                   className="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-2"
@@ -103,9 +76,9 @@ function AdminLoanedBookList() {
                     onClick={(e) => {
                       setCategory(e.target.value);
                     }}
-                    value={Object.keys(STATELIST.loaned)[index]}
+                    value={Object.keys(STATELIST.game)[index]}
                     className={`text-xs py-2 px-4 ${
-                      category === Object.keys(STATELIST.loaned)[index] &&
+                      category === Object.keys(STATELIST.game)[index] &&
                       'bg-indigo-100 text-indigo-700'
                     } text-gray-600 hover:text-indigo-700 hover:bg-indigo-100 rounded-full`}
                   >
@@ -133,7 +106,7 @@ function AdminLoanedBookList() {
                   <th className="">
                     <div className="flex items-center select-none">
                       <p className="text-sm leading-none text-gray-600">
-                        대출자
+                        대여자
                       </p>
                     </div>
                   </th>
@@ -141,7 +114,7 @@ function AdminLoanedBookList() {
                   <th className="pl-7">
                     <div className="flex items-center select-none">
                       <p className="text-sm leading-none text-gray-600 ml-2">
-                        도서명
+                        게임명
                       </p>
                     </div>
                   </th>
@@ -149,7 +122,7 @@ function AdminLoanedBookList() {
                   <th className="pl-7">
                     <div className="flex items-center select-none">
                       <p className="text-sm leading-none text-gray-600 ml-2">
-                        대출 현황
+                        게임 현황
                       </p>
                     </div>
                   </th>
@@ -157,14 +130,14 @@ function AdminLoanedBookList() {
               </thead>
 
               <tbody>
-                {postList?.results?.map((post) => (
-                  <React.Fragment key={post.loan_num}>
+                {gameList?.results?.map((game) => (
+                  <React.Fragment key={game.loan_game_num}>
                     <tr className="focus:outline-none h-16 border border-gray-100 rounded">
                       <td className="flex items-center"></td>
                       <td className="">
                         <div className="flex items-center cursor-pointer">
                           <p className="text-base font-medium leading-none text-gray-700">
-                            {post?.username}
+                            {game?.username}
                           </p>
                         </div>
                       </td>
@@ -172,7 +145,7 @@ function AdminLoanedBookList() {
                       <td className="pl-7">
                         <div className="flex items-center">
                           <p className="text-sm leading-none text-gray-600 ml-2 select-none hover:font-semibold">
-                            {post?.title}
+                            {game?.game_name}
                           </p>
                         </div>
                       </td>
@@ -180,25 +153,16 @@ function AdminLoanedBookList() {
                       <td className="pl-7">
                         <div className="flex items-center">
                           <p className="text-sm leading-none text-gray-600 ml-2 select-none">
-                            {post?.return_state === 'L' &&
-                            new Date(post?.return_due_date) < new Date(date) ? (
-                              <Badge color="red">
-                                {Math.floor(
-                                  (Date.parse(date) -
-                                    Date.parse(post?.return_due_date)) /
-                                    (1000 * 3600 * 24),
-                                ) + '일 연체'}
-                              </Badge>
+                            {game?.return_state === 'L' &&
+                            new Date(game.return_due_time) < today ? (
+                              <Badge color="red"> 연체중 </Badge>
                             ) : (
-                              post?.return_state === 'L' && (
-                                <Badge color="green">대출중</Badge>
+                              game?.return_state === 'L' && (
+                                <Badge color="green">대여중 </Badge>
                               )
                             )}
-                            {/* 아래 코드는 기존 반납 확인 */}
-                            {/* {post?.return_state === 'P' && (
-                              <Badge color="yellow">반납 신청중</Badge>
-                            )} */}
-                            {post?.return_state === 'R' && (
+
+                            {game?.return_state === 'R' && (
                               <Badge color="blue">반납 완료</Badge>
                             )}
                           </p>
@@ -228,4 +192,5 @@ function AdminLoanedBookList() {
     </>
   );
 }
-export default AdminLoanedBookList;
+
+export default AdminLoanedGameList;
