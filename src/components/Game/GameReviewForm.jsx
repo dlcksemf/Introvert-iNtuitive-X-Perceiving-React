@@ -48,19 +48,16 @@ function GameReviewForm({ reviewId, game, setReload }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (window.confirm('게임평가를 남기시겠습니까?')) {
-      e.preventDefault();
-
-      auth.isLoggedIn
-        ? saveRequest({
-            data: { ...fieldValues, user_id: auth.user_id, game_name: game },
-          }).then(() => {
-            setReload((prev) => !prev);
-            emptyFieldValues();
-          })
-        : window.confirm('로그인 후 이용해주세요🎈') &&
-          navigate('/accounts/login/');
-    }
+    auth.isLoggedIn
+      ? saveRequest({
+          data: { ...fieldValues, user_id: auth.user_id, game_name: game },
+        }).then(() => {
+          setReload((prev) => !prev);
+          setValue(0);
+          emptyFieldValues();
+        })
+      : window.confirm('로그인 후 이용해주세요🎈') &&
+        navigate('/accounts/login/');
   };
 
   const onStarClick = (nextValue) => {
@@ -79,7 +76,7 @@ function GameReviewForm({ reviewId, game, setReload }) {
       {saveError &&
         `저장 중 에러가 발생했습니다 (${saveError.response?.status} ${saveError.response?.statusText})`}
       <form onSubmit={handleSubmit}>
-        <span className="flex">
+        <span className="flex justify-center mt-8 relative left-[39px] ">
           <div className="text-4xl select-none">
             <StarRatingComponent
               name="game_review_rate"
