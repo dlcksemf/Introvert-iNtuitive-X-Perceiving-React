@@ -163,24 +163,9 @@ function GameDetail({ gameId }) {
                 </div>
               </div>
               <div className="flex justify-center">
-                <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">
-                  <ul className="divide-y divide-gray-300 hover:bg-gray-50">
-                    {game?.gamereview_set
-                      ?.sort(
-                        (user1, user2) => user2.count_loans - user1.count_loans,
-                      )
-                      .map((gamereview) => (
-                        <GameReviewSummary
-                          review={gamereview}
-                          key={gamereview.game_review_num}
-                          setReload={setReloading}
-                        />
-                      ))}
-                  </ul>
+                <div>
+                  <GameReviewPage game={game} setReload={setReloading} />
                 </div>
-              </div>
-              <div className="ml-[260px] mt-6">
-                <GameReviewPage game={gameId} setReload={setReloading} />
               </div>
             </div>
           </section>

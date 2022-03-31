@@ -368,7 +368,7 @@ function ReviewSummary({ review, setReload }) {
                   // onClick={}
                   className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center"
                 >
-                  수정
+                  수정 // 구현하고 싶지만 보류
                 </button> */}
                 <button
                   disabled={deleteLoading}
@@ -400,7 +400,7 @@ function ReviewSummary({ review, setReload }) {
                 value={review.review_num}
                 // onChange={}
               />
-            ) : null}
+            ) : null} // 수정 - 구현하고 싶지만 보류
           </div> */}
         </>
       )}
