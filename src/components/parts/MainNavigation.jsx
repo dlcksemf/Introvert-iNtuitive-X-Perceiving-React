@@ -16,7 +16,7 @@ import up from 'components/parts/image/up3.png';
 import left from 'components/parts/image/left3.png';
 import right from 'components/parts/image/right3.png';
 import logoutIcon from 'components/parts/image/logout.png';
-import login from 'components/parts/image/login3.png';
+import login from 'components/parts/image/login.png';
 
 function MainNavigation() {
   const [auth] = useAuth();
@@ -43,7 +43,7 @@ function MainNavigation() {
 
   const handleLogout = () => {
     logout();
-    navigate('/');
+    navigate('/main/');
   };
 
   const [menuCollapse, setMenuCollapse] = useState(true);

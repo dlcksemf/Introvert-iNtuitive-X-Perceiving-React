@@ -26,7 +26,7 @@ function SecondNav() {
 
   const handleGoToMainPage = () => {
     if (!auth.is_staff) {
-      navigate('/');
+      navigate('/main/');
       window.scrollTo(0, 0);
     }
   };
@@ -43,7 +43,7 @@ function SecondNav() {
                 alt="EUCLID BOOKS"
                 className="h-20 cursor-pointer"
                 onClick={() => {
-                  navigate(`/`);
+                  navigate(`/main/`);
                 }}
               />
             </div>
@@ -80,7 +80,7 @@ function SecondNav() {
                   className=" select-none transition duration-500 ease-in-out cursor-pointer
           hover:text-blue-700 "
                   onClick={() => {
-                    navigate(`/guidepage/`);
+                    navigate(`/main/guidepage/`);
                   }}
                 >
                   이용안내
@@ -223,7 +223,7 @@ function SecondNav() {
                 className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
                 onClick={() => {
-                  navigate(`/guidepage/`);
+                  navigate(`/main/guidepage/`);
                 }}
               >
                 이용안내

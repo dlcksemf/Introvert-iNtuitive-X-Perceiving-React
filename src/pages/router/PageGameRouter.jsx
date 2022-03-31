@@ -1,6 +1,7 @@
 import { useAuth } from 'base/hooks/Authcontext';
 import GameDetailPage from 'components/Game/GameDetailPage';
 import GameListPage from 'components/Game/GameListPage';
+import Footer from 'components/parts/Footer';
 import NotFound from 'components/parts/NotFound';
 import { Route, Routes } from 'react-router-dom';
 
@@ -14,6 +15,14 @@ function PageGameRouter() {
         <Route path="/:gameId/" element={<GameDetailPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <div className="h-[60px]"></div>
+
+      {!auth?.is_staff && (
+        <div className="absolute bottom-0 w-full">
+          <hr />
+          <Footer />
+        </div>
+      )}
     </>
   );
 }

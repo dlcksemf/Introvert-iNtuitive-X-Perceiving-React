@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
@@ -9,19 +9,14 @@ import LoanedIcon from 'designMaterials/LoanedIcon';
 import Toggle from 'components/parts/Toggle';
 
 import non_image from 'components/parts/image/non_image.jpg';
-import heavy_reader from 'components/parts/image/heavyReader.gif';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 import 'css/HeavyReader.css';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
-import { utc } from 'moment';
 import card from 'components/parts/image/card.png';
 import card2 from 'components/parts/image/card2.png';
-import ReviewForm from './ReviewForm';
-import StarRatingComponent from 'react-star-rating-component';
-import useFieldValues from 'base/hooks/useFieldValues';
 
 function truncateString(str) {
   if (str.length > 70) {

@@ -6,6 +6,7 @@ import BookDetailPage from 'pages/BookDetailPage';
 import BookListPage from 'pages/BookListPage';
 import NotFound from 'components/parts/NotFound';
 import BookApplicationSearch from 'components/books/application/BookApplicationSearch';
+import Footer from 'components/parts/Footer';
 
 function PageBookRouter() {
   const [auth] = useAuth();
@@ -29,6 +30,14 @@ function PageBookRouter() {
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <div className="h-[60px]"></div>
+
+      {!auth?.is_staff && (
+        <div className="absolute bottom-0 w-full">
+          <hr />
+          <Footer />
+        </div>
+      )}
     </>
   );
 }
