@@ -16,7 +16,7 @@ import SecondNav from 'components/parts/SecondNav';
 import { DotsItem } from '@nivo/core';
 import MainNavigation from 'components/parts/MainNavigation';
 import GuidePage from 'pages/GuidePage';
-// import Test from 'Test';
+import Test from 'Test';
 
 function App() {
   const [auth] = useAuth();
@@ -42,7 +42,7 @@ function App() {
             />
             <Route path="/guidepage/" element={<GuidePage />} />
             <Route path="*" element={<NotFound />} />
-            {/* <Route path="/test/" element={<Test />} /> */}
+            <Route path="/test/" element={<Test />} />
           </Routes>
         </div>
         <div className="h-[60px]"></div>
