@@ -6,7 +6,6 @@ import { useAuth } from 'base/hooks/Authcontext';
 import useFieldValues from 'base/hooks/useFieldValues';
 
 import { toast, ToastContainer } from 'react-toastify';
-import Logo from 'components/parts/image/Logo.png';
 
 const INITIAL_STATE = { email: '', password: '' };
 
@@ -69,15 +68,10 @@ function LoginForm() {
 
   return (
     <section className="text-gray-600 body-font">
-      <div className="min-h-full flex items-center justify-center  px-4 sm:px-6 lg:px-8">
+      <div className="min-h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <img
-              className="mx-auto h-20 w-auto"
-              src={Logo}
-              alt="유클리드 소프트"
-            />
-            <h2 className="mt-4 text-center text-3xl font-extrabold text-gray-900 select-none">
+            <h2 className="mt-20 text-center text-3xl font-extrabold text-gray-900 select-none">
               로그인
             </h2>
             <h1
@@ -96,14 +90,11 @@ function LoginForm() {
             <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label for="email-address" class="sr-only">
-                  이메일
-                </label>
                 <input
                   id="email"
                   name="email"
                   type="email"
-                  autocomplete="off"
+                  autoComplete="off"
                   value={fieldValues.email}
                   onChange={handleFieldChange}
                   required
@@ -112,9 +103,6 @@ function LoginForm() {
                 />
               </div>
               <div>
-                <label for="password" class="sr-only">
-                  비밀번호
-                </label>
                 <input
                   id="password"
                   name="password"
@@ -132,13 +120,13 @@ function LoginForm() {
             <div>
               <button
                 type="submit"
-                class="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 들어가기
               </button>
             </div>
           </form>
-          <p className="text-xs text-gray-500 mt-8 select-none relative text-center">
+          <p className="text-xs text-gray-500 mt-8 pb-[65px] select-none relative text-center">
             ㈜ 유클리드소프트
           </p>
         </div>
