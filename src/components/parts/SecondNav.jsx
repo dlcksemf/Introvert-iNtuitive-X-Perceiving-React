@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import name from 'components/parts/image/euclidLibrary.png';
 import search from 'components/parts/image/search.png';
 import user from 'components/parts/image/user.png';
+import SearchDrawer from 'components/parts/SearchDrawer';
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -26,7 +27,7 @@ function SecondNav() {
 
   const handleGoToMainPage = () => {
     if (!auth.is_staff) {
-      navigate('/main/');
+      navigate('/');
       window.scrollTo(0, 0);
     }
   };
@@ -80,7 +81,7 @@ function SecondNav() {
                   className=" select-none transition duration-500 ease-in-out cursor-pointer
           hover:text-blue-700 "
                   onClick={() => {
-                    navigate(`/main/guidepage/`);
+                    navigate(`/guidepage/`);
                   }}
                 >
                   이용안내
@@ -99,7 +100,7 @@ function SecondNav() {
                   </NavLink>
                 )}
                 {auth.isLoggedIn && (
-                  <div className="text-sm font-bold mr-3 select-none flex">
+                  <div className="text-sm font-bold mr-14 select-none flex">
                     <div className="mt-1">
                       {auth.is_staff
                         ? `관리자님 환영합니다`
@@ -120,11 +121,9 @@ function SecondNav() {
                     </button>
                   </div>
                 )}
-                <img
-                  src={search}
-                  alt="검색"
-                  className="mr-12 h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
-                />
+              </div>
+              <div className="relative bottom-[38px] left-[177px] select-none">
+                <SearchDrawer />
               </div>
             </div>
           </div>
@@ -183,14 +182,12 @@ function SecondNav() {
                   </button>
                 </div>
               )}
-              <img
-                src={search}
-                alt="검색"
-                className="h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
-              />
             </div>
           </div>
           <div>
+            <div className="relative bottom-[98px] left-[1468px] select-none">
+              <SearchDrawer />
+            </div>
             <header className=" grid grid-cols-8 text-center text-xl">
               <div
                 className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
@@ -223,7 +220,7 @@ function SecondNav() {
                 className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
           hover:text-blue-700 hover:font-extrabold"
                 onClick={() => {
-                  navigate(`/main/guidepage/`);
+                  navigate(`/guidepage/`);
                 }}
               >
                 이용안내
