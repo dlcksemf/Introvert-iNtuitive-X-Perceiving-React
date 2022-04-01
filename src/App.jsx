@@ -12,7 +12,7 @@ import ErrorForbidden from 'components/parts/ErrorForbidden';
 import SecondNav from 'components/parts/SecondNav';
 import MainNavigation from 'components/parts/MainNavigation';
 import PageMainRouter from 'pages/router/PageMainRouter';
-// import Test from 'Test';
+import Test from 'Test';
 
 function App() {
   const [auth] = useAuth();
@@ -28,7 +28,7 @@ function App() {
             {auth?.is_staff && (
               <Route path="/" element={<Navigate to="/admin/" />} />
             )}
-            <Route path="/main/*" element={<PageMainRouter />} />
+            <Route path="/*" element={<PageMainRouter />} />
             <Route path="/accounts/*" element={<PageAccountsRouter />} />
             <Route path="/books/*" element={<PageBookRouter />} />
             <Route path="/game/*" element={<PageGameRouter />} />
@@ -37,7 +37,7 @@ function App() {
               element={auth.is_staff ? <PageAdminRouter /> : <ErrorForbidden />}
             />
             <Route path="*" element={<NotFound />} />
-            {/* <Route path="/test/" element={<Test />} /> */}
+            <Route path="/test/" element={<Test />} />
           </Routes>
         </div>
       </div>
