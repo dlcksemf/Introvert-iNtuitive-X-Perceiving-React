@@ -105,7 +105,7 @@ function MainNavigation() {
             {auth.isLoggedIn && (
               <div onClick={handleLogout} className="hover:text-lg">
                 <MenuItem icon={<img src={logoutIcon} alt="나가기" />}>
-                  <h1 className="text-black">나가기</h1>
+                  <h1 className="text-black 2xl:mt-10">나가기</h1>
                 </MenuItem>
               </div>
             )}
