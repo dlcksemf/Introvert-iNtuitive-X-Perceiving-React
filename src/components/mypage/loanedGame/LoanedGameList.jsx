@@ -30,7 +30,9 @@ function LoanedGameList({ loanedGameList }) {
           </thead>
           <tbody className="text-gray-800">
             {filtered_list?.map((game) => {
-              return <LoanedGame key={game?.loan_game_num} game={game} />;
+              return (
+                <LoanedGame key={game?.loan_game_num.result} game={game} />
+              );
             })}
           </tbody>
         </table>

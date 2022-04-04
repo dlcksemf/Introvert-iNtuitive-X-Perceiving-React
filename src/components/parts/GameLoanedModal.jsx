@@ -150,7 +150,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                     {game?.game_cover_photo && (
                       <img
                         src={game?.game_cover_photo}
-                        alt={game?.game_name}
+                        alt={game?.game_name.result}
                         className="w-2/3 h-2/3 object-scale-down object-center inline-block rounded-full
                           transition duration-500 ease-in-out hover:-translate-y-6 hover:scale-100 "
                       />
@@ -188,7 +188,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                     mt-1"
                       placeholder="{game.results.game_name}"
                     >
-                      {game?.game_name}
+                      {game?.game_name.result}
                     </p>
 
                     <div>
