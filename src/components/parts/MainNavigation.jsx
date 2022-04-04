@@ -98,7 +98,7 @@ function MainNavigation() {
                 className="hover:text-lg"
               >
                 <MenuItem icon={<img src={login} alt="들어오기" />}>
-                  <h1 className="text-black">들어가기</h1>
+                  <h1 className="text-black 2xl:mt-10">들어가기</h1>
                 </MenuItem>
               </div>
             )}
