@@ -43,7 +43,7 @@ function MainNavigation() {
 
   const handleLogout = () => {
     logout();
-    navigate('/main/');
+    navigate('/');
   };
 
   const [menuCollapse, setMenuCollapse] = useState(true);

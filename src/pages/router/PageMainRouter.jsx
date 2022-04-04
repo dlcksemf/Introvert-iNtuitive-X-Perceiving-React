@@ -1,10 +1,5 @@
-import MyPage from 'components/mypage/MyPage';
-import LoginPage from 'pages/LoginPage';
-import SignupPage from 'pages/SignupPage';
-import UserInfoForm from 'components/mypage/UserInfoForm';
-
 import * as React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
 import NotFound from 'components/parts/NotFound';
 import GuidePage from 'pages/GuidePage';
