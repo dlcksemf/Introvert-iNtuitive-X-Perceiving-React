@@ -57,7 +57,7 @@ function MainNavigation() {
   };
 
   return (
-    <div id="header" className="mt-2">
+    <div id="header" className="mt-2 hidden sm:flex">
       <ProSidebar
         collapsed={menuCollapse}
         onMouseEnter={handleMouseEnter}
