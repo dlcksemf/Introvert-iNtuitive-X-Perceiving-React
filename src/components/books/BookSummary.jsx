@@ -55,7 +55,7 @@ function BookSummary({ book, reloadBook }) {
   };
 
   return (
-    <div className="p-6 lg:w-1/2">
+    <div className="px-[90px] py-[15px] lg:w-1/2">
       <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
         <img
           alt={book?.title}
