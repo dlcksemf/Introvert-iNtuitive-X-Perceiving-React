@@ -35,7 +35,7 @@ function AdminLoanedGameState() {
   return (
     <React.Fragment>
       {stateList?.map((color) => (
-        <div>{color?.return_state}</div>
+        <div key={color.toString}>{color?.return_state}</div>
       ))}
     </React.Fragment>
   );

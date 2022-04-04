@@ -163,7 +163,7 @@ function AdminGameForm({ gameId, handleDidSaveGame }) {
               </label>
               <input
                 name="game_name"
-                value={fieldValues.game_name.result}
+                value={fieldValues.game_name}
                 onChange={handleFieldChange}
                 type="text"
                 autoComplete="off"

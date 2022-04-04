@@ -50,7 +50,7 @@ function AdminGameDetail({ gameId }) {
                 {game?.game_cover_photo && (
                   <img
                     src={game?.game_cover_photo}
-                    alt={game?.game_name.result}
+                    alt={game?.game_name}
                     className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
                     transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:skew-y-6"
                   />
@@ -67,7 +67,7 @@ function AdminGameDetail({ gameId }) {
                     className="text-gray-900 text-3xl title-font font-medium mb-5 select-none
                   hover:font-semibold"
                   >
-                    {game?.game_name.result}
+                    {game?.game_name}
                   </h1>
 
                   <div className="flex mb-4 select-none">

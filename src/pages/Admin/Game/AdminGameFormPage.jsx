@@ -10,7 +10,7 @@ function AdminGameFormPage() {
     <AdminGameForm
       gameId={gameId}
       handleDidSaveGame={(savedGame) => {
-        navigate(`/admin/gamelist/${savedGame.game_num.result}/`);
+        navigate(`/admin/gamelist/${savedGame.game_num}/`);
       }}
     />
   );

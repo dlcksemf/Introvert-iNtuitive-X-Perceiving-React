@@ -43,7 +43,7 @@ function GameDetail({ gameId }) {
 
   const buyLink = () => {
     window.open(
-      `https://www.boardgamemall.co.kr/goods/goods_search.php?adUrl=%2Fgoods%2Fgoods_view.php%3FgoodsNo%3D1000007636&keyword=${game.game_name.result}`,
+      `https://www.boardgamemall.co.kr/goods/goods_search.php?adUrl=%2Fgoods%2Fgoods_view.php%3FgoodsNo%3D1000007636&keyword=${game.game_name}`,
       '_blank',
     );
   };
@@ -60,7 +60,7 @@ function GameDetail({ gameId }) {
                 {game?.game_cover_photo && (
                   <img
                     src={game?.game_cover_photo}
-                    alt={game?.game_name.result}
+                    alt={game?.game_name}
                     className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
                     transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:skew-y-6"
                   />
@@ -153,7 +153,7 @@ function GameDetail({ gameId }) {
                             ariaHideApp={false}
                             modalIsOpen={modalIsOpen}
                             setModalIsOpen={setModalIsOpen}
-                            game_num={game?.game_num.result}
+                            game_num={game?.game_num}
                             reload={reload}
                           />
                         </span>
