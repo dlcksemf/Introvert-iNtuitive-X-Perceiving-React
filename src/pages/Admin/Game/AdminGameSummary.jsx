@@ -6,7 +6,7 @@ function AdminGameSummary({ game }) {
     <div className="m-auto px-4 py-4 max-w-xl">
       <div className="bg-gray-100 hover:bg-blue-100 border-gray-100 border-2 rounded-lg overflow-hidden mb-10">
         {game.game_cover_photo && (
-          <Link to={`/admin/gamelist/${game.game_num}/`}>
+          <Link to={`/admin/gamelist/${game.game_num.result}/`}>
             <img
               src={game.game_cover_photo}
               alt={game.game_name}
@@ -15,14 +15,14 @@ function AdminGameSummary({ game }) {
           </Link>
         )}
         {!game?.game_cover_photo && (
-          <Link to={`/admin/gamelist/${game.game_num}/`}>
+          <Link to={`/admin/gamelist/${game.game_num.result}/`}>
             <img src={non_image} alt={game.game_name} className="w-full" />
           </Link>
         )}
         <div className="p-8 sm:p-9 md:p-7 xl:p-9">
           <h3 className="font-semibold text-dark text-center">
-            <Link to={`/admin/gamelist/${game.game_num}/`}>
-              {game.game_name}
+            <Link to={`/admin/gamelist/${game.game_num.result}/`}>
+              {game.game_name.result}
             </Link>
           </h3>
         </div>
