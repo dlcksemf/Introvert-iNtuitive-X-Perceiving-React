@@ -368,9 +368,9 @@ function ReviewSummary({ review, setReload }) {
                 <button
                   disabled={deleteLoading}
                   onClick={handleDelete}
-                  className="inline-flex ml-1 border-2 border-pink-500 text-black hover:text-pink-600 rounded-full h-6 px-3 justify-center items-center"
+                  className="inline-flex ml-1 justify-center items-center"
                 >
-                  삭제
+                  <p className="m-auto text-gray-400 text-xs ">삭제</p>
                 </button>
               </div>
             )}
