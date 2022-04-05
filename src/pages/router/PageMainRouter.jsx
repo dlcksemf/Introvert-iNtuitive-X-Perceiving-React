@@ -19,7 +19,7 @@ function PageMainRouter() {
       <div className="h-[60px]"></div>
 
       {!auth?.is_staff && (
-        <div className="absolute bottom-0 w-full">
+        <div className="fixed bottom-0 w-full z-50">
           <hr />
           <Footer />
         </div>

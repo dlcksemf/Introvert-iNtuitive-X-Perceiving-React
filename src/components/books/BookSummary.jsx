@@ -60,7 +60,7 @@ function BookSummary({ book, reloadBook }) {
         <img
           alt={book?.title}
           className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
-          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 inline-block mt-28"
+          inline-block mt-28"
           src={book?.cover_photo ? book?.cover_photo : non_image}
           onClick={() => {
             navigate(`/books/${book.book_num}/`);
@@ -106,8 +106,8 @@ function BookSummary({ book, reloadBook }) {
               {book?.category && `[ ${book.category} ]`}
             </h3>
             <h2
-              className="absolute title-font font-medium text-lg text-black hover:text-blue-500 cursor-pointer grid
-           transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100 hover:font-semibold"
+              className="absolute title-font font-medium text-lg text-black 
+              cursor-pointer grid font-semibold"
               onClick={() => {
                 navigate(`/books/${book.book_num}/`);
               }}
@@ -115,10 +115,10 @@ function BookSummary({ book, reloadBook }) {
               {book.title}
             </h2>
             <h3 className="mt-12 text-sm text-gray-500 select-none cursor-default">
-              {book.writer}
+              {book.writer} | 수량:: {book.amount}
             </h3>
             <p
-              className="font-medium text-base mb-4 mt-6 select-none hover:font-semibold cursor-pointer"
+              className="font-medium text-base mb-4 mt-6 select-none cursor-pointer"
               onClick={() => {
                 navigate(`/books/${book.book_num}/`);
               }}
