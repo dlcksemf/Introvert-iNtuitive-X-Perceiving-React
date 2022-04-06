@@ -188,7 +188,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                     mt-1"
                       placeholder="{game.results.game_name}"
                     >
-                      {game?.game_name.result}
+                      {game?.game_name}
                     </p>
 
                     <div>
