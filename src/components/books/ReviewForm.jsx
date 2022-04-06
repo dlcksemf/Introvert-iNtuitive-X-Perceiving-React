@@ -102,7 +102,7 @@ function ReviewForm({ reviewId, book, setReload }) {
             className="w-[770px] mt-0.5 ml-4 text-center bg-white rounded border border-gray-300 
             hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 
             text-base outline-none text-gray-700 h-[42px] leading-8 transition-colors duration-200 
-            ease-in-out outline-none"
+            ease-in-out"
             autoComplete="off"
           />
           {saveErrorMessages.review_content?.map((message, index) => (
@@ -110,7 +110,7 @@ function ReviewForm({ reviewId, book, setReload }) {
               {message}
             </p>
           ))}
-          <button className="w-[52px] border-2 border-gray-400 ml-4">
+          <button className="w-[52px] border rounded-md hover:text-indigo-500 border-gray-400 ml-4">
             등록
           </button>
         </span>

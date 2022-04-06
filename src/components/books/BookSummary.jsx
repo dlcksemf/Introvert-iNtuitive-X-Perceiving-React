@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
@@ -9,19 +9,14 @@ import LoanedIcon from 'designMaterials/LoanedIcon';
 import Toggle from 'components/parts/Toggle';
 
 import non_image from 'components/parts/image/non_image.jpg';
-import heavy_reader from 'components/parts/image/heavyReader.gif';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 import 'css/HeavyReader.css';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
-import { utc } from 'moment';
 import card from 'components/parts/image/card.png';
 import card2 from 'components/parts/image/card2.png';
-import ReviewForm from './ReviewForm';
-import StarRatingComponent from 'react-star-rating-component';
-import useFieldValues from 'base/hooks/useFieldValues';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -60,12 +55,12 @@ function BookSummary({ book, reloadBook }) {
   };
 
   return (
-    <div className="p-6 lg:w-1/2">
+    <div className="px-[90px] py-[15px] lg:w-1/2">
       <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
         <img
           alt={book?.title}
           className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
-          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 inline-block mt-28"
+          inline-block mt-28"
           src={book?.cover_photo ? book?.cover_photo : non_image}
           onClick={() => {
             navigate(`/books/${book.book_num}/`);
@@ -111,8 +106,8 @@ function BookSummary({ book, reloadBook }) {
               {book?.category && `[ ${book.category} ]`}
             </h3>
             <h2
-              className="absolute title-font font-medium text-lg text-black hover:text-blue-500 cursor-pointer grid
-           transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100 hover:font-semibold"
+              className="absolute title-font font-medium text-lg text-black 
+              cursor-pointer grid font-semibold"
               onClick={() => {
                 navigate(`/books/${book.book_num}/`);
               }}
@@ -120,10 +115,10 @@ function BookSummary({ book, reloadBook }) {
               {book.title}
             </h2>
             <h3 className="mt-12 text-sm text-gray-500 select-none cursor-default">
-              {book.writer}
+              {book.writer} | 수량:: {book.amount}
             </h3>
             <p
-              className="font-medium text-base mb-4 mt-6 select-none hover:font-semibold cursor-pointer"
+              className="font-medium text-base mb-4 mt-6 select-none cursor-pointer"
               onClick={() => {
                 navigate(`/books/${book.book_num}/`);
               }}
@@ -373,9 +368,9 @@ function ReviewSummary({ review, setReload }) {
                 <button
                   disabled={deleteLoading}
                   onClick={handleDelete}
-                  className="inline-flex ml-1 border-2 border-pink-500 text-black hover:text-pink-600 rounded-full h-6 px-3 justify-center items-center"
+                  className="inline-flex ml-1 justify-center items-center"
                 >
-                  삭제
+                  <p className="m-auto text-gray-400 text-xs ">삭제</p>
                 </button>
               </div>
             )}

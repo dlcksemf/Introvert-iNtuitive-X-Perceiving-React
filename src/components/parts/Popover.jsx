@@ -1,41 +1,9 @@
 import { Popover, Transition } from '@headlessui/react';
-import { useAuth } from 'base/hooks/Authcontext';
 import { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LOGGED_IN = [
-  {
-    name: '로그아웃',
-  },
-  {
-    name: '도서 신청',
-    url: '/books/application/',
-  },
-  {
-    name: '마이페이지',
-    url: '/accounts/mypage/',
-  },
-];
-
-const LOGGED_OUT = [
-  {
-    name: '로그인',
-    url: '/accounts/login/',
-  },
-  {
-    name: '회원가입',
-    url: '/accounts/signup/',
-  },
-];
-
 function PopOver() {
-  const [auth, , , logout] = useAuth();
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
 
   return (
     <div>
@@ -49,12 +17,18 @@ function PopOver() {
                 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105`}
             >
               <svg
-                style={{ width: 30 + 'px', height: 30 + 'px' }}
+                class="block h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
                 viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
-                  className="fill-slate-600"
-                  d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
             </Popover.Button>
@@ -67,45 +41,49 @@ function PopOver() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-10 w-48 max-w-sm px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl">
-                <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="relative grid gap-8 bg-white p-7">
-                    {auth.isLoggedIn
-                      ? LOGGED_IN.map((item) => (
-                          <div
-                            key={item.name}
-                            onClick={() => {
-                              if (item.name === '로그아웃') {
-                                handleLogout();
-                                return;
-                              }
-                              navigate(`${item.url}`);
-                            }}
-                            className="cursor-pointer flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                          >
-                            <div className="ml-4">
-                              <p className="text-sm font-medium text-gray-900 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
-                                {item.name}
-                              </p>
-                            </div>
-                          </div>
-                        ))
-                      : LOGGED_OUT.map((item) => (
-                          <div
-                            key={item.name}
-                            onClick={() => {
-                              navigate(`${item.url}`);
-                            }}
-                            className="cursor-pointer flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-indigo-50 
-                            focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                          >
-                            <div className="ml-4">
-                              <p className="text-sm font-medium text-gray-900 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
-                                {item.name}
-                              </p>
-                            </div>
-                          </div>
-                        ))}
+              <Popover.Panel className="absolute z-10 flex space-x-4 px-4 mt-3 transform -translate-x-1/2 left-[300px] top-[48px] h-[100px]">
+                <div className="w-screen mr-[220px]">
+                  <div className="bg-gray-100 text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <div class="sm:hidden" id="mobile-menu">
+                      <div class="px-2 pt-2 pb-3 space-y-1">
+                        <h1
+                          class="hover:bg-gray-200 text-black block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
+                          aria-current="page"
+                          onClick={() => {
+                            navigate(`/books/booklist/`);
+                          }}
+                        >
+                          도서목록
+                        </h1>
+
+                        <h1
+                          class="text-black hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
+                          onClick={() => {
+                            navigate(`/books/application/new/`);
+                          }}
+                        >
+                          도서신청
+                        </h1>
+
+                        <h1
+                          class="text-black hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
+                          onClick={() => {
+                            navigate(`/game/gamelist/`);
+                          }}
+                        >
+                          보드게임
+                        </h1>
+
+                        <h1
+                          class="text-black hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
+                          onClick={() => {
+                            navigate(`/guidepage/`);
+                          }}
+                        >
+                          이용안내
+                        </h1>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Popover.Panel>

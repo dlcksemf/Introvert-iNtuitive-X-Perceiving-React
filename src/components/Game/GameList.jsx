@@ -64,7 +64,7 @@ function GameList() {
         <div className="flex flex-wrap">
           {gameList?.results?.map((game) => (
             <div
-              key={game.game_num}
+              key={game}
               className="w-full md:w-1/2 xl:w-1/3 px-4 transition-transform hover:-translate-y-5 duration-300"
             >
               <GameSummary game={game} />

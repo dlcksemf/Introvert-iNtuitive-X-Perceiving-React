@@ -48,7 +48,7 @@ function GameReviewPage({ game }) {
 
   return (
     <>
-      <GameReviewForm game={game.game_num} setReload={setReloading} />
+      <GameReviewForm game={game.game_num.result} setReload={setReloading} />
       <div className="flex m-auto mt-4">
         <div className="flex justify-center">
           <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">

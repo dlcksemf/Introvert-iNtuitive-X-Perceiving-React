@@ -16,7 +16,7 @@ import up from 'components/parts/image/up3.png';
 import left from 'components/parts/image/left3.png';
 import right from 'components/parts/image/right3.png';
 import logoutIcon from 'components/parts/image/logout.png';
-import login from 'components/parts/image/login3.png';
+import login from 'components/parts/image/login.png';
 
 function MainNavigation() {
   const [auth] = useAuth();
@@ -57,7 +57,7 @@ function MainNavigation() {
   };
 
   return (
-    <div id="header" className="mt-2">
+    <div id="header" className="mt-2 hidden sm:flex">
       <ProSidebar
         collapsed={menuCollapse}
         onMouseEnter={handleMouseEnter}
@@ -98,14 +98,14 @@ function MainNavigation() {
                 className="hover:text-lg"
               >
                 <MenuItem icon={<img src={login} alt="들어오기" />}>
-                  <h1 className="text-black">들어가기</h1>
+                  <h1 className="text-black 2xl:mt-10">들어가기</h1>
                 </MenuItem>
               </div>
             )}
             {auth.isLoggedIn && (
               <div onClick={handleLogout} className="hover:text-lg">
                 <MenuItem icon={<img src={logoutIcon} alt="나가기" />}>
-                  <h1 className="text-black">나가기</h1>
+                  <h1 className="text-black 2xl:mt-10">나가기</h1>
                 </MenuItem>
               </div>
             )}

@@ -1,9 +1,9 @@
 import { useAuth } from 'base/hooks/Authcontext';
 import { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
 import name from 'components/parts/image/euclidLibrary.png';
-import search from 'components/parts/image/search.png';
 import user from 'components/parts/image/user.png';
+import SearchDrawer from 'components/parts/SearchDrawer';
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -21,6 +21,10 @@ const useScroll = () => {
 };
 
 function SecondNav() {
+  let [searchParams] = useSearchParams();
+  let queryParams = searchParams.get('query');
+  let categoryParams = searchParams.get('category');
+
   const navigate = useNavigate();
   const [auth] = useAuth();
 
@@ -32,10 +36,22 @@ function SecondNav() {
   };
   const { y } = useScroll();
 
+  const [query, setQuery] = useState(queryParams || '');
+
+  const [category, setCategory] = useState(() => {
+    return categoryParams ? categoryParams : '카테고리';
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    navigate(`/books/booklist/?page=1&category=${category}&query=${query}`);
+  };
+
   if (y > 80) {
     return (
-      <div className="fixed w-full  body-font top-0 z-10">
-        <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
+      <div className="fixed w-full sm:body-font top-0 z-10">
+        <header className="text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="flex justify-between">
             <div>
               <img
@@ -88,10 +104,14 @@ function SecondNav() {
               </header>
             </div>
             <div>
-              <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 pt-5 pl-3 focus:outline-none rounded text-base mt-8 md:mt-0">
+              <div
+                className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 pt-5 
+              pl-3 focus:outline-none rounded text-base mt-8 md:mt-0"
+              >
                 {!auth.isLoggedIn && (
                   <NavLink
-                    className="font-semibold select-none mr-3 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                    className="font-semibold select-none mr-3 transition duration-500 ease-in-out 
+                    hover:-translate-y-1 hover:scale-110"
                     type="button"
                     to="/accounts/login/"
                   >
@@ -99,7 +119,7 @@ function SecondNav() {
                   </NavLink>
                 )}
                 {auth.isLoggedIn && (
-                  <div className="text-sm font-bold mr-3 select-none flex">
+                  <div className="text-sm font-bold mr-14 select-none flex">
                     <div className="mt-1">
                       {auth.is_staff
                         ? `관리자님 환영합니다`
@@ -120,10 +140,11 @@ function SecondNav() {
                     </button>
                   </div>
                 )}
-                <img
-                  src={search}
-                  alt="검색"
-                  className="mr-12 h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
+              </div>
+              <div className="absolute bottom-[38px] left-[177px] select-none">
+                <SearchDrawer
+                  handleChange={setQuery}
+                  handleSubmit={handleSubmit}
                 />
               </div>
             </div>
@@ -134,7 +155,7 @@ function SecondNav() {
   } else {
     return (
       <div className="fixed w-full body-font top-0 z-10 h-68">
-        <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
+        <header className="text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="mx-2 flex px-7 pt-1 pb-4 flex-col md:flex-row items-center">
             <div className="basis-1/3 grow-0 shrink-0 text-gray-900 md:mb-0"></div>
 
@@ -151,10 +172,14 @@ function SecondNav() {
               </div>
             </div>
 
-            <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0">
+            <div
+              className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 
+            py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0"
+            >
               {!auth.isLoggedIn && (
                 <NavLink
-                  className="font-semibold select-none mr-3 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                  className="font-semibold select-none mr-6 transition duration-500 ease-in-out 
+                  hover:-translate-y-1 hover:scale-110"
                   type="button"
                   to="/accounts/login/"
                 >
@@ -183,14 +208,12 @@ function SecondNav() {
                   </button>
                 </div>
               )}
-              <img
-                src={search}
-                alt="검색"
-                className="h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
-              />
             </div>
           </div>
           <div>
+            <div className="relative bottom-[98px] left-[1468px] select-none">
+              <SearchDrawer />
+            </div>
             <header className=" grid grid-cols-8 text-center text-xl">
               <div
                 className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer

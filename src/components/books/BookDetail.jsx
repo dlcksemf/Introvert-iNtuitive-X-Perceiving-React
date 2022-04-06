@@ -80,8 +80,7 @@ function BookDetail({ book_num, review_num }) {
                   <img
                     src={book?.cover_photo}
                     alt={book?.title}
-                    className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
-                    transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:skew-y-6"
+                    className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14"
                   />
                 )}
                 {!book?.cover_photo && (
@@ -97,13 +96,10 @@ function BookDetail({ book_num, review_num }) {
                       [ {book?.category} ]
                     </h2>
                   )}
-                  <h1
-                    className="text-gray-900 text-3xl title-font font-medium mb-5 select-none
-                  hover:font-semibold"
-                  >
+                  <h1 className="text-gray-900 text-3xl title-font font-bold mb-5 select-none">
                     {book?.title}
                   </h1>
-                  <h1 className="text-gray-900 text-xl title-font font-medium mb-5 select-none hover:font-semibold">
+                  <h1 className="text-gray-900 text-xl title-font font-medium mb-5 select-none">
                     {book?.writer}
                   </h1>
                   <div className="flex mb-4 select-none">
@@ -136,10 +132,9 @@ function BookDetail({ book_num, review_num }) {
                   <div className="flex mt-10 items-center pb-5 border-b-2 border-gray-100 mb-5">
                     <button
                       onClick={buyLink}
-                      className="text-gray-600 text-s mb-20 hover:text-blue-500 hover:font-bold
-                      transition duration-500 ease-in-out hover:scale-105"
+                      className="text-indigo-900 text-s mb-20 hover:font-bold"
                     >
-                      알라딘에서 책찾기
+                      @알라딘에서 책찾기
                     </button>
                   </div>
                   <div className="flex justify-between">
@@ -153,9 +148,8 @@ function BookDetail({ book_num, review_num }) {
                     >
                       <div
                         className="flex m-auto ml-auto 
-                  text-gray-600 hover:text-blue-500 hover:font-bold 
-                  border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
-                  transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                  text-gray-600 hover:text-blue-500 
+                  border-2 border-gray-200 py-2 px-6 focus:outline-none rounded"
                       >
                         목록으로
                       </div>

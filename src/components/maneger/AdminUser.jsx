@@ -4,7 +4,6 @@ import AdminUserList from './AdminUserList';
 import ReactPaginate from 'react-paginate';
 import SearchBar from 'components/parts/SearchBar';
 import { itemsPerPage } from 'Constants';
-import AdminUserList_Point from './AdminUserList_Point';
 
 function AdminUser() {
   const [, setCurrentItems] = useState(null);
@@ -19,18 +18,6 @@ function AdminUser() {
     },
     { manual: true },
   );
-
-  const [{ data: bookdata }, refetch] = useApiAxios(
-    {
-      url: 'books/api/loanedbooks/',
-      method: 'GET',
-    },
-    { manual: true },
-  );
-
-  useEffect(() => {
-    refetch();
-  }, []);
 
   const fetchApplications = useCallback(
     async (newPage, newQuery = query) => {
@@ -129,7 +116,7 @@ function AdminUser() {
                     </div>
                   </td>
                 </tr>
-                {userdata?.results?.map((user) => (
+                {userdata?.results?.map((user, book) => (
                   <React.Fragment key={user.user_id}>
                     {user.is_staff === false && (
                       <tr className="focus:outline-none h-16 border border-gray-100 rounded select-none">
@@ -143,13 +130,6 @@ function AdminUser() {
                     )}
                   </React.Fragment>
                 ))}
-                {/* {bookdata?.results?.map((book) => (
-                  <React.Fragment key={bookdata.loan_num}>
-                    <tr className="focus:outline-none h-16 border border-gray-100 rounded select-none">
-                      <AdminUserList_Point book={book} />
-                    </tr>
-                  </React.Fragment>
-                ))} */}
               </tbody>
             </table>
           </div>
