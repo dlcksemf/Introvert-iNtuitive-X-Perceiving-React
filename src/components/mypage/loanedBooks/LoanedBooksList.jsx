@@ -1,10 +1,12 @@
 import LoanedBooks from './LoanedBooks';
 import NoList from '../NoList';
+import React from 'react';
 
-function LoanedBooksList({ loanedBookList }) {
+function LoanedBooksList({ loanedBookList, refresh }) {
   const filtered_list = loanedBookList?.filter(
     (book) => book.return_state === 'L' || book.return_state === 'E',
   );
+
   // .slice(0, 3);
 
   return (
@@ -33,7 +35,7 @@ function LoanedBooksList({ loanedBookList }) {
             </tr>
           </thead>
           <tbody className="text-gray-800">
-            {filtered_list?.map((book) => {
+            {filtered_list?.slice(0, 5).map((book) => {
               return <LoanedBooks key={book?.loan_num} book={book} />;
             })}
           </tbody>
