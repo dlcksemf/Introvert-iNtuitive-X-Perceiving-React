@@ -31,7 +31,7 @@ function RecommendedBooks() {
     return (
       <>
         <div>
-          <h1 className="text-5xl font-semibold relative bottom-7 text-left mt-10 ml-40 mb-[60px] text-gray-700 select-none">
+          <h1 className="text-4xl font-semibold relative bottom-7 text-center mt-10 mb-[60px] text-gray-700 select-none">
             동년배가 많이 빌린 책
           </h1>
         </div>
@@ -60,7 +60,7 @@ function RecommendedBooks() {
                     10 && (
                   <div
                     key={book.book_num}
-                    className="h-[400px] w-[485px] flex justify-center items-center"
+                    className="h-[370px] w-[400px] flex justify-center items-center"
                   >
                     <RecommendedBooksSummary book={book} />
                   </div>

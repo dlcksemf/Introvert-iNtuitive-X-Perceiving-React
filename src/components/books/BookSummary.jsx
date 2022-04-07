@@ -184,10 +184,10 @@ function Top5Summary({ book }) {
 
   return (
     <>
-      <section className="text-gray-600 body-font overflow-hidden mt-20">
+      <section className="text-gray-600 body-font overflow-hidden">
         <div className="container mx-auto">
           <div className="lg:w-full mx-auto flex flex-wrap items-center">
-            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 mt-10 m-auto">
+            <div className="lg:w-1/2 w-full mb-6 lg:mb-0 m-auto">
               <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2 text-left">
                 {book.category && `[ ${book.category} ]`}
               </h2>
@@ -215,8 +215,8 @@ function Top5Summary({ book }) {
             <img
               src={book?.cover_photo ? book.cover_photo : non_image}
               alt={book.title}
-              className="lg:w-1/2 max-w-xs lg:h-96 max-h-xs object-fill object-center rounded-lg object-scale-down
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90 inline-block cursor-pointer"
+              className="lg:w-2/5 max-w-xs lg:h-72 max-h-xs object-fill object-center rounded-lg object-scale-down
+         inline-block cursor-pointer"
               onClick={() => {
                 navigate(`/books/${book.book_num}/`);
               }}
@@ -237,7 +237,7 @@ function HeavyReaderSummary({ book }) {
   // }
 
   return (
-    <div className="mt-10">
+    <div className="">
       <>
         <div
           className="maincontainer"
@@ -256,11 +256,14 @@ function HeavyReaderSummary({ book }) {
             <div className="back">
               <img src={card4} alt=""></img>
 
-              <p className=" absolute top-48 left-28 font-bold text-2xl font-serif text-red-900">
-                {book?.count_loans ? book.username : 'Unknown'}
-                {/* {book?.position
+              <p className=" absolute top-[155px] left-[83px] text-center font-bold text-lg font-serif text-amber-900">
+                bookworm
+                <div className="text-2xl text-red-900">
+                  {book?.count_loans ? book.username : 'Unknown'}
+                  {/* {book?.position
                   ? book.position
                   : !book?.count_loans && '과연 누가 될까요?'} */}
+                </div>
               </p>
             </div>
           </div>

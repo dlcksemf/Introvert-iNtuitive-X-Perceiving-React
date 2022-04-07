@@ -20,11 +20,6 @@ function HeavyReader() {
   return (
     <>
       <div>
-        <h1 className="text-5xl font-semibold relative text-left text-gray-700 select-none">
-          다독왕
-        </h1>
-      </div>
-      <div>
         {userList
           ?.sort((user1, user2) => user2.count_loans - user1.count_loans)
           .slice(0, 1)

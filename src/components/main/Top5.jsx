@@ -19,13 +19,12 @@ function Top5() {
   }, [auth, refetch]);
 
   return (
-    <>
-      <div>
-        <h1 className="text-5xl font-semibold relative top-28 text-left ml-40 text-gray-700">
-          인기도서
-        </h1>
-      </div>
-      <div className="flex justify-center">
+    <div className="ml-32">
+      <h1 className="text-4xl font-semibold relative ml-40 top-20 text-gray-700">
+        인기도서
+      </h1>
+
+      <div className="">
         <div className="h-[650px] w-[750px]">
           <Carousel
             stopAutoPlayOnHover={true}
@@ -50,7 +49,7 @@ function Top5() {
           </Carousel>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
