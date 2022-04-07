@@ -93,8 +93,8 @@ function BookApplicationForm() {
 
   return (
     <div>
-      <div className="h-screen flex justify-center mt-80">
-        <div className="w-1/3">
+      <div className="flex justify-center relative top-[120px] mb-[175px]">
+        <div className="w-1/2">
           <div className="bg-white relative rounded-lg p-4 sm:p-4 md:p-8 lg:p-12 shadow-lg border-2 border-gray-200">
             <h2 className="mb-8 text-center text-2xl text-gray-600 font-bold font-sans select-none">
               📚 도서 신청 📖

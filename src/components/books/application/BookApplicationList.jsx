@@ -82,7 +82,7 @@ function BookApplicationList() {
     <div className="w-3/4 m-auto">
       <div className="flex flex-col text-center w-full">
         <div className="flex justify-end">
-          <h3 className="text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mb-8 mt-4 select-none">
+          <h3 className="mt-[65px] text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mb-8 mt-4 select-none">
             도서 신청 목록
           </h3>
           <div className="absolute flex justify-end items-end mb-28 mr-4">
