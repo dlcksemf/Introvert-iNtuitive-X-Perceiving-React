@@ -17,6 +17,9 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
 import card from 'components/parts/image/card.png';
 import card2 from 'components/parts/image/card2.png';
+import card3 from 'components/parts/image/card3.png';
+import card4 from 'components/parts/image/card4.png';
+import card5 from 'components/parts/image/card5.png';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -248,16 +251,16 @@ function HeavyReaderSummary({ book }) {
             id="card"
           >
             <div className="front">
-              <img src={card} alt="" />
+              <img src={card3} alt="" />
             </div>
             <div className="back">
-              <img src={card2} alt=""></img>
+              <img src={card4} alt=""></img>
 
-              <p className=" absolute top-48 left-24 font-bold text-2xl text-gray-500">
+              <p className=" absolute top-48 left-28 font-bold text-2xl font-serif text-red-900">
                 {book?.count_loans ? book.username : 'Unknown'}
-                {book?.position
+                {/* {book?.position
                   ? book.position
-                  : !book?.count_loans && '과연 누가 될까요?'}
+                  : !book?.count_loans && '과연 누가 될까요?'} */}
               </p>
             </div>
           </div>
