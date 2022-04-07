@@ -43,7 +43,7 @@ function MainNavigation() {
 
   const handleLogout = () => {
     logout();
-    navigate('/main/');
+    navigate('/');
   };
 
   const [menuCollapse, setMenuCollapse] = useState(true);
@@ -57,7 +57,7 @@ function MainNavigation() {
   };
 
   return (
-    <div id="header" className="mt-2">
+    <div id="header" className="mt-2 hidden sm:flex">
       <ProSidebar
         collapsed={menuCollapse}
         onMouseEnter={handleMouseEnter}
@@ -98,14 +98,14 @@ function MainNavigation() {
                 className="hover:text-lg"
               >
                 <MenuItem icon={<img src={login} alt="들어오기" />}>
-                  <h1 className="text-black">들어가기</h1>
+                  <h1 className="text-black 2xl:mt-10">들어가기</h1>
                 </MenuItem>
               </div>
             )}
             {auth.isLoggedIn && (
               <div onClick={handleLogout} className="hover:text-lg">
                 <MenuItem icon={<img src={logoutIcon} alt="나가기" />}>
-                  <h1 className="text-black">나가기</h1>
+                  <h1 className="text-black 2xl:mt-10">나가기</h1>
                 </MenuItem>
               </div>
             )}
