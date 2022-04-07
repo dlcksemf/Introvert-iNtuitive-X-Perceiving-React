@@ -154,7 +154,7 @@ function AdminBookDetail({ postId }) {
                         className="flex m-auto ml-auto 
                   text-gray-600 hover:text-blue-500 hover:font-bold 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
-                  transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                  "
                       >
                         목록으로
                       </div>
@@ -164,7 +164,7 @@ function AdminBookDetail({ postId }) {
                         className="flex m-auto ml-52
                   text-gray-600 hover:text-blue-500 hover:font-bold 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
-                  transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                  "
                       >
                         수정
                       </div>
@@ -176,7 +176,7 @@ function AdminBookDetail({ postId }) {
                         className="flex m-auto ml-5
                       text-gray-600 hover:text-blue-500 hover:font-bold 
                       border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
-                      transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                      "
                       >
                         삭제
                       </button>

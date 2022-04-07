@@ -120,7 +120,7 @@ function GameDetail({ gameId }) {
                           className="flex m-auto ml-auto 
                         text-gray-600 hover:text-blue-500 hover:font-bold
                         border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
-                        transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                        "
                         >
                           목록으로
                         </div>
@@ -132,10 +132,7 @@ function GameDetail({ gameId }) {
                               <span className="text-gray-600 m-auto select-none">
                                 대여하기
                               </span>
-                              <div
-                                onClick={handleClickLoan}
-                                className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
-                              >
+                              <div onClick={handleClickLoan} className="">
                                 <LoanedIcon />
                               </div>
                             </>

@@ -26,7 +26,7 @@ function BookApplicationSearch({ setQuery, handleSubmit }) {
             className="flex 
                   text-gray-600 hover:text-blue-500 hover:font-bold 
                   border-2 border-gray-200 p-2 focus:outline-none rounded
-                  transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                  "
           >
             검색
           </div>

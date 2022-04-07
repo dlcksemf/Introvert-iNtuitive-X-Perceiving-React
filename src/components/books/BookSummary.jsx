@@ -80,10 +80,7 @@ function BookSummary({ book, reloadBook }) {
             />
           </div>
           {book?.state === 'A' ? (
-            <div
-              onClick={handleClickLoan}
-              className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
-            >
+            <div onClick={handleClickLoan} className="">
               <LoanedIcon />
             </div>
           ) : (

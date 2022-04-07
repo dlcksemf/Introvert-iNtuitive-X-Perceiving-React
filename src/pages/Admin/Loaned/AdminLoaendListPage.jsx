@@ -16,7 +16,7 @@ function AdminLoanedListPage() {
           }
         bottom-20 border-2 border-amber-500 px-3 mr-2
         text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
-        transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110`}
+        `}
           onClick={() => setShowBookLoaned(true)}
           onClickCapture={() => {
             setShowGameLoaned(false);
@@ -33,7 +33,7 @@ function AdminLoanedListPage() {
           }
          bottom-20 border-2 border-amber-500 px-3 mr-2
          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
-         transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110`}
+        `}
           onClick={() => setShowGameLoaned(true)}
           onClickCapture={() => {
             setShowBookLoaned(false);

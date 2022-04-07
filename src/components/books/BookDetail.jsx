@@ -173,10 +173,7 @@ function BookDetail({ book_num, review_num }) {
                             <span className="text-gray-600 m-auto select-none">
                               대출하기
                             </span>
-                            <div
-                              onClick={handleClickLoan}
-                              className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
-                            >
+                            <div onClick={handleClickLoan} className="">
                               <LoanedIcon />
                             </div>
                           </>
