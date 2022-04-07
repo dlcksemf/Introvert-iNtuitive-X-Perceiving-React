@@ -29,7 +29,7 @@ function LoanedGameList({ loanedGameList }) {
             </tr>
           </thead>
           <tbody className="text-gray-800">
-            {filtered_list?.map((game) => {
+            {filtered_list?.slice(0, 9).map((game) => {
               return (
                 <LoanedGame key={game?.loan_game_num.result} game={game} />
               );

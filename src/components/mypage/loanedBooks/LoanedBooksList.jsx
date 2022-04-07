@@ -35,7 +35,7 @@ function LoanedBooksList({ loanedBookList, refresh }) {
             </tr>
           </thead>
           <tbody className="text-gray-800">
-            {filtered_list?.slice(0, 5).map((book) => {
+            {filtered_list?.slice(0, 9).map((book) => {
               return <LoanedBooks key={book?.loan_num} book={book} />;
             })}
           </tbody>

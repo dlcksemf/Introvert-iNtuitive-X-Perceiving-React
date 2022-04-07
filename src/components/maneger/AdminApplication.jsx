@@ -129,16 +129,14 @@ function AdminApplication({ application, reload }) {
       <td className="pl-7">
         <div className="flex items-center">
           <p className="text-sm leading-none text-gray-600 ml-2">
-            {application.created_at.slice(0, 10)}
+            {application.created_at}
           </p>
         </div>
       </td>
       <td className="pl-7">
         <div className="flex items-center">
           <p className="text-sm leading-none text-gray-600 ml-2">
-            {application.state !== 'P'
-              ? application.updated_at.slice(0, 10)
-              : ''}
+            {application.state !== 'P' ? application.updated_at : ''}
           </p>
         </div>
       </td>
