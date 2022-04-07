@@ -5,21 +5,21 @@ import RecommendedBooks from 'components/main/RecommendedBooks';
 function MainPage() {
   return (
     <div>
-      <div className="grid grid-row-1 grid-flow-col gap-5 text-center">
-        <div>
+      <div className="grid grid-row-1 grid-flow-col ">
+        <div className="w-full">
           <Top5 />
         </div>
-        <div className="m-auto">
+        <div className="mt-16">
           <HeavyReader />
         </div>
       </div>
-      <div className="grid grid-col-1 m-auto">
-        <div>
+      <div className="grid grid-col-1 mb-28">
+        <div className=" mx-28 m-auto">
           <NewBook />
         </div>
       </div>
-      <div className="grid grid-col-1 m-auto">
-        <div>
+      <div className="grid grid-col-1">
+        <div className=" mx-28 m-auto">
           <RecommendedBooks />
         </div>
       </div>

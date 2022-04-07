@@ -18,9 +18,9 @@ function NewBook() {
   }, [auth, refetch]);
 
   return (
-    <>
+    <div className="">
       <div>
-        <h1 className="text-5xl font-semibold relative bottom-7 text-left ml-40 mb-[60px] text-gray-700 select-none">
+        <h1 className="text-4xl font-semibold relative bottom-7 text-center mb-[100px] text-gray-700 select-none">
           신간도서
         </h1>
       </div>
@@ -28,13 +28,13 @@ function NewBook() {
         {bookList?.slice(0, 3).map((book) => (
           <div
             key={book.book_num}
-            className="h-[400px] w-[485px] flex justify-center items-center"
+            className="h-[370px] w-[400px] flex justify-center items-center"
           >
             <NewBookSummary book={book} />
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
