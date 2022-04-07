@@ -5,10 +5,10 @@ function ApplicationsList({ applicationList }) {
   let location = useLocation();
 
   return (
-    <div className="border-t-4 border-amber-400">
+    <div className="mt-10">
       <div className="flex items-center w-full justify-center">
-        <div className="bg-white shadow-xl rounded-lg py-14">
-          <div className="px-24">
+        <div className="bg-white w-80 h-80 shadow-xl rounded-lg ">
+          <div className="py-5">
             <h3 className="font-semibold text-lg text-gray-800 text-center select-none px-1">
               신청 도서 목록
             </h3>
@@ -26,8 +26,8 @@ function ApplicationsList({ applicationList }) {
 
             <div className="text-center mb-3 select-none">
               <button
-                className="bg-amber-500 mt-3 text-white hover:bg-amber-400 text-sm font-bold uppercase px-3 py-2 rounded-full
-                transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                className="bg-blue-500 mt-3 text-white hover:bg-blue-400 text-sm font-bold uppercase px-3 py-2 rounded-full
+               "
                 type="button"
               >
                 <Link

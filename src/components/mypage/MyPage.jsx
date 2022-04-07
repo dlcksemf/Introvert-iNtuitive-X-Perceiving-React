@@ -43,7 +43,7 @@ function MyPage() {
       <div className="container mx-auto my-5 p-5">
         <div className="md:flex no-wrap md:-mx-2 ">
           <div className="w-full md:w-3/12 md:mx-2">
-            <div className="bg-white p-3 border-t-4 border-amber-400 mt-3">
+            <div className="bg-white p-3 mt-3">
               <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
                 <UserInfo info={data} />
               </h1>
@@ -63,7 +63,7 @@ function MyPage() {
                 <div className=" text-sm">
                   <div>
                     <div className="relative">
-                      <div className="border-t-4 border-amber-400">
+                      <div className="">
                         <section className="py-1 bg:gray-50">
                           <div className="w-full xl:mb-0 px-0">
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -72,12 +72,13 @@ function MyPage() {
                                   <button
                                     className={`${
                                       showLoaned
-                                        ? 'bg-amber-500 text-white border-none px-4 py-2.5'
+                                        ? 'bg-blue-500 text-white border-none px-4 py-2.5'
                                         : 'text-gray-800'
                                     }
-                          bottom-20 border-2 border-amber-500 px-3 mr-2
+                          bottom-20 border-2 border-blue-500 px-3 mr-2
+                          
                           text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
-                          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110`}
+                         `}
                                     onClick={() => setShowLoaned(true)}
                                     onClickCapture={() => {
                                       setShowWish(false);
@@ -90,12 +91,12 @@ function MyPage() {
                                   <button
                                     className={`${
                                       showGame
-                                        ? 'bg-amber-500 text-white border-none px-5 py-2.5'
+                                        ? 'bg-blue-500 text-white border-none px-5 py-2.5'
                                         : 'text-gray-800'
                                     }
-                                    bottom-20 border-2 border-amber-500 px-3 mr-2
+                                    bottom-20 border-2 border-blue-500 px-3 mr-2
                           text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
-                          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110`}
+                        `}
                                     onClick={() => setShowGame(true)}
                                     onClickCapture={() => {
                                       setShowWish(false);
@@ -108,12 +109,12 @@ function MyPage() {
                                   <button
                                     className={`${
                                       showWish
-                                        ? 'bg-amber-500 text-white border-none px-5 py-2.5'
+                                        ? 'bg-blue-500 text-white border-none px-5 py-2.5'
                                         : 'text-gray-800'
                                     }
-                          px-4 py-2 border-2 border-amber-500
+                          px-4 py-2 border-2 border-blue-500
                           text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
-                          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110`}
+                       `}
                                     onClick={() => setShowWish(true)}
                                     onClickCapture={() => {
                                       setShowLoaned(false);
@@ -135,8 +136,8 @@ function MyPage() {
                                   state={{ backgroundLocation: location }}
                                 >
                                   <button
-                                    className="bg-amber-500 mt-3 text-white hover:bg-amber-400 text-sm font-bold uppercase 
-                                  px-4 py-2 mt-5 mr-4 rounded-full transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                                    className="bg-blue-500 mt-3 text-white hover:bg-blue-400 text-sm font-bold uppercase 
+                                  px-4 py-2 mt-5 mr-4 rounded-full"
                                   >
                                     전체 내역 보기
                                   </button>

@@ -103,7 +103,7 @@ function TopNav() {
               <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 pt-5 pl-3 focus:outline-none rounded text-base mt-8 md:mt-0">
                 {!auth.isLoggedIn && (
                   <NavLink
-                    className="font-semibold select-none mr-3 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                    className="font-semibold select-none mr-3 "
                     type="button"
                     to="/accounts/login/"
                   >
@@ -166,7 +166,7 @@ function TopNav() {
             <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0">
               {!auth.isLoggedIn && (
                 <NavLink
-                  className="font-semibold select-none mr-3 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110"
+                  className="font-semibold select-none mr-3"
                   type="button"
                   to="/accounts/login/"
                 >
