@@ -73,11 +73,11 @@ function LoanedGame({ game }) {
         <td
           className="cursor-pointer hover:text-red-400"
           onClick={() => {
-            navigate(`/game/${game.game_name.game_num}/`);
+            navigate(`/game/${game.game_num}/`);
           }}
         >
           <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-            {game.game_name.game_name}
+            {game.game_name}
           </div>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
