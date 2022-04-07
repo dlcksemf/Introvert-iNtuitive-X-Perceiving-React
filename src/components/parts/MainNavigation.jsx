@@ -12,11 +12,11 @@ import 'css/Navigation.css';
 
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'base/hooks/Authcontext';
-import up from 'components/parts/image/up3.png';
-import left from 'components/parts/image/left3.png';
-import right from 'components/parts/image/right3.png';
-import logoutIcon from 'components/parts/image/logout.png';
-import login from 'components/parts/image/login.png';
+import up from 'components/parts/image/up.png';
+import left from 'components/parts/image/left.png';
+import right from 'components/parts/image/right.png';
+import logoutIcon from 'components/parts/image/out.png';
+import login from 'components/parts/image/in.png';
 
 function MainNavigation() {
   const [auth] = useAuth();
@@ -87,8 +87,6 @@ function MainNavigation() {
               </MenuItem>
             </div>
           </Menu>
-        </SidebarContent>
-        <SidebarFooter>
           <Menu>
             {!auth.isLoggedIn && (
               <div
@@ -98,19 +96,19 @@ function MainNavigation() {
                 className="hover:text-lg"
               >
                 <MenuItem icon={<img src={login} alt="들어오기" />}>
-                  <h1 className="text-black 2xl:mt-10">들어가기</h1>
+                  <h1 className="text-black ">들어가기</h1>
                 </MenuItem>
               </div>
             )}
             {auth.isLoggedIn && (
               <div onClick={handleLogout} className="hover:text-lg">
                 <MenuItem icon={<img src={logoutIcon} alt="나가기" />}>
-                  <h1 className="text-black 2xl:mt-10">나가기</h1>
+                  <h1 className="text-black">나가기</h1>
                 </MenuItem>
               </div>
             )}
           </Menu>
-        </SidebarFooter>
+        </SidebarContent>
       </ProSidebar>
     </div>
   );
