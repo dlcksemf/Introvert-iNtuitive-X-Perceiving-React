@@ -6,7 +6,7 @@ import BookDetailPage from 'pages/BookDetailPage';
 import BookListPage from 'pages/BookListPage';
 import NotFound from 'components/parts/NotFound';
 import BookApplicationSearch from 'components/books/application/BookApplicationSearch';
-import Footer from 'components/parts/Footer';
+// import Footer from 'components/parts/Footer';
 
 function PageBookRouter() {
   const [auth] = useAuth();
@@ -35,7 +35,7 @@ function PageBookRouter() {
       {!auth?.is_staff && (
         <div className="fixed bottom-0 w-full z-50">
           <hr />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       )}
     </>

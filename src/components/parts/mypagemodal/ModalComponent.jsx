@@ -21,6 +21,8 @@ function ModalComponent({ titleList, bookInfo, modalType }) {
           ...prev,
           STATELIST[modalType][bookInfo[title]],
         ]);
+      } else if (title === 'created_at') {
+        setContentList((prev) => [...prev, bookInfo[title].substring(0, 10)]);
       } else {
         setContentList((prev) => [...prev, bookInfo[title]]);
       }
