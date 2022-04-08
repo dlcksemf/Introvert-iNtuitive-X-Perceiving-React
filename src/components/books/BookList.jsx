@@ -96,10 +96,6 @@ function BookList() {
                   <Category selected={category} setSelected={setCategory} />
                 </div>
                 <div>
-                  <SearchDrawer
-                    handleChange={setQuery}
-                    handleSubmit={handleSubmit}
-                  />
                   <SearchBar
                     handleChange={setQuery}
                     handleSubmit={handleSubmit}
