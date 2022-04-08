@@ -145,7 +145,7 @@ function AdminLoanedGameList() {
                       <td className="pl-7">
                         <div className="flex items-center">
                           <p className="text-sm leading-none text-gray-600 ml-2 select-none hover:font-semibold">
-                            {game?.game_name.result}
+                            {game?.game_name}
                           </p>
                         </div>
                       </td>

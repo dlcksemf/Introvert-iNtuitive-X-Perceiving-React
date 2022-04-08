@@ -13,13 +13,39 @@ function ApplicationsBooks({ application }) {
     }
   });
 
+  const [apptitle] = useState(() => {
+    if (application.state === 'P') {
+      if (application.title.length > 15) {
+        return application.title.slice(0, 15) + '...';
+      } else {
+        return application.title;
+      }
+    }
+  });
+
+  const [appstate] = useState(() => {
+    if (application.state === 'P') {
+      if (application.title.length > 15) {
+        return (
+          <Badge color={color}>
+            {STATELIST.application[application.state]}
+          </Badge>
+        );
+      } else {
+        return (
+          <Badge color={color}>
+            {STATELIST.application[application.state]}
+          </Badge>
+        );
+      }
+    }
+  });
+
   return (
     <td className="flex my-5 ml-8">
-      {application.title.slice(0, 15) + '...'}
+      {apptitle}
 
-      <div className="ml-3">
-        <Badge color={color}>{STATELIST.application[application.state]}</Badge>
-      </div>
+      <div className="ml-3">{appstate}</div>
     </td>
   );
 }

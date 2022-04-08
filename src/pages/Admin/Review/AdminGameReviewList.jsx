@@ -1,10 +1,12 @@
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AdminGameReviewList({ review, reload }) {
   const [, setReviewDelete] = useState(false);
   const [auth] = useAuth();
+  const navigate = useNavigate();
   const [, deleteReview, refresh] = useApiAxios(
     {
       url: `/game/api/gamereview/${review.game_review_num}/`,
@@ -68,7 +70,12 @@ function AdminGameReviewList({ review, reload }) {
       </td> */}
       <td className="pl-7">
         <div className="flex items-center">
-          <p className="text-sm leading-none text-gray-600 ml-2">
+          <p
+            className="text-sm leading-none text-gray-600 ml-2 cursor-pointer hover:text-red-400"
+            onClick={() => {
+              navigate(`/game/${review.game_num}/`);
+            }}
+          >
             {review.game_name}
           </p>
         </div>

@@ -12,7 +12,7 @@ function ApplicationsList({ applicationList }) {
             <h3 className="font-semibold text-lg text-gray-800 text-center select-none px-1">
               신청 도서 목록
             </h3>
-            <table className="text-xs ml-3 mt-3 select-none hover:font-semibold">
+            <table className="text-xs ml-3 mt-3 select-none">
               <tbody>
                 {applicationList?.slice(0, 3).map((application) => {
                   return (

@@ -3,8 +3,8 @@ import AdminLoanedBookList from '../AdminLoanedBookList';
 import AdminLoanedGameList from './AdminLoaendGameList';
 
 function AdminLoanedListPage() {
-  const [showBookLoaned, setShowBookLoaned] = useState(false);
-  const [showGameLoaned, setShowGameLoaned] = useState(true);
+  const [showBookLoaned, setShowBookLoaned] = useState(true);
+  const [showGameLoaned, setShowGameLoaned] = useState(false);
   return (
     <div>
       <div className="ml-48">
