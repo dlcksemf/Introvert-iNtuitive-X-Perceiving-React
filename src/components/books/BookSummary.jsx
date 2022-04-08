@@ -69,22 +69,34 @@ function BookSummary({ book, reloadBook }) {
             navigate(`/books/${book.book_num}/`);
           }}
         />
-        <span className="absolute inline-flex mt-96 ml-8">
-          <div className="">
-            <Toggle
-              book={book}
-              wish={wish?.results[0]}
-              user_id={auth.user_id}
-              getWish={getWish}
-              reload={reload}
-            />
-          </div>
+        <span className="absolute inline-flex mt-96 ml-4">
           {book?.state === 'A' ? (
-            <div onClick={handleClickLoan} className="">
+            <div className="ml-3">
+              <Toggle
+                book={book}
+                wish={wish?.results[0]}
+                user_id={auth.user_id}
+                getWish={getWish}
+                reload={reload}
+              />
+            </div>
+          ) : (
+            <div>
+              <Toggle
+                book={book}
+                wish={wish?.results[0]}
+                user_id={auth.user_id}
+                getWish={getWish}
+                reload={reload}
+              />
+            </div>
+          )}
+          {book?.state === 'A' ? (
+            <div onClick={handleClickLoan} className="ml-2">
               <LoanedIcon />
             </div>
           ) : (
-            <p className="m-auto ml-5 select-none hover:text-indigo-700">
+            <p className="m-auto ml-1 select-none hover:text-indigo-700">
               {book?.loaned_books[0]?.return_due_date}
             </p>
           )}
