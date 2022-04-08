@@ -12,6 +12,7 @@ const STATELIST = {
   loaned: {
     ALL: '전체',
     L: '대출 중',
+    E: '대출 중',
     R: '반납 완료',
   },
   books: {
@@ -26,4 +27,12 @@ const STATELIST = {
   },
 };
 
-export { API_HOST, itemsPerPage, STATELIST };
+const MODAL_STATELIST = {
+  loaned: {
+    ALL: '전체',
+    L: '대출 중',
+    R: '반납 완료',
+  },
+};
+
+export { API_HOST, itemsPerPage, STATELIST, MODAL_STATELIST };

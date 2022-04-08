@@ -5,14 +5,16 @@ import { itemsPerPage } from 'Constants';
 import Badge from 'designMaterials/Badge';
 import { useCallback, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { STATELIST } from 'Constants';
+import { MODAL_STATELIST } from 'Constants';
 import React from 'react';
 
 function AdminLoanedBookList() {
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(1);
-  const [category, setCategory] = useState(Object.keys(STATELIST.loaned)[0]);
+  const [category, setCategory] = useState(
+    Object.keys(MODAL_STATELIST.loaned)[0],
+  );
   const [auth] = useAuth();
 
   const [query, setQuery] = useState();
@@ -94,7 +96,7 @@ function AdminLoanedBookList() {
             </p>
 
             <div className="flex items-center">
-              {Object.values(STATELIST.loaned).map((state, index) => (
+              {Object.values(MODAL_STATELIST.loaned).map((state, index) => (
                 <div
                   key={index}
                   className="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-2"
@@ -103,9 +105,9 @@ function AdminLoanedBookList() {
                     onClick={(e) => {
                       setCategory(e.target.value);
                     }}
-                    value={Object.keys(STATELIST.loaned)[index]}
+                    value={Object.keys(MODAL_STATELIST.loaned)[index]}
                     className={`text-xs py-2 px-4 ${
-                      category === Object.keys(STATELIST.loaned)[index] &&
+                      category === Object.keys(MODAL_STATELIST.loaned)[index] &&
                       'bg-indigo-100 text-indigo-700'
                     } text-gray-600 hover:text-indigo-700 hover:bg-indigo-100 rounded-full`}
                   >
