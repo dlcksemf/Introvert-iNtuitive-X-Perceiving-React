@@ -14,7 +14,7 @@ function PopOver() {
               className={`
                 ${open ? '' : 'text-opacity-90'}
                 py-2 inline-flex items-center
-                transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105`}
+                `}
             >
               <svg
                 class="block h-6 w-6"

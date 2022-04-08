@@ -148,7 +148,7 @@ function BookDetail({ book_num, review_num }) {
                     >
                       <div
                         className="flex m-auto ml-auto 
-                  text-gray-600 hover:text-blue-500 
+                  text-gray-600 hover:text-indigo-600 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded"
                       >
                         목록으로
@@ -180,7 +180,7 @@ function BookDetail({ book_num, review_num }) {
                         )}
 
                         {book?.state !== 'A' && (
-                          <p className="m-auto select-none hover:text-blue-500">
+                          <p className="m-auto select-none hover:text-indigo-600">
                             반납 예정일 :: {''}
                             {book?.loaned_books[0]?.return_due_date}
                           </p>

@@ -61,7 +61,7 @@ function ReturnBookModal({ book, updateState, handleClose }) {
       <div class="md:w-2/3 sm:w-full rounded-lg shadow-lg bg-white my-3">
         <div class="flex justify-between border-b border-gray-100 px-5 py-4">
           <div>
-            <i class="fas fa-exclamation-circle text-blue-500"></i>
+            <i class="fas fa-exclamation-circle text-indigo-500"></i>
             <span class="font-bold text-gray-700 text-lg">
               대출/대여 반납 안내📢
             </span>

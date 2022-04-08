@@ -70,7 +70,7 @@ function BookSummary({ book, reloadBook }) {
           }}
         />
         <span className="absolute inline-flex mt-96 ml-8">
-          <div className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100">
+          <div className="">
             <Toggle
               book={book}
               wish={wish?.results[0]}
@@ -84,7 +84,7 @@ function BookSummary({ book, reloadBook }) {
               <LoanedIcon />
             </div>
           ) : (
-            <p className="m-auto ml-5 select-none hover:text-blue-500">
+            <p className="m-auto ml-5 select-none hover:text-indigo-700">
               {book?.loaned_books[0]?.return_due_date}
             </p>
           )}
@@ -149,7 +149,7 @@ function NewBookSummary({ book }) {
         />
         <div className="px-6 py-4">
           <div
-            className="font-bold text-xl mb-2 select-none cursor-pointer hover:text-blue-600"
+            className="font-bold text-xl mb-2 select-none cursor-pointer hover:text-indigo-700"
             onClick={() => {
               navigate(`/books/${book.book_num}/`);
             }}
@@ -167,7 +167,7 @@ function NewBookSummary({ book }) {
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
             #{book.writer}
           </span>
-          <span className="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+          <span className="inline-block bg-indigo-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
             #따끈따끈
           </span>
         </div>
@@ -189,7 +189,7 @@ function Top5Summary({ book }) {
                 {book.category && `[ ${book.category} ]`}
               </h2>
               <div className="text-lg m-auto">{book.writer}</div>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-4 border-b-2 border-blue-400 py-3">
+              <h1 className="text-gray-900 text-3xl title-font font-medium mb-4 border-b-2 border-indigo-600 py-3">
                 {book.title}
               </h1>
               <p className="leading-relaxed mb-4 hover:font-semibold m-auto cursor-grab">
@@ -201,8 +201,8 @@ function Top5Summary({ book }) {
                   onClick={() => {
                     navigate(`/books/${book.book_num}/`);
                   }}
-                  className="flex justify-center text-white bg-blue-400 border-0 mt-2 py-2 px-12 
-                focus:outline-none hover:bg-blue-500 rounded-full mb-16"
+                  className="flex justify-center text-white bg-indigo-600 border-0 mt-2 py-2 px-12 
+                focus:outline-none hover:bg-indigo-700 rounded-full mb-16"
                 >
                   자세히보기
                 </button>
@@ -364,7 +364,7 @@ function ReviewSummary({ review, setReload }) {
               <div className="relative top-4 right-4">
                 {/* <button
                   // onClick={}
-                  className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center"
+                  className="inline-flex border-2 border-indogo-600 text-black hover:text-indigo-700 rounded-full h-6 px-3 justify-center items-center"
                 >
                   수정 // 구현하고 싶지만 보류
                 </button> */}

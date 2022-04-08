@@ -67,7 +67,7 @@ function SecondNav() {
               <header className="ml-52 mt-5 grid grid-cols-4 text-xl">
                 <div
                   className="mr-32 select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700"
+          hover:text-indigo-700"
                   onClick={() => {
                     navigate(`/books/booklist/`);
                   }}
@@ -76,7 +76,7 @@ function SecondNav() {
                 </div>
                 <div
                   className=" select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700 "
+          hover:text-indigo-700 "
                   onClick={() => {
                     navigate(`/books/application/`);
                   }}
@@ -85,7 +85,7 @@ function SecondNav() {
                 </div>
                 <div
                   className=" select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700 "
+          hover:text-indigo-700 "
                   onClick={() => {
                     navigate(`/game/gamelist/`);
                   }}
@@ -94,7 +94,7 @@ function SecondNav() {
                 </div>
                 <div
                   className=" select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700 "
+          hover:text-indigo-700 "
                   onClick={() => {
                     navigate(`/guidepage/`);
                   }}
@@ -217,7 +217,7 @@ function SecondNav() {
             <header className=" grid grid-cols-8 text-center text-xl">
               <div
                 className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold mb-5"
+          hover:text-indigo-700 hover:font-extrabold mb-5"
                 onClick={() => {
                   navigate(`/books/booklist/`);
                 }}
@@ -226,7 +226,7 @@ function SecondNav() {
               </div>
               <div
                 className="col-start-4 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+          hover:text-indigo-700 hover:font-extrabold"
                 onClick={() => {
                   navigate(`/books/application/`);
                 }}
@@ -235,7 +235,7 @@ function SecondNav() {
               </div>
               <div
                 className="col-start-5 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+          hover:text-indigo-700 hover:font-extrabold"
                 onClick={() => {
                   navigate(`/game/gamelist/`);
                 }}
@@ -244,7 +244,7 @@ function SecondNav() {
               </div>
               <div
                 className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+          hover:text-indigo-700 hover:font-extrabold"
                 onClick={() => {
                   navigate(`/guidepage/`);
                 }}

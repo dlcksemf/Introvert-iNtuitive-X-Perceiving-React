@@ -76,8 +76,7 @@ function AdminBookDetail({ postId }) {
                   <img
                     src={post?.cover_photo}
                     alt={post?.title}
-                    className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
-                    transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:skew-y-6"
+                    className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14"
                   />
                 )}
                 {!post?.cover_photo && (
@@ -132,7 +131,7 @@ function AdminBookDetail({ postId }) {
                   <div className="mt-10">
                     <button
                       onClick={hopeBookLink}
-                      className="text-gray-600 text-s mb-10 hover:text-blue-500 hover:font-bold
+                      className="text-gray-600 text-s mb-10 hover:text-indigo-500 hover:font-bold
                       transition duration-500 ease-in-out hover:scale-105"
                     >
                       대전 책방 알아보기
@@ -141,7 +140,7 @@ function AdminBookDetail({ postId }) {
                   <div className="flex items-center border-b-2 border-gray-100 mb-3">
                     <button
                       onClick={aladinLink}
-                      className="text-gray-600 text-s mb-10 hover:text-blue-500 hover:font-bold
+                      className="text-gray-600 text-s mb-10 hover:text-indigo-500 hover:font-bold
                       transition duration-500 ease-in-out hover:scale-105"
                     >
                       알라딘에서 책찾기
@@ -152,7 +151,7 @@ function AdminBookDetail({ postId }) {
                     <Link to="/admin/booklist/">
                       <div
                         className="flex m-auto ml-auto 
-                  text-gray-600 hover:text-blue-500 hover:font-bold 
+                  text-gray-600 hover:text-indigo-500 hover:font-bold 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                   "
                       >
@@ -162,7 +161,7 @@ function AdminBookDetail({ postId }) {
                     <Link to={`/admin/book/${postId}/edit/`}>
                       <div
                         className="flex m-auto ml-52
-                  text-gray-600 hover:text-blue-500 hover:font-bold 
+                  text-gray-600 hover:text-indigo-500 hover:font-bold 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                   "
                       >
@@ -174,7 +173,7 @@ function AdminBookDetail({ postId }) {
                         disabled={deleteLoading}
                         onClick={handleDelete}
                         className="flex m-auto ml-5
-                      text-gray-600 hover:text-blue-500 hover:font-bold 
+                      text-gray-600 hover:text-indigo-500 hover:font-bold 
                       border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                       "
                       >

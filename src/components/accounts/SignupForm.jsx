@@ -66,7 +66,7 @@ function SignupForm() {
           <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
             <h1
               className="title-font font-medium text-3xl text-gray-900 text-center select-none
-          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105"
+          "
             >
               🖐🏻 회원가입 화면입니다!
             </h1>
@@ -90,7 +90,7 @@ function SignupForm() {
           <div className="lg:w-1/2 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
             <h1
               className="title-font font-medium text-3xl text-gray-900 text-center select-none
-            transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105"
+            "
             >
               🖐🏻 회원가입 화면입니다!
             </h1>

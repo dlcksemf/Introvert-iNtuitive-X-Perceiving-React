@@ -24,7 +24,7 @@ function BookApplicationSearch({ setQuery, handleSubmit }) {
         <button className="ml-2" onClick={handleSubmit}>
           <div
             className="flex 
-                  text-gray-600 hover:text-blue-500 hover:font-bold 
+                  text-gray-600 hover:text-indigo-600 hover:font-bold 
                   border-2 border-gray-200 p-2 focus:outline-none rounded
                   "
           >

@@ -26,7 +26,7 @@ function ApplicationsList({ applicationList }) {
 
             <div className="text-center mb-3 select-none">
               <button
-                className="bg-blue-500 mt-3 text-white hover:bg-blue-400 text-sm font-bold uppercase px-3 py-2 rounded-full
+                className="bg-indigo-500 mt-3 text-white hover:bg-indigo-400 text-sm font-bold uppercase px-3 py-2 rounded-full
                "
                 type="button"
               >

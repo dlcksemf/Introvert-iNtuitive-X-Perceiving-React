@@ -129,7 +129,7 @@ function AdminGameForm({ gameId, handleDidSaveGame }) {
                       encodeFileToBase64(e, e.target.files[0]);
                     }}
                   />
-                  <div className="hover:text-blue-400">
+                  <div className="hover:text-indigo-400">
                     <label
                       for="img"
                       className="cursor-pointer flex justify-center

@@ -22,7 +22,7 @@ function SearchBar({ handleSubmit, handleChange }) {
         />
         <button
           type="submit"
-          className="absolute right-0 top-0 mt-5 mr-4 hover:text-blue-500
+          className="absolute right-0 top-0 mt-5 mr-4 hover:text-indigo-500
           transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90"
         >
           <svg

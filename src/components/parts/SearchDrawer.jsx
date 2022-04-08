@@ -83,7 +83,7 @@ function SearchDrawer({ handleSubmit, handleChange }) {
                 />
                 <button
                   type="submit"
-                  className="relative right-10 top-[65px]  hover:text-blue-500
+                  className="relative right-10 top-[65px]  hover:text-indigo-500
                 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90"
                 >
                   <svg

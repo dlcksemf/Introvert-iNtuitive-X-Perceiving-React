@@ -7,7 +7,7 @@ function NoList({ children }) {
         {children}
       </div>
       <button
-        className=" bg-blue-500 hover:bg-blue-400 text-white text-sm font-bold uppercase px-4 py-3 rounded-full
+        className=" bg-indigo-500 hover:bg-indigo-400 text-white text-sm font-bold uppercase px-4 py-3 rounded-full
       "
       >
         <NavLink to="/books/booklist/" type="button">

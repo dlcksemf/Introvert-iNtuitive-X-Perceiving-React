@@ -53,7 +53,7 @@ function AdminGameDetail({ gameId }) {
                     alt={game?.game_name}
                     // 여기 result 없애주세요
                     className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
-                    transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:skew-y-6"
+                    hover:skew-y-6"
                   />
                 )}
                 {!game?.game_cover_photo && (
@@ -93,7 +93,7 @@ function AdminGameDetail({ gameId }) {
                     <Link to="/admin/gamelist/">
                       <div
                         className="flex m-auto ml-auto 
-                  text-gray-600 hover:text-blue-500 hover:font-bold 
+                  text-gray-600 hover:text-indigo-500 hover:font-bold 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                   "
                       >
@@ -103,7 +103,7 @@ function AdminGameDetail({ gameId }) {
                     <Link to={`/admin/game/${gameId}/edit/`}>
                       <div
                         className="flex m-auto ml-52
-                  text-gray-600 hover:text-blue-500 hover:font-bold 
+                  text-gray-600 hover:text-indigo-500 hover:font-bold 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                  "
                       >
@@ -115,7 +115,7 @@ function AdminGameDetail({ gameId }) {
                         disabled={deleteLoading}
                         onClick={handleDelete}
                         className="flex m-auto ml-5
-                      text-gray-600 hover:text-blue-500 hover:font-bold 
+                      text-gray-600 hover:text-indigo-500 hover:font-bold 
                       border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                       "
                       >

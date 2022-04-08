@@ -1,7 +1,7 @@
 function FilledHeart() {
   return (
     <div>
-      <button className="rounded-full w-10 h-10 p-0 border-2 border-gray-200 inline-flex items-center justify-center text-blue-500 ml-4">
+      <button className="rounded-full w-10 h-10 p-0 border-2 border-gray-200 inline-flex items-center justify-center text-indigo-500 ml-4">
         <svg
           fill="currentColor"
           strokeLinecap="round"
@@ -20,7 +20,7 @@ function FilledHeart() {
 function EmptyHeart() {
   return (
     <div>
-      <button className="rounded-full w-10 h-10 p-0 border-2 border-gray-200 inline-flex items-center justify-center text-gray-500 ml-4 hover:text-blue-500">
+      <button className="rounded-full w-10 h-10 p-0 border-2 border-gray-200 inline-flex items-center justify-center text-gray-500 ml-4 hover:text-indigo-500">
         <svg
           fill="currentColor"
           strokeLinecap="round"

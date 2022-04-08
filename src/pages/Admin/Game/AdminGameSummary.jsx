@@ -4,7 +4,7 @@ import non_image from 'components/parts/image/non_image.jpg';
 function AdminGameSummary({ game }) {
   return (
     <div className="m-auto px-4 py-4 max-w-xl">
-      <div className="bg-gray-100 hover:bg-blue-100 border-gray-100 border-2 rounded-lg overflow-hidden mb-10">
+      <div className="bg-gray-100 hover:bg-indigo-100 border-gray-100 border-2 rounded-lg overflow-hidden mb-10">
         {game.game_cover_photo && (
           <Link to={`/admin/gamelist/${game.game_num}/`}>
             <img

@@ -72,12 +72,12 @@ function MyPage() {
                                   <button
                                     className={`${
                                       showLoaned
-                                        ? 'bg-blue-500 text-white border-none px-4 py-2.5'
+                                        ? 'bg-indigo-600 text-white border-none px-4 py-2.5'
                                         : 'text-gray-800'
                                     }
-                          bottom-20 border-2 border-blue-500 px-3 mr-2
+                          bottom-20 border-2 border-indigo-600 px-3 mr-2
                           
-                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-blue-400 
+                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-indigo-400 
                          `}
                                     onClick={() => setShowLoaned(true)}
                                     onClickCapture={() => {
@@ -91,11 +91,11 @@ function MyPage() {
                                   <button
                                     className={`${
                                       showGame
-                                        ? 'bg-blue-500 text-white border-none px-5 py-2.5'
+                                        ? 'bg-indigo-500 text-white border-none px-5 py-2.5'
                                         : 'text-gray-800'
                                     }
-                                    bottom-20 border-2 border-blue-500 px-3 mr-2
-                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-blue-400
+                                    bottom-20 border-2 border-indigo-500 px-3 mr-2
+                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-indigo-400
                         `}
                                     onClick={() => setShowGame(true)}
                                     onClickCapture={() => {
@@ -109,11 +109,11 @@ function MyPage() {
                                   <button
                                     className={`${
                                       showWish
-                                        ? 'bg-blue-500 text-white border-none px-5 py-2.5'
+                                        ? 'bg-indigo-500 text-white border-none px-5 py-2.5'
                                         : 'text-gray-800'
                                     }
-                          px-4 py-2 border-2 border-blue-500
-                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-blue-400
+                          px-4 py-2 border-2 border-indigo-500
+                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-indigo-400
                        `}
                                     onClick={() => setShowWish(true)}
                                     onClickCapture={() => {
@@ -136,7 +136,7 @@ function MyPage() {
                                   state={{ backgroundLocation: location }}
                                 >
                                   <button
-                                    className="bg-blue-500 mt-3 text-white hover:bg-blue-400 text-sm font-bold uppercase 
+                                    className="bg-indigo-500 mt-3 text-white hover:bg-indigo-400 text-sm font-bold uppercase 
                                   px-4 py-2 mt-5 mr-4 rounded-full"
                                   >
                                     전체 내역 보기

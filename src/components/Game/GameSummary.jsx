@@ -9,7 +9,7 @@ import { RateIcon } from 'designMaterials/RateIcon';
 function GameSummary({ game }) {
   return (
     <div className="m-auto px-4 py-4 max-w-xl">
-      <div className="bg-gray-100 hover:bg-blue-100 border-gray-100 border-2 rounded-lg overflow-hidden mb-10">
+      <div className="bg-gray-100 hover:bg-indigo-100 border-gray-100 border-2 rounded-lg overflow-hidden mb-10">
         {game.game_cover_photo && (
           <Link to={`/game/${game.game_num}/`}>
             <img
@@ -93,7 +93,7 @@ function GameReviewSummary({ review, setReload }) {
               <div className="mr-2 mt-4">
                 {/* <button
                   onClick={handleClick}
-                  className="inline-flex border-2 border-blue-500 text-black hover:text-blue-600 rounded-full h-6 px-3 justify-center items-center"
+                  className="inline-flex border-2 border-indigo-600 text-black hover:text-indigo-600 rounded-full h-6 px-3 justify-center items-center"
                 >
                   수정 // 구현하고 싶지만 보류
                 </button> */}

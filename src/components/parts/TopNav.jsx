@@ -44,8 +44,8 @@ function TopNav() {
             <div>
               <header className="mt-5 flex justify-between text-center text-xl">
                 <div
-                  className="mr-10 col-start-1 select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700 hover:font-extrabold mb-5"
+                  className="mr-10 col-start-1 select-none 
+          hover:text-indigo-700 hover:font-extrabold mb-5"
                   onClick={() => {
                     navigate(`/admin/loaned/`);
                   }}
@@ -53,8 +53,8 @@ function TopNav() {
                   대출관리
                 </div>
                 <div
-                  className="mr-10 col-start-2 select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                  className="mr-10 col-start-2 select-none 
+          hover:text-indigo-700 hover:font-extrabold"
                   onClick={() => {
                     navigate(`/admin/booklist/`);
                   }}
@@ -62,8 +62,8 @@ function TopNav() {
                   도서관리
                 </div>
                 <div
-                  className="mr-10 col-start-3 select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                  className="mr-10 col-start-3 select-none 
+          hover:text-indigo-700 hover:font-extrabold"
                   onClick={() => {
                     navigate(`/admin/gamelist/`);
                   }}
@@ -71,8 +71,8 @@ function TopNav() {
                   보드게임 관리
                 </div>
                 <div
-                  className="mr-10 col-start-4 select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                  className="mr-10 col-start-4 select-none
+          hover:text-indigo-700 hover:font-extrabold"
                   onClick={() => {
                     navigate(`/admin/user/`);
                   }}
@@ -80,8 +80,8 @@ function TopNav() {
                   회원 관리
                 </div>
                 <div
-                  className="mr-10 col-start-5 select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                  className="mr-10 col-start-5 select-none 
+          hover:text-indigo-700 hover:font-extrabold"
                   onClick={() => {
                     navigate(`/admin/review/`);
                   }}
@@ -89,8 +89,8 @@ function TopNav() {
                   리뷰 관리
                 </div>
                 <div
-                  className="mr-10 col-start-6 select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                  className="mr-10 col-start-6 select-none 
+          hover:text-indigo-700 hover:font-extrabold"
                   onClick={() => {
                     navigate(`/admin/application/`);
                   }}
@@ -120,7 +120,7 @@ function TopNav() {
                           }님 환영합니다`}
                     </div>
                     <button
-                      className="ml-3 transition duration-500 ease-in-out hover:scale-125"
+                      className="ml-3"
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="내정보 가기"
@@ -135,7 +135,7 @@ function TopNav() {
                 <img
                   src={search}
                   alt="검색"
-                  className="mr-12 h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
+                  className="mr-12 h-9 w-9 flex justify-end "
                 />
               </div>
             </div>
@@ -183,7 +183,7 @@ function TopNav() {
                         }님 환영합니다`}
                   </div>
                   <button
-                    className="ml-3 transition duration-500 ease-in-out hover:scale-125"
+                    className="ml-3"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="내정보 가기"
@@ -198,7 +198,7 @@ function TopNav() {
               <img
                 src={search}
                 alt="검색"
-                className="h-9 w-9 flex justify-end transition duration-500 ease-in-out hover:scale-125"
+                className="h-9 w-9 flex justify-end "
               />
             </div>
           </div>
@@ -207,8 +207,8 @@ function TopNav() {
               <div></div>
               <div></div>
               <div
-                className="col-start-1 select-none transition duration-500 ease-in-out cursor-pointer
-          hover:text-blue-700 hover:font-extrabold mb-5"
+                className="col-start-1 select-none cursor-pointer
+          hover:text-indigo-700 hover:font-extrabold mb-5"
                 onClick={() => {
                   navigate(`/admin/loaned/`);
                 }}
@@ -216,8 +216,8 @@ function TopNav() {
                 대출관리
               </div>
               <div
-                className="col-start-2 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                className="col-start-2 select-none cursor-pointer
+          hover:text-indigo-700 hover:font-extrabold"
                 onClick={() => {
                   navigate(`/admin/booklist/`);
                 }}
@@ -225,8 +225,8 @@ function TopNav() {
                 도서관리
               </div>
               <div
-                className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                className="col-start-3 select-none cursor-pointer
+          hover:text-indigo-700 hover:font-extrabold"
                 onClick={() => {
                   navigate(`/admin/gamelist/`);
                 }}
@@ -234,8 +234,8 @@ function TopNav() {
                 보드게임 관리
               </div>
               <div
-                className="col-start-4 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                className="col-start-4 select-none cursor-pointer
+          hover:text-indigo-700 hover:font-extrabold"
                 onClick={() => {
                   navigate(`/admin/user/`);
                 }}
@@ -243,8 +243,8 @@ function TopNav() {
                 회원 관리
               </div>
               <div
-                className="col-start-5 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                className="col-start-5 select-none cursor-pointer
+          hover:text-indigo-700 hover:font-extrabold"
                 onClick={() => {
                   navigate(`/admin/review/`);
                 }}
@@ -252,8 +252,8 @@ function TopNav() {
                 리뷰 관리
               </div>
               <div
-                className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-blue-700 hover:font-extrabold"
+                className="col-start-6 select-none cursor-pointer
+          hover:text-indigo-700 hover:font-extrabold"
                 onClick={() => {
                   navigate(`/admin/application/`);
                 }}

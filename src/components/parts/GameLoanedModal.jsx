@@ -152,7 +152,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                         src={game?.game_cover_photo}
                         alt={game?.game_name.result}
                         className="w-2/3 h-2/3 object-scale-down object-center inline-block rounded-full
-                          transition duration-500 ease-in-out hover:-translate-y-6 hover:scale-100 "
+                          "
                       />
                     )}
                     {!game?.game_cover_photo && (
@@ -160,7 +160,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                         src={non_image}
                         alt="non_image"
                         className="w-2/3 h-2/3 object-scale-down object-center inline-block rounded-full
-                          transition duration-500 ease-in-out hover:-translate-y-6 hover:scale-100 "
+                         "
                       />
                     )}
                   </div>
@@ -244,7 +244,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                     </div>
                     {/* <DatePicker
                       locale={ko}
-                      className="outline-none form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 cursor-pointer hover:border-blue-500 hover:text-black"
+                      className="outline-none form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 cursor-pointer hover:border-indigo-500 hover:text-black"
                       selected={endTime}
                       onChange={(time) => setEndTime(time)}
                       // showTimeSelect
@@ -363,7 +363,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
                         className="px-10
             py-4
             mr-6
-            bg-blue-600
+            bg-indigo-600
             text-white
             font-semibold
             text-md
@@ -371,11 +371,10 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
             uppercase
             rounded
             shadow-md
-            hover:bg-blue-700 hover:shadow-lg
-            focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-            active:bg-blue-800 active:shadow-lg
-            hover:scale-110 transition duration-500 
-            ease-in-out hover:-translate-y-1 rounded-full"
+            hover:bg-indigo-700 hover:shadow-lg
+            focus:bg-indigo-700 focus:shadow-lg focus:outline-none focus:ring-0
+            active:bg-indigo-800 active:shadow-lg
+            rounded-full"
                         data-bs-dismiss="modal"
                         onClick={() => HandleSubmit()}
                       >
@@ -396,8 +395,7 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
         hover:bg-indigo-200 hover:shadow-lg
         focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0
         active:bg-purple-800 active:shadow-lg
-        hover:scale-110 transition duration-500 
-        ease-in-out hover:-translate-y-1 rounded-full"
+         rounded-full"
                         onClick={() => setModalIsOpen(false)}
                       >
                         취소

@@ -20,7 +20,7 @@ function UserInfo({ info }) {
                     </td>
                     <td
                       className="px-2 py-2 text-gray-800 font-semibold select-none
-                    transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
+                    "
                     >
                       {info?.username}
                     </td>
@@ -31,7 +31,7 @@ function UserInfo({ info }) {
                     </td>
                     <td
                       className="px-2 py-2 text-gray-800 font-semibold select-none
-                    transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
+                    "
                     >
                       {info?.position}
                     </td>
@@ -42,7 +42,7 @@ function UserInfo({ info }) {
                     </td>
                     <td
                       className="px-2 py-2 text-gray-800 font-semibold select-none
-                    transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
+                   "
                     >
                       {info?.birthdate}
                     </td>
@@ -53,7 +53,7 @@ function UserInfo({ info }) {
                     </td>
                     <td
                       className="px-2 py-2 text-gray-800 font-semibold select-none
-                    transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
+                    "
                     >
                       {info?.phone_num}
                     </td>
@@ -64,7 +64,7 @@ function UserInfo({ info }) {
                     </td>
                     <td
                       className="px-2 py-2 text-gray-800 font-semibold select-none
-                    transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-100"
+                   "
                     >
                       {info?.email}
                     </td>
@@ -75,7 +75,7 @@ function UserInfo({ info }) {
               <div className="text-center my-3">
                 <div>
                   <button
-                    className="bg-blue-500 mt-3 text-white hover:bg-blue-400 text-sm font-bold uppercase px-3 py-2 rounded-full
+                    className="bg-indigo-500 mt-3 text-white hover:bg-indigo-400 text-sm font-bold uppercase px-3 py-2 rounded-full
                     "
                     type="button"
                   >
