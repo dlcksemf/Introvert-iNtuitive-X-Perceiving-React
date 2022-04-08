@@ -126,15 +126,18 @@ function AdminBookForm({ postId, handleDidSave }) {
         `저장 중 에러가 발생했습니다 (${saveError.response?.status} ${saveError.response?.statusText})`}
       {/* <form onSubmit={handleSubmit}> */}
       <form>
-        <div className="">
-          <div className="max-w-3xl mx-auto px-4 py-10 shadow-xl">
-            <div className="py-10">
-              <label className="font-bold mb-2 text-gray-700 block text-center">
-                도서 표지
+        <div className="my-20">
+          <div className="max-w-3xl mx-auto px-20 py-10 shadow-xl">
+            <div className="py-5">
+              <label className="font-bold mb-7 text-2xl text-gray-700 block text-center">
+                도서 등록
               </label>
 
               <div>
-                <div style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <div
+                  className="mb-3"
+                  style={{ alignItems: 'center', justifyContent: 'center' }}
+                >
                   <input
                     name="cover_photo"
                     style={{ display: 'none' }}
@@ -145,13 +148,13 @@ function AdminBookForm({ postId, handleDidSave }) {
                       encodeFileToBase64(e, e.target.files[0]);
                     }}
                   />
-                  <div className="hover:text-indigo-400">
+                  <div className="font-semibold text-indigo-600 hover:text-indigo-700">
                     <label
                       for="img"
-                      className="cursor-pointer
-                      transition duration-500 ease-in-out hover:scale-110"
+                      className="cursor-pointer 
+                      "
                     >
-                      도서 표지 등록하기
+                      📙 도서 표지 등록하기
                     </label>
                   </div>
                 </div>
@@ -331,7 +334,12 @@ function AdminBookForm({ postId, handleDidSave }) {
 
             <div className="my-3 text-center">
               <Button onClick={handleSubmit}>저장하기</Button>
-              <Button onClick={handleCancleButton}>취소하기</Button>
+              <button
+                className="border border-gray-400 text-gray-500 font-bold py-2 px-4 mr-3 rounded hover:text-gray-700"
+                onClick={handleCancleButton}
+              >
+                <p className="">취소하기</p>
+              </button>
             </div>
           </div>
         </div>
