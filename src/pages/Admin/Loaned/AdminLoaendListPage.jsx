@@ -7,15 +7,14 @@ function AdminLoanedListPage() {
   const [showGameLoaned, setShowGameLoaned] = useState(false);
   return (
     <div>
-      <div className="ml-48">
+      <div className="ml-32">
         <button
           className={`${
-            showBookLoaned
-              ? 'bg-amber-500 text-white border-none px-5 py-2.5'
-              : 'text-gray-800'
+            showBookLoaned ? 'bg-indigo-600 text-white' : 'text-gray-800'
           }
-        bottom-20 border-2 border-amber-500 px-3 mr-2
-        text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
+          bottom-20 border border-indigo-600 px-5 mr-2 py-2.5
+          text-sm font-semibold tracking-wider rounded-full hover:bg-indigo-600 hover:text-white
+  
         `}
           onClick={() => setShowBookLoaned(true)}
           onClickCapture={() => {
@@ -27,12 +26,10 @@ function AdminLoanedListPage() {
 
         <button
           className={`${
-            showGameLoaned
-              ? 'bg-amber-500 text-white border-none px-5 py-2.5'
-              : 'text-gray-800'
+            showGameLoaned ? 'bg-indigo-600 text-white' : 'text-gray-800'
           }
-         bottom-20 border-2 border-amber-500 px-3 mr-2
-         text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
+          bottom-20 border border-indigo-600 px-5 mr-2 py-2.5
+          text-sm font-semibold tracking-wider rounded-full hover:bg-indigo-600 hover:text-white
         `}
           onClick={() => setShowGameLoaned(true)}
           onClickCapture={() => {
