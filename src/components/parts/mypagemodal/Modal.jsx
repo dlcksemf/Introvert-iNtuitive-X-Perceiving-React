@@ -27,7 +27,6 @@ const TitleList = {
     title: '제목',
     writer: '저자',
     state: '상태',
-    return_due_date: '반납 예정일',
   },
 };
 

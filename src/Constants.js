@@ -18,7 +18,6 @@ const STATELIST = {
     ALL: '전체',
     A: '대여 가능',
     B: '대여 불가',
-    D: '삭제',
   },
   game: {
     ALL: '전체',
