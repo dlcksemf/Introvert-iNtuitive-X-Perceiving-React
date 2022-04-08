@@ -32,7 +32,7 @@ function AdminLoanedGameList() {
       const params = {
         page: newPage,
         query: newQuery,
-        state: category === 'ALL' ? '' : category,
+        return_state: category === 'ALL' ? '' : category,
       };
       const { data } = await getApplications({ params });
 
@@ -67,7 +67,7 @@ function AdminLoanedGameList() {
             </p>
 
             <div className="flex items-center">
-              {Object.values(STATELIST.game).map((state, index) => (
+              {Object.values(STATELIST.game).map((return_state, index) => (
                 <div
                   key={index}
                   className="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-2"
@@ -82,7 +82,7 @@ function AdminLoanedGameList() {
                       'bg-indigo-100 text-indigo-700'
                     } text-gray-600 hover:text-indigo-700 hover:bg-indigo-100 rounded-full`}
                   >
-                    {state}
+                    {return_state}
                   </button>
                 </div>
               ))}
