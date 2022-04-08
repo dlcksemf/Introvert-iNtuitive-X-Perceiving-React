@@ -20,7 +20,7 @@ function GuidePage() {
 
   return (
     <div className="mt-3">
-      <div className="flex justify-center mt-80">
+      <div className="flex justify-center mt-72">
         <div className="w-1/2">
           <div className="bg-white relative rounded-lg p-4 sm:p-4 md:p-8 lg:p-12 shadow-lg border-2 border-gray-200">
             <h1
@@ -83,7 +83,7 @@ function GuidePage() {
         </div>
       </div>
       <div>
-        <div className="flex items-center p-5 w-full h-full bg-white mt-96 mb-10">
+        <div className="flex items-center p-5 w-full h-full bg-white mt-52 mb-10">
           <div className=" grid grid-cols-2 m-auto">
             <div className="flex flex-col justify-right">
               <iframe
