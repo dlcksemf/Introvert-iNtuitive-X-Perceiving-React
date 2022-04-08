@@ -109,7 +109,7 @@ function AdminApplicationList() {
                   </td>
                   <td className="pl-3">
                     <div className="flex items-center justify-center">
-                      <p className="text-sm leading-none text-gray-600 ml-2 select-none">
+                      <p className="text-sm leading-none text-gray-600 select-none mr-2">
                         주문 상태
                       </p>
                     </div>

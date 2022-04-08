@@ -34,12 +34,16 @@ function AdminApplication({ application, reload }) {
   );
 
   const handleStateClick = (e) => {
+    let today = new Date();
+    const date = new Date(+new Date(today) + 3240 * 10000)
+      .toISOString()
+      .split('T')[0];
     e.preventDefault();
     const { value } = e.target;
 
     window.confirm(`도서를 ${value === 'O' ? '주문' : '반려'} 하시겠습니까?`) &&
       saveApplication({
-        data: { state: value },
+        data: { state: value, confirm_date: date },
       })
         .then(() => {
           reload();
@@ -129,14 +133,15 @@ function AdminApplication({ application, reload }) {
       <td className="pl-7">
         <div className="flex items-center">
           <p className="text-sm leading-none text-gray-600 ml-2">
-            {application.created_at}
+            {application.created_at.slice(0, 10)}
           </p>
         </div>
       </td>
       <td className="pl-7">
         <div className="flex items-center">
           <p className="text-sm leading-none text-gray-600 ml-2">
-            {application.state !== 'P' ? application.updated_at : ''}
+            {/* {application.state !== 'P' ? application.updated_at : ''} */}
+            {application.confirm_date}
           </p>
         </div>
       </td>
