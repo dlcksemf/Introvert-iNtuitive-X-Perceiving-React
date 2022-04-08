@@ -16,17 +16,21 @@ function GameSummary({ game }) {
               src={game.game_cover_photo}
               alt={game.game_name}
               className="w-full"
+              //여기 result 없애주세요
             />
           </Link>
         )}
         {!game?.game_cover_photo && (
           <Link to={`/game/${game.game_num}/`}>
+            {/* 여기 result 없애주세요 */}
             <img src={non_image} alt={game.game_name} className="w-full" />
           </Link>
+          //여기 result 없애주세요
         )}
         <div className="p-8 sm:p-9 md:p-7 xl:p-9">
           <h3 className="font-semibold text-dark text-center">
             <Link to={`/game/${game.game_num}/`}>{game.game_name}</Link>
+            {/* 여기 result 없애주세요 */}
           </h3>
         </div>
       </div>

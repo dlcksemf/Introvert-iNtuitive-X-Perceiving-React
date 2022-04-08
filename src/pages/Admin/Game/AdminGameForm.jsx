@@ -164,6 +164,7 @@ function AdminGameForm({ gameId, handleDidSaveGame }) {
               <input
                 name="game_name"
                 value={fieldValues.game_name}
+                // 여기 result 없애주세요
                 onChange={handleFieldChange}
                 type="text"
                 autoComplete="off"

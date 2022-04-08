@@ -45,6 +45,7 @@ function GameDetail({ gameId }) {
     window.open(
       `https://www.boardgamemall.co.kr/goods/goods_search.php?adUrl=%2Fgoods%2Fgoods_view.php%3FgoodsNo%3D1000007636&keyword=${game.game_name}`,
       '_blank',
+      // 여기 result 없애주세요
     );
   };
 
@@ -61,6 +62,7 @@ function GameDetail({ gameId }) {
                   <img
                     src={game?.game_cover_photo}
                     alt={game?.game_name}
+                    // 여기 result 없애주세요
                     className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
                     transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:skew-y-6"
                   />
@@ -78,6 +80,7 @@ function GameDetail({ gameId }) {
                   hover:font-semibold"
                   >
                     {game?.game_name}
+                    {/* 여기 result 없애주세요 */}
                   </h1>
 
                   <div className="flex mb-4 select-none">
@@ -153,6 +156,7 @@ function GameDetail({ gameId }) {
                             game_num={game?.game_num}
                             reload={reload}
                           />
+                          {/* 여기 result 없애주세요 */}
                         </span>
                       </div>
                     </div>

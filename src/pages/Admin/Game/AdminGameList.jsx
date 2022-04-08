@@ -66,6 +66,7 @@ function AdminGameList() {
           {gameList?.results?.map((game) => (
             <div
               key={game.game_num}
+              // 여기 result 없애주세요
               className="w-full md:w-1/2 xl:w-1/3 px-4 transition-transform hover:-translate-y-5 duration-300"
             >
               <AdminGameSummary game={game} />

@@ -51,6 +51,7 @@ function AdminGameDetail({ gameId }) {
                   <img
                     src={game?.game_cover_photo}
                     alt={game?.game_name}
+                    // 여기 result 없애주세요
                     className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
                     transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:skew-y-6"
                   />
@@ -68,6 +69,7 @@ function AdminGameDetail({ gameId }) {
                   hover:font-semibold"
                   >
                     {game?.game_name}
+                    {/* 여기 result 없애주세요 */}
                   </h1>
 
                   <div className="flex mb-4 select-none">

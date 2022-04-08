@@ -11,6 +11,7 @@ function AdminGameFormPage() {
       gameId={gameId}
       handleDidSaveGame={(savedGame) => {
         navigate(`/admin/gamelist/${savedGame.game_num}/`);
+        // /* 여기 result 없애주세요 */
       }}
     />
   );
