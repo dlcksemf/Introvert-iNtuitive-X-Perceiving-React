@@ -77,7 +77,7 @@ function MyPage() {
                                     }
                           bottom-20 border-2 border-blue-500 px-3 mr-2
                           
-                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
+                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-blue-400 
                          `}
                                     onClick={() => setShowLoaned(true)}
                                     onClickCapture={() => {
@@ -95,7 +95,7 @@ function MyPage() {
                                         : 'text-gray-800'
                                     }
                                     bottom-20 border-2 border-blue-500 px-3 mr-2
-                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
+                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-blue-400
                         `}
                                     onClick={() => setShowGame(true)}
                                     onClickCapture={() => {
@@ -113,7 +113,7 @@ function MyPage() {
                                         : 'text-gray-800'
                                     }
                           px-4 py-2 border-2 border-blue-500
-                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
+                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-blue-400
                        `}
                                     onClick={() => setShowWish(true)}
                                     onClickCapture={() => {
