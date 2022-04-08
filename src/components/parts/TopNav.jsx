@@ -100,7 +100,7 @@ function TopNav() {
               </header>
             </div>
             <div>
-              <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 pt-5 pl-3 focus:outline-none rounded text-base mt-8 md:mt-0">
+              <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 pt-5 pr-12 focus:outline-none rounded text-base mt-8 md:mt-0">
                 {!auth.isLoggedIn && (
                   <NavLink
                     className="font-semibold select-none mr-3 "
@@ -132,11 +132,6 @@ function TopNav() {
                     </button>
                   </div>
                 )}
-                <img
-                  src={search}
-                  alt="검색"
-                  className="mr-12 h-9 w-9 flex justify-end "
-                />
               </div>
             </div>
           </div>
@@ -195,11 +190,6 @@ function TopNav() {
                   </button>
                 </div>
               )}
-              <img
-                src={search}
-                alt="검색"
-                className="h-9 w-9 flex justify-end "
-              />
             </div>
           </div>
           <div>
