@@ -21,7 +21,7 @@ function WishBooksList({ wishBookList }) {
               </tr>
             </thead>
             <tbody>
-              {wishBookList?.slice(0, 3).map((book, index) => {
+              {wishBookList?.slice(0, 9).map((book, index) => {
                 return <WishBooks key={index} book={book} />;
               })}
             </tbody>
