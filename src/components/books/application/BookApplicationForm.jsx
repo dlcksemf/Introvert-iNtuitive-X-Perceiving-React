@@ -93,69 +93,76 @@ function BookApplicationForm() {
 
   return (
     <div>
-      <div className="flex justify-center relative top-[120px] mb-[175px]">
+      <div className="flex justify-center relative top-[30px] mb-[187px]">
         <div className="w-1/2">
-          <div className="bg-white relative rounded-lg p-4 sm:p-4 md:p-8 lg:p-12 shadow-lg border-2 border-gray-200">
-            <h2 className="mb-8 text-center text-2xl text-gray-600 font-bold font-sans select-none">
-              📚 도서 신청 📖
+          <div className="bg-white relative rounded-lg p-4 sm:p-4 md:p-8 lg:p-12">
+            <h2 className="relative bottom-[40px] text-center text-2xl font-medium title-font text-gray-900 select-none">
+              도서 신청
             </h2>
-            <button className="mb-2 text-sm text-indigo-900" onClick={Link}>
-              ISBN 찾기
-            </button>
+            <div className="flex justify-center">
+              <button
+                className="relative right-[125px] mb-4 text-sm text-indigo-700 font-bold select-none"
+                onClick={Link}
+              >
+                ISBN 찾기
+              </button>
+            </div>
             <div>
               <BookApplicationSearch
                 handleSubmit={handleSubmit}
                 setQuery={setQuery}
-                className="w-full"
+                className="w-full select-none"
               />
 
               {!data?.items[0]?.image ? (
                 data?.items && (
-                  <div className="text-red-400 font-sm">
+                  <div className="text-red-400 font-sm select-none">
                     검색결과가 없습니다.
                   </div>
                 )
               ) : (
                 <>
-                  <div>
+                  <div className="flex justify-start">
                     <img
-                      className="w-28 mt-2"
+                      className="shadow-lg w-[150px] select-none relative top-[55px] left-[170px]"
                       src={data?.items[0].image}
                       alt=""
                     />
                   </div>
                   <form onClick={handleClickSubmitButton}>
                     <div>
-                      <p className="mt-3 text-lg font-bold">
+                      <p className="relative bottom-[110px] left-[80px] text-center text-lg font-bold select-none">
                         {data?.items[0].title}
                       </p>
                     </div>
                     <div>
-                      <p>
+                      <p className="relative bottom-[90px] left-[80px] text-center select-none">
                         {data?.items[0].author} | {data?.items[0].publisher}
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-gray-500 text-sm">
+                      <p className="text-gray-500 text-sm select-none text-center relative bottom-[70px] left-[80px]">
                         ISBN: {data?.items[0].isbn.slice(-13)}
                       </p>
                     </div>
 
-                    <div>
+                    <div className="flex justify-center">
                       <button
-                        className="
-                w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white
-                tracking-wide font-semibold font-sans hover:bg-indigo-700"
+                        className="relative top-[50px]
+                w-1/2 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white
+                tracking-wide font-semibold font-sans hover:bg-indigo-700 select-none"
                       >
                         신청하기
                       </button>
+                    </div>
 
+                    <div className="flex justify-center">
                       <button
                         onClick={handleClickCancleButton}
-                        className="
-                w-full mt-6 mb-3 bg-gray-300 rounded-lg px-4 py-2 text-lg text-gray-800 
-                tracking-wide font-semibold font-sans hover:bg-indigo-200"
+                        className=" relative top-[60px]
+                w-1/2 bg-gray-300 rounded-lg px-4 py-2 text-lg text-gray-800 
+                tracking-wide font-semibold font-sans hover:bg-indigo-200 select-none"
                       >
                         취소
                       </button>

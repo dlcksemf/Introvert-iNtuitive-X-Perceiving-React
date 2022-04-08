@@ -23,6 +23,15 @@ function ModalComponent({ titleList, bookInfo, modalType }) {
         ]);
       } else if (title === 'created_at') {
         setContentList((prev) => [...prev, bookInfo[title].substring(0, 10)]);
+      } else if (title === 'writer') {
+        if (bookInfo[title].length > 20) {
+          setContentList((prev) => [
+            ...prev,
+            bookInfo[title].slice(0, 20) + '...',
+          ]);
+        } else {
+          setContentList((prev) => [...prev, bookInfo[title]]);
+        }
       } else {
         setContentList((prev) => [...prev, bookInfo[title]]);
       }
