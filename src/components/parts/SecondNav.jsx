@@ -1,9 +1,8 @@
 import { useAuth } from 'base/hooks/Authcontext';
 import { useState, useEffect } from 'react';
-import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import name from 'components/parts/image/euclidLibrary.png';
 import user from 'components/parts/image/user.png';
-import SearchDrawer from 'components/parts/SearchDrawer';
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -21,10 +20,6 @@ const useScroll = () => {
 };
 
 function SecondNav() {
-  let [searchParams] = useSearchParams();
-  let queryParams = searchParams.get('query');
-  let categoryParams = searchParams.get('category');
-
   const navigate = useNavigate();
   const [auth] = useAuth();
 
@@ -35,18 +30,6 @@ function SecondNav() {
     }
   };
   const { y } = useScroll();
-
-  const [query, setQuery] = useState(queryParams || '');
-
-  const [category, setCategory] = useState(() => {
-    return categoryParams ? categoryParams : '카테고리';
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    navigate(`/books/booklist/?page=1&category=${category}&query=${query}`);
-  };
 
   if (y > 80) {
     return (
@@ -141,12 +124,6 @@ function SecondNav() {
                   </div>
                 )}
               </div>
-              <div className="absolute bottom-[38px] left-[177px] select-none">
-                <SearchDrawer
-                  handleChange={setQuery}
-                  handleSubmit={handleSubmit}
-                />
-              </div>
             </div>
           </div>
         </header>
@@ -211,9 +188,6 @@ function SecondNav() {
             </div>
           </div>
           <div>
-            <div className="relative bottom-[98px] left-[1468px] select-none">
-              <SearchDrawer />
-            </div>
             <header className=" grid grid-cols-8 text-center text-xl">
               <div
                 className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
