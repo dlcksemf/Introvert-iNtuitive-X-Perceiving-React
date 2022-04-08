@@ -17,20 +17,20 @@ function BookApplicationComponent({ application }) {
     <>
       <React.Fragment>
         {application && (
-          <tr>
-            <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+          <tr className="bg-white border-b">
+            <th className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 text-left">
               {application.title}
             </th>
-            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
               {application.writer}
             </td>
-            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
               {application.publisher}
             </td>
-            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
               {application.ISBN}
             </td>
-            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
               <Badge color={color}>
                 {STATELIST.application[application.state]}
               </Badge>

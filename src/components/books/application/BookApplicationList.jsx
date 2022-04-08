@@ -121,25 +121,25 @@ function BookApplicationList() {
             도서 신청
           </button>
         </div>
-        <section className="py-1 bg-blueGray-50">
+        <section className="py-1">
           <div className="w-full xl:mb-0 px-4">
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-md rounded ">
               <table className="items-center bg-transparent w-full border-collapse mt-1 select-none">
-                <thead>
+                <thead className="bg-white border-b">
                   <tr>
-                    <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th className="text-sm font-bold text-gray-900 px-6 py-4 text-left">
                       도서명
                     </th>
-                    <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th className="text-sm font-bold text-gray-900 px-6 py-4 text-left">
                       저자
                     </th>
-                    <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th className="text-sm font-bold text-gray-900 px-6 py-4 text-left">
                       출판사
                     </th>
-                    <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th className="text-sm font-bold text-gray-900 px-6 py-4 text-left">
                       ISBN
                     </th>
-                    <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th className="text-sm font-bold text-gray-900 px-6 py-4 text-left">
                       신청상태
                     </th>
                   </tr>
