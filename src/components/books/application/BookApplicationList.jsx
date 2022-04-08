@@ -82,7 +82,7 @@ function BookApplicationList() {
     <div className="w-[1050px] m-auto">
       <div className="flex flex-col text-center w-full">
         <div className="flex justify-end">
-          <h3 className="mt-[65px] text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mb-8 mt-4 select-none">
+          <h3 className="mt-[40px] text-2xl font-bold title-font text-gray-900 tracking-widest m-auto mb-8 mt-4 select-none">
             신청 도서 목록
           </h3>
           <div className="absolute flex justify-end items-end mb-28 mr-4">
@@ -98,12 +98,6 @@ function BookApplicationList() {
             </div>
           </div>
         </div>
-        <button
-          onClick={handleClick}
-          className="font-bold text-indigo-700 relative bottom-5 text-lg"
-        >
-          도서 신청 하기
-        </button>
       </div>
 
       <div>
@@ -112,7 +106,7 @@ function BookApplicationList() {
             <input
               type="checkbox"
               value={checked}
-              className="form-checkbox h-5 w-5 text-yellow-600"
+              className="form-checkbox h-3 w-3 text-yellow-600"
               onChange={(e) => {
                 setChecked(e.target.checked);
               }}
@@ -120,11 +114,20 @@ function BookApplicationList() {
             <div className="ml-2 text-gray-700">본인 신청 도서</div>
           </label>
         </div>
-        <section className="py-1">
+        <button
+          onClick={handleClick}
+          className="bg-indigo-400 text-white
+          bottom-20 px-7 ml-3 py-2
+          text-md font-semibold tracking-wider rounded-full hover:bg-indigo-500
+          "
+        >
+          도서 신청하기
+        </button>
+        <section className="py-3">
           <div className="w-full xl:mb-0 px-4">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-md rounded ">
               <table className="items-center bg-transparent w-full border-collapse mt-1 select-none">
-                <thead className="bg-white border-b">
+                <thead className="bg-gray-100 border-b">
                   <tr>
                     <th className="text-sm font-bold text-gray-900 px-6 py-4 text-left">
                       도서명
