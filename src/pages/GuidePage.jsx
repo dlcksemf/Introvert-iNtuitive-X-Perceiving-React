@@ -20,7 +20,7 @@ function GuidePage() {
 
   return (
     <div className="mt-3">
-      <div className="h-screen flex justify-center mt-80">
+      <div className="flex justify-center mt-80">
         <div className="w-1/2">
           <div className="bg-white relative rounded-lg p-4 sm:p-4 md:p-8 lg:p-12 shadow-lg border-2 border-gray-200">
             <h1

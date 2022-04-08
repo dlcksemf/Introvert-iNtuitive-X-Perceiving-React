@@ -126,7 +126,7 @@ function AdminBookForm({ postId, handleDidSave }) {
         `저장 중 에러가 발생했습니다 (${saveError.response?.status} ${saveError.response?.statusText})`}
       {/* <form onSubmit={handleSubmit}> */}
       <form>
-        <div className="h-screen">
+        <div className="">
           <div className="max-w-3xl mx-auto px-4 py-10 shadow-xl">
             <div className="py-10">
               <label className="font-bold mb-2 text-gray-700 block text-center">
@@ -148,7 +148,7 @@ function AdminBookForm({ postId, handleDidSave }) {
                   <div className="hover:text-indigo-400">
                     <label
                       for="img"
-                      className="cursor-pointer flex justify-center
+                      className="cursor-pointer
                       transition duration-500 ease-in-out hover:scale-110"
                     >
                       도서 표지 등록하기

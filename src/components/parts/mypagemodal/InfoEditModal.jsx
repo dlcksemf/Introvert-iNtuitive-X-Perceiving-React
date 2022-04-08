@@ -65,7 +65,7 @@ function InfoEditModal() {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className=" flex justify-center items-center">
       <div className="w-2/3">
         <form
           className="bg-white p-10 rounded-lg shadow-lg min-w-full"
