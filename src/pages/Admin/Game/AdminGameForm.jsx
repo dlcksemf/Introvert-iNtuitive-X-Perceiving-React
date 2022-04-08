@@ -110,7 +110,7 @@ function AdminGameForm({ gameId, handleDidSaveGame }) {
         `저장 중 에러가 발생했습니다 (${saveError.response?.status} ${saveError.response?.statusText})`}
       {/* <form onSubmit={handleSubmit}> */}
       <form>
-        <div className="h-screen">
+        <div className="">
           <div className="max-w-3xl mx-auto px-4 py-10 shadow-xl">
             <div className="py-10">
               <label className="font-bold mb-2 text-gray-700 block text-center">
