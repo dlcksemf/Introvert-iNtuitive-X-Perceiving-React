@@ -1,38 +1,112 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import non_image from 'components/parts/image/non_image.jpg';
 import { useAuth } from 'base/hooks/Authcontext';
 import { useEffect, useState } from 'react';
 import { useApiAxios } from 'base/api/base';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
+import GameLoanedModal from 'components/parts/GameLoanedModal';
+import LoanedIcon from 'designMaterials/LoanedIcon';
 
+function truncateString(str) {
+  if (str.length > 70) {
+    return str.slice(0, 70) + '...';
+  } else {
+    return str;
+  }
+}
 function GameSummary({ game }) {
+  const [auth] = useAuth();
+  const navigate = useNavigate();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  let location = useLocation();
+
+  const [{}, refetch] = useApiAxios(
+    {
+      url: `/game/api/game/`,
+      method: 'GET',
+    },
+    { manual: true },
+  );
+
+  const handleClickLoan = () => {
+    auth.isLoggedIn
+      ? setModalIsOpen(true)
+      : window.confirm('로그인 후 이용해주세요') &&
+        navigate('/accounts/login/');
+  };
+
+  const reload = () => {
+    refetch();
+  };
+
   return (
-    <div className="m-auto px-4 py-4 max-w-xl">
-      <div className="bg-gray-100 hover:bg-indigo-100 border-gray-100 border-2 rounded-lg overflow-hidden mb-10">
-        {game.game_cover_photo && (
-          <Link to={`/game/${game.game_num}/`}>
-            <img
-              src={game.game_cover_photo}
-              alt={game.game_name}
-              className="w-full"
-              //여기 result 없애주세요
-            />
-          </Link>
-        )}
-        {!game?.game_cover_photo && (
-          <Link to={`/game/${game.game_num}/`}>
-            {/* 여기 result 없애주세요 */}
-            <img src={non_image} alt={game.game_name} className="w-full" />
-          </Link>
-          //여기 result 없애주세요
-        )}
-        <div className="p-8 sm:p-9 md:p-7 xl:p-9">
-          <h3 className="font-semibold text-dark text-center">
-            <Link to={`/game/${game.game_num}/`}>{game.game_name}</Link>
-            {/* 여기 result 없애주세요 */}
-          </h3>
-        </div>
+    <div className="px-[90px] py-[15px] lg:w-1/2">
+      <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+        <img
+          alt={game.game_name}
+          src={game?.game_cover_photo ? game?.game_cover_photo : non_image}
+          className="flex-shrink-0 w-[250px] h-[300px] object-scale-down object-center sm:mb-0 cursor-pointer
+          inline-block m-auto mt-40"
+          onClick={() => {
+            navigate(`/game/${game.game_num}/`);
+          }}
+        />
+        <span className="absolute inline-flex mt-96">
+          {game?.game_state === 'A' ? (
+            <div onClick={handleClickLoan} className="flex ml-[280px]">
+              <h1 className="m-auto select-none">대여하기</h1>
+              <LoanedIcon />
+            </div>
+          ) : (
+            <div className="flex m-auto ml-[280px] select-none hover:text-indigo-700">
+              <h1 className="mr-1">반납 예정 |</h1>
+              {game?.loaned_game[0]?.return_due_time
+                .replace('T', ' ')
+                .substring(0, 16)}
+            </div>
+          )}
+          <GameLoanedModal
+            ariaHideApp={false}
+            modalIsOpen={modalIsOpen}
+            setModalIsOpen={setModalIsOpen}
+            game_num={game?.game_num}
+            reload={reload}
+          />
+        </span>
+
+        <Link
+          to={`/game/${game.game_num}/`}
+          state={{ beforeLocation: location.search }}
+        >
+          <div className="flex-grow sm:pl-8 mt-36">
+            <h3 className="text-sm text-gray-500 mb-3 select-none flex cursor-default">
+              {game?.player_num && `[ ${game?.player_num} ]`}
+            </h3>
+            <h2
+              className="absolute title-font font-medium text-lg text-black 
+              cursor-pointer grid font-semibold"
+              onClick={() => {
+                navigate(`/game/${game.game_num}/`);
+              }}
+            >
+              {game.game_name}
+            </h2>
+            <h3 className="mt-12 text-sm text-gray-500 select-none cursor-default">
+              {game.level} | {game.play_time} | {game.game_amount} 개
+            </h3>
+            <p
+              className="font-medium text-base mb-4 mt-6 select-none cursor-pointer"
+              onClick={() => {
+                navigate(`/game/${game.game_num}/`);
+              }}
+            >
+              {game.game_rule
+                ? truncateString(game.game_rule)
+                : truncateString('')}
+            </p>
+          </div>
+        </Link>
       </div>
     </div>
   );

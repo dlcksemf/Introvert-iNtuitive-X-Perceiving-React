@@ -6,7 +6,6 @@ import non_image from 'components/parts/image/non_image.jpg';
 import { useAuth } from 'base/hooks/Authcontext';
 import LoanedIcon from 'designMaterials/LoanedIcon';
 import GameLoanedModal from 'components/parts/GameLoanedModal';
-import { GameReviewSummary } from './GameSummary';
 import GameReviewPage from 'pages/GameReviewPage';
 
 function GameDetail({ gameId }) {
@@ -15,7 +14,6 @@ function GameDetail({ gameId }) {
   const [reloading, setReloading] = useState(false);
   const [auth] = useAuth();
   let location = useLocation();
-  console.log(location);
   let { pathname, state } = location;
 
   const [{ data: game, loading, error }, refetch] = useApiAxios(
@@ -33,7 +31,7 @@ function GameDetail({ gameId }) {
   const handleClickLoan = () => {
     auth.isLoggedIn
       ? setModalIsOpen(true)
-      : window.confirm('로그인 후 이용해주세요🎈') &&
+      : window.confirm('로그인 후 이용해주세요') &&
         navigate('/accounts/login/');
   };
 
@@ -45,7 +43,6 @@ function GameDetail({ gameId }) {
     window.open(
       `https://www.boardgamemall.co.kr/goods/goods_search.php?adUrl=%2Fgoods%2Fgoods_view.php%3FgoodsNo%3D1000007636&keyword=${game.game_name}`,
       '_blank',
-      // 여기 result 없애주세요
     );
   };
 
@@ -62,7 +59,6 @@ function GameDetail({ gameId }) {
                   <img
                     src={game?.game_cover_photo}
                     alt={game?.game_name}
-                    // 여기 result 없애주세요
                     className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
                    "
                   />
@@ -75,26 +71,27 @@ function GameDetail({ gameId }) {
                   />
                 )}
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                  {game?.player_num && (
+                    <h2 className="text-sm title-font text-gray-500 tracking-widest select-none mt-5 mb-3">
+                      [ {game?.player_num} ]
+                    </h2>
+                  )}
                   <h1
                     className="text-gray-900 text-3xl title-font font-medium mb-5 select-none
                   hover:font-semibold"
                   >
                     {game?.game_name}
-                    {/* 여기 result 없애주세요 */}
                   </h1>
 
                   <div className="flex mb-4 select-none">
-                    <span className="flex py-2 select-none">
-                      플레이어 수:{game?.player_num}
+                    <span className="flex py-2 space-x-2s select-none">
+                      {game?.play_time}
                     </span>
                     <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      플레이 시간:{game?.play_time}
+                      {game?.level}
                     </span>
                     <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      난이도:{game?.level}
-                    </span>
-                    <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      수량:{game?.game_amount}
+                      {game?.game_amount} 개
                     </span>
                   </div>
                   <div className="leading-relaxed select-none mt-14 hover:text-gray-900 mb-20">
@@ -105,10 +102,9 @@ function GameDetail({ gameId }) {
                   <div className="flex mt-10 items-center pb-5 border-b-2 border-gray-100 mb-5">
                     <button
                       onClick={buyLink}
-                      className="text-gray-600 text-s mb-20 hover:text-indigo-700 hover:font-bold
-                      transition duration-500 ease-in-out hover:scale-105"
+                      className="text-indigo-900 text-s mb-20 hover:font-bold"
                     >
-                      보드게임몰에서 게임찾기
+                      @보드게임몰에서 게임찾기
                     </button>
                   </div>
 
@@ -146,7 +142,7 @@ function GameDetail({ gameId }) {
 
                           {game?.game_state !== 'A' && (
                             <p className="m-auto select-none hover:text-indigo-600">
-                              반납 예정 시간 : {''}
+                              반납 시간 :: {''}
                               {game?.loaned_game[0]?.return_due_time
                                 .replace('T', ' ')
                                 .substring(0, 16)}
@@ -159,7 +155,6 @@ function GameDetail({ gameId }) {
                             game_num={game?.game_num}
                             reload={reload}
                           />
-                          {/* 여기 result 없애주세요 */}
                         </span>
                       </div>
                     </div>

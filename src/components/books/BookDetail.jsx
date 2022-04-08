@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { useAuth } from 'base/hooks/Authcontext';
 import { useApiAxios } from 'base/api/base';
@@ -13,15 +13,13 @@ import non_image from 'components/parts/image/non_image.jpg';
 import { ToastContainer } from 'react-toastify';
 import ReviewPage from 'pages/ReviewPage';
 
-function BookDetail({ book_num, review_num }) {
+function BookDetail({ book_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [reloading, setReloading] = useState(false);
   const [auth] = useAuth();
   const navigate = useNavigate();
   let location = useLocation();
   let { pathname, state } = location;
-
-  console.log(location);
 
   const [{ data: book, loading, error }, refetch] = useApiAxios(
     {
@@ -55,7 +53,7 @@ function BookDetail({ book_num, review_num }) {
   const handleClickLoan = () => {
     auth.isLoggedIn
       ? setModalIsOpen(true)
-      : window.confirm('로그인 후 이용해주세요🎈') &&
+      : window.confirm('로그인 후 이용해주세요') &&
         navigate('/accounts/login/');
   };
 
@@ -66,7 +64,6 @@ function BookDetail({ book_num, review_num }) {
     );
   };
 
-  console.log(book);
   return (
     <div>
       {loading && <LoadingIndicator />}
@@ -121,7 +118,7 @@ function BookDetail({ book_num, review_num }) {
                       ISBN {book?.ISBN}
                     </span>
                     <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      수량 : {book?.amount}
+                      {book?.amount} 권
                     </span>
                   </div>
                   <div className="leading-relaxed select-none mt-14 hover:text-gray-900">

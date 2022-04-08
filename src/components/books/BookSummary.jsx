@@ -124,7 +124,7 @@ function BookSummary({ book, reloadBook }) {
               {book.title}
             </h2>
             <h3 className="mt-12 text-sm text-gray-500 select-none cursor-default">
-              {book.writer} | 수량:: {book.amount}
+              {book.writer} | {book.amount} 권
             </h3>
             <p
               className="font-medium text-base mb-4 mt-6 select-none cursor-pointer"
