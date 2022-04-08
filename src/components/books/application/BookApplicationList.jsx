@@ -83,7 +83,7 @@ function BookApplicationList() {
       <div className="flex flex-col text-center w-full">
         <div className="flex justify-end">
           <h3 className="mt-[65px] text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mb-8 mt-4 select-none">
-            도서 신청 목록
+            신청 도서 목록
           </h3>
           <div className="absolute flex justify-end items-end mb-28 mr-4">
             <div>
@@ -93,16 +93,22 @@ function BookApplicationList() {
                 setSelected={setCategory}
               />
             </div>
-            <div className="mt-1">
+            <div className="relative top-[140px]">
               <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
             </div>
           </div>
         </div>
+        <button
+          onClick={handleClick}
+          className="font-bold text-indigo-700 relative bottom-5 text-lg"
+        >
+          도서 신청 하기
+        </button>
       </div>
 
       <div>
-        <div className="flex justify-between">
-          <label className="ml-4 inline-flex items-center mt-3">
+        <div className="flex justify-start">
+          <label className="ml-4 inline-flex items-center mt-3 mb-2">
             <input
               type="checkbox"
               value={checked}
@@ -113,13 +119,6 @@ function BookApplicationList() {
             />
             <div className="ml-2 text-gray-700">본인 신청 도서</div>
           </label>
-
-          <button
-            onClick={handleClick}
-            className="mr-5 bg-indigo-100 px-5 py-3 text-sm shadow-sm font-semibold tracking-wider text-black rounded-full hover:shadow-2xl hover:bg-indigo-200"
-          >
-            도서 신청
-          </button>
         </div>
         <section className="py-1">
           <div className="w-full xl:mb-0 px-4">

@@ -11,19 +11,19 @@ function SearchBar({ handleSubmit, handleChange }) {
     <div className="pt-2 relative mx-auto text-gray-600">
       <form onSubmit={handleSubmitButtonClicked}>
         <input
-          className="w-[200px] inline-block border-2 border-gray-300 bg-white h-10 px-5
-          pr-8 rounded-lg text-sm focus:outline-none"
+          className="w-[350px] inline-block border-b-2 border-gray-300 bg-white h-10 px-5
+          pr-8 text-sm focus:outline-none"
           type="search"
           name="search"
-          placeholder="검색어 입력"
+          placeholder="검색어를 입력해주세요 ex) 도서명/저자명/게임명"
+          autoComplete="off"
           onChange={(e) => {
             handleChange(e.target.value);
           }}
         />
         <button
           type="submit"
-          className="absolute right-0 top-0 mt-5 mr-4 hover:text-indigo-500
-          transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-90"
+          className="absolute right-0 top-0 mt-[17px] mr-4 text-indigo-700"
         >
           <svg
             style={{ width: 24 + 'px', height: 24 + 'px' }}
