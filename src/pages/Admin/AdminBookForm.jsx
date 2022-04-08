@@ -130,7 +130,7 @@ function AdminBookForm({ postId, handleDidSave }) {
           <div className="max-w-3xl mx-auto px-20 py-10 shadow-xl">
             <div className="py-5">
               <label className="font-bold mb-7 text-2xl text-gray-700 block text-center">
-                도서 표지
+                도서 등록
               </label>
 
               <div>
