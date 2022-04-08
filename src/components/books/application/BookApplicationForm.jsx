@@ -65,7 +65,7 @@ function BookApplicationForm() {
         },
       })
         .then((response) => {
-          toast.info(`💫 ${response.data.title}(이)가 신청 되었습니다`, {
+          toast.info(`${response.data.title}(이)가 신청 되었습니다`, {
             position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
@@ -129,7 +129,7 @@ function BookApplicationForm() {
                       alt=""
                     />
                   </div>
-                  <form onClick={handleClickSubmitButton}>
+                  <form>
                     <div>
                       <p className="relative bottom-[110px] left-[80px] text-center text-lg font-bold select-none">
                         {data?.items[0].title}
@@ -149,6 +149,7 @@ function BookApplicationForm() {
 
                     <div className="flex justify-center">
                       <button
+                        onClick={handleClickSubmitButton}
                         className="relative top-[50px]
                 w-1/2 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white
                 tracking-wide font-semibold font-sans hover:bg-indigo-700 select-none"
