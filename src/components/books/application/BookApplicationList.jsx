@@ -79,7 +79,7 @@ function BookApplicationList() {
   };
 
   return (
-    <div className="w-3/4 m-auto">
+    <div className="w-[1050px] m-auto">
       <div className="flex flex-col text-center w-full">
         <div className="flex justify-end">
           <h3 className="mt-[65px] text-2xl font-medium title-font text-gray-900 tracking-widest m-auto mb-8 mt-4 select-none">

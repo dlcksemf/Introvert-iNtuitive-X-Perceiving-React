@@ -64,7 +64,7 @@ function SecondNav() {
                     navigate(`/books/application/`);
                   }}
                 >
-                  도서신청
+                  신청도서
                 </div>
                 <div
                   className=" select-none transition duration-500 ease-in-out cursor-pointer
@@ -205,7 +205,7 @@ function SecondNav() {
                   navigate(`/books/application/`);
                 }}
               >
-                도서신청
+                신청도서
               </div>
               <div
                 className="col-start-5 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer

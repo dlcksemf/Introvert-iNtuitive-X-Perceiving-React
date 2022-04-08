@@ -11,11 +11,11 @@ function SearchBar({ handleSubmit, handleChange }) {
     <div className="pt-2 relative mx-auto text-gray-600">
       <form onSubmit={handleSubmitButtonClicked}>
         <input
-          className="w-[350px] inline-block border-b-2 border-gray-300 bg-white h-10 px-5
+          className="w-[250px] inline-block border-b-2 border-gray-300 bg-white h-10 px-5
           pr-8 text-sm focus:outline-none"
           type="search"
           name="search"
-          placeholder="검색어를 입력해주세요 ex) 도서명/저자명/게임명"
+          placeholder="도서명/저자명/게임명으로 검색"
           autoComplete="off"
           onChange={(e) => {
             handleChange(e.target.value);
