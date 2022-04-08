@@ -17,7 +17,7 @@ function AdminGameListPage() {
           "
         >
           <span
-            onClick={() => navigate('/admin/book/new/')}
+            onClick={() => navigate('/admin/game/new/')}
             className="relative "
           >
             새로운 게임 등록 🎮
