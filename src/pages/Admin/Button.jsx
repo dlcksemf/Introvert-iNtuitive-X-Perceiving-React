@@ -1,5 +1,5 @@
 const COLORS = {
-  primary: 'bg-blue-500 hover:bg-blue-700 text-white',
+  primary: 'bg-indigo-600 hover:bg-indigo-700 text-white',
   success: 'bg-green-500 hover:bg-green-700 text-white',
 };
 
