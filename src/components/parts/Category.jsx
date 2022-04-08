@@ -19,14 +19,14 @@ function Category({ selected, setSelected }) {
   }, [refetch]);
 
   return (
-    <div className="w-48">
+    <div className="w-36">
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
           <Listbox.Button
-            className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md 
+            className="relative w-full py-2 bg-white rounded-lg shadow-md 
           cursor-select focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 
           focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 
-          focus-visible:border-indigo-500 sm:text-sm"
+          focus-visible:border-indigo-500 sm:text-sm text-center"
           >
             <span className="block truncate">{selected}</span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"></span>
@@ -41,7 +41,7 @@ function Category({ selected, setSelected }) {
               <Listbox.Option
                 className={({ active }) =>
                   `${active ? 'text-indigo-900 bg-indigo-100' : 'text-gray-900'}
-                        cursor-default select-none relative py-2 pl-10 pr-4`
+                        cursor-default select-none relative py-2`
                 }
                 value="카테고리"
               >
@@ -59,7 +59,7 @@ function Category({ selected, setSelected }) {
                         className={`${
                           active ? 'text-indigo-600' : 'text-indigo-600'
                         }
-                              absolute inset-y-0 left-0 flex items-center pl-3`}
+                              absolute inset-y-0 left-0 flex items-center`}
                       ></span>
                     ) : null}
                   </>
@@ -75,7 +75,7 @@ function Category({ selected, setSelected }) {
                           ? 'text-indigo-900 bg-indigo-100'
                           : 'text-gray-900'
                       }
-                        cursor-default select-none relative py-2 pl-10 pr-4`
+                        cursor-default select-none relative py-2`
                     }
                     value={category.name}
                   >

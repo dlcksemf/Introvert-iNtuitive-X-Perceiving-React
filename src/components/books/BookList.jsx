@@ -90,11 +90,11 @@ function BookList() {
               >
                 전체 도서 목록
               </h1>
-              <div className="absolute flex justify-end items-end mt-10">
+              <div className="absolute flex justify-end items-end top-[80px]">
                 <div className="mr-3 z-10">
                   <Category selected={category} setSelected={setCategory} />
                 </div>
-                <div>
+                <div className="mr-10">
                   <SearchBar
                     handleChange={setQuery}
                     handleSubmit={handleSubmit}
