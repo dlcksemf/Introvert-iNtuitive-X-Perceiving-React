@@ -15,11 +15,15 @@ function WishBooks({ book }) {
           }}
         >
           <div className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-            {book.title}
+            {book.title.length > 15
+              ? book.title.slice(0, 15) + '...'
+              : book.title}
           </div>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-          {book.writer}
+          {book.writer.length > 15
+            ? book.writer.slice(0, 15) + '...'
+            : book.writer}
         </td>
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           {STATELIST.books[book.state]}

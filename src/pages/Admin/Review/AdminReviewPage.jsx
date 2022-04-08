@@ -8,15 +8,13 @@ function AdminReviewPage() {
 
   return (
     <div>
-      <div className="ml-48">
+      <div className="text-right mr-72">
         <button
           className={`${
-            showBookReview
-              ? 'bg-amber-500 text-white border-none px-5 py-2.5'
-              : 'text-gray-800'
+            showBookReview ? 'bg-indigo-600 text-white' : 'text-gray-800'
           }
-        bottom-20 border-2 border-amber-500 px-3 mr-2
-        text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
+          bottom-20 border border-indigo-600 px-5 mr-2 py-2.5
+          text-sm font-semibold tracking-wider rounded-full hover:bg-indigo-600 hover:text-white
         `}
           onClick={() => setShowBookReview(true)}
           onClickCapture={() => {
@@ -28,12 +26,10 @@ function AdminReviewPage() {
 
         <button
           className={`${
-            showGameReview
-              ? 'bg-amber-500 text-white border-none px-5 py-2.5'
-              : 'text-gray-800'
+            showGameReview ? 'bg-indigo-600 text-white' : 'text-gray-800'
           }
-         bottom-20 border-2 border-amber-500 px-3 mr-2
-         text-sm shadow-sm font-semibold tracking-wider rounded-full hover:shadow-2xl 
+         bottom-20 border border-indigo-600  px-5 mr-2 py-2.5
+         text-sm font-semibold tracking-wider rounded-full hover:bg-indigo-600 hover:text-white 
          `}
           onClick={() => setShowGameReview(true)}
           onClickCapture={() => {
