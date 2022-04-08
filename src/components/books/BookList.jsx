@@ -6,7 +6,6 @@ import ReactPaginate from 'react-paginate';
 import Category from 'components/parts/Category';
 import { ToastContainer } from 'react-toastify';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import SearchDrawer from 'components/parts/SearchDrawer';
 
 function BookList() {
   const navigate = useNavigate();

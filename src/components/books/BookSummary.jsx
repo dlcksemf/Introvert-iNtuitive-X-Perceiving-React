@@ -15,11 +15,8 @@ import { useLocation } from 'react-router-dom';
 import 'css/HeavyReader.css';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
-import card from 'components/parts/image/card.png';
-import card2 from 'components/parts/image/card2.png';
 import card3 from 'components/parts/image/card3.png';
 import card4 from 'components/parts/image/card4.png';
-import card5 from 'components/parts/image/card5.png';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -53,7 +50,7 @@ function BookSummary({ book, reloadBook }) {
   const handleClickLoan = () => {
     auth.isLoggedIn
       ? setModalIsOpen(true)
-      : window.confirm('로그인 후 이용해주세요🎈') &&
+      : window.confirm('로그인 후 이용해주세요') &&
         navigate('/accounts/login/');
   };
 

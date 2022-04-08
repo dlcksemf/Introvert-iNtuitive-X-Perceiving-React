@@ -54,7 +54,7 @@ function LoginForm() {
         }
       })
       .catch(() => {
-        toast.error('😶 이메일 / 비밀번호를 확인해주세요', {
+        toast.error('이메일 / 비밀번호를 확인해주세요', {
           position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,

@@ -41,7 +41,7 @@ function Toggle({ book, wish, user_id, reload }) {
       { manual: true },
     ).then(() => {
       setWishes(false);
-      toast.info('💫 찜 해제 되었습니다', {
+      toast.info('찜 해제 되었습니다', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -71,7 +71,7 @@ function Toggle({ book, wish, user_id, reload }) {
             progress: undefined,
           });
         })
-      : window.confirm('로그인 후 이용해주세요🎈') &&
+      : window.confirm('로그인 후 이용해주세요') &&
         navigate('/accounts/login/');
   };
 

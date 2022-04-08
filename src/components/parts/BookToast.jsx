@@ -5,19 +5,18 @@ function BookToast({ children }) {
 
   return (
     <div>
-      <div className="select-none cursor-default">
-        ✨ {children}이 완료되었습니다.
+      <div className="select-none cursor-default text-left">
+        {children}이 완료되었습니다.
       </div>
 
-      <div className="ml-6">
+      <div className="text-left">
         <button
           onClick={() => {
             navigate('/accounts/mypage/');
           }}
-          className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 underline decoration-wavy
-          transition duration-500 ease-in-out hover:scale-110 underline-offset-4"
+          className="text-sm font-semibold text-indigo-600 hover:text-indigo-700"
         >
-          마이페이지에서 확인하기!!
+          마이페이지에서 확인
         </button>
       </div>
     </div>
