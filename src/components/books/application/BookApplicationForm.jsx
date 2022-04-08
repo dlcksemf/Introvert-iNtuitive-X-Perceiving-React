@@ -131,18 +131,18 @@ function BookApplicationForm() {
                   </div>
                   <form>
                     <div>
-                      <p className="relative bottom-[110px] left-[80px] text-center text-lg font-bold select-none">
+                      <p className="relative w-[200px] bottom-[110px] left-[350px] text-center text-lg font-bold select-none">
                         {data?.items[0].title}
                       </p>
                     </div>
                     <div>
-                      <p className="relative bottom-[90px] left-[80px] text-center select-none">
+                      <p className="relative bottom-[90px] left-[120px] text-center select-none">
                         {data?.items[0].author} | {data?.items[0].publisher}
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-gray-500 text-sm select-none text-center relative bottom-[70px] left-[80px]">
+                      <p className="text-gray-500 text-sm select-none text-center relative bottom-[70px] left-[120px]">
                         ISBN: {data?.items[0].isbn.slice(-13)}
                       </p>
                     </div>
