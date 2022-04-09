@@ -135,7 +135,7 @@ function AdminLoanedGameList() {
                     <tr className="focus:outline-none h-16 border border-gray-100 rounded">
                       <td className="flex items-center"></td>
                       <td className="">
-                        <div className="flex items-center cursor-pointer">
+                        <div className="flex items-center">
                           <p className="text-base font-medium leading-none text-gray-700">
                             {game?.username}
                           </p>

@@ -71,7 +71,7 @@ function LoanedGame({ game }) {
     <React.Fragment>
       <tr>
         <td
-          className="cursor-pointer hover:text-red-400"
+          className="cursor-pointer hover:font-bold"
           onClick={() => {
             navigate(`/game/${game.game_num}/`);
           }}
@@ -94,7 +94,7 @@ function LoanedGame({ game }) {
           </Badge>
         </td>
         {/* {showReturn && <PageReturnModal updateState={updateState} />} */}
-        <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+        <td className="border-t-0 px-4 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-3">
           {/* {game.return_state === 'L' && */}
           {game.return_state === 'L' && (
             // <Link
@@ -102,7 +102,12 @@ function LoanedGame({ game }) {
             //   state={{ backgroundLocation: location }}
             //   updateState={updateState}
             // >
-            <button onClick={() => setShowReturn(true)}>반납 신청</button>
+            <button
+              className="border-2 border-blue-300 text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-blue-400 transition duration-300"
+              onClick={() => setShowReturn(true)}
+            >
+              반납 신청
+            </button>
             // </Link>
           )}
 

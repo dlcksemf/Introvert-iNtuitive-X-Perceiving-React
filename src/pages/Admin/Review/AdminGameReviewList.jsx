@@ -48,7 +48,7 @@ function AdminGameReviewList({ review, reload }) {
     <React.Fragment>
       <td className="flex items-center"></td>
       <td className="">
-        <div className="flex items-center cursor-pointer">
+        <div className="flex items-center">
           <p className="text-sm leading-none text-gray-600">
             {review.username}
           </p>
@@ -71,7 +71,7 @@ function AdminGameReviewList({ review, reload }) {
       <td className="pl-7">
         <div className="flex items-center">
           <p
-            className="text-sm leading-none text-gray-600 ml-2 cursor-pointer hover:text-red-400"
+            className="text-sm leading-none text-gray-600 ml-2 cursor-pointer hover:font-bold"
             onClick={() => {
               navigate(`/game/${review.game_num}/`);
             }}
