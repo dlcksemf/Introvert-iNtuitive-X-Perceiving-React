@@ -1,9 +1,24 @@
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { STATELIST } from 'Constants';
+import { useApiAxios } from 'base/api/base';
 
 function WishBooks({ book }) {
   const navigate = useNavigate();
+
+  const [{}, deleteWish] = useApiAxios(
+    {
+      url: `/books/api/wishes/${book.wish_num}`,
+      method: 'DELETE',
+    },
+    { manual: true },
+  );
+
+  const handleDelete = () => {
+    deleteWish().then(() => {
+      window.location.replace('/accounts/mypage/');
+    });
+  };
 
   return (
     <React.Fragment>
@@ -27,6 +42,9 @@ function WishBooks({ book }) {
         </td>
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           {STATELIST.books[book.state]}
+        </td>
+        <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+          <button onClick={handleDelete}>찜 취소</button>
         </td>
       </tr>
     </React.Fragment>

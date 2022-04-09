@@ -18,6 +18,9 @@ function WishBooksList({ wishBookList }) {
                 <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   반납 상태
                 </th>
+                <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  찜 취소
+                </th>
               </tr>
             </thead>
             <tbody>
