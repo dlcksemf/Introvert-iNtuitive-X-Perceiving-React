@@ -12,14 +12,14 @@ import ErrorForbidden from 'components/parts/ErrorForbidden';
 import SecondNav from 'components/parts/SecondNav';
 import MainNavigation from 'components/parts/MainNavigation';
 import PageMainRouter from 'pages/router/PageMainRouter';
-// import Test from 'Test';
+import Test from 'Test';
 
 function App() {
   const [auth] = useAuth();
 
   return (
     <div>
-      <MainNavigation />
+      {/* <MainNavigation /> */}
       <div className="relative min-h-fit">
         {auth.is_staff ? <TopNav /> : <SecondNav />}
 
@@ -37,7 +37,7 @@ function App() {
               element={auth.is_staff ? <PageAdminRouter /> : <ErrorForbidden />}
             />
             <Route path="*" element={<NotFound />} />
-            {/* <Route path="/test/" element={<Test />} /> */}
+            <Route path="/test/" element={<Test />} />
           </Routes>
         </div>
       </div>
