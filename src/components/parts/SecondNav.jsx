@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import name from 'components/parts/image/euclidLibrary.png';
 import user from 'components/parts/image/user.png';
+import Logo from 'components/parts/image/Logo.png';
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -139,7 +140,7 @@ function SecondNav() {
             {/* <!-- top bar left --> */}
             <ul class="flex items-center">
               {/* <!-- add button --> */}
-              <li class="w-6 font-bold text-lg text-sky-500">EUCLID LIBRARY</li>
+              <img src={Logo} alt="EUCLID BOOKS" className="h-[50px]" />
             </ul>
 
             <ul class="flex items-center">
@@ -148,7 +149,7 @@ function SecondNav() {
                 <header className="grid grid-cols-8 text-center text-xl mt-6">
                   <div
                     className="col-start-2 select-none transition duration-500 ease-in-out cursor-pointer
-          font-bold mb-5 mr-6"
+          font-bold mb-5 mr-5"
                     onClick={() => {
                       navigate(`/books/booklist/`);
                     }}
@@ -353,7 +354,7 @@ function SecondNav() {
               {/* <!-- top bar left --> */}
               <ul class="flex items-center">
                 {/* <!-- add button --> */}
-                <li class="h-[75px] w-44">
+                <li class="relative top-[58px] w-[250px]">
                   <div
                     className={`flex justify-center basis-1/3 grow-0 shrink-0 md:ml-auto md:mr-auto ${
                       auth.is_staff ? 'cursor-default' : 'cursor-pointer'
@@ -363,7 +364,7 @@ function SecondNav() {
                       className="text-md text-primary-600 text-bold text-center"
                       onClick={handleGoToMainPage}
                     >
-                      <img src={name} alt="EUCLID BOOKS" className="h-32" />
+                      <img src={Logo} alt="EUCLID BOOKS" className="h-[50px]" />
                     </div>
                   </div>
                 </li>
