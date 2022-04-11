@@ -190,8 +190,8 @@ function SecondNav() {
           <div>
             <header className=" grid grid-cols-8 text-center text-xl">
               <div
-                className="col-start-3 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-indigo-700 hover:font-extrabold mb-5"
+                className="col-start-3 select-none transition duration-500 ease-in-out cursor-pointer
+          hover:text-indigo-700 mb-5"
                 onClick={() => {
                   navigate(`/books/booklist/`);
                 }}
@@ -199,8 +199,8 @@ function SecondNav() {
                 도서목록
               </div>
               <div
-                className="col-start-4 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-indigo-700 hover:font-extrabold"
+                className="col-start-4 select-none transition duration-500 ease-in-out cursor-pointer
+          hover:text-indigo-700"
                 onClick={() => {
                   navigate(`/books/application/`);
                 }}
@@ -208,8 +208,8 @@ function SecondNav() {
                 신청도서
               </div>
               <div
-                className="col-start-5 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-indigo-700 hover:font-extrabold"
+                className="col-start-5 select-none transition duration-500 ease-in-out cursor-pointer
+          hover:text-indigo-700"
                 onClick={() => {
                   navigate(`/game/gamelist/`);
                 }}
@@ -217,8 +217,8 @@ function SecondNav() {
                 보드게임
               </div>
               <div
-                className="col-start-6 select-none transition duration-500 ease-in-out hover:scale-125 cursor-pointer
-          hover:text-indigo-700 hover:font-extrabold"
+                className="col-start-6 select-none transition duration-500 ease-in-out cursor-pointer
+          hover:text-indigo-700"
                 onClick={() => {
                   navigate(`/guidepage/`);
                 }}
