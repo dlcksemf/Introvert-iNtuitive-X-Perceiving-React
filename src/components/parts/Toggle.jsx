@@ -77,7 +77,7 @@ function Toggle({ book, wish, user_id, reload }) {
 
   return (
     <div className="flex">
-      {wishes ? (
+      {auth.user_id === wish?.user_id && wishes ? (
         <div onClick={handleDelete}>
           <FilledHeart />
         </div>
