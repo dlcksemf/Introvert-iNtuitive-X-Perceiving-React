@@ -52,9 +52,9 @@ function AdminBookList() {
   }, [fetchApplications]);
 
   return (
-    <div className="my-5 cursor-pointer">
+    <div className="w-[1200px] m-auto my-5 cursor-pointer">
       <ToastContainer />
-      <div className="text-right mb-2 mr-4 absolute left-3/4 top-24 ml-36">
+      <div className="text-right mr-10">
         <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
       </div>
 
