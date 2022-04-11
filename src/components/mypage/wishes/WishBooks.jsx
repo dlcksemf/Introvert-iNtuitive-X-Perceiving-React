@@ -49,10 +49,10 @@ function WishBooks({ book }) {
         </td>
         <td className="border-t-0 px-4 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-3">
           <button
-            className="border-2 border-red-600 text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-red-600 transition duration-300"
+            className="ml-2 text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-red-200 transition duration-300"
             onClick={handleDelete}
           >
-            찜 취소
+            취소
           </button>
         </td>
       </tr>

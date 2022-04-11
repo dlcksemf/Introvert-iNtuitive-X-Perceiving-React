@@ -103,7 +103,7 @@ function LoanedGame({ game }) {
             //   updateState={updateState}
             // >
             <button
-              className="border-2 border-blue-300 text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-blue-400 transition duration-300"
+              className="text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-indigo-200 transition duration-300"
               onClick={() => setShowReturn(true)}
             >
               반납 신청
