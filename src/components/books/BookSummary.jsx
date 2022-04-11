@@ -93,7 +93,7 @@ function BookSummary({ book, reloadBook }) {
               <LoanedIcon />
             </div>
           ) : (
-            <p className="m-auto ml-1 select-none hover:text-indigo-700">
+            <p className="m-auto ml-1 select-none hover:text-indigo-400">
               {book?.loaned_books[0]?.return_due_date}
             </p>
           )}
