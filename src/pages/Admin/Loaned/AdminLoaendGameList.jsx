@@ -59,7 +59,7 @@ function AdminLoanedGameList() {
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-[1210px] m-auto">
         <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
           <div className="sm:flex items-end justify-between">
             <p className="select-none focus:outline-none text-2xl font-bold leading-normal text-gray-800">
@@ -152,7 +152,7 @@ function AdminLoanedGameList() {
 
                       <td className="pl-7">
                         <div className="flex items-center">
-                          <p className="text-sm leading-none text-gray-600 ml-2 select-none">
+                          <p className="text-sm leading-none text-gray-600 select-none">
                             {game?.return_state === 'L' &&
                             new Date(game.return_due_time) < today ? (
                               <Badge color="red"> 연체중 </Badge>
