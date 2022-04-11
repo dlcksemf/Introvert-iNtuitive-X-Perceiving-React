@@ -9,16 +9,16 @@ function AdminApplication({ application, reload }) {
   const [color, setColor] = useState(() => {
     if (application.state === 'D') {
       return 'red';
-    } else {
-      return 'blue';
+    } else if (application.state === 'O') {
+      return 'indigo';
     }
   });
 
   useEffect(() => {
     if (application.state === 'D') {
       setColor('red');
-    } else {
-      setColor('blue');
+    } else if (application.state === 'O') {
+      setColor('indigo');
     }
   }, [application]);
 
