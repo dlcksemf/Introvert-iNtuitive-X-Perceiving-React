@@ -10,7 +10,7 @@ function AdminGameListPage() {
 
       <div className="text-center">
         <div
-          class="inline-flex items-center bg-indigo-600 leading-none rounded-full py-3 px-5 text-teal
+          className="inline-flex items-center bg-indigo-600 leading-none rounded-full py-3 px-5 text-teal
             font-semibold cursor-pointer relative inline-block justify-center items-center
             hover:bg-white  hover:border hover:border-indigo-600
             text-white text-lg hover:text-indigo-600
