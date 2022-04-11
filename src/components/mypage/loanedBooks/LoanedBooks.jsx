@@ -20,7 +20,7 @@ function LoanedBooks({ book }) {
     today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
   const [color, setColor] = useState(() => {
-    if (book.return_state === 'L') {
+    if (book.return_state === 'L' || 'E') {
       if (new Date(book.return_due_date) < new Date(date)) {
         return 'red';
       }
@@ -113,7 +113,7 @@ function LoanedBooks({ book }) {
         <td className="border-t-0 px-4 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-3">
           {book.return_state === 'L' && (
             <button
-              className="border-2 border-blue-300 text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-blue-400 transition duration-300"
+              className=" text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-indigo-200 transition duration-300"
               onClick={() => setShowReturn(true)}
             >
               반납 신청
@@ -121,7 +121,7 @@ function LoanedBooks({ book }) {
           )}
           {book.return_state === 'E' && (
             <button
-              className="border-2 border-blue-300 text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-blue-400 transition duration-300"
+              className="text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-indigo-200 transition duration-300"
               onClick={() => setShowReturn(true)}
             >
               반납 신청
@@ -140,7 +140,7 @@ function LoanedBooks({ book }) {
             <div>
               <button
                 disabled={disable}
-                className="border-2 border-green-300 text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-green-400 transition duration-300"
+                className=" text-black px-2 py-1 rounded-md text-xs font-medium hover:bg-green-100 transition duration-300"
                 onClick={() => {
                   handleExtendButton(true);
                 }}
