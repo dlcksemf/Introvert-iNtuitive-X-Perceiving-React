@@ -190,43 +190,52 @@ function Top5Summary({ book }) {
 
   return (
     <>
-      <section className="text-gray-600 body-font overflow-hidden">
-        <div className="container mx-auto">
-          <div className="lg:w-full mx-auto flex flex-wrap items-center">
-            <div className="lg:w-1/2 w-full mb-6 lg:mb-0 m-auto">
-              <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2 text-left">
-                {book.category && `[ ${book.category} ]`}
-              </h2>
-              <div className="text-lg m-auto">{book.writer}</div>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-4 border-b-2 border-indigo-600 py-3">
-                {book.title}
-              </h1>
-              <p className="leading-relaxed mb-4 hover:font-semibold m-auto cursor-grab">
-                {truncateString(book.story)}
-              </p>
+      <section>
+        <div>
+          <img
+            src={book?.cover_photo ? book?.cover_photo : non_image}
+            alt={book?.title}
+            className="lg:w-full max-w-xs lg:h-72 max-h-xs object-fill object-left
+                inline-block cursor-pointer"
+            onClick={() => {
+              navigate(`/books/${book.book_num}/`);
+            }}
+          />
+        </div>
+        <div className="relative left-[350px] bottom-[280px]">
+          <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2 text-left">
+            {book?.category && `[ ${book?.category} ]`}
+          </h2>
+          <div className="text-lg m-auto">{book?.writer}</div>
+          <h1 className="text-gray-900 text-3xl title-font font-medium text-left mb-4 border-b-2 border-indigo-600 py-3 w-[700px]">
+            {book?.title}
+          </h1>
+          <p className="leading-relaxed mb-4 hover:font-semibold cursor-grab w-[600px]">
+            {truncateString(book?.story)}
+          </p>
 
-              <div className="flex justify-center">
-                <button
-                  onClick={() => {
-                    navigate(`/books/${book.book_num}/`);
-                  }}
-                  className="flex justify-center text-white bg-indigo-600 border-0 mt-2 py-2 px-12 
-                focus:outline-none hover:bg-indigo-700 rounded-full mb-16"
-                >
-                  자세히보기
-                </button>
-              </div>
-            </div>
-
-            <img
-              src={book?.cover_photo ? book.cover_photo : non_image}
-              alt={book.title}
-              className="lg:w-2/5 max-w-xs lg:h-72 max-h-xs object-fill object-center rounded-lg object-scale-down
-         inline-block cursor-pointer"
-              onClick={() => {
-                navigate(`/books/${book.book_num}/`);
-              }}
-            />
+          <div className="flex justify-start">
+            {book?.story ? (
+              <button
+                onClick={() => {
+                  navigate(`/books/${book.book_num}/`);
+                }}
+                className="flex justify-start text-white bg-indigo-600 border-0 mt-4 py-2 px-12 
+                focus:outline-none hover:bg-indigo-700 rounded-full"
+              >
+                자세히보기
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  navigate(`/books/${book.book_num}/`);
+                }}
+                className="flex justify-center text-white bg-indigo-600 border-0 mt-[84px] py-2 px-12 
+                focus:outline-none hover:bg-indigo-700 rounded-full"
+              >
+                자세히보기
+              </button>
+            )}
           </div>
         </div>
       </section>
