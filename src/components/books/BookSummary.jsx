@@ -161,14 +161,14 @@ function NewBookSummary({ book }) {
             }}
           />
           <div className="relative left-[340px] bottom-[270px]">
-            <div className="text-sm title-font text-gray-500 tracking-widest text-left mb-4">
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+            <div className="text-sm title-font text-gray-700 tracking-widest text-left mb-6 select-none">
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 font-semibold mr-2">
                 {book?.category && `#${book?.category}`}
               </span>
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 font-semibold mr-2">
                 #{book?.writer}
               </span>
-              <span className="inline-block bg-indigo-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+              <span className="inline-block bg-indigo-200 rounded-full px-3 py-1 font-semibold mr-2">
                 #따끈따끈
               </span>
             </div>
@@ -191,7 +191,7 @@ function NewBookSummary({ book }) {
                     onClick={() => {
                       navigate(`/books/${book.book_num}/`);
                     }}
-                    className="flex justify-start text-white bg-indigo-600 border-0 mt-4 py-2 px-12 
+                    className="text-white bg-indigo-600 mt-4 py-2 px-12 
                 focus:outline-none hover:bg-indigo-700 rounded-full"
                   >
                     자세히보기
@@ -201,7 +201,7 @@ function NewBookSummary({ book }) {
                     onClick={() => {
                       navigate(`/books/${book.book_num}/`);
                     }}
-                    className="flex justify-center text-white bg-indigo-600 border-0 mt-[84px] py-2 px-12 
+                    className="flex justify-center text-white bg-indigo-600 mt-[84px] py-2 px-12 
                 focus:outline-none hover:bg-indigo-700 rounded-full"
                   >
                     자세히보기
@@ -251,7 +251,7 @@ function Top5Summary({ book }) {
                 onClick={() => {
                   navigate(`/books/${book.book_num}/`);
                 }}
-                className="flex justify-start text-white bg-indigo-600 border-0 mt-4 py-2 px-12 
+                className="text-white bg-indigo-600 mt-4 py-2 px-12 
                 focus:outline-none hover:bg-indigo-700 rounded-full"
               >
                 자세히보기
@@ -261,7 +261,7 @@ function Top5Summary({ book }) {
                 onClick={() => {
                   navigate(`/books/${book.book_num}/`);
                 }}
-                className="flex justify-center text-white bg-indigo-600 border-0 mt-[84px] py-2 px-12 
+                className="flex justify-center text-white bg-indigo-600 mt-[84px] py-2 px-12 
                 focus:outline-none hover:bg-indigo-700 rounded-full"
               >
                 자세히보기

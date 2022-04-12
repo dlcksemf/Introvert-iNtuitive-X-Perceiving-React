@@ -23,9 +23,6 @@ function NewBook() {
       <div>
         <Carousel
           stopAutoPlayOnHover={true}
-          fullHeightHover={false}
-          indicators={false}
-          NavButton={false}
           navButtonsAlwaysInvisible={true}
           swipeable={true}
           swipeScrollTolerance={10}
