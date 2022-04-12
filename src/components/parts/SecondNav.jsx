@@ -2,6 +2,8 @@ import { useAuth } from 'base/hooks/Authcontext';
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from 'components/parts/image/Logo.png';
+import out_black from 'components/parts/image/out_black.png';
+import out_white from 'components/parts/image/out_white.png';
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -122,7 +124,7 @@ function SecondNav() {
                           }님 환영합니다`}
                     </div>
                     <button
-                      className="ml-6 hover:text-sky-600"
+                      className="ml-4 hover:text-sky-600"
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="내정보 가기"
@@ -130,17 +132,17 @@ function SecondNav() {
                         navigate('/accounts/mypage/');
                       }}
                     >
-                      <div className="border-2 border-black px-[25px] py-[5px] font-semibold">
+                      <div className="border-2 border-gray-500 rounded-sm px-[25px] py-[5px] font-semibold">
                         내정보
                       </div>
                     </button>
                     <button>
                       <div
-                        className="ml-0.5 border-2 border-black px-[10px] py-[1px]
-                      font-bold text-xl hover:text-sky-600"
+                        title="로그아웃"
+                        className="ml-0.5 px-[10px] py-[1px]"
                         onClick={handleLogout}
                       >
-                        ↪
+                        <img className="w-6 h-6" src={out_black} alt="logout" />
                       </div>
                     </button>
                   </div>
@@ -204,7 +206,7 @@ function SecondNav() {
                             }님 환영합니다`}
                       </div>
                       <button
-                        className="ml-6 hover:text-yellow-200"
+                        className="ml-4 hover:text-yellow-200"
                         data-bs-toggle="tooltip"
                         data-bs-placement="top"
                         title="내정보 가기"
@@ -212,17 +214,21 @@ function SecondNav() {
                           navigate('/accounts/mypage/');
                         }}
                       >
-                        <div className="border-2 border-white px-[25px] py-[5px] font-semibold">
+                        <div className="border-2 border-white rounded-sm px-[25px] py-[5px] font-semibold">
                           내정보
                         </div>
                       </button>
                       <button>
                         <div
-                          className="ml-0.5 border-2 border-white px-[10px] py-[1px]
-                      font-bold text-xl hover:text-yellow-200"
+                          title="로그아웃"
+                          className="ml-0.5 px-[10px] py-[1px]"
                           onClick={handleLogout}
                         >
-                          ↪
+                          <img
+                            className="w-6 h-6"
+                            src={out_white}
+                            alt="logout"
+                          />
                         </div>
                       </button>
                     </div>
