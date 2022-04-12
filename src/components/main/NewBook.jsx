@@ -2,6 +2,7 @@ import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
 import { NewBookSummary } from 'components/books/BookSummary';
 import { useEffect } from 'react';
+import Carousel from 'react-material-ui-carousel';
 
 function NewBook() {
   const [auth] = useAuth();
@@ -18,21 +19,23 @@ function NewBook() {
   }, [auth, refetch]);
 
   return (
-    <div className="">
+    <div>
       <div>
-        <h1 className="text-4xl font-semibold relative bottom-7 text-center mb-[100px] text-gray-700 select-none">
-          신간도서
-        </h1>
-      </div>
-      <div className="flex justify-center mb-28">
-        {bookList?.slice(0, 3).map((book) => (
-          <div
-            key={book.book_num}
-            className="h-[370px] w-[400px] flex justify-center items-center"
-          >
-            <NewBookSummary book={book} />
-          </div>
-        ))}
+        <Carousel
+          stopAutoPlayOnHover={true}
+          fullHeightHover={false}
+          indicators={false}
+          NavButton={false}
+          navButtonsAlwaysInvisible={true}
+          swipeable={true}
+          swipeScrollTolerance={10}
+        >
+          {bookList?.slice(0, 3).map((book) => (
+            <div key={book.book_num}>
+              <NewBookSummary book={book} />
+            </div>
+          ))}
+        </Carousel>
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import RecommendedBooks from 'components/main/RecommendedBooks';
 import Top5 from 'components/main/Top5';
 import Euclid from 'components/parts/image/Euclid.jpg';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 function MainPage() {
   const [showHeavyReader, setShowHeavyReader] = useState(false);
@@ -85,23 +84,12 @@ function MainPage() {
             추천도서
           </button>
         </span>
-        <div className="relative bottom-8 left-10">
-          {showTop5 && <Top5 />}
+        <div className="relative bottom-8 left-24">{showTop5 && <Top5 />}</div>
+        <div className="relative bottom-[35px] left-7">
           {showNewBook && <NewBook />}
-          {showHeavyReader && <HeavyReader />}
-          {showRecommendedBooks && <RecommendedBooks />}
         </div>
-        <Link
-          to={
-            showTop5
-              ? `/books/top5/`
-              : showNewBook
-              ? `/books/newbook/`
-              : showHeavyReader
-              ? `/books/heavyreader`
-              : `/books/recommendedbooks`
-          }
-        />
+        <div>{showHeavyReader && <HeavyReader />}</div>
+        <div>{showRecommendedBooks && <RecommendedBooks />}</div>
       </div>
     </div>
   );

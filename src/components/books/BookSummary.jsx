@@ -146,41 +146,68 @@ function NewBookSummary({ book }) {
 
   return (
     <>
-      <div className="max-w-sm rounded overflow-hidden shadow-xl">
-        <img
-          className="w-[500px] h-[300px] object-scale-down cursor-pointer
-          transition duration-500 ease-in-out hver:-translate-y-1 hover:scale-95"
-          src={book?.cover_photo ? book.cover_photo : non_image}
-          alt={book.title}
-          onClick={() => {
-            navigate(`/books/${book.book_num}/`);
-          }}
-        />
-        <div className="px-6 py-4">
-          <div
-            className="font-bold text-xl mb-2 select-none cursor-pointer hover:text-indigo-700"
+      <section>
+        <div>
+          <img
+            className="lg:w-full max-w-xs lg:h-72 max-h-xs object-scale-down cursor-pointer"
+            src={book?.cover_photo ? book?.cover_photo : non_image}
+            alt={book?.title}
             onClick={() => {
               navigate(`/books/${book.book_num}/`);
             }}
-          >
-            {book.title}
+          />
+          <div className="relative left-[340px] bottom-[270px]">
+            <div className="text-sm title-font text-gray-500 tracking-widest text-left mb-4">
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+                {book?.category && `#${book?.category}`}
+              </span>
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+                #{book?.writer}
+              </span>
+              <span className="inline-block bg-indigo-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
+                #따끈따끈
+              </span>
+            </div>
+            <div>
+              <div
+                className="text-gray-900 text-3xl title-font font-medium text-left mb-4 border-b-2 border-indigo-600 py-3 w-[700px]"
+                onClick={() => {
+                  navigate(`/books/${book.book_num}/`);
+                }}
+              >
+                {book.title}
+              </div>
+              <p className="leading-relaxed mb-4 hover:font-semibold cursor-grab w-[600px]">
+                {truncateString(book?.story)}
+              </p>
+
+              <div className="flex justify-start">
+                {book?.story ? (
+                  <button
+                    onClick={() => {
+                      navigate(`/books/${book.book_num}/`);
+                    }}
+                    className="flex justify-start text-white bg-indigo-600 border-0 mt-4 py-2 px-12 
+                focus:outline-none hover:bg-indigo-700 rounded-full"
+                  >
+                    자세히보기
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      navigate(`/books/${book.book_num}/`);
+                    }}
+                    className="flex justify-center text-white bg-indigo-600 border-0 mt-[84px] py-2 px-12 
+                focus:outline-none hover:bg-indigo-700 rounded-full"
+                  >
+                    자세히보기
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
-          <p className="text-gray-700 text-base select-none">
-            {truncateString(book.story)}
-          </p>
         </div>
-        <div className="px-6 pt-4 pb-2">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
-            {book.category && `#${book.category}`}
-          </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
-            #{book.writer}
-          </span>
-          <span className="inline-block bg-indigo-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
-            #따끈따끈
-          </span>
-        </div>
-      </div>
+      </section>
     </>
   );
 }
@@ -195,14 +222,14 @@ function Top5Summary({ book }) {
           <img
             src={book?.cover_photo ? book?.cover_photo : non_image}
             alt={book?.title}
-            className="lg:w-full max-w-xs lg:h-72 max-h-xs object-fill object-left
+            className="lg:w-full max-w-xs lg:h-72 max-h-xs object-scale-down object-left
                 inline-block cursor-pointer"
             onClick={() => {
               navigate(`/books/${book.book_num}/`);
             }}
           />
         </div>
-        <div className="relative left-[350px] bottom-[280px]">
+        <div className="relative left-[270px] bottom-[280px]">
           <h2 className="text-sm title-font text-gray-500 tracking-widest mb-2 text-left">
             {book?.category && `[ ${book?.category} ]`}
           </h2>
