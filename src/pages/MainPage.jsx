@@ -88,7 +88,9 @@ function MainPage() {
         <div className="relative bottom-[35px] left-7">
           {showNewBook && <NewBook />}
         </div>
-        <div>{showHeavyReader && <HeavyReader />}</div>
+        <div className="relative bottom-[65px] flex justify-end">
+          {showHeavyReader && <HeavyReader />}
+        </div>
         <div className="relative bottom-[80px] right-[180px]">
           {showRecommendedBooks && <RecommendedBooks />}
         </div>

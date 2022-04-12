@@ -15,8 +15,14 @@ import { useLocation } from 'react-router-dom';
 import 'css/HeavyReader.css';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
-import card3 from 'components/parts/image/card3.png';
+import card5 from 'components/parts/image/card5.png';
 import card4 from 'components/parts/image/card4.png';
+import bookworm from 'components/parts/image/BookWorm.png';
+import heavyreader1 from 'components/parts/image/heavyreader1.png';
+import heavyreader from 'components/parts/image/heavyreader.png';
+import ggumdori from 'components/parts/image/ggumdori.png';
+import ggumdori1 from 'components/parts/image/ggumdori1.png';
+import 'animate.css';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -293,24 +299,46 @@ function HeavyReaderSummary({ book }) {
             id="card"
           >
             <div className="front">
-              <img src={card3} alt="" />
+              <img
+                src={card5}
+                alt=""
+                className="h-[350px] animate__animated animate__pulse animate__infinite"
+              />
             </div>
             <div className="back">
-              <img src={card4} alt=""></img>
+              <img src={card4} alt="" className="h-[350px]" />
 
-              <p className=" absolute top-[155px] left-[83px] text-center font-bold text-lg font-serif text-amber-900">
-                bookworm
-                <div className="text-2xl text-red-900">
-                  {book?.count_loans ? book.username : 'Unknown'}
-                  {/* {book?.position
-                  ? book.position
-                  : !book?.count_loans && '과연 누가 될까요?'} */}
-                </div>
-              </p>
+              <div className=" absolute top-[155px] left-[83px] text-center font-bold text-lg font-serif text-neutral-500">
+                <p className="w-40 relative right-[38px] text-4xl font-extrabold">
+                  {book?.username}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </>
+      <div>
+        {book?.count_loans ? (
+          <>
+            <img
+              src={ggumdori}
+              alt="꿈돌이"
+              className="h-40 relative right-[460px] bottom-[80px]"
+            />
+            <img
+              src={heavyreader}
+              alt="EUCLID SOFT 영광의 주인공"
+              className="h-40 relative right-[550px] bottom-[400px]"
+            />
+          </>
+        ) : (
+          <img
+            src={heavyreader1}
+            alt="영광의 주인공이 되어주세요"
+            className="h-40 animate__animated animate__pulse animate__infinite relative right-[550px] bottom-[140px]"
+          />
+        )}
+      </div>
     </div>
   );
 }
