@@ -71,10 +71,7 @@ function RecommendedBooks() {
                     (date.slice(0, 4) - book.birthdate.slice(0, 4)) / 10,
                   ) *
                     10 && (
-                  <div
-                    key={book.book_num}
-                    className="h-[370px] w-[400px] flex justify-center items-center"
-                  >
+                  <div key={book.book_num}>
                     <RecommendedBooksSummary book={book} />
                   </div>
                 ),
