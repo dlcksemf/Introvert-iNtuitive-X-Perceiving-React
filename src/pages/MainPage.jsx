@@ -9,7 +9,7 @@ function MainPage() {
   const [showHeavyReader, setShowHeavyReader] = useState(false);
   const [showNewBook, setShowNewBook] = useState(false);
   const [showRecommendedBooks, setShowRecommendedBooks] = useState(false);
-  const [showTop5, setShowTop5] = useState(false);
+  const [showTop5, setShowTop5] = useState(true);
 
   return (
     <div className="h-[733px]">
