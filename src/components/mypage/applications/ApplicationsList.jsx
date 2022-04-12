@@ -14,13 +14,16 @@ function ApplicationsList({ applicationList }) {
             </h3>
             <table className="text-xs ml-3 mt-3 select-none">
               <tbody>
-                {applicationList?.slice(0, 3).map((application) => {
-                  return (
-                    <tr key={application.application_num}>
-                      <ApplicationsBooks application={application} />
-                    </tr>
-                  );
-                })}
+                {applicationList
+                  ?.filter((application) => application.state === 'P')
+                  .slice(0, 3)
+                  .map((application) => {
+                    return (
+                      <tr key={application.application_num}>
+                        <ApplicationsBooks application={application} />
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
 
