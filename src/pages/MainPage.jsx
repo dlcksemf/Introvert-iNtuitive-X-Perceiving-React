@@ -2,7 +2,7 @@ import HeavyReader from 'components/main/HeavyReader';
 import NewBook from 'components/main/NewBook';
 import RecommendedBooks from 'components/main/RecommendedBooks';
 import Top5 from 'components/main/Top5';
-import Euclid from 'components/parts/image/Euclid.png';
+import Euclid from 'components/parts/image/Euclid.jpg';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,14 +13,14 @@ function MainPage() {
   const [showTop5, setShowTop5] = useState(false);
 
   return (
-    <div>
+    <div className="h-[660px]">
       <img
         src={Euclid}
         alt="유클리드"
         className="max-w-full h-auto relative bottom-[95px]"
       />
-      <div className="border-2 border-gray-500 max-w-full h-[668px] relative bottom-[762px] bg-rose-300 opacity-20" />
-      <div className="border-2 border-gray-500 mx-[200px] h-[500px] relative bottom-[1000px] bg-white shadow-md">
+      <div className="border-2 border-gray-500 max-w-full h-[574px] relative bottom-[668px] bg-rose-300 opacity-20" />
+      <div className="border-2 border-gray-500 mx-[200px] h-[400px] relative bottom-[900px] bg-white shadow-md">
         <span className="flex justify-start">
           <button
             className={`${
@@ -85,6 +85,12 @@ function MainPage() {
             추천도서
           </button>
         </span>
+        <div className="relative bottom-8 left-10">
+          {showTop5 && <Top5 />}
+          {showNewBook && <NewBook />}
+          {showHeavyReader && <HeavyReader />}
+          {showRecommendedBooks && <RecommendedBooks />}
+        </div>
         <Link
           to={
             showTop5
@@ -96,12 +102,6 @@ function MainPage() {
               : `/books/recommendedbooks`
           }
         />
-      </div>
-      <div className="relative bottom-[1550px]">
-        {showTop5 && <Top5 />}
-        {showNewBook && <NewBook />}
-        {showHeavyReader && <HeavyReader />}
-        {showRecommendedBooks && <RecommendedBooks />}
       </div>
     </div>
   );
