@@ -22,7 +22,7 @@ const useScroll = () => {
 
 function TopNav() {
   const navigate = useNavigate();
-  const [auth] = useAuth();
+  const [auth, , , logout] = useAuth();
 
   const handleGoToMainPage = () => {
     if (!auth.is_staff) {
@@ -31,6 +31,10 @@ function TopNav() {
     }
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
   const { y } = useScroll();
 
   if (y > 80) {
@@ -130,6 +134,7 @@ function TopNav() {
                     >
                       <img src={user} alt="내정보" className="h-8 w-8" />
                     </button>
+                    <button onClick={handleLogout}>로그아웃</button>
                   </div>
                 )}
               </div>
