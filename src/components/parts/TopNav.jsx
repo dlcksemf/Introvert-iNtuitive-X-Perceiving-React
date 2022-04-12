@@ -1,9 +1,6 @@
 import { useAuth } from 'base/hooks/Authcontext';
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import name from 'components/parts/image/euclidLibrary.png';
-import search from 'components/parts/image/search.png';
-import user from 'components/parts/image/user.png';
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -43,7 +40,7 @@ function TopNav() {
         <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
           <div className="flex justify-between">
             <div>
-              <img src={name} alt="EUCLID BOOKS" className="h-20" />
+              {/* <img src={} alt="EUCLID BOOKS" className="h-20" /> */}
             </div>
             <div>
               <header className="mt-5 flex justify-between text-center text-xl">
@@ -132,7 +129,7 @@ function TopNav() {
                         navigate('/accounts/mypage/');
                       }}
                     >
-                      <img src={user} alt="내정보" className="h-8 w-8" />
+                      {/* <img src={user} alt="내정보" className="h-8 w-8" /> */}
                     </button>
                     <button onClick={handleLogout}>로그아웃</button>
                   </div>
@@ -159,7 +156,7 @@ function TopNav() {
                 className="text-md text-primary-600 text-bold text-center"
                 onClick={handleGoToMainPage}
               >
-                <img src={name} alt="EUCLID BOOKS" className="h-32" />
+                {/* <img src={name} alt="EUCLID BOOKS" className="h-32" /> */}
               </div>
             </div>
 
@@ -191,7 +188,7 @@ function TopNav() {
                       navigate('/accounts/mypage/');
                     }}
                   >
-                    <img src={user} alt="내정보" className="h-8 w-8" />
+                    {/* <img src={user} alt="내정보" className="h-8 w-8" /> */}
                   </button>
                 </div>
               )}

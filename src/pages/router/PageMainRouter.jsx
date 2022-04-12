@@ -4,7 +4,6 @@ import { useAuth } from 'base/hooks/Authcontext';
 import NotFound from 'components/parts/NotFound';
 import GuidePage from 'pages/GuidePage';
 import MainPage from 'pages/MainPage';
-// import Footer from 'components/parts/Footer';
 
 function PageMainRouter() {
   const [auth] = useAuth();
@@ -21,7 +20,6 @@ function PageMainRouter() {
       {!auth?.is_staff && (
         <div className="fixed bottom-0 w-full z-50">
           <hr />
-          {/* <Footer /> */}
         </div>
       )}
     </>

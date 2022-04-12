@@ -12,7 +12,8 @@ import ErrorForbidden from 'components/parts/ErrorForbidden';
 import SecondNav from 'components/parts/SecondNav';
 import MainNavigation from 'components/parts/MainNavigation';
 import PageMainRouter from 'pages/router/PageMainRouter';
-import Test from 'Test';
+import Footer from 'components/parts/Footer';
+// import Test from 'Test';
 
 function App() {
   const [auth] = useAuth();
@@ -37,17 +38,12 @@ function App() {
               element={auth.is_staff ? <PageAdminRouter /> : <ErrorForbidden />}
             />
             <Route path="*" element={<NotFound />} />
-            <Route path="/test/" element={<Test />} />
+            {/* <Route path="/test/" element={<Test />} /> */}
           </Routes>
         </div>
       </div>
 
-      <div className="pt-3 pb-5 flex relative fixed bg-gray-100 bottom-full">
-        <div className="inline-block text-gray-600 text-xs select-none ml-24 mt-2 tracking-widest">
-          ㈜ 유클리드소프트 | 대전 동구 계족로 151 601호 | ☎ 042) 488-6589 | ✉
-          euclidsoft.lab@gmail.com
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 }

@@ -10,8 +10,6 @@ import NewBook from 'components/main/NewBook';
 import RecommendedBooks from 'components/main/RecommendedBooks';
 import Top5 from 'components/main/Top5';
 
-// import Footer from 'components/parts/Footer';
-
 function PageBookRouter() {
   const [auth] = useAuth();
 
@@ -43,7 +41,6 @@ function PageBookRouter() {
       {!auth?.is_staff && (
         <div className="fixed bottom-0 w-full z-50">
           <hr />
-          {/* <Footer /> */}
         </div>
       )}
     </>

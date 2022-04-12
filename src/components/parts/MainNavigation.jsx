@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  ProSidebar,
-  Menu,
-  MenuItem,
-  SidebarContent,
-  SidebarFooter,
-} from 'react-pro-sidebar';
+import { ProSidebar, Menu, MenuItem, SidebarContent } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import 'css/Navigation.css';
 
@@ -15,11 +9,8 @@ import { useAuth } from 'base/hooks/Authcontext';
 import up from 'components/parts/image/up.png';
 import left from 'components/parts/image/left.png';
 import right from 'components/parts/image/right.png';
-import logoutIcon from 'components/parts/image/out.png';
-import login from 'components/parts/image/in.png';
 
 function MainNavigation() {
-  const [auth] = useAuth();
   const [goToTop, setGoToTop] = useState(0);
 
   useEffect(() => {
@@ -86,27 +77,6 @@ function MainNavigation() {
                 <h1 className="text-indigo-900 select-none">앞으로가기</h1>
               </MenuItem>
             </div>
-          </Menu>
-          <Menu>
-            {!auth.isLoggedIn && (
-              <div
-                onClick={() => {
-                  navigate('/accounts/login/');
-                }}
-                className="hover:text-lg"
-              >
-                <MenuItem icon={<img src={login} alt="들어오기" />}>
-                  <h1 className="text-black ">들어가기</h1>
-                </MenuItem>
-              </div>
-            )}
-            {auth.isLoggedIn && (
-              <div onClick={handleLogout} className="hover:text-lg">
-                <MenuItem icon={<img src={logoutIcon} alt="나가기" />}>
-                  <h1 className="text-black">나가기</h1>
-                </MenuItem>
-              </div>
-            )}
           </Menu>
         </SidebarContent>
       </ProSidebar>
