@@ -319,35 +319,44 @@ function RecommendedBooksSummary({ book }) {
   const navigate = useNavigate();
   return (
     <>
-      <div className="max-w-sm rounded  shadow-xl">
+      <div lassName="max-w-sm rounded overflow-hidden shadow-xl">
         <img
-          className="w-[500px] h-[300px] object-scale-down cursor-pointer"
-          src={book?.cover_photo ? book.cover_photo : non_image}
-          alt={book.title}
+          className="lg:w-full max-w-xs lg:h-72 max-h-xs object-scale-down cursor-pointer"
+          src={book?.cover_photo ? book?.cover_photo : non_image}
+          alt={book?.title}
           onClick={() => {
             navigate(`/books/${book.book_num}/`);
           }}
         />
-        <div className="px-6 py-4 cursor-pointer">
+        <div className="text-sm title-font text-gray-500 tracking-widest text-left mb-4 relative bottom-[40px]">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 select-none">
+            {book?.category && `#${book?.category}`}
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 select-none">
+            #{book?.writer}
+          </span>
+          <span className="inline-block bg-indigo-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 select-none">
+            #추천해요
+          </span>
+        </div>
+        <div className="px-6 select-none">
           <div
-            className="font-bold text-xl mb-2 "
+            className="font-bold text-xl mb-2 text-center relative bottom-[30px]"
             onClick={() => {
               navigate(`/books/${book.book_num}`);
             }}
           >
             {book.title}
           </div>
-          <p className="text-gray-700 text-base select-none">
-            {truncateString(book.story)}
-          </p>
-        </div>
-        <div className="px-6 pt-4 pb-2">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
-            {book.category && `#${book.category}`}
-          </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 select-none">
-            #{book.writer}
-          </span>
+          <button
+            onClick={() => {
+              navigate(`/books/${book.book_num}/`);
+            }}
+            className="text-white bg-indigo-600 border-0 mt-4 py-2 px-12 focus:outline-none
+                 hover:bg-indigo-700 rounded-full relative bottom-[35px] left-[32px]"
+          >
+            자세히보기
+          </button>
         </div>
       </div>
     </>

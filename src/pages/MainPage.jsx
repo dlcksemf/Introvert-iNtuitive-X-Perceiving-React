@@ -12,7 +12,7 @@ function MainPage() {
   const [showTop5, setShowTop5] = useState(false);
 
   return (
-    <div className="h-[660px]">
+    <div className="h-[733px]">
       <img
         src={Euclid}
         alt="유클리드"
@@ -89,7 +89,9 @@ function MainPage() {
           {showNewBook && <NewBook />}
         </div>
         <div>{showHeavyReader && <HeavyReader />}</div>
-        <div>{showRecommendedBooks && <RecommendedBooks />}</div>
+        <div className="relative bottom-[80px] right-[180px]">
+          {showRecommendedBooks && <RecommendedBooks />}
+        </div>
       </div>
     </div>
   );

@@ -30,12 +30,7 @@ function RecommendedBooks() {
   } else {
     return (
       <>
-        <div>
-          <h1 className="text-4xl font-semibold relative bottom-7 text-center mt-10 mb-[60px] text-gray-700 select-none">
-            동년배가 많이 빌린 책
-          </h1>
-        </div>
-        <div className="flex justify-center mb-28">
+        <div className="flex justify-center">
           {bookList
             ?.filter((item, index) => {
               return (
