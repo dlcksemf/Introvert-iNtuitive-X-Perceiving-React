@@ -17,11 +17,9 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
 import card5 from 'components/parts/image/card5.png';
 import card4 from 'components/parts/image/card4.png';
-import bookworm from 'components/parts/image/BookWorm.png';
 import heavyreader1 from 'components/parts/image/heavyreader1.png';
 import heavyreader from 'components/parts/image/heavyreader.png';
 import ggumdori from 'components/parts/image/ggumdori.png';
-import ggumdori1 from 'components/parts/image/ggumdori1.png';
 import 'animate.css';
 
 function truncateString(str) {
