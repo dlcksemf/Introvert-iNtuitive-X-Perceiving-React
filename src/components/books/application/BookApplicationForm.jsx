@@ -1,26 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-
 import { toast } from 'react-toastify';
-
 import { useAuth } from 'base/hooks/Authcontext';
-import useFieldValues from 'base/hooks/useFieldValues';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import BookApplicationSearch from './BookApplicationSearch';
 import { useApiAxios } from 'base/api/base';
-
-const INIT_VALUE = {};
-
-const DATA_FIELDS = [
-  { field: 'title', placeholder: '제목' },
-  { field: 'writer', placeholder: '저자' },
-  { field: 'publisher', placeholder: '출판사' },
-  { field: 'ISBN', placeholder: 'ISBN' },
-];
 
 function BookApplicationForm() {
   const [auth] = useAuth();
   const navigate = useNavigate();
-  const { fieldValues, handleFieldChange } = useFieldValues(INIT_VALUE);
   const [query, setQuery] = useState();
 
   const [{ data }, refetch] = useApiAxios(
@@ -31,7 +18,7 @@ function BookApplicationForm() {
     { manual: true },
   );
 
-  const [{ errorMessages }, saveApplication] = useApiAxios(
+  const [{}, saveApplication] = useApiAxios(
     {
       url: '/books/api/applications/',
       method: 'POST',
@@ -92,87 +79,73 @@ function BookApplicationForm() {
   };
 
   return (
-    <div>
-      <div className="flex justify-center relative top-[30px] mb-[187px]">
-        <div className="w-1/2">
-          <div className="bg-white relative rounded-lg p-4 sm:p-4 md:p-8 lg:p-12">
-            <h2 className="relative bottom-[40px] text-center text-2xl font-medium title-font text-gray-900 select-none">
-              도서 신청
-            </h2>
-            <div className="flex justify-center">
-              <button
-                className="relative right-[125px] mb-4 text-sm text-indigo-700 font-bold select-none"
-                onClick={Link}
-              >
-                ISBN 찾기
-              </button>
-            </div>
-            <div>
-              <BookApplicationSearch
-                handleSubmit={handleSubmit}
-                setQuery={setQuery}
-                className="w-full select-none"
-              />
+    <div className="h-[550px]">
+      <div className="border-b-4 border-sky-600 w-3/4 relative left-[200px]">
+        <h2 className="text-3xl font-bold relative bottom-[20px] left-[20px] select-none">
+          도서 신청 하기
+        </h2>
+      </div>
+      <div>
+        <button
+          className="text-2xl font-bold relative left-[225px] top-[70px] hover:text-sky-600
+          animate__animated animate__heartBeat animate__slower animate__infinite"
+          onClick={Link}
+        >
+          ISBN 찾기
+        </button>
+        <div>
+          <BookApplicationSearch
+            handleSubmit={handleSubmit}
+            setQuery={setQuery}
+            className="w-full select-none"
+          />
 
-              {!data?.items[0]?.image ? (
-                data?.items && (
-                  <div className="text-red-400 font-sm select-none">
-                    검색결과가 없습니다.
-                  </div>
-                )
-              ) : (
-                <>
-                  <div className="flex justify-start">
-                    <img
-                      className="shadow-lg w-[150px] select-none relative top-[55px] left-[170px]"
-                      src={data?.items[0].image}
-                      alt=""
-                    />
-                  </div>
-                  <form>
-                    <div>
-                      <p className="relative w-[200px] bottom-[110px] left-[350px] text-center text-lg font-bold select-none">
-                        {data?.items[0].title}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="relative bottom-[90px] left-[120px] text-center select-none">
-                        {data?.items[0].author} | {data?.items[0].publisher}
-                      </p>
-                    </div>
+          {!data?.items[0]?.image ? (
+            data?.items && (
+              <h1 className="text-red-400 font-sm select-none relative left-[363px] bottom-[80px]">
+                검색결과가 없습니다.
+              </h1>
+            )
+          ) : (
+            <>
+              <div className="flex justify-start">
+                <img
+                  className="lg:w-[150px] w-[150px] lg:h-auto h-auto object-cover select-none relative top-[130px] left-[490px]"
+                  src={data?.items[0].image}
+                  alt=""
+                />
+              </div>
 
-                    <div>
-                      <p className="text-gray-500 text-sm select-none text-center relative bottom-[70px] left-[120px]">
-                        ISBN: {data?.items[0].isbn.slice(-13)}
-                      </p>
-                    </div>
+              <div className="w-fit">
+                <p className="relative bottom-[100px] left-[710px] text-center text-xl font-bold select-none w-[390px]">
+                  {data?.items[0].title}
+                </p>
+                <p className="relative bottom-[70px] left-[710px] text-lg text-center select-none">
+                  {data?.items[0].author} | {data?.items[0].publisher}
+                </p>
+                <p className="text-gray-500 text-sm select-none text-center relative bottom-[40px] left-[710px]">
+                  ISBN: {data?.items[0].isbn.slice(-13)}
+                </p>
+              </div>
 
-                    <div className="flex justify-center">
-                      <button
-                        onClick={handleClickSubmitButton}
-                        className="relative top-[50px]
-                w-1/2 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white
-                tracking-wide font-semibold font-sans hover:bg-indigo-700 select-none"
-                      >
-                        신청하기
-                      </button>
-                    </div>
-
-                    <div className="flex justify-center">
-                      <button
-                        onClick={handleClickCancleButton}
-                        className=" relative top-[60px]
-                w-1/2 bg-gray-300 rounded-lg px-4 py-2 text-lg text-gray-800 
-                tracking-wide font-semibold font-sans hover:bg-indigo-200 select-none"
-                      >
-                        취소
-                      </button>
-                    </div>
-                  </form>
-                </>
-              )}
-            </div>
-          </div>
+              <form className="flex justify-center">
+                <button
+                  onClick={handleClickSubmitButton}
+                  className="relative top-[20px] left-[130px] shadow-lg
+                  border-dashed border-2 border-sky-600 h-[50px] w-[100px]"
+                >
+                  신청하기
+                </button>
+                <button
+                  onClick={handleClickCancleButton}
+                  className="relative top-[20px] left-[170px] shadow-lg
+                  border-dashed border-2 border-gray-400 h-[50px] w-[100px]"
+                >
+                  취소
+                </button>
+              </form>
+            </>
+          )}
         </div>
       </div>
     </div>

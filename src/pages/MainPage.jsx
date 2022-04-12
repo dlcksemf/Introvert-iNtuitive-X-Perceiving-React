@@ -25,7 +25,7 @@ function MainPage() {
             className={`${
               showTop5 ? 'text-yellow-200' : 'text-white hover:text-yellow-200'
             }
-            py-8 px-[113px] relative bottom-[90px] bg-sky-600 font-extrabold`}
+            py-8 px-[113px] relative bottom-[90px] bg-sky-600 font-extrabold select-none`}
             onClick={() => setShowTop5(true)}
             onClickCapture={() => {
               setShowHeavyReader(false);
@@ -41,7 +41,7 @@ function MainPage() {
                 ? 'text-yellow-200'
                 : 'text-white hover:text-yellow-200'
             }
-            mt-5 px-[113px] relative bottom-[90px] bg-sky-700 font-extrabold`}
+            mt-5 px-[113px] relative bottom-[90px] bg-sky-700 font-extrabold select-none`}
             onClick={() => setShowNewBook(true)}
             onClickCapture={() => {
               setShowHeavyReader(false);
@@ -57,7 +57,7 @@ function MainPage() {
                 ? 'text-yellow-200'
                 : 'text-white hover:text-yellow-200'
             }
-            mt-9 px-[113px] relative bottom-[90px] bg-sky-800 font-extrabold`}
+            mt-9 px-[113px] relative bottom-[90px] bg-sky-800 font-extrabold select-none`}
             onClick={() => setShowHeavyReader(true)}
             onClickCapture={() => {
               setShowNewBook(false);
@@ -73,7 +73,7 @@ function MainPage() {
                 ? 'text-yellow-200'
                 : 'text-white hover:text-yellow-200'
             }
-            mt-12 px-[113px] relative bottom-[90px] bg-sky-900 font-extrabold`}
+            mt-12 px-[113px] relative bottom-[90px] bg-sky-900 font-extrabold select-none`}
             onClick={() => setShowRecommendedBooks(true)}
             onClickCapture={() => {
               setShowNewBook(false);

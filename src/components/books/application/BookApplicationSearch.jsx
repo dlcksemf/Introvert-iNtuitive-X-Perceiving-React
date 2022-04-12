@@ -1,35 +1,26 @@
-import useFieldValues from 'base/hooks/useFieldValues';
-import { useNavigate } from 'react-router-dom';
-import BookApplicationForm from './BookApplicationForm';
-
-const INIT_VALUE = {};
-
 function BookApplicationSearch({ setQuery, handleSubmit }) {
-  const { fieldValues, handleFieldChange } = useFieldValues(INIT_VALUE);
-
   return (
-    <div className="flex justify-center">
+    <div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           onChange={(e) => {
             setQuery(e.target.value);
           }}
-          placeholder={'ISBN으로 검색'}
+          placeholder={'검색어를 입력해주세요 ex) ISBN 번호'}
           autoComplete="off"
-          className="p-2 w-[270px] text-gray-900 bg-gray-50 rounded-lg focus:outline-none 
-          hover:font-semibold select-none border border-gray-300 sm:text-md"
+          className="border-2 border-gray-300 h-[70px] w-[845px] px-3 text-xl font-semibold
+          relative top-[20px] left-[360px] focus:outline-none select-none"
         />
 
-        <button className="ml-2" onClick={handleSubmit}>
-          <div
-            className="flex py-2 px-2 rounded-lg
-                  text-gray-600 hover:text-indigo-600 hover:font-bold 
-                  border-2 border-gray-200 focus:outline-none rounded
-                  select-none"
-          >
+        <button
+          className="border-2 border-gray-300 h-[70px] w-[90px] top-[21px]
+          relative left-[385px]"
+          onClick={handleSubmit}
+        >
+          <h1 className="text-2xl font-semibold text-center select-none">
             검색
-          </div>
+          </h1>
         </button>
       </form>
     </div>
