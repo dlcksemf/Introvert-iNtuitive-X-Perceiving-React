@@ -5,7 +5,11 @@ import BookApplicationPage from 'pages/BookApplicationPage';
 import BookDetailPage from 'pages/BookDetailPage';
 import BookListPage from 'pages/BookListPage';
 import NotFound from 'components/parts/NotFound';
-import BookApplicationSearch from 'components/books/application/BookApplicationSearch';
+import HeavyReader from 'components/main/HeavyReader';
+import NewBook from 'components/main/NewBook';
+import RecommendedBooks from 'components/main/RecommendedBooks';
+import Top5 from 'components/main/Top5';
+
 // import Footer from 'components/parts/Footer';
 
 function PageBookRouter() {
@@ -16,6 +20,10 @@ function PageBookRouter() {
       <Routes>
         <Route path="/booklist/*" element={<BookListPage />} />
         <Route path="/:book_num/" element={<BookDetailPage />} />
+        <Route path="/heavyreader/" element={<HeavyReader />} />
+        <Route path="/newbook/" element={<NewBook />} />
+        <Route path="/recommendedbooks/" element={<RecommendedBooks />} />
+        <Route path="/top5/" element={<Top5 />} />
         <Route path="/application/" element={<BookApplicationPage />} />
 
         <Route

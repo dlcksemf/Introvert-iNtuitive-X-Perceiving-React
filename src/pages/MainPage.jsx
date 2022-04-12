@@ -1,10 +1,17 @@
-import Top5 from 'components/main/Top5';
 import HeavyReader from 'components/main/HeavyReader';
 import NewBook from 'components/main/NewBook';
 import RecommendedBooks from 'components/main/RecommendedBooks';
+import Top5 from 'components/main/Top5';
 import Euclid from 'components/parts/image/Euclid.png';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function MainPage() {
+  const [showHeavyReader, setShowHeavyReader] = useState(false);
+  const [showNewBook, setShowNewBook] = useState(false);
+  const [showRecommendedBooks, setShowRecommendedBooks] = useState(false);
+  const [showTop5, setShowTop5] = useState(false);
+
   return (
     <div>
       <img
@@ -16,52 +23,86 @@ function MainPage() {
       <div className="border-2 border-gray-500 mx-[200px] h-[500px] relative bottom-[1000px] bg-white shadow-md">
         <span className="flex justify-start">
           <button
-            className="py-8 px-[113px] relative bottom-[90px] bg-sky-600 font-extrabold text-white
-          hover:text-yellow-200"
+            className={`${
+              showTop5 ? 'text-yellow-200' : 'text-white hover:text-yellow-200'
+            }
+            py-8 px-[113px] relative bottom-[90px] bg-sky-600 font-extrabold`}
+            onClick={() => setShowTop5(true)}
+            onClickCapture={() => {
+              setShowHeavyReader(false);
+              setShowNewBook(false);
+              setShowRecommendedBooks(false);
+            }}
           >
             인기도서
           </button>
           <button
-            className="mt-5 px-[113px] relative bottom-[90px] bg-sky-700 font-extrabold text-white
-          hover:text-yellow-200"
+            className={`${
+              showNewBook
+                ? 'text-yellow-200'
+                : 'text-white hover:text-yellow-200'
+            }
+            mt-5 px-[113px] relative bottom-[90px] bg-sky-700 font-extrabold`}
+            onClick={() => setShowNewBook(true)}
+            onClickCapture={() => {
+              setShowHeavyReader(false);
+              setShowTop5(false);
+              setShowRecommendedBooks(false);
+            }}
           >
             신간도서
           </button>
           <button
-            className="mt-9 px-[113px] relative bottom-[90px] bg-sky-800 font-extrabold text-white
-          hover:text-yellow-200"
+            className={`${
+              showHeavyReader
+                ? 'text-yellow-200'
+                : 'text-white hover:text-yellow-200'
+            }
+            mt-9 px-[113px] relative bottom-[90px] bg-sky-800 font-extrabold`}
+            onClick={() => setShowHeavyReader(true)}
+            onClickCapture={() => {
+              setShowNewBook(false);
+              setShowTop5(false);
+              setShowRecommendedBooks(false);
+            }}
           >
             다독왕
           </button>
           <button
-            className="mt-12 px-[113px] relative bottom-[90px] bg-sky-900 font-extrabold text-white
-          hover:text-yellow-200"
+            className={`${
+              showRecommendedBooks
+                ? 'text-yellow-200'
+                : 'text-white hover:text-yellow-200'
+            }
+            mt-12 px-[113px] relative bottom-[90px] bg-sky-900 font-extrabold`}
+            onClick={() => setShowRecommendedBooks(true)}
+            onClickCapture={() => {
+              setShowNewBook(false);
+              setShowTop5(false);
+              setShowHeavyReader(false);
+            }}
           >
             추천도서
           </button>
         </span>
-        <div className="w-full">
-          <Top5 />
-        </div>
+        <Link
+          to={
+            showTop5
+              ? `/books/top5/`
+              : showNewBook
+              ? `/books/newbook/`
+              : showHeavyReader
+              ? `/books/heavyreader`
+              : `/books/recommendedbooks`
+          }
+        />
       </div>
-      {/* <div className="grid grid-row-1 grid-flow-col ">
-        <div className="w-full">
-          <Top5 />
-        </div>
-        <div className="mt-16">
-          <HeavyReader />
-        </div>
+      <div className="relative bottom-[1550px]">
+        {showTop5 && <Top5 />}
+        {showNewBook && <NewBook />}
+        {showHeavyReader && <HeavyReader />}
+        {showRecommendedBooks && <RecommendedBooks />}
       </div>
-      <div className="grid grid-col-1 mb-28">
-        <div className=" mx-28 m-auto">
-          <NewBook />
-        </div>
-      </div>
-      <div className="grid grid-col-1">
-        <div className=" mx-28 m-auto">
-          <RecommendedBooks />
-        </div>
-      </div> */}
     </div>
   );
 }
