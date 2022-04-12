@@ -275,6 +275,7 @@ function Top5Summary({ book }) {
 }
 
 function HeavyReaderSummary({ book }) {
+  const navigate = useNavigate();
   const [flip, setFlip] = useState(false);
 
   //onClick 시 사용
@@ -286,7 +287,7 @@ function HeavyReaderSummary({ book }) {
     <div className="">
       <>
         <div
-          className="maincontainer"
+          className="maincontainer select-none"
           onMouseEnter={() => setFlip(true)}
           onMouseLeave={() => setFlip(false)}
         >
@@ -304,13 +305,26 @@ function HeavyReaderSummary({ book }) {
               />
             </div>
             <div className="back">
-              <img src={card4} alt="" className="h-[350px]" />
+              <img src={card4} alt="" className="h-[350px]" loading="lazy" />
 
-              <div className=" absolute top-[155px] left-[83px] text-center font-bold text-lg font-serif text-neutral-500">
-                <p className="w-40 relative right-[38px] text-4xl font-extrabold">
-                  {book?.username}
-                </p>
-              </div>
+              {book?.count_loans ? (
+                <div className=" absolute top-[155px] left-[83px] text-center text-neutral-500">
+                  <p className="w-40 relative right-[38px] text-4xl font-extrabold select-none">
+                    {book?.username}
+                  </p>
+                </div>
+              ) : (
+                <div className=" absolute top-[155px] left-[83px] text-center text-neutral-500">
+                  <button
+                    onClick={() => {
+                      navigate(`/books/booklist/`);
+                    }}
+                    className="w-40 relative right-[38px] text-2xl font-extrabold"
+                  >
+                    책빌리러가기
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -321,19 +335,19 @@ function HeavyReaderSummary({ book }) {
             <img
               src={ggumdori}
               alt="꿈돌이"
-              className="h-40 relative right-[460px] bottom-[80px]"
+              className="h-40 relative right-[460px] bottom-[80px] select-none"
             />
             <img
               src={heavyreader}
               alt="EUCLID SOFT 영광의 주인공"
-              className="h-40 relative right-[550px] bottom-[400px]"
+              className="h-40 relative right-[550px] bottom-[400px] select-none"
             />
           </>
         ) : (
           <img
             src={heavyreader1}
             alt="영광의 주인공이 되어주세요"
-            className="h-40 animate__animated animate__pulse animate__infinite relative right-[550px] bottom-[140px]"
+            className="h-40 relative right-[550px] bottom-[140px] select-none"
           />
         )}
       </div>
@@ -343,11 +357,12 @@ function HeavyReaderSummary({ book }) {
 
 function RecommendedBooksSummary({ book }) {
   const navigate = useNavigate();
+
   return (
     <>
-      <div lassName="max-w-sm rounded overflow-hidden shadow-xl">
+      <div className="max-w-sm rounded overflow-hidden shadow-xl">
         <img
-          className="lg:w-full max-w-xs lg:h-72 max-h-xs object-scale-down cursor-pointer"
+          className="lg:w-full max-w-xs lg:h-72 max-h-xs object-scale-down cursor-pointer select-none"
           src={book?.cover_photo ? book?.cover_photo : non_image}
           alt={book?.title}
           onClick={() => {
@@ -360,9 +375,6 @@ function RecommendedBooksSummary({ book }) {
           </span>
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 select-none">
             #{book?.writer}
-          </span>
-          <span className="inline-block bg-indigo-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 select-none">
-            #추천해요
           </span>
         </div>
         <div className="px-6 select-none">
@@ -379,7 +391,7 @@ function RecommendedBooksSummary({ book }) {
               navigate(`/books/${book.book_num}/`);
             }}
             className="text-white bg-indigo-600 border-0 mt-4 py-2 px-12 focus:outline-none
-                 hover:bg-indigo-700 rounded-full relative bottom-[35px] left-[32px]"
+                 hover:bg-indigo-700 rounded-full relative bottom-[35px] left-[53px]"
           >
             자세히보기
           </button>
