@@ -18,7 +18,7 @@ function MainPage() {
         alt="유클리드"
         className="max-w-full h-auto relative bottom-[95px]"
       />
-      <div className="border-2 border-gray-500 max-w-full h-[574px] relative bottom-[668px] bg-rose-300 opacity-20" />
+      <div className=" border-gray-500 max-w-full h-[574px] relative bottom-[668px] " />
       <div className="border-2 border-gray-500 mx-[200px] h-[400px] relative bottom-[900px] bg-white shadow-md">
         <span className="flex justify-start">
           <button
