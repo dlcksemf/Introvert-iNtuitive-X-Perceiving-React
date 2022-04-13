@@ -135,7 +135,7 @@ function BookDetail({ book_num }) {
               <span className="flex border-l-2 border-gray-400 relative top-[42px] right-[135px]">
                 {book?.state === 'A' && (
                   <>
-                    <span className="text-gray-600 select-none relative top-[7px] left-[10px]">
+                    <span className="text-gray-600 select-none relative top-[8px] left-[14px]">
                       대출하기
                     </span>
                     <div onClick={handleClickLoan} className="">
