@@ -27,7 +27,7 @@ function AdminApplicationList() {
   const fetchApplications = useCallback(
     async (newPage) => {
       const params = {
-        page_size: 5,
+        page_size: 10,
         page: newPage,
         state: category === 'ALL' ? '' : category,
       };
