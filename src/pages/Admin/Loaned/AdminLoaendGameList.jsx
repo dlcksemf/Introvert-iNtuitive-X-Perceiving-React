@@ -60,8 +60,8 @@ function AdminLoanedGameList() {
   return (
     <>
       <div className="w-[1210px] m-auto">
-        <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
-          <div className="sm:flex items-end justify-between">
+        <div className="bg-white py-1 px-4 md:px-8 xl:px-10">
+          <div className="sm:flex items-center justify-between">
             <p className="select-none focus:outline-none text-2xl font-bold leading-normal text-gray-800">
               대여 게임 관리
             </p>
