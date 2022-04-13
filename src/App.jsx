@@ -24,7 +24,7 @@ function App() {
       <div className="relative min-h-fit">
         {auth.is_staff ? <TopNav /> : <SecondNav />}
 
-        <div className="app mt-56">
+        <div className="app mt-44">
           <Routes>
             {auth?.is_staff && (
               <Route path="/" element={<Navigate to="/admin/" />} />
