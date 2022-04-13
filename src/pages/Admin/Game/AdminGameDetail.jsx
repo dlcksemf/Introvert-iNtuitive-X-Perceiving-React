@@ -45,15 +45,14 @@ function AdminGameDetail({ gameId }) {
       {game && (
         <>
           <section className="text-gray-600 body-font overflow-hidden">
-            <div className="container px-5 py-24 mx-auto">
+            <div className="container px-5 pb-24 mx-auto">
               <div className="lg:w-4/5 mx-auto flex flex-wrap">
                 {game?.game_cover_photo && (
                   <img
                     src={game?.game_cover_photo}
                     alt={game?.game_name}
-                    // 여기 result 없애주세요
                     className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
-                    hover:skew-y-6"
+                   "
                   />
                 )}
                 {!game?.game_cover_photo && (
@@ -63,13 +62,12 @@ function AdminGameDetail({ gameId }) {
                     className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
                   />
                 )}
-                <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6">
                   <h1
                     className="text-gray-900 text-3xl title-font font-medium mb-5 select-none
                   hover:font-semibold"
                   >
                     {game?.game_name}
-                    {/* 여기 result 없애주세요 */}
                   </h1>
 
                   <div className="flex mb-4 select-none">
@@ -89,10 +87,10 @@ function AdminGameDetail({ gameId }) {
                     ))}
                   </div>
 
-                  <div className="flex justify-start">
+                  <div className="mt-10 flex justify-start">
                     <Link to="/admin/gamelist/">
                       <div
-                        className="flex m-auto ml-auto 
+                        className="flex mr-32
                   text-gray-600 hover:text-indigo-500 hover:font-bold 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                   "
@@ -102,7 +100,7 @@ function AdminGameDetail({ gameId }) {
                     </Link>
                     <Link to={`/admin/game/${gameId}/edit/`}>
                       <div
-                        className="flex m-auto ml-52
+                        className="flex
                   text-gray-600 hover:text-indigo-500 hover:font-bold 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                  "

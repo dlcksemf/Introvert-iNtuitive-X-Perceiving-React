@@ -70,7 +70,7 @@ function AdminBookDetail({ postId }) {
       {post && (
         <>
           <section className="text-gray-600 body-font overflow-hidden">
-            <div className="container px-5 py-24 mx-auto">
+            <div className="container px-5 pb-24 mx-auto">
               <div className="lg:w-4/5 mx-auto flex flex-wrap">
                 {post?.cover_photo && (
                   <img
@@ -88,42 +88,30 @@ function AdminBookDetail({ postId }) {
                 )}
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                   {post?.category && (
-                    <h2 className="text-sm title-font text-gray-500 tracking-widest select-none mt-5 mb-3">
+                    <h2 className="text-sm title-font text-gray-500 tracking-widest mt-5 mb-3">
                       [ {post?.category} ]
                     </h2>
                   )}
-                  <h1
-                    className="text-gray-900 text-3xl title-font font-medium mb-5 select-none
-                  hover:font-semibold"
-                  >
+                  <h1 className="text-gray-800 text-3xl title-font font-bold mb-5">
                     {post?.title}
                   </h1>
-                  <h1 className="text-gray-900 text-xl title-font font-medium mb-5 select-none hover:font-semibold">
+                  <h1 className="text-gray-900 text-xl title-font font-medium mb-5">
                     {post?.writer}
                   </h1>
-                  <div className="flex mb-4 select-none">
-                    {post?.translator && (
-                      <>
-                        <span className="flex items-center select-none">
-                          역자 {post?.translator}
-                        </span>
-                        <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s" />
-                      </>
-                    )}
-                    <span className="flex py-2 select-none">
-                      {post?.publisher}
-                    </span>
-                    <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      {post?.published_date}
-                    </span>
-                    <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      ISBN {post?.ISBN}
-                    </span>
-                    <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      수량 : {post?.amount}
-                    </span>
+                  <div className="mb-4 ml-2 border-l-2 border-gray-200">
+                    <div className="">
+                      {post?.translator && (
+                        <div className="pl-4 py-2">역자 {post?.translator}</div>
+                      )}
+                      <div className="flex py-2 pl-4 ">{post?.publisher}</div>
+                      <div className="flex pl-4 py-2">
+                        {post?.published_date}
+                      </div>
+                      <div className="flex pl-4 py-2">ISBN {post?.ISBN}</div>
+                    </div>
+                    <div className="flex pl-4 py-2">수량 : {post?.amount}</div>
                   </div>
-                  <div className="leading-relaxed select-none mt-14 hover:text-gray-900">
+                  <div className="leading-relaxed mt-10">
                     {post?.story.split(/[\r\n]+/).map((line, index) => (
                       <p key={index}>{line}</p>
                     ))}
@@ -131,17 +119,17 @@ function AdminBookDetail({ postId }) {
                   <div className="mt-10">
                     <button
                       onClick={hopeBookLink}
-                      className="text-gray-600 text-s mb-10 hover:text-indigo-500 hover:font-bold
-                      transition duration-500 ease-in-out hover:scale-105"
+                      className="text-gray-600 text-s mb-10 hover:text-indigo-500 select-none
+                      transition duration-500 ease-in-out "
                     >
                       대전 책방 알아보기
                     </button>
                   </div>
-                  <div className="flex items-center border-b-2 border-gray-100 mb-3">
+                  <div className="flex items-center border-b-2 border-gray-100 mb-3 select-none">
                     <button
                       onClick={aladinLink}
-                      className="text-gray-600 text-s mb-10 hover:text-indigo-500 hover:font-bold
-                      transition duration-500 ease-in-out hover:scale-105"
+                      className="text-gray-600 text-s mb-10 hover:text-indigo-500 
+                      transition duration-500 ease-in-out "
                     >
                       알라딘에서 책찾기
                     </button>
@@ -150,9 +138,9 @@ function AdminBookDetail({ postId }) {
                   <div className="flex justify-start">
                     <Link to="/admin/booklist/">
                       <div
-                        className="flex m-auto ml-auto 
-                  text-gray-600 hover:text-indigo-500 hover:font-bold 
-                  border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
+                        className="flex m-auto mr-48
+                  text-gray-600 hover:text-indigo-500
+                  border-2 border-gray-200 py-2 px-3 focus:outline-none rounded
                   "
                       >
                         목록으로
@@ -160,8 +148,8 @@ function AdminBookDetail({ postId }) {
                     </Link>
                     <Link to={`/admin/book/${postId}/edit/`}>
                       <div
-                        className="flex m-auto ml-52
-                  text-gray-600 hover:text-indigo-500 hover:font-bold 
+                        className="flex m-auto
+                  text-gray-600 hover:text-indigo-500 
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                   "
                       >
@@ -173,7 +161,7 @@ function AdminBookDetail({ postId }) {
                         disabled={deleteLoading}
                         onClick={handleDelete}
                         className="flex m-auto ml-5
-                      text-gray-600 hover:text-indigo-500 hover:font-bold 
+                      text-gray-600 hover:text-indigo-500 
                       border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                       "
                       >
