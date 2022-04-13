@@ -24,6 +24,7 @@ function Top5() {
         <Carousel
           stopAutoPlayOnHover={true}
           navButtonsAlwaysInvisible={true}
+          indicators={false}
           swipeable={true}
           swipeScrollTolerance={10}
         >
