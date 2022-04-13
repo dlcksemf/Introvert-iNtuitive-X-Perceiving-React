@@ -382,24 +382,24 @@ function RecommendedBooksSummary({ book }) {
       shadow-xl relative left-[155px] ml-10"
       >
         <img
-          className="lg:w-full max-w-xs lg:h-60 max-h-xs object-scale-down cursor-pointer select-none"
+          className="lg:w-full max-w-xs lg:h-[220px] max-h-xs object-scale-down cursor-pointer select-none"
           src={book?.cover_photo ? book?.cover_photo : non_image}
           alt={book?.title}
           onClick={() => {
             navigate(`/books/${book.book_num}/`);
           }}
         />
-        <div className="text-sm title-font text-gray-500 tracking-widest text-center mb-4 relative bottom-[10px]">
+        <div className="text-sm title-font text-gray-500 tracking-widest text-center mb-4 relative top-[15px]">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 select-none">
             {book?.category && `#${book?.category}`}
           </span>
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 select-none">
-            #{truncateTitle(book?.writer)}
+            #{truncateName(book?.writer)}
           </span>
         </div>
         <div className="px-6 select-none">
           <div
-            className="font-bold text-xl mb-2 text-center relative bottom-[10px]"
+            className="font-bold text-xl mb-2 text-center relative top-[20px]"
             onClick={() => {
               navigate(`/books/${book.book_num}`);
             }}
@@ -411,7 +411,7 @@ function RecommendedBooksSummary({ book }) {
               navigate(`/books/${book.book_num}/`);
             }}
             className="text-white bg-indigo-600 border-0 mt-4 py-2 px-12 focus:outline-none
-                 hover:bg-indigo-700 rounded-full relative bottom-[20px] left-[48px]"
+                 hover:bg-indigo-700 rounded-full relative top-[15px] left-[48px]"
           >
             자세히보기
           </button>
