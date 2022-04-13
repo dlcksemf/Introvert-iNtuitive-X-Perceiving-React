@@ -394,7 +394,7 @@ function RecommendedBooksSummary({ book }) {
             {book?.category && `#${book?.category}`}
           </span>
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 select-none">
-            #{truncateTitle(book?.writer)}
+            #{truncateName(book?.writer)}
           </span>
         </div>
         <div className="px-6 select-none">
