@@ -162,28 +162,16 @@ function GameReviewSummary({ review, setReload }) {
         `삭제 요청 중 에러가 발생 (${deleteError.response.status} ${deleteError.response.statusText})`}
       {review && (
         <>
-          <span className="flex justify-end">
-            {auth?.user_id === review?.user_id && (
-              <div className="mr-2 mt-4">
-                {/* <button
-                  onClick={handleClick}
-                  className="inline-flex border-2 border-indigo-600 text-black hover:text-indigo-600 rounded-full h-6 px-3 justify-center items-center"
-                >
-                  수정 // 구현하고 싶지만 보류
-                </button> */}
-                <button
-                  disabled={deleteLoading}
-                  onClick={handleDelete}
-                  className="inline-flex ml-1 border-2 border-pink-500 text-black hover:text-pink-600 rounded-full h-6 px-3 justify-center items-center"
-                >
-                  삭제
-                </button>
-              </div>
-            )}
-          </span>
-          <span className="flex mt-3">
+          {auth?.user_id === review?.user_id && (
+            <div className="flex justify-end relative top-4 right-4">
+              <button disabled={deleteLoading} onClick={handleDelete}>
+                <p className="text-gray-500 text-sm hover:text-sky-600">삭제</p>
+              </button>
+            </div>
+          )}
+          <span className="flex m-auto">
             <h2 className="mr-4 ml-4 select-none">
-              <RateIcon game_review_rate={review.game_review_rate} />
+              <RateIcon review_rate={review.game_review_rate} />
             </h2>
             <h1 className="font-extrabold select-none">{review?.username}</h1>
             <h2 className="ml-4 mb-4 select-none">
@@ -193,14 +181,6 @@ function GameReviewSummary({ review, setReload }) {
               {review.updated_at.replace('T', ' ').substring(0, 16)}
             </h2>
           </span>
-          {/* <div className="mb-4 pl-0.5 pr-0.5">
-            {input ? (
-              <GameReviewForm
-                value={review.game_review_id}
-                onChange={handleChange}
-              />
-            ) : null} // 수정 - 구현하고 싶지만 보류
-          </div> */}
         </>
       )}
     </div>

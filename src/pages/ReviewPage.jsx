@@ -61,7 +61,7 @@ function ReviewPage({ book }) {
                   />
                 ))}
             </ul>
-            <div className="relative top-4 pb-16">
+            <div className="relative top-4 pb-4">
               <ReactPaginate
                 breakLabel="..."
                 nextLabel=">"
