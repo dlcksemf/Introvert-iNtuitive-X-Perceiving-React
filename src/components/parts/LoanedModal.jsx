@@ -85,7 +85,7 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
           relative left-[100px] top-[142px] bg-white"
         >
           <h5 className="text-3xl font-bold select-none relative left-[40px] top-[30px]">
-            대출 신청
+            도서 대출 신청
           </h5>
           <button
             data-bs-dismiss="modal"
