@@ -109,14 +109,13 @@ function BookDetail({ book_num }) {
             <h1 className="mb-2">수 량 : {book?.amount} 권</h1>
 
             <div className="flex">
-              <div
+              <button
+                onClick={buyLink}
                 className="relative right-[230px] top-[40px] focus:outline-none select-none rounded 
                 text-center border-double border-4 border-gray-400 w-[150px] h-[45px] hover:border-sky-600"
               >
-                <button onClick={buyLink} className="text-gray-600 my-1.5">
-                  알라딘에서 책찾기
-                </button>
-              </div>
+                알라딘에서 책찾기
+              </button>
               <span className="text-gray-600 select-none relative top-[50px] right-[150px]">
                 찜하기
               </span>
@@ -177,10 +176,11 @@ function BookDetail({ book_num }) {
             state={{ pathname: pathname }}
           >
             <div
+              type="button"
               className="relative left-[300px] bottom-[60px] focus:outline-none select-none rounded
               border-double border-4 border-gray-400 w-[100px] h-[50px] hover:border-sky-600"
             >
-              <h1 className="text-gray-600 text-center my-2.5">목록으로</h1>
+              <h1 className="text-center my-2">목록으로</h1>
             </div>
           </Link>
           <div className="flex justify-center select-none">

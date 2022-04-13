@@ -94,8 +94,8 @@ function ReviewForm({ reviewId, book, setReload }) {
             autoComplete="off"
           />
           <button
-            className="w-[50px] h-[50px] rounded-md border-4 border-double hover:border-sky-500 
-          border-gray-400 relative left-[25px]"
+            className="w-[50px] h-[50px] rounded-md border-4 border-double hover:border-sky-600 
+          border-gray-400 relative left-[25px] text-black"
           >
             등록
           </button>
