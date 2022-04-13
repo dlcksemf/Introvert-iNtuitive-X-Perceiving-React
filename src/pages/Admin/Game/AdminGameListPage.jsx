@@ -6,23 +6,19 @@ function AdminGameListPage() {
 
   return (
     <div>
-      <div className="text-center text-white">관리자 게임 목록</div>
-
-      <div className="text-center">
-        <div
-          className="inline-flex items-center bg-indigo-600 leading-none rounded-full py-3 px-5 text-teal
-            font-semibold cursor-pointer relative inline-block justify-center items-center
-            hover:bg-white  hover:border hover:border-indigo-600
-            text-white text-lg hover:text-indigo-600
+      <div
+        className="ml-40 items-center bg-indigo-400 leading-none rounded-full py-3 px-5 text-teal
+          font-semibold cursor-pointer relative inline-block justify-center
+          hover:bg-white  hover:border hover:border-indigo-400
+          text-white text-lg hover:text-indigo-400
           "
+      >
+        <span
+          onClick={() => navigate('/admin/game/new/')}
+          className="relative "
         >
-          <span
-            onClick={() => navigate('/admin/game/new/')}
-            className="relative "
-          >
-            새로운 게임 등록 🎮
-          </span>
-        </div>
+          새로운 게임 등록 🎮
+        </span>
       </div>
 
       <AdminGameList />
