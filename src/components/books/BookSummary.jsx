@@ -29,6 +29,15 @@ function truncateString(str) {
     return str;
   }
 }
+
+function truncateTitle(str) {
+  if (str.length > 15) {
+    return str.slice(0, 15) + '...';
+  } else {
+    return str;
+  }
+}
+
 function BookSummary({ book, reloadBook }) {
   const [auth] = useAuth();
   const navigate = useNavigate();
@@ -360,7 +369,10 @@ function RecommendedBooksSummary({ book }) {
 
   return (
     <>
-      <div className="max-w-sm rounded w-[300px] h-[380px] overflow-hidden shadow-xl relative right-[200px]">
+      <div
+        className="max-w-sm rounded w-[300px] h-[380px] overflow-hidden 
+      shadow-xl relative left-[155px] ml-10"
+      >
         <img
           className="lg:w-full max-w-xs lg:h-60 max-h-xs object-scale-down cursor-pointer select-none"
           src={book?.cover_photo ? book?.cover_photo : non_image}
@@ -384,7 +396,7 @@ function RecommendedBooksSummary({ book }) {
               navigate(`/books/${book.book_num}`);
             }}
           >
-            {book.title}
+            {truncateTitle(book.title)}
           </div>
           <button
             onClick={() => {
