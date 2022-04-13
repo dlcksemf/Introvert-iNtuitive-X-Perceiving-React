@@ -132,14 +132,14 @@ function BookApplicationForm() {
                 <button
                   onClick={handleClickSubmitButton}
                   className="relative top-[20px] left-[130px] shadow-lg
-                  border-dashed border-2 border-sky-600 h-[50px] w-[100px]"
+                  border-double border-4 border-sky-600 h-[50px] w-[100px] hover:border-sky-700"
                 >
                   신청하기
                 </button>
                 <button
                   onClick={handleClickCancleButton}
                   className="relative top-[20px] left-[170px] shadow-lg
-                  border-dashed border-2 border-gray-400 h-[50px] w-[100px]"
+                  border-double border-4 border-gray-400 h-[50px] w-[100px] hover:border-gray-500"
                 >
                   취소
                 </button>
