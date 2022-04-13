@@ -52,7 +52,7 @@ function AdminBookList() {
   }, [fetchApplications]);
 
   return (
-    <div className="w-[1200px] m-auto my-5 cursor-pointer">
+    <div className="w-[1200px] m-auto mb-10">
       <ToastContainer />
       <div className="text-right mr-10">
         <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
@@ -63,10 +63,7 @@ function AdminBookList() {
       {postList && (
         <div className="flex flex-wrap">
           {postList?.results?.map((post) => (
-            <div
-              key={post.book_num}
-              className="w-full md:w-1/2 xl:w-1/3 px-4 transition-transform hover:-translate-y-5 duration-300"
-            >
+            <div key={post.book_num} className="w-full md:w-1/2 xl:w-1/3 px-4">
               <AdminBookSummary post={post} />
             </div>
           ))}
