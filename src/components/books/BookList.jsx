@@ -91,7 +91,7 @@ function BookList() {
                 전체 도서 목록
               </h1>
               <div className="absolute flex justify-end items-end top-[80px]">
-                <div className="mr-3 z-10">
+                <div className="mr-3">
                   <Category selected={category} setSelected={setCategory} />
                 </div>
                 <div className="mr-10">
