@@ -1,6 +1,9 @@
 import { useAuth } from 'base/hooks/Authcontext';
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Logo from 'components/parts/image/Logo.png';
+import out_black from 'components/parts/image/out_black.png';
+import out_white from 'components/parts/image/out_white.png';
 
 const useScroll = () => {
   const [state, setState] = useState({
@@ -34,173 +37,20 @@ function TopNav() {
   };
   const { y } = useScroll();
 
-  if (y > 80) {
-    return (
-      <div className="fixed w-full  body-font top-0 z-10">
-        <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
-          <div className="flex justify-between">
-            <div>
-              {/* <img src={} alt="EUCLID BOOKS" className="h-20" /> */}
-            </div>
-            <div>
-              <header className="mt-5 flex justify-between text-center text-xl">
-                <div
-                  className="mr-10 col-start-1 select-none 
-          hover:text-indigo-700 hover:font-extrabold mb-5"
-                  onClick={() => {
-                    navigate(`/admin/loaned/`);
-                  }}
-                >
-                  대출관리
-                </div>
-                <div
-                  className="mr-10 col-start-2 select-none 
-          hover:text-indigo-700 hover:font-extrabold"
-                  onClick={() => {
-                    navigate(`/admin/booklist/`);
-                  }}
-                >
-                  도서관리
-                </div>
-                <div
-                  className="mr-10 col-start-3 select-none 
-          hover:text-indigo-700 hover:font-extrabold"
-                  onClick={() => {
-                    navigate(`/admin/gamelist/`);
-                  }}
-                >
-                  보드게임 관리
-                </div>
-                <div
-                  className="mr-10 col-start-4 select-none
-          hover:text-indigo-700 hover:font-extrabold"
-                  onClick={() => {
-                    navigate(`/admin/user/`);
-                  }}
-                >
-                  회원 관리
-                </div>
-                <div
-                  className="mr-10 col-start-5 select-none 
-          hover:text-indigo-700 hover:font-extrabold"
-                  onClick={() => {
-                    navigate(`/admin/review/`);
-                  }}
-                >
-                  리뷰 관리
-                </div>
-                <div
-                  className="mr-10 col-start-6 select-none 
-          hover:text-indigo-700 hover:font-extrabold"
-                  onClick={() => {
-                    navigate(`/admin/application/`);
-                  }}
-                >
-                  신청 관리
-                </div>
-              </header>
-            </div>
-            <div>
-              <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 pt-5 pr-12 focus:outline-none rounded text-base mt-8 md:mt-0">
-                {!auth.isLoggedIn && (
-                  <NavLink
-                    className="font-semibold select-none mr-3 "
-                    type="button"
-                    to="/accounts/login/"
-                  >
-                    로그인
-                  </NavLink>
-                )}
-                {auth.isLoggedIn && (
-                  <div className="text-sm font-bold mr-3 select-none flex">
-                    <div className="mt-1">
-                      {auth.is_staff
-                        ? `관리자님 환영합니다`
-                        : `${
-                            auth.username ? auth.username : 'NoNamer'
-                          }님 환영합니다`}
-                    </div>
-                    <button
-                      className="ml-3"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="내정보 가기"
-                      onClick={() => {
-                        navigate('/accounts/mypage/');
-                      }}
-                    >
-                      {/* <img src={user} alt="내정보" className="h-8 w-8" /> */}
-                    </button>
-                    <button onClick={handleLogout}>로그아웃</button>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </header>
-      </div>
-    );
-  } else {
+  if (y > 0.5) {
     return (
       <div className="fixed w-full body-font top-0 z-10 h-68">
-        <header className=" text-gray-700 bg-white backdrop-filter backdrop-blur-sm bg-opacity-90">
-          <div className="mx-2 flex px-7 pt-1 pb-4 flex-col md:flex-row items-center">
-            <div className="basis-1/3 grow-0 shrink-0 text-gray-900 md:mb-0"></div>
-
-            <div
-              className={`flex justify-center basis-1/3 grow-0 shrink-0 md:ml-auto md:mr-auto ${
-                auth.is_staff ? 'cursor-default' : 'cursor-pointer'
-              }`}
-            >
-              <div
-                className="text-md text-primary-600 text-bold text-center"
-                onClick={handleGoToMainPage}
-              >
-                {/* <img src={name} alt="EUCLID BOOKS" className="h-32" /> */}
+        <div class="flex-1 flex flex-col">
+          <nav class="px-10 flex justify-between bg-white h-16 shadow-md">
+            <ul class="flex items-center">
+              <div className="text-md text-primary-600 text-bold text-center">
+                <img src={Logo} alt="EUCLID BOOKS" className="h-[50px]" />
               </div>
-            </div>
+            </ul>
 
-            <div className="grow-0 shrink-0 flex justify-end items-center basis-1/3 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0">
-              {!auth.isLoggedIn && (
-                <NavLink
-                  className="font-semibold select-none mr-3"
-                  type="button"
-                  to="/accounts/login/"
-                >
-                  로그인
-                </NavLink>
-              )}
-              {auth.isLoggedIn && (
-                <div className="text-sm font-bold mr-3 select-none flex">
-                  <div className="mt-1">
-                    {auth.is_staff
-                      ? `관리자님 환영합니다`
-                      : `${
-                          auth.username ? auth.username : 'NoNamer'
-                        }님 환영합니다`}
-                  </div>
-                  <button
-                    className="ml-3"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="내정보 가기"
-                    onClick={() => {
-                      navigate('/accounts/mypage/');
-                    }}
-                  >
-                    {/* <img src={user} alt="내정보" className="h-8 w-8" /> */}
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-          <div>
-            <header className="mt-5 flex justify-between text-center text-xl">
-              <div></div>
-              <div></div>
+            <header className="flex justify-between items-center text-xl">
               <div
-                className="col-start-1 select-none cursor-pointer
-          hover:text-indigo-700 hover:font-extrabold mb-5"
+                className="mr-16 cursor-pointer font-bold "
                 onClick={() => {
                   navigate(`/admin/loaned/`);
                 }}
@@ -208,8 +58,7 @@ function TopNav() {
                 대출관리
               </div>
               <div
-                className="col-start-2 select-none cursor-pointer
-          hover:text-indigo-700 hover:font-extrabold"
+                className="mr-16 cursor-pointer font-bold"
                 onClick={() => {
                   navigate(`/admin/booklist/`);
                 }}
@@ -217,47 +66,246 @@ function TopNav() {
                 도서관리
               </div>
               <div
-                className="col-start-3 select-none cursor-pointer
-          hover:text-indigo-700 hover:font-extrabold"
+                className="mr-16 cursor-pointer font-bold"
                 onClick={() => {
                   navigate(`/admin/gamelist/`);
                 }}
               >
-                보드게임 관리
+                보드게임관리
               </div>
               <div
-                className="col-start-4 select-none cursor-pointer
-          hover:text-indigo-700 hover:font-extrabold"
+                className="mr-16 cursor-pointer font-bold"
                 onClick={() => {
                   navigate(`/admin/user/`);
                 }}
               >
-                회원 관리
+                회원관리
               </div>
               <div
-                className="col-start-5 select-none cursor-pointer
-          hover:text-indigo-700 hover:font-extrabold"
+                className="mr-16 cursor-pointer font-bold"
                 onClick={() => {
                   navigate(`/admin/review/`);
                 }}
               >
-                리뷰 관리
+                리뷰관리
               </div>
               <div
-                className="col-start-6 select-none cursor-pointer
-          hover:text-indigo-700 hover:font-extrabold"
+                className=" cursor-pointer font-bold"
                 onClick={() => {
                   navigate(`/admin/application/`);
                 }}
               >
-                신청 관리
+                신청관리
               </div>
+            </header>
+
+            <ul class="flex items-center">
+              <li>
+                {!auth.isLoggedIn && (
+                  <>
+                    <NavLink
+                      className="font-semibold select-none mr-6 hover:text-sky-600"
+                      type="button"
+                      to="/accounts/login/"
+                    >
+                      로그인
+                    </NavLink>
+                    <NavLink
+                      className="font-semibold select-none mr-6 hover:text-sky-600"
+                      type="button"
+                      to="/accounts/signup/"
+                    >
+                      회원가입
+                    </NavLink>
+                  </>
+                )}
+                {auth.isLoggedIn && (
+                  <div className="text-sm font-bold mr-3 select-none flex text-black">
+                    <div className="mt-1.5">
+                      {auth.is_staff
+                        ? `관리자님 환영합니다`
+                        : `${
+                            auth.username ? auth.username : 'NoNamer'
+                          }님 환영합니다`}
+                    </div>
+                    <button
+                      className="ml-4 hover:text-sky-600"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="내정보 가기"
+                      onClick={() => {
+                        navigate('/accounts/mypage/');
+                      }}
+                    >
+                      <div className="border-2 border-gray-500 rounded-sm px-[25px] py-[5px] font-semibold">
+                        내정보
+                      </div>
+                    </button>
+                    <button>
+                      <div
+                        title="로그아웃"
+                        className="ml-0.5 px-[10px] py-[1px]"
+                        onClick={handleLogout}
+                      >
+                        <img className="w-6 h-6" src={out_black} alt="logout" />
+                      </div>
+                    </button>
+                  </div>
+                )}
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <>
+        <div className="fixed w-full body-font top-0 z-10 h-68">
+          <div class="flex-1 flex flex-col">
+            <nav class="px-10 flex justify-between h-[55px] border-b-2 bg-sky-600">
+              <ul class="flex items-center">
+                <li class="relative top-[58px] w-[250px]">
+                  <div
+                    className={`flex justify-center basis-1/3 grow-0 shrink-0 md:ml-auto md:mr-auto ${
+                      auth.is_staff ? 'cursor-default' : 'cursor-pointer'
+                    }`}
+                  >
+                    <div
+                      className="text-md text-primary-600 text-bold text-center"
+                      onClick={handleGoToMainPage}
+                    >
+                      <img src={Logo} alt="EUCLID BOOKS" className="h-[50px]" />
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <ul class="flex items-center">
+                <li>
+                  {!auth.isLoggedIn && (
+                    <>
+                      <NavLink
+                        className="font-semibold select-none mr-6 hover:text-yellow-200 text-white"
+                        type="button"
+                        to="/accounts/login/"
+                      >
+                        로그인
+                      </NavLink>
+                      <NavLink
+                        className="font-semibold select-none mr-6 hover:text-yellow-200 text-white"
+                        type="button"
+                        to="/accounts/signup/"
+                      >
+                        회원가입
+                      </NavLink>
+                    </>
+                  )}
+                  {auth.isLoggedIn && (
+                    <div className="text-sm font-bold mr-3 select-none flex text-white">
+                      <div className="mt-1.5">
+                        {auth.is_staff
+                          ? `관리자님 환영합니다`
+                          : `${
+                              auth.username ? auth.username : 'NoNamer'
+                            }님 환영합니다`}
+                      </div>
+                      <button
+                        className="ml-4 hover:text-yellow-200"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="내정보 가기"
+                        onClick={() => {
+                          navigate('/accounts/mypage/');
+                        }}
+                      >
+                        <div className="border-2 border-white rounded-sm px-[25px] py-[5px] font-semibold">
+                          내정보
+                        </div>
+                      </button>
+                      <button>
+                        <div
+                          title="로그아웃"
+                          className="ml-0.5 px-[10px] py-[1px]"
+                          onClick={handleLogout}
+                        >
+                          <img
+                            className="w-6 h-6"
+                            src={out_white}
+                            alt="logout"
+                          />
+                        </div>
+                      </button>
+                    </div>
+                  )}
+                </li>
+              </ul>
+            </nav>
+            <header className="flex justify-between mt-6 text-xl">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div
+                className="col-start-4 cursor-pointer font-bold "
+                onClick={() => {
+                  navigate(`/admin/loaned/`);
+                }}
+              >
+                대출관리
+              </div>
+              <div
+                className="col-start-5 cursor-pointer font-bold"
+                onClick={() => {
+                  navigate(`/admin/booklist/`);
+                }}
+              >
+                도서관리
+              </div>
+              <div
+                className="col-start-6 cursor-pointer font-bold"
+                onClick={() => {
+                  navigate(`/admin/gamelist/`);
+                }}
+              >
+                보드게임관리
+              </div>
+              <div
+                className="col-start-7 cursor-pointer font-bold"
+                onClick={() => {
+                  navigate(`/admin/user/`);
+                }}
+              >
+                회원관리
+              </div>
+              <div
+                className="col-start-8 cursor-pointer font-bold"
+                onClick={() => {
+                  navigate(`/admin/review/`);
+                }}
+              >
+                리뷰관리
+              </div>
+              <div
+                className="col-start-9 cursor-pointer font-bold"
+                onClick={() => {
+                  navigate(`/admin/application/`);
+                }}
+              >
+                신청관리
+              </div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
               <div></div>
               <div></div>
             </header>
           </div>
-        </header>
-      </div>
+        </div>
+      </>
     );
   }
 }
