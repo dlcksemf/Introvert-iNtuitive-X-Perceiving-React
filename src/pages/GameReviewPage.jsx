@@ -51,8 +51,8 @@ function GameReviewPage({ game }) {
       <GameReviewForm game={game.game_num.result} setReload={setReloading} />
       <div className="flex m-auto mt-4">
         <div className="flex justify-center">
-          <div className="bg-white shadow-xl rounded-lg w-[1040px] ml-[75px]">
-            <ul className="divide-y divide-gray-300">
+          <div className="w-[1040px] ml-[30px]">
+            <ul className="divide-y divide-gray-600">
               {review?.results
                 .sort((user1, user2) => user2.count_loans - user1.count_loans)
                 .map((review) => (
@@ -63,7 +63,7 @@ function GameReviewPage({ game }) {
                   />
                 ))}
             </ul>
-            <div className="relative bottom-7 pt-8">
+            <div className="relative top-4 mb-28">
               <ReactPaginate
                 breakLabel="..."
                 nextLabel=">"

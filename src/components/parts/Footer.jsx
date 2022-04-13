@@ -5,7 +5,7 @@ function Footer() {
 
   return (
     <header
-      className="bg-stone-100 text-gray-600 top-full py-6"
+      className="bg-stone-100 text-gray-600 top-full py-6 mt-10"
       style={{ zIndex: location.pathname === '/' ? 900 : 0 }}
     >
       <div className="inline-block text-semibold text-sm select-none relative left-[40px] bottom-[1px] tracking-widest">

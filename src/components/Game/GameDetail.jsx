@@ -52,122 +52,110 @@ function GameDetail({ gameId }) {
       {error && navigate(`*`)}
       {game && (
         <>
-          <section className="text-gray-600 body-font overflow-hidden">
-            <div className="container px-5 py-24 mx-auto">
-              <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                {game?.game_cover_photo && (
-                  <img
-                    src={game?.game_cover_photo}
-                    alt={game?.game_name}
-                    className="lg:w-2/6 w-full lg:h-2/6 h-64 object-cover object-center ml-28 mr-10 mt-14
-                   "
-                  />
-                )}
-                {!game?.game_cover_photo && (
-                  <img
-                    src={non_image}
-                    alt="non_image"
-                    className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-                  />
-                )}
-                <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                  {game?.player_num && (
-                    <h2 className="text-sm title-font text-gray-500 tracking-widest select-none mt-5 mb-3">
-                      [ {game?.player_num} ]
-                    </h2>
-                  )}
-                  <h1
-                    className="text-gray-900 text-3xl title-font font-medium mb-5 select-none
-                  hover:font-semibold"
-                  >
-                    {game?.game_name}
-                  </h1>
+          <div className="border-b-4 border-sky-600 w-3/4 relative left-[200px]">
+            <h2 className="text-3xl font-bold relative bottom-[20px] left-[20px] select-none">
+              보드게임 상세 정보
+            </h2>
+          </div>
+          <div className="relative top-[40px] left-[325px] w-[200px] select-none">
+            {game?.game_cover_photo && (
+              <img
+                src={game?.game_cover_photo}
+                alt={game?.game_name}
+                className="lg:w-[200px] w-full lg:h-2/6 h-64 object-cover object-center"
+              />
+            )}
+            {!game?.game_cover_photo && (
+              <img
+                src={non_image}
+                alt="non_image"
+                className="lg:w-[200px] w-full lg:h-2/6 h-64 object-cover object-center"
+              />
+            )}
+          </div>
+          <section
+            className="text-left text-gray-600 select-none
+          relative left-[580px] bottom-[140px] w-[890px]"
+          >
+            {game?.player_num && (
+              <h2 className="mb-2">게임인원 : [ {game?.player_num} ]</h2>
+            )}
+            <h1 className="mb-2">게임명 : {game?.game_name}</h1>
+            <h1 className="mb-2">게임시간 : {game?.play_time}</h1>
+            <h1 className="mb-2">난이도 : {game?.level}</h1>
+            <h1 className="mb-2">수 량 : {game?.game_amount}</h1>
 
-                  <div className="flex mb-4 select-none">
-                    <span className="flex py-2 space-x-2s select-none">
-                      {game?.play_time}
-                    </span>
-                    <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      {game?.level}
-                    </span>
-                    <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      {game?.game_amount} 개
-                    </span>
-                  </div>
-                  <div className="leading-relaxed select-none mt-14 hover:text-gray-900 mb-20">
-                    {game?.game_rule.split(/[\r\n]+/).map((line, index) => (
-                      <p key={index}>{line}</p>
-                    ))}
-                  </div>
-                  <div className="flex mt-10 items-center pb-5 border-b-2 border-gray-100 mb-5">
-                    <button
-                      onClick={buyLink}
-                      className="text-indigo-900 text-s mb-20 hover:font-bold"
-                    >
-                      @보드게임몰에서 게임찾기
-                    </button>
-                  </div>
+            <div className="flex">
+              <div
+                className="relative right-[245px] top-[40px] focus:outline-none select-none rounded 
+                text-center border-double border-4 border-gray-400 w-[180px] h-[45px] hover:border-sky-600"
+              >
+                <button onClick={buyLink} className="text-gray-600 my-1.5">
+                  보드게임몰에서 게임찾기
+                </button>
+              </div>
 
-                  <div>
-                    <div className="flex justify-between mt-4">
-                      <Link
-                        to={
-                          state?.beforeLocation
-                            ? `/game/gamelist/${state.beforeLocation}`
-                            : `/game/gamelist/`
-                        }
-                        state={{ pathname: pathname }}
-                      >
-                        <div
-                          className="flex m-auto ml-auto 
-                        text-gray-600 hover:text-indigo-600 hover:font-bold
-                        border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
-                        "
-                        >
-                          목록으로
-                        </div>
-                      </Link>
-                      <div className="flex justify-between">
-                        <span className="flex">
-                          {game?.game_state === 'A' && (
-                            <>
-                              <span className="text-gray-600 m-auto select-none">
-                                대여하기
-                              </span>
-                              <div onClick={handleClickLoan} className="">
-                                <LoanedIcon />
-                              </div>
-                            </>
-                          )}
-
-                          {game?.game_state !== 'A' && (
-                            <p className="m-auto select-none hover:text-indigo-600">
-                              반납 시간 :: {''}
-                              {game?.loaned_game[0]?.return_due_time
-                                .replace('T', ' ')
-                                .substring(0, 16)}
-                            </p>
-                          )}
-                          <GameLoanedModal
-                            ariaHideApp={false}
-                            modalIsOpen={modalIsOpen}
-                            setModalIsOpen={setModalIsOpen}
-                            game_num={game?.game_num}
-                            reload={reload}
-                          />
-                        </span>
-                      </div>
+              <span className="flex relative top-[44px] right-[190px]">
+                {game?.game_state === 'A' && (
+                  <>
+                    <span className="text-gray-600 select-none relative top-[7px] left-[10px]">
+                      대여하기
+                    </span>
+                    <div onClick={handleClickLoan} className="">
+                      <LoanedIcon />
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <div>
-                  <GameReviewPage game={game} setReload={setReloading} />
-                </div>
-              </div>
+                  </>
+                )}
+
+                {game?.game_state !== 'A' && (
+                  <p className="select-none relative left-[10px] top-[8px]">
+                    반납 예정 시간 :: {''}
+                    {game?.loaned_game[0]?.return_due_time
+                      .replace('T', ' ')
+                      .substring(0, 16)}
+                  </p>
+                )}
+                <GameLoanedModal
+                  ariaHideApp={false}
+                  modalIsOpen={modalIsOpen}
+                  setModalIsOpen={setModalIsOpen}
+                  game_num={game?.game_num}
+                  reload={reload}
+                />
+              </span>
             </div>
           </section>
+          <div className="leading-relaxed w-[850px] select-none relative left-[300px] bottom-[10px]">
+            <h1 className="text-2xl font-bold relative bottom-[10px]">
+              게임소개
+            </h1>
+            {game?.game_rule.split(/[\r\n]+/).map((line, index) => (
+              <p key={index}>{line}</p>
+            ))}
+          </div>
+          <Link
+            to={
+              state?.beforeLocation
+                ? `/game/gamelist/${state.beforeLocation}`
+                : `/game/gamelist/`
+            }
+            state={{ pathname: pathname }}
+          >
+            <div
+              className="relative left-[300px] top-[30px] focus:outline-none select-none rounded
+              border-double border-4 border-gray-400 w-[100px] h-[50px] hover:border-sky-600"
+            >
+              <h1 className="text-gray-600 text-center my-2.5">목록으로</h1>
+            </div>
+          </Link>
+          <div className="flex justify-center select-none">
+            <h1 className="text-2xl font-bold relative top-[110px] left-[106px] select-none">
+              한줄평
+            </h1>
+            <div className="relative top-[145px] left-[5px]">
+              <GameReviewPage game={game} setReload={setReloading} />
+            </div>
+          </div>
         </>
       )}
     </div>
