@@ -75,173 +75,106 @@ function LoanedModal({ setModalIsOpen, modalIsOpen, book_num, reload }) {
 
   return (
     <>
-      <div
-        className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto overflow-hidden"
-        id="exampleModalLg"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLgLabel"
-        aria-modal="true"
-        role="dialog"
-      >
-        <div className="modal-dialog modal-lg relative w-auto pointer-events-none">
-          <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-            <div className="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-              <Modal
-                ariaHideApp={false}
-                isOpen={modalIsOpen}
-                onRequestClose={() => setModalIsOpen(false)}
-                shouldCloseOnOverlayClick={false}
-              >
-                <div className="flex items-center justify-between">
-                  <h5 className="text-3xl font-bold leading-normal text-gray-800 select-none mt-12 ml-4">
-                    대출 신청
-                  </h5>
-                  <button
-                    type="button"
-                    className="px-4
-                  py-3
-                  mr-4
-                  mt-12
-                  bg-gray-500
-                  text-white
-                  font-medium
-                  text-xs
-                  leading-tight
-                  uppercase
-                  rounded
-                  shadow-md
-                  hover:bg-gray-400 hover:shadow-lg
-                  hover:scale-110 rounded-full
-                  transition duration-500 ease-in-out hover:-translate-y-1"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                    onClick={() => setModalIsOpen(false)}
-                  >
-                    X
-                  </button>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="modal-body relative p-4 ml-60">
-                    {book?.cover_photo && (
-                      <img
-                        src={book?.cover_photo}
-                        alt={book?.title}
-                        className="w-2/3 h-2/3 object-scale-down object-center inline-block rounded-full
-                        "
-                      />
-                    )}
-                    {!book?.cover_photo && (
-                      <img
-                        src={non_image}
-                        alt="non_image"
-                        className="w-2/3 h-2/3 object-scale-down object-center inline-block rounded-full
-                        "
-                      />
-                    )}
-                  </div>
-                  <div className="mr-60">
-                    <label htmlFor="floatingInput" className="font-bold">
-                      도서 제목
-                    </label>
-                    <p
-                      className="form-control
-                  block
-                  px-3
-                  py-1.5
-                  text-base
-                  font-normal
-                  text-gray-700
-                  bg-white bg-clip-padding
-                  border border-solid border-gray-300
-                  rounded
-                  transition
-                  ease-in-out
-                  m-0
-                  select-none
-                  hover:text-black"
-                      placeholder="{book.title}"
-                    >
-                      {book?.title}
-                    </p>
-                    <div className="datepicker relative form-floating mb-3 xl:w-96">
-                      <div>
-                        <label className="font-bold">대출 시작일</label>
-                        <p className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 select-none hover:text-black">
-                          {startDate.getFullYear()}-{month}-
-                          {startDate.getDate()}
-                        </p>
-                      </div>
-                      <div>
-                        <label className="font-bold">대출 종료일</label>
-                        <DatePicker
-                          locale={ko}
-                          className="outline-none form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 cursor-pointer hover:border-indigo-500 hover:text-black"
-                          selected={endDate}
-                          onChange={(date) => setEndDate(date)}
-                          // selectsEnd
-                          startDate={startDate}
-                          endDate={endDate}
-                          minDate={startDate}
-                          maxDate={addMonths(new Date(), 1)}
-                          isClearable={true}
-                          dateFormat="yyyy-MM-dd"
-                          dateFormatCalendar="yyyy년 MM월"
-                          filterDate={isWeekday}
-                        />
-                      </div>
-                      <div className="flex justify-center mt-10">
-                        <button
-                          type="button"
-                          className="px-10
-          py-4
-          mr-6
-          bg-indigo-600
-          text-white
-          font-semibold
-          text-md
-          leading-tight
-          uppercase
-          rounded
-          shadow-md
-          hover:bg-indigo-700 hover:shadow-lg
-          focus:bg-indigo-700 focus:shadow-lg focus:outline-none focus:ring-0
-          active:bg-indigo-800 active:shadow-lg
-          hover:scale-110 transition duration-500 
-          ease-in-out hover:-translate-y-1 rounded-full"
-                          data-bs-dismiss="modal"
-                          onClick={() => HandleSubmit()}
-                        >
-                          대출
-                        </button>
-                        <button
-                          type="button"
-                          className="px-10
-      py-4
-      bg-gray-300
-      text-black
-      font-semibold
-      text-md
-      leading-tight
-      uppercase
-      rounded
-      shadow-md
-      hover:bg-indigo-200 hover:shadow-lg
-      focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-purple-800 active:shadow-lg
-      hover:scale-110 transition duration-500 
-      ease-in-out hover:-translate-y-1 rounded-full"
-                          onClick={() => setModalIsOpen(false)}
-                        >
-                          취소
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Modal>
+      <div>
+        <Modal
+          ariaHideApp={false}
+          isOpen={modalIsOpen}
+          onRequestClose={() => setModalIsOpen(false)}
+          shouldCloseOnOverlayClick={false}
+          className="h-[600px] w-[1320px] border-2 border-gray-400
+          relative left-[100px] top-[142px] bg-white"
+        >
+          <h5 className="text-3xl font-bold select-none relative left-[40px] top-[30px]">
+            도서 대출 신청
+          </h5>
+          <button
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onClick={() => setModalIsOpen(false)}
+            className="relative bottom-[5px] left-[1245px] shadow-lg hover:text-red-600
+                    border-double border-4 border-black h-[40px] w-[40px] hover:border-red-600"
+          >
+            X
+          </button>
+
+          <div className="relative top-[100px] left-[250px]">
+            {book?.cover_photo && (
+              <img
+                src={book?.cover_photo}
+                alt={book?.title}
+                className="lg:w-[200px] w-full lg:h-2/6 h-64 object-cover object-center"
+              />
+            )}
+            {!book?.cover_photo && (
+              <img
+                src={non_image}
+                alt="non_image"
+                className="lg:w-[200px] w-full lg:h-2/6 h-64 object-cover object-center"
+              />
+            )}
+          </div>
+          <div className="relative left-[500px] bottom-[190px]">
+            <label className="font-bold relative bottom-[10px]">
+              도서 제목
+            </label>
+            <div
+              className="
+                  border-2 border-gray-400 rounded transition ease-in-out select-none
+                  hover:text-black w-[500px] h-[40px] relative bottom-[5px]"
+            >
+              <h1 className="relative left-[10px] top-[5px]">{book?.title}</h1>
+            </div>
+            <label className="font-bold relative top-[5px]">대출 시작일</label>
+            <div
+              className="
+                  border-2 border-gray-400 rounded transition ease-in-out select-none
+                  hover:text-black w-[500px] h-[40px] relative top-[10px]"
+            >
+              <h1 className="relative left-[10px] top-[5px]">
+                {startDate.getFullYear()}-{month}-{startDate.getDate()}
+              </h1>
+            </div>
+            <label className="font-bold relative top-[20px]">대출 종료일</label>
+            <div
+              className="border-2 border-gray-400 rounded transition ease-in-out select-none
+                  hover:text-black w-[500px] h-[40px] relative top-[25px]"
+            >
+              <DatePicker
+                locale={ko}
+                className="relative left-[10px] h-[35px] w-[450px] outline-none"
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                // selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                maxDate={addMonths(new Date(), 1)}
+                isClearable={true}
+                dateFormat="yyyy-MM-dd"
+                dateFormatCalendar="yyyy년 MM월"
+                filterDate={isWeekday}
+              />
             </div>
           </div>
-        </div>
+          <div className="flex justify-center">
+            <button
+              data-bs-dismiss="modal"
+              onClick={() => HandleSubmit()}
+              className="relative bottom-[145px] left-[50px] shadow-lg
+                    border-double border-4 border-sky-600 h-[50px] w-[100px] hover:border-sky-700"
+            >
+              대출
+            </button>
+
+            <button
+              onClick={() => setModalIsOpen(false)}
+              className="relative bottom-[145px] left-[120px] shadow-lg
+                    border-double border-4 border-gray-400 h-[50px] w-[100px] hover:border-gray-500"
+            >
+              취소
+            </button>
+          </div>
+        </Modal>
       </div>
     </>
   );
