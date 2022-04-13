@@ -75,7 +75,7 @@ function BookDetail({ book_num }) {
               도서 상세 정보
             </h2>
           </div>
-          <div className="relative top-[40px] left-[325px] w-[200px] select-none shadow-2xl">
+          <div className="relative top-[40px] left-[325px] w-[200px] select-none">
             {book?.cover_photo && (
               <img
                 src={book?.cover_photo}
@@ -107,16 +107,23 @@ function BookDetail({ book_num }) {
             <h1 className="mb-2">출판일 : {book?.published_date}</h1>
             <h1 className="mb-2">ISBN : {book?.ISBN}</h1>
             <h1 className="mb-2">수 량 : {book?.amount} 권</h1>
-            <button
-              onClick={buyLink}
-              className="text-indigo-900 text-s hover:font-bold
-              relative left-[300px] bottom-[270px]"
-            >
-              @알라딘에서 책찾기
-            </button>
+
             <div className="flex">
-              <span className="text-gray-600 m-auto select-none">찜하기</span>
-              <div className="mt-2 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
+              <div
+                className="relative right-[230px] top-[40px] focus:outline-none select-none rounded 
+                text-center border-double border-4 border-gray-400 w-[150px] h-[45px] hover:border-sky-600"
+              >
+                <button onClick={buyLink} className="text-gray-600 my-1.5">
+                  알라딘에서 책찾기
+                </button>
+              </div>
+              <span className="text-gray-600 select-none relative top-[50px] right-[150px]">
+                찜하기
+              </span>
+              <div
+                className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110
+              relative top-[43px] right-[150px]"
+              >
                 <Toggle
                   book={book}
                   wish={wish?.results[0]}
@@ -125,10 +132,10 @@ function BookDetail({ book_num }) {
                   reload={reload}
                 />
               </div>
-              <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
+              <span className="flex border-l-2 border-gray-400 relative top-[42px] right-[135px]">
                 {book?.state === 'A' && (
                   <>
-                    <span className="text-gray-600 m-auto select-none">
+                    <span className="text-gray-600 select-none relative top-[7px] left-[10px]">
                       대출하기
                     </span>
                     <div onClick={handleClickLoan} className="">
@@ -138,7 +145,7 @@ function BookDetail({ book_num }) {
                 )}
 
                 {book?.state !== 'A' && (
-                  <p className="m-auto select-none hover:text-indigo-600">
+                  <p className="select-none relative left-[10px] top-[8px]">
                     반납 예정일 :: {''}
                     {book?.loaned_books[0]?.return_due_date}
                   </p>
@@ -153,7 +160,7 @@ function BookDetail({ book_num }) {
               </span>
             </div>
           </section>
-          <div className="leading-relaxed w-[850px] select-none relative left-[300px] bottom-[120px]">
+          <div className="leading-relaxed w-[850px] select-none relative left-[300px] bottom-[100px]">
             <h1 className="text-2xl font-bold relative bottom-[10px]">
               책소개
             </h1>
@@ -170,66 +177,20 @@ function BookDetail({ book_num }) {
             state={{ pathname: pathname }}
           >
             <div
-              className="flex m-auto ml-auto 
-                  text-gray-600 hover:text-indigo-600 
-                  border-2 border-gray-200 py-2 px-6 focus:outline-none rounded"
+              className="relative left-[300px] bottom-[60px] focus:outline-none select-none rounded
+              border-double border-4 border-gray-400 w-[100px] h-[50px] hover:border-sky-600"
             >
-              목록으로
+              <h1 className="text-gray-600 text-center my-2.5">목록으로</h1>
             </div>
           </Link>
           <div className="flex justify-center select-none">
-            <h1 className="text-2xl font-bold">한줄평</h1>
-            <div>
+            <h1 className="text-2xl font-bold relative top-[20px] left-[106px] select-none">
+              한줄평
+            </h1>
+            <div className="relative top-[50px] left-[5px]">
               <ReviewPage book={book} reload={setReloading} />
             </div>
           </div>
-          {/* 
-               
-                    <div className="flex">
-                      <span className="text-gray-600 m-auto select-none">
-                        찜하기
-                      </span>
-                      <div className="mt-2 transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
-                        <Toggle
-                          book={book}
-                          wish={wish?.results[0]}
-                          user_id={auth.user_id}
-                          getWish={getWish}
-                          reload={reload}
-                        />
-                      </div>
-                      <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                        {book?.state === 'A' && (
-                          <>
-                            <span className="text-gray-600 m-auto select-none">
-                              대출하기
-                            </span>
-                            <div onClick={handleClickLoan} className="">
-                              <LoanedIcon />
-                            </div>
-                          </>
-                        )}
-
-                        {book?.state !== 'A' && (
-                          <p className="m-auto select-none hover:text-indigo-600">
-                            반납 예정일 :: {''}
-                            {book?.loaned_books[0]?.return_due_date}
-                          </p>
-                        )}
-                        <LoanedModal
-                          ariaHideApp={false}
-                          modalIsOpen={modalIsOpen}
-                          setModalIsOpen={setModalIsOpen}
-                          book_num={book?.book_num}
-                          reload={reload}
-                        />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section> */}
         </>
       )}
       <ToastContainer />
