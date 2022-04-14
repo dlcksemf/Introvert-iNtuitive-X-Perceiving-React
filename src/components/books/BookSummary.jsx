@@ -85,7 +85,7 @@ function BookSummary({ book, reloadBook }) {
             src={book?.cover_photo ? book?.cover_photo : non_image}
           />
         </Link>
-        <span className="absolute inline-flex mt-96 ml-4">
+        <span className="absolute inline-flex mt-96 ml-[-40px]">
           {book?.state === 'A' ? (
             <div className="ml-3">
               <Toggle
@@ -238,7 +238,7 @@ function Top5Summary({ book }) {
           <img
             src={book?.cover_photo ? book?.cover_photo : non_image}
             alt={book?.title}
-            className="lg:w-full max-w-xs lg:h-72 max-h-xs object-scale-down object-left
+            className="lg:w-full max-w-xs lg:h- max-h-xs object-scale-down object-left
                 inline-block cursor-pointer"
             onClick={() => {
               navigate(`/books/${book.book_num}/`);
