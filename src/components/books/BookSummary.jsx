@@ -134,7 +134,7 @@ function BookSummary({ book, reloadBook }) {
                 <LoanedIcon />
               </div>
             ) : (
-              <p className="hover:text-sky-600">
+              <p className="hover:text-sky-600 relative left-6">
                 {book?.loaned_books[0]?.return_due_date}
               </p>
             )}

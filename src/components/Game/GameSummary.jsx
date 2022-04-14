@@ -88,7 +88,7 @@ function GameSummary({ game }) {
               </h1>
             </div>
           ) : (
-            <div className="flex">
+            <div className="flex relative bottom-3">
               <h1>반납 예정 |</h1>
               <h1 className="relative left-1 hover:text-sky-600">
                 {game?.loaned_game[0]?.return_due_time
