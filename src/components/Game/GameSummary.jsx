@@ -43,15 +43,20 @@ function GameSummary({ game }) {
   return (
     <div className="px-[90px] py-[15px] lg:w-1/2">
       <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-        <img
-          alt={game.game_name}
-          src={game?.game_cover_photo ? game?.game_cover_photo : non_image}
-          className="flex-shrink-0 w-[250px] h-[300px] object-scale-down object-center sm:mb-0 cursor-pointer
+        <Link
+          to={`/books/${game.game_num}/`}
+          state={{ beforeLocation: location.search }}
+        >
+          <img
+            alt={game.game_name}
+            src={game?.game_cover_photo ? game?.game_cover_photo : non_image}
+            className="flex-shrink-0 w-[250px] h-[300px] object-scale-down object-center sm:mb-0 cursor-pointer
           inline-block m-auto mt-40"
-          onClick={() => {
-            navigate(`/game/${game.game_num}/`);
-          }}
-        />
+            onClick={() => {
+              navigate(`/game/${game.game_num}/`);
+            }}
+          />
+        </Link>
         <span className="absolute inline-flex mt-96">
           {game?.game_state === 'A' ? (
             <div onClick={handleClickLoan} className="flex ml-[280px]">

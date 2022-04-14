@@ -2,7 +2,7 @@ import { useApiAxios } from 'base/api/base';
 import SearchBar from 'components/parts/SearchBar';
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { GameSummary } from './GameSummary';
 
@@ -11,7 +11,15 @@ function GameList() {
   const [query, setQuery] = useState();
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
-  const [, setPage] = useState(1);
+  let [searchParams] = useSearchParams();
+  let pageParams = searchParams.get('page');
+
+  const [page, setPage] = useState(() => {
+    return pageParams ? pageParams : 1;
+  });
+
+  let location = useLocation();
+  let queryParams = searchParams.get('query');
 
   const [{ data: gameList, loading, error }, refetch] = useApiAxios(
     {
@@ -51,6 +59,10 @@ function GameList() {
   useEffect(() => {
     fetchApplications();
   }, [fetchApplications]);
+
+  useEffect(() => {
+    page && navigate(`/game/gamelist/?page=${page}&query=${query}`);
+  }, [page]);
 
   return (
     <>
