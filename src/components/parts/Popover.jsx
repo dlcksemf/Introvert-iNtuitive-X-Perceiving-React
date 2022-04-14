@@ -17,7 +17,7 @@ function PopOver() {
                 `}
             >
               <svg
-                class="block h-6 w-6"
+                className="block h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -44,10 +44,10 @@ function PopOver() {
               <Popover.Panel className="absolute z-10 flex space-x-4 px-4 mt-3 transform -translate-x-1/2 left-[300px] top-[48px] h-[100px]">
                 <div className="w-screen mr-[220px]">
                   <div className="bg-gray-100 text-white px-3 py-2 rounded-md text-sm font-medium">
-                    <div class="sm:hidden" id="mobile-menu">
-                      <div class="px-2 pt-2 pb-3 space-y-1">
+                    <div className="sm:hidden" id="mobile-menu">
+                      <div className="px-2 pt-2 pb-3 space-y-1">
                         <h1
-                          class="hover:bg-gray-200 text-black block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
+                          className="hover:bg-gray-200 text-black block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
                           aria-current="page"
                           onClick={() => {
                             navigate(`/books/booklist/`);
@@ -57,7 +57,7 @@ function PopOver() {
                         </h1>
 
                         <h1
-                          class="text-black hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
+                          className="text-black hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
                           onClick={() => {
                             navigate(`/books/application/new/`);
                           }}
@@ -66,7 +66,7 @@ function PopOver() {
                         </h1>
 
                         <h1
-                          class="text-black hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
+                          className="text-black hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
                           onClick={() => {
                             navigate(`/game/gamelist/`);
                           }}
@@ -75,7 +75,7 @@ function PopOver() {
                         </h1>
 
                         <h1
-                          class="text-black hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
+                          className="text-black hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium cursor-pointer select-none"
                           onClick={() => {
                             navigate(`/guidepage/`);
                           }}

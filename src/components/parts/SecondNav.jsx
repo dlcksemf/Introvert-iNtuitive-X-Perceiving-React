@@ -40,9 +40,9 @@ function SecondNav() {
   if (y > 0.5) {
     return (
       <div className="fixed w-full body-font top-0 z-10 h-68">
-        <div class="flex-1 flex flex-col">
-          <nav class="px-10 flex justify-between bg-white h-16 shadow-md">
-            <ul class="flex items-center">
+        <div className="flex-1 flex flex-col">
+          <nav className="px-10 flex justify-between bg-white h-16 shadow-md">
+            <ul className="flex items-center">
               <div
                 className="text-md text-primary-600 text-bold text-center cursor-pointer"
                 onClick={handleGoToMainPage}
@@ -51,7 +51,7 @@ function SecondNav() {
               </div>
             </ul>
 
-            <ul class="flex items-center">
+            <ul className="flex items-center">
               <li>
                 <header className="grid grid-cols-8 text-center text-xl mt-6">
                   <div
@@ -94,7 +94,7 @@ function SecondNav() {
               </li>
             </ul>
 
-            <ul class="flex items-center">
+            <ul className="flex items-center">
               <li>
                 {!auth.isLoggedIn && (
                   <>
@@ -157,10 +157,10 @@ function SecondNav() {
     return (
       <>
         <div className="fixed w-full body-font top-0 z-10 h-68">
-          <div class="flex-1 flex flex-col">
-            <nav class="px-10 flex justify-between h-[55px] border-b-2 bg-sky-600">
-              <ul class="flex items-center">
-                <li class="relative top-[58px] w-[250px]">
+          <div className="flex-1 flex flex-col">
+            <nav className="px-10 flex justify-between h-[55px] border-b-2 bg-sky-600">
+              <ul className="flex items-center">
+                <li className="relative top-[58px] w-[250px]">
                   <div
                     className={`flex justify-center basis-1/3 grow-0 shrink-0 md:ml-auto md:mr-auto ${
                       auth.is_staff ? 'cursor-default' : 'cursor-pointer'
@@ -176,7 +176,7 @@ function SecondNav() {
                 </li>
               </ul>
 
-              <ul class="flex items-center">
+              <ul className="flex items-center">
                 <li>
                   {!auth.isLoggedIn && (
                     <>
