@@ -41,34 +41,60 @@ function GameSummary({ game }) {
   };
 
   return (
-    <div className="px-[90px] py-[15px] lg:w-1/2">
-      <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+    <div class="mt-10 mb-10 ml-4 max-w-sm w-[550px] lg:max-w-full lg:flex relative left-[163px] top-[30px] select-none">
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
         <Link
-          to={`/books/${game.game_num}/`}
+          to={`/game/${game.game_num}/`}
           state={{ beforeLocation: location.search }}
         >
           <img
             alt={game.game_name}
             src={game?.game_cover_photo ? game?.game_cover_photo : non_image}
-            className="flex-shrink-0 w-[250px] h-[300px] object-scale-down object-center sm:mb-0 cursor-pointer
-          inline-block m-auto mt-40"
-            onClick={() => {
-              navigate(`/game/${game.game_num}/`);
-            }}
           />
         </Link>
-        <span className="absolute inline-flex mt-96">
+      </div>
+      <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div class="mb-8">
+          <p class="text-sm text-gray-600 flex items-center">
+            {game?.player_num && `[ ${game?.player_num} ]`}
+          </p>
+          <div class="text-gray-900 font-bold text-xl mb-2">
+            <Link
+              to={`/game/${game.game_num}/`}
+              state={{ beforeLocation: location.search }}
+            >
+              <h2>{game.game_name}</h2>
+            </Link>
+          </div>
+          <div class="text-sm text-gray-600">
+            <h2>
+              {game.level} | {game.play_time} | {game.game_amount} 개
+            </h2>
+          </div>
+          <div class="text-gray-700 text-base text-left mt-1.5">
+            <h2>
+              {game.game_rule
+                ? truncateString(game.game_rule)
+                : truncateString('')}
+            </h2>
+          </div>
+        </div>
+        <div class="flex items-center relative">
           {game?.game_state === 'A' ? (
-            <div onClick={handleClickLoan} className="flex ml-[280px]">
-              <h1 className="m-auto select-none">대여하기</h1>
-              <GameLoanedIcon />
+            <div onClick={handleClickLoan} className="flex">
+              <h1>대여하기</h1>
+              <h1 className="relative bottom-2">
+                <GameLoanedIcon />
+              </h1>
             </div>
           ) : (
-            <div className="flex m-auto ml-[280px] select-none hover:text-indigo-700">
-              <h1 className="mr-1">반납 예정 |</h1>
-              {game?.loaned_game[0]?.return_due_time
-                .replace('T', ' ')
-                .substring(0, 16)}
+            <div className="flex">
+              <h1>반납 예정 |</h1>
+              <h1 className="relative left-1 hover:text-sky-600">
+                {game?.loaned_game[0]?.return_due_time
+                  .replace('T', ' ')
+                  .substring(0, 16)}
+              </h1>
             </div>
           )}
           <GameLoanedModal
@@ -78,40 +104,7 @@ function GameSummary({ game }) {
             game_num={game?.game_num}
             reload={reload}
           />
-        </span>
-
-        <Link
-          to={`/game/${game.game_num}/`}
-          state={{ beforeLocation: location.search }}
-        >
-          <div className="flex-grow sm:pl-8 mt-36">
-            <h3 className="text-sm text-gray-500 mb-3 select-none flex cursor-default">
-              {game?.player_num && `[ ${game?.player_num} ]`}
-            </h3>
-            <h2
-              className="absolute title-font font-medium text-lg text-black 
-              cursor-pointer grid font-semibold"
-              onClick={() => {
-                navigate(`/game/${game.game_num}/`);
-              }}
-            >
-              {game.game_name}
-            </h2>
-            <h3 className="mt-12 text-sm text-gray-500 select-none cursor-default">
-              {game.level} | {game.play_time} | {game.game_amount} 개
-            </h3>
-            <p
-              className="font-medium text-base mb-4 mt-6 select-none cursor-pointer"
-              onClick={() => {
-                navigate(`/game/${game.game_num}/`);
-              }}
-            >
-              {game.game_rule
-                ? truncateString(game.game_rule)
-                : truncateString('')}
-            </p>
-          </div>
-        </Link>
+        </div>
       </div>
     </div>
   );

@@ -84,7 +84,7 @@ function BookList() {
         <h2 className="text-3xl font-bold relative bottom-[20px] left-[20px] select-none">
           전체 도서 목록
         </h2>
-        <div className="flex">
+        <div className="flex select-none">
           <div className="absolute left-[730px] bottom-[10px]">
             <Category selected={category} setSelected={setCategory} />
           </div>
@@ -101,7 +101,7 @@ function BookList() {
               {error && navigate(`*`)}
             </div>
           </div>
-          <div className="flex flex-wrap mx-4 mb-10">
+          <div className="flex flex-wrap mx-4 mb-10 z-0">
             {bookList?.results?.map((book) => (
               <React.Fragment key={book.book_num}>
                 <BookSummary

@@ -111,7 +111,7 @@ function BookSummary({ book, reloadBook }) {
               <h2>{truncateString(book.story)}</h2>
             </div>
           </div>
-          <div class="flex items-center relative">
+          <div class="flex items-center">
             {book?.state === 'A' ? (
               <Toggle
                 book={book}
@@ -134,7 +134,7 @@ function BookSummary({ book, reloadBook }) {
                 <LoanedIcon />
               </div>
             ) : (
-              <p className="select-none hover:text-sky-600">
+              <p className="hover:text-sky-600">
                 {book?.loaned_books[0]?.return_due_date}
               </p>
             )}
