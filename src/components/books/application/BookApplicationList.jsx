@@ -90,7 +90,7 @@ function BookApplicationList() {
           </div>
         </div>
       </div>
-      <div className="w-[1050px] m-auto">
+      <div className="w-[1170px] m-auto relative left-[55px] h-[700px]">
         {/* <div className="flex flex-col text-center w-full">
           <div className="flex justify-end">
             <div className="absolute flex justify-end items-end mb-28 mr-4">
@@ -114,7 +114,7 @@ function BookApplicationList() {
           >
             도서 신청하기
           </button>
-          <label className="inline-flex items-center relative left-[35px] top-[15px]">
+          <label className="inline-flex items-center relative right-[67px] top-[15px]">
             <input
               type="checkbox"
               value={checked}
@@ -174,7 +174,7 @@ function BookApplicationList() {
           pageCount={pageCount}
           previousLabel="<"
           renderOnZeroPageCount={null}
-          className="pagination relative top-[40px]"
+          className="pagination relative top-[40px] right-[45px]"
         />
 
         <div
