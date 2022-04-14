@@ -80,26 +80,24 @@ function BookList() {
 
   return (
     <>
+      <div className="border-b-4 border-sky-600 w-3/4 relative left-[200px]">
+        <h2 className="text-3xl font-bold relative bottom-[20px] left-[20px] select-none">
+          전체 도서 목록
+        </h2>
+        <div className="flex">
+          <div className="absolute left-[730px] bottom-[10px]">
+            <Category selected={category} setSelected={setCategory} />
+          </div>
+          <div className="absolute left-[888px] bottom-[10px]">
+            <SearchBar handleChange={setQuery} handleSubmit={handleSubmit} />
+          </div>
+        </div>
+      </div>
       <section className="text-gray-600 body-font">
         <div className="container px-5  mx-auto">
           <div className="flex flex-col text-center w-full">
             <div className="flex justify-end">
-              <h1
-                className="text-2xl font-semibold title-font text-gray-900 tracking-widest m-auto mt-10
-              select-none"
-              >
-                전체 도서 목록
-              </h1>
               <div className="absolute flex justify-end items-end top-[80px]">
-                <div className="mr-3">
-                  <Category selected={category} setSelected={setCategory} />
-                </div>
-                <div className="mr-10">
-                  <SearchBar
-                    handleChange={setQuery}
-                    handleSubmit={handleSubmit}
-                  />
-                </div>
                 {loading && '로딩 중 ...'}
                 {error && navigate(`*`)}
               </div>

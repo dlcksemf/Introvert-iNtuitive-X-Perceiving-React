@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
-
 import LoanedModal from 'components/parts/LoanedModal';
-import LoanedIcon from 'designMaterials/LoanedIcon';
 import Toggle from 'components/parts/Toggle';
-
 import non_image from 'components/parts/image/non_image.jpg';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-
 import 'css/HeavyReader.css';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
@@ -21,6 +16,7 @@ import heavyreader1 from 'components/parts/image/heavyreader1.png';
 import heavyreader from 'components/parts/image/heavyreader.png';
 import ggumdori from 'components/parts/image/ggumdori.png';
 import 'animate.css';
+import { LoanedIcon } from 'designMaterials/LoanedIcon';
 
 function truncateString(str) {
   if (str.length > 70) {

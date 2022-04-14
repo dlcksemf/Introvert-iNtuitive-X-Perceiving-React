@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import non_image from 'components/parts/image/non_image.jpg';
 import { useAuth } from 'base/hooks/Authcontext';
-import LoanedIcon from 'designMaterials/LoanedIcon';
 import GameLoanedModal from 'components/parts/GameLoanedModal';
 import GameReviewPage from 'pages/GameReviewPage';
+import { GameLoanedIcon } from 'designMaterials/LoanedIcon';
 
 function GameDetail({ gameId }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -88,9 +88,9 @@ function GameDetail({ gameId }) {
             <div className="flex">
               <div
                 className="relative right-[245px] top-[40px] focus:outline-none select-none rounded 
-                text-center border-double border-4 border-gray-400 w-[180px] h-[45px] hover:border-sky-600"
+                text-center border bg-indigo-600 w-[180px] h-[45px]"
               >
-                <button onClick={buyLink} className="text-gray-600 my-1.5">
+                <button onClick={buyLink} className="font-bold text-white my-2">
                   보드게임몰에서 게임찾기
                 </button>
               </div>
@@ -101,19 +101,26 @@ function GameDetail({ gameId }) {
                     <span className="text-gray-600 select-none relative top-[7px] left-[10px]">
                       대여하기
                     </span>
-                    <div onClick={handleClickLoan} className="">
-                      <LoanedIcon />
+                    <div
+                      onClick={handleClickLoan}
+                      className="relative left-[2px]"
+                    >
+                      <GameLoanedIcon />
                     </div>
                   </>
                 )}
 
                 {game?.game_state !== 'A' && (
-                  <p className="select-none relative left-[10px] top-[8px]">
-                    반납 예정 시간 :: {''}
-                    {game?.loaned_game[0]?.return_due_time
-                      .replace('T', ' ')
-                      .substring(0, 16)}
-                  </p>
+                  <>
+                    <h1 className="select-none relative left-[10px] top-[8px]">
+                      반납 예정 시간 ::
+                    </h1>
+                    <p className="select-none relative left-[14px] top-[8px] hover:text-sky-600">
+                      {game?.loaned_game[0]?.return_due_time
+                        .replace('T', ' ')
+                        .substring(0, 16)}
+                    </p>
+                  </>
                 )}
                 <GameLoanedModal
                   ariaHideApp={false}
@@ -143,9 +150,11 @@ function GameDetail({ gameId }) {
           >
             <div
               className="relative left-[300px] top-[30px] focus:outline-none select-none rounded
-              border-double border-4 border-gray-400 w-[100px] h-[50px] hover:border-sky-600"
+              border bg-indigo-600 w-[100px] h-[50px]"
             >
-              <h1 className="text-gray-600 text-center my-2.5">목록으로</h1>
+              <h1 className="font-bold text-white text-center my-2.5">
+                목록으로
+              </h1>
             </div>
           </Link>
           <div className="flex justify-center select-none">

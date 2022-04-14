@@ -11,7 +11,7 @@ function SearchBar({ handleSubmit, handleChange }) {
     <div className="pt-2 relative mx-auto text-gray-600">
       <form onSubmit={handleSubmitButtonClicked}>
         <input
-          className="w-[250px] inline-block border-b-2 border-gray-300 bg-white h-10 px-5
+          className="w-[250px] inline-block border-2 border-gray-400 bg-white h-10 px-5
           pr-8 text-sm focus:outline-none"
           type="search"
           name="search"
@@ -23,7 +23,7 @@ function SearchBar({ handleSubmit, handleChange }) {
         />
         <button
           type="submit"
-          className="absolute right-0 top-0 mt-[17px] mr-4 text-indigo-700"
+          className="absolute right-0 top-0 mt-[17px] mr-1 text-indigo-700"
         >
           <svg
             style={{ width: 24 + 'px', height: 24 + 'px' }}

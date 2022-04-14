@@ -6,12 +6,12 @@ import { useApiAxios } from 'base/api/base';
 
 import LoanedModal from 'components/parts/LoanedModal';
 import LoadingIndicator from 'components/LoadingIndicator';
-import LoanedIcon from 'designMaterials/LoanedIcon';
 import Toggle from 'components/parts/Toggle';
 import non_image from 'components/parts/image/non_image.jpg';
 
 import { ToastContainer } from 'react-toastify';
 import ReviewPage from 'pages/ReviewPage';
+import { LoanedIcon } from 'designMaterials/LoanedIcon';
 
 function BookDetail({ book_num }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);

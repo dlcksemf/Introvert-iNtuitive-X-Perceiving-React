@@ -98,10 +98,7 @@ function GameReviewForm({ reviewId, game, setReload }) {
             outline-none text-gray-600 transition-colors duration-200 ease-in-out"
             autoComplete="off"
           />
-          <button
-            className="w-[50px] h-[50px] rounded-md border-4 border-double hover:border-sky-500 
-          border-gray-400 relative left-[25px]"
-          >
+          <button className="w-[50px] h-[50px] rounded-md border bg-indigo-600 font-bold text-white relative left-[25px]">
             등록
           </button>
         </span>
