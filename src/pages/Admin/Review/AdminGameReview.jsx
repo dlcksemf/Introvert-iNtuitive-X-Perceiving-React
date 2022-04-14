@@ -95,7 +95,7 @@ function AdminGameReview() {
                   <td className="pl-7">
                     <div className="flex items-center">
                       <p className="text-sm leading-none text-gray-600 ml-2 select-none">
-                        리뷰 위치
+                        보드게임
                       </p>
                     </div>
                   </td>

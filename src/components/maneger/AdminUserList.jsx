@@ -2,7 +2,6 @@ import { useApiAxios } from 'base/api/base';
 import React, { useEffect, useState } from 'react';
 import { useAuth } from 'base/hooks/Authcontext';
 
-
 function AdminUserList({ user, reload }) {
   const [, setUserDelete] = useState(false);
   const [auth] = useAuth();
@@ -48,7 +47,7 @@ function AdminUserList({ user, reload }) {
     <React.Fragment>
       <td className="flex items-center"></td>
       <td className="">
-        <div className="flex items-center cursor-pointer">
+        <div className="flex items-center">
           <p className="text-sm leading-none text-gray-600">{user.username}</p>
         </div>
       </td>
