@@ -66,7 +66,7 @@ function GameList() {
 
   return (
     <>
-      <div className="border-b-4 border-sky-600 w-3/4 relative left-[200px]">
+      <div className="border-b-4 border-sky-600 w-[1140px] relative left-[200px]">
         <h2 className="text-3xl font-bold relative bottom-[20px] left-[20px] select-none">
           전체 보드게임 목록
         </h2>
