@@ -78,54 +78,56 @@ function BookSummary({ book, reloadBook }) {
   return (
     <div className="px-[90px] py-[15px] lg:w-1/2">
       <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-        <img
-          alt={book?.title}
-          className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
+        <Link
+          state={{ beforeLocation: location.search }}
+          to={`/books/${book.book_num}/`}
+        >
+          <img
+            alt={book?.title}
+            className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
           inline-block mt-28"
-          src={book?.cover_photo ? book?.cover_photo : non_image}
-          onClick={() => {
-            navigate(`/books/${book.book_num}/`);
-          }}
-        />
-        <span className="absolute inline-flex mt-96 ml-4">
-          {book?.state === 'A' ? (
-            <div className="ml-3">
-              <Toggle
-                book={book}
-                wish={wish?.results[0]}
-                user_id={auth.user_id}
-                getWish={getWish}
-                reload={reload}
-              />
-            </div>
-          ) : (
-            <div>
-              <Toggle
-                book={book}
-                wish={wish?.results[0]}
-                user_id={auth.user_id}
-                getWish={getWish}
-                reload={reload}
-              />
-            </div>
-          )}
-          {book?.state === 'A' ? (
-            <div onClick={handleClickLoan} className="ml-2">
-              <LoanedIcon />
-            </div>
-          ) : (
-            <p className="m-auto ml-1 select-none hover:text-indigo-400">
-              {book?.loaned_books[0]?.return_due_date}
-            </p>
-          )}
-          <LoanedModal
-            ariaHideApp={false}
-            modalIsOpen={modalIsOpen}
-            setModalIsOpen={setModalIsOpen}
-            book_num={book?.book_num}
-            reload={reloadBook}
+            src={book?.cover_photo ? book?.cover_photo : non_image}
           />
-        </span>
+          <span className="absolute inline-flex mt-96 ml-4">
+            {book?.state === 'A' ? (
+              <div className="ml-3">
+                <Toggle
+                  book={book}
+                  wish={wish?.results[0]}
+                  user_id={auth.user_id}
+                  getWish={getWish}
+                  reload={reload}
+                />
+              </div>
+            ) : (
+              <div>
+                <Toggle
+                  book={book}
+                  wish={wish?.results[0]}
+                  user_id={auth.user_id}
+                  getWish={getWish}
+                  reload={reload}
+                />
+              </div>
+            )}
+            {book?.state === 'A' ? (
+              <div onClick={handleClickLoan} className="ml-2">
+                <LoanedIcon />
+              </div>
+            ) : (
+              <p className="m-auto ml-1 select-none hover:text-indigo-400">
+                {book?.loaned_books[0]?.return_due_date}
+              </p>
+            )}
+            <LoanedModal
+              ariaHideApp={false}
+              modalIsOpen={modalIsOpen}
+              setModalIsOpen={setModalIsOpen}
+              book_num={book?.book_num}
+              reload={reloadBook}
+            />
+          </span>
+        </Link>
 
         <Link
           to={`/books/${book.book_num}/`}
