@@ -74,15 +74,17 @@ function BookSummary({ book, reloadBook }) {
   return (
     <div className="px-[90px] py-[15px] lg:w-1/2">
       <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-        <img
-          alt={book?.title}
-          className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
+        <Link
+          to={`/books/${book.book_num}/`}
+          state={{ beforeLocation: location.search }}
+        >
+          <img
+            alt={book?.title}
+            className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
           inline-block mt-28"
-          src={book?.cover_photo ? book?.cover_photo : non_image}
-          onClick={() => {
-            navigate(`/books/${book.book_num}/`);
-          }}
-        />
+            src={book?.cover_photo ? book?.cover_photo : non_image}
+          />
+        </Link>
         <span className="absolute inline-flex mt-96 ml-4">
           {book?.state === 'A' ? (
             <div className="ml-3">
