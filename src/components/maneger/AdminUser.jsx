@@ -119,7 +119,7 @@ function AdminUser() {
                 {userdata?.results?.map((user, book) => (
                   <React.Fragment key={user.user_id}>
                     {user.is_staff === false && (
-                      <tr className="focus:outline-none h-16 border border-gray-100 rounded select-none">
+                      <tr className="focus:outline-none h-16 border border-gray-100 rounded">
                         <AdminUserList
                           user={user}
                           reload={() => {
