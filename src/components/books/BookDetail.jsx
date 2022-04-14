@@ -64,6 +64,13 @@ function BookDetail({ book_num }) {
     );
   };
 
+  const viewLink = () => {
+    window.open(
+      `http://www.aladin.co.kr/shop/book/wletslookViewer.aspx?ISBN=${book.ISBN}`,
+      '_blank',
+    );
+  };
+
   return (
     <div>
       {loading && <LoadingIndicator />}
@@ -110,18 +117,25 @@ function BookDetail({ book_num }) {
 
             <div className="flex">
               <button
+                onClick={viewLink}
+                className="relative right-[265px] top-[40px] focus:outline-none select-none rounded 
+                text-center border bg-indigo-600 w-[80px] h-[30px] font-bold text-white"
+              >
+                미리보기
+              </button>
+              <button
                 onClick={buyLink}
-                className="relative right-[230px] top-[40px] focus:outline-none select-none rounded 
-                text-center border-double border-4 border-gray-400 w-[150px] h-[45px] hover:border-sky-600"
+                className="relative right-[265px] top-[40px] focus:outline-none select-none rounded 
+                text-center border bg-indigo-600 w-[140px] h-[30px] font-bold text-white"
               >
                 알라딘에서 책찾기
               </button>
-              <span className="text-gray-600 select-none relative top-[50px] right-[150px]">
+              <span className="text-gray-600 select-none relative top-[43px] right-[220px]">
                 찜하기
               </span>
               <div
                 className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110
-              relative top-[43px] right-[150px]"
+              relative top-[38px] right-[230px]"
               >
                 <Toggle
                   book={book}
@@ -131,23 +145,34 @@ function BookDetail({ book_num }) {
                   reload={reload}
                 />
               </div>
-              <span className="flex border-l-2 border-gray-400 relative top-[42px] right-[135px]">
+              <span className="flex border-l-2 border-gray-400 relative top-[38px] right-[220px]">
                 {book?.state === 'A' && (
                   <>
-                    <span className="text-gray-600 select-none relative top-[8px] left-[14px]">
+                    <span className="text-gray-600 select-none relative top-[5px] left-[14px]">
                       대출하기
                     </span>
-                    <div onClick={handleClickLoan} className="">
+                    <div
+                      onClick={handleClickLoan}
+                      className="transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110
+                      relative left-[5px] bottom-[1px]"
+                    >
                       <LoanedIcon />
                     </div>
                   </>
                 )}
 
                 {book?.state !== 'A' && (
-                  <p className="select-none relative left-[10px] top-[8px]">
-                    반납 예정일 :: {''}
-                    {book?.loaned_books[0]?.return_due_date}
-                  </p>
+                  <>
+                    <h1 className="select-none relative left-[10px] top-[6px]">
+                      반납 예정일 ::
+                    </h1>
+                    <h1
+                      className="select-none relative left-[14px] top-[6px]
+                    hover:text-sky-600"
+                    >
+                      {book?.loaned_books[0]?.return_due_date}
+                    </h1>
+                  </>
                 )}
                 <LoanedModal
                   ariaHideApp={false}
@@ -178,9 +203,11 @@ function BookDetail({ book_num }) {
             <div
               type="button"
               className="relative left-[300px] bottom-[60px] focus:outline-none select-none rounded
-              border-double border-4 border-gray-400 w-[100px] h-[50px] hover:border-sky-600"
+              border bg-indigo-600 w-[100px] h-[50px] "
             >
-              <h1 className="text-center my-2">목록으로</h1>
+              <h1 className="font-bold text-white text-center my-2.5">
+                목록으로
+              </h1>
             </div>
           </Link>
           <div className="flex justify-center select-none">

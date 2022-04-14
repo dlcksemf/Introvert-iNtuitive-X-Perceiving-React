@@ -93,10 +93,7 @@ function ReviewForm({ reviewId, book, setReload }) {
             outline-none text-gray-600 transition-colors duration-200 ease-in-out"
             autoComplete="off"
           />
-          <button
-            className="w-[50px] h-[50px] rounded-md border-4 border-double hover:border-sky-600 
-          border-gray-400 relative left-[25px] text-black"
-          >
+          <button className="w-[50px] h-[50px] rounded-md border bg-indigo-600 relative left-[25px] text-white font-bold">
             등록
           </button>
         </span>
