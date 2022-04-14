@@ -119,28 +119,28 @@ function AdminBookDetail({ postId }) {
                   <div className="mt-10">
                     <button
                       onClick={hopeBookLink}
-                      className="text-gray-600 text-s mb-10 hover:text-indigo-500 select-none
+                      className="text-gray-600 text-lg font-bold mb-4 hover:text-indigo-500 select-none
                       transition duration-500 ease-in-out "
                     >
-                      대전 책방 알아보기
+                      📖 대전 책방 알아보기
                     </button>
                   </div>
                   <div className="flex items-center border-b-2 border-gray-100 mb-3 select-none">
                     <button
                       onClick={aladinLink}
-                      className="text-gray-600 text-s mb-10 hover:text-indigo-500 
+                      className="text-gray-600 text-lg font-bold mb-4 hover:text-indigo-500 
                       transition duration-500 ease-in-out "
                     >
-                      알라딘에서 책찾기
+                      💰 알라딘에서 책찾기
                     </button>
                   </div>
 
                   <div className="flex justify-start">
                     <Link to="/admin/booklist/">
                       <div
-                        className="flex m-auto mr-48
-                  text-gray-600 hover:text-indigo-500
-                  border-2 border-gray-200 py-2 px-3 focus:outline-none rounded
+                        className="flex mr-64
+                  text-white bg-indigo-500 
+                  hover:bg-indigo-600 py-2 px-3 rounded
                   "
                       >
                         목록으로
@@ -160,8 +160,8 @@ function AdminBookDetail({ postId }) {
                       <button
                         disabled={deleteLoading}
                         onClick={handleDelete}
-                        className="flex m-auto ml-5
-                      text-gray-600 hover:text-indigo-500 
+                        className="flex m-auto ml-3
+                      text-gray-600 hover:text-red-500 
                       border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                       "
                       >
