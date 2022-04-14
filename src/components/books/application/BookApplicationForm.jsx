@@ -131,14 +131,14 @@ function BookApplicationForm() {
               <form className="flex justify-center">
                 <button
                   onClick={handleClickSubmitButton}
-                  className="relative top-[20px] left-[130px] shadow-lg rounded
+                  className="relative top-[20px] left-[130px] rounded
                   border bg-indigo-600 h-[50px] w-[100px] font-bold text-white"
                 >
                   신청하기
                 </button>
                 <button
                   onClick={handleClickCancleButton}
-                  className="relative top-[20px] left-[170px] shadow-lg rounded
+                  className="relative top-[20px] left-[170px] rounded
                   border bg-gray-300 h-[50px] w-[100px] font-bold"
                 >
                   취소

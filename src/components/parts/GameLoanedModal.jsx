@@ -95,8 +95,8 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
             data-bs-dismiss="modal"
             aria-label="Close"
             onClick={() => setModalIsOpen(false)}
-            className="relative bottom-[5px] left-[1245px] shadow-lg hover:text-red-600
-                    border-double border-4 border-black h-[40px] w-[40px] hover:border-red-600"
+            className="relative bottom-[5px] left-[1245px] rounded font-bold text-white
+                    border bg-black hover:bg-red-600 h-[40px] w-[40px]"
           >
             X
           </button>
@@ -183,16 +183,16 @@ function GameLoanedModal({ setModalIsOpen, modalIsOpen, game_num, reload }) {
             <button
               data-bs-dismiss="modal"
               onClick={() => HandleSubmit()}
-              className="relative bottom-[110px] left-[50px] shadow-lg
-                    border-double border-4 border-sky-600 h-[50px] w-[100px] hover:border-sky-700"
+              className="relative bottom-[110px] left-[50px] rounded font-bold text-white
+                    border bg-indigo-600 h-[50px] w-[100px]"
             >
               대여
             </button>
 
             <button
               onClick={() => setModalIsOpen(false)}
-              className="relative bottom-[110px] left-[120px] shadow-lg
-                    border-double border-4 border-gray-400 h-[50px] w-[100px] hover:border-gray-500"
+              className="relative bottom-[110px] left-[120px] rounded font-bold
+                    border bg-gray-300 h-[50px] w-[100px]"
             >
               취소
             </button>
