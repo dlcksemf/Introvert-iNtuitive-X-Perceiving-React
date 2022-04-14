@@ -74,18 +74,16 @@ function BookSummary({ book, reloadBook }) {
   return (
     <div className="px-[90px] py-[15px] lg:w-1/2">
       <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-        <Link
-          to={`/books/${book.book_num}/`}
-          state={{ beforeLocation: location.search }}
-        >
-          <img
-            alt={book?.title}
-            className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
+        <img
+          alt={book?.title}
+          className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
           inline-block mt-28"
-            src={book?.cover_photo ? book?.cover_photo : non_image}
-          />
-        </Link>
-        <span className="absolute inline-flex mt-96 ml-[-40px]">
+          src={book?.cover_photo ? book?.cover_photo : non_image}
+          onClick={() => {
+            navigate(`/books/${book.book_num}/`);
+          }}
+        />
+        <span className="absolute inline-flex mt-96 ml-4">
           {book?.state === 'A' ? (
             <div className="ml-3">
               <Toggle
@@ -136,6 +134,9 @@ function BookSummary({ book, reloadBook }) {
             <h2
               className="absolute title-font font-medium text-lg text-black 
               cursor-pointer grid font-semibold"
+              onClick={() => {
+                navigate(`/books/${book.book_num}/`);
+              }}
             >
               {book.title}
             </h2>
@@ -238,7 +239,7 @@ function Top5Summary({ book }) {
           <img
             src={book?.cover_photo ? book?.cover_photo : non_image}
             alt={book?.title}
-            className="lg:w-full max-w-xs lg:h- max-h-xs object-scale-down object-left
+            className="lg:w-full max-w-xs lg:h-72 max-h-xs object-scale-down object-left
                 inline-block cursor-pointer"
             onClick={() => {
               navigate(`/books/${book.book_num}/`);
