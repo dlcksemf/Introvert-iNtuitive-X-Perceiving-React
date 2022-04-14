@@ -6,7 +6,7 @@ import { useApiAxios } from 'base/api/base';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
 import GameLoanedModal from 'components/parts/GameLoanedModal';
-import LoanedIcon from 'designMaterials/LoanedIcon';
+import { GameLoanedIcon } from 'designMaterials/LoanedIcon';
 
 function truncateString(str) {
   if (str.length > 70) {
@@ -56,7 +56,7 @@ function GameSummary({ game }) {
           {game?.game_state === 'A' ? (
             <div onClick={handleClickLoan} className="flex ml-[280px]">
               <h1 className="m-auto select-none">대여하기</h1>
-              <LoanedIcon />
+              <GameLoanedIcon />
             </div>
           ) : (
             <div className="flex m-auto ml-[280px] select-none hover:text-indigo-700">
