@@ -64,21 +64,21 @@ function AdminGameDetail({ gameId }) {
                 )}
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6">
                   <h1
-                    className="text-gray-900 text-3xl title-font font-medium mb-5 select-none
-                  hover:font-semibold"
+                    className="text-gray-900 text-3xl font-medium mb-5 select-none
+                  "
                   >
                     {game?.game_name}
                   </h1>
 
                   <div className="flex mb-4 select-none">
                     <span className="flex py-2 select-none">
-                      플레이어 수:{game?.player_num}
+                      플레이어 수: {game?.player_num}
                     </span>
                     <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      플레이 시간:{game?.play_time}
+                      플레이 시간: {game?.play_time}
                     </span>
                     <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s select-none">
-                      난이도:{game?.level}
+                      난이도: {game?.level}
                     </span>
                   </div>
                   <div className="leading-relaxed select-none mt-14 hover:text-gray-900">
@@ -91,8 +91,8 @@ function AdminGameDetail({ gameId }) {
                     <Link to="/admin/gamelist/">
                       <div
                         className="flex mr-32
-                  text-gray-600 hover:text-indigo-500 hover:font-bold 
-                  border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
+                  text-white bg-indigo-500 hover:bg-indigo-600
+                 py-2 px-4 focus:outline-none rounded
                   "
                       >
                         목록으로
@@ -101,7 +101,7 @@ function AdminGameDetail({ gameId }) {
                     <Link to={`/admin/game/${gameId}/edit/`}>
                       <div
                         className="flex
-                  text-gray-600 hover:text-indigo-500 hover:font-bold 
+                  text-gray-600 hover:text-indigo-500
                   border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                  "
                       >
@@ -113,7 +113,7 @@ function AdminGameDetail({ gameId }) {
                         disabled={deleteLoading}
                         onClick={handleDelete}
                         className="flex m-auto ml-5
-                      text-gray-600 hover:text-indigo-500 hover:font-bold 
+                      text-gray-600 hover:text-red-500 
                       border-2 border-gray-200 py-2 px-6 focus:outline-none rounded
                       "
                       >
