@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { useApiAxios } from 'base/api/base';
 import { useAuth } from 'base/hooks/Authcontext';
+
 import LoanedModal from 'components/parts/LoanedModal';
 import Toggle from 'components/parts/Toggle';
+
 import non_image from 'components/parts/image/non_image.jpg';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+
 import 'css/HeavyReader.css';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { RateIcon } from 'designMaterials/RateIcon';
@@ -72,91 +76,79 @@ function BookSummary({ book, reloadBook }) {
   };
 
   return (
-    <div className="px-[90px] py-[15px] lg:w-1/2">
-      <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-        <Link
-          to={`/books/${book.book_num}/`}
-          state={{ beforeLocation: location.search }}
-        >
-          <img
-            alt={book?.title}
-            className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
-          inline-block mt-28"
-            src={book?.cover_photo ? book?.cover_photo : non_image}
-          />
-        </Link>
-        <span className="absolute inline-flex mt-96 ml-4">
-          {book?.state === 'A' ? (
-            <div className="ml-3">
-              <Toggle
-                book={book}
-                wish={wish?.results[0]}
-                user_id={auth.user_id}
-                getWish={getWish}
-                reload={reload}
-              />
-            </div>
-          ) : (
-            <div>
-              <Toggle
-                book={book}
-                wish={wish?.results[0]}
-                user_id={auth.user_id}
-                getWish={getWish}
-                reload={reload}
-              />
-            </div>
-          )}
-          {book?.state === 'A' ? (
-            <div onClick={handleClickLoan} className="ml-2">
-              <LoanedIcon />
-            </div>
-          ) : (
-            <p className="m-auto ml-1 select-none hover:text-indigo-400">
-              {book?.loaned_books[0]?.return_due_date}
-            </p>
-          )}
-          <LoanedModal
-            ariaHideApp={false}
-            modalIsOpen={modalIsOpen}
-            setModalIsOpen={setModalIsOpen}
-            book_num={book?.book_num}
-            reload={reloadBook}
-          />
-        </span>
-
-        <Link
-          to={`/books/${book.book_num}/`}
-          state={{ beforeLocation: location.search }}
-        >
-          <div className="flex-grow sm:pl-8 mt-36">
-            <h3 className="text-sm text-gray-500 mb-3 select-none flex cursor-default">
+    <>
+      <div class="mt-10 mb-10 ml-4 max-w-sm w-[550px] lg:max-w-full lg:flex relative left-[163px] top-[30px] select-none">
+        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+          <Link
+            to={`/books/${book.book_num}/`}
+            state={{ beforeLocation: location.search }}
+          >
+            <img
+              alt={book?.title}
+              src={book?.cover_photo ? book?.cover_photo : non_image}
+            />
+          </Link>
+        </div>
+        <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+          <div class="mb-8">
+            <p class="text-sm text-gray-600 flex items-center">
               {book?.category && `[ ${book.category} ]`}
-            </h3>
-            <h2
-              className="absolute title-font font-medium text-lg text-black 
-              cursor-pointer grid font-semibold"
-              onClick={() => {
-                navigate(`/books/${book.book_num}/`);
-              }}
-            >
-              {book.title}
-            </h2>
-            <h3 className="mt-12 text-sm text-gray-500 select-none cursor-default">
-              {book.writer} | {book.amount} 권
-            </h3>
-            <p
-              className="font-medium text-base mb-4 mt-6 select-none cursor-pointer"
-              onClick={() => {
-                navigate(`/books/${book.book_num}/`);
-              }}
-            >
-              {truncateString(book.story)}
             </p>
+            <div class="text-gray-900 font-bold text-xl mb-2">
+              <Link
+                to={`/books/${book.book_num}/`}
+                state={{ beforeLocation: location.search }}
+              >
+                <h2>{book.title}</h2>
+              </Link>
+            </div>
+            <div class="text-sm text-gray-600">
+              <h2>
+                {book.writer} | {book.amount} 권
+              </h2>
+            </div>
+            <div class="text-gray-700 text-base text-left mt-1.5">
+              <h2>{truncateString(book.story)}</h2>
+            </div>
           </div>
-        </Link>
+          <div class="flex items-center relative">
+            {book?.state === 'A' ? (
+              <Toggle
+                book={book}
+                wish={wish?.results[0]}
+                user_id={auth.user_id}
+                getWish={getWish}
+                reload={reload}
+              />
+            ) : (
+              <Toggle
+                book={book}
+                wish={wish?.results[0]}
+                user_id={auth.user_id}
+                getWish={getWish}
+                reload={reload}
+              />
+            )}
+            {book?.state === 'A' ? (
+              <div onClick={handleClickLoan}>
+                <LoanedIcon />
+              </div>
+            ) : (
+              <p className="select-none hover:text-sky-600">
+                {book?.loaned_books[0]?.return_due_date}
+              </p>
+            )}
+            <LoanedModal
+              ariaHideApp={false}
+              modalIsOpen={modalIsOpen}
+              setModalIsOpen={setModalIsOpen}
+              book_num={book?.book_num}
+              reload={reloadBook}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

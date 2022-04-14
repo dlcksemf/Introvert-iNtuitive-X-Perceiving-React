@@ -93,31 +93,29 @@ function BookList() {
           </div>
         </div>
       </div>
-      <section className="text-gray-600 body-font">
-        <div className="container px-5  mx-auto">
-          <div className="flex flex-col text-center w-full">
-            <div className="flex justify-end">
-              <div className="absolute flex justify-end items-end top-[80px]">
-                {loading && '로딩 중 ...'}
-                {error && navigate(`*`)}
-              </div>
-            </div>
-            <div className="flex flex-wrap mx-4 mb-10">
-              {bookList?.results?.map((book) => (
-                <React.Fragment key={book.book_num}>
-                  <BookSummary
-                    book={book}
-                    reloadBook={() => {
-                      fetchApplications(page);
-                    }}
-                  />
-                </React.Fragment>
-              ))}
+      <div className="container px-5  mx-auto">
+        <div className="flex flex-col text-center w-full">
+          <div className="flex justify-end">
+            <div className="absolute flex justify-end items-end top-[80px]">
+              {loading && '로딩 중 ...'}
+              {error && navigate(`*`)}
             </div>
           </div>
+          <div className="flex flex-wrap mx-4 mb-10">
+            {bookList?.results?.map((book) => (
+              <React.Fragment key={book.book_num}>
+                <BookSummary
+                  book={book}
+                  reloadBook={() => {
+                    fetchApplications(page);
+                  }}
+                />
+              </React.Fragment>
+            ))}
+          </div>
         </div>
-      </section>
-      <div className="mt-14">
+      </div>
+      <div className="relative top-[20px]">
         <ReactPaginate
           breakLabel="..."
           nextLabel=">"
@@ -128,7 +126,7 @@ function BookList() {
           previousLabel="<"
           renderOnZeroPageCount={null}
           siblingCount="1"
-          className="pagination mb-14"
+          className="pagination"
         />
         <ToastContainer />
       </div>
