@@ -98,7 +98,7 @@ function AdminBookReview() {
                   <td className="pl-7">
                     <div className="flex items-center">
                       <p className="text-sm leading-none text-gray-600 ml-2 select-none">
-                        리뷰 위치
+                        책 제목
                       </p>
                     </div>
                   </td>
