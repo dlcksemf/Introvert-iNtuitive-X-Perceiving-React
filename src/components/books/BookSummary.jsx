@@ -73,87 +73,86 @@ function BookSummary({ book, reloadBook }) {
 
   return (
     <div className="px-[90px] py-[15px] lg:w-1/2">
-      <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-        <img
-          alt={book?.title}
-          className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
+      <Link
+        to={`/books/${book.book_num}/`}
+        state={{ beforeLocation: location.search }}
+      >
+        <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+          <img
+            alt={book?.title}
+            className="flex-shrink-0 w-48 h-48 object-scale-down object-center sm:mb-0 mb-4 cursor-pointer
           inline-block mt-28"
-          src={book?.cover_photo ? book?.cover_photo : non_image}
-          onClick={() => {
-            navigate(`/books/${book.book_num}/`);
-          }}
-        />
-        <span className="absolute inline-flex mt-96 ml-4">
-          {book?.state === 'A' ? (
-            <div className="ml-3">
-              <Toggle
-                book={book}
-                wish={wish?.results[0]}
-                user_id={auth.user_id}
-                getWish={getWish}
-                reload={reload}
-              />
-            </div>
-          ) : (
-            <div>
-              <Toggle
-                book={book}
-                wish={wish?.results[0]}
-                user_id={auth.user_id}
-                getWish={getWish}
-                reload={reload}
-              />
-            </div>
-          )}
-          {book?.state === 'A' ? (
-            <div onClick={handleClickLoan} className="ml-2">
-              <LoanedIcon />
-            </div>
-          ) : (
-            <p className="m-auto ml-1 select-none hover:text-indigo-400">
-              {book?.loaned_books[0]?.return_due_date}
-            </p>
-          )}
-          <LoanedModal
-            ariaHideApp={false}
-            modalIsOpen={modalIsOpen}
-            setModalIsOpen={setModalIsOpen}
-            book_num={book?.book_num}
-            reload={reloadBook}
+            src={book?.cover_photo ? book?.cover_photo : non_image}
           />
-        </span>
+          <span className="absolute inline-flex mt-96 ml-4">
+            {book?.state === 'A' ? (
+              <div className="ml-3">
+                <Toggle
+                  book={book}
+                  wish={wish?.results[0]}
+                  user_id={auth.user_id}
+                  getWish={getWish}
+                  reload={reload}
+                />
+              </div>
+            ) : (
+              <div>
+                <Toggle
+                  book={book}
+                  wish={wish?.results[0]}
+                  user_id={auth.user_id}
+                  getWish={getWish}
+                  reload={reload}
+                />
+              </div>
+            )}
+            {book?.state === 'A' ? (
+              <div onClick={handleClickLoan} className="ml-2">
+                <LoanedIcon />
+              </div>
+            ) : (
+              <p className="m-auto ml-1 select-none hover:text-indigo-400">
+                {book?.loaned_books[0]?.return_due_date}
+              </p>
+            )}
+            <LoanedModal
+              ariaHideApp={false}
+              modalIsOpen={modalIsOpen}
+              setModalIsOpen={setModalIsOpen}
+              book_num={book?.book_num}
+              reload={reloadBook}
+            />
+          </span>
 
-        <Link
-          to={`/books/${book.book_num}/`}
-          state={{ beforeLocation: location.search }}
-        >
-          <div className="flex-grow sm:pl-8 mt-36">
-            <h3 className="text-sm text-gray-500 mb-3 select-none flex cursor-default">
-              {book?.category && `[ ${book.category} ]`}
-            </h3>
-            <h2
-              className="absolute title-font font-medium text-lg text-black 
+          <Link
+            to={`/books/${book.book_num}/`}
+            state={{ beforeLocation: location.search }}
+          >
+            <div className="flex-grow sm:pl-8 mt-36">
+              <h3 className="text-sm text-gray-500 mb-3 select-none flex cursor-default">
+                {book?.category && `[ ${book.category} ]`}
+              </h3>
+              <h2
+                className="absolute title-font font-medium text-lg text-black 
               cursor-pointer grid font-semibold"
-              onClick={() => {
-                navigate(`/books/${book.book_num}/`);
-              }}
-            >
-              {book.title}
-            </h2>
-            <h3 className="mt-12 text-sm text-gray-500 select-none cursor-default">
-              {book.writer} | {book.amount} 권
-            </h3>
-            <p
-              className="font-medium text-base mb-4 mt-6 select-none cursor-pointer"
-              onClick={() => {
-                navigate(`/books/${book.book_num}/`);
-              }}
-            >
-              {truncateString(book.story)}
-            </p>
-          </div>
-        </Link>
-      </div>
+              >
+                {book.title}
+              </h2>
+              <h3 className="mt-12 text-sm text-gray-500 select-none cursor-default">
+                {book.writer} | {book.amount} 권
+              </h3>
+              <p
+                className="font-medium text-base mb-4 mt-6 select-none cursor-pointer"
+                onClick={() => {
+                  navigate(`/books/${book.book_num}/`);
+                }}
+              >
+                {truncateString(book.story)}
+              </p>
+            </div>
+          </Link>
+        </div>
+      </Link>
     </div>
   );
 }
