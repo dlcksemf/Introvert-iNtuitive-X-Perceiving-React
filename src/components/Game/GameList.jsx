@@ -76,7 +76,7 @@ function GameList() {
           </div>
         </div>
       </div>
-      <div className="container px-5  mx-auto">
+      <div className="container px-5 mx-auto h-full">
         <div className="flex flex-col text-center w-full">
           <div className="flex justify-end">
             <div className="absolute flex justify-end items-end top-[80px]">
@@ -98,7 +98,7 @@ function GameList() {
           </div>
         </div>
       </div>
-      <div className="relative top-[20px]">
+      <div className="relative top-[20px] select-none">
         <ReactPaginate
           breakLabel="..."
           nextLabel=">"

@@ -174,7 +174,7 @@ function BookApplicationList() {
           pageCount={pageCount}
           previousLabel="<"
           renderOnZeroPageCount={null}
-          className="pagination relative top-[40px] right-[45px]"
+          className="pagination relative top-[40px] right-[45px] select-none"
         />
 
         <div
