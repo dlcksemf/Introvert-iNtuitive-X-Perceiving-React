@@ -15,11 +15,7 @@ function ApplicationsBooks({ application }) {
 
   const [apptitle] = useState(() => {
     if (application.state === 'P') {
-      if (application.title.length > 15) {
-        return application.title.slice(0, 15) + '...';
-      } else {
-        return application.title;
-      }
+      return <div className="relative left-[100px]">{application.title}</div>;
     }
   });
 
@@ -27,9 +23,11 @@ function ApplicationsBooks({ application }) {
     if (application.state === 'P') {
       if (application.title.length > 15) {
         return (
-          <Badge color={color}>
-            {STATELIST.application[application.state]}
-          </Badge>
+          <div className="relative left-[705px]">
+            <Badge color={color}>
+              {STATELIST.application[application.state]}
+            </Badge>
+          </div>
         );
       } else {
         return (

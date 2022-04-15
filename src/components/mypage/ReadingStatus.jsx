@@ -20,7 +20,10 @@ function ReadingStatus() {
   }, [refetch]);
 
   return (
-    <div className="h-60 select-none">
+    <div className="h-[350px] w-[775px] select-none border-2 border-gray-100 shadow-xl">
+      <h3 className="font-semibold text-xl text-gray-800 text-center select-none relative top-[10px]">
+        나의 도서 통계
+      </h3>
       {data && (
         <ResponsiveCalendar
           data={data.loaned_dates}

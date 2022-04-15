@@ -14,6 +14,7 @@ function MyPage() {
   const [showWish, setShowWish] = useState(false);
   const [showLoaned, setShowLoaned] = useState(true);
   const [showGame, setShowGame] = useState(false);
+  const [showApplication, setShowApplication] = useState(false);
   const [auth] = useAuth();
   const [, setReload] = useReload();
   let location = useLocation();
@@ -39,155 +40,138 @@ function MyPage() {
   }, [getUserInfo, setReload]);
 
   return (
-    <div className="ml-24 mt-10 mb-32">
-      <div className="container mx-auto my-5 p-5">
-        <div className="md:flex no-wrap md:-mx-2 ">
-          <div className="w-full md:w-3/12 md:mx-2">
-            <div className="bg-white p-3 mt-3">
-              <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
-                <UserInfo info={data} />
-              </h1>
-            </div>
-            <div>
-              <ApplicationsList applicationList={data?.applications_set} />
-            </div>
-
-            <div className="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8"></div>
-            <div className="grid grid-cols-3"></div>
+    <>
+      <div className="border-b-4 border-sky-600 w-[1140px] relative left-[200px]">
+        <h2 className="text-3xl font-bold relative bottom-[20px] left-[20px] select-none">
+          내 정보 관리
+        </h2>
+      </div>
+      <div className="h-full w-[700px] pb-20">
+        <div className="flex relative left-[130px]">
+          <div className="relative top-[90px]">
+            <UserInfo info={data} />
           </div>
+          <div className="relative left-[80px] top-[30px]">
+            <ReadingStatus />
+          </div>
+        </div>
 
-          <div className="w-full md:w-9/12 mx-2 h-64">
-            <div className="bg-white p-3 shadow-sm rounded-sm">
-              <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8"></div>
-              <div className="text-gray-700">
-                <div className=" text-sm">
-                  <div>
-                    <div className="relative">
-                      <div className="">
-                        <section className="py-1 bg:gray-50">
-                          <div className="w-full xl:mb-0 px-0">
-                            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
-                              <div className="flex justify-between">
-                                <div className="flex my-5 ml-5">
-                                  <button
-                                    className={`${
-                                      showLoaned
-                                        ? 'bg-indigo-600 text-white border-none px-4 py-2.5'
-                                        : 'text-gray-800'
-                                    }
+        <section
+          className="border-2 border-gray-100 shadow-xl w-[1135px]
+        relative top-[50px] left-[200px]"
+        >
+          <div className="flex relative left-[20px] relative top-[20px]">
+            <button
+              className={`${
+                showLoaned
+                  ? 'bg-indigo-600 text-white border-none px-4 py-2.5'
+                  : 'text-gray-800'
+              }
                           bottom-20 border-2 border-indigo-600 px-3 mr-2
                           
-                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-indigo-400 
+                          text-sm shadow-sm font-semibold tracking-wider rounded-md hover:bg-indigo-400 
                          `}
-                                    onClick={() => setShowLoaned(true)}
-                                    onClickCapture={() => {
-                                      setShowWish(false);
-                                      setShowGame(false);
-                                    }}
-                                  >
-                                    대출 도서
-                                  </button>
+              onClick={() => setShowLoaned(true)}
+              onClickCapture={() => {
+                setShowWish(false);
+                setShowGame(false);
+                setShowApplication(false);
+              }}
+            >
+              대출 도서
+            </button>
 
-                                  <button
-                                    className={`${
-                                      showGame
-                                        ? 'bg-indigo-500 text-white border-none px-5 py-2.5'
-                                        : 'text-gray-800'
-                                    }
+            <button
+              className={`${
+                showGame
+                  ? 'bg-indigo-500 text-white border-none px-5 py-2.5'
+                  : 'text-gray-800'
+              }
                                     bottom-20 border-2 border-indigo-500 px-3 mr-2
-                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-indigo-400
+                          text-sm shadow-sm font-semibold tracking-wider rounded-md hover:bg-indigo-400
                         `}
-                                    onClick={() => setShowGame(true)}
-                                    onClickCapture={() => {
-                                      setShowWish(false);
-                                      setShowLoaned(false);
-                                    }}
-                                  >
-                                    게임 대여
-                                  </button>
+              onClick={() => setShowGame(true)}
+              onClickCapture={() => {
+                setShowWish(false);
+                setShowLoaned(false);
+                setShowApplication(false);
+              }}
+            >
+              게임 대여
+            </button>
 
-                                  <button
-                                    className={`${
-                                      showWish
-                                        ? 'bg-indigo-500 text-white border-none px-5 py-2.5'
-                                        : 'text-gray-800'
-                                    }
+            <button
+              className={`${
+                showWish
+                  ? 'bg-indigo-500 text-white border-none px-5 py-2.5'
+                  : 'text-gray-800'
+              }
                           px-4 py-2 border-2 border-indigo-500
-                          text-sm shadow-sm font-semibold tracking-wider rounded-full hover:bg-indigo-400
+                          text-sm shadow-sm font-semibold tracking-wider rounded-md hover:bg-indigo-400
                        `}
-                                    onClick={() => setShowWish(true)}
-                                    onClickCapture={() => {
-                                      setShowLoaned(false);
-                                      setShowGame(false);
-                                    }}
-                                  >
-                                    찜 도서
-                                  </button>
-                                </div>
-
-                                <Link
-                                  to={
-                                    showLoaned
-                                      ? `/accounts/modal/loanedbooks/`
-                                      : showWish
-                                      ? `/accounts/modal/wishes/`
-                                      : `/accounts/modal/loanedgame/`
-                                  }
-                                  state={{ backgroundLocation: location }}
-                                >
-                                  <button
-                                    className="bg-indigo-500 mt-3 text-white hover:bg-indigo-400 text-sm font-bold uppercase 
-                                  px-4 py-2 mt-5 mr-4 rounded-full"
-                                  >
-                                    전체 내역 보기
-                                  </button>
-                                </Link>
-                              </div>
-                              {showLoaned && (
-                                <LoanedBooksList
-                                  loanedBookList={data?.loanedbooks_set}
-                                />
-                              )}
-                              {showGame && (
-                                <LoanedGameList
-                                  loanedGameList={data?.loanedgame_set}
-                                />
-                              )}
-                              {showWish && (
-                                <div>
-                                  <WishBooksList
-                                    wishBookList={data?.wishes_set}
-                                  />
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </section>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center w-full justify-center">
-                      <div className="w-full">
-                        <div className="bg-white shadow-xl rounded-lg py-3">
-                          <div className="p-2">
-                            <h3 className="font-semibold text-base text-gray-700 text-center select-none">
-                              나의 도서 통계
-                            </h3>
-                            <ReadingStatus />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              onClick={() => setShowWish(true)}
+              onClickCapture={() => {
+                setShowLoaned(false);
+                setShowGame(false);
+                setShowApplication(false);
+              }}
+            >
+              찜 도서
+            </button>
+            <button
+              className={`${
+                showApplication
+                  ? 'bg-indigo-500 text-white border-none px-5 py-2.5'
+                  : 'text-gray-800'
+              }
+                        px-4 py-2 border-2 border-indigo-500 relative left-[10px]
+                        text-sm shadow-sm font-semibold tracking-wider rounded-md hover:bg-indigo-400
+                     `}
+              onClick={() => setShowApplication(true)}
+              onClickCapture={() => {
+                setShowLoaned(false);
+                setShowGame(false);
+                setShowWish(false);
+              }}
+            >
+              신청 도서
+            </button>
+            <Link
+              to={
+                showLoaned
+                  ? `/accounts/modal/loanedbooks/`
+                  : showWish
+                  ? `/accounts/modal/wishes/`
+                  : showGame
+                  ? `/accounts/modal/loanedgame/`
+                  : `/accounts/modal/applications/`
+              }
+              state={{ backgroundLocation: location }}
+            >
+              <button
+                className="bg-indigo-500 text-white border-none px-5 py-2.5 relative left-[610px]
+                text-sm shadow-sm font-semibold tracking-wider rounded-md hover:bg-indigo-400"
+              >
+                전체 내역 보기
+              </button>
+            </Link>
           </div>
 
-          <div className="my-4"></div>
-        </div>
+          <div className="mt-10">
+            {showLoaned && (
+              <LoanedBooksList loanedBookList={data?.loanedbooks_set} />
+            )}
+            {showGame && (
+              <LoanedGameList loanedGameList={data?.loanedgame_set} />
+            )}
+            {showWish && <WishBooksList wishBookList={data?.wishes_set} />}
+            {showApplication && (
+              <ApplicationsList applicationList={data?.applications_set} />
+            )}
+          </div>
+        </section>
       </div>
-    </div>
+    </>
   );
 }
 
