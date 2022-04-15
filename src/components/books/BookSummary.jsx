@@ -469,13 +469,7 @@ function ReviewSummary({ review, setReload }) {
             </div>
           ) : (
             <div className="flex justify-end relative top-4 right-4">
-              <div className="flex justify-end relative top-4 right-4">
-                <button disabled={deleteLoading} onClick={handleDelete}>
-                  <p className="text-white text-sm hover:text-sky-600 select-none">
-                    공간
-                  </p>
-                </button>
-              </div>
+              <p className="text-white text-sm select-none">공간</p>
             </div>
           )}
           <span className="flex m-auto">
