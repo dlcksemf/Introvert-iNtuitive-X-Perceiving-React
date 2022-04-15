@@ -10,7 +10,6 @@ function AdminGameSummary({ game }) {
             <img
               src={game.game_cover_photo}
               alt={game.game_name}
-              // 여기 result 없애주세요
               className="w-full"
             />
           </Link>
@@ -18,14 +17,12 @@ function AdminGameSummary({ game }) {
         {!game?.game_cover_photo && (
           <Link to={`/admin/gamelist/${game.game_num}/`}>
             <img src={non_image} alt={game.game_name} className="w-full" />
-            {/* 여기 result 없애주세요 */}
           </Link>
         )}
-        <div className="p-8 sm:p-9 md:p-7 xl:p-9">
+        <div className="sm:p-4 md:p-5 xl:py-6 xl:px-4">
           <h3 className="font-semibold text-dark text-center">
             <Link to={`/admin/gamelist/${game.game_num}/`}>
               {game.game_name}
-              {/* 여기 result 없애주세요 */}
             </Link>
           </h3>
         </div>

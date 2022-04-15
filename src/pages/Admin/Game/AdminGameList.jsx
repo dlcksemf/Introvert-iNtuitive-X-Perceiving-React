@@ -15,7 +15,7 @@ function AdminGameList() {
 
   const [{ data: gameList, loading, error }, refetch] = useApiAxios(
     {
-      url: `/game/api/game/?page_size=3`,
+      url: `/game/api/game/?page_size=6`,
       method: 'GET',
     },
     { manual: true },
@@ -32,7 +32,7 @@ function AdminGameList() {
 
       setPage(newPage);
 
-      setPageCount(Math.ceil(data.count / 3));
+      setPageCount(Math.ceil(data.count / itemsPerPage));
       setCurrentItems(data?.results);
     },
     [query, refetch],
@@ -67,7 +67,7 @@ function AdminGameList() {
             <div
               key={game.game_num}
               // 여기 result 없애주세요
-              className="w-full md:w-1/2 xl:w-1/3 px-4"
+              className="w-full md:w-1/3 xl:w-1/4 px-4"
             >
               <AdminGameSummary game={game} />
             </div>
@@ -78,6 +78,7 @@ function AdminGameList() {
         breakLabel="..."
         nextLabel=">"
         onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
         pageCount={pageCount}
         previousLabel="<"
         renderOnZeroPageCount={null}
