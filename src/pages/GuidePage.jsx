@@ -26,7 +26,7 @@ function GuidePage() {
         </h2>
       </div>
       <div className="h-[1100px] w-[600px]">
-        <div className="absolute top-[100px] left-[200px]">
+        <div className="absolute top-[100px] left-[200px] select-none">
           <img src={guide} alt="이용안내 동영상" className="shadow-xl" />
         </div>
         <div className="absolute left-[820px] top-[110px]">
@@ -82,7 +82,7 @@ function GuidePage() {
           <h1 className="text-3xl font-bold relative bottom-[20px] left-[20px] select-none">
             찾아오는 길
           </h1>
-          <div className="absolute top-[40px]">
+          <div className="absolute top-[40px] select-none shadow-xl">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2240.320380004432!2d127.44264815233345!3d36.3274535222694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3565494830b9e129%3A0x242d1a163ecf4103!2z64yA7KCE7KeA7Iud7IKw7JeF7IS87YOA!5e0!3m2!1sko!2skr!4v1646012324942!5m2!1sko!2skr"
               width="600"
