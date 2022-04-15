@@ -7,6 +7,8 @@ import Button from './Button';
 import LoadingIndicator from 'components/LoadingIndicator';
 import { useNavigate } from 'react-router-dom';
 import FormCategory from 'components/parts/FormCategory';
+import AdminApplication from 'components/maneger/AdminApplication';
+import AdminRegistration from 'components/maneger/AdminRegistration';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -24,6 +26,7 @@ const INIT_FIELD_VALUES = {
 function AdminBookForm({ postId, handleDidSave }) {
   const [imageSrc, setImageSrc] = useState('');
   const navigate = useNavigate();
+  const [showISBN, setShowISBN] = useState(true);
 
   const encodeFileToBase64 = (e, fileData) => {
     const reader = new FileReader();
@@ -125,222 +128,264 @@ function AdminBookForm({ postId, handleDidSave }) {
       {saveError &&
         `저장 중 에러가 발생했습니다 (${saveError.response?.status} ${saveError.response?.statusText})`}
       {/* <form onSubmit={handleSubmit}> */}
+      <button
+        className={`${
+          showISBN
+            ? 'bg-indigo-600 text-white border-none px-4 py-2.5'
+            : 'text-gray-800'
+        }
+                          bottom-20 border-2 border-indigo-600 px-3 mr-2
+                          
+                          text-sm shadow-sm font-semibold tracking-wider rounded-md hover:bg-indigo-400 
+                         `}
+        onClick={() => setShowISBN(true)}
+      >
+        ISBN 등록
+      </button>
+
+      <button
+        className={`${
+          !showISBN
+            ? 'bg-indigo-500 text-white border-none px-5 py-2.5'
+            : 'text-gray-800'
+        }
+                                    bottom-20 border-2 border-indigo-500 px-3 mr-2
+                          text-sm shadow-sm font-semibold tracking-wider rounded-md hover:bg-indigo-400
+                        `}
+        onClick={() => setShowISBN(false)}
+      >
+        직접 등록
+      </button>
+
       <form>
         <div className="my-20">
           <div className="max-w-3xl mx-auto px-20 py-10 shadow-xl">
-            <div className="py-5">
-              <label className="font-bold mb-7 text-2xl text-gray-700 block text-center">
-                도서 등록
-              </label>
-
-              <div>
-                <div
-                  className="mb-3"
-                  style={{ alignItems: 'center', justifyContent: 'center' }}
-                >
-                  <input
-                    name="cover_photo"
-                    style={{ display: 'none' }}
-                    id="img"
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => {
-                      encodeFileToBase64(e, e.target.files[0]);
-                    }}
-                  />
-                  <div className="font-semibold text-indigo-600 hover:text-indigo-700">
-                    <label
-                      for="img"
-                      className="cursor-pointer 
-                      "
+            <label className="font-bold mb-7 text-2xl text-gray-700 block text-center">
+              도서 등록
+            </label>
+            {showISBN ? (
+              <AdminRegistration />
+            ) : (
+              <>
+                <div className="py-5">
+                  <div>
+                    <div
+                      className="mb-3"
+                      style={{ alignItems: 'center', justifyContent: 'center' }}
                     >
-                      📙 도서 표지 등록하기
-                    </label>
+                      <input
+                        name="cover_photo"
+                        style={{ display: 'none' }}
+                        id="img"
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                          encodeFileToBase64(e, e.target.files[0]);
+                        }}
+                      />
+                      <div className="font-semibold text-indigo-600 hover:text-indigo-700">
+                        <label
+                          for="img"
+                          className="cursor-pointer 
+                      "
+                        >
+                          📙 도서 표지 등록하기
+                        </label>
+                      </div>
+                    </div>
+
+                    {(imageSrc || post?.cover_photo) && (
+                      <div className="preview">
+                        <img
+                          src={imageSrc || post?.cover_photo}
+                          alt="preview-img"
+                        />
+                      </div>
+                    )}
                   </div>
+
+                  {saveErrorMessages.photo?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
                 </div>
 
-                {(imageSrc || post?.cover_photo) && (
-                  <div className="preview">
-                    <img
-                      src={imageSrc || post?.cover_photo}
-                      alt="preview-img"
-                    />
-                  </div>
-                )}
-              </div>
+                <div className="mb-5">
+                  <label className="font-bold mb-1 text-gray-700 block outline-none">
+                    카테고리
+                  </label>
+                  <select
+                    name="category"
+                    onChange={handleFieldChange}
+                    value={fieldValues.category}
+                  >
+                    <FormCategory />
+                  </select>
+                </div>
 
-              {saveErrorMessages.photo?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
-            </div>
+                <div className="mb-5">
+                  <label className="font-bold mb-1 text-gray-700 block">
+                    제목
+                  </label>
+                  <input
+                    name="title"
+                    value={fieldValues.title}
+                    onChange={handleFieldChange}
+                    type="text"
+                    autoComplete="off"
+                    placeholder="도서 제목을 넣어주세요."
+                    className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  {saveErrorMessages.title?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+                </div>
+                <div className="mb-5">
+                  <label className="font-bold mb-1 text-gray-700 block">
+                    저자
+                  </label>
+                  <input
+                    name="writer"
+                    value={fieldValues.writer}
+                    onChange={handleFieldChange}
+                    type="text"
+                    autoComplete="off"
+                    placeholder="글쓴이를 넣어주세요."
+                    className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  {saveErrorMessages.writer?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+                </div>
+                <div className="mb-5">
+                  <label className="font-bold mb-1 text-gray-700 block">
+                    역자
+                  </label>
+                  <input
+                    name="translator"
+                    value={fieldValues.translator}
+                    onChange={handleFieldChange}
+                    type="text"
+                    autoComplete="off"
+                    placeholder="역자를 넣어주세요."
+                    className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  {saveErrorMessages.translator?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+                </div>
+                <div className="mb-5">
+                  <label className="font-bold mb-1 text-gray-700 block">
+                    출판사
+                  </label>
+                  <input
+                    name="publisher"
+                    value={fieldValues.publisher}
+                    onChange={handleFieldChange}
+                    type="text"
+                    autoComplete="off"
+                    placeholder="출판사를 넣어주세요."
+                    className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  {saveErrorMessages.publisher?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+                </div>
+                <div className="mb-5">
+                  <label className="font-bold mb-1 text-gray-700 block">
+                    출판일
+                  </label>
+                  <input
+                    name="published_date"
+                    value={fieldValues.published_date}
+                    onChange={handleFieldChange}
+                    type="date"
+                    autoComplete="off"
+                    placeholder="출판일을 선택해주세요."
+                    className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  {saveErrorMessages.published_date?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+                </div>
+                <div className="mb-5">
+                  <label className="font-bold mb-1 text-gray-700 block">
+                    ISBN
+                  </label>
+                  <input
+                    name="ISBN"
+                    value={fieldValues.ISBN}
+                    onChange={handleFieldChange}
+                    type="text"
+                    autoComplete="off"
+                    placeholder="ISBN을 넣어주세요."
+                    className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  {saveErrorMessages.ISBN?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+                </div>
+                <div className="mb-5">
+                  <label className="font-bold mb-1 text-gray-700 block">
+                    도서 수량
+                  </label>
+                  <input
+                    name="amount"
+                    value={fieldValues.amount}
+                    onChange={handleFieldChange}
+                    placeholder="도서 수량을 입력해주세요."
+                    className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  {saveErrorMessages.amount?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+                </div>
+                <div className="my-3">
+                  <label className="font-bold mb-1 text-gray-700 block">
+                    줄거리
+                  </label>
+                  <textarea
+                    name="story"
+                    value={fieldValues.story}
+                    onChange={handleFieldChange}
+                    type="text"
+                    autoComplete="off"
+                    placeholder="줄거리를 넣어주세요."
+                    className="w-full h-80 bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  {saveErrorMessages.story?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+                </div>
 
-            <div className="mb-5">
-              <label className="font-bold mb-1 text-gray-700 block outline-none">
-                카테고리
-              </label>
-              <select
-                name="category"
-                onChange={handleFieldChange}
-                value={fieldValues.category}
-              >
-                <FormCategory />
-              </select>
-            </div>
-
-            <div className="mb-5">
-              <label className="font-bold mb-1 text-gray-700 block">제목</label>
-              <input
-                name="title"
-                value={fieldValues.title}
-                onChange={handleFieldChange}
-                type="text"
-                autoComplete="off"
-                placeholder="도서 제목을 넣어주세요."
-                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-              {saveErrorMessages.title?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
-            </div>
-            <div className="mb-5">
-              <label className="font-bold mb-1 text-gray-700 block">저자</label>
-              <input
-                name="writer"
-                value={fieldValues.writer}
-                onChange={handleFieldChange}
-                type="text"
-                autoComplete="off"
-                placeholder="글쓴이를 넣어주세요."
-                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-              {saveErrorMessages.writer?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
-            </div>
-            <div className="mb-5">
-              <label className="font-bold mb-1 text-gray-700 block">역자</label>
-              <input
-                name="translator"
-                value={fieldValues.translator}
-                onChange={handleFieldChange}
-                type="text"
-                autoComplete="off"
-                placeholder="역자를 넣어주세요."
-                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-              {saveErrorMessages.translator?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
-            </div>
-            <div className="mb-5">
-              <label className="font-bold mb-1 text-gray-700 block">
-                출판사
-              </label>
-              <input
-                name="publisher"
-                value={fieldValues.publisher}
-                onChange={handleFieldChange}
-                type="text"
-                autoComplete="off"
-                placeholder="출판사를 넣어주세요."
-                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-              {saveErrorMessages.publisher?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
-            </div>
-            <div className="mb-5">
-              <label className="font-bold mb-1 text-gray-700 block">
-                출판일
-              </label>
-              <input
-                name="published_date"
-                value={fieldValues.published_date}
-                onChange={handleFieldChange}
-                type="date"
-                autoComplete="off"
-                placeholder="출판일을 선택해주세요."
-                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-              {saveErrorMessages.published_date?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
-            </div>
-            <div className="mb-5">
-              <label className="font-bold mb-1 text-gray-700 block">ISBN</label>
-              <input
-                name="ISBN"
-                value={fieldValues.ISBN}
-                onChange={handleFieldChange}
-                type="text"
-                autoComplete="off"
-                placeholder="ISBN을 넣어주세요."
-                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-              {saveErrorMessages.ISBN?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
-            </div>
-            <div className="mb-5">
-              <label className="font-bold mb-1 text-gray-700 block">
-                도서 수량
-              </label>
-              <input
-                name="amount"
-                value={fieldValues.amount}
-                onChange={handleFieldChange}
-                placeholder="도서 수량을 입력해주세요."
-                className="w-full bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-              {saveErrorMessages.amount?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
-            </div>
-            <div className="my-3">
-              <label className="font-bold mb-1 text-gray-700 block">
-                줄거리
-              </label>
-              <textarea
-                name="story"
-                value={fieldValues.story}
-                onChange={handleFieldChange}
-                type="text"
-                autoComplete="off"
-                placeholder="줄거리를 넣어주세요."
-                className="w-full h-80 bg-white rounded border border-gray-300 hover:font-bold focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-              {saveErrorMessages.story?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
-            </div>
-
-            <div className="my-3 text-center">
-              <Button onClick={handleSubmit}>저장하기</Button>
-              <button
-                className="border border-gray-400 text-gray-500 font-bold py-2 px-4 mr-3 rounded hover:text-gray-700"
-                onClick={handleCancleButton}
-              >
-                <p className="">취소하기</p>
-              </button>
-            </div>
+                <div className="my-3 text-center">
+                  <Button onClick={handleSubmit}>저장하기</Button>
+                  <button
+                    className="border border-gray-400 text-gray-500 font-bold py-2 px-4 mr-3 rounded hover:text-gray-700"
+                    onClick={handleCancleButton}
+                  >
+                    <p className="">취소하기</p>
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </form>
