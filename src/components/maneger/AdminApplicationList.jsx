@@ -7,6 +7,7 @@ import AdminApplication from './AdminApplication';
 import { itemsPerPage } from 'Constants';
 import StateCategory from 'components/parts/StateCategory';
 import { STATELIST } from 'Constants';
+import { CSVLink, CSVDownload } from 'react-csv';
 
 function AdminApplicationList() {
   const [, setCurrentItems] = useState(null);
@@ -15,6 +16,7 @@ function AdminApplicationList() {
   const [category, setCategory] = useState(
     Object.keys(STATELIST.application)[0],
   );
+  const [csv, setCsv] = useState([]);
 
   const [{ data }, getApplications] = useApiAxios(
     {
@@ -23,6 +25,32 @@ function AdminApplicationList() {
     },
     { manual: true },
   );
+
+  const [{ allData }, getAllApplications] = useApiAxios(
+    {
+      url: '/books/api/applications/?all',
+      method: 'GET',
+    },
+    { manual: true },
+  );
+
+  useEffect(() => {
+    setCsv([['제목', '저자', '출판사', 'ISBN', '현황']]);
+    getAllApplications().then((response) => {
+      response.data.map((application) =>
+        setCsv((prev) => [
+          ...prev,
+          [
+            application.title,
+            application.writer,
+            application.publisher,
+            application.ISBN,
+            STATELIST.application[application.state],
+          ],
+        ]),
+      );
+    });
+  }, []);
 
   const fetchApplications = useCallback(
     async (newPage) => {
@@ -56,6 +84,11 @@ function AdminApplicationList() {
           <div className="sm:flex items-end justify-between">
             <p className="focus:outline-none text-2xl font-bold leading-normal text-gray-800">
               신청 도서 관리
+              <div className="text-sm">
+                <CSVLink data={csv} className="text-green-700">
+                  엑셀로 다운로드
+                </CSVLink>
+              </div>
             </p>
 
             <StateCategory
