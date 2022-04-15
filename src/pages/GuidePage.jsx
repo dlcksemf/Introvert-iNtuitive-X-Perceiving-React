@@ -25,11 +25,11 @@ function GuidePage() {
           유클리드 북스 이용 안내
         </h2>
       </div>
-      <div className="h-[1240px] w-[600px]">
-        <div className="relative top-[50px] left-[200px]">
+      <div className="h-[1100px] w-[600px]">
+        <div className="absolute top-[100px] left-[200px]">
           <img src={guide} alt="이용안내 동영상" className="shadow-xl" />
         </div>
-        <div className="relative left-[820px] bottom-[280px]">
+        <div className="absolute left-[820px] top-[110px]">
           <div className="text-white px-3 py-1.5 inline-flex rounded-full bg-rose-400">
             <p className="select-none font-bold">🤴 이달의 독서왕은 나야나</p>
           </div>
@@ -41,7 +41,7 @@ function GuidePage() {
             />
           </div>
         </div>
-        <div className="relative left-[820px] bottom-[280px]">
+        <div className="relative left-[820px] top-[150px]">
           <div className="text-white px-3 py-1.5 text-center inline-flex rounded-full bg-blue-400">
             <p className="select-none font-bold">📖 내가 읽고 싶은 책은</p>
           </div>
@@ -53,7 +53,7 @@ function GuidePage() {
             />
           </div>
         </div>
-        <div className="relative left-[820px] bottom-[280px]">
+        <div className="relative left-[820px] top-[150px]">
           <div className="text-white px-3 py-1.5 text-center inline-flex rounded-full bg-emerald-400">
             <p className="select-none font-bold">🎲 다양한 보드게임은</p>
           </div>
@@ -65,7 +65,7 @@ function GuidePage() {
             />
           </div>
         </div>
-        <div className="relative left-[820px] bottom-[280px]">
+        <div className="relative left-[820px] top-[150px]">
           <div className="text-white px-3 py-1.5 text-center inline-flex rounded-full bg-amber-400">
             <p className="select-none font-bold">📃 나의 독서 기록</p>
           </div>
@@ -78,11 +78,11 @@ function GuidePage() {
           </div>
         </div>
 
-        <div className="relative left-[200px] bottom-[170px]">
+        <div className="absolute left-[200px] top-[580px]">
           <h1 className="text-3xl font-bold relative bottom-[20px] left-[20px] select-none">
             찾아오는 길
           </h1>
-          <div className="relative top-[20px]">
+          <div className="absolute top-[40px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2240.320380004432!2d127.44264815233345!3d36.3274535222694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3565494830b9e129%3A0x242d1a163ecf4103!2z64yA7KCE7KeA7Iud7IKw7JeF7IS87YOA!5e0!3m2!1sko!2skr!4v1646012324942!5m2!1sko!2skr"
               width="600"
@@ -90,7 +90,7 @@ function GuidePage() {
               loading="lazy"
             />
           </div>
-          <div className="relative left-[650px] bottom-[400px]">
+          <div className="absolute left-[650px] top-[95px]">
             <h1 className="text-lg font-semibold select-none">ADDRESS</h1>
             <p
               className="text-lg text-gray-700 select-none
@@ -118,7 +118,7 @@ function GuidePage() {
               euclidsoft.lab@gmail.com
             </p>
 
-            <div className="flex relative top-[20px]">
+            <div className="flex relative top-[20px] w-[300px]">
               <div
                 className="gap-4 my-6 cursor-pointer select-none
                 transition duration-500 ease-in-out hover:-translate-y-3 hover:scale-100"
