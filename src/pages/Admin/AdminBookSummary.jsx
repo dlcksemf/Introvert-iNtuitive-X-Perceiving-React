@@ -15,7 +15,7 @@ function AdminBookSummary({ post }) {
             <img src={non_image} alt={post.title} className="w-full" />
           </Link>
         )}
-        <div className="p-8 sm:p-9 md:p-7 xl:p-9">
+        <div className="sm:p-4 md:p-5 xl:py-6 xl:px-4">
           <h3 className="font-semibold text-dark text-center">
             <Link to={`/admin/${post.book_num}/`}>
               {post.title} - {post.writer}

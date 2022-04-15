@@ -15,7 +15,7 @@ function AdminBookList() {
 
   const [{ data: postList, loading, error }, refetch] = useApiAxios(
     {
-      url: '/books/api/books/?page_size=9',
+      url: '/books/api/books/?page_size=12',
       method: 'GET',
     },
     { manual: true },
@@ -63,7 +63,7 @@ function AdminBookList() {
       {postList && (
         <div className="flex flex-wrap">
           {postList?.results?.map((post) => (
-            <div key={post.book_num} className="w-full md:w-1/2 xl:w-1/3 px-4">
+            <div key={post.book_num} className="w-full md:w-1/3 xl:w-1/4 px-4">
               <AdminBookSummary post={post} />
             </div>
           ))}
