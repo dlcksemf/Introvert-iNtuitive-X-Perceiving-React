@@ -13,9 +13,7 @@ function AdminLoanedListPage() {
             showBookLoaned ? 'bg-indigo-400 text-white' : 'text-gray-800'
           }
            border border-indigo-400 px-5 mr-2 py-2
-          text-sm font-semibold tracking-wider rounded-full hover:bg-indigo-400 hover:text-white
-  
-        `}
+          text-sm font-semibold tracking-wider rounded-full hover:bg-indigo-400 hover:text-white`}
           onClick={() => setShowBookLoaned(true)}
           onClickCapture={() => {
             setShowGameLoaned(false);

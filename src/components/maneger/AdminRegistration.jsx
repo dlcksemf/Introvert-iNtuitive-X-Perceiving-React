@@ -178,41 +178,54 @@ function AdminRegistration({ postId, handleDidSave }) {
   return (
     <div>
       <div>
-        <BookApplicationSearch
-          handleSubmit={handleSubmit}
-          setQuery={setQuery}
-          className="w-full select-none"
-        />
+        {/*검색창*/}
+        <div>
+          <form className="text-center" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
+              placeholder={'ISBN을 입력해주세요'}
+              autoComplete="off"
+              className="py-2 mr-2 border border-gray-300 px-3 text-sm
+                        w-80 relative focus:outline-none select-none"
+            />
+
+            <button
+              className="rounded border border-gray-300 "
+              onClick={handleSubmit}
+            >
+              <h1 className="py-2 px-2 text-sm text-center select-none">
+                검색
+              </h1>
+            </button>
+          </form>
+        </div>
 
         {!data?.items[0]?.image ? (
           data?.items && (
-            <h1 className="text-red-400 font-sm select-none relative left-[363px] bottom-[80px]">
+            <h1 className="ml-32 mt-2 text-red-400 text-sm select-none relative">
               검색결과가 없습니다.
             </h1>
           )
         ) : (
           <>
-            <div className="preview flex justify-start">
+            <div className="mt-12 preview flex flex-row justify-center">
               <img
                 src={imageSrc || data?.items[0].image}
                 alt="preview-img"
-                className="lg:w-[150px] w-[150px] lg:h-auto h-auto object-cover select-none relative top-[130px] left-[490px]"
+                className="w-32 object-cover select-none relative "
               />
             </div>
-            <DebugStates fieldValues={fieldValues} abc={abc} />
+            {/* <DebugStates fieldValues={fieldValues} abc={abc} /> */}
 
             <div className="w-fit">
-              <label className="font-bold mb-1 text-gray-700 block outline-none">
-                카테고리
-              </label>
-              <select name="category" onChange={handleChange} value={category}>
-                <FormCategory />
-              </select>
               <p
                 name="title"
                 value={data?.items[0].title}
                 onChange={handleFieldChange}
-                className="relative bottom-[100px] left-[710px] text-center text-xl font-bold select-none w-[390px]"
+                className="mt-3 mb-5 text-center text-2xl font-bold "
               >
                 {data?.items[0].title}
               </p>
@@ -220,7 +233,7 @@ function AdminRegistration({ postId, handleDidSave }) {
                 name="writer"
                 value={data?.items[0].author}
                 onChange={handleFieldChange}
-                className="relative bottom-[70px] left-[710px] text-lg text-center select-none"
+                className="text-center text-lg"
               >
                 {data?.items[0].author}
               </p>
@@ -228,7 +241,7 @@ function AdminRegistration({ postId, handleDidSave }) {
                 name="publisher"
                 value={data?.items[0].publisher}
                 onChange={handleFieldChange}
-                className="relative bottom-[70px] left-[710px] text-lg text-center select-none"
+                className="text-center text-lg "
               >
                 {data?.items[0].publisher}
               </p>
@@ -236,7 +249,7 @@ function AdminRegistration({ postId, handleDidSave }) {
                 name="ISBN"
                 value={data?.items[0].isbn.slice(-13)}
                 onChange={handleFieldChange}
-                className="text-gray-500 text-sm select-none text-center relative bottom-[40px] left-[710px]"
+                className="mb-5 text-gray-500 text-md text-center"
               >
                 ISBN: {data?.items[0].isbn.slice(-13)}
               </p>
@@ -249,19 +262,32 @@ function AdminRegistration({ postId, handleDidSave }) {
                 {data?.items[0].description.split('&#x0D;').join(`\n`)}
               </p>
             </div>
+            <div className="text-center">
+              <label className="font-bold text-lg text-indigo-500 mt-5 block outline-none">
+                카테고리 선택
+              </label>
+              <select
+                className="border px-3 py-2 my-2 rounded border-gray-400"
+                name="category"
+                onChange={handleChange}
+                value={category}
+              >
+                <FormCategory />
+              </select>
+            </div>
 
-            <form className="flex justify-center">
+            <form className="text-right mb-5 pb-7">
               <button
                 onClick={handleSubmit2}
-                className="relative top-[20px] left-[130px] rounded
-                  border bg-indigo-600 h-[50px] w-[100px] font-bold text-white"
+                className="relative rounded-lg px-4 py-2 mr-2 
+                  border bg-indigo-600 font-bold text-white"
               >
                 저장하기
               </button>
               <button
                 onClick={handleCancleButton}
-                className="relative top-[20px] left-[170px] rounded
-                  border bg-gray-300 h-[50px] w-[100px] font-bold"
+                className="relative rounded-lg px-4 py-2
+                  border bg-gray-300 font-bold"
               >
                 취소
               </button>
