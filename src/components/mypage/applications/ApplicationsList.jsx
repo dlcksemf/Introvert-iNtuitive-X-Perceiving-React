@@ -1,11 +1,11 @@
 import ApplicationsBooks from './ApplicationsBooks';
-import NoList from '../NoList';
+import NoListApplication from '../NoListApplication';
 
 function ApplicationsList({ applicationList }) {
   return (
     <div className="block w-full overflow-x-auto text-gray-800 select-none">
       {applicationList?.length === 0 ? (
-        <NoList>도서 대출하러 가기!</NoList>
+        <NoListApplication>도서 대출하러 가기!</NoListApplication>
       ) : (
         <table className="items-center bg-transparent w-full border-collapse ">
           <thead>

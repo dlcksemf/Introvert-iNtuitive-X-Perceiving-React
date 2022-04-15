@@ -90,7 +90,7 @@ function BookApplicationList() {
           </div>
         </div>
       </div>
-      <div className="w-[1170px] h-screen m-auto relative left-[48px]">
+      <div className="w-[1170px] h-screen m-auto relative left-[55px]">
         {/* <div className="flex flex-col text-center w-full">
           <div className="flex justify-end">
             <div className="absolute flex justify-end items-end mb-28 mr-4">
