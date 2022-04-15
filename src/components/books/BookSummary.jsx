@@ -461,11 +461,21 @@ function ReviewSummary({ review, setReload }) {
         `삭제 요청 중 에러가 발생 (${deleteError.response.status} ${deleteError.response.statusText})`}
       {review && (
         <>
-          {auth?.user_id === review?.user_id && (
+          {auth?.user_id === review?.user_id ? (
             <div className="flex justify-end relative top-4 right-4">
               <button disabled={deleteLoading} onClick={handleDelete}>
                 <p className="text-gray-500 text-sm hover:text-sky-600">삭제</p>
               </button>
+            </div>
+          ) : (
+            <div className="flex justify-end relative top-4 right-4">
+              <div className="flex justify-end relative top-4 right-4">
+                <button disabled={deleteLoading} onClick={handleDelete}>
+                  <p className="text-white text-sm hover:text-sky-600 select-none">
+                    공간
+                  </p>
+                </button>
+              </div>
             </div>
           )}
           <span className="flex m-auto">
