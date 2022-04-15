@@ -8,18 +8,19 @@ import { GameSummary } from './GameSummary';
 
 function GameList() {
   const navigate = useNavigate();
-  const [query, setQuery] = useState();
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
+
+  let { state } = useLocation();
   let [searchParams] = useSearchParams();
   let pageParams = searchParams.get('page');
+  let queryParams = searchParams.get('query');
 
   const [page, setPage] = useState(() => {
     return pageParams ? pageParams : 1;
   });
 
-  let location = useLocation();
-  let queryParams = searchParams.get('query');
+  const [query, setQuery] = useState(queryParams || '');
 
   const [{ data: gameList, loading, error }, refetch] = useApiAxios(
     {
@@ -29,40 +30,41 @@ function GameList() {
     { manual: true },
   );
 
-  const fetchApplications = useCallback(
-    async (newPage, newQuery = query) => {
-      const params = {
-        page: newPage,
-        query: newQuery,
-      };
+  const fetchApplications = useCallback(async () => {
+    const params = {
+      page: pageParams,
+      query: queryParams,
+    };
 
-      const { data } = await refetch({ params });
+    const { data } = await refetch({ params });
 
-      setPage(newPage);
+    setPageCount(Math.ceil(data.count / 8));
+    setCurrentItems(data?.results);
+  }, [pageParams, queryParams, refetch]);
 
-      setPageCount(Math.ceil(data.count / 8));
-      setCurrentItems(data?.results);
-    },
-    [query, refetch],
-  );
+  useEffect(() => {
+    page && navigate(`/game/gamelist/?page=${page}&query=${query}`);
+  }, [page]);
+
+  useEffect(() => {
+    state?.pathname
+      ? navigate(`/game/gamelist/?page=${pageParams}&query=${query}`)
+      : navigate(`/game/gamelist/?page=1&query=${query}`);
+  }, []);
+
+  useEffect(() => {
+    fetchApplications();
+  }, [pageParams, queryParams]);
 
   const handlePageClick = (event) => {
-    fetchApplications(event.selected + 1);
+    setPage(event.selected + 1);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetchApplications(1, query);
+    navigate(`/game/gamelist/?page=1&query=${query}`);
   };
-
-  useEffect(() => {
-    fetchApplications();
-  }, [fetchApplications]);
-
-  useEffect(() => {
-    page && navigate(`/game/gamelist/?page=${page}&query=${query}`);
-  }, [page]);
 
   return (
     <>
@@ -102,6 +104,7 @@ function GameList() {
         <ReactPaginate
           breakLabel="..."
           nextLabel=">"
+          forcePage={page - 1}
           onPageChange={handlePageClick}
           pageCount={pageCount}
           previousLabel="<"
