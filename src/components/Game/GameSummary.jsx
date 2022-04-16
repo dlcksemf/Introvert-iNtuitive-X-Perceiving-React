@@ -15,7 +15,7 @@ function truncateString(str) {
     return str;
   }
 }
-function GameSummary({ game }) {
+function GameSummary({ game, reloadGame }) {
   const [auth] = useAuth();
   const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -102,7 +102,7 @@ function GameSummary({ game }) {
             modalIsOpen={modalIsOpen}
             setModalIsOpen={setModalIsOpen}
             game_num={game?.game_num}
-            reload={reload}
+            reload={reloadGame}
           />
         </div>
       </div>
