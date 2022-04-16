@@ -163,6 +163,7 @@ function AdminRegistration({ postId, handleDidSave }) {
       }).then((response) => {
         const savedPost = response.data;
         if (handleDidSave) handleDidSave(savedPost);
+        navigate('/admin/booklist/');
       });
     } else {
       // navigate(-1);
