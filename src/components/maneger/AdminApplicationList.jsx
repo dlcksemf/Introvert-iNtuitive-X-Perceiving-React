@@ -8,6 +8,7 @@ import { itemsPerPage } from 'Constants';
 import StateCategory from 'components/parts/StateCategory';
 import { STATELIST } from 'Constants';
 import { CSVLink, CSVDownload } from 'react-csv';
+import excel from 'components/parts/image/excel.png';
 
 function AdminApplicationList() {
   const [, setCurrentItems] = useState(null);
@@ -82,11 +83,12 @@ function AdminApplicationList() {
       <div className="w-[1210px] m-auto">
         <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
           <div className="sm:flex items-end justify-between">
-            <p className="focus:outline-none text-2xl font-bold leading-normal text-gray-800">
+            <p className="flex items-end focus:outline-none text-2xl font-bold leading-normal text-gray-800">
               신청 도서 관리
-              <div className="text-sm">
+              <div className="flex ml-5 text-xs">
                 <CSVLink data={csv} className="text-green-700">
-                  엑셀로 다운로드
+                  <img src={excel} alt="" className=" shrink-0 w-10" />
+                  <span>다운로드</span>
                 </CSVLink>
               </div>
             </p>
