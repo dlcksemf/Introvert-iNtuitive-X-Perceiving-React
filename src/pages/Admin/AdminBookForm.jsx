@@ -153,8 +153,8 @@ function AdminBookForm({ postId, handleDidSave }) {
       </div>
 
       <form>
-        <div className="mt-7 mb-20">
-          <div className="max-w-3xl mx-auto px-20 pb-10 shadow-xl">
+        <div className="mt-20 mb-30">
+          <div className="max-w-3xl mb-40 mx-auto px-20 pb-10 shadow-xl">
             <label className="font-bold mb-7 text-2xl text-gray-700 block text-center">
               도서 등록
             </label>
