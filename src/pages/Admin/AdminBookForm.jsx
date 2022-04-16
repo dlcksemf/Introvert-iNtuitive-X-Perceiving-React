@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import FormCategory from 'components/parts/FormCategory';
 import AdminApplication from 'components/maneger/AdminApplication';
 import AdminRegistration from 'components/maneger/AdminRegistration';
+import PageAdminRegistration from './PageAdminRegistration';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -23,7 +24,7 @@ const INIT_FIELD_VALUES = {
   amount: '1',
 };
 
-function AdminBookForm({ postId, handleDidSave }) {
+function AdminBookForm({ postId, handleDidSave, post }) {
   const [imageSrc, setImageSrc] = useState('');
   const navigate = useNavigate();
   const [showISBN, setShowISBN] = useState(true);
@@ -42,18 +43,18 @@ function AdminBookForm({ postId, handleDidSave }) {
 
   const [auth] = useAuth();
 
-  const [{ data: post }, refetch] = useApiAxios(
-    {
-      url: `books/api/books/${postId}/`,
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${auth.access}`,
-      },
-    },
-    {
-      manual: !postId,
-    },
-  );
+  // const [{ data: post }, refetch] = useApiAxios(
+  //   {
+  //     url: `books/api/books/${postId}/`,
+  //     method: 'GET',
+  //     headers: {
+  //       Authorization: `Bearer ${auth.access}`,
+  //     },
+  //   },
+  //   {
+  //     manual: !postId,
+  //   },
+  // );
 
   const [
     {
@@ -85,9 +86,9 @@ function AdminBookForm({ postId, handleDidSave }) {
     );
   }, [post, setFieldValues]);
 
-  useEffect(() => {
-    refetch();
-  }, [refetch]);
+  // useEffect(() => {
+  //   refetch();
+  // }, [refetch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -159,7 +160,7 @@ function AdminBookForm({ postId, handleDidSave }) {
               도서 등록
             </label>
             {showISBN ? (
-              <AdminRegistration />
+              <PageAdminRegistration />
             ) : (
               <>
                 <div className="py-5">

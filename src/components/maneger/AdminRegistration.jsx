@@ -128,9 +128,9 @@ function AdminRegistration({ postId, handleDidSave }) {
     );
   }, [data, setFieldValues]);
 
-  useEffect(() => {
-    refetch();
-  }, [refetch]);
+  // useEffect(() => {
+  //   refetch();
+  // }, [refetch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
