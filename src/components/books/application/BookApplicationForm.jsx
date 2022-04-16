@@ -103,7 +103,7 @@ function BookApplicationForm() {
           {!data?.items[0]?.image ? (
             data?.items && (
               <h1 className="text-red-400 font-sm select-none relative left-[363px] bottom-[80px]">
-                검색결과가 없습니다.
+                유효한 ISBN을 입력해주세요!
               </h1>
             )
           ) : (
