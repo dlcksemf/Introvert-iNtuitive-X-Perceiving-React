@@ -89,7 +89,9 @@ function AdminApplication({ application, reload }) {
           className="flex items-center cursor-pointer"
         >
           <p className="text-base font-medium leading-none text-gray-700">
-            {application.title}
+            {application.title.length > 20
+              ? application.title.slice(0, 20) + '...'
+              : application.title}
           </p>
           <div className="ml-1 flex">
             <svg
