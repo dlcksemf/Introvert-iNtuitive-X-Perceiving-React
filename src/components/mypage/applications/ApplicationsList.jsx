@@ -7,7 +7,7 @@ function ApplicationsList({ applicationList }) {
       {applicationList?.length === 0 ? (
         <NoListApplication>도서 대출하러 가기!</NoListApplication>
       ) : (
-        <table className="items-center bg-transparent w-full border-collapse ">
+        <table className="items-center bg-transparent w-full border-collapse">
           <thead>
             <tr>
               <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">

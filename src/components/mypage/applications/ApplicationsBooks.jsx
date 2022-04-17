@@ -15,7 +15,11 @@ function ApplicationsBooks({ application }) {
 
   const [apptitle] = useState(() => {
     if (application.state === 'P') {
-      return <div className="relative left-[55px]">{application.title}</div>;
+      return (
+        <div className="relative left-[55px] flex justify-start">
+          {application.title}
+        </div>
+      );
     }
   });
 
@@ -31,20 +35,24 @@ function ApplicationsBooks({ application }) {
         );
       } else {
         return (
-          <Badge color={color}>
-            {STATELIST.application[application.state]}
-          </Badge>
+          <div className="absolute right-[80px]">
+            <Badge color={color}>
+              {STATELIST.application[application.state]}
+            </Badge>
+          </div>
         );
       }
     }
   });
 
   return (
-    <td className="flex my-5 ml-8">
-      {apptitle}
+    <div className="flex justify-between">
+      <td className="flex my-5 ml-8">
+        {apptitle}
 
-      <div className="ml-3">{appstate}</div>
-    </td>
+        <div className="ml-3">{appstate}</div>
+      </td>
+    </div>
   );
 }
 export default ApplicationsBooks;
