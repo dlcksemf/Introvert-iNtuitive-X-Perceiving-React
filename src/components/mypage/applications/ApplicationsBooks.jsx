@@ -15,7 +15,7 @@ function ApplicationsBooks({ application }) {
 
   const [apptitle] = useState(() => {
     if (application.state === 'P') {
-      return <div className="relative left-[100px]">{application.title}</div>;
+      return <div className="relative left-[55px]">{application.title}</div>;
     }
   });
 
