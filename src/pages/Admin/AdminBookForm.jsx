@@ -27,7 +27,7 @@ const INIT_FIELD_VALUES = {
 function AdminBookForm({ postId, handleDidSave, post }) {
   const [imageSrc, setImageSrc] = useState('');
   const navigate = useNavigate();
-  const [showISBN, setShowISBN] = useState(true);
+  const [showISBN, setShowISBN] = useState(false);
 
   const encodeFileToBase64 = (e, fileData) => {
     const reader = new FileReader();
@@ -129,7 +129,7 @@ function AdminBookForm({ postId, handleDidSave, post }) {
       {saveError &&
         `저장 중 에러가 발생했습니다 (${saveError.response?.status} ${saveError.response?.statusText})`}
       {/* <form onSubmit={handleSubmit}> */}
-      <div className="text-center">
+      {/* <div className="text-center">
         <button
           className={`${
             showISBN ? 'bg-indigo-400 text-white' : 'text-gray-800'
@@ -151,7 +151,7 @@ function AdminBookForm({ postId, handleDidSave, post }) {
         >
           직접 등록
         </button>
-      </div>
+      </div> */}
 
       <form>
         <div className="mt-20 mb-30">
