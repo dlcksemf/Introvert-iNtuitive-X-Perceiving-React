@@ -11,10 +11,13 @@ function ApplicationsList({ applicationList }) {
           <thead>
             <tr>
               <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                <h1 className="relative left-[65px]">도서명</h1>
+                <h1 className="absolute left-[88px] top-[95px]">도서명</h1>
               </th>
-              <th className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                상태
+              <th
+                className="px-6 bg-gray-50 text-gray-800 align-middle border border-solid border-gray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left
+              h-[45px]"
+              >
+                <h1 className="absolute right-[115px] top-[95px]">상태</h1>
               </th>
             </tr>
           </thead>
