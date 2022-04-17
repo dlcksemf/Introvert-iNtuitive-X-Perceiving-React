@@ -128,19 +128,6 @@ function TopNav() {
                             auth.username ? auth.username : 'NoNamer'
                           }님 환영합니다`}
                     </div>
-                    <button
-                      className="ml-4 hover:text-sky-600"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="내정보 가기"
-                      onClick={() => {
-                        navigate('/accounts/mypage/');
-                      }}
-                    >
-                      <div className="border-2 border-gray-500 rounded-sm px-[25px] py-[5px] font-semibold">
-                        내정보
-                      </div>
-                    </button>
                     <button>
                       <div
                         title="로그아웃"
@@ -210,19 +197,6 @@ function TopNav() {
                               auth.username ? auth.username : 'NoNamer'
                             }님 환영합니다`}
                       </div>
-                      <button
-                        className="ml-4 hover:text-yellow-200"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="내정보 가기"
-                        onClick={() => {
-                          navigate('/accounts/mypage/');
-                        }}
-                      >
-                        <div className="border-2 border-white rounded-sm px-[25px] py-[5px] font-semibold">
-                          내정보
-                        </div>
-                      </button>
                       <button>
                         <div
                           title="로그아웃"
