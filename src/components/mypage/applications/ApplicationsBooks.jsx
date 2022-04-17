@@ -23,7 +23,7 @@ function ApplicationsBooks({ application }) {
     if (application.state === 'P') {
       if (application.title.length > 15) {
         return (
-          <div className="relative left-[705px]">
+          <div className="absolute right-[80px]">
             <Badge color={color}>
               {STATELIST.application[application.state]}
             </Badge>

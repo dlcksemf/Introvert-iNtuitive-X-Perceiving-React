@@ -149,7 +149,7 @@ function MyPage() {
               state={{ backgroundLocation: location }}
             >
               <button
-                className="bg-indigo-500 text-white border-none px-5 py-2.5 relative left-[610px]
+                className="bg-indigo-500 text-white border-none px-5 py-2.5 absolute left-[950px]
                 text-sm shadow-sm font-semibold tracking-wider rounded-md hover:bg-indigo-400"
               >
                 전체 내역 보기
