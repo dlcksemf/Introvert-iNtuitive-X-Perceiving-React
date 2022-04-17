@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAuth } from 'base/hooks/Authcontext';
 
@@ -207,7 +207,7 @@ function AdminRegistration({ postId, handleDidSave }) {
         {!data?.items[0]?.image ? (
           data?.items && (
             <h1 className="ml-32 mb-10 mt-2 text-red-400 text-sm select-none relative">
-              검색결과가 없습니다.
+              유효한 ISBN을 입력해주세요!
             </h1>
           )
         ) : (
