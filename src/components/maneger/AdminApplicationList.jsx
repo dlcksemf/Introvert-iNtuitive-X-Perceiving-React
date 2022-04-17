@@ -45,7 +45,7 @@ function AdminApplicationList() {
             application.title,
             application.writer,
             application.publisher,
-            application.ISBN,
+            "'" + application.ISBN,
             STATELIST.application[application.state],
           ],
         ]),
