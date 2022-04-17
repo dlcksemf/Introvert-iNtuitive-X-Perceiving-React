@@ -215,7 +215,7 @@ function AdminLoanedBookList() {
                               <Badge color="yellow">반납 신청중</Badge>
                             )} */}
                             {post?.return_state === 'R' && (
-                              <Badge color="blue">반납 완료</Badge>
+                              <Badge color="indigo">반납 완료</Badge>
                             )}
                           </p>
                         </div>
